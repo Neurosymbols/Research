@@ -44,6 +44,10 @@ semicon_quality_concepts = [
 'Squeegee angle',
 ]
 
+semicon_product_class = [
+   'PCB Motherboard'
+]
+
 semicon_defect_concepts = [
 'Solder Bridging',
 'Open Solder Joint'
