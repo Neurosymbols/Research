@@ -127,8 +127,8 @@ def get_spec_values(v:str):
 # Initiate the ontology (set create_new = true if ontologies need to be created from scratch everytime)
 def initiate_ontology(create_new):
     global base_onto, product1_onto, iof, bfo
-    iof = get_ontology(IOF_CORE_IRI).load()
-    bfo = get_ontology(BFO_IRI).load()
+    base_onto = get_ontology(BASE_ONTO_IRI)
+    product1_onto = get_ontology(PRODUCT_ONTO_IRI)
     if not create_new:
         # When ontologies exist in ontologies folder
         base_onto = base_onto.load()
@@ -136,15 +136,15 @@ def initiate_ontology(create_new):
     else:
         # When ontologies do not exist in ontologies folder, create them for the first time
         if import_iof:
-            base_onto = get_ontology(BASE_ONTO_IRI)
-            product1_onto = get_ontology(PRODUCT_ONTO_IRI)
+            iof = get_ontology(IOF_CORE_IRI).load()
+            bfo = get_ontology(BFO_IRI).load()
         add_base_classes() # T-Box
-        add_base_individuals() # A-Box
-        define_properties() # T-Box
-        if import_iof:
-            #idempotently import ontologies
-            base_onto.imported_ontologies.append(iof) # SemicON Base Onto imports IOF
-        product1_onto.imported_ontologies.append(base_onto) # Product1 Onto imports the SemicON Base Onto
+        # add_base_individuals() # A-Box
+        # define_properties() # T-Box
+        # if import_iof:
+        #     #idempotently import ontologies
+        #     base_onto.imported_ontologies.append(iof) # SemicON Base Onto imports IOF
+        # product1_onto.imported_ontologies.append(base_onto) # Product1 Onto imports the SemicON Base Onto
         save_ontology()
 
 def save_ontology():
@@ -156,18 +156,28 @@ def save_ontology():
         replace_iri()
 
 def add_base_classes():
-  global base_onto, iof, bfo, product1_onto, failure_cause_concepts, semicon_defect_concepts, semicon_corrective_action_concepts, failure_cause_concepts, semicon_quality_concepts, semicon_base_classes
   #add base classes
-  with base_onto: # T-Box Declaration
+  with base_onto:
     for classname in semicon_base_classes:
-      classname = "".join([word.capitalize() for word in classname.split(" ")]) # CamelCase compliance
+      classname = "".join([word.capitalize() for word in classname.split(" ")])
       base_class = types.new_class(classname, (Thing,))
       base_class.label.append(classname)
     for classname in semicon_quality_concepts:
       classname = "".join([word.capitalize() for word in classname.split(" ")])
-      quality_class = bfo.search_one(iri="*BFO_0000019") #BFO 'Quality' Class lookup
-      quality_class = types.new_class(classname, (quality_class,))
+      if import_iof:
+        quality_class = bfo.search_one(iri="*BFO_0000019")
+        quality_class = types.new_class(classname, (quality_class,))
+      else:
+        quality_class = types.new_class(classname, (Thing,))
       quality_class.label.append(classname)
+    for classname in semicon_quality_concepts:
+      classname = "".join([word.capitalize() for word in classname.split(" ")])
+      if import_iof:
+        measurement_ice_class = iof.search_one(iri="*MeasurementInformationContentEntity")
+        quality_obs_class = types.new_class(f"{classname}Obs", (measurement_ice_class,))
+      else:
+        quality_obs_class = types.new_class(f"{classname}Obs", (Thing,))
+      quality_obs_class.label.append(f"{classname}Obs")
     for classname in semicon_defect_concepts:
       classname = "".join([word.capitalize() for word in classname.split(" ")])
       defect_class = types.new_class(classname, (base_onto.Defect,))
@@ -180,6 +190,14 @@ def add_base_classes():
       ca_classname = "".join([word.capitalize() for word in desc.split(" ")])
       ca_class = types.new_class(ca_classname, (base_onto.CorrectiveAction,))
       ca_class.label.append(desc)
+    for classname in semicon_product_class:
+       classname = "".join([word.capitalize() for word in classname.split(" ")])
+       if import_iof:
+        material_product_class = iof.search_one(iri="*MaterialProduct")
+        product_class = types.new_class(f"{classname}", (material_product_class,))
+       else:
+        product_class = types.new_class(f"{classname}", (Thing,))
+       product_class.label.append(classname)
 
 def add_base_individuals():
   global failure_cause_concepts, semicon_corrective_action_concepts
@@ -308,6 +326,6 @@ def add_products():
         print(f"{len(values)} product individuals imported to the ontology")
 
     return {"message": "products added"}
-initiate_ontology(create_new=False)
-add_specs()
-add_products()
+initiate_ontology(create_new=True)
+# add_specs()
+# add_products()
