@@ -7,6 +7,8 @@ import types
 import json
 import pandas as pd
 import re
+
+from pathlib import Path
 from decimal import Decimal, getcontext
 
 path = "./data/ontologies"
@@ -67,6 +69,28 @@ semicon_corrective_action_concepts = {
 'CAFC1':'Stencil Thickness Correction'
 }
 
+import_iof = False
+
+def replace_iri():
+   # File path to your ontology
+    owl_file = Path("./data/ontologies/semicon-base.owl")
+
+    # Original and replacement import IRIs
+    original_iri = 'https://spec.industrialontologies.org/ontology/core/Core'
+    replacement_iri = 'https://raw.githubusercontent.com/iofoundry/ontology/master/core/Core.rdf'
+
+    # Load and replace in the file
+    owl_text = owl_file.read_text()
+    owl_text_modified = owl_text.replace(
+        f'<owl:imports rdf:resource="{original_iri}"/>',
+        f'<owl:imports rdf:resource="{replacement_iri}"/>'
+    )
+
+    # Overwrite the file (or write to a new file if you want to keep the original)
+    owl_file.write_text(owl_text_modified)
+
+    print("owl:imports IRI replaced successfully.")
+
 def extract_floats(s):
     # Match optional sign, digits, optional decimal part
     return [float(num) for num in re.findall(r'[-+]?\d*\.\d+|[-+]?\d+', s)]
@@ -103,33 +127,33 @@ def get_spec_values(v:str):
 # Initiate the ontology (set create_new = true if ontologies need to be created from scratch everytime)
 def initiate_ontology(create_new):
     global base_onto, product1_onto, iof, bfo
-    base_onto = get_ontology(BASE_ONTO_IRI)
-    product1_onto = get_ontology(PRODUCT_ONTO_IRI)
     iof = get_ontology(IOF_CORE_IRI).load()
     bfo = get_ontology(BFO_IRI).load()
     if not create_new:
         # When ontologies exist in ontologies folder
         base_onto = base_onto.load()
         product1_onto = product1_onto.load()
-        #idempotently import ontologies
-        base_onto.imported_ontologies.append(iof)
-        product1_onto.imported_ontologies.append(base_onto)
     else:
         # When ontologies do not exist in ontologies folder, create them for the first time
+        if import_iof:
+            base_onto = get_ontology(BASE_ONTO_IRI)
+            product1_onto = get_ontology(PRODUCT_ONTO_IRI)
         add_base_classes() # T-Box
         add_base_individuals() # A-Box
         define_properties() # T-Box
-        #idempotently import ontologies
-        base_onto.imported_ontologies.append(iof) # SemicON Base Onto imports IOF
+        if import_iof:
+            #idempotently import ontologies
+            base_onto.imported_ontologies.append(iof) # SemicON Base Onto imports IOF
         product1_onto.imported_ontologies.append(base_onto) # Product1 Onto imports the SemicON Base Onto
         save_ontology()
 
 def save_ontology():
-    global base_onto, product1_onto, path
     print(f"Total individuals inside SemicON Base: {len(list(base_onto.individuals()))}")
     print(f"Total individuals inside SemicON Product1: {len(list(product1_onto.individuals()))}")
     base_onto.save(file=os.path.join(path, "semicon-base.owl"), format = "rdfxml")
     product1_onto.save(file=os.path.join(path, "semicon-product1.owl"), format = "rdfxml")
+    if import_iof:
+        replace_iri()
 
 def add_base_classes():
   global base_onto, iof, bfo, product1_onto, failure_cause_concepts, semicon_defect_concepts, semicon_corrective_action_concepts, failure_cause_concepts, semicon_quality_concepts, semicon_base_classes
