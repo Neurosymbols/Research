@@ -71,6 +71,9 @@ semicon_corrective_action_concepts = {
 
 import_iof = False
 
+def create_classname_syntax(classname):
+   return "".join([word.capitalize() for word in classname.split(" ")])
+
 def replace_iri():
    # File path to your ontology
     owl_file = Path("./data/ontologies/semicon-base.owl")
@@ -139,12 +142,12 @@ def initiate_ontology(create_new):
             iof = get_ontology(IOF_CORE_IRI).load()
             bfo = get_ontology(BFO_IRI).load()
         add_base_classes() # T-Box
-        # add_base_individuals() # A-Box
-        # define_properties() # T-Box
-        # if import_iof:
-        #     #idempotently import ontologies
-        #     base_onto.imported_ontologies.append(iof) # SemicON Base Onto imports IOF
-        # product1_onto.imported_ontologies.append(base_onto) # Product1 Onto imports the SemicON Base Onto
+        add_base_individuals() # A-Box
+        define_properties() # T-Box
+        if import_iof:
+            #idempotently import ontologies
+            base_onto.imported_ontologies.append(iof) # SemicON Base Onto imports IOF
+        product1_onto.imported_ontologies.append(base_onto) # Product1 Onto imports the SemicON Base Onto
         save_ontology()
 
 def save_ontology():
@@ -215,52 +218,55 @@ def add_base_individuals():
       cai.label.append(ca)
 
 def define_properties():
-        global iof, base_onto, bfo
         with base_onto: # T-Box Declaration
-            MaterialProduct = iof.search_one(iri="*MaterialProduct")
-            MeasurementICE  = iof.search_one(iri="*MeasurementInformationContentEntity")
-            Quality = bfo.search_one(iri="*BFO_0000019")
+            semicon_product_classes = [base_onto[create_classname_syntax(c)] for c in semicon_product_class]
+            semicon_quality_classes = [base_onto[create_classname_syntax(c)] for c in semicon_quality_concepts]
+            semicon_quality_obs_classes = [base_onto[f"{create_classname_syntax(c)}Obs"] for c in semicon_quality_concepts]
+            semicon_failure_cause_classes = [base_onto[create_classname_syntax(v)] for c,v in failure_cause_concepts.items()]
+            semicon_defect_classes = [base_onto[create_classname_syntax(d)] for d in semicon_defect_concepts]
+            semicon_ca_classes = [base_onto[create_classname_syntax(v)] for ca, v in semicon_corrective_action_concepts.items()]
+            
+            #------------------------------ Object Properties ----------------------------------#
+            class hasSpecification(ObjectProperty):
+                domain = semicon_product_classes
+                range = semicon_quality_classes
             class hasObservation(ObjectProperty):
-                domain = [MaterialProduct]
-                range = [MeasurementICE]
-            class observationOf(ObjectProperty):
-                inverse_property = hasObservation
+                domain = semicon_product_classes
+                range = semicon_quality_obs_classes
+            class observesSpecification(ObjectProperty, FunctionalProperty):
+               domain = semicon_quality_obs_classes
+               range = semicon_quality_classes
+            class hasFailureCause(ObjectProperty):
+                domain = semicon_defect_classes
+                range = semicon_failure_cause_classes
+            class hasDefect(ObjectProperty):
+               domain = semicon_product_classes
+               range = semicon_defect_classes
+            class hasCorrectiveAction(ObjectProperty):
+               domain = semicon_failure_cause_classes
+               range = semicon_ca_classes
+            #------------------------------ Data Properties ----------------------------------#
             class hasUpperValue(DataProperty, FunctionalProperty): # Functional Property allows to assign only one value to Property)
-                domain = [Quality]
+                domain = semicon_quality_classes
             class hasNominalValue(DataProperty, FunctionalProperty):
-                domain = [Quality]
+                domain = semicon_quality_classes
             class hasLowerValue(DataProperty, FunctionalProperty):
-                domain = [Quality]
+                domain = semicon_quality_classes
             class hasObservedValue(DataProperty, FunctionalProperty):
-                domain = [Quality]
+                domain = semicon_quality_obs_classes
             class hasUnit(DataProperty, FunctionalProperty):
                 pass
             class hasSeverity(DataProperty, FunctionalProperty):
-                domain = [base_onto.FailureCause]
+                domain = semicon_failure_cause_classes
                 range = [int]
             class hasWeight(DataProperty, FunctionalProperty):
-                domain = [base_onto.FailureCause]
+                domain = semicon_failure_cause_classes
                 range = [float]
-            class hasFailureCause(ObjectProperty):
-                domain = [MaterialProduct]
-                range = [base_onto.FailureCause]
-            class hasDefect(ObjectProperty):
-               domain = [MaterialProduct]
-               range = [base_onto.Defect]
-            class hasCorrectiveAction(ObjectProperty):
-               domain = [base_onto.FailureCause]
-               range = [base_onto.CorrectiveAction]
             class hasRBIScore(DataProperty, FunctionalProperty):
-               domain = [MaterialProduct]
+               domain = semicon_product_classes
                range = [float]
-            class isCauseOf(ObjectProperty):
-               domain = [base_onto.FailureCause]
-               range = [base_onto.Defect]
-            class isCausedBy(ObjectProperty):
-               inverse_property = isCauseOf
 
 def add_specs():
-        global input_path, semicon_quality_concepts, output_path, product1_onto, base_onto
         df = pd.read_csv(f"{input_path}/specs_data.csv")
         # Get the first and second columns
         col1 = df.columns[1] # Specification Name
@@ -293,31 +299,25 @@ def add_specs():
             save_ontology()
 
 def add_products():
-    global product1_onto, iof
     df = pd.read_csv(f"{input_path}/synthetic_data_factory.csv")
     # Strip spaces from column names
     df.columns = df.columns.str.strip() # Check specs in Synthetic Data files
     with product1_onto: # A-box instantiation
         j = 1
         for entry in semicon_quality_concepts: 
-            qual_classname = "".join([word.capitalize() for word in entry.split(" ")])
             assert entry.lower() in df.columns, f"Column '{entry}' is missing in Synthetic data!" # check whether the 'spec' exists in synthetic data file
-            values = df[entry.lower()].tolist() # get all observed values corresponding to a 'spec'
-            values = values[0:20] # limiting to first 20 observed values
-            MaterialProduct = iof.search_one(iri="*MaterialProduct") # get reference to material product class
-            # print(MaterialProduct)
-            MeasurementICE  = iof.search_one(iri="*MeasurementInformationContentEntity") # get reference to MeasurementICE product class
-            # print(MeasurementICE)
+            values = df[entry.lower()].tolist()[0:20] # get all observed values corresponding to a 'spec'. Limiting to first 20 observed values
+
+            PCBMotherboard = base_onto['PcbMotherboard'] # get reference to pcb motherboard class
             qual_ins = product1_onto[f"S{j}"] # Get reference to the 'Quality' Individual
-            # print(qual_ins)
             for i, v in enumerate(values): # create the datastructure (i,v) list
-                onto_ins = MaterialProduct(f"PCB{i+1}") # start creating Product1 individuals
+                onto_ins = PCBMotherboard(f"PCB{i+1}") # start creating Product1 individuals
                 onto_ins.label = [f"PCB{i+1}"] # assign a label
-                onto_ins.hasQuality.append(qual_ins) # connect the 'Product1' individual with 'Quality' individual using 'IOF:hasQuality' which is not a functional property (hence using append)
-                qual_observ_ins = MeasurementICE(  # instantiating observed value individuals for Product1
-                    f"Obs_{qual_classname}_PCB{i+1}"
+                onto_ins.hasSpecification.append(qual_ins) # connect the 'Product1' individual with 'Quality' individual using 'Semi:hasSpecification' which is not a functional property (hence using append)
+                qual_observ_ins =  base_onto[f"{create_classname_syntax(entry)}Obs"](  # instantiating observed value individuals for Product1
+                    f"{create_classname_syntax(entry)}_PCB{i+1}_Obs"
                     )
-                qual_observ_ins.describes.append(qual_ins) # observed value individual describes the quality individual
+                qual_observ_ins.observesSpecification = qual_ins # observed value individual describes the quality individual
                 qual_observ_ins.hasObservedValue = float(v) # assign hasobserved value to individual
                 onto_ins.hasObservation.append(qual_observ_ins) # connect the observed value individual to the Product1 individual
             j += 1
@@ -327,5 +327,5 @@ def add_products():
 
     return {"message": "products added"}
 initiate_ontology(create_new=True)
-# add_specs()
-# add_products()
+add_specs()
+add_products()
