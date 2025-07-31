@@ -3,3 +3,4 @@ pymongo
 pandas
 numpy
 requests
+SPARQLWrapper==2.0.0

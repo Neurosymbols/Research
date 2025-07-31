@@ -1,19 +1,27 @@
 # CONFIDENTIAL 
 # Copyright Abakai
 
-from owlready2 import *
+import argparse
 import os
 import types
 import json
 import pandas as pd
 import re
+import requests
 
-from pathlib import Path
+from owlready2 import *
 from decimal import Decimal, getcontext
+from pathlib import Path
+from SPARQLWrapper import SPARQLWrapper, JSON
+
 
 path = "./data/ontologies"
 input_path = "./data/input"
 output_path = "./data/output"
+
+GDB_URL = "http://localhost:7200"
+REPO = "demo-semicon"
+sparql = SPARQLWrapper(f"{GDB_URL}/repositories/{REPO}")
 
 #set the path where system generated ontologies will be saved
 onto_path.append(path)
@@ -70,6 +78,83 @@ semicon_corrective_action_concepts = {
 }
 
 import_iof = False
+
+def perform_sparql_query(query):
+    sparql.setReturnFormat(JSON)
+    sparql.setQuery(query)
+    results = sparql.query().convert()
+    return results
+
+def export_ontology_to_graphdb():
+    base_onto_path = f"{path}/semicon-base.owl"
+    product1_path = f"{path}/semicon-product1.owl"
+    # Upload to repository
+    headers = {
+        "Content-Type": "application/rdf+xml"
+    }
+    with open(base_onto_path, "rb") as f:
+        r = requests.post(
+            f"{GDB_URL}/repositories/{REPO}/statements",
+            headers=headers,
+            data=f
+        )
+    with open(product1_path, "rb") as f:
+        r = requests.post(
+            f"{GDB_URL}/repositories/{REPO}/statements",
+            headers=headers,
+            data=f
+        )
+    if r.status_code == 204:
+        print("OWL file uploaded successfully.")
+    else:
+        print(f"Error uploading: {r.status_code} {r.text}")
+
+def create_reports():
+    results = perform_sparql_query(
+        query = '''
+            PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+            PREFIX base: <https://abakai.ai/ontology/semicon-base.owl#>
+            PREFIX product1: <https://abakai.ai/data/semicon-product1.owl#>
+            PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+
+            SELECT ?productLabel (COALESCE(?desc, "No Failure Cause") AS ?failure_cause)
+            WHERE {
+                ?product a base:PcbMotherboard ;
+                        rdfs:label ?productLabel;
+                        
+
+                OPTIONAL {
+                    ?product base:hasFailureCause ?failurecause .
+                    ?failurecause rdfs:label ?desc .
+                }
+            }
+            ORDER BY ?product
+        '''
+    )
+    rows = {}
+    for row in results["results"]["bindings"]:
+        product_label = row["productLabel"]["value"]
+        if product_label not in rows:
+           rows[product_label] = {"failure_causes": []}
+        rows[product_label]['failure_causes'].append(row["failure_cause"]["value"])
+    rows = dict(sorted(rows.items(), key=lambda x: int(x[0][3:])))
+    data = []
+    for p, d in rows.items():
+       s = 0
+       for fc, desc in failure_cause_concepts.items():
+        row = {}
+        if s == 0:
+            row['Product'] = p
+            s = 1
+        else:
+           row['Product'] = ""
+        row['Failure Cause'] = desc
+        if fc in d['failure_causes']:
+           row['Variable'] = 1
+        else:
+           row['Variable'] = 0
+        data.append(row)
+    pd.DataFrame(data).to_csv(f"{output_path}/rule_firing_report.csv", index=False)
 
 def create_classname_syntax(classname):
    return "".join([word.capitalize() for word in classname.split(" ")])
@@ -228,42 +313,55 @@ def define_properties():
             
             #------------------------------ Object Properties ----------------------------------#
             class hasSpecification(ObjectProperty):
-                domain = semicon_product_classes
-                range = semicon_quality_classes
-            class hasObservation(ObjectProperty):
-                domain = semicon_product_classes
-                range = semicon_quality_obs_classes
+               pass
+                # domain = semicon_product_classes
+                # range = semicon_quality_classes
+            # class hasObservation(ObjectProperty):
+            #     domain = semicon_product_classes
+            #     range = semicon_quality_obs_classes
+            class observationOf(ObjectProperty, FunctionalProperty):
+               pass
+            #    domain = semicon_quality_obs_classes
+            #    range = semicon_product_classes
             class observesSpecification(ObjectProperty, FunctionalProperty):
-               domain = semicon_quality_obs_classes
-               range = semicon_quality_classes
+               pass
+            #    domain = semicon_quality_obs_classes
+            #    range = semicon_quality_classes
             class hasFailureCause(ObjectProperty):
-                domain = semicon_defect_classes
-                range = semicon_failure_cause_classes
+               pass
+                # domain = semicon_product_classes
+                # range = semicon_failure_cause_classes
             class hasDefect(ObjectProperty):
-               domain = semicon_product_classes
-               range = semicon_defect_classes
+               pass
+            #    domain = semicon_product_classes
+            #    range = semicon_defect_classes
             class hasCorrectiveAction(ObjectProperty):
-               domain = semicon_failure_cause_classes
-               range = semicon_ca_classes
+               pass
+            #    domain = semicon_failure_cause_classes
+            #    range = semicon_ca_classes
             #------------------------------ Data Properties ----------------------------------#
             class hasUpperValue(DataProperty, FunctionalProperty): # Functional Property allows to assign only one value to Property)
-                domain = semicon_quality_classes
+               pass
+                # domain = semicon_quality_classes
             class hasNominalValue(DataProperty, FunctionalProperty):
-                domain = semicon_quality_classes
+               pass
+                # domain = semicon_quality_classes
             class hasLowerValue(DataProperty, FunctionalProperty):
-                domain = semicon_quality_classes
+               pass
+                # domain = semicon_quality_classes
             class hasObservedValue(DataProperty, FunctionalProperty):
-                domain = semicon_quality_obs_classes
+               pass
+                # domain = semicon_quality_obs_classes
             class hasUnit(DataProperty, FunctionalProperty):
                 pass
             class hasSeverity(DataProperty, FunctionalProperty):
-                domain = semicon_failure_cause_classes
+                # domain = semicon_failure_cause_classes
                 range = [int]
             class hasWeight(DataProperty, FunctionalProperty):
-                domain = semicon_failure_cause_classes
+                # domain = semicon_failure_cause_classes
                 range = [float]
             class hasRBIScore(DataProperty, FunctionalProperty):
-               domain = semicon_product_classes
+            #    domain = semicon_product_classes
                range = [float]
 
 def add_specs():
@@ -319,13 +417,129 @@ def add_products():
                     )
                 qual_observ_ins.observesSpecification = qual_ins # observed value individual describes the quality individual
                 qual_observ_ins.hasObservedValue = float(v) # assign hasobserved value to individual
-                onto_ins.hasObservation.append(qual_observ_ins) # connect the observed value individual to the Product1 individual
+                qual_observ_ins.observationOf = onto_ins
+                # onto_ins.hasObservation.append(qual_observ_ins) # connect the observed value individual to the Product1 individual
             j += 1
         save_ontology()
         #log the number of individuals
         print(f"{len(values)} product individuals imported to the ontology")
 
     return {"message": "products added"}
-initiate_ontology(create_new=True)
-add_specs()
-add_products()
+
+def add_and_run_rules():
+    with product1_onto:
+        rules = {
+            "Stencil thickness too high": [
+                """
+                    StencilThicknessTooHigh(?r),
+                    StencilThicknessObs(?obs),
+                    observationOf(?obs, ?pcb), observesSpecification(?obs, ?spec),
+                    hasObservedValue(?obs, ?val), hasUpperValue(?spec, ?upper),
+                    greaterThan(?val, ?upper) -> hasFailureCause(?pcb, ?r)
+                """
+            ],
+            "Excess squeegee pressure": [
+                """
+                    ExcessSqueegeePressure(?r),
+                    SqueegeePressureObs(?obs),
+                    observationOf(?obs, ?pcb), observesSpecification(?obs, ?spec),
+                    hasObservedValue(?obs, ?val),hasUpperValue(?spec, ?upper),
+                    greaterThan(?val, ?upper) -> hasFailureCause(?pcb, ?r)
+                """
+            ],
+            "Insufficient squeegee pressure": [
+                """
+                    InsufficientSqueegeePressure(?r),
+                    SqueegeePressureObs(?obs),
+                    observationOf(?obs, ?pcb), observesSpecification(?obs, ?spec),
+                    hasObservedValue(?obs, ?val),hasLowerValue(?spec, ?lower),
+                    lessThan(?val, ?lower) -> hasFailureCause(?pcb, ?r)
+                """
+            ],
+            "Excess squeegee speed": [
+                 """
+                    ExcessSqueegeeSpeed(?r),
+                    SqueegeeSpeedObs(?obs),
+                    observationOf(?obs, ?pcb), observesSpecification(?obs, ?spec),
+                    hasObservedValue(?obs, ?val),hasUpperValue(?spec, ?upper),
+                    greaterThan(?val, ?upper) -> hasFailureCause(?pcb, ?r)
+                """
+            ],
+            "Squeegee angle out of spec": [
+                """
+                    SqueegeeAngleOutOfSpec(?r),
+                    SqueegeeAngleObs(?obs),
+                    observationOf(?obs, ?pcb), observesSpecification(?obs, ?spec),
+                    hasObservedValue(?obs, ?val),hasUpperValue(?spec, ?upper),
+                    greaterThan(?val, ?upper) -> hasFailureCause(?pcb, ?r)
+                """,
+                 """
+                    SqueegeeAngleOutOfSpec(?r),
+                    SqueegeeAngleObs(?obs),
+                    observationOf(?obs, ?pcb), observesSpecification(?obs, ?spec),
+                    hasObservedValue(?obs, ?val),hasLowerValue(?spec, ?lower),
+                    lessThan(?val, ?lower) -> hasFailureCause(?pcb, ?r)
+                """
+            ],
+            "Residual paste left on stencil edge": [
+                 """
+                    ResidualPasteLeftOnStencilEdge(?r),
+                    ResidualPasteAllowedObs(?obs),
+                    observationOf(?obs, ?pcb), observesSpecification(?obs, ?spec),
+                    hasObservedValue(?obs, ?val),hasUpperValue(?spec, ?upper),
+                    greaterThan(?val, ?upper) -> hasFailureCause(?pcb, ?r)
+                """
+            ],
+            "Oversized stencil aperture or excessive overprint":[
+                """
+                    OversizedStencilApertureOrExcessiveOverprint(?r),
+                    PasteVolumePerApertureObs(?obs),
+                    observationOf(?obs, ?pcb), observesSpecification(?obs, ?spec),
+                    hasObservedValue(?obs, ?val),hasUpperValue(?spec, ?upper),
+                    greaterThan(?val, ?upper) -> hasFailureCause(?pcb, ?r)
+                """
+            ]
+        }
+        for rulename, rulelist in rules.items():
+            for ri in rulelist:
+                rule = Imp()
+                rule.set_as_rule(ri, namespaces=[base_onto])
+        #run rules
+        t1 = time.time()
+        sync_reasoner_pellet(
+            infer_property_values = True, 
+            infer_data_property_values = True
+        )
+        t2 = time.time()
+        print(f"{t2-t1}s taken to run the reasoner")
+        save_ontology()
+    return {"message": "pellet ran successfully", "time_taken": f"{t2-t1}s"}
+
+
+if __name__ == "__main__":
+    parser = argparse.ArgumentParser(description="SemicON Ontology CLI")
+
+    parser.add_argument("--init", action="store_true", help="Initiate ontology (create_new=False)")
+    parser.add_argument("--init-new", action="store_true", help="Initiate ontology (create_new=True)")
+    parser.add_argument("--add-specs", action="store_true", help="Add specifications")
+    parser.add_argument("--add-products", action="store_true", help="Add products")
+    parser.add_argument("--run-rules", action="store_true", help="Add and run SWRL rules")
+    parser.add_argument("--export", action="store_true", help="Export ontology to GraphDB")
+    parser.add_argument("--report", action="store_true", help="Generate failure reports")
+
+    args = parser.parse_args()
+
+    if args.init:
+        initiate_ontology(create_new=False)
+    elif args.init_new:
+        initiate_ontology(create_new=True)
+    if args.add_specs:
+        add_specs()
+    if args.add_products:
+        add_products()
+    if args.run_rules:
+        add_and_run_rules()
+    if args.export:
+        export_ontology_to_graphdb()
+    if args.report:
+        create_reports()
