@@ -1,0 +1,141 @@
+Product,Failure Cause,Variable
+PCB1,Oversized stencil aperture or excessive overprint,0
+,Excess squeegee pressure,0
+,Stencil thickness too high,1
+,Insufficient squeegee pressure,0
+,Excess squeegee speed,0
+,Squeegee angle out of spec,0
+,Residual paste left on stencil edge,0
+PCB2,Oversized stencil aperture or excessive overprint,0
+,Excess squeegee pressure,1
+,Stencil thickness too high,1
+,Insufficient squeegee pressure,0
+,Excess squeegee speed,0
+,Squeegee angle out of spec,0
+,Residual paste left on stencil edge,0
+PCB3,Oversized stencil aperture or excessive overprint,0
+,Excess squeegee pressure,1
+,Stencil thickness too high,1
+,Insufficient squeegee pressure,0
+,Excess squeegee speed,0
+,Squeegee angle out of spec,0
+,Residual paste left on stencil edge,0
+PCB4,Oversized stencil aperture or excessive overprint,0
+,Excess squeegee pressure,0
+,Stencil thickness too high,0
+,Insufficient squeegee pressure,1
+,Excess squeegee speed,0
+,Squeegee angle out of spec,0
+,Residual paste left on stencil edge,0
+PCB5,Oversized stencil aperture or excessive overprint,1
+,Excess squeegee pressure,0
+,Stencil thickness too high,0
+,Insufficient squeegee pressure,0
+,Excess squeegee speed,0
+,Squeegee angle out of spec,0
+,Residual paste left on stencil edge,0
+PCB6,Oversized stencil aperture or excessive overprint,0
+,Excess squeegee pressure,0
+,Stencil thickness too high,0
+,Insufficient squeegee pressure,0
+,Excess squeegee speed,0
+,Squeegee angle out of spec,0
+,Residual paste left on stencil edge,1
+PCB7,Oversized stencil aperture or excessive overprint,0
+,Excess squeegee pressure,0
+,Stencil thickness too high,0
+,Insufficient squeegee pressure,0
+,Excess squeegee speed,0
+,Squeegee angle out of spec,0
+,Residual paste left on stencil edge,0
+PCB8,Oversized stencil aperture or excessive overprint,0
+,Excess squeegee pressure,0
+,Stencil thickness too high,0
+,Insufficient squeegee pressure,0
+,Excess squeegee speed,0
+,Squeegee angle out of spec,0
+,Residual paste left on stencil edge,0
+PCB9,Oversized stencil aperture or excessive overprint,0
+,Excess squeegee pressure,0
+,Stencil thickness too high,0
+,Insufficient squeegee pressure,0
+,Excess squeegee speed,0
+,Squeegee angle out of spec,0
+,Residual paste left on stencil edge,0
+PCB10,Oversized stencil aperture or excessive overprint,0
+,Excess squeegee pressure,0
+,Stencil thickness too high,0
+,Insufficient squeegee pressure,0
+,Excess squeegee speed,1
+,Squeegee angle out of spec,1
+,Residual paste left on stencil edge,0
+PCB11,Oversized stencil aperture or excessive overprint,0
+,Excess squeegee pressure,0
+,Stencil thickness too high,0
+,Insufficient squeegee pressure,0
+,Excess squeegee speed,0
+,Squeegee angle out of spec,1
+,Residual paste left on stencil edge,0
+PCB12,Oversized stencil aperture or excessive overprint,0
+,Excess squeegee pressure,0
+,Stencil thickness too high,0
+,Insufficient squeegee pressure,0
+,Excess squeegee speed,0
+,Squeegee angle out of spec,0
+,Residual paste left on stencil edge,0
+PCB13,Oversized stencil aperture or excessive overprint,0
+,Excess squeegee pressure,0
+,Stencil thickness too high,0
+,Insufficient squeegee pressure,0
+,Excess squeegee speed,0
+,Squeegee angle out of spec,0
+,Residual paste left on stencil edge,0
+PCB14,Oversized stencil aperture or excessive overprint,0
+,Excess squeegee pressure,0
+,Stencil thickness too high,0
+,Insufficient squeegee pressure,0
+,Excess squeegee speed,0
+,Squeegee angle out of spec,0
+,Residual paste left on stencil edge,0
+PCB15,Oversized stencil aperture or excessive overprint,0
+,Excess squeegee pressure,0
+,Stencil thickness too high,0
+,Insufficient squeegee pressure,0
+,Excess squeegee speed,0
+,Squeegee angle out of spec,0
+,Residual paste left on stencil edge,0
+PCB16,Oversized stencil aperture or excessive overprint,1
+,Excess squeegee pressure,0
+,Stencil thickness too high,0
+,Insufficient squeegee pressure,0
+,Excess squeegee speed,0
+,Squeegee angle out of spec,0
+,Residual paste left on stencil edge,0
+PCB17,Oversized stencil aperture or excessive overprint,0
+,Excess squeegee pressure,0
+,Stencil thickness too high,0
+,Insufficient squeegee pressure,0
+,Excess squeegee speed,0
+,Squeegee angle out of spec,0
+,Residual paste left on stencil edge,0
+PCB18,Oversized stencil aperture or excessive overprint,0
+,Excess squeegee pressure,0
+,Stencil thickness too high,0
+,Insufficient squeegee pressure,0
+,Excess squeegee speed,0
+,Squeegee angle out of spec,0
+,Residual paste left on stencil edge,0
+PCB19,Oversized stencil aperture or excessive overprint,0
+,Excess squeegee pressure,0
+,Stencil thickness too high,0
+,Insufficient squeegee pressure,0
+,Excess squeegee speed,0
+,Squeegee angle out of spec,0
+,Residual paste left on stencil edge,0
+PCB20,Oversized stencil aperture or excessive overprint,0
+,Excess squeegee pressure,0
+,Stencil thickness too high,0
+,Insufficient squeegee pressure,0
+,Excess squeegee speed,0
+,Squeegee angle out of spec,0
+,Residual paste left on stencil edge,0

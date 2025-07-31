@@ -1,0 +1,38 @@
+{
+  "Stencil Thickness": {
+    "NV": 0.1,
+    "UL": 0.105,
+    "LL": 0.095,
+    "tolerance": 0.005
+  },
+  "Residual Paste Allowed": {
+    "NV": 5.0,
+    "UL": 5.5,
+    "LL": 4.5,
+    "tolerance": 0.5
+  },
+  "Paste volume per aperture": {
+    "NV": 0.04,
+    "UL": 0.044,
+    "LL": 0.036,
+    "tolerance": 0.004
+  },
+  "Squeegee pressure": {
+    "NV": 0.3,
+    "UL": 0.33,
+    "LL": 0.27,
+    "tolerance": 0.03
+  },
+  "Squeegee speed": {
+    "NV": 70.0,
+    "UL": 84.0,
+    "LL": 56.0,
+    "tolerance": 14.0
+  },
+  "Squeegee angle": {
+    "NV": 60.0,
+    "UL": 65.0,
+    "LL": 55.0,
+    "tolerance": 5.0
+  }
+}
