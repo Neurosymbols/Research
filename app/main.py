@@ -85,6 +85,14 @@ def perform_sparql_query(query):
     results = sparql.query().convert()
     return results
 
+def clear_graphdb_default_graph():
+    url = f"{GDB_URL}/repositories/{REPO}/statements"
+    r = requests.delete(url)
+    if r.status_code == 204:
+        print("Default graph cleared successfully.")
+    else:
+        print(f"Error clearing default graph: {r.status_code} {r.text}")
+
 def export_ontology_to_graphdb():
     base_onto_path = f"{path}/semicon-base.owl"
     product1_path = f"{path}/semicon-product1.owl"
@@ -131,6 +139,7 @@ def create_reports():
             ORDER BY ?product
         '''
     )
+    #report 1
     rows = {}
     for row in results["results"]["bindings"]:
         product_label = row["productLabel"]["value"]
@@ -138,7 +147,7 @@ def create_reports():
            rows[product_label] = {"failure_causes": []}
         rows[product_label]['failure_causes'].append(row["failure_cause"]["value"])
     rows = dict(sorted(rows.items(), key=lambda x: int(x[0][3:])))
-    data = []
+    report_1 = []
     for p, d in rows.items():
        s = 0
        for fc, desc in failure_cause_concepts.items():
@@ -153,8 +162,8 @@ def create_reports():
            row['Variable'] = 1
         else:
            row['Variable'] = 0
-        data.append(row)
-    pd.DataFrame(data).to_csv(f"{output_path}/rule_firing_report.csv", index=False)
+        report_1.append(row)
+    pd.DataFrame(report_1).to_csv(f"{output_path}/rule_firing_report.csv", index=False)
 
 def create_classname_syntax(classname):
    return "".join([word.capitalize() for word in classname.split(" ")])
@@ -526,6 +535,7 @@ if __name__ == "__main__":
     parser.add_argument("--run-rules", action="store_true", help="Add and run SWRL rules")
     parser.add_argument("--export", action="store_true", help="Export ontology to GraphDB")
     parser.add_argument("--report", action="store_true", help="Generate failure reports")
+    parser.add_argument("--clear", action="store_true", help="Clear the default graph in GraphDB")
 
     args = parser.parse_args()
 
@@ -543,3 +553,5 @@ if __name__ == "__main__":
         export_ontology_to_graphdb()
     if args.report:
         create_reports()
+    if args.clear:
+        clear_graphdb_default_graph()
