@@ -1,0 +1,32 @@
+{
+  "FC1": {
+    "failure_mechanism": "Excess paste volume collapses between pads",
+    "parameters": [
+      "Stencil aperture"
+    ]
+  },
+  "FC2": {
+    "failure_mechanism": "Thick brick slumps during reflow",
+    "parameters": [
+      "Stencil thickness"
+    ]
+  },
+  "FC3": {
+    "failure_mechanism": "Over\u2011wetting enlarges solder spread",
+    "parameters": [
+      "Peak reflow temperature"
+    ]
+  },
+  "FC4": {
+    "failure_mechanism": "Ball straddles adjacent pads",
+    "parameters": [
+      "Placement offset"
+    ]
+  },
+  "FC5": {
+    "failure_mechanism": "Moisture\u2011induced flux wash\u2011out",
+    "parameters": [
+      "Ambient relative humidity"
+    ]
+  }
+}
