@@ -1,0 +1,3 @@
+#!/bin/bash
+
+docker build -t graphdb-custom . && docker run -d --name graphdb -p 7200:7200 -v graphdb-data:/opt/graphdb/home graphdb-custom

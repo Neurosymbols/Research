@@ -1,0 +1,2 @@
+FROM ontotext/graphdb:11.0.1
+COPY ./graphdb_data/conf/NONE_GRAPHDB_FREE_v11.0.license /opt/graphdb/home/conf/
