@@ -1,12 +1,16 @@
 import argparse
+import owlready2
+owlready2.JAVA_MEMORY = "-Xmx4g"
 import pandas as pd
+import numpy as np
 import json
+import random
 import yaml
+import matplotlib.pyplot as plt
 
 from scipy.stats import truncnorm, norm
+from sklearn.metrics import confusion_matrix, ConfusionMatrixDisplay
 from owlready2 import *
-import numpy as np
-
 from .utils import *
 from .tests import *
 
@@ -205,7 +209,7 @@ def run_oracle():
 
                 FILTER(xsd:integer(?fc) >= 2 || xsd:integer(?ib) = 1)
 
-                ?obs base:contributesToDefect ?defect .
+                ?obs base:monitorsDefect ?defect .
                 ?obs base:observationOf ?pcb .
 
                 OPTIONAL { ?pcb base:hasDefect ?defect . }
@@ -231,7 +235,7 @@ def create_reports():
 
 
             OPTIONAL {
-                ?defect base:specificationViolated ?spec .
+                ?defect base:violatesSpecification ?spec .
                 ?spec rdfs:label ?sp .
                 
                 }
@@ -480,7 +484,7 @@ def add_products(batch_size:int):
                 qual_observ_ins.observationOf = onto_ins
                 for d in semicon_defect_concepts:
                    defect_ind = product1_onto[f"{create_classname_syntax(d)}_PCB{i+1}"]
-                   qual_observ_ins.contributesToDefect.append(defect_ind)
+                   qual_observ_ins.monitorsDefect.append(defect_ind)
                    defect_ind.flagCount = 0
                    defect_ind.interactionBonus = 0
                 # onto_ins.hasObservation.append(qual_observ_ins) # connect the observed value individual to the Product1 individual
@@ -498,9 +502,9 @@ def add_and_run_rules():
                     ThickBrickSlumpsDuringReflow(?r),
                     SolderBridging(?d),
                     StencilThicknessObs(?obs),
-                    observationOf(?obs, ?pcb), observesSpecification(?obs, ?spec), contributesToDefect(?obs, ?d),
+                    observationOf(?obs, ?pcb), observesSpecification(?obs, ?spec), monitorsDefect(?obs, ?d),
                     hasObservedValue(?obs, ?val), hasUpperValue(?spec, ?upper),
-                    greaterThan(?val, ?upper) -> hasFailureCause(?d, ?r), specificationViolated(?d, ?spec)
+                    greaterThan(?val, ?upper) -> hasFailureCause(?d, ?r), violatesSpecification(?d, ?spec)
                 """
             ],
             "ExcessPasteVolumeCollapsesBetweenPads":[
@@ -508,9 +512,9 @@ def add_and_run_rules():
                     ExcessPasteVolumeCollapsesBetweenPads(?r),
                     SolderBridging(?d),
                     StencilApertureObs(?obs),
-                    observationOf(?obs, ?pcb), observesSpecification(?obs, ?spec), contributesToDefect(?obs, ?d),
+                    observationOf(?obs, ?pcb), observesSpecification(?obs, ?spec), monitorsDefect(?obs, ?d),
                     hasObservedValue(?obs, ?val),hasUpperValue(?spec, ?upper),
-                    greaterThan(?val, ?upper) -> hasFailureCause(?d, ?r), specificationViolated(?d, ?spec)
+                    greaterThan(?val, ?upper) -> hasFailureCause(?d, ?r), violatesSpecification(?d, ?spec)
                 """
             ],
             "Over‑wetting enlarges solder spread":[
@@ -518,9 +522,9 @@ def add_and_run_rules():
                     OverWettingEnlargesSolderSpread(?r),
                     SolderBridging(?d),
                     PeakReflowTemperatureObs(?obs),
-                    observationOf(?obs, ?pcb), observesSpecification(?obs, ?spec), contributesToDefect(?obs, ?d),
+                    observationOf(?obs, ?pcb), observesSpecification(?obs, ?spec), monitorsDefect(?obs, ?d),
                     hasObservedValue(?obs, ?val),hasUpperValue(?spec, ?upper),
-                    greaterThan(?val, ?upper) -> hasFailureCause(?d, ?r), specificationViolated(?d, ?spec)
+                    greaterThan(?val, ?upper) -> hasFailureCause(?d, ?r), violatesSpecification(?d, ?spec)
                 """
             ],
             "Ball straddles adjacent pads":[
@@ -529,16 +533,16 @@ def add_and_run_rules():
                     SolderBridging(?d),
                     PlacementOffsetObs(?obs),
                     observationOf(?obs, ?pcb), observesSpecification(?obs, ?spec),
-                    hasObservedValue(?obs, ?val),hasUpperValue(?spec, ?upper), contributesToDefect(?obs, ?d),
-                    greaterThan(?val, ?upper) -> hasFailureCause(?d, ?r), specificationViolated(?d, ?spec)
+                    hasObservedValue(?obs, ?val),hasUpperValue(?spec, ?upper), monitorsDefect(?obs, ?d),
+                    greaterThan(?val, ?upper) -> hasFailureCause(?d, ?r), violatesSpecification(?d, ?spec)
                 """,
                 """
                     BallStraddlesAdjacentPads(?r),
                     SolderBridging(?d),
                     PlacementOffsetObs(?obs),
                     observationOf(?obs, ?pcb), observesSpecification(?obs, ?spec),
-                    hasObservedValue(?obs, ?val),hasLowerValue(?spec, ?lower), contributesToDefect(?obs, ?d),
-                    lessThan(?val, ?lower) -> hasFailureCause(?d, ?r), specificationViolated(?d, ?spec)
+                    hasObservedValue(?obs, ?val),hasLowerValue(?spec, ?lower), monitorsDefect(?obs, ?d),
+                    lessThan(?val, ?lower) -> hasFailureCause(?d, ?r), violatesSpecification(?d, ?spec)
                 """
             ],
             "Moisture‑induced flux wash‑out":[
@@ -546,9 +550,9 @@ def add_and_run_rules():
                     MoistureInducedFluxWashOut(?r),
                     SolderBridging(?d),
                     AmbientRelativeHumidityObs(?obs),
-                    observationOf(?obs, ?pcb), observesSpecification(?obs, ?spec), contributesToDefect(?obs, ?d),
+                    observationOf(?obs, ?pcb), observesSpecification(?obs, ?spec), monitorsDefect(?obs, ?d),
                     hasObservedValue(?obs, ?val),hasUpperValue(?spec, ?upper),
-                    greaterThan(?val, ?upper) -> hasFailureCause(?d, ?r), specificationViolated(?d, ?spec)
+                    greaterThan(?val, ?upper) -> hasFailureCause(?d, ?r), violatesSpecification(?d, ?spec)
                 """
             ]
         }
@@ -662,6 +666,51 @@ def generate_synthetic_data(
     df_all.to_csv(f"{input_path}/synthetic_data_factory_3.csv", index=False)
     defect_matrix.to_csv(f"{output_path}/defect_matrix_3.csv")
 
+def flip_failure_causes_in_defect_cause_matrix(n = 20):
+    def get_random_fc_subset(fc_columns):
+        subset_size = random.randint(1, len(fc_columns))  # choose 1 to all columns
+        return random.sample(fc_columns, subset_size)
+    blind_df = pd.read_csv(f"{output_path}/blind_defect_cause_matrix_3.csv")
+    true_df = pd.read_csv(f"{output_path}/defect_cause_matrix_3.csv")
+    df_flipped = blind_df.copy(deep=True)
+    fc_columns = ['FC1', 'FC2', 'FC3', 'FC4', 'FC5']
+    # Initialize tracking log
+    flip_log = []
+    # Flip logic
+    indices_to_flip = np.random.choice(df_flipped.index, size=n, replace=False)
+    for idx in indices_to_flip:
+        cols = get_random_fc_subset(fc_columns)
+        for col in cols:
+            original_value = df_flipped.at[idx, col]
+            new_value = 1 - original_value
+            df_flipped.at[idx, col] = new_value
+
+            flip_log.append({
+                'row_index': idx,
+                'fc_column': col,
+                'original_value': original_value,
+                'new_value': new_value
+            })
+    
+    flip_log_df = pd.DataFrame(flip_log)
+    flip_log_df.sort_values(by=['row_index', 'fc_column'], inplace=True)
+    flip_log_df.to_csv(f"{output_path}/flip_log.csv")
+    # Recompute interaction and defect
+    df_flipped['interaction'] = (
+        (df_flipped['FC2'] & df_flipped['FC3']) |
+        (df_flipped['FC1'] & df_flipped['FC3'])
+    ).astype(int)
+    df_flipped['defect'] = (
+        (df_flipped[fc_columns].sum(axis=1) >= 2) |
+        (df_flipped['interaction'] == 1)
+    ).astype(int)
+    y_true = true_df['defect'].head(5000)
+    y_pred = df_flipped['defect']
+    cm = confusion_matrix(y_true, y_pred, labels=[1, 0])
+    disp = ConfusionMatrixDisplay(confusion_matrix=cm, display_labels=['Defect=1', 'Defect=0'])
+    disp.plot()
+    plt.show()
+
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="SemicON Ontology CLI")
 
@@ -675,6 +724,8 @@ if __name__ == "__main__":
     parser.add_argument("--clear", action="store_true", help="Clear the default graph in GraphDB")
     parser.add_argument("--generate-factory-data", action="store_true", help="Generate synthetic data")
     parser.add_argument("--test", action="store_true", help="Generate synthetic data")
+    parser.add_argument("--root-cause", action="store_true", help="Generate synthetic data")
+    parser.add_argument("--flip", action="store_true", help="Generate synthetic data")
 
     args = parser.parse_args()
 
@@ -686,7 +737,7 @@ if __name__ == "__main__":
         add_specs()
     if args.add_products:
         add_products(
-            batch_size=1000
+            batch_size=5000
         )
     if args.run_rules:
         add_and_run_rules()
@@ -701,16 +752,29 @@ if __name__ == "__main__":
         clear_graphdb_default_graph()
     if args.generate_factory_data:
         generate_synthetic_data(
-            N=10000,
+            N=50000,
             good_ratio=0.7,
             bad_ratio=0.3,
             shift_std=2
     )
     if args.test:
         blind_defect_matrix = pd.read_csv(f"{output_path}/blind_defect_matrix_3.csv")
-        defect_matrix = pd.read_csv(f"{output_path}/defect_matrix_3.csv").head(1000)
+        defect_matrix = pd.read_csv(f"{output_path}/defect_matrix_3.csv").head(5000)
+        y_pred = blind_defect_matrix['defect']
+        y_true = defect_matrix['defect']
         compute_evaluation_matrix(
+            y_true,
+            y_pred
+        )
+    if args.root_cause:
+        blind_defect_matrix = pd.read_csv(f"{output_path}/blind_defect_matrix_3.csv")
+        defect_matrix = pd.read_csv(f"{output_path}/defect_matrix_3.csv").head(5000)
+        root_cause_matrix = root_cause_identification(
             defect_matrix,
             blind_defect_matrix
         )
+        root_cause_matrix.to_csv(f"{output_path}/root_cause_matrix.csv")
+    
+    if args.flip:
+        flip_failure_causes_in_defect_cause_matrix(n=30)
 

@@ -7,3 +7,4 @@ SPARQLWrapper==2.0.0
 scipy
 PyYAML
 scikit-learn
+matplotlib

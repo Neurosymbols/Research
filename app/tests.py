@@ -1,4 +1,6 @@
+import pandas as pd
 from sklearn.metrics import confusion_matrix, accuracy_score, precision_score, recall_score, f1_score, matthews_corrcoef
+
 
 def test_generated_output(
     expected,
@@ -19,23 +21,21 @@ def test_generated_output(
     print(match_summary)
 
 def compute_evaluation_matrix(
-    expected,
-    generated
+    true,
+    pred
 ):
-    y_pred = generated['defect']
-    y_true = expected['defect']
     # Confusion matrix
-    tn, fp, fn, tp = confusion_matrix(y_true, y_pred).ravel()
+    tn, fp, fn, tp = confusion_matrix(true, pred).ravel()
     metrics = {
         "TP": int(tp),
         "TN": int(tn),
         "FP": int(fp),
         "FN": int(fn),
-        "Accuracy": round(accuracy_score(y_true, y_pred), 4),
-        "Precision": round(precision_score(y_true, y_pred, zero_division=0), 4),
-        "Recall": round(recall_score(y_true, y_pred, zero_division=0), 4),
-        "F1 Score": round(f1_score(y_true, y_pred, zero_division=0), 4),
-        "MCC": round(matthews_corrcoef(y_true, y_pred), 4),
+        "Accuracy": round(accuracy_score(true, pred), 4),
+        "Precision": round(precision_score(true, pred, zero_division=0), 4),
+        "Recall": round(recall_score(true, pred, zero_division=0), 4),
+        "F1 Score": round(f1_score(true, pred, zero_division=0), 4),
+        "MCC": round(matthews_corrcoef(true, pred), 4),
         "FPR": float(fp / (fp + tn) if (fp + tn) > 0 else 0)
     }
     # Pass/fail check
@@ -46,5 +46,25 @@ def compute_evaluation_matrix(
         "FPR": metrics['FPR'] <= 0.05
     }
     print(metrics)
-    print(pass_fail)
-    
+    return metrics
+
+def root_cause_identification(
+    expected,
+    generated
+):
+    expected_df_rule = expected.filter(regex=r'^FC')
+    generated_df_rule = generated.filter(regex=r'^FC')
+    evaluation_matrix_per_rule = {}
+    for i, col in enumerate(expected_df_rule.columns):
+        evaluation_matrix_per_rule[col] = compute_evaluation_matrix(
+            expected_df_rule[col],
+            generated_df_rule[col]
+        )
+    evaluation_matrix_per_rule = [{"rule":k, **v} for k,v in evaluation_matrix_per_rule.items()]
+
+    df = pd.DataFrame(evaluation_matrix_per_rule)
+    numeric_cols = df.columns[5:]
+    mean_row = df[numeric_cols].mean()
+    mean_row[df.columns[0]] = 'Mean'
+    df.loc[len(df)] = mean_row
+    return df

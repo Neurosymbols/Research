@@ -13,9 +13,9 @@ object_properties:
 
   - name: hasCorrectiveAction
 
-  - name: contributesToDefect
+  - name: monitorsDefect
 
-  - name: specificationViolated
+  - name: violatesSpecification
 
 data_properties:
   - name: hasUpperValue
