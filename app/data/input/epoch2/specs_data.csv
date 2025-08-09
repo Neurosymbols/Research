@@ -1,0 +1,6 @@
+ID,Parameter (Xi),Spec target (nominal),Assumed process mean μ,σ(see § 3),Upper spec limit (USL),Lower spec limit (LSL),3 σ distance†,Binary rule(Flag Vi = 1 if …),Primary failure mechanism
+ 1,Stencil aperture Ø (mm),0.34 mm,0.340 mm,0.0067 mm,0.360 mm,—,+0.020 mm,X₁ > 0.360 mm,Excess paste volume collapses between pads
+ 2,Stencil thickness (mm),0.100 mm,0.100 mm,0.0017 mm,0.105 mm,0.095 mm,±0.005 mm (upper side critical),X₂ > 0.105 mm,Thick brick slumps during reflow
+ 3,Peak reflow temperature (°C),255 °C,255 °C,1.67 °C,260 °C,250 °C,+5 °C (upper side critical),X₃ > 260 °C,Over‑wetting enlarges solder spread
+ 4,Placement offset (µm),0 µm,0 µm,13.3 µm,+40 µm,−40 µm,±40 µm,|X₄| > 40 µm,Ball straddles adjacent pads
+ 5,Ambient relative humidity (%),40 % RH,40 % RH,3.33 % RH,50 % RH,30 % RH,+10 % RH (upper side critical),X₅ > 50 % RH,Moisture‑induced flux wash‑out
