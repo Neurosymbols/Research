@@ -1,32 +1,42 @@
 {
-  "FC1": {
-    "failure_mechanism": "Excess paste volume collapses between pads",
+  "Excess paste volume collapses between pads": {
+    "id": "FC1",
     "parameters": [
       "Stencil aperture"
-    ]
+    ],
+    "severity": 9,
+    "weight": 0.32
   },
-  "FC2": {
-    "failure_mechanism": "Thick brick slumps during reflow",
+  "Thick brick slumps during reflow": {
+    "id": "FC2",
     "parameters": [
       "Stencil thickness"
-    ]
+    ],
+    "severity": 8,
+    "weight": 0.25
   },
-  "FC3": {
-    "failure_mechanism": "Over\u2011wetting enlarges solder spread",
+  "Over\u2011wetting enlarges solder spread": {
+    "id": "FC3",
     "parameters": [
       "Peak reflow temperature"
-    ]
+    ],
+    "severity": 6,
+    "weight": 0.12
   },
-  "FC4": {
-    "failure_mechanism": "Ball straddles adjacent pads",
+  "Ball straddles adjacent pads": {
+    "id": "FC4",
     "parameters": [
       "Placement offset"
-    ]
+    ],
+    "severity": 8,
+    "weight": 0.22
   },
-  "FC5": {
-    "failure_mechanism": "Moisture\u2011induced flux wash\u2011out",
+  "Moisture\u2011induced flux wash\u2011out": {
+    "id": "FC5",
     "parameters": [
       "Ambient relative humidity"
-    ]
+    ],
+    "severity": 4,
+    "weight": 0.06
   }
 }
