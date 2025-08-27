@@ -2,7 +2,7 @@ import pandas as pd
 import yaml
 from typing import Optional
 from owlready2 import *
-from .utils import replace_iri, add_classes, add_individuals, create_classname_syntax, get_failure_cause_concepts
+from app.services.utils import replace_iri, add_classes, add_individuals, create_classname_syntax, get_failure_cause_concepts
 
 # Set the IRIs
 BASE_ONTO_IRI = "https://abakai.ai/ontology/semicon-base.owl"
@@ -11,8 +11,8 @@ IOF_CORE_IRI = "https://raw.githubusercontent.com/iofoundry/ontology/master/core
 BFO_IRI = "http://purl.obolibrary.org/obo/bfo.owl"
 
 # Initialize Variables to store ontology objects in memory
-base_onto = Optional[Ontology] = None
-product1_onto = Optional[Ontology] = None
+base_onto = None
+product1_onto = None
 iof = None
 bfo = None
 import_iof = False
@@ -34,6 +34,7 @@ def initiate_ontology(
         properties_path = None,
         base_classes = None
     ):
+    global base_onto, product1_onto
     base_onto = get_ontology(BASE_ONTO_IRI)
     product1_onto = get_ontology(PRODUCT_ONTO_IRI)
     if not create_new:
@@ -68,9 +69,10 @@ def add_base_classes(
     #add base classes
     #T-BOX declaration
     semicon_defect_concepts = list(base_classes.get('failure_causes_rules_mapping').keys())
-    semicon_quality_concepts = base_classes.get('semicon_quality_concepts')
-    semicon_corrective_action_concepts = base_classes.get('semicon_corrective_action_concepts')
+    semicon_quality_concepts = list(base_classes.get('semicon_quality_concepts').keys())
+    semicon_corrective_action_concepts = base_classes.get('semicon_corrective_action_concepts', {})
     failure_cause_concepts = get_failure_cause_concepts(base_classes.get('failure_causes_rules_mapping'))
+    print(failure_cause_concepts)
     add_classes(
        semicon_base_classes,
        Thing,
@@ -97,7 +99,7 @@ def add_base_classes(
         base_onto
     )
     add_classes(
-        [desc for fc, desc in failure_cause_concepts.items()],
+        [fc for fc, desc in failure_cause_concepts.items()],
         base_onto.FailureCause,
         base_onto
     )
@@ -139,13 +141,13 @@ def add_base_individuals(
   #add base individuals
   # A-Box Declaration
   #adding universal failure cause individuals with severity and weights
-  semicon_corrective_action_concepts = base_classes.get('semicon_corrective_action_concepts')
+  semicon_corrective_action_concepts = base_classes.get('semicon_corrective_action_concepts', {})
   failure_causes_rules_mapping = base_classes.get('failure_causes_rules_mapping')
   if product1_onto is not None:
     with product1_onto:
         for defect, defect_info in failure_causes_rules_mapping.items():
             for fc_name, fc_data in defect_info.items():
-                ind = base_onto[create_classname_syntax(fc_data['failure_mechanism'])](fc_data['id'])
+                ind = base_onto[create_classname_syntax(fc_name)](fc_data['id'])
                 ind.label.append(fc_name)
                 ind.hasSeverity = fc_data['severity']
                 ind.hasWeight = fc_data['weight']
@@ -176,7 +178,7 @@ def add_defect_individuals(batch_size:int, failure_causes_rules_mapping:dict):
    if product1_onto is not None:
     with product1_onto:
         for defect_name in failure_causes_rules_mapping:
-            defect_classname = create_classname_syntax(defect_classname)
+            defect_classname = create_classname_syntax(defect_name)
             for i in range(batch_size):
                 defect_individual = base_onto[defect_classname](f"{defect_classname}_PCB{i+1}")
                 defect_individual.label.append(f"{defect_classname}_PCB{i+1}")

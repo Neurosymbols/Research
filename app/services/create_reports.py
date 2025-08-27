@@ -1,8 +1,8 @@
 import pandas as pd
 import re
 
-from .oracle import run_oracle
-from .utils import perform_sparql_query, get_failure_cause_concepts
+from app.services.oracle import run_oracle
+from app.services.utils import perform_sparql_query, get_failure_cause_concepts
 
 def create_reports(
     interaction_rules_sparql,

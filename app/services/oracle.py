@@ -1,4 +1,4 @@
-from ..utils import perform_sparql_update, perform_sparql_query
+from app.services.utils import perform_sparql_update, perform_sparql_query
 
 def run_oracle(interaction_rules):
     #assigns flagcount
