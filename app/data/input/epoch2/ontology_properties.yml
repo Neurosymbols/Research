@@ -53,3 +53,7 @@ data_properties:
   - name: interactionBonus
     functional: true
     range: int
+  
+  - name: hasRBIScore
+    functional: true
+    range: float

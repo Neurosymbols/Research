@@ -8,3 +8,9 @@ scipy
 PyYAML
 scikit-learn
 matplotlib
+pytest
+pytest-cov
+seaborn
+langchain-google-genai
+langchain==0.3.27
+langchain-community

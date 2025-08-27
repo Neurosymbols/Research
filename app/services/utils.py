@@ -111,3 +111,41 @@ def add_individuals(individuals_list, ontology, parent_ontology):
         for label, cls in individuals_list.items():
             ind = parent_ontology[create_classname_syntax(cls)](label)
             ind.label.append(label)
+
+def create_interaction_rules_for_sparql(rule_scores:dict):
+    interaction_rules_sparql = []
+    for k, v in rule_scores.items():
+        exists_statements = []
+        for rule in k:
+            exists_statements.append(
+                f"?defect base:hasFailureCause product1:{rule} ."
+            )
+        interaction = f'''
+            IF(
+                EXISTS{{
+                    {"\n".join(exists_statements)}
+                }},
+                {v},
+                0
+            )
+        '''
+        interaction_rules_sparql.append(interaction)
+    interaction_rules_sparql = "\n+\n".join(interaction_rules_sparql)
+    return interaction_rules_sparql
+
+def get_failure_cause_concepts(failure_causes_rules_mapping):
+    failure_cause_concepts = {}
+    for defect, defect_info in failure_causes_rules_mapping.items():
+        for fc_name, fc_data in defect_info.items():
+            if fc_name not in failure_cause_concepts:
+                failure_cause_concepts[fc_name] = fc_data
+    return failure_cause_concepts
+
+def get_rule_scores(interaction_rules_file):
+    interaction_bonuses_df = pd.read_csv(interaction_rules_file)
+    target_cols = list(interaction_bonuses_df.iloc[:, [1, 4]].itertuples(index=False, name=None))
+    rule_scores = {}
+    for row in target_cols:
+        rule_comb = tuple([f"FC{r.strip()}" for r in row[0].split("+")])
+        rule_scores[rule_comb] = row[1]
+    return rule_scores
