@@ -95,7 +95,7 @@ def extract_specs():
             "UL": extract_number(row["Upper spec limit (USL)"]),
             "LL": extract_number(row["Lower spec limit (LSL)"]),
             "tolerance": extract_number(row["3 σ distance†"]),
-            "id": spec_id + 1
+            "id": f"S{spec_id + 1}"
         }
         spec_id += 1
     with open(f"{output_path}/{output_specs_file}", "w") as f:
