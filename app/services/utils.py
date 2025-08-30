@@ -11,7 +11,10 @@ GDB_URL = "http://localhost:7200"
 REPO = "demo-semicon"
 
 def create_classname_syntax(classname):
-   return "".join([word.capitalize() for word in classname.replace("‑", " ").split()])
+   # Split by any sequence of non-alphanumeric characters
+    parts = re.split(r'[^A-Za-z0-9]+', classname)
+    # Capitalize each part and join
+    return "".join(word.capitalize() for word in parts if word)
 
 def clean_param_name(raw):
     # 1. Remove text in parentheses (units)

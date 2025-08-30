@@ -1,0 +1,59 @@
+object_properties:
+  - name: hasSpecification
+
+  - name: observationOf
+    functional: true
+
+  - name: observesSpecification
+    functional: true
+
+  - name: hasFailureCause
+
+  - name: hasDefect
+
+  - name: hasCorrectiveAction
+
+  - name: monitorsDefect
+
+  - name: violatesSpecification
+
+data_properties:
+  - name: hasUpperValue
+    functional: true
+    range: float
+
+  - name: hasNominalValue
+    functional: true
+    range: float
+
+  - name: hasLowerValue
+    functional: true
+    range: float
+
+  - name: hasObservedValue
+    functional: true
+    range: float
+
+  - name: hasUnit
+    functional: true
+    range: str
+
+  - name: hasSeverity
+    functional: true
+    range: int
+
+  - name: hasWeight
+    functional: true
+    range: float
+    
+  - name: flagCount
+    functional: true
+    range: int
+  
+  - name: interactionBonus
+    functional: true
+    range: int
+  
+  - name: hasRBIScore
+    functional: true
+    range: float

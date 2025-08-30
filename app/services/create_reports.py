@@ -17,9 +17,10 @@ def create_reports(
     failure_cause_concepts = get_failure_cause_concepts(
         failure_causes_rules_mapping
     )
+    #TODO: update the rbi threshold dynamically for each distribution
     defect_results = perform_sparql_query(
         '''
-           PREFIX base: <https://abakai.ai/ontology/semicon-base.owl#>
+            PREFIX base: <https://abakai.ai/ontology/semicon-base.owl#>
             PREFIX xsd:  <http://www.w3.org/2001/XMLSchema#>
 
             SELECT ?defectLabel ?hasDefect
@@ -28,13 +29,11 @@ def create_reports(
             ?defect a base:SolderBridging .
             ?defect rdfs:label ?defectLabel .
 
-            OPTIONAL { ?defect base:flagCount        ?fc . }
-            OPTIONAL { ?defect base:interactionBonus ?ib . }
+            OPTIONAL { ?defect base:hasRBIScore ?rbi . }
 
             # Normalize missing values to 0 and compute the flag
-            BIND( xsd:decimal(COALESCE(?fc, 0)) AS ?fcN )
-            BIND( xsd:decimal(COALESCE(?ib, 0)) AS ?ibN )
-            BIND( IF( (?fcN >= 2) || (?ibN > 1), 1, 0 ) AS ?hasDefect )
+            BIND( xsd:decimal(COALESCE(?rbi, 0)) AS ?rbiN )
+            BIND( IF(?rbiN >= 10.75, 1, 0) AS ?hasDefect )
             }
         '''
     )
@@ -79,10 +78,10 @@ def create_reports(
         defect_matrix_spec_violations[defect_label] = {k:1 if v['id'] in 
         rows[defect_label]['violated_specs'] else 0 for k,v in specs_dict.items()}
     for k,v in defect_matrix_failure_causes.items():
-        assert k in defect_matrix_spec_violations, "inconsistent matrices"
+        # assert k in defect_matrix_spec_violations, "inconsistent matrices"
         assert k in rows, "unknown defect instance found"
         blind_defect_matrix.append({
-            **defect_matrix_spec_violations[k], 
+            # **defect_matrix_spec_violations[k], 
             **v, 
             "flag_count": rows[k]['flag_count'], 
             "interaction": rows[k]['interaction'],

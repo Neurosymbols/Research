@@ -1,8 +1,12 @@
+import json
 import pandas as pd
 import yaml
 from typing import Optional
 from owlready2 import *
-from app.services.utils import replace_iri, add_classes, add_individuals, create_classname_syntax, get_failure_cause_concepts
+import owlready2.reasoning
+# Patch the default -Xmx value
+owlready2.reasoning.JAVA_MEMORY = "12288"
+from app.services.utils import replace_iri, add_classes, add_individuals, create_classname_syntax, get_failure_cause_concepts, perform_sparql_update, perform_sparql_query
 
 # Set the IRIs
 BASE_ONTO_IRI = "https://abakai.ai/ontology/semicon-base.owl"
@@ -72,7 +76,6 @@ def add_base_classes(
     semicon_quality_concepts = list(base_classes.get('semicon_quality_concepts').keys())
     semicon_corrective_action_concepts = base_classes.get('semicon_corrective_action_concepts', {})
     failure_cause_concepts = get_failure_cause_concepts(base_classes.get('failure_causes_rules_mapping'))
-    print(failure_cause_concepts)
     add_classes(
        semicon_base_classes,
        Thing,
@@ -161,7 +164,7 @@ def add_specs_to_ontology(specs_dict, ontology_path):
     if product1_onto is not None:
         with product1_onto:
             for si in specs_dict:
-                classname = "".join([word.capitalize() for word in si.split(" ")])
+                classname = create_classname_syntax(si)
                 base_onto_class = base_onto[classname]
                 onto_ins = base_onto_class(specs_dict[si]['id'])
                 onto_ins.label = [specs_dict[si]['id']]
@@ -227,20 +230,41 @@ def add_products_to_ontology(
 
     return {"message": "products added"}
 
-def run_rules(rules, ontology_path):
-    if product1_onto is not None:
-        with product1_onto:
-            for rulename, rulelist in rules.items():
-                for ri in rulelist:
-                    rule = Imp()
-                    rule.set_as_rule(ri, namespaces=[base_onto])
+def run_rules(rules, path):
+    root_cause_query = '''
+        PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+        PREFIX base: <https://abakai.ai/ontology/semicon-base.owl#>
+        PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+
+        SELECT ?defectLabel ?ruleFired ?violatedSpec
+        WHERE{
+        ?defect a base:SolderBridging ;
+                rdfs:label ?defectLabel .
+        OPTIONAL {
+                ?defect base:hasFailureCause ?fc .
+                ?fc rdfs:label ?ruleFired .
+            }
+        }
+    '''
+    for rulename, rulelist in rules.items():
+        for ri in rulelist:
+            print(ri)
             #run rules
             t1 = time.time()
-            sync_reasoner_pellet(
-                infer_property_values = True, 
-                infer_data_property_values = True
-            )
+            perform_sparql_update(ri)
             t2 = time.time()
-            print(f"{t2-t1}s taken to run the reasoner")
-            save_ontology(ontology_path)
-            return {"message": "pellet ran successfully", "time_taken": f"{t2-t1}s"}
+            print(f"{t2-t1}s taken to run the reasoner for {rulename}")
+    results = perform_sparql_query(root_cause_query)
+    result_rows = results['results']['bindings']
+    root_cause_report = {}
+    for row in result_rows:
+        defectLabel = row['defectLabel']['value']
+        if defectLabel not in root_cause_report:
+            root_cause_report[defectLabel] = {"failure_causes": {}}
+        failure_cause = row.get('ruleFired', {}).get('value', "")
+        if failure_cause:
+            if failure_cause not in root_cause_report[defectLabel]['failure_causes']:
+                root_cause_report[defectLabel]['failure_causes'][failure_cause] = []
+    with open(f"{path}/root_cause_report.json", "w") as f:
+        json.dump(root_cause_report, f, indent=2)
+    return {"message": "sparql construct ran successfully", "time_taken": f"{t2-t1}s"}
