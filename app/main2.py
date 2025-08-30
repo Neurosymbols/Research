@@ -1,18 +1,20 @@
+import pprint
 import argparse
 import owlready2
 owlready2.JAVA_MEMORY = "-Xmx4g"
 import pandas as pd
 import numpy as np
 import json
-import random
-import yaml
-import matplotlib.pyplot as plt
 
 from scipy.stats import truncnorm, norm
-from sklearn.metrics import confusion_matrix, ConfusionMatrixDisplay
 from owlready2 import *
-from .utils import *
+from .services.utils import *
 from .tests import *
+from .services.ontology_functions import initiate_ontology,\
+    add_specs_to_ontology,\
+    add_products_to_ontology,\
+    run_rules
+from .services.create_reports import create_reports
 
 
 path = "./app/data/ontologies/epoch2"
@@ -20,42 +22,17 @@ input_path = "./app/data/input/epoch2"
 output_path = "./app/data/output/epoch2"
 specs_file = "specs_data.csv"
 output_specs_file = "specs.json"
-
-# Set the IRIs
-BASE_ONTO_IRI = "https://abakai.ai/ontology/semicon-base.owl"
-PRODUCT_ONTO_IRI = "https://abakai.ai/data/semicon-product1.owl"
-IOF_CORE_IRI = "https://raw.githubusercontent.com/iofoundry/ontology/master/core/Core.rdf"
-BFO_IRI = "http://purl.obolibrary.org/obo/bfo.owl"
-
-# Initialize Variables to store ontology objects in memory
-base_onto = None
-product1_onto = None
-iof = None
-bfo = None
-import_iof = False
+severity_weights_file = "severity_and_weights.csv"
 
 #set the path where system generated ontologies will be saved
 onto_path.append(path)
 
 #initializing failure cause concepts
-failure_cause_concepts = None
 df = pd.read_csv(f"{input_path}/{specs_file}")
 df.columns = df.columns.str.strip()
 
-def create_fc_concepts():
-    return {
-        f"FC{idx + 1}": row["Primary failure mechanism"].strip()
-        for idx, row in df.iterrows()
-    }
-failure_cause_concepts = create_fc_concepts()
-
-def create_semicon_quality_concepts():
-    return {
-        clean_param_name(row["Parameter (Xi)"]).strip(): f"S{idx + 1}"
-        for idx, row in df.iterrows()
-    }
-
-semicon_quality_concepts = create_semicon_quality_concepts()
+severity_df = pd.read_csv(f"{input_path}/{severity_weights_file}")
+severity_df.columns = severity_df.columns.str.strip()
 
 def create_failure_mechanism_spec_mapping():
     mapping = df[["Parameter (Xi)", "Primary failure mechanism"]].dropna()
@@ -67,9 +44,12 @@ def create_failure_mechanism_spec_mapping():
     for fc_id, group in mapping.groupby("Failure Cause ID"):
         mech = group["Primary failure mechanism"].iloc[0]
         params = [clean_param_name(p) for p in group["Parameter (Xi)"].tolist()]
-        fc_to_spec[fc_id] = {
-            "failure_mechanism": mech,
-            "parameters": params
+        severity_row = severity_df.loc[severity_df["failure mechanism"] == mech].iloc[0]
+        fc_to_spec[mech] = {
+            "id": fc_id,
+            "parameters": params,
+            "severity":int(severity_row['severity']),
+            "weight": float(severity_row['weight'])
         }
     spec_to_fc = {
         clean_param_name(row["Parameter (Xi)"]): {
@@ -85,497 +65,118 @@ def create_failure_mechanism_spec_mapping():
     return fc_to_spec
 
 fc_to_spec = create_failure_mechanism_spec_mapping()
-
-# Create list of SemicON base classes
-semicon_base_classes = [
-'Corrective Action',
-'Defect',
-'Failure Cause'
-]
-semicon_product_class = [
-   'PCB Motherboard'
-]
+failure_causes_rules_mapping = {}
 semicon_defect_concepts = [
-'Solder Bridging'
+    'Solder Bridging'
 ]
+for fm in semicon_defect_concepts:
+    if fm not in failure_causes_rules_mapping:
+        failure_causes_rules_mapping[fm] = fc_to_spec
+
 semicon_corrective_action_concepts = {
 'CAFC1':'Stencil Thickness Correction'
 }
+rule_scores = {
+    ("FC1", "FC2"): 3,
+    ("FC1", "FC3"): 2,
+    ("FC1", "FC2", "FC3"): 4
+}
 
-def run_oracle():
-    perform_sparql_update(
-        '''
-            PREFIX base: <https://abakai.ai/ontology/semicon-base.owl#>
-            PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+interaction_rules_sparql = create_interaction_rules_for_sparql(rule_scores)
 
-            DELETE {
-            ?defect base:flagCount ?oldCount .
-            }
-            INSERT {
-            ?defect base:flagCount ?countTyped .
-            }
-            WHERE {
-            {
-                SELECT ?defect (xsd:integer(COUNT(?fc)) AS ?countTyped)
-                WHERE {
-                ?defect base:hasFailureCause ?fc .
-                }
-                GROUP BY ?defect
-            }
-
-            OPTIONAL {
-                ?defect base:flagCount ?oldCount .
-            }
-            }
-        '''
-    )
-    perform_sparql_update(
-        '''
-            PREFIX base: <https://abakai.ai/ontology/semicon-base.owl#>
-            PREFIX product1: <https://abakai.ai/data/semicon-product1.owl#>
-            PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
-
-            DELETE {
-                ?defect base:interactionBonus ?oldBonus .
-            }
-            INSERT {
-                ?defect base:interactionBonus "1"^^xsd:integer .
-            }
-            WHERE {
-                OPTIONAL { ?defect base:interactionBonus ?oldBonus . }
-
-                # Match all 3 FCs if present
-                OPTIONAL { ?defect base:hasFailureCause product1:FC1 . }
-                OPTIONAL { ?defect base:hasFailureCause product1:FC2 . }
-                OPTIONAL { ?defect base:hasFailureCause product1:FC3 . }
-
-                # Check either FC1+FC3 or FC2+FC3 present
-                FILTER(
-                    EXISTS { ?defect base:hasFailureCause product1:FC1 } &&
-                    EXISTS { ?defect base:hasFailureCause product1:FC3 }
-                    ||
-                    EXISTS { ?defect base:hasFailureCause product1:FC2 } &&
-                    EXISTS { ?defect base:hasFailureCause product1:FC3 }
-                )
-            }  
-        '''
-    )
-    perform_sparql_update(
-        '''
-            PREFIX base: <https://abakai.ai/ontology/semicon-base.owl#>
-            PREFIX product1: <https://abakai.ai/data/semicon-product1.owl#>
-            PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
-
-            DELETE {
-                ?defect base:interactionBonus ?oldBonus .
-            }
-            INSERT {
-                ?defect base:interactionBonus "0"^^xsd:integer .
-            }
-            WHERE {
-                OPTIONAL { ?defect base:interactionBonus ?oldBonus . }
-
-                # Check FC1+FC3 and FC2+FC3 combinations are not present
-                FILTER(
-                    NOT EXISTS {
-                    ?defect base:hasFailureCause product1:FC1 .
-                    ?defect base:hasFailureCause product1:FC3 .
-                    }
-                    &&
-                    NOT EXISTS {
-                    ?defect base:hasFailureCause product1:FC2 .
-                    ?defect base:hasFailureCause product1:FC3 .
-                    }
-                )
-            }
-        '''
-    )
-    perform_sparql_update(
-        '''
-            PREFIX base: <https://abakai.ai/ontology/semicon-base.owl#>
-            PREFIX product1: <https://abakai.ai/data/semicon-product1.owl#>
-            PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
-
-            DELETE {
-                ?pcb base:hasDefect ?defect .
-            }
-            INSERT {
-                ?pcb base:hasDefect ?defect .
-            }
-            WHERE {
-                ?defect a base:SolderBridging ;
-                        base:flagCount ?fc ;
-                        base:interactionBonus ?ib .
-
-                FILTER(xsd:integer(?fc) >= 2 || xsd:integer(?ib) = 1)
-
-                ?obs base:monitorsDefect ?defect .
-                ?obs base:observationOf ?pcb .
-
-                OPTIONAL { ?pcb base:hasDefect ?defect . }
-            }
-        '''
-    )
-
-def create_reports():
-    run_oracle()
-    spec_violated_results = perform_sparql_query(
-        '''
-            PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
-            PREFIX base: <https://abakai.ai/ontology/semicon-base.owl#>
-            PREFIX product1: <https://abakai.ai/data/semicon-product1.owl#>
-            PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
-
-            SELECT ?defectLabel (COALESCE(?sp, 0) AS ?violated_spec) ?flagCount ?interaction (IF(BOUND(?pcb), "1", "0") AS ?hasDefectRelation)
-            WHERE {
-                ?defect a base:SolderBridging ;
-                        rdfs:label ?defectLabel;
-                        base:flagCount ?flagCount;
-                        base:interactionBonus ?interaction
-
-
-            OPTIONAL {
-                ?defect base:violatesSpecification ?spec .
-                ?spec rdfs:label ?sp .
-                
-                }
-            OPTIONAL {
-                ?pcb base:hasDefect ?defect .
-            }
-            }
-            ORDER BY ?defect
-        '''
-    )
-    fc_results = perform_sparql_query(
-        '''
-            PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
-            PREFIX base: <https://abakai.ai/ontology/semicon-base.owl#>
-            PREFIX product1: <https://abakai.ai/data/semicon-product1.owl#>
-            PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
-
-            SELECT ?defectLabel (COALESCE(?fc, 0) AS ?failure_cause)
-            WHERE {
-                ?defect a base:SolderBridging ;
-                        rdfs:label ?defectLabel;
-
-
-            OPTIONAL {
-                ?defect base:hasFailureCause ?failurecause .
-                ?failurecause rdfs:label ?fc .
-                
-                }
-            }
-            ORDER BY ?defect
-        '''
-    )
-    #report 1
-    rows = {}
-    defect_matrix_failure_causes = {}
-    defect_matrix_spec_violations = {}
-    blind_defect_matrix = []
-    #collect violated specs per defect instance
-    for row in spec_violated_results["results"]["bindings"]:
-        defect_label = row["defectLabel"]["value"]
-        if defect_label not in rows:
-           rows[defect_label] = {
-               'failure_causes': [], 
-               'violated_specs': [],
-               'flag_count': row['flagCount']['value'],
-               'interaction': row['interaction']['value'],
-               'defect': row['hasDefectRelation']['value']
-        }
-        rows[defect_label]['violated_specs'].append(row["violated_spec"]["value"])
-    #collect failure causes per defect instance
-    for row in fc_results["results"]["bindings"]:
-        defect_label = row["defectLabel"]["value"]
-        assert defect_label in rows, "inconsistent matrics getting formed"
-        rows[defect_label]['failure_causes'].append(row["failure_cause"]["value"])
-    #keys in ascending order
-    rows = {k: rows[k] for k in sorted(rows.keys(), key=lambda x: int(re.search(r"PCB(\d+)", x).group(1)))}
-    for defect_label in rows:
-        defect_matrix_failure_causes[defect_label] = {k:1 if k in rows[defect_label]['failure_causes'] else 0 for k,v in failure_cause_concepts.items()}
-    for defect_label in rows:
-        defect_matrix_spec_violations[defect_label] = {k:1 if v in 
-        rows[defect_label]['violated_specs'] else 0 for k,v in semicon_quality_concepts.items()}
-    for k,v in defect_matrix_failure_causes.items():
-        assert k in defect_matrix_spec_violations, "inconsistent matrices"
-        assert k in rows, "unknown defect instance found"
-        blind_defect_matrix.append({
-            **defect_matrix_spec_violations[k], 
-            **v, 
-            "flag_count": rows[k]['flag_count'], 
-            "interaction": rows[k]['interaction'],
-            'defect': rows[k]['defect']
-        })
-    pd.DataFrame(blind_defect_matrix).to_csv(f"{output_path}/blind_defect_matrix_3.csv")
-
-# Initiate the ontology (set create_new = true if ontologies need to be created from scratch everytime)
-def initiate_ontology(create_new):
-    global base_onto, product1_onto, iof, bfo
-    base_onto = get_ontology(BASE_ONTO_IRI)
-    product1_onto = get_ontology(PRODUCT_ONTO_IRI)
-    if not create_new:
-        # When ontologies exist in ontologies folder
-        base_onto = base_onto.load()
-        product1_onto = product1_onto.load()
-    else:
-        # When ontologies do not exist in ontologies folder, create them for the first time
-        if import_iof:
-            iof = get_ontology(IOF_CORE_IRI).load()
-            bfo = get_ontology(BFO_IRI).load()
-        add_base_classes() # T-Box
-        add_base_individuals() # A-Box
-        define_properties() # T-Box
-        if import_iof:
-            #idempotently import ontologies
-            base_onto.imported_ontologies.append(iof) # SemicON Base Onto imports IOF
-        product1_onto.imported_ontologies.append(base_onto) # Product1 Onto imports the SemicON Base Onto
-        save_ontology()
-
-def save_ontology():
-    print(f"Total individuals inside SemicON Base: {len(list(base_onto.individuals()))}")
-    print(f"Total individuals inside SemicON Product1: {len(list(product1_onto.individuals()))}")
-    base_onto.save(file=os.path.join(path, "semicon-base.owl"), format = "rdfxml")
-    product1_onto.save(file=os.path.join(path, "semicon-product1.owl"), format = "rdfxml")
-    if import_iof:
-        replace_iri()
-  
-def add_base_classes():
-    #add base classes
-    #T-BOX declaration
-    add_classes(
-       semicon_base_classes,
-       Thing,
-       base_onto
-    )
-    add_classes(
-       semicon_quality_concepts,
-       bfo.search_one(iri="*BFO_0000019") if import_iof else Thing,
-       base_onto
-    )
-    add_classes(
-       [f"{s} obs" for s in semicon_quality_concepts],
-       iof.search_one(iri="*MeasurementInformationContentEntity") if import_iof else Thing,
-       base_onto
-    )
-    add_classes(
-        semicon_defect_concepts,
-        base_onto.Defect,
-        base_onto
-    )
-    add_classes(
-        semicon_product_class,
-        iof.search_one(iri="*MaterialProduct") if import_iof else Thing,
-        base_onto
-    )
-    add_classes(
-        [desc for fc, desc in failure_cause_concepts.items()],
-        base_onto.FailureCause,
-        base_onto
-    )
-    add_classes(
-        [desc for ca, desc in semicon_corrective_action_concepts.items()],
-        base_onto.CorrectiveAction,
-        base_onto
-    )
-
-def add_base_individuals():
-  #add base individuals
-  # A-Box Declaration
-  add_individuals(
-      failure_cause_concepts,
-      product1_onto,
-      base_onto
-  )
-  add_individuals(
-      semicon_corrective_action_concepts,
-      product1_onto,
-      base_onto
-  )
-
-def define_properties():
-    with base_onto: # T-Box Declaration
-        with open(f"{input_path}/ontology_properties.yml") as f:
-            config = yaml.safe_load(f)
-        #------------------------------ Object Properties ----------------------------------#
-            for prop in config.get("object_properties", []):
-                bases = [ObjectProperty]
-                if prop.get("functional"):
-                    bases.append(FunctionalProperty)
-                cls = types.new_class(prop["name"], tuple(bases))
-                if "inverse_of" in prop:
-                    cls.inverse_property = base_onto[prop["inverse_of"]]
-                if "domain" in prop:
-                    cls.domain = [base_onto[prop["domain"]]]
-                if "range" in prop:
-                    cls.range = [base_onto[prop["range"]]] 
-
-        #------------------------------ Data Properties ----------------------------------#
-            for prop in config.get("data_properties", []):
-                cls = types.new_class(prop["name"], (DataProperty, FunctionalProperty))
-                if "domain" in prop:
-                    cls.domain = [base_onto[prop["domain"]]]
-                type_map = {"float": float, "int": int, "str": str}
-                cls.range = [type_map[prop["range"]]]
-
-def add_specs():
+def extract_specs():
     df = pd.read_csv(f"{input_path}/{specs_file}")
     result = {}
+    spec_id = 0
     for _, row in df.iterrows():
         raw_param = row["Parameter (Xi)"]
-        param_name = clean_param_name(raw_param)
-        result[param_name] = {
+        result[clean_param_name(raw_param)] = {
             "NV": extract_number(row["Assumed process mean μ"]),
             "UL": extract_number(row["Upper spec limit (USL)"]),
             "LL": extract_number(row["Lower spec limit (LSL)"]),
-            "tolerance": extract_number(row["3 σ distance†"])
+            "tolerance": extract_number(row["3 σ distance†"]),
+            "id": f"S{spec_id + 1}"
         }
+        spec_id += 1
     with open(f"{output_path}/{output_specs_file}", "w") as f:
         json.dump(result, f, indent=2)
-    with product1_onto:
-        i = 1
-        for si in result:
-            classname = "".join([word.capitalize() for word in si.split(" ")])
-            base_onto_class = base_onto[classname]
-            onto_ins = base_onto_class(semicon_quality_concepts[si])
-            onto_ins.label = [f"S{i}"]
-            for value_type, value in result[si].items():
-                if value_type == "NV":
-                    onto_ins.hasNominalValue = value
-                elif value_type == "LL":
-                    onto_ins.hasLowerValue = value
-                elif value_type == "UL":
-                    onto_ins.hasUpperValue = value
-            i+=1
-        save_ontology()
+    return result
+    # add_specs_to_ontology(result, path)
 
-def add_defect_individuals(batch_size:int):
-   with product1_onto:
-      for d in semicon_defect_concepts:
-        defect_classname = create_classname_syntax(d)
-        for i in range(batch_size):
-           defect_individual = base_onto[defect_classname](f"{defect_classname}_PCB{i+1}")
-           defect_individual.label.append(f"{defect_classname}_PCB{i+1}")
+specs = extract_specs()
 
-
-def add_products(batch_size:int):
-    df = pd.read_csv(f"{input_path}/synthetic_data_factory_3.csv")
-    # Strip spaces from column names
-    df.columns = df.columns.str.strip() # Check specs in Synthetic Data files
-    # Normalize all column names to lowercase once
-    lower_cols = [col.lower() for col in df.columns]
-    with product1_onto: # A-box instantiation
-        for entry in semicon_quality_concepts: 
-            assert entry.lower() in lower_cols, f"Column '{entry}' is missing in Synthetic data!" # check whether the 'spec' exists in synthetic data file
-            values = df[entry].tolist()[0:batch_size] # get all observed values corresponding to a 'spec'. Limiting to first 20 observed values
-            #create defect individuals
-            add_defect_individuals(batch_size)
-            PCBMotherboard = base_onto['PcbMotherboard'] # get reference to pcb motherboard class
-            qual_ins = product1_onto[semicon_quality_concepts[entry]] # Get reference to the 'Quality' Individual
-            for i, v in enumerate(values): # create the datastructure (i,v) list
-                onto_ins = PCBMotherboard(f"PCB{i+1}") # start creating Product1 individuals
-                onto_ins.label = [f"PCB{i+1}"] # assign a label
-                onto_ins.hasSpecification.append(qual_ins) # connect the 'Product1' individual with 'Quality' individual using 'Semi:hasSpecification' which is not a functional property (hence using append)
-                qual_observ_ins =  base_onto[f"{create_classname_syntax(entry)}Obs"](  # instantiating observed value individuals for Product1
-                    f"{create_classname_syntax(entry)}_PCB{i+1}_Obs"
-                    )
-                qual_observ_ins.observesSpecification = qual_ins # observed value individual describes the quality individual
-                qual_observ_ins.hasObservedValue = float(v) # assign hasobserved value to individual
-                qual_observ_ins.observationOf = onto_ins
-                for d in semicon_defect_concepts:
-                   defect_ind = product1_onto[f"{create_classname_syntax(d)}_PCB{i+1}"]
-                   qual_observ_ins.monitorsDefect.append(defect_ind)
-                   defect_ind.flagCount = 0
-                   defect_ind.interactionBonus = 0
-                # onto_ins.hasObservation.append(qual_observ_ins) # connect the observed value individual to the Product1 individual
-        save_ontology()
-        #log the number of individuals
-        print(f"{len(values)} product individuals imported to the ontology")
-
-    return {"message": "products added"}
-
-def add_and_run_rules():
-    with product1_onto:
-        rules = {
-            "Thick brick slumps during reflow": [
-                """
-                    ThickBrickSlumpsDuringReflow(?r),
-                    SolderBridging(?d),
-                    StencilThicknessObs(?obs),
-                    observationOf(?obs, ?pcb), observesSpecification(?obs, ?spec), monitorsDefect(?obs, ?d),
-                    hasObservedValue(?obs, ?val), hasUpperValue(?spec, ?upper),
-                    greaterThan(?val, ?upper) -> hasFailureCause(?d, ?r), violatesSpecification(?d, ?spec)
-                """
-            ],
-            "ExcessPasteVolumeCollapsesBetweenPads":[
-                """
-                    ExcessPasteVolumeCollapsesBetweenPads(?r),
-                    SolderBridging(?d),
-                    StencilApertureObs(?obs),
-                    observationOf(?obs, ?pcb), observesSpecification(?obs, ?spec), monitorsDefect(?obs, ?d),
-                    hasObservedValue(?obs, ?val),hasUpperValue(?spec, ?upper),
-                    greaterThan(?val, ?upper) -> hasFailureCause(?d, ?r), violatesSpecification(?d, ?spec)
-                """
-            ],
-            "Over‑wetting enlarges solder spread":[
-                """
-                    OverWettingEnlargesSolderSpread(?r),
-                    SolderBridging(?d),
-                    PeakReflowTemperatureObs(?obs),
-                    observationOf(?obs, ?pcb), observesSpecification(?obs, ?spec), monitorsDefect(?obs, ?d),
-                    hasObservedValue(?obs, ?val),hasUpperValue(?spec, ?upper),
-                    greaterThan(?val, ?upper) -> hasFailureCause(?d, ?r), violatesSpecification(?d, ?spec)
-                """
-            ],
-            "Ball straddles adjacent pads":[
-                """
-                    BallStraddlesAdjacentPads(?r),
-                    SolderBridging(?d),
-                    PlacementOffsetObs(?obs),
-                    observationOf(?obs, ?pcb), observesSpecification(?obs, ?spec),
-                    hasObservedValue(?obs, ?val),hasUpperValue(?spec, ?upper), monitorsDefect(?obs, ?d),
-                    greaterThan(?val, ?upper) -> hasFailureCause(?d, ?r), violatesSpecification(?d, ?spec)
-                """,
-                """
-                    BallStraddlesAdjacentPads(?r),
-                    SolderBridging(?d),
-                    PlacementOffsetObs(?obs),
-                    observationOf(?obs, ?pcb), observesSpecification(?obs, ?spec),
-                    hasObservedValue(?obs, ?val),hasLowerValue(?spec, ?lower), monitorsDefect(?obs, ?d),
-                    lessThan(?val, ?lower) -> hasFailureCause(?d, ?r), violatesSpecification(?d, ?spec)
-                """
-            ],
-            "Moisture‑induced flux wash‑out":[
-                """
-                    MoistureInducedFluxWashOut(?r),
-                    SolderBridging(?d),
-                    AmbientRelativeHumidityObs(?obs),
-                    observationOf(?obs, ?pcb), observesSpecification(?obs, ?spec), monitorsDefect(?obs, ?d),
-                    hasObservedValue(?obs, ?val),hasUpperValue(?spec, ?upper),
-                    greaterThan(?val, ?upper) -> hasFailureCause(?d, ?r), violatesSpecification(?d, ?spec)
-                """
-            ]
-        }
-        for rulename, rulelist in rules.items():
-            for ri in rulelist:
-                rule = Imp()
-                rule.set_as_rule(ri, namespaces=[base_onto])
-        #run rules
-        t1 = time.time()
-        sync_reasoner_pellet(
-            infer_property_values = True, 
-            infer_data_property_values = True
-        )
-        t2 = time.time()
-        print(f"{t2-t1}s taken to run the reasoner")
-        save_ontology()
-    return {"message": "pellet ran successfully", "time_taken": f"{t2-t1}s"}
+def define_rules():
+    rules = {
+        "Thick brick slumps during reflow": [
+            """
+                ThickBrickSlumpsDuringReflow(?r),
+                SolderBridging(?d),
+                StencilThicknessObs(?obs),
+                observationOf(?obs, ?pcb), observesSpecification(?obs, ?spec), monitorsDefect(?obs, ?d),
+                hasObservedValue(?obs, ?val), hasUpperValue(?spec, ?upper),
+                greaterThan(?val, ?upper) -> hasFailureCause(?d, ?r), violatesSpecification(?d, ?spec)
+            """
+        ],
+        "ExcessPasteVolumeCollapsesBetweenPads":[
+            """
+                ExcessPasteVolumeCollapsesBetweenPads(?r),
+                SolderBridging(?d),
+                StencilApertureObs(?obs),
+                observationOf(?obs, ?pcb), observesSpecification(?obs, ?spec), monitorsDefect(?obs, ?d),
+                hasObservedValue(?obs, ?val),hasUpperValue(?spec, ?upper),
+                greaterThan(?val, ?upper) -> hasFailureCause(?d, ?r), violatesSpecification(?d, ?spec)
+            """
+        ],
+        "Over‑wetting enlarges solder spread":[
+            """
+                OverWettingEnlargesSolderSpread(?r),
+                SolderBridging(?d),
+                PeakReflowTemperatureObs(?obs),
+                observationOf(?obs, ?pcb), observesSpecification(?obs, ?spec), monitorsDefect(?obs, ?d),
+                hasObservedValue(?obs, ?val),hasUpperValue(?spec, ?upper),
+                greaterThan(?val, ?upper) -> hasFailureCause(?d, ?r), violatesSpecification(?d, ?spec)
+            """
+        ],
+        "Ball straddles adjacent pads":[
+            """
+                BallStraddlesAdjacentPads(?r),
+                SolderBridging(?d),
+                PlacementOffsetObs(?obs),
+                observationOf(?obs, ?pcb), observesSpecification(?obs, ?spec),
+                hasObservedValue(?obs, ?val),hasUpperValue(?spec, ?upper), monitorsDefect(?obs, ?d),
+                greaterThan(?val, ?upper) -> hasFailureCause(?d, ?r), violatesSpecification(?d, ?spec)
+            """,
+            """
+                BallStraddlesAdjacentPads(?r),
+                SolderBridging(?d),
+                PlacementOffsetObs(?obs),
+                observationOf(?obs, ?pcb), observesSpecification(?obs, ?spec),
+                hasObservedValue(?obs, ?val),hasLowerValue(?spec, ?lower), monitorsDefect(?obs, ?d),
+                lessThan(?val, ?lower) -> hasFailureCause(?d, ?r), violatesSpecification(?d, ?spec)
+            """
+        ],
+        "Moisture‑induced flux wash‑out":[
+            """
+                MoistureInducedFluxWashOut(?r),
+                SolderBridging(?d),
+                AmbientRelativeHumidityObs(?obs),
+                observationOf(?obs, ?pcb), observesSpecification(?obs, ?spec), monitorsDefect(?obs, ?d),
+                hasObservedValue(?obs, ?val),hasUpperValue(?spec, ?upper),
+                greaterThan(?val, ?upper) -> hasFailureCause(?d, ?r), violatesSpecification(?d, ?spec)
+            """
+        ]
+    }
+    run_rules(
+        rules,
+        path
+    )
 
 def generate_synthetic_data(
         N:int, 
         good_ratio:float, 
         bad_ratio:float,
-        shift_std:int
+        shift_std:int,
+        generate_data=True
     ):
     with open(f"{output_path}/{output_specs_file}", "r") as f:
         specs_data = json.load(f)
@@ -599,28 +200,35 @@ def generate_synthetic_data(
                 return 1  # out of spec → defect
         return 0  # in spec → no defect
     
-    good_samples = {}
-    bad_samples = {}
-    for param, vals in specs_data.items():
-        mu = vals["NV"]
-        sigma = vals["tolerance"] / 3  # Assuming 3σ range
-        LSL = vals["LL"] if vals["LL"] is not None else mu - (3 * sigma)
-        USL = vals["UL"] if vals["UL"] is not None else mu + (3 * sigma)
+    df_all = None
+    if generate_data:
+        good_samples = {}
+        bad_samples = {}
+        for param, vals in specs_data.items():
+            mu = vals["NV"]
+            sigma = vals["tolerance"] / 3  # Assuming 3σ range
+            LSL = vals["LL"] if vals["LL"] is not None else mu - (3 * sigma)
+            USL = vals["UL"] if vals["UL"] is not None else mu + (3 * sigma)
 
-        good_samples[param] = truncated_normal(mu, sigma, LSL, USL, int(N * good_ratio))
-        bad_samples[param] = shifted_normal(mu, sigma, shift_std, int(N * bad_ratio))
-    
-    # Create DataFrames
-    df_good_panels = pd.DataFrame(good_samples)
-    df_bad_panels = pd.DataFrame(bad_samples)
-    # Combine and shuffle
-    df_all = pd.concat([df_good_panels, df_bad_panels]).sample(frac=1).reset_index(drop=True)
+            good_samples[param] = truncated_normal(mu, sigma, LSL, USL, int(N * good_ratio))
+            bad_samples[param] = shifted_normal(mu, sigma, shift_std, int(N * bad_ratio))
+        
+        # Create DataFrames
+        df_good_panels = pd.DataFrame(good_samples)
+        df_bad_panels = pd.DataFrame(bad_samples)
+        # Combine and shuffle
+        df_all = pd.concat([df_good_panels, df_bad_panels]).sample(frac=1).reset_index(drop=True)
 
-    df_all["label"] = df_all.apply(lambda row: assign_label(row, specs_data), axis=1)
+        df_all["label"] = df_all.apply(lambda row: assign_label(row, specs_data), axis=1)
 
-    # Move 'label' column to the front
-    cols = ['label'] + [col for col in df_all.columns if col != 'label']
-    df_all = df_all[cols]
+        # Move 'label' column to the front
+        cols = ['label'] + [col for col in df_all.columns if col != 'label']
+        df_all = df_all[cols]
+        #output dataframes to csv
+        df_all.to_csv(f"{input_path}/synthetic_data_factory.csv", index=False)
+    else:
+        print("hello world")
+        df_all = pd.read_csv(f"{input_path}/synthetic_data_factory.csv")
 
     # Create a binary defect matrix
     defect_matrix = pd.DataFrame()
@@ -628,88 +236,52 @@ def generate_synthetic_data(
         defect_matrix[param] = df_all[param].apply(
             lambda val: is_out_of_spec(val, spec["LL"], spec["UL"])
         )
+
     # add rules fired data to defect matrix. For now, a rule if fired if any of the contributing specs is violated
+    defect_matrix['rbi_score'] = 0
     for fc_id, fc_data in fc_to_spec.items():
         contributing_params = fc_data["parameters"]
         defect_matrix[fc_id] = defect_matrix[contributing_params].max(axis=1)
-
+        defect_matrix['rbi_score'] += defect_matrix[fc_id] * fc_data['weight'] * fc_data['severity']
+    
     # add interaction column
-    defect_matrix["interaction"] = (
-        ((defect_matrix["FC1"] == 1) & (defect_matrix["FC3"] == 1)) |
-        ((defect_matrix["FC2"] == 1) & (defect_matrix["FC3"] == 1))
-    ).astype(int)
+    # Initialize interaction column with 0
+    # Sum all matching rules (stacking)
+    defect_matrix["interaction"] = 0
+    for rule_tuple, score in rule_scores.items():
+        mask = defect_matrix[list(rule_tuple)].eq(1).all(axis=1)
+        defect_matrix.loc[mask, "interaction"] += score
+    #adding interaction bonus to rbi score
+    defect_matrix['rbi_score'] += defect_matrix['interaction']
 
-    #adding and calcluating defect column
+    #adding and calcluating defect and flag count column
+    defect_matrix["fc_count"] = 0
     fc_sum = defect_matrix[[col for col in defect_matrix.columns if col.startswith("FC")]].sum(axis=1)
-    defect_matrix["defect"] = ((fc_sum >= 2) | (defect_matrix["interaction"] == 1)).astype(int)
+    defect_matrix['fc_count'] = fc_sum
+    # its a solder bridging if rules fired are >=2 OR interaction == 1
+    defect_matrix["defect"] = ((fc_sum >= 2) | (defect_matrix["interaction"] > 1)).astype(int)
     defect_matrix = defect_matrix.reset_index(drop=True)
 
-    # 1. Length of good and bad samples
-    num_good = len(df_good_panels)
-    num_bad = len(df_bad_panels)
+    if generate_data:
+        # 1. Length of good and bad samples
+        num_good = len(df_good_panels)
+        num_bad = len(df_bad_panels)
 
-    # 2. Total rows
-    total_rows = num_good + num_bad
+        # 2. Total rows
+        total_rows = num_good + num_bad
 
-    # 3. Number of actual failures based on spec checks
-    num_failures = defect_matrix["defect"].sum()
+        # 3. Number of actual failures based on spec checks
+        num_failures = defect_matrix["defect"].sum()
 
-    # 4. Calculate percentage of defect rows
-    failure_percentage = (num_failures / total_rows) * 100
+        # 4. Calculate percentage of defect rows
+        failure_percentage = (num_failures / total_rows) * 100
 
-    # 5. Print
-    print("✅ Number of good samples:", num_good)
-    print("⚠️ Number of bad samples:", num_bad)
-    print(f"❌ Number of labeled defects: {num_failures} ({failure_percentage:.2f}%)")
+        # 5. Print
+        print("✅ Number of good samples:", num_good)
+        print("⚠️ Number of bad samples:", num_bad)
+        print(f"❌ Number of labeled defects: {num_failures} ({failure_percentage:.2f}%)")
 
-    #output dataframes to csv
-    df_all.to_csv(f"{input_path}/synthetic_data_factory_3.csv", index=False)
-    defect_matrix.to_csv(f"{output_path}/defect_matrix_3.csv")
-
-def flip_failure_causes_in_defect_cause_matrix(n = 20):
-    def get_random_fc_subset(fc_columns):
-        subset_size = random.randint(1, len(fc_columns))  # choose 1 to all columns
-        return random.sample(fc_columns, subset_size)
-    blind_df = pd.read_csv(f"{output_path}/blind_defect_cause_matrix_3.csv")
-    true_df = pd.read_csv(f"{output_path}/defect_cause_matrix_3.csv")
-    df_flipped = blind_df.copy(deep=True)
-    fc_columns = ['FC1', 'FC2', 'FC3', 'FC4', 'FC5']
-    # Initialize tracking log
-    flip_log = []
-    # Flip logic
-    indices_to_flip = np.random.choice(df_flipped.index, size=n, replace=False)
-    for idx in indices_to_flip:
-        cols = get_random_fc_subset(fc_columns)
-        for col in cols:
-            original_value = df_flipped.at[idx, col]
-            new_value = 1 - original_value
-            df_flipped.at[idx, col] = new_value
-
-            flip_log.append({
-                'row_index': idx,
-                'fc_column': col,
-                'original_value': original_value,
-                'new_value': new_value
-            })
-    
-    flip_log_df = pd.DataFrame(flip_log)
-    flip_log_df.sort_values(by=['row_index', 'fc_column'], inplace=True)
-    flip_log_df.to_csv(f"{output_path}/flip_log.csv")
-    # Recompute interaction and defect
-    df_flipped['interaction'] = (
-        (df_flipped['FC2'] & df_flipped['FC3']) |
-        (df_flipped['FC1'] & df_flipped['FC3'])
-    ).astype(int)
-    df_flipped['defect'] = (
-        (df_flipped[fc_columns].sum(axis=1) >= 2) |
-        (df_flipped['interaction'] == 1)
-    ).astype(int)
-    y_true = true_df['defect'].head(5000)
-    y_pred = df_flipped['defect']
-    cm = confusion_matrix(y_true, y_pred, labels=[1, 0])
-    disp = ConfusionMatrixDisplay(confusion_matrix=cm, display_labels=['Defect=1', 'Defect=0'])
-    disp.plot()
-    plt.show()
+    defect_matrix.to_csv(f"{output_path}/defect_cause_matrix.csv")
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="SemicON Ontology CLI")
@@ -723,43 +295,65 @@ if __name__ == "__main__":
     parser.add_argument("--report", action="store_true", help="Generate failure reports")
     parser.add_argument("--clear", action="store_true", help="Clear the default graph in GraphDB")
     parser.add_argument("--generate-factory-data", action="store_true", help="Generate synthetic data")
-    parser.add_argument("--test", action="store_true", help="Generate synthetic data")
+    parser.add_argument("--evaluation-matrix", action="store_true", help="Generate synthetic data")
     parser.add_argument("--root-cause", action="store_true", help="Generate synthetic data")
-    parser.add_argument("--flip", action="store_true", help="Generate synthetic data")
 
     args = parser.parse_args()
 
     if args.init:
-        initiate_ontology(create_new=False)
+        initiate_ontology(
+            False
+        )
     elif args.init_new:
-        initiate_ontology(create_new=True)
+        initiate_ontology(
+            True,
+            path,
+            f"{input_path}/ontology_properties.yml",
+            {
+                "semicon_quality_concepts": specs,
+                "failure_causes_rules_mapping": failure_causes_rules_mapping
+            }
+        )
     if args.add_specs:
-        add_specs()
+        add_specs_to_ontology(
+            specs,
+            path
+        )
     if args.add_products:
-        add_products(
-            batch_size=5000
+        add_products_to_ontology(
+            5000,
+            f"{input_path}/synthetic_data_factory.csv",
+            failure_causes_rules_mapping,
+            specs,
+            path
         )
     if args.run_rules:
-        add_and_run_rules()
+        define_rules()
     if args.export:
         export_ontology_to_graphdb(
             parent_ontology_path = f"{path}/semicon-base.owl",
             individual_ontology_path = f"{path}/semicon-product1.owl"
         )
     if args.report:
-        create_reports()
+        create_reports(
+            interaction_rules_sparql,
+            specs,
+            failure_causes_rules_mapping,
+            f"{output_path}/blind_defect_cause_matrix.csv"
+        )
     if args.clear:
         clear_graphdb_default_graph()
     if args.generate_factory_data:
         generate_synthetic_data(
-            N=50000,
-            good_ratio=0.7,
-            bad_ratio=0.3,
-            shift_std=2
+            50000,
+            0.7,
+            0.3,
+            2,
+            generate_data=False
     )
-    if args.test:
-        blind_defect_matrix = pd.read_csv(f"{output_path}/blind_defect_matrix_3.csv")
-        defect_matrix = pd.read_csv(f"{output_path}/defect_matrix_3.csv").head(5000)
+    if args.evaluation_matrix:
+        blind_defect_matrix = pd.read_csv(f"{output_path}/blind_defect_cause_matrix.csv")
+        defect_matrix = pd.read_csv(f"{output_path}/defect_cause_matrix.csv").head(5000)
         y_pred = blind_defect_matrix['defect']
         y_true = defect_matrix['defect']
         compute_evaluation_matrix(
@@ -767,14 +361,6 @@ if __name__ == "__main__":
             y_pred
         )
     if args.root_cause:
-        blind_defect_matrix = pd.read_csv(f"{output_path}/blind_defect_matrix_3.csv")
-        defect_matrix = pd.read_csv(f"{output_path}/defect_matrix_3.csv").head(5000)
-        root_cause_matrix = root_cause_identification(
-            defect_matrix,
-            blind_defect_matrix
-        )
-        root_cause_matrix.to_csv(f"{output_path}/root_cause_matrix.csv")
-    
-    if args.flip:
-        flip_failure_causes_in_defect_cause_matrix(n=30)
+        #TODO: generate sparql report for now showing RCA
+        pass
 
