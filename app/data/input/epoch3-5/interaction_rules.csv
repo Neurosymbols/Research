@@ -1,0 +1,15 @@
+Interaction ID,Rule IDs involved,Short description,Interaction rationale,Suggested bonus Bj
+P‑1,1 + 7,Oversized aperture and thick stencil,Both increase paste volume; overflow almost certain,3
+P‑2,1 + 20,Oversized aperture and peak T high,Excess paste plus extended wetting range,2
+P‑3,8 + 2,Low area ratio and high squeegee pressure,Poor release + underside leakage = smear,2
+P‑4,10 + 2,Coplanarity poor and high squeegee pressure,Gap plus pressure pumps paste under stencil,2
+P‑5,11 + 20,Low viscosity and peak T high,Slump + extra wetting energy,2
+P‑6,13 + 24,Pot‑life exceeded and high humidity,Solvent loss then moisture uptake – flux wash‑out,1
+P‑7,15 + 19,Placement skew and board warpage,Ball off‑centre and leaning – pads touch,3
+P‑8,16 + 28,Tight pitch/dam and print mis‑align,Mask cannot block mis‑placed deposit,3
+P‑9,16 + 20,Tight pitch/dam and peak T high,Small gap + high wetting diameter,2
+P‑10,18 + 26,Via‑in‑pad under‑filled and low pre‑heat,"Solder siphoned into via, flux still active – slump",1.5
+T‑1,1 + 7 + 20,Big aperture + thick stencil + high peak T,“Volume × wetting × spread” triple – almost certain bridge,4
+T‑2,8 + 2 + 10,Low area ratio + high pressure + coplanarity,Worst‑case print leakage,3
+T‑3,15 + 16 + 19,Placement skew + tight pitch + warpage,Mechanical stacking of risks at BGA,4
+T‑4,9 + 4 + 11,No stencil clean + paste residue + low viscosity,Dry flakes + fresh slump deposit,2

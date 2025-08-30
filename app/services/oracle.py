@@ -1,5 +1,32 @@
 from app.services.utils import perform_sparql_update, perform_sparql_query
 
+def defect_to_product_uri(defect_label: str) -> str:
+    # just grab the PCB part and append the prefix
+    prefix_product1 = "product1"
+    pcb_id = defect_label.split("_")[-1]   # "PCB1"
+    return f"{prefix_product1}:{pcb_id}"
+
+def insert_rbi_triples_to_graphdb(rbi_results):
+    triples = []
+    for row in rbi_results:
+        defect_label = row["defectLabel"]['value']
+        rbi_value = row["rbi"]['value']
+
+        # lookup product for this defect label
+        product_uri = defect_to_product_uri(defect_label)  # from Step 2 mapping
+        triples.append(f"{product_uri} base:hasRBIScore \"{rbi_value}\"^^xsd:decimal .")
+        triples.append(f"product1:{defect_label} base:hasRBIScore \"{rbi_value}\"^^xsd:decimal .")
+    insert_query = f"""
+        PREFIX base: <https://abakai.ai/ontology/semicon-base.owl#>
+        PREFIX product1: <https://abakai.ai/data/semicon-product1.owl#>
+        PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+        INSERT DATA {{
+            {' '.join(triples)}     
+        }}
+    """
+    perform_sparql_update(insert_query)
+
+
 def run_oracle(interaction_rules):
     #assigns flagcount
     perform_sparql_update(
@@ -128,6 +155,7 @@ def run_oracle(interaction_rules):
             }
         '''
     )
+    insert_rbi_triples_to_graphdb(rbi_results['results']['bindings'])
     return {
         "spec_violated_results": spec_violated_results,
         "failure_causes_results": fc_results,
