@@ -27,7 +27,7 @@ def insert_rbi_triples_to_graphdb(rbi_results):
     perform_sparql_update(insert_query)
 
 
-def run_oracle(interaction_rules):
+def run_oracle(interaction_rules, rule_interaction):
     #assigns flagcount
     perform_sparql_update(
         '''
@@ -55,26 +55,28 @@ def run_oracle(interaction_rules):
             }
         '''
     )
-    #assign interaction score
-    perform_sparql_update(
-        f'''
-            PREFIX base: <https://abakai.ai/ontology/semicon-base.owl#>
-            PREFIX product1: <https://abakai.ai/data/semicon-product1.owl#>
-            PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
 
-            DELETE {{?defect base:interactionBonus ?oldBonus .}}
-            INSERT {{?defect base:interactionBonus ?finalScore . }}
-            WHERE {{
-                ?defect a base:SolderBridging .
-                OPTIONAL {{ ?defect base:interactionBonus ?oldBonus . }}
-                BIND (
-                  (
-                    {interaction_rules}
-                  ) as ?finalScore
-                ) 
-            }}  
-        '''
-    )
+    #assign interaction score
+    if rule_interaction:
+        perform_sparql_update(
+            f'''
+                PREFIX base: <https://abakai.ai/ontology/semicon-base.owl#>
+                PREFIX product1: <https://abakai.ai/data/semicon-product1.owl#>
+                PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+
+                DELETE {{?defect base:interactionBonus ?oldBonus .}}
+                INSERT {{?defect base:interactionBonus ?finalScore . }}
+                WHERE {{
+                    ?defect a base:SolderBridging .
+                    OPTIONAL {{ ?defect base:interactionBonus ?oldBonus . }}
+                    BIND (
+                    (
+                        {interaction_rules}
+                    ) as ?finalScore
+                    ) 
+                }}  
+            '''
+        )
 
     spec_violated_results = perform_sparql_query(
         '''
@@ -86,15 +88,13 @@ def run_oracle(interaction_rules):
             SELECT ?defectLabel (COALESCE(?sp, 0) AS ?violated_spec) ?flagCount ?interaction
             WHERE {
                 ?defect a base:SolderBridging ;
-                        rdfs:label ?defectLabel;
-                        base:flagCount ?flagCount;
+                        rdfs:label ?defectLabel ;
+                        base:flagCount ?flagCount ;
                         base:interactionBonus ?interaction .
 
-
             OPTIONAL {
-                ?defect base:violatesSpecification ?spec .
-                ?spec rdfs:label ?sp .
-                
+                    ?defect base:violatesSpecification ?spec .
+                    ?spec rdfs:label ?sp .
                 }
             }
             ORDER BY ?defect

@@ -5,9 +5,9 @@ import pandas as pd
 
 @pytest.fixture(scope="session")
 def matrices():
-    p = Path(__file__).parents[2] / "Research" / "app" / "data" / "output" / "epoch3-5"
-    blind = pd.read_csv(p / "blind_defect_cause_matrix_0.7_0.3.csv")
-    exp   = pd.read_csv(p / "defect_cause_matrix_0.7_0.3.csv")
+    p = Path(__file__).parents[2] / "Research" / "app" / "data" / "output" / "epoch3-6"
+    blind = pd.read_csv(p / "blind_defect_cause_matrix_0.7_0.3_v1.csv")
+    exp   = pd.read_csv(p / "defect_cause_matrix_0.7_0.3_v1_train.csv")
     return blind, exp
 
 def test_flag_count_updates(matrices):
