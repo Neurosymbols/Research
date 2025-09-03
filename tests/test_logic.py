@@ -5,7 +5,7 @@ import pandas as pd
 
 @pytest.fixture(scope="session")
 def matrices():
-    p = Path(__file__).parents[2] / "Research" / "app" / "data" / "output" / "epoch2"
+    p = Path(__file__).parents[2] / "Research" / "app" / "data" / "output" / "epoch3"
     blind = pd.read_csv(p / "blind_defect_cause_matrix.csv")
     exp   = pd.read_csv(p / "defect_cause_matrix.csv")
     return blind, exp

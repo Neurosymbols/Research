@@ -17,9 +17,9 @@ from .services.ontology_functions import initiate_ontology,\
 from .services.create_reports import create_reports
 
 
-path = "./app/data/ontologies/epoch2"
-input_path = "./app/data/input/epoch2"
-output_path = "./app/data/output/epoch2"
+path = "./app/data/ontologies/epoch3"
+input_path = "./app/data/input/epoch3"
+output_path = "./app/data/output/epoch3"
 specs_file = "specs_data.csv"
 output_specs_file = "specs.json"
 severity_weights_file = "severity_and_weights.csv"
