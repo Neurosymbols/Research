@@ -11,6 +11,7 @@ import re
 
 from owlready2 import *
 from app.services.graphdb_ops import perform_sparql_query, export_ontology_to_graphdb, clear_graphdb_default_graph
+from app.services.factory_data import generate_values, assign_seeds_to_qualities
 
 path = "./app/data/ontologies"
 input_path = "./app/data/input"
@@ -52,13 +53,41 @@ semicon_defect_concepts = [
 ]
 
 failure_cause_concepts = {
-'FC1':'Oversized stencil aperture or excessive overprint',
-'FC2':'Excess squeegee pressure',
-'FC3':'Stencil thickness too high',
-'FC4':'Insufficient squeegee pressure',
-'FC5':'Excess squeegee speed',
-'FC6':'Squeegee angle out of spec',
-'FC7':'Residual paste left on stencil edge'
+  "FC1": {
+    "description": "Oversized stencil aperture or excessive overprint",
+    "severity": 9,
+    "weight": 0.32
+  },
+  "FC2": {
+    "description": "Excess squeegee pressure",
+    "severity": 4,
+    "weight": 0.07
+  },
+  "FC3": {
+    "description": "Stencil thickness too high",
+    "severity": 8,
+    "weight": 0.25
+  },
+  "FC4": {
+    "description": "Insufficient squeegee pressure",
+    "severity": 3,
+    "weight": 0.05
+  },
+  "FC5": {
+    "description": "Excess squeegee speed",
+    "severity": 3,
+    "weight": 0.04
+  },
+  "FC6": {
+    "description": "Squeegee angle out of spec",
+    "severity": 4,
+    "weight": 0.06
+  },
+  "FC7": {
+    "description": "Residual paste left on stencil edge",
+    "severity": 4,
+    "weight": 0.06
+  }
 }
 
 semicon_corrective_action_concepts = {
@@ -115,15 +144,32 @@ def create_reports():
         seen_fc_ids = grouped[product]
         first_line_for_product = True
 
-        for fc_id, fc_desc in failure_cause_concepts.items():
+        rbi_score = 0
+        for fc_id, data in failure_cause_concepts.items():
             rows_for_csv.append({
                 "Product": product if first_line_for_product else "",
-                "Failure Cause": fc_desc,                  # human-friendly text
-                "Variable": 1 if fc_id in seen_fc_ids else 0  # 1 = fired, 0 = not fired
+                "Failure Cause": data['description'],                  # human-friendly text
+                "Variable": 1 if fc_id in seen_fc_ids else 0,  # 1 = fired, 0 = not fired,
+                "RBI Score": ""
             })
+            rbi_score += (1 if fc_id in seen_fc_ids else 0) * data['severity'] * data['weight']
             first_line_for_product = False
+        rows_for_csv.append(
+            {"Product": product,
+            "Failure Cause": "",
+            "Variable": "",
+            "RBI Score": rbi_score}
+        )
     
     pd.DataFrame(rows_for_csv).to_csv(f"{output_path}/rule_firing_report.csv", index=False)
+
+def generate_factory_data():
+    assign_seeds_to_qualities(f"{output_path}/specs.json")
+    generate_values(
+        values = 5000,
+        input_path = f"{output_path}/specs.json",
+        output_path = f"{input_path}/synthetic_data_factory.csv"
+    )
 
 def extract_floats(s):
     # Match optional sign, digits, optional decimal part
@@ -195,9 +241,9 @@ def add_base_classes():
     for classname in semicon_defect_concepts:
       defect_class = types.new_class(get_ontology_classname(classname), (base_onto.Defect,))
       defect_class.label.append(classname)
-    for fc, desc in failure_cause_concepts.items():
-      fc_class = types.new_class(get_ontology_classname(desc), (base_onto.FailureCause,))
-      fc_class.label.append(desc)
+    for fc, data in failure_cause_concepts.items():
+      fc_class = types.new_class(get_ontology_classname(data['description']), (base_onto.FailureCause,))
+      fc_class.label.append(data['description'])
     for ca, desc in semicon_corrective_action_concepts.items():
       ca_class = types.new_class(get_ontology_classname(desc), (base_onto.CorrectiveAction,))
       ca_class.label.append(desc)
@@ -205,10 +251,12 @@ def add_base_classes():
 def add_base_individuals():
   #add base individuals
   with product1_onto: # A-Box Declaration
-    for fc, desc in failure_cause_concepts.items():
+    for fc, data in failure_cause_concepts.items():
       #add failure cause individual
-      fci = base_onto[get_ontology_classname(desc)](fc)
+      fci = base_onto[get_ontology_classname(data['description'])](fc)
       fci.label.append(fc)
+      fci.hasSeverity = data['severity']
+      fci.hasWeight = data['weight']
     for ca, desc in semicon_corrective_action_concepts.items():
       #add corrective action individual
       cai = base_onto[get_ontology_classname(desc)](ca)
@@ -231,6 +279,10 @@ def define_properties():
         class hasObservedValue(DataProperty, FunctionalProperty):
             range = [float]
         class hasFailureCause(ObjectProperty):
+            pass
+        class hasSeverity(DataProperty, FunctionalProperty):
+            pass
+        class hasWeight(DataProperty, FunctionalProperty):
             pass
         class observesSpecification(ObjectProperty, FunctionalProperty):
             pass
@@ -391,6 +443,7 @@ if __name__ == "__main__":
 
     parser.add_argument("--init", action="store_true", help="Initiate ontology (create_new=False)")
     parser.add_argument("--init-new", action="store_true", help="Initiate ontology (create_new=True)")
+    parser.add_argument("--generate-factory-data", action="store_true", help="generate factory data")
     parser.add_argument("--add-specs", action="store_true", help="Add specifications")
     parser.add_argument("--add-products", action="store_true", help="Add products")
     parser.add_argument("--run-rules", action="store_true", help="Add and run SWRL rules")
@@ -406,6 +459,8 @@ if __name__ == "__main__":
         initiate_ontology(create_new=True)
     if args.add_specs:
         add_specs()
+    if args.generate_factory_data:
+        generate_factory_data()
     if args.add_products:
         add_products()
     if args.run_rules:
