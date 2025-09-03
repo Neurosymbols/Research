@@ -18,6 +18,7 @@ from .services.ontology_functions import initiate_ontology,\
     add_products_to_ontology,\
     run_rules
 from .services.create_reports import create_reports
+from .services.bayesian_inference import implement_bayesian_inference
 from .tests import *
 
 
@@ -37,6 +38,12 @@ rule_scores = get_rule_scores(
     f"{input_path}/interaction_rules.csv"
 )
 interaction_rules_sparql = create_interaction_rules_for_sparql(rule_scores)
+good_ratio = 0.7
+bad_ratio = 0.3
+version = 1
+products_in_ontology = 1000
+products_in_synthetic_data = 50000
+data_label = "train"
 
 def normalize_text(text: str) -> str:
     # Replace all unicode whitespace (incl. \u202f, \u00a0, etc.) with plain space
@@ -317,15 +324,18 @@ def generate_synthetic_data(
         good_ratio:float, 
         bad_ratio:float,
         shift_std:int,
-        generate_data=True
+        generate_data=True,
+        rule_interaction=False,
+        version:int = 1,
+        label:str="train"
     ):
     rule_scores = get_rule_scores(
         f"{input_path}/interaction_rules.csv"
     )
     def truncated_normal(mu, sigma, low, high, size):
         #calculate a and b to truncate the normal distribution between LSL and USL. This ensures the samples stay within spec limits → good panels.
-        # a, b = (low - mu)/sigma, (high - mu)/sigma
-        return truncnorm(low, high, loc=mu, scale=sigma).rvs(size) #represents normal distribution N(μ, σ)
+        a, b = (low - mu)/sigma, (high - mu)/sigma
+        return truncnorm(a, b, loc=mu, scale=sigma).rvs(size) #represents normal distribution N(μ, σ)
     def shifted_normal(mu, sigma, shift_std, size):
         return norm.rvs(loc=mu + shift_std * sigma, scale=sigma, size=size)
     ################
@@ -374,7 +384,7 @@ def generate_synthetic_data(
         lower = int(np.floor(pos))           # 3. lower index
         upper = int(np.ceil(pos))            # 4. upper index
         weight = pos - lower                 # 5. interpolation weight
-        
+
         if lower == upper:                   # exact position
             return data[lower]
         else:                                # interpolate
@@ -425,13 +435,10 @@ def generate_synthetic_data(
         # Combine and shuffle
         df_all = pd.concat([df_good_panels, df_bad_panels]).sample(frac=1).reset_index(drop=True)
 
-        # Move 'label' column to the front
-        cols = ['label'] + [col for col in df_all.columns if col != 'label']
-        df_all = df_all[cols]
         #output dataframes to csv
-        df_all.to_csv(f"{input_path}/synthetic_data_factory_{good_ratio}_{bad_ratio}.csv", index=False)
+        df_all.to_csv(f"{input_path}/synthetic_data_factory_{good_ratio}_{bad_ratio}_v{version}_{label}.csv", index=False)
     else:
-        df_all = pd.read_csv(f"{input_path}/synthetic_data_factory_{good_ratio}_{bad_ratio}.csv")
+        df_all = pd.read_csv(f"{input_path}/synthetic_data_factory_{good_ratio}_{bad_ratio}_v{version}_{label}.csv")
 
     # Create a binary defect matrix
     defect_matrix = pd.DataFrame(0, index=df_all.index, columns=['rbi_score'])
@@ -457,27 +464,33 @@ def generate_synthetic_data(
         lambda row: ",".join([col for col in fc_cols if row[col] >0]),
         axis=1
     )
-    # add interaction column
-    # Initialize interaction column with 0
-    # Sum all matching rules (stacking)
-    defect_matrix["interaction"] = 0
-    defect_matrix["interactions_occured"] = "" 
-    for rule_tuple, score in rule_scores.items():
-        #marking the rows in dataframe where value of FC's inside given rule tuple > 0
-        mask = (defect_matrix[list(rule_tuple)] > 0).all(axis=1)
-        #go to thos row locatons and update interaction bonus cumulatively
-        defect_matrix.loc[mask, "interaction"] += score
-        # add tuple name(s) to string column
-        defect_matrix.loc[mask, "interactions_occured"] = defect_matrix.loc[mask, "interactions_occured"].apply(
-            lambda x: (x + " " + str(rule_tuple)).strip()
-        )
-    #adding interaction bonus to rbi score
-    defect_matrix['rbi_score'] += defect_matrix['interaction']
+    if rule_interaction:
+        # add interaction column
+        # Initialize interaction column with 0
+        # Sum all matching rules (stacking)
+        defect_matrix["interaction"] = 0
+        defect_matrix["interactions_occured"] = "" 
+        for rule_tuple, score in rule_scores.items():
+            #marking the rows in dataframe where value of FC's inside given rule tuple > 0
+            mask = (defect_matrix[list(rule_tuple)] > 0).all(axis=1)
+            #go to thos row locatons and update interaction bonus cumulatively
+            defect_matrix.loc[mask, "interaction"] += score
+            # add tuple name(s) to string column
+            defect_matrix.loc[mask, "interactions_occured"] = defect_matrix.loc[mask, "interactions_occured"].apply(
+                lambda x: (x + " " + str(rule_tuple)).strip()
+            )
+        #adding interaction bonus to rbi score
+        defect_matrix['rbi_score'] += defect_matrix['interaction']
+    else:
+        defect_matrix["interaction"] = 0
 
     #adding and calcluating defect and flag count column
     defect_matrix['fc_count'] = (defect_matrix[fc_cols] > 0).sum(axis=1)
     # its a possible solder bridging if rules fired are >=2 OR interaction == 1
-    defect_matrix["defect"] = ((defect_matrix['fc_count'] >= 2) | (defect_matrix["interaction"] > 1)).astype(int)
+    if rule_interaction:
+        defect_matrix["defect"] = ((defect_matrix['fc_count'] >= 2) | (defect_matrix["interaction"] > 1)).astype(int)
+    else:
+        defect_matrix["defect"] = ((defect_matrix['fc_count'] >= 2)).astype(int)
     # perform overlap of bad samples with good samples using rbi score theresold T
     rbi_scores_bad_samples = defect_matrix.loc[defect_matrix["defect"] == 1, "rbi_score"].values
     threshold = generate_threshold(rbi_scores_bad_samples)
@@ -494,9 +507,43 @@ def generate_synthetic_data(
     print("⚠️ Number of bad samples:", int(N * bad_ratio))
     print(f"❌ Number of labeled defects: {num_bad} ({failure_percentage:.2f}%)")
 
-    defect_matrix.to_csv(f"{output_path}/defect_cause_matrix_{good_ratio}_{bad_ratio}.csv")
+    #update thresholds
+    try:
+        thresholds_df = pd.read_csv(f"{output_path}/thresholds.csv")
+        if "Unnamed: 0" in thresholds_df.columns:
+            thresholds_df = thresholds_df.drop(columns=["Unnamed: 0"])
+    except pd.errors.EmptyDataError:
+        header = ['factory_data_version', 'rbi_threshold', 'rule_interaction', 'total_products']
+        thresholds_df = pd.DataFrame(columns=header)
+    # Define the new row (dict for clarity)
+    new_row = {
+        "factory_data_version": f"{good_ratio}_{bad_ratio}_v{version}_{N}",
+        "rbi_threshold": float(threshold),
+        "rule_interaction": rule_interaction,
+        "total_products": N,
+    }
+
+    # Check if factory_data_version already exists
+    mask = thresholds_df["factory_data_version"] == new_row["factory_data_version"]
+
+    if mask.any():
+        # Update existing row
+        thresholds_df.loc[mask, :] = pd.DataFrame([new_row])
+    else:
+        # Append new row
+        thresholds_df = pd.concat([thresholds_df, pd.DataFrame([new_row])], ignore_index=True)
+    thresholds_df.to_csv(f"{output_path}/thresholds.csv")
+    defect_matrix.to_csv(f"{output_path}/defect_cause_matrix_{good_ratio}_{bad_ratio}_v{version}_{label}.csv")
 
 if __name__ == "__main__":
+    tdf = pd.read_csv(f"{output_path}/thresholds.csv")
+    print(tdf['factory_data_version'].tolist())
+    result = tdf.loc[tdf["factory_data_version"] == f"{good_ratio}_{bad_ratio}_v{version}_{products_in_synthetic_data}", "rbi_threshold"]
+    if result.to_list():
+        rbi_threshold = result.tolist()[0]
+    else:
+        rbi_threshold = None
+
     parser = argparse.ArgumentParser(description="SemicON Ontology CLI")
 
     parser.add_argument("--init", action="store_true", help="Initiate ontology (create_new=False)")
@@ -508,8 +555,9 @@ if __name__ == "__main__":
     parser.add_argument("--report", action="store_true", help="Generate failure reports")
     parser.add_argument("--clear", action="store_true", help="Clear the default graph in GraphDB")
     parser.add_argument("--generate-factory-data", action="store_true", help="Generate synthetic data")
-    parser.add_argument("--evaluation-matrix", action="store_true", help="Generate synthetic data")
-    parser.add_argument("--root-cause", action="store_true", help="Generate synthetic data")
+    parser.add_argument("--evaluation-matrix", action="store_true", help="Generate evaluation matrix")
+    parser.add_argument("--root-cause", action="store_true", help="Find root cause of failure mode")
+    parser.add_argument("--implement-bayes-inf", action="store_true", help="Implement bayesian inference")
 
     args = parser.parse_args()
 
@@ -533,11 +581,9 @@ if __name__ == "__main__":
             path
         )
     if args.add_products:
-        good_ratio = 0.7
-        bad_ratio = 0.3
         add_products_to_ontology(
-            5000,
-            f"{input_path}/synthetic_data_factory_{good_ratio}_{bad_ratio}.csv",
+            products_in_ontology,
+            f"{input_path}/synthetic_data_factory_{good_ratio}_{bad_ratio}_v{version}_{data_label}.csv",
             fmrs['failure_causes_rules_mapping'],
             non_null_specs,
             path
@@ -550,35 +596,43 @@ if __name__ == "__main__":
             individual_ontology_path = f"{path}/semicon-product1.owl"
         )
     if args.report:
-        good_ratio = 0.7
-        bad_ratio = 0.3
         create_reports(
             interaction_rules_sparql,
             non_null_specs,
             fmrs['failure_causes_rules_mapping'],
-            f"{output_path}/blind_defect_cause_matrix_{good_ratio}_{bad_ratio}.csv"
+            f"{output_path}/blind_defect_cause_matrix_{good_ratio}_{bad_ratio}_v{version}.csv",
+            rule_interaction=False,
+            rbi_threshold=rbi_threshold
         )
     if args.clear:
         clear_graphdb_default_graph()
     if args.generate_factory_data:
         generate_synthetic_data(
-            50000,
-            0.7,
-            0.3,
+            products_in_synthetic_data,
+            good_ratio,
+            bad_ratio,
             2,
-            generate_data=False
+            generate_data=True,
+            rule_interaction=False,
+            version=version,
+            label = data_label
     )
     if args.evaluation_matrix:
-        good_ratio = 0.7
-        bad_ratio = 0.3
-        blind_defect_matrix = pd.read_csv(f"{output_path}/blind_defect_cause_matrix_{good_ratio}_{bad_ratio}.csv")
-        defect_matrix = pd.read_csv(f"{output_path}/defect_cause_matrix_{good_ratio}_{bad_ratio}.csv").head(5000)
+        blind_defect_matrix = pd.read_csv(f"{output_path}/blind_defect_cause_matrix_{good_ratio}_{bad_ratio}_v{version}.csv")
+        defect_matrix = pd.read_csv(f"{output_path}/defect_cause_matrix_{good_ratio}_{bad_ratio}_v{version}_test.csv").head(5000)
         y_pred = blind_defect_matrix['defect']
         y_true = defect_matrix['defect']
         compute_evaluation_matrix(
             y_true,
-            y_pred
+            y_pred,
+            f"{output_path}/defect_cause_matrix_{good_ratio}_{bad_ratio}_v{version}_EM"
         )
-    if args.root_cause:
-        #TODO: generate sparql report for now showing RCA
-        pass
+    if args.implement_bayes_inf:
+        train_dcm = f"{output_path}/defect_cause_matrix_{good_ratio}_{bad_ratio}_v{version}_train.csv"
+        test_dcm = f"{output_path}/defect_cause_matrix_{good_ratio}_{bad_ratio}_v{version}_test.csv"
+        implement_bayesian_inference(
+            train_dcm,
+            test_dcm,
+            output_path,
+            f"{good_ratio}_{bad_ratio}_v{version}"
+        )

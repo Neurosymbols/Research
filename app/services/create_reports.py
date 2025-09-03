@@ -8,33 +8,36 @@ def create_reports(
     interaction_rules_sparql,
     specs_dict,
     failure_causes_rules_mapping,
-    report_storage_path
+    report_storage_path,
+    rule_interaction,
+    rbi_threshold
 ):
     #TODO: plan to generalize for all defects
     oracle_results = run_oracle(
-        interaction_rules_sparql
+        interaction_rules_sparql,
+        rule_interaction
     )
     failure_cause_concepts = get_failure_cause_concepts(
         failure_causes_rules_mapping
     )
     #TODO: update the rbi threshold dynamically for each distribution
     defect_results = perform_sparql_query(
-        '''
+        f'''
             PREFIX base: <https://abakai.ai/ontology/semicon-base.owl#>
             PREFIX xsd:  <http://www.w3.org/2001/XMLSchema#>
 
             SELECT ?defectLabel ?hasDefect
-            WHERE {
+            WHERE {{
             
             ?defect a base:SolderBridging .
             ?defect rdfs:label ?defectLabel .
 
-            OPTIONAL { ?defect base:hasRBIScore ?rbi . }
+            OPTIONAL {{ ?defect base:hasRBIScore ?rbi . }}
 
             # Normalize missing values to 0 and compute the flag
             BIND( xsd:decimal(COALESCE(?rbi, 0)) AS ?rbiN )
-            BIND( IF(?rbiN >= 10.75, 1, 0) AS ?hasDefect )
-            }
+            BIND( IF(?rbiN >= {rbi_threshold}, 1, 0) AS ?hasDefect )
+            }}
         '''
     )
     #report 1
@@ -53,11 +56,12 @@ def create_reports(
                'interaction': row['interaction']['value'],
                'defect': 0,
                'rbi': 0.0
-        }
+            }
         rows[defect_label]['violated_specs'].append(row["violated_spec"]["value"])
     #collect failure causes per defect instance
     for row in oracle_results['failure_causes_results']["results"]["bindings"]:
         defect_label = row["defectLabel"]["value"]
+        print(defect_label)
         assert defect_label in rows, "inconsistent matrics getting formed"
         rows[defect_label]['failure_causes'].append(row["failure_cause"]["value"])
     #collect rbi_scores

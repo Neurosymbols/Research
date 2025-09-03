@@ -1,4 +1,5 @@
 import pandas as pd
+import json
 from sklearn.metrics import confusion_matrix, accuracy_score, precision_score, recall_score, f1_score, matthews_corrcoef
 
 
@@ -22,7 +23,8 @@ def test_generated_output(
 
 def compute_evaluation_matrix(
     true,
-    pred
+    pred,
+    output
 ):
     # Confusion matrix
     tn, fp, fn, tp = confusion_matrix(true, pred).ravel()
@@ -45,26 +47,6 @@ def compute_evaluation_matrix(
         "F1 Score": metrics['F1 Score'] >= 0.82,
         "FPR": metrics['FPR'] <= 0.05
     }
-    print(metrics)
+    with open(f"{output}.json", "w") as f:
+        json.dump(metrics, f, indent=2)
     return metrics
-
-def root_cause_identification(
-    expected,
-    generated
-):
-    expected_df_rule = expected.filter(regex=r'^FC')
-    generated_df_rule = generated.filter(regex=r'^FC')
-    evaluation_matrix_per_rule = {}
-    for i, col in enumerate(expected_df_rule.columns):
-        evaluation_matrix_per_rule[col] = compute_evaluation_matrix(
-            expected_df_rule[col],
-            generated_df_rule[col]
-        )
-    evaluation_matrix_per_rule = [{"rule":k, **v} for k,v in evaluation_matrix_per_rule.items()]
-
-    df = pd.DataFrame(evaluation_matrix_per_rule)
-    numeric_cols = df.columns[5:]
-    mean_row = df[numeric_cols].mean()
-    mean_row[df.columns[0]] = 'Mean'
-    df.loc[len(df)] = mean_row
-    return df

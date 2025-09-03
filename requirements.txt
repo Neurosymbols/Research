@@ -14,3 +14,4 @@ seaborn
 langchain-google-genai
 langchain==0.3.27
 langchain-community
+pgmpy
