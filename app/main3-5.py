@@ -324,8 +324,8 @@ def generate_synthetic_data(
     )
     def truncated_normal(mu, sigma, low, high, size):
         #calculate a and b to truncate the normal distribution between LSL and USL. This ensures the samples stay within spec limits → good panels.
-        # a, b = (low - mu)/sigma, (high - mu)/sigma
-        return truncnorm(low, high, loc=mu, scale=sigma).rvs(size) #represents normal distribution N(μ, σ)
+        a, b = (low - mu)/sigma, (high - mu)/sigma
+        return truncnorm(a, b, loc=mu, scale=sigma).rvs(size) #represents normal distribution N(μ, σ)
     def shifted_normal(mu, sigma, shift_std, size):
         return norm.rvs(loc=mu + shift_std * sigma, scale=sigma, size=size)
     ################
@@ -425,9 +425,6 @@ def generate_synthetic_data(
         # Combine and shuffle
         df_all = pd.concat([df_good_panels, df_bad_panels]).sample(frac=1).reset_index(drop=True)
 
-        # Move 'label' column to the front
-        cols = ['label'] + [col for col in df_all.columns if col != 'label']
-        df_all = df_all[cols]
         #output dataframes to csv
         df_all.to_csv(f"{input_path}/synthetic_data_factory_{good_ratio}_{bad_ratio}.csv", index=False)
     else:
@@ -566,7 +563,7 @@ if __name__ == "__main__":
             0.7,
             0.3,
             2,
-            generate_data=False
+            generate_data=True
     )
     if args.evaluation_matrix:
         good_ratio = 0.7
