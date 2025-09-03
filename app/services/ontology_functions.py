@@ -148,7 +148,7 @@ def add_base_individuals(
         for defect, defect_info in failure_causes_rules_mapping.items():
             for fc_name, fc_data in defect_info.items():
                 ind = base_onto[create_classname_syntax(fc_name)](fc_data['id'])
-                ind.label.append(fc_name)
+                ind.label.append(fc_data['id'])
                 ind.hasSeverity = fc_data['severity']
                 ind.hasWeight = fc_data['weight']
         add_individuals(

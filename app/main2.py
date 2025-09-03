@@ -240,6 +240,7 @@ def generate_synthetic_data(
     # add rules fired data to defect matrix. For now, a rule if fired if any of the contributing specs is violated
     defect_matrix['rbi_score'] = 0
     for fc_id, fc_data in fc_to_spec.items():
+        fc_id = fc_data['id']
         contributing_params = fc_data["parameters"]
         defect_matrix[fc_id] = defect_matrix[contributing_params].max(axis=1)
         defect_matrix['rbi_score'] += defect_matrix[fc_id] * fc_data['weight'] * fc_data['severity']
@@ -349,7 +350,7 @@ if __name__ == "__main__":
             0.7,
             0.3,
             2,
-            generate_data=False
+            generate_data=True
     )
     if args.evaluation_matrix:
         blind_defect_matrix = pd.read_csv(f"{output_path}/blind_defect_cause_matrix.csv")
