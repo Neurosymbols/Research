@@ -28,11 +28,12 @@ base_onto = None
 product1_onto = None
 
 # Create list of SemicON base classes
+#TODO: Introduce IOF and BFO stubs(BFO:Quality, IOF:MeasurementICE, IOF:MaterialProduct), MIREOT
 semicon_base_classes = [
 'Corrective Action',
 'Defect',
 'Failure Cause',
-'Pcb Motherboard',
+'PCB',
 'Quality',
 'Observed Quality'
 ]
@@ -51,18 +52,75 @@ semicon_defect_concepts = [
 'Open Solder Joint'
 ]
 
+monitor_defect = "Solder Bridging"
+
 failure_cause_concepts = {
-'FC1':'Oversized stencil aperture or excessive overprint',
-'FC2':'Excess squeegee pressure',
-'FC3':'Stencil thickness too high',
-'FC4':'Insufficient squeegee pressure',
-'FC5':'Excess squeegee speed',
-'FC6':'Squeegee angle out of spec',
-'FC7':'Residual paste left on stencil edge'
+  "FC1": {
+    "desc": "Oversized stencil aperture or excessive overprint",
+    "severity": 9,
+    "weight": 0.32
+  },
+  "FC2": {
+    "desc": "Excess squeegee pressure",
+    "severity": 4,
+    "weight": 0.07
+  },
+  "FC3": {
+    "desc": "Stencil thickness too high",
+    "severity": 8,
+    "weight": 0.25
+  },
+  "FC4": {
+    "desc": "Insufficient squeegee pressure",
+    "severity": 3,
+    "weight": 0.05
+  },
+  "FC5": {
+    "desc": "Excess squeegee speed",
+    "severity": 3,
+    "weight": 0.04
+  },
+  "FC6": {
+    "desc": "Squeegee angle out of spec",
+    "severity": 4,
+    "weight": 0.06
+  },
+  "FC7": {
+    "desc": "Residual paste left on stencil edge",
+    "severity": 4,
+    "weight": 0.06
+  }
 }
 
 semicon_corrective_action_concepts = {
-'CAFC1':'Stencil Thickness Correction'
+    'CAFC1':{
+        "desc": "Adjust print parameters to avoid overprinting or Redesign stencil apertures to appropriate size",
+        "failure_cause": "FC1"
+    },
+    'CAFC2':{
+        "desc": "Optimize squeegee pressure settings",
+        "failure_cause": "FC2"
+    },
+    'CAFC3':{
+        "desc": "Swap the stencil to the specified thickness for this product",
+        "failure_cause": "FC3"
+    },
+    'CAFC4':{
+        "desc": "Optimize squeegee pressure settings",
+        "failure_cause": "FC4"
+    },
+    'CAFC5':{
+        "desc": "Adjust squeegee speed to recommended range",
+        "failure_cause": "FC5"
+    },
+    'CAFC6':{
+        "desc": "Set squeegee at proper angle (e.g., 45°)",
+        "failure_cause": "FC6"
+    },
+    'CAFC7':{
+        "desc": "Increase stencil cleaning frequency",
+        "failure_cause": "FC7"
+    }
 }
 
 def create_reports():
@@ -73,25 +131,25 @@ def create_reports():
             PREFIX product1: <https://abakai.ai/data/semicon-product1.owl#>
             PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
 
-            SELECT ?productLabel (COALESCE(?desc, "No Failure Cause") AS ?failure_cause)
+            SELECT ?defectLabel (COALESCE(?desc, "No Failure Cause") AS ?failure_cause)
             WHERE {
-                ?product a base:PcbMotherboard ;
-                        rdfs:label ?productLabel;
+                ?defect a base:SolderBridging ;
+                        rdfs:label ?defectLabel;
                         
 
                 OPTIONAL {
-                    ?product base:hasFailureCause ?failurecause .
+                    ?defect base:hasFailureCause ?failurecause .
                     ?failurecause rdfs:label ?desc .
                 }
             }
-            ORDER BY ?product
+            ORDER BY ?defect
         '''
     )
     # 1) Group all failure-cause IDs by product
     #    Example: grouped["PCB1"] = set(["FC1", "FC3", ...])
     grouped = defaultdict(set)
     for row in results["results"]["bindings"]:
-        product = row["productLabel"]["value"]
+        product = row["defectLabel"]["value"]
         fc_id   = row["failure_cause"]["value"]
         grouped[product].add(fc_id)
     
@@ -100,7 +158,8 @@ def create_reports():
     #    This helper keeps it robust if a name doesn’t match that pattern.
     def product_sort_key(name: str) -> int:
         try:
-            return int(name[3:])
+            product_label = name.split("_")[1]
+            return int(product_label[3:])
         except (ValueError, IndexError):
             return float('inf')  # push odd names to the end
 
@@ -115,49 +174,21 @@ def create_reports():
         seen_fc_ids = grouped[product]
         first_line_for_product = True
 
-        for fc_id, fc_desc in failure_cause_concepts.items():
+        for fc_id, fc_data in failure_cause_concepts.items():
             rows_for_csv.append({
                 "Product": product if first_line_for_product else "",
-                "Failure Cause": fc_desc,                  # human-friendly text
-                "Variable": 1 if fc_id in seen_fc_ids else 0  # 1 = fired, 0 = not fired
+                "Failure Cause": fc_data['desc'],                  # human-friendly text
+                "Variable": 1 if f"{fc_id} - {fc_data['desc']}" in seen_fc_ids else 0  # 1 = fired, 0 = not fired
             })
             first_line_for_product = False
     
     pd.DataFrame(rows_for_csv).to_csv(f"{output_path}/rule_firing_report.csv", index=False)
 
-def extract_floats(s):
-    # Match optional sign, digits, optional decimal part
-    return [float(num) for num in re.findall(r'[-+]?\d*\.\d+|[-+]?\d+', s)]
-
-def sum_nos(arr):
-    total = math.fsum(arr)
-    max_dp = 0
-    for v in arr:
-        s = str(v)
-        if '.' in s:
-            dp = len(s.split('.')[1])
-            if dp > max_dp:
-                max_dp = dp
-    return round(total, max_dp)
-
-def get_spec_values(v:str):
-    specs = {"NV": 0.0, "UL": 0.0, "LL": 0.0}
-    comp_signs = ["<", ">", "≥"]
-    comp_sign_pat = "|".join(map(re.escape, comp_signs))
-    if "±" in v:
-        floats = extract_floats(v)
-        specs['NV'] = floats[0]
-        specs['UL'] = sum_nos(floats)
-        specs['LL'] = sum_nos([floats[0], -floats[1]])
-        specs['tolerance'] = floats[1]
-    if re.search(comp_sign_pat, v):
-        floats = extract_floats(v)
-        specs['NV'] = floats[0]
-    return specs
 
 # Initiate the ontology (set create_new = true if ontologies need to be created from scratch everytime)
 def initiate_ontology(create_new):
     global base_onto, product1_onto
+    #initiating empty ontology objects
     base_onto = get_ontology(BASE_ONTO_IRI)
     product1_onto = get_ontology(PRODUCT_ONTO_IRI)
     if not create_new:
@@ -167,8 +198,8 @@ def initiate_ontology(create_new):
     else:
         # When ontologies do not exist in ontologies folder, create them for the first time
         add_base_classes() # T-Box
-        add_base_individuals() # A-Box
         define_properties() # T-Box
+        add_base_individuals() # A-Box
         save_ontology()
 
 def save_ontology():
@@ -195,24 +226,34 @@ def add_base_classes():
     for classname in semicon_defect_concepts:
       defect_class = types.new_class(get_ontology_classname(classname), (base_onto.Defect,))
       defect_class.label.append(classname)
-    for fc, desc in failure_cause_concepts.items():
-      fc_class = types.new_class(get_ontology_classname(desc), (base_onto.FailureCause,))
-      fc_class.label.append(desc)
-    for ca, desc in semicon_corrective_action_concepts.items():
-      ca_class = types.new_class(get_ontology_classname(desc), (base_onto.CorrectiveAction,))
-      ca_class.label.append(desc)
+    for fc, data in failure_cause_concepts.items():
+      fc_class = types.new_class(get_ontology_classname(f"class{fc}"), (base_onto.FailureCause,))
+      fc_class.label.append(data['desc'])
+    for ca, data in semicon_corrective_action_concepts.items():
+      ca_class = types.new_class(get_ontology_classname(f"class{ca}"), (base_onto.CorrectiveAction,))
+      ca_class.label.append(data['desc'])
 
 def add_base_individuals():
   #add base individuals
   with product1_onto: # A-Box Declaration
-    for fc, desc in failure_cause_concepts.items():
-      #add failure cause individual
-      fci = base_onto[get_ontology_classname(desc)](fc)
-      fci.label.append(fc)
-    for ca, desc in semicon_corrective_action_concepts.items():
+    failure_cause_ca_mapping = {}
+    for ca, data in semicon_corrective_action_concepts.items():
       #add corrective action individual
-      cai = base_onto[get_ontology_classname(desc)](ca)
-      cai.label.append(ca)
+      cai = base_onto[get_ontology_classname(f"class{ca}")](ca)
+      cai.label.append(f"{ca} - {data['desc']}")
+      if data['failure_cause'] not in failure_cause_ca_mapping:
+          failure_cause_ca_mapping[data['failure_cause']] = []
+      failure_cause_ca_mapping[data['failure_cause']].append(ca)
+    for fc, data in failure_cause_concepts.items():
+      #add failure cause individual
+      fci = base_onto[get_ontology_classname(f"class{fc}")](fc)
+      fci.label.append(f"{fc} - {data['desc']}")
+      #assign corrective action to failure cause
+      cas_for_fc = failure_cause_ca_mapping[fc] 
+      for ca in cas_for_fc:
+        fci.hasCorrectiveAction.append(product1_onto[ca])
+      fci.hasWeight = data['weight']
+      fci.hasSeverity = data['severity']
 
 def define_properties():
     with base_onto: # T-Box Declaration
@@ -234,37 +275,44 @@ def define_properties():
             pass
         class observesSpecification(ObjectProperty, FunctionalProperty):
             pass
+        class hasCorrectiveAction(ObjectProperty):
+            pass
+        class hasWeight(DataProperty, FunctionalProperty):
+            range = [float]
+        class hasSeverity(DataProperty, FunctionalProperty):
+            range = [int]
+        class monitorsDefect(ObjectProperty, FunctionalProperty):
+            pass
 
 def add_specs():
-        df = pd.read_csv(f"{input_path}/specs_data.csv")
-        # Get the first and second columns
-        col1 = df.columns[1] # Specification Name
-        col2 = df.columns[2] # Specification Values
-        # Lowercase the values in column 1
-        df[col1] = df[col1].str.lower()
-        # Create dictionary: key = value from first column, value = value from second column
-        quals_dict = {row[col1]: row[col2] for index, row in df[[col1, col2]].iterrows()}
-        quals = {}
-        for f in semicon_quality_concepts:
-            assert f.lower() in quals_dict, f"{f} not found in specs"
-            quals[f] = get_spec_values(quals_dict.get(f.lower()))
-        with open(f"{output_path}/specs.json", "w") as f:
-            json.dump(quals, f , indent=2)
-        with product1_onto:
-            i = 1
-            for si in quals:
-                base_onto_class = base_onto[get_ontology_classname(si)]
-                onto_ins = base_onto_class(f"S{i}")
-                onto_ins.label = [f"S{i}"]
-                for value_type, value in quals[si].items():
-                    if value_type == "NV":
-                       onto_ins.hasNominalValue = value
-                    elif value_type == "LL":
-                       onto_ins.hasLowerValue = value
-                    elif value_type == "UL":
-                       onto_ins.hasUpperValue = value
-                i+=1
-            save_ontology()
+    quals = json.load(open(f"{input_path}/specs.json"))
+    with product1_onto: # A-box instantiation
+        i = 1
+        #quals contains the 6 quality names(specifications)
+        for si, data in quals.items():
+            #si = Stencil Thickness
+            base_onto_class = base_onto[get_ontology_classname(si)] #returns class: StencilThickness
+            onto_ins = base_onto_class(f"S{i}") #instantiate StencilThickness object with label S{i}
+            onto_ins.label = [f"S{i} - {si}"]
+            for value_type, value in data.items():
+                if value_type == "NV":
+                    onto_ins.hasNominalValue = value
+                elif value_type == "LL":
+                    onto_ins.hasLowerValue = value
+                elif value_type == "UL":
+                    onto_ins.hasUpperValue = value
+            i+=1
+        save_ontology()
+
+def create_defect_individuals(product_label:str, quality_obs_ind):
+    with product1_onto:
+        for d in semicon_defect_concepts:
+            if d.lower() == monitor_defect.lower():
+                defect_name = get_ontology_classname(d)
+                defect_class = base_onto[defect_name]
+                defect_ind  = defect_class(f"{defect_name}_{product_label}")
+                defect_ind.label.append(f"{defect_name}_{product_label}")
+                quality_obs_ind.monitorsDefect = defect_ind
 
 def add_products():
     df = pd.read_csv(f"{input_path}/synthetic_data_factory.csv")
@@ -273,22 +321,33 @@ def add_products():
     products_in_ontology = 1000
     with product1_onto: # A-box instantiation
         j = 1
+        #looping over 6 specification names
         for entry in semicon_quality_concepts:
+            #entry:= Stencil Thickness
             assert entry.lower() in df.columns, f"Column '{entry}' is missing in Synthetic data!" # check whether the 'spec' exists in synthetic data file 
+            #base_onto[StencilThicknessObs] - reference to StencilThicknessObs class
             qual_obs_classname = base_onto[get_ontology_classname(f"{entry} Obs")] # get reference to observed quality class
-            product_class = base_onto[get_ontology_classname("Pcb Motherboard")] # get reference to material product class
+            #base_onto[PCB] - reference to PCB class
+            product_class = base_onto[get_ontology_classname("Pcb")] # get reference to material product class
+            #df[stencil thickness].tolist()
             values = df[entry.lower()].tolist() # get all observed values corresponding to a 'spec'
-            values = values[0:products_in_ontology] # limiting to first 20 observed values
+            #get first 1000 observed values for stencil thickness
+            values = values[0:products_in_ontology] # limiting to first n observed values
+            #get reference Stencil Thickness quality individual: product1_onto['S1']
             qual_ins = product1_onto[f"S{j}"] # Get reference to the 'Quality' Individual
             for i, v in enumerate(values): # create the datastructure (i,v) list
-                onto_ins = product_class(f"PCB{i+1}") # start creating Product1 individuals
-                onto_ins.label = [f"PCB{i+1}"] # assign a label
-                onto_ins.hasQuality.append(qual_ins) # connect the 'Product1' individual with 'Quality' individual using 'IOF:hasQuality' which is not a functional property (hence using append)
+                pcb_individual = product_class(f"PCB{i+1}") # start creating Product1 individuals
+                pcb_individual.label = [f"PCB{i+1}"] # assign a label
+                pcb_individual.hasQuality.append(qual_ins) # connect the 'Product1' individual with 'Quality' individual using 'IOF:hasQuality' which is not a functional property (hence using append)
                 qual_observ_ins = qual_obs_classname(  # instantiating observed value individuals for Product1
-                    f"Obs_{get_ontology_classname(entry)}_PCB{i+1}"
+                    f"{get_ontology_classname(entry)}_PCB{i+1}_Obs"
                     )
+                create_defect_individuals(
+                    f"PCB{i+1}",
+                    qual_observ_ins
+                )
                 qual_observ_ins.hasObservedValue = float(v) # assign hasobserved value to individual
-                qual_observ_ins.observationOf = onto_ins # connect the observed value individual to the Product1 individual
+                qual_observ_ins.observationOf = pcb_individual # connect the observed value individual to the Product1 individual
                 qual_observ_ins.observesSpecification = qual_ins # observed value individual describes the quality individual
             j += 1
         save_ontology() 
@@ -301,72 +360,72 @@ def add_and_run_rules():
         rules = {
             "Stencil thickness too high": [
                 """
-                    StencilThicknessTooHigh(?r),
+                    Classfc3(?r),
                     StencilThicknessObs(?obs),
-                    observationOf(?obs, ?pcb), observesSpecification(?obs, ?spec),
+                    monitorsDefect(?obs, ?d), observesSpecification(?obs, ?spec),
                     hasObservedValue(?obs, ?val), hasUpperValue(?spec, ?upper),
-                    greaterThan(?val, ?upper) -> hasFailureCause(?pcb, ?r)
+                    greaterThan(?val, ?upper) -> hasFailureCause(?d, ?r)
                 """
             ],
             "Excess squeegee pressure": [
                 """
-                    ExcessSqueegeePressure(?r),
+                    Classfc2(?r),
                     SqueegeePressureObs(?obs),
-                    observationOf(?obs, ?pcb), observesSpecification(?obs, ?spec),
+                    monitorsDefect(?obs, ?d), observesSpecification(?obs, ?spec),
                     hasObservedValue(?obs, ?val),hasUpperValue(?spec, ?upper),
-                    greaterThan(?val, ?upper) -> hasFailureCause(?pcb, ?r)
+                    greaterThan(?val, ?upper) -> hasFailureCause(?d, ?r)
                 """
             ],
             "Insufficient squeegee pressure": [
                 """
-                    InsufficientSqueegeePressure(?r),
+                    Classfc4(?r),
                     SqueegeePressureObs(?obs),
-                    observationOf(?obs, ?pcb), observesSpecification(?obs, ?spec),
+                    monitorsDefect(?obs, ?d), observesSpecification(?obs, ?spec),
                     hasObservedValue(?obs, ?val),hasLowerValue(?spec, ?lower),
-                    lessThan(?val, ?lower) -> hasFailureCause(?pcb, ?r)
+                    lessThan(?val, ?lower) -> hasFailureCause(?d, ?r)
                 """
             ],
             "Excess squeegee speed": [
                  """
-                    ExcessSqueegeeSpeed(?r),
+                    Classfc5(?r),
                     SqueegeeSpeedObs(?obs),
-                    observationOf(?obs, ?pcb), observesSpecification(?obs, ?spec),
+                    monitorsDefect(?obs, ?d), observesSpecification(?obs, ?spec),
                     hasObservedValue(?obs, ?val),hasUpperValue(?spec, ?upper),
-                    greaterThan(?val, ?upper) -> hasFailureCause(?pcb, ?r)
+                    greaterThan(?val, ?upper) -> hasFailureCause(?d, ?r)
                 """
             ],
             "Squeegee angle out of spec": [
                 """
-                    SqueegeeAngleOutOfSpec(?r),
+                    Classfc6(?r),
                     SqueegeeAngleObs(?obs),
-                    observationOf(?obs, ?pcb), observesSpecification(?obs, ?spec),
+                    monitorsDefect(?obs, ?d), observesSpecification(?obs, ?spec),
                     hasObservedValue(?obs, ?val),hasUpperValue(?spec, ?upper),
-                    greaterThan(?val, ?upper) -> hasFailureCause(?pcb, ?r)
+                    greaterThan(?val, ?upper) -> hasFailureCause(?d, ?r)
                 """,
                  """
-                    SqueegeeAngleOutOfSpec(?r),
+                    Classfc6(?r),
                     SqueegeeAngleObs(?obs),
-                    observationOf(?obs, ?pcb), observesSpecification(?obs, ?spec),
+                    monitorsDefect(?obs, ?d), observesSpecification(?obs, ?spec),
                     hasObservedValue(?obs, ?val),hasLowerValue(?spec, ?lower),
-                    lessThan(?val, ?lower) -> hasFailureCause(?pcb, ?r)
+                    lessThan(?val, ?lower) -> hasFailureCause(?d, ?r)
                 """
             ],
             "Residual paste left on stencil edge": [
                  """
-                    ResidualPasteLeftOnStencilEdge(?r),
+                    Classfc7(?r),
                     ResidualPasteAllowedObs(?obs),
-                    observationOf(?obs, ?pcb), observesSpecification(?obs, ?spec),
+                    monitorsDefect(?obs, ?d), observesSpecification(?obs, ?spec),
                     hasObservedValue(?obs, ?val),hasUpperValue(?spec, ?upper),
-                    greaterThan(?val, ?upper) -> hasFailureCause(?pcb, ?r)
+                    greaterThan(?val, ?upper) -> hasFailureCause(?d, ?r)
                 """
             ],
             "Oversized stencil aperture or excessive overprint":[
                 """
-                    OversizedStencilApertureOrExcessiveOverprint(?r),
+                    Classfc1(?r),
                     PasteVolumePerApertureObs(?obs),
-                    observationOf(?obs, ?pcb), observesSpecification(?obs, ?spec),
+                    monitorsDefect(?obs, ?d), observesSpecification(?obs, ?spec),
                     hasObservedValue(?obs, ?val),hasUpperValue(?spec, ?upper),
-                    greaterThan(?val, ?upper) -> hasFailureCause(?pcb, ?r)
+                    greaterThan(?val, ?upper) -> hasFailureCause(?d, ?r)
                 """
             ]
         }
