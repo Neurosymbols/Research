@@ -28,6 +28,8 @@ os.environ["GOOGLE_API_KEY"] = GEMINI_API_KEY
 path = "./app/data/ontologies/epoch3-6"
 input_path = f"./app/data/input/epoch3-6"
 output_path = f"./app/data/output/epoch3-6"
+specs_file = f"{input_path}/specs_data_sp.csv"
+fmea_file = f"{input_path}/fmea-sp.csv"
 
 #set the path where system generated ontologies will be saved
 onto_path.append(path)
@@ -38,12 +40,13 @@ rule_scores = get_rule_scores(
     f"{input_path}/interaction_rules.csv"
 )
 interaction_rules_sparql = create_interaction_rules_for_sparql(rule_scores)
-good_ratio = 0.7
-bad_ratio = 0.3
-version = 1
+good_ratio = 0.5
+bad_ratio = 0.5
+version = 3
 products_in_ontology = 1000
-products_in_synthetic_data = 50000
-data_label = "train"
+products_in_synthetic_data = 1000
+data_label = "test"
+defect_threshold = 0.55
 
 def normalize_text(text: str) -> str:
     # Replace all unicode whitespace (incl. \u202f, \u00a0, etc.) with plain space
@@ -173,7 +176,6 @@ def parse_spec_strings(specs_dict):
     return extracted_specs_dict
 
 def extract_specs():
-    specs_file = f"{input_path}/specs_data.csv"
     specs_dict = {}
     df = pd.read_csv(specs_file)
     target_cols = list(df.iloc[:, [0, 1, 2]].itertuples(index=False, name=None))
@@ -212,7 +214,6 @@ def extract_param_directions(expr: str):
     return param_dict
 
 def create_failure_mode_rules():
-    fmea_file = f"{input_path}/fmea.csv"
     df = pd.read_csv(fmea_file)
     failure_modes = []
     failure_causes = []
@@ -319,58 +320,32 @@ def define_rules(failure_causes_rules_mapping):
             i+=1
     run_rules(rules, output_path)
 
-def generate_synthetic_data(
-        N:int, 
-        good_ratio:float, 
-        bad_ratio:float,
-        shift_std:int,
-        generate_data=True,
-        rule_interaction=False,
-        version:int = 1,
-        label:str="train"
+def add_interaction_bonus(defect_matrix:pd.DataFrame, interaction_flag):
+    if interaction_flag:
+        # add interaction column
+        # Initialize interaction column with 0
+        # Sum all matching rules (stacking)
+        defect_matrix["interaction"] = 0
+        defect_matrix["interactions_occured"] = "" 
+        for rule_tuple, score in rule_scores.items():
+            #marking the rows in dataframe where value of FC's inside given rule tuple > 0
+            mask = (defect_matrix[list(rule_tuple)] > 0).all(axis=1)
+            #go to thos row locatons and update interaction bonus cumulatively
+            defect_matrix.loc[mask, "interaction"] += score
+            # add tuple name(s) to string column
+            defect_matrix.loc[mask, "interactions_occured"] = defect_matrix.loc[mask, "interactions_occured"].apply(
+                lambda x: (x + " " + str(rule_tuple)).strip()
+            )
+        #adding interaction bonus to rbi score
+        defect_matrix['rbi_score'] += defect_matrix['interaction']
+    else:
+        defect_matrix["interaction"] = 0
+
+def ground_truth_algorithm(
+        defect_matrix:pd.DataFrame, 
+        threshold:float = None,
+        threshold_column:float = "rbi_score"
     ):
-    rule_scores = get_rule_scores(
-        f"{input_path}/interaction_rules.csv"
-    )
-    def truncated_normal(mu, sigma, low, high, size):
-        #calculate a and b to truncate the normal distribution between LSL and USL. This ensures the samples stay within spec limits → good panels.
-        a, b = (low - mu)/sigma, (high - mu)/sigma
-        return truncnorm(a, b, loc=mu, scale=sigma).rvs(size) #represents normal distribution N(μ, σ)
-    def shifted_normal(mu, sigma, shift_std, size):
-        return norm.rvs(loc=mu + shift_std * sigma, scale=sigma, size=size)
-    ################
-    #TODO: audit the defect generation formulas for one sided specs
-    ################
-    def half_normal(bound, sigma, size, bound_type, good=True):
-        if bound_type == "upper":
-            if good:
-                #sigma=0.2
-                return bound - halfnorm.rvs(scale=sigma, size=size)
-            else:
-                return bound + halfnorm.rvs(scale=sigma, size=size)
-        elif bound_type == "lower":
-            if good:
-                return bound + halfnorm.rvs(scale=sigma, size=size)
-            else:
-                return bound - halfnorm.rvs(scale=sigma, size=size)
-
-    def is_out_of_spec(given_spec, values: pd.Series, spec_data, target_specs):
-        """Return a Series of 1/0 flags for a spec column."""
-        if given_spec not in target_specs:
-            return pd.Series(0, index=values.index)
-
-        directions = target_specs[given_spec]
-        # start with all 0s
-        result = pd.Series(0, index=values.index)
-
-        for direction in directions:
-            if direction == "UL" and spec_data.get("UL") is not None:
-                result = result | (values > spec_data["UL"]).astype(int)
-            elif direction == "LL" and spec_data.get("LL") is not None:
-                result = result | (values < spec_data["LL"]).astype(int)
-
-        return result
-
     def manual_percentile(data, q):
         """
         Manual percentile calculation with interpolation.
@@ -402,6 +377,111 @@ def generate_synthetic_data(
         return manual_percentile(rbi_scores, 100 * (1 - percent_of_bad))
         # return np.percentile(rbi_scores, 100 * (1 - defect_pct))
     
+    if not threshold:
+        # its a possible solder bridging if rules fired are >=2 OR interaction == 1
+        if "interaction" in defect_matrix.columns:
+            defect_matrix["defect"] = ((defect_matrix['fc_count'] >= 2) | (defect_matrix["interaction"] > 1)).astype(int)
+        else:
+            defect_matrix["defect"] = ((defect_matrix['fc_count'] >= 2)).astype(int)
+        # perform overlap of bad samples with good samples using rbi score theresold T
+        rbi_scores_bad_samples = defect_matrix.loc[defect_matrix["defect"] == 1, "rbi_score"].values
+        threshold = generate_threshold(rbi_scores_bad_samples)
+        print(f"threshold: {threshold}")
+    defect_matrix["defect"] = (defect_matrix[threshold_column] >= threshold).astype(int)
+    return threshold
+
+def generate_defect_cause_matrix(
+    good_ratio:float, 
+    bad_ratio:float,
+    version:int = 1,
+    label:str="train",
+    data_matrix:pd.DataFrame = None,
+    output:bool=False
+):
+    def is_out_of_spec(given_spec, values: pd.Series, spec_data, target_specs):
+        """Return a Series of 1/0 flags for a spec column."""
+        if given_spec not in target_specs:
+            return pd.Series(0, index=values.index)
+
+        directions = target_specs[given_spec]
+        # start with all 0s
+        result = pd.Series(0, index=values.index)
+
+        for direction in directions:
+            if direction == "UL" and spec_data.get("UL") is not None:
+                result = result | (values > spec_data["UL"]).astype(int)
+            elif direction == "LL" and spec_data.get("LL") is not None:
+                result = result | (values < spec_data["LL"]).astype(int)
+
+        return result
+    if not data_matrix:
+        data_matrix = pd.read_csv(f"{input_path}/synthetic_data_factory_{good_ratio}_{bad_ratio}_v{version}_{label}.csv")
+    #include non-null specs inside specs_data
+    specs_data = {k:v for k,v in specs.items() if k in non_null_specs}
+    # Create a binary defect cause matrix
+    defect_matrix = pd.DataFrame(0, index=data_matrix.index, columns=['rbi_score'])
+    # add rules fired data to defect matrix. For now, a rule if fired if any of the contributing specs is violated
+    defect_matrix['rbi_score'] = 0
+    for defect, defect_info in fmrs['failure_causes_rules_mapping'].items():
+        for fc_name, fc_data in defect_info.items():
+            contributing_params = [r for r in fc_data["related_specs"] if r in non_null_specs and r not in null_specs ]
+            target_params = fc_data['target_specs']
+            union_flags = pd.Series(0, index=data_matrix.index)
+            for p in contributing_params:
+                if p in target_params:
+                    flags = is_out_of_spec(p, data_matrix[p], specs_data[p], target_params)
+                    # union = logical OR (max)
+                    union_flags = union_flags.combine(flags, max)
+            weighted = union_flags * fc_data['weight'] * fc_data['severity']
+            defect_matrix[fc_data['id']] = weighted
+            defect_matrix['rbi_score'] += weighted
+    # get all FC columns
+    fc_cols = [c for c in defect_matrix.columns if c.startswith("FC")]
+    # create new column with joined FC names where value == 1
+    defect_matrix["rules_fired"] = defect_matrix.apply(
+        lambda row: ",".join([col for col in fc_cols if row[col] >0]),
+        axis=1
+    )
+    #adding and calcluating defect and flag count column
+    defect_matrix['fc_count'] = (defect_matrix[fc_cols] > 0).sum(axis=1)
+    if "defect probability" in data_matrix.columns:
+        defect_matrix['defect probability'] = data_matrix['defect probability']
+    if output:
+        defect_matrix.to_csv(f"{output_path}/defect_cause_matrix_{good_ratio}_{bad_ratio}_v{version}_{label}.csv")
+    return defect_matrix
+
+def generate_synthetic_data(
+        N:int, 
+        good_ratio:float, 
+        bad_ratio:float,
+        shift_std:int,
+        generate_data=True,
+        rule_interaction=False,
+        version:int = 1,
+        label:str="train"
+    ):
+
+    def truncated_normal(mu, sigma, low, high, size):
+        #calculate a and b to truncate the normal distribution between LSL and USL. This ensures the samples stay within spec limits → good panels.
+        a, b = (low - mu)/sigma, (high - mu)/sigma
+        return truncnorm(a, b, loc=mu, scale=sigma).rvs(size) #represents normal distribution N(μ, σ)
+    def shifted_normal(mu, sigma, shift_std, size):
+        return norm.rvs(loc=mu + shift_std * sigma, scale=sigma, size=size)
+    ################
+    #TODO: audit the defect generation formulas for one sided specs
+    ################
+    def half_normal(bound, sigma, size, bound_type, good=True):
+        if bound_type == "upper":
+            if good:
+                #sigma=0.2
+                return bound - halfnorm.rvs(scale=sigma, size=size)
+            else:
+                return bound + halfnorm.rvs(scale=sigma, size=size)
+        elif bound_type == "lower":
+            if good:
+                return bound + halfnorm.rvs(scale=sigma, size=size)
+            else:
+                return bound - halfnorm.rvs(scale=sigma, size=size)
     df_all = None
     #include non-null specs inside specs_data
     specs_data = {k:v for k,v in specs.items() if k in non_null_specs}
@@ -439,63 +519,13 @@ def generate_synthetic_data(
         df_all.to_csv(f"{input_path}/synthetic_data_factory_{good_ratio}_{bad_ratio}_v{version}_{label}.csv", index=False)
     else:
         df_all = pd.read_csv(f"{input_path}/synthetic_data_factory_{good_ratio}_{bad_ratio}_v{version}_{label}.csv")
+    
+    defect_matrix = generate_defect_cause_matrix(data_matrix=df_all)
 
-    # Create a binary defect matrix
-    defect_matrix = pd.DataFrame(0, index=df_all.index, columns=['rbi_score'])
-    # add rules fired data to defect matrix. For now, a rule if fired if any of the contributing specs is violated
-    defect_matrix['rbi_score'] = 0
-    for defect, defect_info in fmrs['failure_causes_rules_mapping'].items():
-        for fc_name, fc_data in defect_info.items():
-            contributing_params = [r for r in fc_data["related_specs"] if r in non_null_specs and r not in null_specs ]
-            target_params = fc_data['target_specs']
-            union_flags = pd.Series(0, index=df_all.index)
-            for p in contributing_params:
-                if p in target_params:
-                    flags = is_out_of_spec(p, df_all[p], specs_data[p], target_params)
-                    # union = logical OR (max)
-                    union_flags = union_flags.combine(flags, max)
-            weighted = union_flags * fc_data['weight'] * fc_data['severity']
-            defect_matrix[fc_data['id']] = weighted
-            defect_matrix['rbi_score'] += weighted
-    # get all FC columns
-    fc_cols = [c for c in defect_matrix.columns if c.startswith("FC")]
-    # create new column with joined FC names where value == 1
-    defect_matrix["rules_fired"] = defect_matrix.apply(
-        lambda row: ",".join([col for col in fc_cols if row[col] >0]),
-        axis=1
-    )
-    if rule_interaction:
-        # add interaction column
-        # Initialize interaction column with 0
-        # Sum all matching rules (stacking)
-        defect_matrix["interaction"] = 0
-        defect_matrix["interactions_occured"] = "" 
-        for rule_tuple, score in rule_scores.items():
-            #marking the rows in dataframe where value of FC's inside given rule tuple > 0
-            mask = (defect_matrix[list(rule_tuple)] > 0).all(axis=1)
-            #go to thos row locatons and update interaction bonus cumulatively
-            defect_matrix.loc[mask, "interaction"] += score
-            # add tuple name(s) to string column
-            defect_matrix.loc[mask, "interactions_occured"] = defect_matrix.loc[mask, "interactions_occured"].apply(
-                lambda x: (x + " " + str(rule_tuple)).strip()
-            )
-        #adding interaction bonus to rbi score
-        defect_matrix['rbi_score'] += defect_matrix['interaction']
-    else:
-        defect_matrix["interaction"] = 0
+    add_interaction_bonus(defect_matrix, rule_interaction)
 
-    #adding and calcluating defect and flag count column
-    defect_matrix['fc_count'] = (defect_matrix[fc_cols] > 0).sum(axis=1)
-    # its a possible solder bridging if rules fired are >=2 OR interaction == 1
-    if rule_interaction:
-        defect_matrix["defect"] = ((defect_matrix['fc_count'] >= 2) | (defect_matrix["interaction"] > 1)).astype(int)
-    else:
-        defect_matrix["defect"] = ((defect_matrix['fc_count'] >= 2)).astype(int)
-    # perform overlap of bad samples with good samples using rbi score theresold T
-    rbi_scores_bad_samples = defect_matrix.loc[defect_matrix["defect"] == 1, "rbi_score"].values
-    threshold = generate_threshold(rbi_scores_bad_samples)
-    print(f"threshold: {threshold}")
-    defect_matrix["defect"] = (defect_matrix["rbi_score"] >= threshold).astype(int)
+    threshold = ground_truth_algorithm(defect_matrix)
+
     defect_matrix = defect_matrix.reset_index(drop=True)
 
     # 1. Length of defective samples after threshold
@@ -560,6 +590,7 @@ if __name__ == "__main__":
     parser.add_argument("--evaluation-matrix", action="store_true", help="Generate evaluation matrix")
     parser.add_argument("--root-cause", action="store_true", help="Find root cause of failure mode")
     parser.add_argument("--implement-bayes-inf", action="store_true", help="Implement bayesian inference")
+    parser.add_argument("--generate-defect-cause-matrix", action="store_true", help="generate defect cause matrix")
 
     args = parser.parse_args()
 
@@ -636,5 +667,21 @@ if __name__ == "__main__":
             train_dcm,
             test_dcm,
             output_path,
-            f"{good_ratio}_{bad_ratio}_v{version}"
+            f"{good_ratio}_{bad_ratio}_v{version}",
+            defect_threshold
         )
+    if args.generate_defect_cause_matrix:
+        defect_matrix = generate_defect_cause_matrix(
+            good_ratio,
+            bad_ratio,
+            version,
+            label = data_label,
+            output = False
+        )
+        ground_truth_algorithm(
+            defect_matrix,
+            defect_threshold,
+            "defect probability"
+        )
+        defect_matrix.to_csv(f"{output_path}/defect_cause_matrix_{good_ratio}_{bad_ratio}_v{version}_{data_label}.csv")
+

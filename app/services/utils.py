@@ -115,24 +115,38 @@ def add_individuals(individuals_list, ontology, parent_ontology):
             ind = parent_ontology[create_classname_syntax(cls)](label)
             ind.label.append(label)
 
-def create_interaction_rules_for_sparql(rule_scores:dict):
+def create_interaction_rules_for_sparql(rule_scores: dict):
     interaction_rules_sparql = []
+    
+    # Iterate through the dictionary items (k=tuple of rules, v=score)
     for k, v in rule_scores.items():
         exists_statements = []
+        
+        # Build the EXISTS block content
         for rule in k:
+            # Note: Removed the trailing space from the f-string for robustness
             exists_statements.append(
                 f"?defect base:hasFailureCause product1:{rule} ."
             )
-        interaction = f'''
+        
+        # Join the EXISTS statements with newlines
+        exists_block = "\n".join(exists_statements)
+        
+        # Construct the final SPARQL rule using a clean triple-quoted string
+        # Ensure the embedded f-string expression (v) is not near confusing indentation
+        interaction = f"""
             IF(
                 EXISTS{{
-                    {"\n".join(exists_statements)}
+                    {exists_block}
                 }},
                 {v},
                 0
             )
-        '''
-        interaction_rules_sparql.append(interaction)
+        """
+        # Strip excess leading/trailing whitespace before appending
+        interaction_rules_sparql.append(interaction.strip())
+        
+    # Join all interaction rules with the '+' operator for SPARQL expression
     interaction_rules_sparql = "\n+\n".join(interaction_rules_sparql)
     return interaction_rules_sparql
 

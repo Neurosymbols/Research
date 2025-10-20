@@ -21,64 +21,6 @@ bayesian_net = None
 strong, dead, moderate = [], [], []
 
 
-# def generate_panels():
-#     #this function accounts for data capture, logical flags, and evidence pull steps
-#     fmrs_obj = json.load(open(fmrs))
-#     fc_probs = []
-#     n_rules = 30
-#     n_samples = 10
-#     fcs= get_failure_cause_concepts(fmrs_obj)
-#     for fc_name, fc_data in fcs.items():
-#         fc_probs.append(overall_rule_firing_probs[fc_data['id']])
-#     # Initialize empty panel array
-#     # each row is product and each column is rule
-#     fake_panels = np.zeros((n_samples, n_rules), dtype=int)
-#     for i, p in enumerate(fc_probs):
-#         #bernoulli trial
-#         fake_panels[:, i] = np.random.binomial(1, p, size=n_samples)
-#     print(fake_panels)
-#     return fake_panels
-
-# def generate_panels():
-#     #this function accounts for data capture, logical flags, and evidence pull steps
-#     fmrs_obj = json.load(open(fmrs))
-#     n_rules = 30
-#     n_samples = 30
-#     fcs= get_failure_cause_concepts(fmrs_obj)
-#     # Initialize empty panel array
-#     # each row is product and each column is rule
-#     fake_panels = np.zeros((n_samples, n_rules), dtype=int)
-#     for i, p in enumerate(fcs.keys()):
-#         #bernoulli trial
-#         fake_panels[:, i] = np.random.choice([0, 1], size=n_samples)
-#     return fake_panels
-
-# def generate_panels():
-#     fmrs_obj = json.load(open(fmrs))
-#     n_rules = 30
-#     n_samples = 30
-#     fcs = list(get_failure_cause_concepts(fmrs_obj).keys())
-
-#     fake_panels = np.zeros((n_samples, n_rules), dtype=int)
-
-#     strong_idx = [i for i, fc in enumerate(fcs) if fc in strong]
-#     dead_idx = [i for i, fc in enumerate(fcs) if fc in dead]
-#     moderate_idx = [i for i in range(n_rules) if i not in strong_idx and i not in dead_idx]
-
-#     for row in range(n_samples):
-#         # how many strong rules to fire in this panel (60–100%)
-#         k = random.randint(int(0.5*len(strong_idx)), len(strong_idx))
-#         fired_strongs = random.sample(strong_idx, k)
-
-#         # set selected strong rules to 1
-#         fake_panels[row, fired_strongs] = 1
-
-#         # for the rest (non-strong rules), pick random 0/1
-#         for j in moderate_idx:
-#             fake_panels[row, j] = np.random.choice([0, 1])
-
-#     return fake_panels
-
 def generate_panels(test_panel_path):
     test_panels_df = pd.read_csv(test_panel_path)
     # Select only columns starting with "FC"
@@ -105,22 +47,32 @@ def calculate_defect_prior(smoothing, train_dcm):
 
 def calculate_rule_priors(smoothing, train_dcm, output_path, train_dist):
     global overall_rule_firing_probs, rule_priors
-    Ai1 = 0.5 if smoothing else 0
-    Bi1 = 0.5 if smoothing else 0
-    Ai0 = 0.5 if smoothing else 0
-    Bi0 = 0.5 if smoothing else 0
+    Ai1 = 0.5 if smoothing else 0 #defect occurs rule fires
+    Bi1 = 0.5 if smoothing else 0 #defect occurs rule does not fire
+    Ai0 = 0.5 if smoothing else 0 #defect not occurs rule fires
+    Bi0 = 0.5 if smoothing else 0 #defect not occurs rule does not fire
     df = pd.read_csv(train_dcm)
     fc_cols = df[[col for col in df.columns if col.startswith("FC")]]
-    # fc is 1 when defect is 1
-    fc_i1 = {} #true positive rate (recall)
-    # fc is 1 when defect is 0
+    # fc(rule) fires when defect is 1
+    fc_i1 = {} #true positive rate (recall) --> Ai1
+    # fc(rule) fires when defect is 0 --> Ai0
     fc_i0 = {} #false postive rate
     rule_priors = {}
     for col in fc_cols:
+        #get me rows where fc is 1
         boolean_df_col = (df[col] > 0).astype(int)
+        #overall probability of rule firing
         overall_rule_firing_probs[col] = float(boolean_df_col.mean())
         #calculating conditional probs using sklearn without smoothing
-        tn, fp, fn, tp = confusion_matrix(df['defect'], boolean_df_col).ravel()
+        #df['defect'] --> truth
+        #boolean_df_col --> pred
+        print(col)
+        print(confusion_matrix(df['defect'], boolean_df_col, labels=[0, 1]).ravel())
+        #tn: when defect does not occur rule does not fire
+        #tp: when defect occurs rule fires
+        #fn: when defect occurs rule does not fire
+        #fp: when defect not occurs rule fires    
+        tn, fp, fn, tp = confusion_matrix(df['defect'], boolean_df_col, labels=[0, 1]).ravel()
         recall = tp / (tp + fn) if (tp+fn) > 0 else 0
         fpr = fp / (fp + tn) if (fp+tn) > 0 else 0
         if recall >= 0.95 and fpr > 0:
@@ -129,9 +81,11 @@ def calculate_rule_priors(smoothing, train_dcm, output_path, train_dist):
             dead.append(col)
         else:
             moderate.append(col)
+        rule_confusion_matrix[col] = [int(tn), int(fp), int(fn), int(tp)]
+
+        #prior calculation for the rule
         fc_i1[col] = float( (Ai1 + tp) / (Ai1 + Bi1 + tp + fn))
         fc_i0[col] = float( (Ai0 + fp) / (Ai0 + Bi0 + fp + tn))
-        rule_confusion_matrix[col] = [int(tn), int(fp), int(fn), int(tp)]
 
         #calculating conditional probs manually
         # defect_count = float(df[df['defect']==1].shape[0])
@@ -145,7 +99,9 @@ def calculate_rule_priors(smoothing, train_dcm, output_path, train_dist):
         if col not in rule_priors:
             rule_priors[col] = {}
         rule_priors[col]["fc_i1"] = val
+        rule_priors[col]["fc0_i1"] = 1 - val
         rule_priors[col]["fc_i0"] = fc_i0[col]
+        rule_priors[col]["fc0_i0"] = 1 - fc_i0[col]
     with open(f"{output_path}/rule_priors_smoothing_{train_dist}.json", "w") as f:
         json.dump(rule_priors, f, indent=2)
 
@@ -229,18 +185,24 @@ def get_likelihood_ratios_pgmpy(model, panel):
             lr = p_false_b1 / p_false_b0 if p_false_b0 > 0 else float("inf")
             # print(f"{fc} fired=False → LR={lr}")
 
-def ground_truth_testing(test_panels_path, output_path, train_dist):
+def ground_truth_testing(
+    test_panels_path, 
+    output_path, 
+    train_dist, 
+    defect_probability
+):
     gt = pd.read_csv(test_panels_path)
     pt = pd.read_csv(f"{output_path}/bayesian_output_{train_dist}.csv")
     true = gt['defect'].to_list()
-    pred = (pt["bridge_probability"] >= 0.85).astype(int).tolist()
+    pred = (pt["bridge_probability"] >= defect_probability).astype(int).tolist()
     compute_evaluation_matrix(true, pred, f"{output_path}/bayesian_output_{train_dist}_EM")
 
 def implement_bayesian_inference(
     train_dcm,
     test_panels,
     output_path,
-    train_dist
+    train_dist,
+    defect_probability
 ):
     calculate_defect_prior(smoothing=True, train_dcm=train_dcm)
     calculate_rule_priors(
@@ -251,4 +213,4 @@ def implement_bayesian_inference(
     )
     creat_bayesian_net()
     run_inference(test_panels, output_path, train_dist)
-    ground_truth_testing(test_panels, output_path, train_dist)
+    ground_truth_testing(test_panels, output_path, train_dist, defect_probability)

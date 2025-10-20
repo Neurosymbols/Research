@@ -1,0 +1,12 @@
+owlready2==0.48
+pandas
+numpy
+SPARQLWrapper==2.0.0
+scipy
+PyYAML
+pytest
+pytest-cov
+langchain-google-genai
+langchain==0.3.27
+langchain-community
+pgmpy
