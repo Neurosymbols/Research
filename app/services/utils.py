@@ -1,3 +1,4 @@
+import os
 import re
 import requests
 import types
@@ -28,6 +29,10 @@ def clean_param_name(raw):
 
     # 4. Collapse multiple spaces and trim
     return re.sub(r"\s+", " ", raw).strip()
+
+def normalize_text(text: str) -> str:
+    # Replace all unicode whitespace (incl. \u202f, \u00a0, etc.) with plain space
+    return re.sub(r"\s+", " ", text, flags=re.UNICODE).strip()
 
 def extract_number(value):
     if pd.isna(value):
@@ -166,3 +171,54 @@ def get_rule_scores(interaction_rules_file):
         rule_comb = tuple([f"FC{r.strip()}" for r in row[0].split("+")])
         rule_scores[rule_comb] = row[1]
     return rule_scores
+
+def remove_version_files(base_path: str, folder: str, version_number: int):
+    """
+    Removes all files containing the given version number (like v1, v2, etc.)
+    inside the specified folder ('input' or 'output'), including subdirectories.
+
+    Args:
+        base_path (str): Root directory path (e.g. '/home/user/project/app/data')
+        folder (str): Subfolder name ('input' or 'output')
+        version_number (int): Version number to match (e.g. 1, 2, 3)
+    """
+    target_dir = os.path.join(base_path, folder)
+    pattern = re.compile(fr"(?<![a-zA-Z0-9])v{version_number}(?![a-zA-Z0-9])", re.IGNORECASE)
+    removed_files = []
+
+    if not os.path.exists(target_dir):
+        print(f"❌ Folder not found: {target_dir}")
+        return
+
+    for root, _, files in os.walk(target_dir):
+        for file in files:
+            if pattern.search(file):
+                file_path = os.path.join(root, file)
+                try:
+                    os.remove(file_path)
+                    removed_files.append(file_path)
+                except Exception as e:
+                    print(f"⚠️ Could not remove {file_path}: {e}")
+
+    if removed_files:
+        print(f"✅ Removed {len(removed_files)} files containing v{version_number}:")
+        for f in removed_files:
+            print(f"  - {f}")
+    else:
+        print(f"ℹ️ No files found containing v{version_number} in '{folder}'.")
+
+def extract_rule_directions(expr: str):
+    conditions = re.findall(r"\((.*?)\)", expr)
+    param_dict = {}
+    for cond in conditions:
+        match = re.match(r"(.+?)\s*(<=|>=|<|>)\s*(.+)", cond.strip())
+        if match:
+            param, op, _ = match.groups()
+            param = normalize_text(param.strip().lower())
+            if param not in param_dict:
+                param_dict[param] = []
+            if op in (">", ">="):
+                param_dict[param].append("UL")
+            if op in ("<", "<="):
+                param_dict[param].append("LL")
+    return param_dict

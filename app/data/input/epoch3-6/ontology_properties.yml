@@ -1,11 +1,17 @@
 object_properties:
   - name: hasSpecification
 
+  - name: hasObservation
+
   - name: observationOf
     functional: true
+    inverse_of: hasObservation
+  
+  - name: evaluatesObservation
 
-  - name: observesSpecification
+  - name: evaluatesAgainst
     functional: true
+    inverseOf: evaluatesObservation
 
   - name: hasFailureCause
 
@@ -16,6 +22,8 @@ object_properties:
   - name: monitorsDefect
 
   - name: violatesSpecification
+
+  - name: hasPotentialDefect
 
 data_properties:
   - name: hasUpperValue

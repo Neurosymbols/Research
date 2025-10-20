@@ -87,7 +87,7 @@ def run_oracle(interaction_rules, rule_interaction):
 
             SELECT ?defectLabel (COALESCE(?sp, 0) AS ?violated_spec) ?flagCount ?interaction
             WHERE {
-                ?defect a base:SolderBridging ;
+                ?defect a base:Defect ;
                         rdfs:label ?defectLabel ;
                         base:flagCount ?flagCount ;
                         base:interactionBonus ?interaction .
@@ -107,9 +107,9 @@ def run_oracle(interaction_rules, rule_interaction):
             PREFIX product1: <https://abakai.ai/data/semicon-product1.owl#>
             PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
 
-            SELECT ?defectLabel (COALESCE(?fc, 0) AS ?failure_cause)
+            SELECT ?defectLabel (COALESCE(?fc, 'NoFailureCause') AS ?failure_cause)
             WHERE {
-                ?defect a base:SolderBridging ;
+                ?defect a base:Defect ;
                         rdfs:label ?defectLabel;
 
 
@@ -124,34 +124,24 @@ def run_oracle(interaction_rules, rule_interaction):
     )
     rbi_results = perform_sparql_query(
         '''
-            PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
-            PREFIX base: <https://abakai.ai/ontology/semicon-base.owl#>
             PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
-
+            PREFIX base: <https://abakai.ai/ontology/semicon-base.owl#>
+            PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
             SELECT ?defectLabel ?rbi
             WHERE{
-                ?defect rdfs:label ?defectLabel
+                ?defect rdfs:label ?defectLabel .
                 {SELECT ?defect (SUM(?part) AS ?base)
                     WHERE {
-                    ?defect a base:SolderBridging .
+                    ?defect a base:Defect .
                     OPTIONAL {
                         ?defect base:hasFailureCause ?fc .
                         ?fc     base:hasSeverity ?sev ;
                                 base:hasWeight   ?w .
                     }
-                    BIND(IF(BOUND(?sev) && BOUND(?w),
-                            xsd:decimal(?sev) * xsd:decimal(?w),
-                            0) AS ?part)
-                    }
-                GROUP BY ?defect}
-                {SELECT ?defect ?bPart
-                    WHERE {
-                        ?defect a base:SolderBridging .      
-                    OPTIONAL { ?defect base:interactionBonus ?b . }
-                    BIND(IF(BOUND(?b), xsd:decimal(?b), 0) AS ?bPart)
-                    }
+                    BIND(xsd:decimal(?w) AS ?part)
                 }
-                BIND( xsd:decimal(COALESCE(?base, 0)) + xsd:decimal(COALESCE(?bPart, 0)) AS ?rbi )
+                GROUP BY ?defect}
+                BIND( xsd:decimal(COALESCE(?base, 0)) AS ?rbi )
             }
         '''
     )

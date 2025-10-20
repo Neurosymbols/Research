@@ -1,16 +1,48 @@
 import pandas as pd
+import numpy as np
 import re
 
 from app.services.oracle import run_oracle
-from app.services.utils import perform_sparql_query, get_failure_cause_concepts
+from app.services.utils import get_failure_cause_concepts
 
-def create_reports(
+def get_defect_threshold(
+        defect_matrix:pd.DataFrame,
+        threshold_column:float = "rbi_score"
+    ):
+    def manual_percentile(data, q):
+        """
+        Manual percentile calculation with interpolation.
+        data: list or array
+        q: percentile (0-100)
+        """
+        data = np.sort(data)                 # 1. sort values
+        N = len(data)
+        
+        pos = (q/100) * (N - 1)              # 2. position
+        lower = int(np.floor(pos))           # 3. lower index
+        upper = int(np.ceil(pos))            # 4. upper index
+        weight = pos - lower                 # 5. interpolation weight
+
+        if lower == upper:                   # exact position
+            return data[lower]
+        else:                                # interpolate
+            return data[lower] * (1-weight) + data[upper] * weight
+
+    def generate_threshold(rbi_scores:list):
+        return manual_percentile(rbi_scores, 85)
+    
+    rbis = [n for n in defect_matrix[threshold_column].tolist() if n > 0]
+    threshold = generate_threshold(rbis)
+    print(f"threshold: {threshold}")
+    defect_matrix["defect"] = (defect_matrix[threshold_column] >= threshold).astype(int)
+    return threshold
+
+def generate_blind_defect_cause_matrix(
     interaction_rules_sparql,
     specs_dict,
     failure_causes_rules_mapping,
     report_storage_path,
-    rule_interaction,
-    rbi_threshold
+    rule_interaction
 ):
     #TODO: plan to generalize for all defects
     oracle_results = run_oracle(
@@ -19,26 +51,6 @@ def create_reports(
     )
     failure_cause_concepts = get_failure_cause_concepts(
         failure_causes_rules_mapping
-    )
-    #TODO: update the rbi threshold dynamically for each distribution
-    defect_results = perform_sparql_query(
-        f'''
-            PREFIX base: <https://abakai.ai/ontology/semicon-base.owl#>
-            PREFIX xsd:  <http://www.w3.org/2001/XMLSchema#>
-
-            SELECT ?defectLabel ?hasDefect
-            WHERE {{
-            
-            ?defect a base:SolderBridging .
-            ?defect rdfs:label ?defectLabel .
-
-            OPTIONAL {{ ?defect base:hasRBIScore ?rbi . }}
-
-            # Normalize missing values to 0 and compute the flag
-            BIND( xsd:decimal(COALESCE(?rbi, 0)) AS ?rbiN )
-            BIND( IF(?rbiN >= {rbi_threshold}, 1, 0) AS ?hasDefect )
-            }}
-        '''
     )
     #report 1
     rows = {}
@@ -54,7 +66,6 @@ def create_reports(
                'violated_specs': [],
                'flag_count': row['flagCount']['value'],
                'interaction': row['interaction']['value'],
-               'defect': 0,
                'rbi': 0.0
             }
         rows[defect_label]['violated_specs'].append(row["violated_spec"]["value"])
@@ -69,11 +80,6 @@ def create_reports(
         defect_label = row["defectLabel"]["value"]
         assert defect_label in rows, "inconsistent matrics getting formed"
         rows[defect_label]['rbi'] = row["rbi"]["value"]
-    #collect defects
-    for row in defect_results["results"]["bindings"]:
-        defect_label = row["defectLabel"]["value"]
-        assert defect_label in rows, "inconsistent matrics getting formed"
-        rows[defect_label]['defect'] = row["hasDefect"]["value"]
     #keys in ascending order
     rows = {k: rows[k] for k in sorted(rows.keys(), key=lambda x: int(re.search(r"PCB(\d+)", x).group(1)))}
     for defect_label in rows:
@@ -89,8 +95,8 @@ def create_reports(
             **v, 
             "flag_count": rows[k]['flag_count'], 
             "interaction": rows[k]['interaction'],
-            'defect': rows[k]['defect'],
-            'rbi': rows[k]['rbi']
+            'rbi': float(rows[k]['rbi'])
         })
     blind_defect_matrix_df = pd.DataFrame(blind_defect_matrix)
+    get_defect_threshold(blind_defect_matrix_df, "rbi")
     blind_defect_matrix_df.to_csv(report_storage_path)
