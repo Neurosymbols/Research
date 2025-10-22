@@ -1,3 +1,8 @@
 .venv
 *.pyc
 *.DS_Store
+venv
+*_v[0-9]*
+*v[0-9]*
+output/
+ontologies/

@@ -27,7 +27,7 @@ def compute_evaluation_matrix(
     output
 ):
     # Confusion matrix
-    tn, fp, fn, tp = confusion_matrix(true, pred).ravel()
+    tn, fp, fn, tp = confusion_matrix(true, pred, labels=[0, 1]).ravel()
     metrics = {
         "TP": int(tp),
         "TN": int(tn),
