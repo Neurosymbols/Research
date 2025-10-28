@@ -1,48 +1,48 @@
-,,Update this for Chosen Digicom (& Kaynes) Product,Update this to revelant Standards,Name of the doc where we find this specification,"Name of the machine/sensor/log, etc where we can get this data"
-,Specification,"Tolerance / Limit
+,,,,,Update this for Chosen Digicom (& Kaynes) Product,Update this to revelant Standards,Name of the doc where we find this specification,"Name of the machine/sensor/log, etc where we can get this data"
+,Specification,Category,Process Category,Reasoning,"Tolerance / Limit
 (nominal ± tol. or min/max)","Relevant Standard(s)
 (IPC, J-STD or similar)","Typical Spec Doc 
 (in an EMS shop)","Shop Floor Instrument / Sensor
 that would record or verify"
-1,BGA pitch,1.00 mm ± 0.05 mm,IPC-7351B,PCB Fabrication Drawing,CAD‐DRC; AOI measurements
-2,BGA ball diameter,0.40 mm ± 0.02 mm,IPC-7095,PCB Fabrication Drawing,Optical microscope; AOI
-3,Solder ball height,0.40 mm ± 0.02 mm,IPC-7095,PCB Fabrication Drawing,3D microscope; SPI
-4,Number of balls,100 ± 0,IPC-7095,PCB Fabrication Drawing,Pick‐and‐place feeder count
-5,Solder alloy,SAC305 (Sn–3Ag–0.5Cu),J-STD-006C,Solder Paste Material Spec Sheet,Supplier C of C
-6,Stencil thickness,0.100 mm ± 0.005 mm,IPC-7525,Stencil Fabrication Drawing,Micrometer
-7,Aperture diameter,0.34 mm ± 0.02 mm,IPC-7525,Stencil Fabrication Drawing,Optical aperture gauge
-8,Paste volume per aperture,0.04 mm³ ± 0.004 mm³,IPC-7525,Print Process Specification,SPI machine
-9,Paste roll bead size,4 mm³ ± 0.4 mm³,IPC-7525,Print Process Specification,Vision bead profiler
-10,Residual paste allowed,5 ± 0.5 % vol.,IPC-7525,Print Process Specification,SPI underside‐scan
-11,Squeegee pressure,0.30 MPa ± 0.03 MPa,IPC-7525,Print Process Specification,Inline pressure transducer
-12,Squeegee speed,70 mm/s ± 14 mm/s,IPC-7525,Print Process Specification,Motor encoder
-13,Squeegee angle,60 ° ± 5 °,IPC-7525,Print Process Specification,Angle gauge / camera
-14,Aperture area ratio,≥ 0.66,IPC-7525,Stencil Fabrication Drawing,CAM calculation
-15,Paste viscosity,200 ± 50 Pa·s,J-STD-005,Solder Paste Material Spec Sheet,Rheometer
-16,Particle size distribution,29 ± 9 µm,J-STD-005,Solder Paste Material Spec Sheet,Laser diffraction analyzer
-17,Mask dam width,0.10 ± 0.01 mm,IPC-6012,PCB Fabrication Drawing,CAM DRC; AOI
-18,Via-in-pad fill,≤ 10 % via diameter,IPC-6012,PCB Fabrication Drawing,X-ray inspection
-19,Pad diameter (BGA),0.45–0.50 mm,IPC-7351B,PCB Fabrication Drawing,CAM DRC; AOI
-20,Paste shelf-life time,<= 6months,,,
-21,Paste shelf-life temp,< 10 °C,J-STD-005,Material Traceability Record,ERP / barcode system
-22,Paste open-life time,<= 8h,,,
-23,Paste open-life temp,25 °C ± 1°C,J-STD-005,Material Handling Procedure,Shop log / MES
-24,Overprint allowance,≤ 15 % pad area,IPC-7525,Print Process Specification,SPI volume map
-25,Stencil coplanarity,≤ 15 µm across aperture area,IPC-7525 appendix B,Stencil QA Procedure,3D coplanarity gauge
-26,P and P Placement accuracy,0 ± 40 µm,IPC-7095,Pick-and-Place Process Spec.,Vision alignment camera
-27,Preheat zone temp,175 °C ± 5 °C,IPC-1782,Reflow Profile Spec.,Thermal profiler
-28,Preheat zone time,90 ± 30 s,,,
-29,Soak zone temp,210 °C ± 5 °C,IPC-1782,Reflow Profile Spec.,Thermal profiler
-30,Soak zone time,90 ± 30 s,,,
-31,Ramp-up zone rate and time,≤ 2 °C/s,IPC-1782,Reflow Profile Spec.,Thermal profiler
-32,Peak zone temp,255 °C ± 5 °C,IPC-1782,Reflow Profile Spec.,Thermal profiler
-33,Peak zone time,45 ± 15 s,,,
-34,Cool down zone temp,175 °C ± 5 °C,IPC-1782,Reflow Profile Spec.,Thermal profiler
-35,Cool down zone time,90 ± 30 s,,,
-36,Oxygen level,990 ± 10 ppm,IPC-7525,Reflow Process Control,O₂ sensor in oven
-37,Stencil cleaning,Every print cycle,IPC-7525,Cleaning Procedure,Operator log; MES
-38,Ambient RH,40 ± 10 %,IPC-7711,Environmental Control Procedure,RH / T datalogger
-39,Ionic contamination,0.9 ± 0.1 µg NaCl cm²,IPC-TM-650 2.3.25,Cleaning Validation Report,Ionograph
-40,Board warpage,< 80 µm,IPC-6012,PCB QA Procedure,Shadow MOI or laser profiler
-41,Paste metal load,< 90 wt %,,,
-42,Printer placement accuracy,0 ± 25 µm,,,
+1,BGA pitch,bfo:Quality,ComponentPlacementProcess,Geometric property of PCB layout (artifact),1.00 mm ± 0.05 mm,IPC-7351B,PCB Fabrication Drawing,CAD‐DRC; AOI measurements
+2,BGA ball diameter,bfo:Quality,ComponentPlacementProcess,Dimension of solder ball — intrinsic to component,0.40 mm ± 0.02 mm,IPC-7095,PCB Fabrication Drawing,Optical microscope; AOI
+3,Solder ball height,bfo:Quality,ComponentPlacementProcess,Physical height of solder feature on PCB,0.40 mm ± 0.02 mm,IPC-7095,PCB Fabrication Drawing,3D microscope; SPI
+4,Number of balls,bfo:Quality,ComponentPlacementProcess,Discrete physical count; attribute of component,100 ± 0,IPC-7095,PCB Fabrication Drawing,Pick‐and‐place feeder count
+5,Solder alloy,bfo:Quality,ReflowSolderingProcess,Material composition property of paste/ball,SAC305 (Sn–3Ag–0.5Cu),J-STD-006C,Solder Paste Material Spec Sheet,Supplier C of C
+6,Stencil thickness,bfo:Quality,SolderPrintingProcess,Physical attribute of stencil (artifact),0.100 mm ± 0.005 mm,IPC-7525,Stencil Fabrication Drawing,Micrometer
+7,Aperture diameter,bfo:Quality,SolderPrintingProcess,Geometric property of stencil openings,0.34 mm ± 0.02 mm,IPC-7525,Stencil Fabrication Drawing,Optical aperture gauge
+8,Paste volume per aperture,iof:ProcessCharacteristic,SolderPrintingProcess,Outcome of print process — process performance variable,0.04 mm³ ± 0.004 mm³,IPC-7525,Print Process Specification,SPI machine
+9,Paste roll bead size,iof:ProcessCharacteristic,SolderPrintingProcess,Parameter describing process state during printing,4 mm³ ± 0.4 mm³,IPC-7525,Print Process Specification,Vision bead profiler
+10,Residual paste allowed,iof:ProcessCharacteristic,SolderPrintingProcess,Specification limiting leftover paste after print cycle,5 ± 0.5 % vol.,IPC-7525,Print Process Specification,SPI underside‐scan
+11,Squeegee pressure,iof:ProcessCharacteristic,SolderPrintingProcess,Controllable print process setting,0.30 MPa ± 0.03 MPa,IPC-7525,Print Process Specification,Inline pressure transducer
+12,Squeegee speed,iof:ProcessCharacteristic,SolderPrintingProcess,Operational velocity parameter,70 mm/s ± 14 mm/s,IPC-7525,Print Process Specification,Motor encoder
+13,Squeegee angle,iof:ProcessCharacteristic,SolderPrintingProcess,Process setting influencing shear and paste flow,60 ° ± 5 °,IPC-7525,Print Process Specification,Angle gauge / camera
+14,Aperture area ratio,bfo:Quality,SolderPrintingProcess,Derived geometric ratio — property of stencil design,≥ 0.66,IPC-7525,Stencil Fabrication Drawing,CAM calculation
+15,Paste viscosity,bfo:Quality,SolderPrintingProcess,Material property of solder paste,200 ± 50 Pa·s,J-STD-005,Solder Paste Material Spec Sheet,Rheometer
+16,Particle size distribution,bfo:Quality,SolderPrintingProcess,Material property of solder powder,29 ± 9 µm,J-STD-005,Solder Paste Material Spec Sheet,Laser diffraction analyzer
+17,Mask dam width,bfo:Quality,SolderPrintingProcess,Geometric property of solder mask (PCB),0.10 ± 0.01 mm,IPC-6012,PCB Fabrication Drawing,CAM DRC; AOI
+18,Via-in-pad fill,bfo:Quality,ComponentPlacementProcess,Physical property of filled vias (PCB artifact),≤ 10 % via diameter,IPC-6012,PCB Fabrication Drawing,X-ray inspection
+19,Pad diameter (BGA),bfo:Quality,ComponentPlacementProcess,Geometric feature of PCB copper pad,0.45–0.50 mm,IPC-7351B,PCB Fabrication Drawing,CAM DRC; AOI
+20,Paste shelf-life time,bfo:Quality,SolderPrintingProcess,Temporal/material stability property of paste,<= 6months,,,
+21,Paste shelf-life temp,bfo:Quality,SolderPrintingProcess,Environmental stability condition (artifact-level),< 10 °C,J-STD-005,Material Traceability Record,ERP / barcode system
+22,Paste open-life time,bfo:Quality,SolderPrintingProcess,Time-dependent quality of paste once exposed,<= 8h,,,
+23,Paste open-life temp,bfo:Quality,SolderPrintingProcess,Environmental condition for material stability,25 °C ± 1°C,J-STD-005,Material Handling Procedure,Shop log / MES
+24,Overprint allowance,iof:ProcessCharacteristic,SolderPrintingProcess,Tolerance on print process misalignment outcome,≤ 15 % pad area,IPC-7525,Print Process Specification,SPI volume map
+25,Stencil coplanarity,bfo:Quality,SolderPrintingProcess,Flatness property of stencil (artifact),≤ 15 µm across aperture area,IPC-7525 appendix B,Stencil QA Procedure,3D coplanarity gauge
+26,P and P Placement accuracy,iof:ProcessCharacteristic,ComponentPlacementProcess,Process accuracy parameter in component placement,0 ± 40 µm,IPC-7095,Pick-and-Place Process Spec.,Vision alignment camera
+27,Preheat zone temp,iof:ProcessCharacteristic,ReflowSolderingProcess,Temperature setting in reflow process,175 °C ± 5 °C,IPC-1782,Reflow Profile Spec.,Thermal profiler
+28,Preheat zone time,iof:ProcessCharacteristic,ReflowSolderingProcess,Process dwell duration,90 ± 30 s,,,
+29,Soak zone temp,iof:ProcessCharacteristic,ReflowSolderingProcess,Controlled heating process parameter,210 °C ± 5 °C,IPC-1782,Reflow Profile Spec.,Thermal profiler
+30,Soak zone time,iof:ProcessCharacteristic,ReflowSolderingProcess,Process time parameter,90 ± 30 s,,,
+31,Ramp-up zone rate and time,iof:ProcessCharacteristic,ReflowSolderingProcess,Temporal rate of heating — process descriptor,≤ 2 °C/s,IPC-1782,Reflow Profile Spec.,Thermal profiler
+32,Peak zone temp,iof:ProcessCharacteristic,ReflowSolderingProcess,Process peak temperature control,255 °C ± 5 °C,IPC-1782,Reflow Profile Spec.,Thermal profiler
+33,Peak zone time,iof:ProcessCharacteristic,ReflowSolderingProcess,Process dwell duration at peak,45 ± 15 s,,,
+34,Cool down zone temp,iof:ProcessCharacteristic,ReflowSolderingProcess,Controlled cooling temperature — process descriptor,175 °C ± 5 °C,IPC-1782,Reflow Profile Spec.,Thermal profiler
+35,Cool down zone time,iof:ProcessCharacteristic,ReflowSolderingProcess,Process cooling duration,90 ± 30 s,,,
+36,Oxygen level,iof:ProcessCharacteristic,ReflowSolderingProcess,Controlled process atmosphere parameter,990 ± 10 ppm,IPC-7525,Reflow Process Control,O₂ sensor in oven
+37,Stencil cleaning,iof:ProcessCharacteristic,SolderPrintingProcess,Process maintenance frequency / procedural characteristic,Every print cycle,IPC-7525,Cleaning Procedure,Operator log; MES
+38,Ambient RH,iof:ProcessCharacteristic,SolderPrintingProcess,Environmental control parameter during processing,40 ± 10 %,IPC-7711,Environmental Control Procedure,RH / T datalogger
+39,Ionic contamination,bfo:Quality,ReflowSolderingProcess,Material cleanliness level (physical quality of board),0.9 ± 0.1 µg NaCl cm²,IPC-TM-650 2.3.25,Cleaning Validation Report,Ionograph
+40,Board warpage,bfo:Quality,ReflowSolderingProcess,Geometric deformation of board (artifact property),< 80 µm,IPC-6012,PCB QA Procedure,Shadow MOI or laser profiler
+41,Paste metal load,bfo:Quality,SolderPrintingProcess,Material composition ratio,< 90 wt %,,,
+42,Printer placement accuracy,iof:ProcessCharacteristic,SolderPrintingProcess,Process machine alignment accuracy,0 ± 25 µm,,,

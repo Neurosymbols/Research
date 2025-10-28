@@ -14,3 +14,7 @@ mechanism,PostPrintSpread,"Control paste/board temp, humidity, and queue time; r
 parameter,LowPasteViscosity,Cool paste/stencil; refresh bead; check lot; align mixing practice
 parameter,LowMetalContent,Replace solder paste batch with verified metal loading (≥88 wt%). Verify storage and handling conditions.
 parameter,HighHumidity,Dehumidify/condition cell; maintain RH control
+mechanism,ExcessReflowSpreading,"Optimize reflow profile by capping peak temperature, reducing TAL, and balancing thermal gradients across the board"
+parameter,PeakReflowTemperature,Tune profile; cap peak
+parameter,TimeAboveLiquidus,Reduce TAL within vendor band
+parameter,ThermalGradientAcrossBoard,Balance zones; add shielding; adjust loading

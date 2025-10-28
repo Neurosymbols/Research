@@ -9,8 +9,7 @@ from owlready2 import *
 from app.services.utils import *
 from .services.ontology_functions import initiate_ontology,\
     add_specs_to_ontology,\
-    add_products_to_ontology,\
-    run_rules
+    add_products_to_ontology
 from .services.create_reports import generate_blind_defect_cause_matrix
 from .services.bayesian_inference import implement_bayesian_inference
 from .tests import *
@@ -123,7 +122,6 @@ def parse_spec_strings(specs_dict):
     extracted_specs_dict = {}
     spec_id = 0
     for k, v in specs_dict.items():
-        print(f"processing.. {k}")
         # First try regex (fast + local)
         specs_output = regex_parse_spec_string(v)
         if specs_output:
@@ -180,6 +178,31 @@ for k, v in fc_df_dict.items():
     else:
         fcs['failure_cause'].append(k)
 
+def extract_axioms():
+    axioms_df = pd.read_csv(f"{input_path}/axioms.csv")
+    target_cols = list(axioms_df.iloc[:, [0, 1, 2, 3, 4]].itertuples(index=False, name=None))
+    axioms_dict = {}
+    for row in target_cols:
+        class_name = row[0]
+        n_and_s_axioms = row[4]
+        axioms_dict[class_name] = n_and_s_axioms
+    return axioms_dict
+
+def extract_definitions_and_examples():
+    prop_df = pd.read_csv(f"{input_path}/definitions_and_examples_object_properties.csv")
+    classes_df = pd.read_csv(f"{input_path}/definitions_and_examples_classes.csv")
+    target_class_cols = list(classes_df.iloc[:, [0, 4, 5]].itertuples(index=False, name=None))
+    target_prop_cols = list(prop_df.iloc[:, [0, 8, 9]].itertuples(index=False, name=None))
+    target_dict = {}
+    for row in target_class_cols:
+        target_dict[row[0]] = {"definition": row[1], "example": row[2]}
+    for row in target_prop_cols:
+        target_dict[row[0]] = {"definition": row[1], "example": row[2]}
+    return target_dict
+
+axioms_dict = extract_axioms()
+definitions_dict = extract_definitions_and_examples()
+
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="SemicON Ontology CLI")
 
@@ -212,7 +235,9 @@ if __name__ == "__main__":
                 "semicon_characteristic_concepts": {k : v for k,v in non_null_specs.items() if non_null_specs[k]['process_category'] == 'ProcessCharacteristic'},
                 "manufacturing_process_concepts": manufacturing_process_concepts,
                 "defects_and_failure_causes": fcs
-            }
+            },
+            axioms_dict,
+            definitions_dict
         )
 
     if args.add_specs:

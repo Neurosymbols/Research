@@ -1,53 +1,70 @@
 object_properties:
-  - name: hasSpecification
-
   - name: hasObservation
+    parent: describedBy
+    domain: PCB
+    range: ParameterObservation
 
   - name: observationOf
-    functional: true
+    parent: describes
     inverse_of: hasObservation
+    domain: ParameterObservation
+    range: PCB
   
-  - name: evaluatesObservation
-
-  - name: evaluatesAgainst
-    functional: true
-    inverse_of: evaluatesObservation
-
-  - name: hasFailureCause
-
-  - name: hasCorrectiveAction
-
-  - name: monitorsDefect
-
-  - name: violatesSpecification
+  - name: isCorrectedBy
+    domain: FailureCause
+    range: CorrectiveAction
+  
+  - name: corrects
+    domain: CorrectiveAction
+    range: FailureCause
 
   - name: hasDefect
+    parent: BFO_0000196
+    domain: PCB
+    range: Defect
 
   - name: defectOccursOn
-    functional: true
+    parent: BFO_0000197
     inverse_of: hasDefect
+    range: Defect
+    domain: PCB
 
   - name: affects
-
-  - name: relatedObservation
-
-  - name: triggeredByRule
-
-  - name: supportedBy
-
-  - name: causallyInfluencedBy
-    transitive: true
-
-  - name: causallyInfluences
-    inverse_of: causallyInfluencedBy
-    transitive: true
+    parent: RO_0000052
+    domain: FailureCause
+    range: PCB
   
-  - name: hasCorrectiveAction
+  - name: isAffectedBy
+    parent: RO_0000053
+    domain: PCB
+    range: FailureCause
+  
+  - name: hasAssessmentInput
+    parent: used
+    domain: ConformanceAssessment
+    range: InformationContentEntity
+  
+  - name: isAssessmentInputFor
+    inverse_of: hasAssessmentInput
+    domain: InformationContentEntity
+    range: ConformanceAssessment
+  
+  - name: RO_0002559
+    domain: Effect
+    range: FailureCause
+  
+  - name: RO_0002566
+    inverse_of: RO_0002559
+    domain: FailureCause
+    range: Effect
 
 data_properties:
   - name: hasUpperValue
     functional: true
     range: float
+  
+  - name: triggeredByRule
+    range: str
 
   - name: hasNominalValue
     functional: true
@@ -64,23 +81,7 @@ data_properties:
   - name: hasUnit
     functional: true
     range: str
-
-  - name: hasSeverity
-    functional: true
-    range: int
-
-  - name: hasWeight
-    functional: true
-    range: float
-    
-  - name: flagCount
-    functional: true
-    range: int
   
-  - name: interactionBonus
-    functional: true
-    range: int
-  
-  - name: hasRBIScore
-    functional: true
-    range: float
+  - name: governedBy
+    range: str
+

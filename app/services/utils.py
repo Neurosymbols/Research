@@ -96,14 +96,21 @@ def replace_iri(path):
     owl_file = Path(path)
 
     # Original and replacement import IRIs
-    original_iri = 'https://spec.industrialontologies.org/ontology/core/Core'
-    replacement_iri = 'https://raw.githubusercontent.com/iofoundry/ontology/master/core/Core.rdf'
+    original_iri_iof = 'https://spec.industrialontologies.org/ontology/core/Core'
+    replacement_iri_iof = 'https://raw.githubusercontent.com/iofoundry/ontology/master/core/Core.rdf'
+
+    original_iri_prov = 'http://www.w3.org/ns/prov'
+    replacement_iri_prov = 'http://www.w3.org/ns/prov.owl'
 
     # Load and replace in the file
     owl_text = owl_file.read_text()
     owl_text_modified = owl_text.replace(
-        f'<owl:imports rdf:resource="{original_iri}"/>',
-        f'<owl:imports rdf:resource="{replacement_iri}"/>'
+        f'<owl:imports rdf:resource="{original_iri_iof}"/>',
+        f'<owl:imports rdf:resource="{replacement_iri_iof}"/>'
+    )
+    owl_text_modified = owl_text_modified.replace(
+        f'<owl:imports rdf:resource="{original_iri_prov}"/>',
+        f'<owl:imports rdf:resource="{replacement_iri_prov}"/>'
     )
 
     # Overwrite the file (or write to a new file if you want to keep the original)

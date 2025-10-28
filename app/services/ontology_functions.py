@@ -9,14 +9,17 @@ owlready2.reasoning.JAVA_MEMORY = "12288"
 from app.services.utils import replace_iri, add_classes, add_individuals, create_classname_syntax, get_failure_cause_concepts, perform_sparql_update, perform_sparql_query
 
 # Set the IRIs
-BASE_ONTO_IRI = "https://abakai.ai/ontology/semicon-base.owl"
-PRODUCT_ONTO_IRI = "https://abakai.ai/data/semicon-product1.owl"
-# IOF_CORE_IRI = "https://spec.industrialontologies.org/ontology/core/Core/"
-# BFO_IRI = "http://purl.obolibrary.org/obo/bfo.owl"
-# RO_IRI = "http://purl.obolibrary.org/obo/ro.owl"
+BASE_ONTO_IRI = "https://neurosymbols.ai/ontology/causal-terminology.owl"
+PRODUCT_ONTO_IRI = "https://neurosymbols.ai/data/causal-assertions.owl"
+IOF_CORE_IRI = "https://spec.industrialontologies.org/ontology/core/Core/"
+BFO_IRI = "http://purl.obolibrary.org/obo/bfo.owl"
+RO_IRI = "http://purl.obolibrary.org/obo/ro.owl"
+PROV_IRI = "https://www.w3.org/ns/prov.owl"
+SKOS_IRI = "http://www.w3.org/2004/02/skos/core"
 
 base_path = "./app/data"
 path = f"{base_path}/ontologies/epoch3-7"
+input_path = f"{base_path}/input/epoch3-7"
 
 # Initialize Variables to store ontology objects in memory
 base_onto = None
@@ -24,7 +27,15 @@ product1_onto = None
 iof = None
 bfo = None
 ro = None
+prov = None
+skos = None
 import_ontologies = True
+prefix_onto_map = {
+    "IOF": iof,
+    "BFO": bfo,
+    "RO": ro,
+    "prov": prov
+}
 
 super_base_classes = [
     'Action Specification',
@@ -34,7 +45,8 @@ super_base_classes = [
     'Measurement Information Content Entity',
     'Requirement Specification',
     'Process Characteristic',
-    'Manufacturing Process'
+    'Manufacturing Process',
+    'Activity'
 ]
 # Create list of SemicON base classes
 semicon_material_artifacts = [
@@ -53,13 +65,17 @@ semicon_process_characteristic = [
     'ParameterCharacteristic'
 ]
 semicon_action_specifications = [
-    'Corrective Action'
+    'CorrectiveAction'
 ]
+#TODO: add cause
 semicon_sdcs = [
     'Defect',
-    'Failure Cause',
-    'Effect',
-    'Cause'
+    'FailureCause',
+    'Effect'
+]
+
+semicon_activity = [
+    'ConformanceAssessment'
 ]
 
 semicon_fc_subtypes = [
@@ -71,9 +87,11 @@ def initiate_ontology(
         create_new, 
         ontologies_path = None, 
         properties_path = None,
-        base_classes = None
+        base_classes = None,
+        axioms_dict = None,
+        defintions_dict = None
     ):
-    global base_onto, product1_onto, iof, ro, bfo
+    global base_onto, product1_onto, iof, ro, bfo, prov, prefix_onto_map, skos
     base_onto = get_ontology(BASE_ONTO_IRI)
     product1_onto = get_ontology(PRODUCT_ONTO_IRI)
     if not create_new:
@@ -84,28 +102,37 @@ def initiate_ontology(
         # When ontologies do not exist in ontologies folder, create them for the first time
         if import_ontologies:
             iof = get_ontology(f"{path}/Core.rdf").load(only_local=True)
-            print(iof)
             bfo = get_ontology(f"{path}/bfo.owl").load(only_local=True)
-            print(bfo)
             ro = get_ontology(f"{path}/ro.owl").load(only_local=True)
-            print(ro)
+            prov = get_ontology(f"{path}/prov.owl").load(only_local=True)
+            skos = get_ontology(SKOS_IRI).load()
+        prefix_onto_map = {
+            "IOF": iof,
+            "BFO": bfo,
+            "RO": ro,
+            "prov": prov
+        }
         add_base_classes(base_classes) # T-Box
         define_properties(properties_path) # T-Box
+        add_axioms_to_ontology(axioms_dict) # T-Box
+        add_defintions_and_examples(defintions_dict) # T-Box
+        add_ishikawa_causal_graph() #T-Box
         if import_ontologies:
             #idempotently import ontologies
             base_onto.imported_ontologies.append(iof) # SemicON Base Onto imports IOF
             base_onto.imported_ontologies.append(bfo)
             base_onto.imported_ontologies.append(ro)
+            base_onto.imported_ontologies.append(prov)
         product1_onto.imported_ontologies.append(base_onto) # Product1 Onto imports the SemicON Base Onto
         save_ontology(ontologies_path)
 
 def save_ontology(path:str):
     print(f"Total individuals inside SemicON Base: {len(list(base_onto.individuals()))}")
     print(f"Total individuals inside SemicON Product1: {len(list(product1_onto.individuals()))}")
-    base_onto.save(file=os.path.join(path, "semicon-base.owl"), format = "rdfxml")
-    product1_onto.save(file=os.path.join(path, "semicon-product1.owl"), format = "rdfxml")
+    base_onto.save(file=os.path.join(path, "neurosymbols-causal-terminology.owl"), format = "rdfxml")
+    product1_onto.save(file=os.path.join(path, "neurosymbols-causal-assertions.owl"), format = "rdfxml")
     if import_ontologies:
-        replace_iri(f"{path}/semicon-base.owl")
+        replace_iri(f"{path}/neurosymbols-causal-terminology.owl")
 
 def add_base_classes(
     base_classes
@@ -156,7 +183,17 @@ def add_base_classes(
     )
     add_classes(
         semicon_req_ices,
-        iof.search_one(iri="*RequirementSpecification") if import_ontologies else base_onto.search_one(iri="*RequirementSpecification"),
+        prov.search_one(iri="*RequirementSpecification") if import_ontologies else base_onto.search_one(iri="*RequirementSpecification"),
+        base_onto
+    )
+    add_classes(
+        manufacturing_process_concepts,
+        iof.search_one(iri="*ManufacturingProcess") if import_ontologies else base_onto.search_one(iri="*ManufacturingProcess"),
+        base_onto
+    )
+    add_classes(
+        semicon_activity,
+        iof.search_one(iri="*Activity") if import_ontologies else base_onto.search_one(iri="*Activity"),
         base_onto
     )
     add_classes(
@@ -194,44 +231,133 @@ def add_base_classes(
         base_onto.FailureCause,
         base_onto
     )
-    add_classes(
-        manufacturing_process_concepts,
-        iof.search_one(iri="*ManufacturingProcess") if import_ontologies else base_onto.search_one(iri="*ManufacturingProcess"),
-        base_onto
-    )
+
     add_classes(
         [desc for ca, desc in semicon_corrective_action_concepts.items()],
         base_onto.CorrectiveAction,
         base_onto
     )
 
+def resolve_entity(name, ontologies):
+    entity = None
+    for onto in ontologies:
+        try:
+            entity = onto.search_one(iri=f"*{name}")
+            if not entity:
+                continue
+            else:
+                return entity
+        except AttributeError as e:
+            return None
+
 def define_properties(input_path):
     with open(input_path) as f:
         config = yaml.safe_load(f)
         if base_onto is not None:
             with base_onto: # T-Box Declaration
+                search_spaces = [base_onto, iof, bfo, prov, ro]
                 #------------------------------ Object Properties ----------------------------------#
                 for prop in config.get("object_properties", []):
-                    bases = [ObjectProperty]
-                    if prop.get("functional"):
-                        bases.append(FunctionalProperty)
-                    if prop.get("transitive"):
-                        bases.append(TransitiveProperty)
-                    cls = types.new_class(prop["name"], tuple(bases))
+                    cls = resolve_entity(prop['name'], search_spaces)
+                    if not cls:
+                        bases = [ObjectProperty]
+                        if prop.get('parent'):
+                            entity = resolve_entity(prop['parent'], search_spaces)
+                            if entity:
+                                bases.append(entity)
+                        if prop.get("functional"):
+                            bases.append(FunctionalProperty)
+                        if prop.get("transitive"):
+                            bases.append(TransitiveProperty)
+                        cls = types.new_class(prop["name"], tuple(bases))
                     if "inverse_of" in prop:
-                        cls.inverse_property = base_onto[prop["inverse_of"]]
+                        entity = resolve_entity(prop['inverse_of'], search_spaces)
+                        if entity:
+                            cls.inverse_property = entity
                     if "domain" in prop:
-                        cls.domain = [base_onto[prop["domain"]]]
+                        entity = resolve_entity(prop['domain'], search_spaces)
+                        cls.domain = [entity] if entity else []
                     if "range" in prop:
-                        cls.range = [base_onto[prop["range"]]] 
+                        entity = resolve_entity(prop['range'], search_spaces)
+                        cls.range = [entity] if entity else []
 
                 #------------------------------ Data Properties ----------------------------------#
                 for prop in config.get("data_properties", []):
-                    cls = types.new_class(prop["name"], (DataProperty, FunctionalProperty))
+                    cls = resolve_entity(prop['name'], search_spaces)
+                    if not cls:
+                        bases = [DataProperty]
+                        if prop.get("functional"):
+                            bases.append(FunctionalProperty)
+                        cls = types.new_class(prop["name"], tuple(bases))
                     if "domain" in prop:
                         cls.domain = [base_onto[prop["domain"]]]
                     type_map = {"float": float, "int": int, "str": str}
                     cls.range = [type_map[prop["range"]]]
+
+def add_axioms_to_ontology(axioms_dict):
+    with base_onto:
+        for sub_cls, axiom in axioms_dict.items():
+            axiom_split_by_and = axiom.split("and")
+            if len(axiom_split_by_and) > 1:
+                axiom_split_by_and.pop(0)
+                for axiom_unit in axiom_split_by_and:
+                    #TODO: add generalization and support for not, only etc.
+                    axiom_unit = axiom_unit.replace("(", "").replace(")", "")
+                    axiom_atoms = axiom_unit.split("some")
+                    axiom_atoms = [axiom_atom.strip() for axiom_atom in axiom_atoms]
+                    prop, obj_cls = axiom_atoms
+                    prop_atoms = prop.split(":")
+                    obj_cls_atoms = obj_cls.split(":")
+                    if len(prop_atoms) == 2:
+                        prop_prefix, prop_name = prop_atoms
+                        prop_obj = prefix_onto_map[prop_prefix].search_one(iri=f"*{prop_name}")
+                    else:
+                        prop_obj = base_onto[prop_atoms[0]]
+                    if len(obj_cls_atoms) == 2:
+                        obj_cls_prefix, obj_cls_name = obj_cls_atoms
+                        obj_cls_obj = prefix_onto_map[obj_cls_prefix].search_one(iri=f"*{obj_cls_name}")
+                    else:
+                        obj_cls_obj = base_onto[obj_cls_atoms[0]]
+                    base_onto[sub_cls].equivalent_to.append(prop_obj.some(obj_cls_obj))
+
+def add_defintions_and_examples(definitions_dict):
+    skos_definition = skos.search_one(iri = "*definition")
+    skos_example = skos.search_one(iri = "*example")
+    with base_onto:
+        for k, v in definitions_dict.items():
+            # locate class or property by IRI
+            ent = base_onto.search_one(iri = k)
+            ent.definition.append(v['definition'])   # plain literal (no lang tag)
+            ent.example.append(v['example'])
+
+def add_ishikawa_causal_graph():
+    def traverse_paths(graph, start, visited=None):
+        """
+        Recursively traverse and print causes along 'caused_by' edges.
+        """
+        with base_onto:
+            if visited is None:
+                visited = set()
+
+            if start in visited:
+                print(f"{start} (cycle detected)")
+                return
+            visited.add(start)
+            effect_ind = base_onto[create_classname_syntax(start)](f"{start}_1")
+            if len(effect_ind.label) == 0: 
+                effect_ind.label.append(f"{start}_1")
+            effect_ind.governedBy = graph.get(start, {}).get("governed_by", [])
+
+            causes = graph.get(start, {}).get("caused_by", [])
+            for cause in causes:
+                ind = base_onto[create_classname_syntax(cause)](f"{cause}_1")
+                effect_ind.RO_0002559.append(ind)
+                traverse_paths(graph, cause, visited)
+
+    with open(f"{input_path}/causal_chain.json") as f:
+        cc = json.load(f)
+        for defect in cc:
+            traverse_paths(cc, defect)
 
 def add_specs_to_ontology(specs_dict, ontology_path):
     if product1_onto is not None:
@@ -307,42 +433,3 @@ def add_products_to_ontology(
             print(f"{len(values)} product individuals imported to the ontology")
 
     return {"message": "products added"}
-
-def run_rules(rules, path):
-    root_cause_query = '''
-        PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
-        PREFIX base: <https://abakai.ai/ontology/semicon-base.owl#>
-        PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
-
-        SELECT ?defectLabel ?ruleFired ?violatedSpec
-        WHERE{
-        ?defect a base:SolderBridging ;
-                rdfs:label ?defectLabel .
-        OPTIONAL {
-                ?defect base:hasFailureCause ?fc .
-                ?fc rdfs:label ?ruleFired .
-            }
-        }
-    '''
-    for rulename, rulelist in rules.items():
-        for ri in rulelist:
-            print(ri)
-            #run rules
-            t1 = time.time()
-            perform_sparql_update(ri)
-            t2 = time.time()
-            print(f"{t2-t1}s taken to run the reasoner for {rulename}")
-    results = perform_sparql_query(root_cause_query)
-    result_rows = results['results']['bindings']
-    root_cause_report = {}
-    for row in result_rows:
-        defectLabel = row['defectLabel']['value']
-        if defectLabel not in root_cause_report:
-            root_cause_report[defectLabel] = {"failure_causes": {}}
-        failure_cause = row.get('ruleFired', {}).get('value', "")
-        if failure_cause:
-            if failure_cause not in root_cause_report[defectLabel]['failure_causes']:
-                root_cause_report[defectLabel]['failure_causes'][failure_cause] = []
-    with open(f"{path}/root_cause_report.json", "w") as f:
-        json.dump(root_cause_report, f, indent=2)
-    return {"message": "sparql construct ran successfully", "time_taken": f"{t2-t1}s"}
