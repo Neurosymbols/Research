@@ -10,7 +10,7 @@ from pgmpy.factors.discrete import TabularCPD
 from pgmpy.inference import VariableElimination
 from sklearn.metrics import confusion_matrix
 from app.services.utils import get_failure_cause_concepts
-from app.tests import compute_evaluation_matrix
+from tests.tests import compute_evaluation_matrix
 
 #program variables
 overall_rule_firing_probs = {}
