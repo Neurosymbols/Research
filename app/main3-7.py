@@ -20,19 +20,15 @@ GEMINI_API_KEY = "AIzaSyAlP3WbsB0VqdVEnZ-_Dw22C5XcW51Uvcg"
 os.environ["GOOGLE_API_KEY"] = GEMINI_API_KEY
 
 base_path = "./app/data"
-path = f"{base_path}/ontologies/epoch3-6"
-input_path = f"{base_path}/input/epoch3-6"
-output_path = f"{base_path}/output/epoch3-6"
-specs_file = f"{input_path}/specs_data_sp.csv"
-fmea_file = f"{input_path}/fmea-bidirectional.csv"
+path = f"{base_path}/ontologies/epoch3-7"
+input_path = f"{base_path}/input/epoch3-7"
+output_path = f"{base_path}/output/epoch3-7"
+specs_file = f"{input_path}/specs_data.csv"
+fc_file = f"{input_path}/defects_and_failure_causes.csv"
 
 #set the path where system generated ontologies will be saved
 onto_path.append(path)
 
-rule_scores = get_rule_scores(
-    f"{input_path}/interaction_rules.csv"
-)
-interaction_rules_sparql = create_interaction_rules_for_sparql(rule_scores)
 good_ratio = 0.5
 bad_ratio = 0.5
 version = 3
@@ -68,10 +64,10 @@ def parse_rule(rule: str):
 
 def make_result(nominal=None, tol=None, upper=None, lower=None, units=None):
     return {
-        "NV": nominal,
+        "NOM": nominal,
         "tolerance": tol,
-        "UL": upper,
-        "LL": lower,
+        "USL": upper,
+        "LSL": lower,
         "units": units
     }
 
@@ -162,110 +158,14 @@ null_specs = {
 #non-null specs
 non_null_specs = {s.lower(): v for s,v in specs.items() if s.lower() not in null_specs}
 
-def create_failure_mode_rules():
-    df = pd.read_csv(fmea_file)
-    failure_modes = []
-    failure_causes = []
-    failure_causes_rules_mapping = {}
-    target_cols = list(df.iloc[:, [0, 1, 2, 3, 4, 5, 6]].itertuples(index=False, name=None))
-    # need a dictonary: defect -> [failure cause] -> [spec]
-    rule_templates = {
-        "less_than": '''PREFIX base: <https://abakai.ai/ontology/semicon-base.owl#>
-            PREFIX product1: <https://abakai.ai/ontology/semicon-product1.owl#>
-            PREFIX xsd:  <http://www.w3.org/2001/XMLSchema#>
-            INSERT {
-                ?d base:hasFailureCause ?r .
-                ?d base:violatesSpecification ?spec .
-            }
-            WHERE {
-                ?r a base:<failure_cause> .
-                ?d a base:<defect> .
-                ?obs a base:<observed_spec> ;
-                    base:evaluatesAgainst ?spec ;
-                    base:hasObservedValue ?val ;
-                    base:monitorsDefect ?d .
-                ?spec base:hasLowerValue ?lower .
-                FILTER(xsd:decimal(?val) < xsd:decimal(?lower))
-            }''',
-        "more_than": '''PREFIX base: <https://abakai.ai/ontology/semicon-base.owl#>
-            PREFIX product1: <https://abakai.ai/ontology/semicon-product1.owl#>
-            PREFIX xsd:  <http://www.w3.org/2001/XMLSchema#>
-            INSERT {
-                ?d base:hasFailureCause ?r .
-                ?d base:violatesSpecification ?spec .
-            }
-            WHERE {
-                ?r a base:<failure_cause> .
-                ?d a base:<defect> .
-                ?obs a base:<observed_spec> ;
-                    base:evaluatesAgainst ?spec ;
-                    base:hasObservedValue ?val ;
-                    base:monitorsDefect ?d .
-                ?spec base:hasUpperValue ?upper .
-                FILTER(xsd:decimal(?val) > xsd:decimal(?upper))
-            }'''
-    }
-    fmea_data_dict = {} 
-    rule_count = 0
-    for row in target_cols:
-        fm = row[1]
-        fc = row[2]
-        related_specs = [normalize_text(s.strip().lower()) for s in row[3].split(";")]
-        related_specs = list(filter(lambda r: r in non_null_specs, related_specs))
-        rule = row[4]
-        rule_dict = parse_rule(rule)
-        assert list(rule_dict.keys()) == related_specs
-        if fm not in fmea_data_dict:
-            failure_modes.append(fm)
-            fmea_data_dict[fm] = {}
-        if fc not in fmea_data_dict[fm]:
-            failure_causes.append(fc)
-            fmea_data_dict[fm][fc] = {
-                "related_specs": related_specs,
-                "rules": [],
-                "severity": row[5],
-                "weight": row[6],
-                "id": f"FC{row[0]}"
-            }
-        for r in related_specs:
-            for rule_obj in rule_dict[r]:
-                comp = rule_obj.get("comparator")
-                rule_ins = rule_templates[comp].replace(
-                    "<failure_cause>", create_classname_syntax(fc)
-                    ).replace(
-                        "<defect>", create_classname_syntax(fm)
-                    ).replace(
-                        "<observed_spec>", create_classname_syntax(f"{r} obs")
-                    )
-                if rule_ins: rule_count += 1
-                fmea_data_dict[fm][fc]['rules'].append(rule_ins)
-    print(f"rule count: {rule_count}")
-    failure_causes_rules_mapping = fmea_data_dict
-    with open(f"{output_path}/fmea_extracts.json", "w") as f:
-        json.dump(fmea_data_dict, f, indent=2, ensure_ascii=False)
-    return {
-        "failure_causes": failure_causes,
-        "failure_modes": failure_modes,
-        "failure_causes_rules_mapping": failure_causes_rules_mapping
-    }
-
-fmrs = create_failure_mode_rules()
-
-def clean_rule(rule_str):
-    cleaned = rule_str.replace("\n", " ").strip()
-    cleaned = re.sub(r"\s+", " ", cleaned)
-    return cleaned
-
-def define_rules(failure_causes_rules_mapping):
-    rules = {}
-    for defect, defect_obj in failure_causes_rules_mapping.items():
-        i = 0
-        for k,v in defect_obj.items():
-            if k not in rules:
-                rules[k] = v['rules']
-                rules[k] = [clean_rule(r) for r in rules[k]]
-            i+=1
-    run_rules(rules, output_path)
+fc_df = pd.read_csv(fc_file)
+fc_df_dict = dict(zip(fc_df['item'], fc_df['level']))
+fcs = {"defect": [], "failure_cause": []}
+for k, v in fc_df_dict.items():
+    if v == "defect":
+        fcs['defect'].append(k)
+    else:
+        fcs['failure_cause'].append(k)
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="SemicON Ontology CLI")
@@ -280,7 +180,6 @@ if __name__ == "__main__":
     parser.add_argument("--clear", action="store_true", help="Clear the default graph in GraphDB")
     parser.add_argument("--evaluation-matrix", action="store_true", help="Generate evaluation matrix")
     parser.add_argument("--implement-bayes-inf", action="store_true", help="Implement bayesian inference")
-    parser.add_argument("--defect-cause-matrix", action="store_true", help="generate defect cause matrix")
     parser.add_argument("--remove-output-files", action="store_true", help="remove output files given version and path")
 
     args = parser.parse_args()
@@ -297,7 +196,7 @@ if __name__ == "__main__":
             f"{input_path}/ontology_properties.yml",
             {
                 "semicon_quality_concepts": non_null_specs,
-                "failure_causes_rules_mapping": fmrs['failure_causes_rules_mapping']
+                "defects_and_failure_causes": fcs
             }
         )
 
@@ -310,42 +209,19 @@ if __name__ == "__main__":
     if args.add_products:
         add_products_to_ontology(
             products_in_ontology,
-            f"{input_path}/synthetic_data_factory_{good_ratio}_{bad_ratio}_v{version}_{data_label}.csv",
-            fmrs['failure_causes_rules_mapping'],
+            f"{input_path}/synthetic_data_factory.csv",
+            fcs,
             non_null_specs,
             path
         )
-    if args.run_rules:
-        define_rules(fmrs['failure_causes_rules_mapping'])
 
     if args.export:
         export_ontology_to_graphdb(
             parent_ontology_path = f"{path}/semicon-base.owl",
             individual_ontology_path = f"{path}/semicon-product1.owl"
         )
-
-    if args.defect_cause_matrix:
-        generate_blind_defect_cause_matrix(
-            interaction_rules_sparql,
-            non_null_specs,
-            fmrs['failure_causes_rules_mapping'],
-            f"{output_path}/blind_dcm_{good_ratio}_{bad_ratio}_v{version}_{data_label}.csv",
-            rule_interaction=False
-        )
-
     if args.clear:
         clear_graphdb_default_graph()
-
-    if args.evaluation_matrix:
-        blind_defect_matrix = pd.read_csv(f"{output_path}/blind_dcm_{good_ratio}_{bad_ratio}_v{version}_{data_label}.csv")
-        defect_matrix = pd.read_csv(f"{output_path}/dcm_{good_ratio}_{bad_ratio}_v{version}_{data_label}.csv").head(products_in_ontology)
-        y_pred = blind_defect_matrix['defect']
-        y_true = defect_matrix['defect']
-        compute_evaluation_matrix(
-            y_true,
-            y_pred,
-            f"{output_path}/dcm_{good_ratio}_{bad_ratio}_v{version}_EM"
-        )
 
     if args.implement_bayes_inf:
         train_dcm = f"{output_path}/defect_cause_matrix_{good_ratio}_{bad_ratio}_v{version}_train.csv"

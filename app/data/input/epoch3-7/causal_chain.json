@@ -1,0 +1,111 @@
+{
+  "SolderBridging": {
+    "caused_by": ["ExcessPasteVolumePerAperture"]
+  },
+  "ExcessPasteVolumePerAperture": {
+    "caused_by": [
+      "ApertureOverfill",
+      "UndersideSmear",
+      "PostPrintSpread"
+    ],
+    "governed_by": [
+      "If PasteVolumePerAperture > PasteVolumePerAperture_USL → ExcessPasteVolumePerAperture"
+    ]
+  },
+  "ApertureOverfill": {
+    "caused_by": [
+      "LowAreaRatio",
+      "LargeBeadSizeOfSolderPaste",
+      "StencilThicknessTooHigh",
+      "SqueegeeSpeedTooLow",
+      "SqueegeeAngleTooLow"
+    ],
+    "governed_by": [
+      "If ApertureAreaRatio < ApertureAreaRatio_LSL ∧ StencilThickness ≥ StencilThickness_NOM → ApertureOverfill",
+      "If StencilThickness > StencilThickness_USL ∧ BGAPitch ≤ BGAPitch_threshold → ApertureOverfill",
+      "If PasteRollBeadSize > PasteRollBeadSize_USL → ApertureOverfill",
+      "If SqueegeeAngle < SqueegeeAngle_LSL ∧ (SqueegeeSpeed ≤ SqueegeeSpeed_NOM ∨ SqueegeePressure ≥ SqueegeePressure_NOM) → ApertureOverfill ∨ UndersideSmear",
+      "If SqueegeeSpeed ≤ SqueegeeSpeed_LSL ∧ (SqueegeeAngle ≤ SqueegeeAngle_NOM ∨ SqueegeePressure ≥ SqueegeePressure_NOM) → ApertureOverfill ∨ UndersideSmear"
+    ]
+  },
+  "UndersideSmear": {
+    "caused_by": [
+      "SqueegeeAngleTooLow",
+      "SqueegeePressureTooHigh",
+      "ResidualPasteVolume"
+    ],
+    "governed_by": [
+      "If SqueegeePressure > SqueegeePressure_USL → UndersideSmear",
+      "If ResidualPasteAllowed > ResidualPasteAllowed_USL → UndersideSmear"
+    ]
+  },
+  "PostPrintSpread": {
+    "caused_by": [
+      "LowPasteViscosity",
+      "HighHumidity"
+    ],
+    "governed_by": [
+      "If PasteViscosity < PasteViscosity_NOM ∨ AmbientRH > AmbientRH_USL → PostPrintSpread"
+    ]
+  },
+  "LowPasteViscosity": {
+    "caused_by": ["LowMetalContent"],
+    "governed_by": [
+      "If PasteMetalLoad < PasteMetalLoad_LSL → LowPasteViscosity"
+    ]
+  },
+  "LowAreaRatio": {
+    "caused_by": [],
+    "governed_by": [
+      "If ApertureAreaRatio < ApertureAreaRatio_LSL → LowAreaRatio"
+    ]
+  },
+  "LargeBeadSizeOfSolderPaste": {
+    "caused_by": [],
+    "governed_by": [
+      "If PasteRollBeadSize > PasteRollBeadSize_USL → LargeBeadSizeOfSolderPaste"
+    ]
+  },
+  "StencilThicknessTooHigh": {
+    "caused_by": [],
+    "governed_by": [
+      "If StencilThickness > StencilThickness_USL → StencilThicknessTooHigh"
+    ]
+  },
+  "SqueegeeSpeedTooLow": {
+    "caused_by": [],
+    "governed_by": [
+      "If SqueegeeSpeed < SqueegeeSpeed_LSL → SqueegeeSpeedTooLow"
+    ]
+  },
+  "SqueegeeAngleTooLow": {
+    "caused_by": [],
+    "governed_by": [
+      "If SqueegeeAngle < SqueegeeAngle_LSL → SqueegeeAngleTooLow"
+    ]
+  },
+  "SqueegeePressureTooHigh": {
+    "caused_by": [],
+    "governed_by": [
+      "If SqueegeePressure > SqueegeePressure_USL → SqueegeePressureTooHigh"
+    ]
+  },
+  "ResidualPasteVolume": {
+    "caused_by": [],
+    "governed_by": [
+      "If ResidualPasteAllowed > ResidualPasteAllowed_USL → ResidualPasteVolume"
+    ]
+  },
+  "HighHumidity": {
+    "caused_by": [],
+    "governed_by": [
+      "If AmbientRh > AmbientRh_USL → HighHumidity"
+    ]
+  },
+  "LowMetalContent": {
+    "caused_by": [],
+    "governed_by": [
+      "If PasteMetalLoad < PasteMetalLoad_LSL → LowMetalContent"
+    ]
+  }
+}

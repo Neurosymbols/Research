@@ -1,0 +1,42 @@
+@prefix base:   <https://abakai.ai/ontology/semicon-base.owl#> .
+@prefix sh:     <http://www.w3.org/ns/shacl#> .
+@prefix xsd:    <http://www.w3.org/2001/XMLSchema#> .
+
+# Declare namespace
+base:
+  sh:declare [
+    sh:prefix "base" ;
+    sh:namespace "https://abakai.ai/ontology/semicon-base.owl#" ;
+  ] .
+
+base:ObservationShape
+    a sh:NodeShape ;
+    sh:target [
+        a sh:SPARQLTarget ;
+        sh:prefixes base: ;
+        sh:select """
+            SELECT ?this
+            WHERE {
+                ?this a base:MeasurementInformationContentEntity .
+                ?this base:hasObservedValue ?ovalue .
+                ?spec a base:Quality .
+                ?spec base:hasUpperValue ?uspec .
+                ?this base:evaluatesAgainst ?spec .
+                FILTER(?ovalue > ?uspec)
+            }
+        """ ;
+    ] ;
+    
+    sh:sparql [
+        a sh:SPARQLConstraint ;
+        sh:prefixes base: ;
+        sh:message "Observations must me less than upper limit." ;
+        sh:select """
+            SELECT $this ?value ?uspec {
+                $this base:hasObservedValue ?value .
+                ?spec a base:Quality .
+                ?spec base:hasUpperValue ?uspec .
+                $this base:evaluatesAgainst ?spec .
+            }
+        """ ;
+    ] .

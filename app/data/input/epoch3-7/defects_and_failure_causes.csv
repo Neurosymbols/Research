@@ -1,0 +1,16 @@
+level,item,corrective action
+defect,SolderBridging,Reduce upstream EPV drivers first; verify with AOI and electrical test
+mechanism,ExcessPasteVolumePerAperture,"Target dominant drivers (pressure, angle, bead, viscosity); verify deposit volume/height"
+mechanism,ApertureOverfill,"Reduce bead, raise blade angle, lower pressure; consider thinner foil/aperture reduction"
+parameter,LowAreaRatio,Redesign apertures; electropolish; nano-coating; consider foil change
+parameter,LargeBeadSizeOfSolderPaste,Reduce bead width/mass; level bead; auto-dispense cadence
+parameter,StencilThicknessTooHigh,Use thinner foil/step-down; reduce aperture size (home-plate/windowpane); apply nano-coating
+parameter,SqueegeeSpeedTooLow,Raise speed into window; balance with pressure/angle
+parameter,SqueegeeAngleTooLow,Increase angle toward 60–62°; re-tune pressure/speed instead of flattening
+mechanism,UndersideSmear,"Lower pressure, raise angle; improve underside wipe; fix board support/foil flatness"
+parameter,SqueegeePressureTooHigh,Reduce pressure; verify gasket; improve support
+parameter,ResidualPasteVolume,Increase wipe frequency; optimize solvent; vac-assist wipe
+mechanism,PostPrintSpread,"Control paste/board temp, humidity, and queue time; refresh bead; verify slump"
+parameter,LowPasteViscosity,Cool paste/stencil; refresh bead; check lot; align mixing practice
+parameter,LowMetalContent,Replace solder paste batch with verified metal loading (≥88 wt%). Verify storage and handling conditions.
+parameter,HighHumidity,Dehumidify/condition cell; maintain RH control

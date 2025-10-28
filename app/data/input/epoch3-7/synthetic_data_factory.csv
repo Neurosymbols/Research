@@ -1,0 +1,26 @@
+PCB_ID,ApertureAreaRatio,StencilThickness,ApertureDiameter,PasteVolumePerAperture,PasteRollBeadSize,ResidualPasteAllowed,SqueegeePressure,SqueegeeSpeed,SqueegeeAngle,PasteViscosity,AmbientRh,PasteMetalLoad,Notes,TriggersExpected
+PCB_001,0.64,0.1,0.34,0.044,4.2,4.8,0.32,72,58,170,65,89,"low area ratio, slightly high pressure",ApertureOverfill;UndersideSmear;PostPrintSpread
+PCB_002,0.68,0.1,0.33,0.038,3.9,4.7,0.29,68,61,210,45,91,"mostly ok, high viscosity",
+PCB_003,0.6,0.105,0.36,0.05,4.5,5.5,0.35,58,55,160,70,88,low area ratio + thick stencil + high paste vol,ApertureOverfill;PostPrintSpread
+PCB_004,0.67,0.097,0.33,0.039,4.1,4.9,0.28,75,57,185,42,90,in-spec mostly,
+PCB_005,0.65,0.101,0.35,0.045,4.4,5.2,0.31,64,63,175,66,87,"area ratio borderline low, humidity high",ApertureOverfill;PostPrintSpread
+PCB_006,0.7,0.1,0.34,0.037,3.7,4.6,0.27,80,54,195,38,92,"good area ratio, low viscosity ok",
+PCB_007,0.62,0.102,0.36,0.047,4.6,5.7,0.33,60,66,150,75,85,low metal load + low viscosity + higher humidity,ApertureOverfill;PostPrintSpread
+PCB_008,0.66,0.1,0.34,0.041,4,4.8,0.3,70,57,180,40,90,exact borderline area ratio,
+PCB_009,0.63,0.099,0.34,0.043,4.3,5,0.34,65,58,178,62,89,area ratio slightly low,ApertureOverfill
+PCB_010,0.75,0.1,0.32,0.035,3.6,4.4,0.25,85,52,220,35,93,well within spec,
+PCB_011,0.61,0.104,0.37,0.052,4.9,5.8,0.36,55,70,155,73,84,big paste vol and high p_line,ApertureOverfill;UndersideSmear;PostPrintSpread
+PCB_012,0.69,0.098,0.33,0.039,3.8,4.7,0.26,78,53,205,37,91,ok,
+PCB_013,0.58,0.11,0.38,0.056,5.2,6,0.38,50,72,140,80,82,severe out-of-spec → expect bridging,ApertureOverfill;UndersideSmear;PostPrintSpread
+PCB_014,0.67,0.099,0.34,0.04,4,4.9,0.29,72,56,182,41,90,close to nominal,
+PCB_015,0.64,0.1,0.35,0.046,4.5,5.3,0.32,63,59,176,64,88,"area ratio slightly low, residual paste high",ApertureOverfill
+PCB_016,0.71,0.096,0.33,0.036,3.5,4.3,0.24,82,51,215,36,94,good,
+PCB_017,0.66,0.103,0.34,0.042,4.2,5,0.3,69,64,170,67,87,stencil slightly thick and viscosity lowish,ApertureOverfill;PostPrintSpread
+PCB_018,0.59,0.107,0.37,0.049,4.7,5.6,0.34,59,68,158,72,86,low area ratio+thick stencil+low metal load,ApertureOverfill;PostPrintSpread
+PCB_019,0.68,0.1,0.34,0.038,3.9,4.6,0.28,76,55,200,39,91,good,
+PCB_020,0.65,0.102,0.35,0.044,4.3,5.1,0.31,66,60,174,61,89,borderline,ApertureOverfill
+PCB_021,0.62,0.101,0.36,0.048,4.6,5.4,0.33,62,67,165,69,86,low metal load+low viscosity,ApertureOverfill;PostPrintSpread
+PCB_022,0.73,0.099,0.33,0.036,3.6,4.5,0.26,81,53,210,38,92,good,
+PCB_023,0.6,0.106,0.36,0.051,4.8,5.9,0.35,57,71,148,78,83,bad on many params,ApertureOverfill;UndersideSmear;PostPrintSpread
+PCB_024,0.69,0.098,0.33,0.039,3.9,4.7,0.27,79,54,202,36,91,ok,
+PCB_025,0.61,0.105,0.37,0.05,4.9,5.8,0.37,56,69,152,74,85,high p_line + low viscosity,UndersideSmear;PostPrintSpread
