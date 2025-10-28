@@ -10,13 +10,8 @@ from app.services.utils import *
 from .services.ontology_functions import initiate_ontology,\
     add_specs_to_ontology,\
     add_products_to_ontology
-from .services.create_reports import generate_blind_defect_cause_matrix
 from .services.bayesian_inference import implement_bayesian_inference
-from .tests import *
 
-
-GEMINI_API_KEY = "AIzaSyAlP3WbsB0VqdVEnZ-_Dw22C5XcW51Uvcg"
-os.environ["GOOGLE_API_KEY"] = GEMINI_API_KEY
 
 base_path = "./app/data"
 path = f"{base_path}/ontologies/epoch3-7"
