@@ -40,6 +40,10 @@ semicon_sdcs = [
     'Failure Cause'
 ]
 
+semicon_fc_subtypes = [
+    'RootCause'
+]
+
 # Initiate the ontology (set create_new = true if ontologies need to be created from scratch everytime)
 def initiate_ontology(
         create_new, 
@@ -61,7 +65,6 @@ def initiate_ontology(
             bfo = get_ontology(BFO_IRI).load()
         add_base_classes(base_classes) # T-Box
         define_properties(properties_path) # T-Box
-        add_base_individuals(base_classes) # A-Box
         if import_iof:
             #idempotently import ontologies
             base_onto.imported_ontologies.append(iof) # SemicON Base Onto imports IOF
@@ -81,10 +84,10 @@ def add_base_classes(
 ):
     #add base classes
     #T-BOX declaration
-    semicon_defect_concepts = list(base_classes.get('failure_causes_rules_mapping').keys())
+    semicon_defect_concepts = list(base_classes.get("defects_and_failure_causes", {}).get("defect", []))
     semicon_quality_concepts = list(base_classes.get('semicon_quality_concepts').keys())
     semicon_corrective_action_concepts = base_classes.get('semicon_corrective_action_concepts', {})
-    failure_cause_concepts = get_failure_cause_concepts(base_classes.get('failure_causes_rules_mapping'))
+    failure_cause_concepts = list(base_classes.get("defects_and_failure_causes", {}).get("failure_cause", []))
     add_classes(
         super_base_classes,
         Thing,
@@ -121,7 +124,12 @@ def add_base_classes(
         base_onto
     )
     add_classes(
-        [fc for fc, desc in failure_cause_concepts.items()],
+        [fc for fc in failure_cause_concepts],
+        base_onto.FailureCause,
+        base_onto
+    )
+    add_classes(
+        [fc for fc in semicon_fc_subtypes],
         base_onto.FailureCause,
         base_onto
     )
@@ -141,6 +149,8 @@ def define_properties(input_path):
                     bases = [ObjectProperty]
                     if prop.get("functional"):
                         bases.append(FunctionalProperty)
+                    if prop.get("transitive"):
+                        bases.append(TransitiveProperty)
                     cls = types.new_class(prop["name"], tuple(bases))
                     if "inverse_of" in prop:
                         cls.inverse_property = base_onto[prop["inverse_of"]]
@@ -157,28 +167,6 @@ def define_properties(input_path):
                     type_map = {"float": float, "int": int, "str": str}
                     cls.range = [type_map[prop["range"]]]
 
-def add_base_individuals(
-    base_classes
-):
-  #add base individuals
-  # A-Box Declaration
-  #adding universal failure cause individuals with severity and weights
-  semicon_corrective_action_concepts = base_classes.get('semicon_corrective_action_concepts', {})
-  failure_causes_rules_mapping = base_classes.get('failure_causes_rules_mapping')
-  if product1_onto is not None:
-    with product1_onto:
-        for defect, defect_info in failure_causes_rules_mapping.items():
-            for fc_name, fc_data in defect_info.items():
-                ind = base_onto[create_classname_syntax(fc_name)](fc_data['id'])
-                ind.label.append(fc_data['id'])
-                ind.hasSeverity = fc_data['severity']
-                ind.hasWeight = fc_data['weight']
-        add_individuals(
-            semicon_corrective_action_concepts,
-            product1_onto,
-            base_onto
-        )
-
 def add_specs_to_ontology(specs_dict, ontology_path):
     if product1_onto is not None:
         with product1_onto:
@@ -188,11 +176,11 @@ def add_specs_to_ontology(specs_dict, ontology_path):
                 onto_ins = base_onto_class(specs_dict[si]['id'])
                 onto_ins.label = [specs_dict[si]['id']]
                 for value_type, value in specs_dict[si].items():
-                    if value_type == "NV":
+                    if value_type == "NOM":
                         onto_ins.hasNominalValue = value
-                    elif value_type == "LL":
+                    elif value_type == "LSL":
                         onto_ins.hasLowerValue = value
-                    elif value_type == "UL":
+                    elif value_type == "USL":
                         onto_ins.hasUpperValue = value
             save_ontology(ontology_path)
 
@@ -216,39 +204,38 @@ def add_defect_individuals(
 def add_products_to_ontology(
     batch_size:int,
     synthetic_data_factory_file: str,
-    failure_causes_rules_mapping: dict,
+    defects_and_failure_causes: dict,
     semicon_quality_concepts: dict,
     ontology_path:str
 ):
-    semicon_defect_concepts = list(failure_causes_rules_mapping.keys())
+    semicon_defect_concepts = list(defects_and_failure_causes.get("defect", []))
     df = pd.read_csv(synthetic_data_factory_file)
     # Strip spaces from column names
     df.columns = df.columns.str.strip() # Check specs in Synthetic Data files
-    # Normalize all column names to lowercase once
-    lower_cols = [col.lower() for col in df.columns]
     if product1_onto is not None:
         with product1_onto: # A-box instantiation
-            for entry in semicon_quality_concepts: 
-                assert entry.lower() in lower_cols, f"Column '{entry}' is missing in Synthetic data!" # check whether the 'spec' exists in synthetic data file
-                values = df[entry].tolist()[0:batch_size] # get all observed values corresponding to a 'spec'. Limiting to first 20 observed values
-                #create defect individuals
-                PCB = base_onto['Pcb'] # get reference to pcb class
-                qual_ins = product1_onto[semicon_quality_concepts[entry]['id']] # Get reference to the 'Quality' Individual
-                for i, v in enumerate(values): # create the datastructure (i,v) list
-                    product_individual = PCB(f"PCB{i+1}") # start creating Product1 individuals
-                    product_individual.label = [f"PCB{i+1}"] # assign a label
-                    product_individual.hasSpecification.append(qual_ins) # connect the 'Product1' individual with 'Quality' individual using 'Semi:hasSpecification' which is not a functional property (hence using append)
-                    observation_individual =  base_onto[f"{create_classname_syntax(entry)}Obs"](  # instantiating observed value individuals for Product1
-                        f"{create_classname_syntax(entry)}_PCB{i+1}_Obs"
+            for entry in semicon_quality_concepts:
+                entry_class_syntax = create_classname_syntax(entry)
+                if entry_class_syntax in df.columns:
+                    values = df[entry_class_syntax].tolist()[0:batch_size] # get all observed values corresponding to a 'spec'. Limiting to first 20 observed values
+                    #create defect individuals
+                    PCB = base_onto['PCB'] # get reference to pcb class
+                    qual_ins = product1_onto[semicon_quality_concepts[entry]['id']] # Get reference to the 'Quality' Individual
+                    for i, v in enumerate(values): # create the datastructure (i,v) list
+                        product_individual = PCB(f"PCB{i+1}") # start creating Product1 individuals
+                        product_individual.label = [f"PCB{i+1}"] # assign a label
+                        product_individual.hasSpecification.append(qual_ins) # connect the 'Product1' individual with 'Quality' individual using 'Semi:hasSpecification' which is not a functional property (hence using append)
+                        observation_individual =  base_onto[f"{entry_class_syntax}Obs"](  # instantiating observed value individuals for Product1
+                            f"{entry_class_syntax}_PCB{i+1}_Obs"
+                            )
+                        observation_individual.evaluatesAgainst = qual_ins # observed value individual describes the quality individual
+                        observation_individual.hasObservedValue = float(v) # assign hasobserved value to individual
+                        observation_individual.observationOf = product_individual
+                        add_defect_individuals(
+                            product_individual,
+                            semicon_defect_concepts,
+                            observation_individual,
                         )
-                    observation_individual.evaluatesAgainst = qual_ins # observed value individual describes the quality individual
-                    observation_individual.hasObservedValue = float(v) # assign hasobserved value to individual
-                    observation_individual.observationOf = product_individual
-                    add_defect_individuals(
-                        product_individual,
-                        semicon_defect_concepts,
-                        observation_individual,
-                    )
             save_ontology(ontology_path)
             #log the number of individuals
             print(f"{len(values)} product individuals imported to the ontology")

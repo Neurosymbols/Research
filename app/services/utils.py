@@ -9,13 +9,16 @@ from pathlib import Path
 from SPARQLWrapper import SPARQLWrapper, JSON, POST
 
 GDB_URL = "http://localhost:7200"
-REPO = "demo-semicon"
+REPO = "demo-semicon-shacl"
 
 def create_classname_syntax(classname):
    # Split by any sequence of non-alphanumeric characters
     parts = re.split(r'[^A-Za-z0-9]+', classname)
     # Capitalize each part and join
-    return "".join(word.capitalize() for word in parts if word)
+    if len(parts) > 1:
+        return "".join(word.capitalize() for word in parts if word)
+    elif len(parts) == 1:
+        return parts[0]
 
 def clean_param_name(raw):
     # 1. Remove text in parentheses (units)
