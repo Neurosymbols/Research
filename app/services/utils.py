@@ -91,9 +91,9 @@ def export_ontology_to_graphdb(
     else:
         print(f"Error uploading: {r.status_code} {r.text}")
 
-def replace_iri():
+def replace_iri(path):
    # File path to your ontology
-    owl_file = Path("./data/ontologies/semicon-base.owl")
+    owl_file = Path(path)
 
     # Original and replacement import IRIs
     original_iri = 'https://spec.industrialontologies.org/ontology/core/Core'

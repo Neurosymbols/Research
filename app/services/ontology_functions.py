@@ -11,33 +11,55 @@ from app.services.utils import replace_iri, add_classes, add_individuals, create
 # Set the IRIs
 BASE_ONTO_IRI = "https://abakai.ai/ontology/semicon-base.owl"
 PRODUCT_ONTO_IRI = "https://abakai.ai/data/semicon-product1.owl"
-IOF_CORE_IRI = "https://raw.githubusercontent.com/iofoundry/ontology/master/core/Core.rdf"
-BFO_IRI = "http://purl.obolibrary.org/obo/bfo.owl"
+# IOF_CORE_IRI = "https://spec.industrialontologies.org/ontology/core/Core/"
+# BFO_IRI = "http://purl.obolibrary.org/obo/bfo.owl"
+# RO_IRI = "http://purl.obolibrary.org/obo/ro.owl"
+
+base_path = "./app/data"
+path = f"{base_path}/ontologies/epoch3-7"
 
 # Initialize Variables to store ontology objects in memory
 base_onto = None
 product1_onto = None
 iof = None
 bfo = None
-import_iof = False
+ro = None
+import_ontologies = True
 
 super_base_classes = [
     'Action Specification',
     'Specifically Dependent Continuant',
     'Material Product',
     'Quality',
-    'Measurement Information Content Entity'
+    'Measurement Information Content Entity',
+    'Requirement Specification',
+    'Process Characteristic',
+    'Manufacturing Process'
 ]
 # Create list of SemicON base classes
 semicon_material_artifacts = [
    'PCB'
+]
+semicon_measurement_ices = [
+    'ParameterObservation'
+]
+semicon_req_ices = [
+    'ParameterSpecification'
+]
+semicon_quality = [
+    'ParameterQuality'
+]
+semicon_process_characteristic = [
+    'ParameterCharacteristic'
 ]
 semicon_action_specifications = [
     'Corrective Action'
 ]
 semicon_sdcs = [
     'Defect',
-    'Failure Cause'
+    'Failure Cause',
+    'Effect',
+    'Cause'
 ]
 
 semicon_fc_subtypes = [
@@ -51,7 +73,7 @@ def initiate_ontology(
         properties_path = None,
         base_classes = None
     ):
-    global base_onto, product1_onto
+    global base_onto, product1_onto, iof, ro, bfo
     base_onto = get_ontology(BASE_ONTO_IRI)
     product1_onto = get_ontology(PRODUCT_ONTO_IRI)
     if not create_new:
@@ -60,14 +82,20 @@ def initiate_ontology(
         product1_onto = product1_onto.load()
     else:
         # When ontologies do not exist in ontologies folder, create them for the first time
-        if import_iof:
-            iof = get_ontology(IOF_CORE_IRI).load()
-            bfo = get_ontology(BFO_IRI).load()
+        if import_ontologies:
+            iof = get_ontology(f"{path}/Core.rdf").load(only_local=True)
+            print(iof)
+            bfo = get_ontology(f"{path}/bfo.owl").load(only_local=True)
+            print(bfo)
+            ro = get_ontology(f"{path}/ro.owl").load(only_local=True)
+            print(ro)
         add_base_classes(base_classes) # T-Box
         define_properties(properties_path) # T-Box
-        if import_iof:
+        if import_ontologies:
             #idempotently import ontologies
             base_onto.imported_ontologies.append(iof) # SemicON Base Onto imports IOF
+            base_onto.imported_ontologies.append(bfo)
+            base_onto.imported_ontologies.append(ro)
         product1_onto.imported_ontologies.append(base_onto) # Product1 Onto imports the SemicON Base Onto
         save_ontology(ontologies_path)
 
@@ -76,8 +104,8 @@ def save_ontology(path:str):
     print(f"Total individuals inside SemicON Product1: {len(list(product1_onto.individuals()))}")
     base_onto.save(file=os.path.join(path, "semicon-base.owl"), format = "rdfxml")
     product1_onto.save(file=os.path.join(path, "semicon-product1.owl"), format = "rdfxml")
-    if import_iof:
-        replace_iri()
+    if import_ontologies:
+        replace_iri(f"{path}/semicon-base.owl")
 
 def add_base_classes(
     base_classes
@@ -86,36 +114,69 @@ def add_base_classes(
     #T-BOX declaration
     semicon_defect_concepts = list(base_classes.get("defects_and_failure_causes", {}).get("defect", []))
     semicon_quality_concepts = list(base_classes.get('semicon_quality_concepts').keys())
+    semicon_characteristic_concepts = list(base_classes.get("semicon_characteristic_concepts").keys())
     semicon_corrective_action_concepts = base_classes.get('semicon_corrective_action_concepts', {})
+    manufacturing_process_concepts = base_classes.get("manufacturing_process_concepts", [])
     failure_cause_concepts = list(base_classes.get("defects_and_failure_causes", {}).get("failure_cause", []))
-    add_classes(
-        super_base_classes,
-        Thing,
-        base_onto
-    )
+    if not import_ontologies:
+        add_classes(
+            super_base_classes,
+            Thing,
+            base_onto
+        )
     add_classes(
         semicon_action_specifications,
-        iof.search_one(iri="*ActionSpecification") if import_iof else base_onto.search_one(iri="*ActionSpecification"),
+        iof.search_one(iri="*ActionSpecification") if import_ontologies else base_onto.search_one(iri="*ActionSpecification"),
         base_onto
     )
     add_classes(
         semicon_sdcs,
-        bfo.search_one(iri="*BFO_0000020") if import_iof else base_onto.search_one(iri="*SpecificallyDependentContinuant"),
+        bfo.search_one(iri="*BFO_0000020") if import_ontologies else base_onto.search_one(iri="*SpecificallyDependentContinuant"),
         base_onto
     )
     add_classes(
         semicon_material_artifacts,
-        iof.search_one(iri="*MaterialProduct") if import_iof else base_onto.search_one(iri="*MaterialProduct"),
+        iof.search_one(iri="*MaterialProduct") if import_ontologies else base_onto.search_one(iri="*MaterialProduct"),
+        base_onto
+    )
+    add_classes(
+        semicon_quality,
+        bfo.search_one(iri="*BFO_0000019") if import_ontologies else base_onto.search_one(iri="*Quality"),
+        base_onto
+    )
+    add_classes(
+        semicon_process_characteristic,
+        iof.search_one(iri="*ProcessCharacteristic") if import_ontologies else base_onto.search_one(iri="*ProcessCharacteristic"),
+        base_onto
+    )
+    add_classes(
+        semicon_measurement_ices,
+        iof.search_one(iri="*MeasurementInformationContentEntity") if import_ontologies else base_onto.search_one(iri="*MeasurementInformationContentEntity"),
+        base_onto
+    )
+    add_classes(
+        semicon_req_ices,
+        iof.search_one(iri="*RequirementSpecification") if import_ontologies else base_onto.search_one(iri="*RequirementSpecification"),
         base_onto
     )
     add_classes(
        semicon_quality_concepts,
-       bfo.search_one(iri="*BFO_0000019") if import_iof else base_onto.search_one(iri="*Quality"),
+       base_onto.ParameterQuality,
        base_onto
     )
     add_classes(
-       [f"{s} obs" for s in semicon_quality_concepts],
-       iof.search_one(iri="*MeasurementInformationContentEntity") if import_iof else base_onto.search_one(iri="*MeasurementInformationContentEntity"),
+        semicon_characteristic_concepts,
+        base_onto.ParameterCharacteristic,
+        base_onto
+    )
+    add_classes(
+       [f"{s} obs" for s in semicon_quality_concepts] + [f"{s} obs" for s in semicon_characteristic_concepts],
+       base_onto.ParameterObservation,
+       base_onto
+    )
+    add_classes(
+       [f"{s} spec" for s in semicon_quality_concepts] + [f"{s} spec" for s in semicon_characteristic_concepts],
+       base_onto.ParameterSpecification,
        base_onto
     )
     add_classes(
@@ -131,6 +192,11 @@ def add_base_classes(
     add_classes(
         [fc for fc in semicon_fc_subtypes],
         base_onto.FailureCause,
+        base_onto
+    )
+    add_classes(
+        manufacturing_process_concepts,
+        iof.search_one(iri="*ManufacturingProcess") if import_ontologies else base_onto.search_one(iri="*ManufacturingProcess"),
         base_onto
     )
     add_classes(

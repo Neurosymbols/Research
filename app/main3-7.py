@@ -132,31 +132,44 @@ def parse_spec_strings(specs_dict):
             extracted_specs_dict[k] = make_result()
         extracted_specs_dict[k]['id'] = f"S{spec_id + 1}"
         spec_id += 1
-    with open(f"{output_path}/specs.json", "w") as f:
-        json.dump(extracted_specs_dict, f, indent=2, ensure_ascii=False)
     return extracted_specs_dict
 
 def extract_specs():
     specs_dict = {}
-    df = pd.read_csv(specs_file)
-    target_cols = list(df.iloc[:, [0, 1, 2]].itertuples(index=False, name=None))
+    df = pd.read_csv(specs_file, skiprows=2)
+    target_cols = list(df.iloc[:, [0, 1, 2, 3, 4, 5]].itertuples(index=False, name=None))
+    spec_category_dict = {}
     for row in target_cols:
         spec_name = row[1]
-        spec_value = row[2]
-        if normalize_text(spec_name.lower()) != "specification":
-            specs_dict[normalize_text(spec_name.lower())] = spec_value
+        spec_category = row[2].split(":")[1].strip()
+        process_category = row[3].strip()
+        spec_category_dict[normalize_text(spec_name.lower())] = {"onto_category": spec_category, "process_category": process_category}
+        spec_value = row[4]
+        specs_dict[normalize_text(spec_name.lower())] = spec_value
     #chain the process
     # specs_dict = dict(list(specs_dict.items())[:3])
-    return parse_spec_strings(specs_dict)
+    parsed_spec_dict = parse_spec_strings(specs_dict)
+    for k, v in parsed_spec_dict.items():
+        parsed_spec_dict[k]['onto_category'] = spec_category_dict[k]['onto_category']
+        parsed_spec_dict[k]['process_category'] = spec_category_dict[k]['process_category']
+
+    with open(f"{output_path}/specs.json", "w") as f:
+        json.dump(parsed_spec_dict, f, indent=2, ensure_ascii=False)
+    return parsed_spec_dict
 
 specs = extract_specs()
 #where all values are null
 null_specs = {
     name.lower(): values for name, values in specs.items()
-    if all(v is None for k, v in values.items() if k!= "id")
+    if all(v is None for k, v in values.items() if k not in ["id", "category"])
 }
 #non-null specs
 non_null_specs = {s.lower(): v for s,v in specs.items() if s.lower() not in null_specs}
+
+manufacturing_process_concepts = []
+for k, v in non_null_specs.items():
+    if v['process_category'] not in manufacturing_process_concepts:
+        manufacturing_process_concepts.append(v['process_category'])
 
 fc_df = pd.read_csv(fc_file)
 fc_df_dict = dict(zip(fc_df['item'], fc_df['level']))
@@ -195,7 +208,9 @@ if __name__ == "__main__":
             path,
             f"{input_path}/ontology_properties.yml",
             {
-                "semicon_quality_concepts": non_null_specs,
+                "semicon_quality_concepts": {k : v for k,v in non_null_specs.items() if non_null_specs[k]['onto_category'] == 'Quality'},
+                "semicon_characteristic_concepts": {k : v for k,v in non_null_specs.items() if non_null_specs[k]['process_category'] == 'ProcessCharacteristic'},
+                "manufacturing_process_concepts": manufacturing_process_concepts,
                 "defects_and_failure_causes": fcs
             }
         )
