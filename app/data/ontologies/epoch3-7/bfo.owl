@@ -1,51 +1,51 @@
 <?xml version="1.0"?>
 <rdf:RDF xmlns="http://purl.obolibrary.org/obo/bfo-temporalized-relations.owl/"
      xml:base="http://purl.obolibrary.org/obo/bfo-temporalized-relations.owl/"
-     xmlns:dc11="http://purl.org/dc/elements/1.1/"
-     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:dc="http://purl.org/dc/terms/"
+     xmlns:obo="http://purl.obolibrary.org/obo/"
      xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
      xmlns:xml="http://www.w3.org/XML/1998/namespace"
      xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
-     xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+     xmlns:dc11="http://purl.org/dc/elements/1.1/"
      xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
-     xmlns:obo="http://purl.obolibrary.org/obo/"
-     xmlns:dc="http://purl.org/dc/terms/">
-    <owl:Ontology rdf:about="http://purl.obolibrary.org/obo/bfo.owl">
-        <owl:versionIRI rdf:resource="http://purl.obolibrary.org/obo/bfo/2020/bfo.owl"/>
-        <dc11:contributor>Mathias Brochhausen</dc11:contributor>
-        <dc11:contributor>Ron Rudnicki</dc11:contributor>
-        <dc:title>BFO 2020</dc:title>
-        <dc11:contributor>Janna Hastings</dc11:contributor>
-        <dc11:contributor>Leonard Jacuzzo</dc11:contributor>
-        <dc11:contributor>Randall Dipert</dc11:contributor>
-        <dc11:contributor>Barry Smith</dc11:contributor>
-        <dc11:contributor>Larry Hunter</dc11:contributor>
-        <dc11:contributor>Stefan Schulz</dc11:contributor>
-        <dc11:contributor>Werner Ceusters</dc11:contributor>
-        <dc:license rdf:resource="https://creativecommons.org/licenses/by/4.0/"/>
-        <dc11:contributor>Jonathan Bona</dc11:contributor>
-        <dc11:contributor>Robert Rovetto</dc11:contributor>
-        <dc11:contributor>Albert Goldfain</dc11:contributor>
-        <dc11:contributor>Yongqun &quot;Oliver&quot; He</dc11:contributor>
-        <dc11:contributor>Bjoern Peters</dc11:contributor>
-        <dc11:contributor>Melanie Courtot</dc11:contributor>
+     xmlns:skos="http://www.w3.org/2004/02/skos/core#">
+    <owl:Ontology rdf:about="https://neurosymbols.ai/ontology/bfo.owl">
+        <owl:versionIRI rdf:resource="https://neurosymbols.ai/ontology/releases/2020/bfo.owl"/>
         <dc11:contributor>Alan Ruttenberg</dc11:contributor>
+        <dc11:contributor>Albert Goldfain</dc11:contributor>
+        <dc11:contributor>Barry Smith</dc11:contributor>
         <dc11:contributor>Bill Duncan</dc11:contributor>
-        <dc11:contributor>Ludger Jansen</dc11:contributor>
-        <dc11:contributor>Thomas Bittner</dc11:contributor>
+        <dc11:contributor>Bjoern Peters</dc11:contributor>
         <dc11:contributor>Chris Mungall</dc11:contributor>
+        <dc11:contributor>David Osumi-Sutherland</dc11:contributor>
+        <dc11:contributor>Fabian Neuhaus</dc11:contributor>
+        <dc11:contributor>James A. Overton</dc11:contributor>
+        <dc11:contributor>Janna Hastings</dc11:contributor>
         <dc11:contributor>Jie Zheng</dc11:contributor>
         <dc11:contributor>John Beverley</dc11:contributor>
-        <dc11:contributor>Mauricio Almeida</dc11:contributor>
-        <dc11:contributor>Mark Ressler</dc11:contributor>
-        <rdfs:comment>The most recent version of this file will always be in the GitHub repository https://github.com/bfo-ontology/bfo-2020</rdfs:comment>
+        <dc11:contributor>Jonathan Bona</dc11:contributor>
+        <dc11:contributor>Larry Hunter</dc11:contributor>
+        <dc11:contributor>Leonard Jacuzzo</dc11:contributor>
+        <dc11:contributor>Ludger Jansen</dc11:contributor>
         <dc11:contributor>Mark Jensen</dc11:contributor>
+        <dc11:contributor>Mark Ressler</dc11:contributor>
+        <dc11:contributor>Mathias Brochhausen</dc11:contributor>
+        <dc11:contributor>Mauricio Almeida</dc11:contributor>
+        <dc11:contributor>Melanie Courtot</dc11:contributor>
         <dc11:contributor>Neil Otte</dc11:contributor>
-        <dc11:contributor>David Osumi-Sutherland</dc11:contributor>
         <dc11:contributor>Pierre Grenon</dc11:contributor>
-        <dc11:contributor>James A. Overton</dc11:contributor>
-        <dc11:contributor>Fabian Neuhaus</dc11:contributor>
+        <dc11:contributor>Randall Dipert</dc11:contributor>
+        <dc11:contributor>Robert Rovetto</dc11:contributor>
+        <dc11:contributor>Ron Rudnicki</dc11:contributor>
+        <dc11:contributor>Stefan Schulz</dc11:contributor>
+        <dc11:contributor>Thomas Bittner</dc11:contributor>
+        <dc11:contributor>Werner Ceusters</dc11:contributor>
+        <dc11:contributor>Yongqun &quot;Oliver&quot; He</dc11:contributor>
         <dc:description xml:lang="en">A temporal extension of Basic Formal Ontology implemented in the Web Ontology Language (OWL 2) with direct semantics.</dc:description>
+        <dc:license rdf:resource="https://creativecommons.org/licenses/by/4.0/"/>
+        <dc:title>BFO 2020</dc:title>
+        <rdfs:comment>The most recent version of this file will always be in the GitHub repository https://github.com/bfo-ontology/bfo-2020</rdfs:comment>
     </owl:Ontology>
     
 
@@ -2189,4 +2189,5 @@
 
 
 
-<!-- Generated by the OWL API (version 4.2.6.20160910-2108) https://github.com/owlcs/owlapi -->
+<!-- Generated by the OWL API (version 4.5.29.2024-05-13T12:11:03Z) https://github.com/owlcs/owlapi -->
+

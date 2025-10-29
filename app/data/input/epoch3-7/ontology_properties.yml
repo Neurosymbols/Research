@@ -33,11 +33,14 @@ object_properties:
     parent: RO_0000052
     domain: FailureCause
     range: PCB
+    functional: True
   
   - name: isAffectedBy
     parent: RO_0000053
     domain: PCB
     range: FailureCause
+    inverse_of: affects
+    inverse_functional: True
   
   - name: hasAssessmentInput
     parent: used

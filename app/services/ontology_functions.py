@@ -11,11 +11,9 @@ from app.services.utils import replace_iri, add_classes, add_individuals, create
 # Set the IRIs
 BASE_ONTO_IRI = "https://neurosymbols.ai/ontology/causal-terminology.owl"
 PRODUCT_ONTO_IRI = "https://neurosymbols.ai/data/causal-assertions.owl"
-IOF_CORE_IRI = "https://spec.industrialontologies.org/ontology/core/Core/"
-BFO_IRI = "http://purl.obolibrary.org/obo/bfo.owl"
-RO_IRI = "http://purl.obolibrary.org/obo/ro.owl"
-PROV_IRI = "https://www.w3.org/ns/prov.owl"
 SKOS_IRI = "http://www.w3.org/2004/02/skos/core"
+IOF_IRI = "https://spec.industrialontologies.org/ontology/core/Core/"
+BFO_IRI = "http://purl.obolibrary.org/obo/"
 
 base_path = "./app/data"
 path = f"{base_path}/ontologies/epoch3-7"
@@ -101,10 +99,10 @@ def initiate_ontology(
     else:
         # When ontologies do not exist in ontologies folder, create them for the first time
         if import_ontologies:
-            iof = get_ontology(f"{path}/Core.rdf").load(only_local=True)
+            iof = get_ontology(f"{path}/iof-core.rdf").load(only_local=True)
             bfo = get_ontology(f"{path}/bfo.owl").load(only_local=True)
-            ro = get_ontology(f"{path}/ro.owl").load(only_local=True)
-            prov = get_ontology(f"{path}/prov.owl").load(only_local=True)
+            ro = get_ontology(f"{path}/ro-causal-properties-iri.owl").load(only_local=True)
+            prov = get_ontology(f"{path}/bfo-prov.owl").load(only_local=True)
             skos = get_ontology(SKOS_IRI).load()
         prefix_onto_map = {
             "IOF": iof,
@@ -115,14 +113,14 @@ def initiate_ontology(
         add_base_classes(base_classes) # T-Box
         define_properties(properties_path) # T-Box
         add_axioms_to_ontology(axioms_dict) # T-Box
+        add_base_class_types(base_classes) # T-Box
         add_defintions_and_examples(defintions_dict) # T-Box
         add_ishikawa_causal_graph() #T-Box
         if import_ontologies:
             #idempotently import ontologies
-            base_onto.imported_ontologies.append(iof) # SemicON Base Onto imports IOF
-            base_onto.imported_ontologies.append(bfo)
-            base_onto.imported_ontologies.append(ro)
             base_onto.imported_ontologies.append(prov)
+            base_onto.imported_ontologies.append(iof) # SemicON Base Onto imports IOF
+            base_onto.imported_ontologies.append(ro)
         product1_onto.imported_ontologies.append(base_onto) # Product1 Onto imports the SemicON Base Onto
         save_ontology(ontologies_path)
 
@@ -131,20 +129,13 @@ def save_ontology(path:str):
     print(f"Total individuals inside SemicON Product1: {len(list(product1_onto.individuals()))}")
     base_onto.save(file=os.path.join(path, "neurosymbols-causal-terminology.owl"), format = "rdfxml")
     product1_onto.save(file=os.path.join(path, "neurosymbols-causal-assertions.owl"), format = "rdfxml")
-    if import_ontologies:
-        replace_iri(f"{path}/neurosymbols-causal-terminology.owl")
 
 def add_base_classes(
     base_classes
 ):
     #add base classes
     #T-BOX declaration
-    semicon_defect_concepts = list(base_classes.get("defects_and_failure_causes", {}).get("defect", []))
-    semicon_quality_concepts = list(base_classes.get('semicon_quality_concepts').keys())
-    semicon_characteristic_concepts = list(base_classes.get("semicon_characteristic_concepts").keys())
-    semicon_corrective_action_concepts = base_classes.get('semicon_corrective_action_concepts', {})
     manufacturing_process_concepts = base_classes.get("manufacturing_process_concepts", [])
-    failure_cause_concepts = list(base_classes.get("defects_and_failure_causes", {}).get("failure_cause", []))
     if not import_ontologies:
         add_classes(
             super_base_classes,
@@ -153,42 +144,37 @@ def add_base_classes(
         )
     add_classes(
         semicon_action_specifications,
-        iof.search_one(iri="*ActionSpecification") if import_ontologies else base_onto.search_one(iri="*ActionSpecification"),
+        iof.search_one(iri=f"{IOF_IRI}ActionSpecification") if import_ontologies else base_onto.search_one(iri="*ActionSpecification"),
         base_onto
     )
     add_classes(
         semicon_sdcs,
-        bfo.search_one(iri="*BFO_0000020") if import_ontologies else base_onto.search_one(iri="*SpecificallyDependentContinuant"),
+        bfo.search_one(iri=f"{BFO_IRI}BFO_0000020") if import_ontologies else base_onto.search_one(iri="*SpecificallyDependentContinuant"),
         base_onto
     )
     add_classes(
         semicon_material_artifacts,
-        iof.search_one(iri="*MaterialProduct") if import_ontologies else base_onto.search_one(iri="*MaterialProduct"),
+        iof.search_one(iri=f"{IOF_IRI}MaterialProduct") if import_ontologies else base_onto.search_one(iri="*MaterialProduct"),
         base_onto
     )
     add_classes(
         semicon_quality,
-        bfo.search_one(iri="*BFO_0000019") if import_ontologies else base_onto.search_one(iri="*Quality"),
+        bfo.search_one(iri=f"{BFO_IRI}BFO_0000019") if import_ontologies else base_onto.search_one(iri="*Quality"),
         base_onto
     )
     add_classes(
         semicon_process_characteristic,
-        iof.search_one(iri="*ProcessCharacteristic") if import_ontologies else base_onto.search_one(iri="*ProcessCharacteristic"),
+        iof.search_one(iri=f"{IOF_IRI}ProcessCharacteristic") if import_ontologies else base_onto.search_one(iri="*ProcessCharacteristic"),
         base_onto
     )
     add_classes(
         semicon_measurement_ices,
-        iof.search_one(iri="*MeasurementInformationContentEntity") if import_ontologies else base_onto.search_one(iri="*MeasurementInformationContentEntity"),
+        iof.search_one(iri=f"{IOF_IRI}MeasurementInformationContentEntity") if import_ontologies else base_onto.search_one(iri="*MeasurementInformationContentEntity"),
         base_onto
     )
     add_classes(
         semicon_req_ices,
-        prov.search_one(iri="*RequirementSpecification") if import_ontologies else base_onto.search_one(iri="*RequirementSpecification"),
-        base_onto
-    )
-    add_classes(
-        manufacturing_process_concepts,
-        iof.search_one(iri="*ManufacturingProcess") if import_ontologies else base_onto.search_one(iri="*ManufacturingProcess"),
+        prov.search_one(iri=f"{IOF_IRI}RequirementSpecification") if import_ontologies else base_onto.search_one(iri="*RequirementSpecification"),
         base_onto
     )
     add_classes(
@@ -196,6 +182,22 @@ def add_base_classes(
         iof.search_one(iri="*Activity") if import_ontologies else base_onto.search_one(iri="*Activity"),
         base_onto
     )
+    add_classes(
+        manufacturing_process_concepts,
+        iof.search_one(iri=f"{IOF_IRI}ManufacturingProcess") if import_ontologies else base_onto.search_one(iri="*ManufacturingProcess"),
+        base_onto
+    )
+    add_classes(
+        [fc for fc in semicon_fc_subtypes],
+        base_onto.FailureCause,
+        base_onto
+    )
+
+def add_base_class_types(base_classes):
+    semicon_defect_concepts = list(base_classes.get("defects_and_failure_causes", {}).get("defect", []))
+    semicon_quality_concepts = list(base_classes.get('semicon_quality_concepts').keys())
+    semicon_characteristic_concepts = list(base_classes.get("semicon_characteristic_concepts").keys())
+    failure_cause_concepts = list(base_classes.get("defects_and_failure_causes", {}).get("failure_cause", []))
     add_classes(
        semicon_quality_concepts,
        base_onto.ParameterQuality,
@@ -224,17 +226,6 @@ def add_base_classes(
     add_classes(
         [fc for fc in failure_cause_concepts],
         base_onto.FailureCause,
-        base_onto
-    )
-    add_classes(
-        [fc for fc in semicon_fc_subtypes],
-        base_onto.FailureCause,
-        base_onto
-    )
-
-    add_classes(
-        [desc for ca, desc in semicon_corrective_action_concepts.items()],
-        base_onto.CorrectiveAction,
         base_onto
     )
 
@@ -269,6 +260,8 @@ def define_properties(input_path):
                             bases.append(FunctionalProperty)
                         if prop.get("transitive"):
                             bases.append(TransitiveProperty)
+                        if prop.get("inverse_functional"):
+                            bases.append(InverseFunctionalProperty)
                         cls = types.new_class(prop["name"], tuple(bases))
                     if "inverse_of" in prop:
                         entity = resolve_entity(prop['inverse_of'], search_spaces)
