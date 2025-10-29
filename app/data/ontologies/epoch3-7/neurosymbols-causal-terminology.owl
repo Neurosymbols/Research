@@ -10,10 +10,9 @@
          xmlns:obo="http://purl.obolibrary.org/obo/">
 
 <owl:Ontology rdf:about="https://neurosymbols.ai/ontology/causal-terminology.owl">
-  <owl:imports rdf:resource="https://raw.githubusercontent.com/iofoundry/ontology/master/core/Core.rdf"/>
-  <owl:imports rdf:resource="http://purl.obolibrary.org/obo/bfo.owl"/>
-  <owl:imports rdf:resource="http://purl.obolibrary.org/obo/ro.owl"/>
-  <owl:imports rdf:resource="http://www.w3.org/ns/prov.owl"/>
+  <owl:imports rdf:resource="https://neurosymbols.ai/ontology/bfo-prov.owl"/>
+  <owl:imports rdf:resource="https://neurosymbols.ai/ontology/iof-core.rdf"/>
+  <owl:imports rdf:resource="https://neurosymbols.ai/ontology/ro-causal-properties.owl"/>
 </owl:Ontology>
 
 <owl:ObjectProperty rdf:about="#hasObservation">
@@ -68,14 +67,18 @@
 
 <owl:ObjectProperty rdf:about="#affects">
   <rdfs:subPropertyOf rdf:resource="http://purl.obolibrary.org/obo/RO_0000052"/>
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
   <rdfs:domain rdf:resource="#FailureCause"/>
   <rdfs:range rdf:resource="#PCB"/>
+  <owl:inverseOf rdf:resource="#isAffectedBy"/>
   <prov:definition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Relates a failure cause to the PCB it impacts, representing causal influence in process outcome.</prov:definition>
   <core:example rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Example: 'LowPasteViscosity' affects 'PCB-123' leading to insufficient solder volume.</core:example>
 </owl:ObjectProperty>
 
 <owl:ObjectProperty rdf:about="#isAffectedBy">
   <rdfs:subPropertyOf rdf:resource="http://purl.obolibrary.org/obo/RO_0000053"/>
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#InverseFunctionalProperty"/>
+  <owl:inverseOf rdf:resource="#affects"/>
   <rdfs:domain rdf:resource="#PCB"/>
   <rdfs:range rdf:resource="#FailureCause"/>
   <prov:definition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Relates a PCB to the failure cause influencing its process outcome or quality.</prov:definition>
@@ -285,27 +288,6 @@
   <core:example rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Example: Specification: 'ParameterSpecification' must be between defined limits for a given process (e.g., 0.66–0.80).</core:example>
 </owl:Class>
 
-<owl:Class rdf:about="#ComponentPlacementProcess">
-  <rdfs:subClassOf rdf:resource="https://spec.industrialontologies.org/ontology/core/Core/ManufacturingProcess"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ComponentPlacementProcess</rdfs:label>
-  <prov:definition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">A manufacturing process step or activity: 'ComponentPlacementProcess', describing a stage in PCB assembly.</prov:definition>
-  <core:example rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Example: ReflowSolderingProcess applied profile ramp to peak 245°C for 60s time above liquidus.</core:example>
-</owl:Class>
-
-<owl:Class rdf:about="#ReflowSolderingProcess">
-  <rdfs:subClassOf rdf:resource="https://spec.industrialontologies.org/ontology/core/Core/ManufacturingProcess"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ReflowSolderingProcess</rdfs:label>
-  <prov:definition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">A manufacturing process step or activity: 'ReflowSolderingProcess', describing a stage in PCB assembly.</prov:definition>
-  <core:example rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Example: ReflowSolderingProcess applied profile ramp to peak 245°C for 60s time above liquidus.</core:example>
-</owl:Class>
-
-<owl:Class rdf:about="#SolderPrintingProcess">
-  <rdfs:subClassOf rdf:resource="https://spec.industrialontologies.org/ontology/core/Core/ManufacturingProcess"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SolderPrintingProcess</rdfs:label>
-  <prov:definition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">A manufacturing process step or activity: 'SolderPrintingProcess', describing a stage in PCB assembly.</prov:definition>
-  <core:example rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Example: ReflowSolderingProcess applied profile ramp to peak 245°C for 60s time above liquidus.</core:example>
-</owl:Class>
-
 <owl:Class rdf:about="#ConformanceAssessment">
   <rdfs:subClassOf rdf:resource="http://www.w3.org/ns/prov#Activity"/>
   <owl:equivalentClass>
@@ -329,6 +311,34 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ConformanceAssessment</rdfs:label>
   <prov:definition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Definition for 'ConformanceAssessment' within semiconductor manufacturing context.</prov:definition>
   <core:example rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Example usage of 'ConformanceAssessment' in an SMT process context.</core:example>
+</owl:Class>
+
+<owl:Class rdf:about="#ComponentPlacementProcess">
+  <rdfs:subClassOf rdf:resource="https://spec.industrialontologies.org/ontology/core/Core/ManufacturingProcess"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ComponentPlacementProcess</rdfs:label>
+  <prov:definition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">A manufacturing process step or activity: 'ComponentPlacementProcess', describing a stage in PCB assembly.</prov:definition>
+  <core:example rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Example: ReflowSolderingProcess applied profile ramp to peak 245°C for 60s time above liquidus.</core:example>
+</owl:Class>
+
+<owl:Class rdf:about="#ReflowSolderingProcess">
+  <rdfs:subClassOf rdf:resource="https://spec.industrialontologies.org/ontology/core/Core/ManufacturingProcess"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ReflowSolderingProcess</rdfs:label>
+  <prov:definition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">A manufacturing process step or activity: 'ReflowSolderingProcess', describing a stage in PCB assembly.</prov:definition>
+  <core:example rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Example: ReflowSolderingProcess applied profile ramp to peak 245°C for 60s time above liquidus.</core:example>
+</owl:Class>
+
+<owl:Class rdf:about="#SolderPrintingProcess">
+  <rdfs:subClassOf rdf:resource="https://spec.industrialontologies.org/ontology/core/Core/ManufacturingProcess"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SolderPrintingProcess</rdfs:label>
+  <prov:definition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">A manufacturing process step or activity: 'SolderPrintingProcess', describing a stage in PCB assembly.</prov:definition>
+  <core:example rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Example: ReflowSolderingProcess applied profile ramp to peak 245°C for 60s time above liquidus.</core:example>
+</owl:Class>
+
+<owl:Class rdf:about="#RootCause">
+  <rdfs:subClassOf rdf:resource="#FailureCause"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">RootCause</rdfs:label>
+  <prov:definition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">A causal factor that can lead to defects or process non-conformance related to 'RootCause' in SMT assembly.</prov:definition>
+  <core:example rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Example: Excess paste volume per aperture observed causing tombstoning of 0402 components in lot L-230.</core:example>
 </owl:Class>
 
 <owl:Class rdf:about="#BgaBallDiameter">
@@ -469,6 +479,111 @@
   <core:example rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Example: Measured 'paste metal load' = 0.12 mm which is within process capability for this design.</core:example>
 </owl:Class>
 
+<owl:Class rdf:about="#PasteVolumePerAperture">
+  <rdfs:subClassOf rdf:resource="#ParameterCharacteristic"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">paste volume per aperture</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#PasteRollBeadSize">
+  <rdfs:subClassOf rdf:resource="#ParameterCharacteristic"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">paste roll bead size</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#ResidualPasteAllowed">
+  <rdfs:subClassOf rdf:resource="#ParameterCharacteristic"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">residual paste allowed</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#SqueegeePressure">
+  <rdfs:subClassOf rdf:resource="#ParameterCharacteristic"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">squeegee pressure</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#SqueegeeSpeed">
+  <rdfs:subClassOf rdf:resource="#ParameterCharacteristic"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">squeegee speed</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#SqueegeeAngle">
+  <rdfs:subClassOf rdf:resource="#ParameterCharacteristic"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">squeegee angle</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#OverprintAllowance">
+  <rdfs:subClassOf rdf:resource="#ParameterCharacteristic"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">overprint allowance</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#PAndPPlacementAccuracy">
+  <rdfs:subClassOf rdf:resource="#ParameterCharacteristic"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">p and p placement accuracy</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#PreheatZoneTemp">
+  <rdfs:subClassOf rdf:resource="#ParameterCharacteristic"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">preheat zone temp</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#PreheatZoneTime">
+  <rdfs:subClassOf rdf:resource="#ParameterCharacteristic"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">preheat zone time</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#SoakZoneTemp">
+  <rdfs:subClassOf rdf:resource="#ParameterCharacteristic"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">soak zone temp</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#SoakZoneTime">
+  <rdfs:subClassOf rdf:resource="#ParameterCharacteristic"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">soak zone time</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#RampUpZoneRateAndTime">
+  <rdfs:subClassOf rdf:resource="#ParameterCharacteristic"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ramp-up zone rate and time</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#PeakZoneTemp">
+  <rdfs:subClassOf rdf:resource="#ParameterCharacteristic"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">peak zone temp</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#PeakZoneTime">
+  <rdfs:subClassOf rdf:resource="#ParameterCharacteristic"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">peak zone time</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#CoolDownZoneTemp">
+  <rdfs:subClassOf rdf:resource="#ParameterCharacteristic"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">cool down zone temp</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#CoolDownZoneTime">
+  <rdfs:subClassOf rdf:resource="#ParameterCharacteristic"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">cool down zone time</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#OxygenLevel">
+  <rdfs:subClassOf rdf:resource="#ParameterCharacteristic"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">oxygen level</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#StencilCleaning">
+  <rdfs:subClassOf rdf:resource="#ParameterCharacteristic"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">stencil cleaning</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#AmbientRh">
+  <rdfs:subClassOf rdf:resource="#ParameterCharacteristic"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ambient rh</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#PrinterPlacementAccuracy">
+  <rdfs:subClassOf rdf:resource="#ParameterCharacteristic"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">printer placement accuracy</rdfs:label>
+</owl:Class>
+
 <owl:Class rdf:about="#BgaBallDiameterObs">
   <rdfs:subClassOf rdf:resource="#ParameterObservation"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">bga ball diameter obs</rdfs:label>
@@ -605,6 +720,111 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">paste metal load obs</rdfs:label>
   <prov:definition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Observed measurement of 'paste metal load obs' recorded during manufacturing or inspection (e.g., inline AOI or IPC measurement).</prov:definition>
   <core:example rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Example: Inline inspection recorded 'paste metal load obs' = 0.63 for board serial BRD-1001 during print step.</core:example>
+</owl:Class>
+
+<owl:Class rdf:about="#PasteVolumePerApertureObs">
+  <rdfs:subClassOf rdf:resource="#ParameterObservation"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">paste volume per aperture obs</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#PasteRollBeadSizeObs">
+  <rdfs:subClassOf rdf:resource="#ParameterObservation"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">paste roll bead size obs</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#ResidualPasteAllowedObs">
+  <rdfs:subClassOf rdf:resource="#ParameterObservation"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">residual paste allowed obs</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#SqueegeePressureObs">
+  <rdfs:subClassOf rdf:resource="#ParameterObservation"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">squeegee pressure obs</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#SqueegeeSpeedObs">
+  <rdfs:subClassOf rdf:resource="#ParameterObservation"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">squeegee speed obs</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#SqueegeeAngleObs">
+  <rdfs:subClassOf rdf:resource="#ParameterObservation"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">squeegee angle obs</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#OverprintAllowanceObs">
+  <rdfs:subClassOf rdf:resource="#ParameterObservation"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">overprint allowance obs</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#PAndPPlacementAccuracyObs">
+  <rdfs:subClassOf rdf:resource="#ParameterObservation"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">p and p placement accuracy obs</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#PreheatZoneTempObs">
+  <rdfs:subClassOf rdf:resource="#ParameterObservation"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">preheat zone temp obs</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#PreheatZoneTimeObs">
+  <rdfs:subClassOf rdf:resource="#ParameterObservation"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">preheat zone time obs</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#SoakZoneTempObs">
+  <rdfs:subClassOf rdf:resource="#ParameterObservation"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">soak zone temp obs</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#SoakZoneTimeObs">
+  <rdfs:subClassOf rdf:resource="#ParameterObservation"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">soak zone time obs</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#RampUpZoneRateAndTimeObs">
+  <rdfs:subClassOf rdf:resource="#ParameterObservation"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ramp-up zone rate and time obs</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#PeakZoneTempObs">
+  <rdfs:subClassOf rdf:resource="#ParameterObservation"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">peak zone temp obs</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#PeakZoneTimeObs">
+  <rdfs:subClassOf rdf:resource="#ParameterObservation"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">peak zone time obs</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#CoolDownZoneTempObs">
+  <rdfs:subClassOf rdf:resource="#ParameterObservation"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">cool down zone temp obs</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#CoolDownZoneTimeObs">
+  <rdfs:subClassOf rdf:resource="#ParameterObservation"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">cool down zone time obs</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#OxygenLevelObs">
+  <rdfs:subClassOf rdf:resource="#ParameterObservation"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">oxygen level obs</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#StencilCleaningObs">
+  <rdfs:subClassOf rdf:resource="#ParameterObservation"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">stencil cleaning obs</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#AmbientRhObs">
+  <rdfs:subClassOf rdf:resource="#ParameterObservation"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ambient rh obs</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#PrinterPlacementAccuracyObs">
+  <rdfs:subClassOf rdf:resource="#ParameterObservation"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">printer placement accuracy obs</rdfs:label>
 </owl:Class>
 
 <owl:Class rdf:about="#BgaBallDiameterSpec">
@@ -745,6 +965,111 @@
   <core:example rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Example: Specification: 'paste metal load spec' must be between defined limits for a given process (e.g., 0.66–0.80).</core:example>
 </owl:Class>
 
+<owl:Class rdf:about="#PasteVolumePerApertureSpec">
+  <rdfs:subClassOf rdf:resource="#ParameterSpecification"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">paste volume per aperture spec</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#PasteRollBeadSizeSpec">
+  <rdfs:subClassOf rdf:resource="#ParameterSpecification"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">paste roll bead size spec</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#ResidualPasteAllowedSpec">
+  <rdfs:subClassOf rdf:resource="#ParameterSpecification"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">residual paste allowed spec</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#SqueegeePressureSpec">
+  <rdfs:subClassOf rdf:resource="#ParameterSpecification"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">squeegee pressure spec</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#SqueegeeSpeedSpec">
+  <rdfs:subClassOf rdf:resource="#ParameterSpecification"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">squeegee speed spec</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#SqueegeeAngleSpec">
+  <rdfs:subClassOf rdf:resource="#ParameterSpecification"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">squeegee angle spec</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#OverprintAllowanceSpec">
+  <rdfs:subClassOf rdf:resource="#ParameterSpecification"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">overprint allowance spec</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#PAndPPlacementAccuracySpec">
+  <rdfs:subClassOf rdf:resource="#ParameterSpecification"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">p and p placement accuracy spec</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#PreheatZoneTempSpec">
+  <rdfs:subClassOf rdf:resource="#ParameterSpecification"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">preheat zone temp spec</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#PreheatZoneTimeSpec">
+  <rdfs:subClassOf rdf:resource="#ParameterSpecification"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">preheat zone time spec</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#SoakZoneTempSpec">
+  <rdfs:subClassOf rdf:resource="#ParameterSpecification"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">soak zone temp spec</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#SoakZoneTimeSpec">
+  <rdfs:subClassOf rdf:resource="#ParameterSpecification"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">soak zone time spec</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#RampUpZoneRateAndTimeSpec">
+  <rdfs:subClassOf rdf:resource="#ParameterSpecification"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ramp-up zone rate and time spec</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#PeakZoneTempSpec">
+  <rdfs:subClassOf rdf:resource="#ParameterSpecification"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">peak zone temp spec</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#PeakZoneTimeSpec">
+  <rdfs:subClassOf rdf:resource="#ParameterSpecification"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">peak zone time spec</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#CoolDownZoneTempSpec">
+  <rdfs:subClassOf rdf:resource="#ParameterSpecification"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">cool down zone temp spec</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#CoolDownZoneTimeSpec">
+  <rdfs:subClassOf rdf:resource="#ParameterSpecification"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">cool down zone time spec</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#OxygenLevelSpec">
+  <rdfs:subClassOf rdf:resource="#ParameterSpecification"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">oxygen level spec</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#StencilCleaningSpec">
+  <rdfs:subClassOf rdf:resource="#ParameterSpecification"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">stencil cleaning spec</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#AmbientRhSpec">
+  <rdfs:subClassOf rdf:resource="#ParameterSpecification"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ambient rh spec</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#PrinterPlacementAccuracySpec">
+  <rdfs:subClassOf rdf:resource="#ParameterSpecification"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">printer placement accuracy spec</rdfs:label>
+</owl:Class>
+
 <owl:Class rdf:about="#SolderBridging">
   <rdfs:subClassOf rdf:resource="#Defect"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SolderBridging</rdfs:label>
@@ -876,13 +1201,6 @@
   <core:example rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Example: Excess paste volume per aperture observed causing tombstoning of 0402 components in lot L-230.</core:example>
 </owl:Class>
 
-<owl:Class rdf:about="#RootCause">
-  <rdfs:subClassOf rdf:resource="#FailureCause"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">RootCause</rdfs:label>
-  <prov:definition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">A causal factor that can lead to defects or process non-conformance related to 'RootCause' in SMT assembly.</prov:definition>
-  <core:example rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Example: Excess paste volume per aperture observed causing tombstoning of 0402 components in lot L-230.</core:example>
-</owl:Class>
-
 <owl:NamedIndividual rdf:about="#SolderBridging_1">
   <rdf:type rdf:resource="#SolderBridging"/>
   <obo:RO_0002559 rdf:resource="#ExcessPasteVolumePerAperture_1"/>
@@ -906,11 +1224,11 @@
   <obo:RO_0002559 rdf:resource="#SqueegeeSpeedTooLow_1"/>
   <obo:RO_0002559 rdf:resource="#SqueegeeAngleTooLow_1"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ApertureOverfill_1</rdfs:label>
-  <governedBy rdf:datatype="http://www.w3.org/2001/XMLSchema#string">If ApertureAreaRatio &lt; ApertureAreaRatio_LSL ∧ StencilThickness ≥ StencilThickness_NOM → ApertureOverfill</governedBy>
-  <governedBy rdf:datatype="http://www.w3.org/2001/XMLSchema#string">If SqueegeeAngle &lt; SqueegeeAngle_LSL ∧ (SqueegeeSpeed ≤ SqueegeeSpeed_NOM ∨ SqueegeePressure ≥ SqueegeePressure_NOM) → ApertureOverfill ∨ UndersideSmear</governedBy>
   <governedBy rdf:datatype="http://www.w3.org/2001/XMLSchema#string">If PasteRollBeadSize &gt; PasteRollBeadSize_USL → ApertureOverfill</governedBy>
   <governedBy rdf:datatype="http://www.w3.org/2001/XMLSchema#string">If SqueegeeSpeed ≤ SqueegeeSpeed_LSL ∧ (SqueegeeAngle ≤ SqueegeeAngle_NOM ∨ SqueegeePressure ≥ SqueegeePressure_NOM) → ApertureOverfill ∨ UndersideSmear</governedBy>
+  <governedBy rdf:datatype="http://www.w3.org/2001/XMLSchema#string">If ApertureAreaRatio &lt; ApertureAreaRatio_LSL ∧ StencilThickness ≥ StencilThickness_NOM → ApertureOverfill</governedBy>
   <governedBy rdf:datatype="http://www.w3.org/2001/XMLSchema#string">If StencilThickness &gt; StencilThickness_USL ∧ BGAPitch ≤ BGAPitch_threshold → ApertureOverfill</governedBy>
+  <governedBy rdf:datatype="http://www.w3.org/2001/XMLSchema#string">If SqueegeeAngle &lt; SqueegeeAngle_LSL ∧ (SqueegeeSpeed ≤ SqueegeeSpeed_NOM ∨ SqueegeePressure ≥ SqueegeePressure_NOM) → ApertureOverfill ∨ UndersideSmear</governedBy>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#LowAreaRatio_1">
@@ -949,8 +1267,8 @@
   <obo:RO_0002559 rdf:resource="#SqueegeePressureTooHigh_1"/>
   <obo:RO_0002559 rdf:resource="#ResidualPasteVolume_1"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">UndersideSmear_1</rdfs:label>
-  <governedBy rdf:datatype="http://www.w3.org/2001/XMLSchema#string">If ResidualPasteAllowed &gt; ResidualPasteAllowed_USL → UndersideSmear</governedBy>
   <governedBy rdf:datatype="http://www.w3.org/2001/XMLSchema#string">If SqueegeePressure &gt; SqueegeePressure_USL → UndersideSmear</governedBy>
+  <governedBy rdf:datatype="http://www.w3.org/2001/XMLSchema#string">If ResidualPasteAllowed &gt; ResidualPasteAllowed_USL → UndersideSmear</governedBy>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#SqueegeePressureTooHigh_1">

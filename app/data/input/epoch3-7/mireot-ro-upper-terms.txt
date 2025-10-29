@@ -1,0 +1,3 @@
+http://purl.obolibrary.org/obo/RO_0002506
+http://purl.obolibrary.org/obo/RO_0002502
+http://purl.obolibrary.org/obo/RO_0000053

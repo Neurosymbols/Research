@@ -227,7 +227,7 @@ if __name__ == "__main__":
             f"{input_path}/ontology_properties.yml",
             {
                 "semicon_quality_concepts": {k : v for k,v in non_null_specs.items() if non_null_specs[k]['onto_category'] == 'Quality'},
-                "semicon_characteristic_concepts": {k : v for k,v in non_null_specs.items() if non_null_specs[k]['process_category'] == 'ProcessCharacteristic'},
+                "semicon_characteristic_concepts": {k : v for k,v in non_null_specs.items() if non_null_specs[k]['onto_category'] == 'ProcessCharacteristic'},
                 "manufacturing_process_concepts": manufacturing_process_concepts,
                 "defects_and_failure_causes": fcs
             },
