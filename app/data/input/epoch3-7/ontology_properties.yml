@@ -88,3 +88,6 @@ data_properties:
   - name: governedBy
     range: str
 
+annotation_properties:
+  - name: triggeredByRuleText
+

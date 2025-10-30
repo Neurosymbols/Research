@@ -15,6 +15,12 @@ parameter,LowPasteViscosity,Cool paste/stencil; refresh bead; check lot; align m
 parameter,LowMetalContent,Replace solder paste batch with verified metal loading (≥88 wt%). Verify storage and handling conditions.
 parameter,HighHumidity,Dehumidify/condition cell; maintain RH control
 mechanism,ExcessReflowSpreading,"Optimize reflow profile by capping peak temperature, reducing TAL, and balancing thermal gradients across the board"
-parameter,PeakReflowTemperature,Tune profile; cap peak
-parameter,TimeAboveLiquidus,Reduce TAL within vendor band
-parameter,ThermalGradientAcrossBoard,Balance zones; add shielding; adjust loading
+parameter,PeakReflowTemperatureTooHigh,Tune profile; cap peak
+parameter,TimeAboveLiquidusTooHigh,Reduce TAL within vendor band
+defect,OpenCircuit,Reduce upstream insufficiency/non-wet drivers; verify with AOI + ICT/functional test
+mechanism,NonCoalescence,Tune profile; reduce O2; improve surface solderability
+parameter,PeakReflowTemperatureTooLow,Raise peak within vendor band
+parameter,TimeAboveLiquidusTooLow,Increase TAL per paste spec
+mechanism,InsufficientPasteVolumePerAperture,Improve print transfer/release; mitigate starvation sources
+parameter,SqueegeeSpeedTooHigh,Lower speed into window; confirm with SPI
+parameter,SqueegeePressureTooLow,Increase line load to nominal; verify with transducer
