@@ -3,12 +3,14 @@ object_properties:
     parent: describedBy
     domain: PCB
     range: ParameterObservation
+    inverse_functional: true
 
   - name: observationOf
     parent: describes
     inverse_of: hasObservation
     domain: ParameterObservation
     range: PCB
+    functional: true
   
   - name: isCorrectedBy
     domain: FailureCause
@@ -22,25 +24,27 @@ object_properties:
     parent: BFO_0000196
     domain: PCB
     range: Defect
+    inverse_functional: true
 
   - name: defectOccursOn
     parent: BFO_0000197
     inverse_of: hasDefect
-    range: Defect
-    domain: PCB
+    range: PCB
+    domain: Defect
+    functional: true
 
   - name: affects
     parent: RO_0000052
     domain: FailureCause
     range: PCB
-    functional: True
+    functional: true
   
   - name: isAffectedBy
     parent: RO_0000053
     domain: PCB
     range: FailureCause
     inverse_of: affects
-    inverse_functional: True
+    inverse_functional: true
   
   - name: hasAssessmentInput
     parent: used
@@ -55,11 +59,13 @@ object_properties:
   - name: RO_0002559
     domain: Effect
     range: FailureCause
+    transitive: true
   
   - name: RO_0002566
     inverse_of: RO_0002559
     domain: FailureCause
     range: Effect
+    transitive: true
 
 data_properties:
   - name: hasUpperValue

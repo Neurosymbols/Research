@@ -1,19 +1,5 @@
-Class Name,Parent Class,Necessary Axioms (Manchester),Sufficient Axioms (Manchester),Equivalent Class (Necessary & Sufficient) (Manchester),Notes / Assumptions
+Class Name,Parent Class,Necessary Axioms (Manchester),Equivalent Class (Necessary & Sufficient) (Manchester)
 Defect,BFO:SpecificallyDependentContinuant,"SubClassOf: BFO:SpecificallyDependentContinuant
-SubClassOf: defectOccursOn some IOF:MaterialProduct",,EquivalentTo: Effect and (defectOccursOn some IOF:MaterialProduct),Defines a defect as an effect inhering in (occurring on) a material product.
-ParameterCharacteristic,IOF:ProcessCharacteristic,SubClassOf: IOF:ProcessCharacteristic,,EquivalentTo: IOF:ProcessCharacteristic and (IOF:describedBy some ParameterObservation) and (IOF:prescribedBy some ParameterSpecification),Links the process characteristic to its measurement and specification.
-ParameterObservation,IOF:MeasurementInformationContentEntity,SubClassOf: IOF:MeasurementInformationContentEntity,,EquivalentTo: IOF:MeasurementInformationContentEntity and (IOF:describes some ParameterCharacteristic) and (IOF:isAbout some ParameterSpecification) and (observationOf some IOF:MaterialProduct),May also use 'ObservationOf some IOF:MaterialProduct' if desired.
-ParameterSpecification,IOF:RequirementSpecification,SubClassOf: IOF:RequirementSpecification,,EquivalentTo: IOF:RequirementSpecification and (IOF:prescribes some ParameterCharacteristic) and (IOF:isSubjectOf some ParameterObservation),Captures the USL/LSL/nominal via data properties on the spec individual.
-ConformanceAssessment,prov:Activity,"SubClassOf: prov:Activity
-SubClassOf: hasAssessmentInput some ParameterObservation",,"EquivalentTo: 
-  prov:Activity 
-  and (hasAssessmentInput some ParameterObservation)
-  and (hasAssessmentInput some ParameterSpecification)
-  and (prov:generated some FailureCause)",Assessment activities generate failure-cause conclusions based on measurement inputs.
-FailureCause,BFO:SpecificallyDependentContinuant,"SubClassOf: BFO:SpecificallyDependentContinuant
-SubClassOf: affects some IOF:MaterialProduct
-SubClassOf: prov:wasGeneratedBy some ConformanceAssessment
-SubClassOf: isCorrectedBy only CorrectiveAction",,EquivalentTo: BFO:SpecificallyDependentContinuant and (affects some IOF:MaterialProduct) and (prov:wasGeneratedBy some ConformanceAssessment) and (RO:RO_0002566 some Effect),Treats every FailureCause as a kind of Cause that affects a product and is produced by an assessment.
-CorrectiveAction,IOF:ActionSpecification,SubClassOf: IOF:ActionSpecification,,EquivalentTo: IOF:ActionSpecification and (corrects some FailureCause),Pairs an action spec with at least one failure cause it corrects.
-Effect,BFO:SpecificallyDependentContinuant,SubClassOf: BFO:SpecificallyDependentContinuant,,EquivalentTo: BFO:SpecificallyDependentContinuant and (RO:RO_0002559 some Cause),Uses the provided RO property orientation: Effect -> RO:causallyInfluences -> Cause.
-ParameterQuality,BFO:Quality,SubClassOf: BFO:Quality,,EquivalentTo: BFO:Quality and (IOF:describedBy some ParameterObservation) and (IOF:prescribedBy some ParameterSpecification),Quality that is measurable and specifiable; specific units/values are data properties on the spec/meas.
+SubClassOf: defectOccursOn some IOF:MaterialProduct",SubClassOf: Effect and (defectOccursOn some IOF:MaterialProduct)
+ParameterQuality,BFO:Quality,SubClassOf: BFO:Quality,SubClassOf: (IOF:describedBy some ParameterObservation) and (IOF:prescribedBy some ParameterSpecification)
+ParameterCharacteristic,IOF:ProcessCharacteristic,SubClassOf: IOF:ProcessCharacteristic,SubClassOf: (IOF:describedBy some ParameterObservation) and (IOF:prescribedBy some ParameterSpecification)

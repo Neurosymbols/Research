@@ -175,11 +175,11 @@ for k, v in fc_df_dict.items():
 
 def extract_axioms():
     axioms_df = pd.read_csv(f"{input_path}/axioms.csv")
-    target_cols = list(axioms_df.iloc[:, [0, 1, 2, 3, 4]].itertuples(index=False, name=None))
+    target_cols = list(axioms_df.iloc[:, [0, 1, 2, 3]].itertuples(index=False, name=None))
     axioms_dict = {}
     for row in target_cols:
         class_name = row[0]
-        n_and_s_axioms = row[4]
+        n_and_s_axioms = row[3]
         axioms_dict[class_name] = n_and_s_axioms
     return axioms_dict
 
@@ -245,8 +245,6 @@ if __name__ == "__main__":
         add_products_to_ontology(
             products_in_ontology,
             f"{input_path}/synthetic_data_factory.csv",
-            fcs,
-            non_null_specs,
             path
         )
 

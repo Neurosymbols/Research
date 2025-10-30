@@ -101,7 +101,7 @@ def initiate_ontology(
         if import_ontologies:
             iof = get_ontology(f"{path}/iof-core.rdf").load(only_local=True)
             bfo = get_ontology(f"{path}/bfo.owl").load(only_local=True)
-            ro = get_ontology(f"{path}/ro-causal-properties-iri.owl").load(only_local=True)
+            ro = get_ontology(f"{path}/ro-causal-properties.owl").load(only_local=True)
             prov = get_ontology(f"{path}/bfo-prov.owl").load(only_local=True)
             skos = get_ontology(SKOS_IRI).load()
         prefix_onto_map = {
@@ -286,11 +286,17 @@ def define_properties(input_path):
                         cls.domain = [base_onto[prop["domain"]]]
                     type_map = {"float": float, "int": int, "str": str}
                     cls.range = [type_map[prop["range"]]]
+                
+                for prop in config.get("annotation_properties", []):
+                    cls = types.new_class(prop["name"], (AnnotationProperty,))
 
 def add_axioms_to_ontology(axioms_dict):
     with base_onto:
         for sub_cls, axiom in axioms_dict.items():
-            axiom_split_by_and = axiom.split("and")
+            first_colon_index = axiom.find(":")
+            axiom_type = axiom[0:first_colon_index].strip()
+            axiom_text = axiom[first_colon_index:].strip()
+            axiom_split_by_and = axiom_text.split("and")
             if len(axiom_split_by_and) > 1:
                 axiom_split_by_and.pop(0)
                 for axiom_unit in axiom_split_by_and:
@@ -311,20 +317,22 @@ def add_axioms_to_ontology(axioms_dict):
                         obj_cls_obj = prefix_onto_map[obj_cls_prefix].search_one(iri=f"*{obj_cls_name}")
                     else:
                         obj_cls_obj = base_onto[obj_cls_atoms[0]]
-                    base_onto[sub_cls].equivalent_to.append(prop_obj.some(obj_cls_obj))
+                    if axiom_type.lower() == "subclassof":
+                        base_onto[sub_cls].is_a.append(prop_obj.some(obj_cls_obj))
+                    elif axiom_type.lower() == "equivalentto":
+                        base_onto[sub_cls].equivalent_to.append(prop_obj.some(obj_cls_obj))
 
 def add_defintions_and_examples(definitions_dict):
-    skos_definition = skos.search_one(iri = "*definition")
-    skos_example = skos.search_one(iri = "*example")
     with base_onto:
         for k, v in definitions_dict.items():
             # locate class or property by IRI
             ent = base_onto.search_one(iri = k)
-            ent.definition.append(v['definition'])   # plain literal (no lang tag)
-            ent.example.append(v['example'])
+            if ent:
+                ent.definition.append(v.get('definition', ''))   # plain literal (no lang tag)
+                ent.example.append(v.get('example', ''))
 
 def add_ishikawa_causal_graph():
-    def traverse_paths(graph, start, visited=None):
+    def traverse_paths(graph, start, target_prop, visited=None):
         """
         Recursively traverse and print causes along 'caused_by' edges.
         """
@@ -339,18 +347,24 @@ def add_ishikawa_causal_graph():
             effect_ind = base_onto[create_classname_syntax(start)](f"{start}_1")
             if len(effect_ind.label) == 0: 
                 effect_ind.label.append(f"{start}_1")
-            effect_ind.governedBy = graph.get(start, {}).get("governed_by", [])
+            rules = graph.get(start, {}).get("governed_by", [])
+            for rule in rules:
+                effect_ind.governedBy.append(rule.replace("≤", "<=").replace("≥", ">="))
+            base_onto[create_classname_syntax(start)].triggeredByRuleText = rules
 
             causes = graph.get(start, {}).get("caused_by", [])
             for cause in causes:
+                base_onto[create_classname_syntax(start)].equivalent_to.append(target_prop.some(base_onto[create_classname_syntax(cause)]))
                 ind = base_onto[create_classname_syntax(cause)](f"{cause}_1")
                 effect_ind.RO_0002559.append(ind)
-                traverse_paths(graph, cause, visited)
+                traverse_paths(graph, cause, target_prop, visited)
 
     with open(f"{input_path}/causal_chain.json") as f:
         cc = json.load(f)
+        prop_obj = prefix_onto_map["RO"].search_one(iri=f"*RO_0002559")
+        print(prop_obj)
         for defect in cc:
-            traverse_paths(cc, defect)
+            traverse_paths(cc, defect, prop_obj)
 
 def add_specs_to_ontology(specs_dict, ontology_path):
     if product1_onto is not None:
@@ -381,58 +395,61 @@ def add_specs_to_ontology(specs_dict, ontology_path):
 
 def add_defect_individuals(
     product_individual,
-    semicon_defect_concepts:list,
-    observation_individual
+    semicon_defect_concept:str
 ):
    if product1_onto is not None:
     with product1_onto:
-        for defect_name in semicon_defect_concepts:
-            defect_classname = create_classname_syntax(defect_name)
+        defect_classname = create_classname_syntax(semicon_defect_concept)
+        onto_defect_class = base_onto[defect_classname]
+        if onto_defect_class:
             product_individual_label = product_individual.label[0]
-            defect_individual = base_onto[defect_classname](f"{defect_classname}_{product_individual_label}")
+            defect_individual = onto_defect_class(f"{defect_classname}_{product_individual_label}")
             defect_individual.label.append(f"{defect_classname}_{product_individual_label}")
-            defect_individual.flagCount = 0
-            defect_individual.interactionBonus = 0
-            observation_individual.monitorsDefect.append(defect_individual)
-            product_individual.hasPotentialDefect.append(defect_individual)
+            product_individual.hasDefect.append(defect_individual)
 
 def add_products_to_ontology(
     batch_size:int,
     synthetic_data_factory_file: str,
-    defects_and_failure_causes: dict,
-    semicon_quality_concepts: dict,
     ontology_path:str
 ):
-    semicon_defect_concepts = list(defects_and_failure_causes.get("defect", []))
     df = pd.read_csv(synthetic_data_factory_file)
     # Strip spaces from column names
     df.columns = df.columns.str.strip() # Check specs in Synthetic Data files
     if product1_onto is not None:
+        product_count = 0
         with product1_onto: # A-box instantiation
-            for entry in semicon_quality_concepts:
-                entry_class_syntax = create_classname_syntax(entry)
-                if entry_class_syntax in df.columns:
-                    values = df[entry_class_syntax].tolist()[0:batch_size] # get all observed values corresponding to a 'spec'. Limiting to first 20 observed values
-                    #create defect individuals
-                    PCB = base_onto['PCB'] # get reference to pcb class
-                    qual_ins = product1_onto[semicon_quality_concepts[entry]['id']] # Get reference to the 'Quality' Individual
-                    for i, v in enumerate(values): # create the datastructure (i,v) list
-                        product_individual = PCB(f"PCB{i+1}") # start creating Product1 individuals
-                        product_individual.label = [f"PCB{i+1}"] # assign a label
-                        product_individual.hasSpecification.append(qual_ins) # connect the 'Product1' individual with 'Quality' individual using 'Semi:hasSpecification' which is not a functional property (hence using append)
-                        observation_individual =  base_onto[f"{entry_class_syntax}Obs"](  # instantiating observed value individuals for Product1
-                            f"{entry_class_syntax}_PCB{i+1}_Obs"
-                            )
-                        observation_individual.evaluatesAgainst = qual_ins # observed value individual describes the quality individual
-                        observation_individual.hasObservedValue = float(v) # assign hasobserved value to individual
-                        observation_individual.observationOf = product_individual
+            for _, row in df.iterrows():
+                row_dict = row.to_dict()
+                product_individual = None
+                product_label = None
+                for k , v in row_dict.items():
+                    if k == "PCB_ID":
+                        product_individual = base_onto['PCB'](v) # start creating Product1 individuals
+                        product_individual.label = [v] # assign a label
+                        product_label = v
+                    elif k == "Defect occured":
                         add_defect_individuals(
                             product_individual,
-                            semicon_defect_concepts,
-                            observation_individual,
+                            v,
                         )
+                    else:
+                        onto_class_syntax = create_classname_syntax(k)
+                        onto_class = base_onto[onto_class_syntax]
+                        if onto_class:
+                            spec_class = base_onto[f"{onto_class_syntax}Spec"]
+                            spec_inds = spec_class.instances()
+                            if spec_inds:
+                                spec_inds = spec_inds[0]
+                            observation_individual =  base_onto[f"{onto_class_syntax}Obs"](  # instantiating observed value individuals for Product1
+                            f"{onto_class_syntax}_{product_label}_Obs"
+                            )
+                            # product_individual.hasObservation.append(observation_individual)
+                            observation_individual.isAbout = [spec_inds]
+                            observation_individual.hasObservedValue = float(v)
+                            observation_individual.observationOf = product_individual
+                product_count += 1
             save_ontology(ontology_path)
             #log the number of individuals
-            print(f"{len(values)} product individuals imported to the ontology")
+            print(f"{product_count} product individuals imported to the ontology")
 
     return {"message": "products added"}
