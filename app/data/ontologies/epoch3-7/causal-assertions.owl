@@ -1,0 +1,564 @@
+<?xml version="1.0"?>
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+         xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+         xmlns:owl="http://www.w3.org/2002/07/owl#"
+         xml:base="https://neurosymbols.ai/data/causal-assertions.owl"
+         xmlns="https://neurosymbols.ai/data/causal-assertions.owl#"
+         xmlns:Core="https://spec.industrialontologies.org/ontology/core/Core/"
+         xmlns:caus="https://neurosymbols.ai/ontology/causal-terminology.owl#">
+
+<owl:Ontology rdf:about="https://neurosymbols.ai/data/causal-assertions.owl">
+  <owl:imports rdf:resource="https://neurosymbols.ai/ontology/causal-terminology.owl"/>
+</owl:Ontology>
+
+<owl:NamedIndividual rdf:about="#S1-spec">
+  <rdf:type rdf:resource="https://neurosymbols.ai/ontology/causal-terminology.owl#BgaBallDiameterSpec"/>
+  <Core:prescribes rdf:resource="#S1-quality"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">bga ball diameter spec</rdfs:label>
+  <caus:hasNominalValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0.4</caus:hasNominalValue>
+  <caus:hasUpperValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0.42</caus:hasUpperValue>
+  <caus:hasLowerValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0.38</caus:hasLowerValue>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#S1-quality">
+  <rdf:type rdf:resource="https://neurosymbols.ai/ontology/causal-terminology.owl#BgaBallDiameter"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">bga ball diameter quality</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#S2-spec">
+  <rdf:type rdf:resource="https://neurosymbols.ai/ontology/causal-terminology.owl#SolderBallHeightSpec"/>
+  <Core:prescribes rdf:resource="#S2-quality"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">solder ball height spec</rdfs:label>
+  <caus:hasNominalValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0.4</caus:hasNominalValue>
+  <caus:hasUpperValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0.42</caus:hasUpperValue>
+  <caus:hasLowerValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0.38</caus:hasLowerValue>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#S2-quality">
+  <rdf:type rdf:resource="https://neurosymbols.ai/ontology/causal-terminology.owl#SolderBallHeight"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">solder ball height quality</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#S3-spec">
+  <rdf:type rdf:resource="https://neurosymbols.ai/ontology/causal-terminology.owl#NumberOfBallsSpec"/>
+  <Core:prescribes rdf:resource="#S3-quality"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">number of balls spec</rdfs:label>
+  <caus:hasNominalValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">100.0</caus:hasNominalValue>
+  <caus:hasUpperValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">100.0</caus:hasUpperValue>
+  <caus:hasLowerValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">100.0</caus:hasLowerValue>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#S3-quality">
+  <rdf:type rdf:resource="https://neurosymbols.ai/ontology/causal-terminology.owl#NumberOfBalls"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">number of balls quality</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#S4-spec">
+  <rdf:type rdf:resource="https://neurosymbols.ai/ontology/causal-terminology.owl#SolderAlloySpec"/>
+  <Core:prescribes rdf:resource="#S4-quality"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">solder alloy spec</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#S4-quality">
+  <rdf:type rdf:resource="https://neurosymbols.ai/ontology/causal-terminology.owl#SolderAlloy"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">solder alloy quality</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#S5-spec">
+  <rdf:type rdf:resource="https://neurosymbols.ai/ontology/causal-terminology.owl#StencilThicknessSpec"/>
+  <Core:prescribes rdf:resource="#S5-quality"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">stencil thickness spec</rdfs:label>
+  <caus:hasNominalValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0.1</caus:hasNominalValue>
+  <caus:hasUpperValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0.105</caus:hasUpperValue>
+  <caus:hasLowerValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0.095</caus:hasLowerValue>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#S5-quality">
+  <rdf:type rdf:resource="https://neurosymbols.ai/ontology/causal-terminology.owl#StencilThickness"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">stencil thickness quality</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#S6-spec">
+  <rdf:type rdf:resource="https://neurosymbols.ai/ontology/causal-terminology.owl#ApertureDiameterSpec"/>
+  <Core:prescribes rdf:resource="#S6-quality"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">aperture diameter spec</rdfs:label>
+  <caus:hasNominalValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0.34</caus:hasNominalValue>
+  <caus:hasUpperValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0.36</caus:hasUpperValue>
+  <caus:hasLowerValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0.32</caus:hasLowerValue>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#S6-quality">
+  <rdf:type rdf:resource="https://neurosymbols.ai/ontology/causal-terminology.owl#ApertureDiameter"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">aperture diameter quality</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#S7-spec">
+  <rdf:type rdf:resource="https://neurosymbols.ai/ontology/causal-terminology.owl#PasteVolumePerApertureSpec"/>
+  <Core:prescribes rdf:resource="#S7-processcharacteristic"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">paste volume per aperture spec</rdfs:label>
+  <caus:hasNominalValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0.04</caus:hasNominalValue>
+  <caus:hasUpperValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0.044</caus:hasUpperValue>
+  <caus:hasLowerValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0.036</caus:hasLowerValue>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#S7-processcharacteristic">
+  <rdf:type rdf:resource="https://neurosymbols.ai/ontology/causal-terminology.owl#PasteVolumePerAperture"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">paste volume per aperture quality</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#S8-spec">
+  <rdf:type rdf:resource="https://neurosymbols.ai/ontology/causal-terminology.owl#PasteRollBeadSizeSpec"/>
+  <Core:prescribes rdf:resource="#S8-processcharacteristic"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">paste roll bead size spec</rdfs:label>
+  <caus:hasNominalValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">4.0</caus:hasNominalValue>
+  <caus:hasUpperValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">4.4</caus:hasUpperValue>
+  <caus:hasLowerValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">3.6</caus:hasLowerValue>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#S8-processcharacteristic">
+  <rdf:type rdf:resource="https://neurosymbols.ai/ontology/causal-terminology.owl#PasteRollBeadSize"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">paste roll bead size quality</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#S9-spec">
+  <rdf:type rdf:resource="https://neurosymbols.ai/ontology/causal-terminology.owl#ResidualPasteAllowedSpec"/>
+  <Core:prescribes rdf:resource="#S9-processcharacteristic"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">residual paste allowed spec</rdfs:label>
+  <caus:hasNominalValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">5.0</caus:hasNominalValue>
+  <caus:hasUpperValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">5.5</caus:hasUpperValue>
+  <caus:hasLowerValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">4.5</caus:hasLowerValue>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#S9-processcharacteristic">
+  <rdf:type rdf:resource="https://neurosymbols.ai/ontology/causal-terminology.owl#ResidualPasteAllowed"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">residual paste allowed quality</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#S10-spec">
+  <rdf:type rdf:resource="https://neurosymbols.ai/ontology/causal-terminology.owl#SqueegeePressureSpec"/>
+  <Core:prescribes rdf:resource="#S10-processcharacteristic"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">squeegee pressure spec</rdfs:label>
+  <caus:hasNominalValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0.3</caus:hasNominalValue>
+  <caus:hasUpperValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0.33</caus:hasUpperValue>
+  <caus:hasLowerValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0.27</caus:hasLowerValue>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#S10-processcharacteristic">
+  <rdf:type rdf:resource="https://neurosymbols.ai/ontology/causal-terminology.owl#SqueegeePressure"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">squeegee pressure quality</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#S11-spec">
+  <rdf:type rdf:resource="https://neurosymbols.ai/ontology/causal-terminology.owl#SqueegeeSpeedSpec"/>
+  <Core:prescribes rdf:resource="#S11-processcharacteristic"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">squeegee speed spec</rdfs:label>
+  <caus:hasNominalValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">70.0</caus:hasNominalValue>
+  <caus:hasUpperValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">84.0</caus:hasUpperValue>
+  <caus:hasLowerValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">56.0</caus:hasLowerValue>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#S11-processcharacteristic">
+  <rdf:type rdf:resource="https://neurosymbols.ai/ontology/causal-terminology.owl#SqueegeeSpeed"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">squeegee speed quality</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#S12-spec">
+  <rdf:type rdf:resource="https://neurosymbols.ai/ontology/causal-terminology.owl#SqueegeeAngleSpec"/>
+  <Core:prescribes rdf:resource="#S12-processcharacteristic"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">squeegee angle spec</rdfs:label>
+  <caus:hasNominalValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">60.0</caus:hasNominalValue>
+  <caus:hasUpperValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">65.0</caus:hasUpperValue>
+  <caus:hasLowerValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">55.0</caus:hasLowerValue>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#S12-processcharacteristic">
+  <rdf:type rdf:resource="https://neurosymbols.ai/ontology/causal-terminology.owl#SqueegeeAngle"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">squeegee angle quality</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#S13-spec">
+  <rdf:type rdf:resource="https://neurosymbols.ai/ontology/causal-terminology.owl#ApertureAreaRatioSpec"/>
+  <Core:prescribes rdf:resource="#S13-quality"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">aperture area ratio spec</rdfs:label>
+  <caus:hasLowerValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0.66</caus:hasLowerValue>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#S13-quality">
+  <rdf:type rdf:resource="https://neurosymbols.ai/ontology/causal-terminology.owl#ApertureAreaRatio"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">aperture area ratio quality</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#S14-spec">
+  <rdf:type rdf:resource="https://neurosymbols.ai/ontology/causal-terminology.owl#PasteViscositySpec"/>
+  <Core:prescribes rdf:resource="#S14-quality"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">paste viscosity spec</rdfs:label>
+  <caus:hasNominalValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">200.0</caus:hasNominalValue>
+  <caus:hasUpperValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">250.0</caus:hasUpperValue>
+  <caus:hasLowerValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">150.0</caus:hasLowerValue>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#S14-quality">
+  <rdf:type rdf:resource="https://neurosymbols.ai/ontology/causal-terminology.owl#PasteViscosity"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">paste viscosity quality</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#S15-spec">
+  <rdf:type rdf:resource="https://neurosymbols.ai/ontology/causal-terminology.owl#ParticleSizeDistributionSpec"/>
+  <Core:prescribes rdf:resource="#S15-quality"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">particle size distribution spec</rdfs:label>
+  <caus:hasNominalValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">29.0</caus:hasNominalValue>
+  <caus:hasUpperValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">38.0</caus:hasUpperValue>
+  <caus:hasLowerValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">20.0</caus:hasLowerValue>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#S15-quality">
+  <rdf:type rdf:resource="https://neurosymbols.ai/ontology/causal-terminology.owl#ParticleSizeDistribution"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">particle size distribution quality</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#S16-spec">
+  <rdf:type rdf:resource="https://neurosymbols.ai/ontology/causal-terminology.owl#MaskDamWidthSpec"/>
+  <Core:prescribes rdf:resource="#S16-quality"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">mask dam width spec</rdfs:label>
+  <caus:hasNominalValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0.1</caus:hasNominalValue>
+  <caus:hasUpperValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0.11</caus:hasUpperValue>
+  <caus:hasLowerValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0.09</caus:hasLowerValue>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#S16-quality">
+  <rdf:type rdf:resource="https://neurosymbols.ai/ontology/causal-terminology.owl#MaskDamWidth"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">mask dam width quality</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#S17-spec">
+  <rdf:type rdf:resource="https://neurosymbols.ai/ontology/causal-terminology.owl#ViaInPadFillSpec"/>
+  <Core:prescribes rdf:resource="#S17-quality"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">via-in-pad fill spec</rdfs:label>
+  <caus:hasUpperValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">10.0</caus:hasUpperValue>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#S17-quality">
+  <rdf:type rdf:resource="https://neurosymbols.ai/ontology/causal-terminology.owl#ViaInPadFill"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">via-in-pad fill quality</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#S18-spec">
+  <rdf:type rdf:resource="https://neurosymbols.ai/ontology/causal-terminology.owl#PadDiameterBgaSpec"/>
+  <Core:prescribes rdf:resource="#S18-quality"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">pad diameter (bga) spec</rdfs:label>
+  <caus:hasNominalValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0.475</caus:hasNominalValue>
+  <caus:hasUpperValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0.5</caus:hasUpperValue>
+  <caus:hasLowerValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0.45</caus:hasLowerValue>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#S18-quality">
+  <rdf:type rdf:resource="https://neurosymbols.ai/ontology/causal-terminology.owl#PadDiameterBga"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">pad diameter (bga) quality</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#S19-spec">
+  <rdf:type rdf:resource="https://neurosymbols.ai/ontology/causal-terminology.owl#PasteShelfLifeTimeSpec"/>
+  <Core:prescribes rdf:resource="#S19-quality"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">paste shelf-life time spec</rdfs:label>
+  <caus:hasUpperValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">6.0</caus:hasUpperValue>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#S19-quality">
+  <rdf:type rdf:resource="https://neurosymbols.ai/ontology/causal-terminology.owl#PasteShelfLifeTime"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">paste shelf-life time quality</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#S20-spec">
+  <rdf:type rdf:resource="https://neurosymbols.ai/ontology/causal-terminology.owl#PasteShelfLifeTempSpec"/>
+  <Core:prescribes rdf:resource="#S20-quality"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">paste shelf-life temp spec</rdfs:label>
+  <caus:hasUpperValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">10.0</caus:hasUpperValue>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#S20-quality">
+  <rdf:type rdf:resource="https://neurosymbols.ai/ontology/causal-terminology.owl#PasteShelfLifeTemp"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">paste shelf-life temp quality</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#S21-spec">
+  <rdf:type rdf:resource="https://neurosymbols.ai/ontology/causal-terminology.owl#PasteOpenLifeTimeSpec"/>
+  <Core:prescribes rdf:resource="#S21-quality"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">paste open-life time spec</rdfs:label>
+  <caus:hasUpperValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">8.0</caus:hasUpperValue>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#S21-quality">
+  <rdf:type rdf:resource="https://neurosymbols.ai/ontology/causal-terminology.owl#PasteOpenLifeTime"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">paste open-life time quality</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#S22-spec">
+  <rdf:type rdf:resource="https://neurosymbols.ai/ontology/causal-terminology.owl#PasteOpenLifeTempSpec"/>
+  <Core:prescribes rdf:resource="#S22-quality"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">paste open-life temp spec</rdfs:label>
+  <caus:hasNominalValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">25.0</caus:hasNominalValue>
+  <caus:hasUpperValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">26.0</caus:hasUpperValue>
+  <caus:hasLowerValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">24.0</caus:hasLowerValue>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#S22-quality">
+  <rdf:type rdf:resource="https://neurosymbols.ai/ontology/causal-terminology.owl#PasteOpenLifeTemp"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">paste open-life temp quality</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#S23-spec">
+  <rdf:type rdf:resource="https://neurosymbols.ai/ontology/causal-terminology.owl#OverprintAllowanceSpec"/>
+  <Core:prescribes rdf:resource="#S23-processcharacteristic"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">overprint allowance spec</rdfs:label>
+  <caus:hasUpperValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">15.0</caus:hasUpperValue>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#S23-processcharacteristic">
+  <rdf:type rdf:resource="https://neurosymbols.ai/ontology/causal-terminology.owl#OverprintAllowance"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">overprint allowance quality</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#S24-spec">
+  <rdf:type rdf:resource="https://neurosymbols.ai/ontology/causal-terminology.owl#StencilCoplanaritySpec"/>
+  <Core:prescribes rdf:resource="#S24-quality"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">stencil coplanarity spec</rdfs:label>
+  <caus:hasUpperValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">15.0</caus:hasUpperValue>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#S24-quality">
+  <rdf:type rdf:resource="https://neurosymbols.ai/ontology/causal-terminology.owl#StencilCoplanarity"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">stencil coplanarity quality</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#S25-spec">
+  <rdf:type rdf:resource="https://neurosymbols.ai/ontology/causal-terminology.owl#PAndPPlacementAccuracySpec"/>
+  <Core:prescribes rdf:resource="#S25-processcharacteristic"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">p and p placement accuracy spec</rdfs:label>
+  <caus:hasNominalValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0.0</caus:hasNominalValue>
+  <caus:hasUpperValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">40.0</caus:hasUpperValue>
+  <caus:hasLowerValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">-40.0</caus:hasLowerValue>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#S25-processcharacteristic">
+  <rdf:type rdf:resource="https://neurosymbols.ai/ontology/causal-terminology.owl#PAndPPlacementAccuracy"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">p and p placement accuracy quality</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#S26-spec">
+  <rdf:type rdf:resource="https://neurosymbols.ai/ontology/causal-terminology.owl#PreheatZoneTempSpec"/>
+  <Core:prescribes rdf:resource="#S26-processcharacteristic"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">preheat zone temp spec</rdfs:label>
+  <caus:hasNominalValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">175.0</caus:hasNominalValue>
+  <caus:hasUpperValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">180.0</caus:hasUpperValue>
+  <caus:hasLowerValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">170.0</caus:hasLowerValue>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#S26-processcharacteristic">
+  <rdf:type rdf:resource="https://neurosymbols.ai/ontology/causal-terminology.owl#PreheatZoneTemp"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">preheat zone temp quality</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#S27-spec">
+  <rdf:type rdf:resource="https://neurosymbols.ai/ontology/causal-terminology.owl#PreheatZoneTimeSpec"/>
+  <Core:prescribes rdf:resource="#S27-processcharacteristic"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">preheat zone time spec</rdfs:label>
+  <caus:hasNominalValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">90.0</caus:hasNominalValue>
+  <caus:hasUpperValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">120.0</caus:hasUpperValue>
+  <caus:hasLowerValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">60.0</caus:hasLowerValue>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#S27-processcharacteristic">
+  <rdf:type rdf:resource="https://neurosymbols.ai/ontology/causal-terminology.owl#PreheatZoneTime"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">preheat zone time quality</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#S28-spec">
+  <rdf:type rdf:resource="https://neurosymbols.ai/ontology/causal-terminology.owl#SoakZoneTempSpec"/>
+  <Core:prescribes rdf:resource="#S28-processcharacteristic"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">soak zone temp spec</rdfs:label>
+  <caus:hasNominalValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">210.0</caus:hasNominalValue>
+  <caus:hasUpperValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">215.0</caus:hasUpperValue>
+  <caus:hasLowerValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">205.0</caus:hasLowerValue>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#S28-processcharacteristic">
+  <rdf:type rdf:resource="https://neurosymbols.ai/ontology/causal-terminology.owl#SoakZoneTemp"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">soak zone temp quality</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#S29-spec">
+  <rdf:type rdf:resource="https://neurosymbols.ai/ontology/causal-terminology.owl#SoakZoneTimeSpec"/>
+  <Core:prescribes rdf:resource="#S29-processcharacteristic"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">soak zone time spec</rdfs:label>
+  <caus:hasNominalValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">90.0</caus:hasNominalValue>
+  <caus:hasUpperValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">120.0</caus:hasUpperValue>
+  <caus:hasLowerValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">60.0</caus:hasLowerValue>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#S29-processcharacteristic">
+  <rdf:type rdf:resource="https://neurosymbols.ai/ontology/causal-terminology.owl#SoakZoneTime"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">soak zone time quality</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#S30-spec">
+  <rdf:type rdf:resource="https://neurosymbols.ai/ontology/causal-terminology.owl#RampUpZoneRateAndTimeSpec"/>
+  <Core:prescribes rdf:resource="#S30-processcharacteristic"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ramp-up zone rate and time spec</rdfs:label>
+  <caus:hasUpperValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">2.0</caus:hasUpperValue>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#S30-processcharacteristic">
+  <rdf:type rdf:resource="https://neurosymbols.ai/ontology/causal-terminology.owl#RampUpZoneRateAndTime"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ramp-up zone rate and time quality</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#S31-spec">
+  <rdf:type rdf:resource="https://neurosymbols.ai/ontology/causal-terminology.owl#PeakZoneTempSpec"/>
+  <Core:prescribes rdf:resource="#S31-processcharacteristic"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">peak zone temp spec</rdfs:label>
+  <caus:hasNominalValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">255.0</caus:hasNominalValue>
+  <caus:hasUpperValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">260.0</caus:hasUpperValue>
+  <caus:hasLowerValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">250.0</caus:hasLowerValue>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#S31-processcharacteristic">
+  <rdf:type rdf:resource="https://neurosymbols.ai/ontology/causal-terminology.owl#PeakZoneTemp"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">peak zone temp quality</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#S32-spec">
+  <rdf:type rdf:resource="https://neurosymbols.ai/ontology/causal-terminology.owl#PeakZoneTimeSpec"/>
+  <Core:prescribes rdf:resource="#S32-processcharacteristic"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">peak zone time spec</rdfs:label>
+  <caus:hasNominalValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">45.0</caus:hasNominalValue>
+  <caus:hasUpperValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">60.0</caus:hasUpperValue>
+  <caus:hasLowerValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">30.0</caus:hasLowerValue>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#S32-processcharacteristic">
+  <rdf:type rdf:resource="https://neurosymbols.ai/ontology/causal-terminology.owl#PeakZoneTime"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">peak zone time quality</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#S33-spec">
+  <rdf:type rdf:resource="https://neurosymbols.ai/ontology/causal-terminology.owl#CoolDownZoneTempSpec"/>
+  <Core:prescribes rdf:resource="#S33-processcharacteristic"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">cool down zone temp spec</rdfs:label>
+  <caus:hasNominalValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">175.0</caus:hasNominalValue>
+  <caus:hasUpperValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">180.0</caus:hasUpperValue>
+  <caus:hasLowerValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">170.0</caus:hasLowerValue>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#S33-processcharacteristic">
+  <rdf:type rdf:resource="https://neurosymbols.ai/ontology/causal-terminology.owl#CoolDownZoneTemp"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">cool down zone temp quality</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#S34-spec">
+  <rdf:type rdf:resource="https://neurosymbols.ai/ontology/causal-terminology.owl#CoolDownZoneTimeSpec"/>
+  <Core:prescribes rdf:resource="#S34-processcharacteristic"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">cool down zone time spec</rdfs:label>
+  <caus:hasNominalValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">90.0</caus:hasNominalValue>
+  <caus:hasUpperValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">120.0</caus:hasUpperValue>
+  <caus:hasLowerValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">60.0</caus:hasLowerValue>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#S34-processcharacteristic">
+  <rdf:type rdf:resource="https://neurosymbols.ai/ontology/causal-terminology.owl#CoolDownZoneTime"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">cool down zone time quality</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#S35-spec">
+  <rdf:type rdf:resource="https://neurosymbols.ai/ontology/causal-terminology.owl#OxygenLevelSpec"/>
+  <Core:prescribes rdf:resource="#S35-processcharacteristic"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">oxygen level spec</rdfs:label>
+  <caus:hasNominalValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">990.0</caus:hasNominalValue>
+  <caus:hasUpperValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">1000.0</caus:hasUpperValue>
+  <caus:hasLowerValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">980.0</caus:hasLowerValue>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#S35-processcharacteristic">
+  <rdf:type rdf:resource="https://neurosymbols.ai/ontology/causal-terminology.owl#OxygenLevel"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">oxygen level quality</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#S36-spec">
+  <rdf:type rdf:resource="https://neurosymbols.ai/ontology/causal-terminology.owl#StencilCleaningSpec"/>
+  <Core:prescribes rdf:resource="#S36-processcharacteristic"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">stencil cleaning spec</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#S36-processcharacteristic">
+  <rdf:type rdf:resource="https://neurosymbols.ai/ontology/causal-terminology.owl#StencilCleaning"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">stencil cleaning quality</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#S37-spec">
+  <rdf:type rdf:resource="https://neurosymbols.ai/ontology/causal-terminology.owl#AmbientRhSpec"/>
+  <Core:prescribes rdf:resource="#S37-processcharacteristic"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ambient rh spec</rdfs:label>
+  <caus:hasNominalValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">40.0</caus:hasNominalValue>
+  <caus:hasUpperValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">50.0</caus:hasUpperValue>
+  <caus:hasLowerValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">30.0</caus:hasLowerValue>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#S37-processcharacteristic">
+  <rdf:type rdf:resource="https://neurosymbols.ai/ontology/causal-terminology.owl#AmbientRh"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ambient rh quality</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#S38-spec">
+  <rdf:type rdf:resource="https://neurosymbols.ai/ontology/causal-terminology.owl#IonicContaminationSpec"/>
+  <Core:prescribes rdf:resource="#S38-quality"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ionic contamination spec</rdfs:label>
+  <caus:hasNominalValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0.9</caus:hasNominalValue>
+  <caus:hasUpperValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">1.0</caus:hasUpperValue>
+  <caus:hasLowerValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0.8</caus:hasLowerValue>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#S38-quality">
+  <rdf:type rdf:resource="https://neurosymbols.ai/ontology/causal-terminology.owl#IonicContamination"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ionic contamination quality</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#S39-spec">
+  <rdf:type rdf:resource="https://neurosymbols.ai/ontology/causal-terminology.owl#BoardWarpageSpec"/>
+  <Core:prescribes rdf:resource="#S39-quality"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">board warpage spec</rdfs:label>
+  <caus:hasUpperValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">80.0</caus:hasUpperValue>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#S39-quality">
+  <rdf:type rdf:resource="https://neurosymbols.ai/ontology/causal-terminology.owl#BoardWarpage"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">board warpage quality</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#S40-spec">
+  <rdf:type rdf:resource="https://neurosymbols.ai/ontology/causal-terminology.owl#PasteMetalLoadSpec"/>
+  <Core:prescribes rdf:resource="#S40-quality"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">paste metal load spec</rdfs:label>
+  <caus:hasUpperValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">90.0</caus:hasUpperValue>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#S40-quality">
+  <rdf:type rdf:resource="https://neurosymbols.ai/ontology/causal-terminology.owl#PasteMetalLoad"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">paste metal load quality</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#S41-spec">
+  <rdf:type rdf:resource="https://neurosymbols.ai/ontology/causal-terminology.owl#PrinterPlacementAccuracySpec"/>
+  <Core:prescribes rdf:resource="#S41-processcharacteristic"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">printer placement accuracy spec</rdfs:label>
+  <caus:hasNominalValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0.0</caus:hasNominalValue>
+  <caus:hasUpperValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">25.0</caus:hasUpperValue>
+  <caus:hasLowerValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">-25.0</caus:hasLowerValue>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#S41-processcharacteristic">
+  <rdf:type rdf:resource="https://neurosymbols.ai/ontology/causal-terminology.owl#PrinterPlacementAccuracy"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">printer placement accuracy quality</rdfs:label>
+</owl:NamedIndividual>
+
+
+</rdf:RDF>

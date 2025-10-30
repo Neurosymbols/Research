@@ -135,113 +135,11 @@
   <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
 </owl:DatatypeProperty>
 
-<owl:Class rdf:about="#CorrectiveAction">
-  <rdfs:subClassOf rdf:resource="https://spec.industrialontologies.org/ontology/core/Core/ActionSpecification"/>
-  <owl:equivalentClass>
-    <owl:Restriction>
-      <owl:onProperty rdf:resource="#corrects"/>
-      <owl:someValuesFrom rdf:resource="#FailureCause"/>
-    </owl:Restriction>
-  </owl:equivalentClass>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">CorrectiveAction</rdfs:label>
-  <prov:definition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Specified requirement or acceptable range for 'CorrectiveAction' used in process control and acceptance criteria.</prov:definition>
-  <core:example rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Example: Specification: 'CorrectiveAction' must be between defined limits for a given process (e.g., 0.66–0.80).</core:example>
-</owl:Class>
-
-<owl:Class rdf:about="#Defect">
-  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000020"/>
-  <owl:equivalentClass>
-    <owl:Restriction>
-      <owl:onProperty rdf:resource="#defectOccursOn"/>
-      <owl:someValuesFrom rdf:resource="https://spec.industrialontologies.org/ontology/core/Core/MaterialProduct"/>
-    </owl:Restriction>
-  </owl:equivalentClass>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Defect</rdfs:label>
-  <prov:definition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Definition for 'Defect' within semiconductor manufacturing context.</prov:definition>
-  <core:example rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Example usage of 'Defect' in an SMT process context.</core:example>
-</owl:Class>
-
-<owl:Class rdf:about="#FailureCause">
-  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000020"/>
-  <owl:equivalentClass>
-    <owl:Restriction>
-      <owl:onProperty rdf:resource="#affects"/>
-      <owl:someValuesFrom rdf:resource="https://spec.industrialontologies.org/ontology/core/Core/MaterialProduct"/>
-    </owl:Restriction>
-  </owl:equivalentClass>
-  <owl:equivalentClass>
-    <owl:Restriction>
-      <owl:onProperty rdf:resource="http://www.w3.org/ns/prov#wasGeneratedBy"/>
-      <owl:someValuesFrom rdf:resource="#ConformanceAssessment"/>
-    </owl:Restriction>
-  </owl:equivalentClass>
-  <owl:equivalentClass>
-    <owl:Restriction>
-      <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/RO_0002566"/>
-      <owl:someValuesFrom rdf:resource="#Effect"/>
-    </owl:Restriction>
-  </owl:equivalentClass>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">FailureCause</rdfs:label>
-  <prov:definition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Definition for 'FailureCause' within semiconductor manufacturing context.</prov:definition>
-  <core:example rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Example usage of 'FailureCause' in an SMT process context.</core:example>
-</owl:Class>
-
-<owl:Class rdf:about="#Effect">
-  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000020"/>
-  <owl:equivalentClass>
-    <owl:Restriction>
-      <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/RO_0002559"/>
-      <owl:someValuesFrom rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
-    </owl:Restriction>
-  </owl:equivalentClass>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Effect</rdfs:label>
-  <prov:definition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Definition for 'Effect' within semiconductor manufacturing context.</prov:definition>
-  <core:example rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Example usage of 'Effect' in an SMT process context.</core:example>
-</owl:Class>
-
 <owl:Class rdf:about="#PCB">
   <rdfs:subClassOf rdf:resource="https://spec.industrialontologies.org/ontology/core/Core/MaterialProduct"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PCB</rdfs:label>
   <prov:definition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">A material product used in assembly: 'PCB', representing the PCB or related product.</prov:definition>
   <core:example rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Example: PCB assembly 'MainBoard-01' with 6-layer FR4, dimensions 100x80 mm.</core:example>
-</owl:Class>
-
-<owl:Class rdf:about="#ParameterQuality">
-  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
-  <owl:equivalentClass>
-    <owl:Restriction>
-      <owl:onProperty rdf:resource="https://spec.industrialontologies.org/ontology/core/Core/describedBy"/>
-      <owl:someValuesFrom rdf:resource="#ParameterObservation"/>
-    </owl:Restriction>
-  </owl:equivalentClass>
-  <owl:equivalentClass>
-    <owl:Restriction>
-      <owl:onProperty rdf:resource="https://spec.industrialontologies.org/ontology/core/Core/prescribedBy"/>
-      <owl:someValuesFrom rdf:resource="#ParameterSpecification"/>
-    </owl:Restriction>
-  </owl:equivalentClass>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ParameterQuality</rdfs:label>
-  <prov:definition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">A quality parameter describing 'ParameterQuality' as a measurable attribute relevant to solder printing or reflow.</prov:definition>
-  <core:example rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Example: Measured 'ParameterQuality' = 0.12 mm which is within process capability for this design.</core:example>
-</owl:Class>
-
-<owl:Class rdf:about="#ParameterCharacteristic">
-  <rdfs:subClassOf rdf:resource="https://spec.industrialontologies.org/ontology/core/Core/ProcessCharacteristic"/>
-  <owl:equivalentClass>
-    <owl:Restriction>
-      <owl:onProperty rdf:resource="https://spec.industrialontologies.org/ontology/core/Core/describedBy"/>
-      <owl:someValuesFrom rdf:resource="#ParameterObservation"/>
-    </owl:Restriction>
-  </owl:equivalentClass>
-  <owl:equivalentClass>
-    <owl:Restriction>
-      <owl:onProperty rdf:resource="https://spec.industrialontologies.org/ontology/core/Core/prescribedBy"/>
-      <owl:someValuesFrom rdf:resource="#ParameterSpecification"/>
-    </owl:Restriction>
-  </owl:equivalentClass>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ParameterCharacteristic</rdfs:label>
-  <prov:definition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">A manufacturing process step or activity: 'ParameterCharacteristic', describing a stage in PCB assembly.</prov:definition>
-  <core:example rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Example: ReflowSolderingProcess applied profile ramp to peak 245°C for 60s time above liquidus.</core:example>
 </owl:Class>
 
 <owl:Class rdf:about="#ParameterObservation">
@@ -269,23 +167,55 @@
   <core:example rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Example: Inline inspection recorded 'ParameterObservation' = 0.63 for board serial BRD-1001 during print step.</core:example>
 </owl:Class>
 
-<owl:Class rdf:about="#ParameterSpecification">
-  <rdfs:subClassOf rdf:resource="https://spec.industrialontologies.org/ontology/core/Core/RequirementSpecification"/>
+<owl:Class rdf:about="#FailureCause">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000020"/>
   <owl:equivalentClass>
     <owl:Restriction>
-      <owl:onProperty rdf:resource="https://spec.industrialontologies.org/ontology/core/Core/prescribes"/>
-      <owl:someValuesFrom rdf:resource="#ParameterCharacteristic"/>
+      <owl:onProperty rdf:resource="#affects"/>
+      <owl:someValuesFrom rdf:resource="https://spec.industrialontologies.org/ontology/core/Core/MaterialProduct"/>
     </owl:Restriction>
   </owl:equivalentClass>
   <owl:equivalentClass>
     <owl:Restriction>
-      <owl:onProperty rdf:resource="https://spec.industrialontologies.org/ontology/core/Core/isSubjectOf"/>
-      <owl:someValuesFrom rdf:resource="#ParameterObservation"/>
+      <owl:onProperty rdf:resource="http://www.w3.org/ns/prov#wasGeneratedBy"/>
+      <owl:someValuesFrom rdf:resource="#ConformanceAssessment"/>
     </owl:Restriction>
   </owl:equivalentClass>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ParameterSpecification</rdfs:label>
-  <prov:definition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Specified requirement or acceptable range for 'ParameterSpecification' used in process control and acceptance criteria.</prov:definition>
-  <core:example rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Example: Specification: 'ParameterSpecification' must be between defined limits for a given process (e.g., 0.66–0.80).</core:example>
+  <owl:equivalentClass>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/RO_0002566"/>
+      <owl:someValuesFrom rdf:resource="#Effect"/>
+    </owl:Restriction>
+  </owl:equivalentClass>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">FailureCause</rdfs:label>
+  <prov:definition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Definition for 'FailureCause' within semiconductor manufacturing context.</prov:definition>
+  <core:example rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Example usage of 'FailureCause' in an SMT process context.</core:example>
+</owl:Class>
+
+<owl:Class rdf:about="#CorrectiveAction">
+  <rdfs:subClassOf rdf:resource="https://spec.industrialontologies.org/ontology/core/Core/ActionSpecification"/>
+  <owl:equivalentClass>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="#corrects"/>
+      <owl:someValuesFrom rdf:resource="#FailureCause"/>
+    </owl:Restriction>
+  </owl:equivalentClass>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">CorrectiveAction</rdfs:label>
+  <prov:definition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Specified requirement or acceptable range for 'CorrectiveAction' used in process control and acceptance criteria.</prov:definition>
+  <core:example rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Example: Specification: 'CorrectiveAction' must be between defined limits for a given process (e.g., 0.66–0.80).</core:example>
+</owl:Class>
+
+<owl:Class rdf:about="#Defect">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000020"/>
+  <owl:equivalentClass>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="#defectOccursOn"/>
+      <owl:someValuesFrom rdf:resource="https://spec.industrialontologies.org/ontology/core/Core/MaterialProduct"/>
+    </owl:Restriction>
+  </owl:equivalentClass>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Defect</rdfs:label>
+  <prov:definition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Definition for 'Defect' within semiconductor manufacturing context.</prov:definition>
+  <core:example rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Example usage of 'Defect' in an SMT process context.</core:example>
 </owl:Class>
 
 <owl:Class rdf:about="#ConformanceAssessment">
@@ -311,6 +241,76 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ConformanceAssessment</rdfs:label>
   <prov:definition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Definition for 'ConformanceAssessment' within semiconductor manufacturing context.</prov:definition>
   <core:example rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Example usage of 'ConformanceAssessment' in an SMT process context.</core:example>
+</owl:Class>
+
+<owl:Class rdf:about="#Effect">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000020"/>
+  <owl:equivalentClass>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/RO_0002559"/>
+      <owl:someValuesFrom rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+    </owl:Restriction>
+  </owl:equivalentClass>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Effect</rdfs:label>
+  <prov:definition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Definition for 'Effect' within semiconductor manufacturing context.</prov:definition>
+  <core:example rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Example usage of 'Effect' in an SMT process context.</core:example>
+</owl:Class>
+
+<owl:Class rdf:about="#ParameterQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <owl:equivalentClass>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="https://spec.industrialontologies.org/ontology/core/Core/describedBy"/>
+      <owl:someValuesFrom rdf:resource="#ParameterObservation"/>
+    </owl:Restriction>
+  </owl:equivalentClass>
+  <owl:equivalentClass>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="https://spec.industrialontologies.org/ontology/core/Core/prescribedBy"/>
+      <owl:someValuesFrom rdf:resource="#ParameterSpecification"/>
+    </owl:Restriction>
+  </owl:equivalentClass>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ParameterQuality</rdfs:label>
+  <prov:definition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">A quality parameter describing 'ParameterQuality' as a measurable attribute relevant to solder printing or reflow.</prov:definition>
+  <core:example rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Example: Measured 'ParameterQuality' = 0.12 mm which is within process capability for this design.</core:example>
+</owl:Class>
+
+<owl:Class rdf:about="#ParameterSpecification">
+  <rdfs:subClassOf rdf:resource="https://spec.industrialontologies.org/ontology/core/Core/RequirementSpecification"/>
+  <owl:equivalentClass>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="https://spec.industrialontologies.org/ontology/core/Core/prescribes"/>
+      <owl:someValuesFrom rdf:resource="#ParameterCharacteristic"/>
+    </owl:Restriction>
+  </owl:equivalentClass>
+  <owl:equivalentClass>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="https://spec.industrialontologies.org/ontology/core/Core/isSubjectOf"/>
+      <owl:someValuesFrom rdf:resource="#ParameterObservation"/>
+    </owl:Restriction>
+  </owl:equivalentClass>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ParameterSpecification</rdfs:label>
+  <prov:definition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Specified requirement or acceptable range for 'ParameterSpecification' used in process control and acceptance criteria.</prov:definition>
+  <core:example rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Example: Specification: 'ParameterSpecification' must be between defined limits for a given process (e.g., 0.66–0.80).</core:example>
+</owl:Class>
+
+<owl:Class rdf:about="#ParameterCharacteristic">
+  <rdfs:subClassOf rdf:resource="https://spec.industrialontologies.org/ontology/core/Core/ProcessCharacteristic"/>
+  <owl:equivalentClass>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="https://spec.industrialontologies.org/ontology/core/Core/describedBy"/>
+      <owl:someValuesFrom rdf:resource="#ParameterObservation"/>
+    </owl:Restriction>
+  </owl:equivalentClass>
+  <owl:equivalentClass>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="https://spec.industrialontologies.org/ontology/core/Core/prescribedBy"/>
+      <owl:someValuesFrom rdf:resource="#ParameterSpecification"/>
+    </owl:Restriction>
+  </owl:equivalentClass>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ParameterCharacteristic</rdfs:label>
+  <prov:definition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">A manufacturing process step or activity: 'ParameterCharacteristic', describing a stage in PCB assembly.</prov:definition>
+  <core:example rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Example: ReflowSolderingProcess applied profile ramp to peak 245°C for 60s time above liquidus.</core:example>
 </owl:Class>
 
 <owl:Class rdf:about="#ComponentPlacementProcess">
@@ -1224,11 +1224,29 @@
   <obo:RO_0002559 rdf:resource="#SqueegeeSpeedTooLow_1"/>
   <obo:RO_0002559 rdf:resource="#SqueegeeAngleTooLow_1"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ApertureOverfill_1</rdfs:label>
-  <governedBy rdf:datatype="http://www.w3.org/2001/XMLSchema#string">If PasteRollBeadSize &gt; PasteRollBeadSize_USL → ApertureOverfill</governedBy>
-  <governedBy rdf:datatype="http://www.w3.org/2001/XMLSchema#string">If SqueegeeSpeed ≤ SqueegeeSpeed_LSL ∧ (SqueegeeAngle ≤ SqueegeeAngle_NOM ∨ SqueegeePressure ≥ SqueegeePressure_NOM) → ApertureOverfill ∨ UndersideSmear</governedBy>
-  <governedBy rdf:datatype="http://www.w3.org/2001/XMLSchema#string">If ApertureAreaRatio &lt; ApertureAreaRatio_LSL ∧ StencilThickness ≥ StencilThickness_NOM → ApertureOverfill</governedBy>
-  <governedBy rdf:datatype="http://www.w3.org/2001/XMLSchema#string">If StencilThickness &gt; StencilThickness_USL ∧ BGAPitch ≤ BGAPitch_threshold → ApertureOverfill</governedBy>
   <governedBy rdf:datatype="http://www.w3.org/2001/XMLSchema#string">If SqueegeeAngle &lt; SqueegeeAngle_LSL ∧ (SqueegeeSpeed ≤ SqueegeeSpeed_NOM ∨ SqueegeePressure ≥ SqueegeePressure_NOM) → ApertureOverfill ∨ UndersideSmear</governedBy>
+  <governedBy rdf:datatype="http://www.w3.org/2001/XMLSchema#string">If StencilThickness &gt; StencilThickness_USL ∧ BGAPitch ≤ BGAPitch_threshold → ApertureOverfill</governedBy>
+  <governedBy rdf:datatype="http://www.w3.org/2001/XMLSchema#string">If PasteRollBeadSize &gt; PasteRollBeadSize_USL → ApertureOverfill</governedBy>
+  <governedBy rdf:datatype="http://www.w3.org/2001/XMLSchema#string">If ApertureAreaRatio &lt; ApertureAreaRatio_LSL ∧ StencilThickness ≥ StencilThickness_NOM → ApertureOverfill</governedBy>
+  <governedBy rdf:datatype="http://www.w3.org/2001/XMLSchema#string">If SqueegeeSpeed ≤ SqueegeeSpeed_LSL ∧ (SqueegeeAngle ≤ SqueegeeAngle_NOM ∨ SqueegeePressure ≥ SqueegeePressure_NOM) → ApertureOverfill ∨ UndersideSmear</governedBy>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#UndersideSmear_1">
+  <rdf:type rdf:resource="#UndersideSmear"/>
+  <obo:RO_0002559 rdf:resource="#SqueegeeAngleTooLow_1"/>
+  <obo:RO_0002559 rdf:resource="#SqueegeePressureTooHigh_1"/>
+  <obo:RO_0002559 rdf:resource="#ResidualPasteVolume_1"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">UndersideSmear_1</rdfs:label>
+  <governedBy rdf:datatype="http://www.w3.org/2001/XMLSchema#string">If SqueegeePressure &gt; SqueegeePressure_USL → UndersideSmear</governedBy>
+  <governedBy rdf:datatype="http://www.w3.org/2001/XMLSchema#string">If ResidualPasteAllowed &gt; ResidualPasteAllowed_USL → UndersideSmear</governedBy>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#PostPrintSpread_1">
+  <rdf:type rdf:resource="#PostPrintSpread"/>
+  <obo:RO_0002559 rdf:resource="#LowPasteViscosity_1"/>
+  <obo:RO_0002559 rdf:resource="#HighHumidity_1"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PostPrintSpread_1</rdfs:label>
+  <governedBy rdf:datatype="http://www.w3.org/2001/XMLSchema#string">If PasteViscosity &lt; PasteViscosity_NOM ∨ AmbientRH &gt; AmbientRH_USL → PostPrintSpread</governedBy>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#LowAreaRatio_1">
@@ -1261,16 +1279,6 @@
   <governedBy rdf:datatype="http://www.w3.org/2001/XMLSchema#string">If SqueegeeAngle &lt; SqueegeeAngle_LSL → SqueegeeAngleTooLow</governedBy>
 </owl:NamedIndividual>
 
-<owl:NamedIndividual rdf:about="#UndersideSmear_1">
-  <rdf:type rdf:resource="#UndersideSmear"/>
-  <obo:RO_0002559 rdf:resource="#SqueegeeAngleTooLow_1"/>
-  <obo:RO_0002559 rdf:resource="#SqueegeePressureTooHigh_1"/>
-  <obo:RO_0002559 rdf:resource="#ResidualPasteVolume_1"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">UndersideSmear_1</rdfs:label>
-  <governedBy rdf:datatype="http://www.w3.org/2001/XMLSchema#string">If SqueegeePressure &gt; SqueegeePressure_USL → UndersideSmear</governedBy>
-  <governedBy rdf:datatype="http://www.w3.org/2001/XMLSchema#string">If ResidualPasteAllowed &gt; ResidualPasteAllowed_USL → UndersideSmear</governedBy>
-</owl:NamedIndividual>
-
 <owl:NamedIndividual rdf:about="#SqueegeePressureTooHigh_1">
   <rdf:type rdf:resource="#SqueegeePressureTooHigh"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SqueegeePressureTooHigh_1</rdfs:label>
@@ -1283,25 +1291,11 @@
   <governedBy rdf:datatype="http://www.w3.org/2001/XMLSchema#string">If ResidualPasteAllowed &gt; ResidualPasteAllowed_USL → ResidualPasteVolume</governedBy>
 </owl:NamedIndividual>
 
-<owl:NamedIndividual rdf:about="#PostPrintSpread_1">
-  <rdf:type rdf:resource="#PostPrintSpread"/>
-  <obo:RO_0002559 rdf:resource="#LowPasteViscosity_1"/>
-  <obo:RO_0002559 rdf:resource="#HighHumidity_1"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PostPrintSpread_1</rdfs:label>
-  <governedBy rdf:datatype="http://www.w3.org/2001/XMLSchema#string">If PasteViscosity &lt; PasteViscosity_NOM ∨ AmbientRH &gt; AmbientRH_USL → PostPrintSpread</governedBy>
-</owl:NamedIndividual>
-
 <owl:NamedIndividual rdf:about="#LowPasteViscosity_1">
   <rdf:type rdf:resource="#LowPasteViscosity"/>
   <obo:RO_0002559 rdf:resource="#LowMetalContent_1"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">LowPasteViscosity_1</rdfs:label>
   <governedBy rdf:datatype="http://www.w3.org/2001/XMLSchema#string">If PasteMetalLoad &lt; PasteMetalLoad_LSL → LowPasteViscosity</governedBy>
-</owl:NamedIndividual>
-
-<owl:NamedIndividual rdf:about="#LowMetalContent_1">
-  <rdf:type rdf:resource="#LowMetalContent"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">LowMetalContent_1</rdfs:label>
-  <governedBy rdf:datatype="http://www.w3.org/2001/XMLSchema#string">If PasteMetalLoad &lt; PasteMetalLoad_LSL → LowMetalContent</governedBy>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#HighHumidity_1">
@@ -1310,15 +1304,21 @@
   <governedBy rdf:datatype="http://www.w3.org/2001/XMLSchema#string">If AmbientRh &gt; AmbientRh_USL → HighHumidity</governedBy>
 </owl:NamedIndividual>
 
-<rdf:Description rdf:about="http://purl.obolibrary.org/obo/RO_0002559">
-  <rdfs:domain rdf:resource="#Effect"/>
-  <rdfs:range rdf:resource="#FailureCause"/>
-</rdf:Description>
+<owl:NamedIndividual rdf:about="#LowMetalContent_1">
+  <rdf:type rdf:resource="#LowMetalContent"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">LowMetalContent_1</rdfs:label>
+  <governedBy rdf:datatype="http://www.w3.org/2001/XMLSchema#string">If PasteMetalLoad &lt; PasteMetalLoad_LSL → LowMetalContent</governedBy>
+</owl:NamedIndividual>
 
 <rdf:Description rdf:about="http://purl.obolibrary.org/obo/RO_0002566">
   <owl:inverseOf rdf:resource="http://purl.obolibrary.org/obo/RO_0002559"/>
   <rdfs:domain rdf:resource="#FailureCause"/>
   <rdfs:range rdf:resource="#Effect"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="http://purl.obolibrary.org/obo/RO_0002559">
+  <rdfs:domain rdf:resource="#Effect"/>
+  <rdfs:range rdf:resource="#FailureCause"/>
 </rdf:Description>
 
 

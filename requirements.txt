@@ -11,3 +11,4 @@ pytest-cov
 pgmpy
 lark-parser
 rdflib
+requests

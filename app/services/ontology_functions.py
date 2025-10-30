@@ -127,8 +127,8 @@ def initiate_ontology(
 def save_ontology(path:str):
     print(f"Total individuals inside SemicON Base: {len(list(base_onto.individuals()))}")
     print(f"Total individuals inside SemicON Product1: {len(list(product1_onto.individuals()))}")
-    base_onto.save(file=os.path.join(path, "neurosymbols-causal-terminology.owl"), format = "rdfxml")
-    product1_onto.save(file=os.path.join(path, "neurosymbols-causal-assertions.owl"), format = "rdfxml")
+    base_onto.save(file=os.path.join(path, "causal-terminology.owl"), format = "rdfxml")
+    product1_onto.save(file=os.path.join(path, "causal-assertions.owl"), format = "rdfxml")
 
 def add_base_classes(
     base_classes
@@ -357,16 +357,26 @@ def add_specs_to_ontology(specs_dict, ontology_path):
         with product1_onto:
             for si in specs_dict:
                 classname = create_classname_syntax(si)
-                base_onto_class = base_onto[classname]
-                onto_ins = base_onto_class(specs_dict[si]['id'])
-                onto_ins.label = [specs_dict[si]['id']]
+                #create spec
+                spec_class = base_onto[f"{classname}Spec"]
+                spec_ins = spec_class(f"{specs_dict[si]['id']}-spec")
+                spec_ins.label = [f"{si} spec"]
                 for value_type, value in specs_dict[si].items():
                     if value_type == "NOM":
-                        onto_ins.hasNominalValue = value
+                        spec_ins.hasNominalValue = value
                     elif value_type == "LSL":
-                        onto_ins.hasLowerValue = value
+                        spec_ins.hasLowerValue = value
                     elif value_type == "USL":
-                        onto_ins.hasUpperValue = value
+                        spec_ins.hasUpperValue = value
+                    elif value_type == "onto_category":
+                        onto_class = base_onto[f"{classname}"]
+                        if value == "Quality":
+                            onto_ins = onto_class(f"{specs_dict[si]['id']}-quality")
+                            onto_ins.label = [f"{si} quality"]
+                        elif value == "ProcessCharacteristic":
+                            onto_ins = onto_class(f"{specs_dict[si]['id']}-processcharacteristic")
+                            onto_ins.label = [f"{si} quality"]
+                        spec_ins.prescribes = [onto_ins]   
             save_ontology(ontology_path)
 
 def add_defect_individuals(

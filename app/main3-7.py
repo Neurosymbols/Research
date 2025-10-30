@@ -137,7 +137,7 @@ def extract_specs():
         spec_category = row[2].split(":")[1].strip()
         process_category = row[3].strip()
         spec_category_dict[normalize_text(spec_name.lower())] = {"onto_category": spec_category, "process_category": process_category}
-        spec_value = row[4]
+        spec_value = row[5]
         specs_dict[normalize_text(spec_name.lower())] = spec_value
     #chain the process
     # specs_dict = dict(list(specs_dict.items())[:3])
