@@ -1,4 +1,4 @@
-@prefix base:   <https://abakai.ai/ontology/semicon-base.owl#> .
+@prefix base:   <https://neurosymbols.ai/ontology/causal-terminology.owl#> .
 @prefix sh:     <http://www.w3.org/ns/shacl#> .
 @prefix xsd:    <http://www.w3.org/2001/XMLSchema#> .
 
@@ -6,7 +6,7 @@
 base:
   sh:declare [
     sh:prefix "base" ;
-    sh:namespace "https://abakai.ai/ontology/semicon-base.owl#" ;
+    sh:namespace "https://neurosymbols.ai/ontology/causal-terminology.owl#" ;
   ] .
 
 base:ObservationShape
@@ -17,11 +17,11 @@ base:ObservationShape
         sh:select """
             SELECT ?this
             WHERE {
-                ?this a base:MeasurementInformationContentEntity .
+                ?this a base:ParameterObservation .
                 ?this base:hasObservedValue ?ovalue .
-                ?spec a base:Quality .
+                ?spec a base:ParameterSpecification .
                 ?spec base:hasUpperValue ?uspec .
-                ?this base:evaluatesAgainst ?spec .
+                ?this base:isAbout ?spec .
                 FILTER(?ovalue > ?uspec)
             }
         """ ;
@@ -32,11 +32,8 @@ base:ObservationShape
         sh:prefixes base: ;
         sh:message "Observations must me less than upper limit." ;
         sh:select """
-            SELECT $this ?value ?uspec {
+            SELECT $this ?value {
                 $this base:hasObservedValue ?value .
-                ?spec a base:Quality .
-                ?spec base:hasUpperValue ?uspec .
-                $this base:evaluatesAgainst ?spec .
             }
         """ ;
     ] .

@@ -250,8 +250,13 @@ if __name__ == "__main__":
 
     if args.export:
         export_ontology_to_graphdb(
-            parent_ontology_path = f"{path}/semicon-base.owl",
-            individual_ontology_path = f"{path}/semicon-product1.owl"
+            [
+                f"{path}/bfo-prov.owl",
+                f"{path}/iof-core.rdf",
+                f"{path}/ro-causal-properties.owl",
+                f"{path}/causal-terminology.owl",
+                f"{path}/causal-assertions.owl"
+            ]
         )
     if args.clear:
         clear_graphdb_default_graph()

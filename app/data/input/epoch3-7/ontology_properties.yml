@@ -61,11 +61,22 @@ object_properties:
     range: FailureCause
     transitive: true
   
+  - name: directlyCausallyInfluencedBy
+    parent: RO_0002559
+    domain: Effect
+    range: FailureCause
+  
   - name: RO_0002566
     inverse_of: RO_0002559
     domain: FailureCause
     range: Effect
     transitive: true
+  
+  - name: directlyCausallyInfluences
+    parent: RO_0002566
+    inverse_of: directlyCausallyInfluencedBy
+    domain: FailureCause
+    range: Effect
 
 data_properties:
   - name: hasUpperValue

@@ -12,3 +12,4 @@ pgmpy
 lark-parser
 rdflib
 requests
+tabulate

@@ -20,29 +20,34 @@ RULE_QUERY_MAP = {}
 with open(CAUSAL_CHAIN_PATH) as f:
     CAUSAL_CHAIN_OBJ = json.load(f)
 
+# for one product and one failure mechanism, multiple rules can fire. Using product name and failure cause name is necessary but not enough to create a unique identiier for coa individuals. It needs rule id too
+
 template_sparql = """
-    PREFIX base: <https://abakai.ai/ontology/semicon-base.owl#>
-    PREFIX product1: <https://abakai.ai/data/semicon-product1.owl#>
+    PREFIX term: <https://neurosymbols.ai/ontology/causal-terminology.owl#>
+    PREFIX assert: <https://neurosymbols.ai/data/causal-assertions.owl#>
+    PREFIX iof: <https://spec.industrialontologies.org/ontology/core/Core/>
+    PREFIX bfo: <http://purl.obolibrary.org/obo/>
+    PREFIX prov: <http://www.w3.org/ns/prov#>
     PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
     PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 
     {VERB} { 
-    ?coa a base:ConformanceAssessment ;
-        base:triggeredByRule "{RULE}" ;
+    ?coa a term:ConformanceAssessment ;
+        term:triggeredByRule "{RULE}" ;
     {RELATED_OBS_BINDINGS}
         rdfs:label ?coa_label .
-    ?fc a base:{EFFECT} ;
-        base:supportedBy ?coa ;
-        base:affects ?product ;
+    ?fc a term:{EFFECT} ;
+        prov:wasGeneratedBy ?coa ;
+        term:affects ?product ;
         rdfs:label ?fc_label .
     } WHERE {
     {OBS_BINDINGS}
     {LIMIT_BINDINGS}
     FILTER({FILTER_EXPR})
-    BIND(IRI(CONCAT(str(product1:), "COA-", STRAFTER(STR(?product), "#"), "-", '{UID}')) AS ?coa)
-    BIND(CONCAT("COA-", STRAFTER(STR(?product), "#"), "-", '{UID}') AS ?coa_label)
-    BIND(IRI(CONCAT(str(product1:), "FC-", "{EFFECT}-", STRAFTER(STR(?product), "#"), "-", '{UID}')) AS ?fc)
-    BIND(CONCAT("FC-", "{EFFECT}-", STRAFTER(STR(?product), "#"), "-", '{UID}') AS ?fc_label)
+    BIND(IRI(CONCAT(str(assert:), "COA-", STRAFTER(STR(?product), "#"), "-",'{RULE_ID}')) AS ?coa)
+    BIND(CONCAT("COA-", STRAFTER(STR(?product), "#"), "-", '{RULE_ID}') AS ?coa_label)
+    BIND(IRI(CONCAT(str(assert:), "FC-", "{EFFECT}-", STRAFTER(STR(?product), "#"))) AS ?fc)
+    BIND(CONCAT("{EFFECT}") AS ?fc_label)
     }
 """
 
@@ -61,9 +66,10 @@ def parse_rule(rule_str:str):
             | expr "∨" expr   -> or_
             | cond
             | "(" expr ")"
-        cond: NAME OP NAME
+        cond: NAME OP (NAME | NUMBER)
         OP: "<="|">="|"<"|">"|"="|"≤"|"≥"
         NAME: /[A-Za-z_][A-Za-z0-9_]*/
+        NUMBER: /[0-9]+(\.[0-9]+)?/
         %import common.WS
         %ignore WS
     """
@@ -145,7 +151,7 @@ def gen_related_obs(rule):
         walk(cond)
 
     # Generate the SPARQL lines
-    related_lines = [f"       base:relatedObservation ?{o}_obs ;" for o in seen]
+    related_lines = [f"       term:hasAssessmentInput ?{o}_obs ;" for o in seen]
     related_block = "\n".join(related_lines)
 
     return related_block
@@ -164,10 +170,12 @@ def gen_obs_bindings(rule):
                 obs = node["obs"]
                 if obs not in seen:
                     seen.add(obs)
-                    block = f"""  ?{obs}_obs a base:{obs}Obs ;
-       base:hasObservedValue ?{obs}_obsvalue ;
-       base:evaluatesAgainst ?{obs}_spec ;
-       base:observationOf ?product ."""
+                    block = f"""  ?{obs}_obs a term:{obs}Obs ;
+                                            term:hasObservedValue ?{obs}_obsvalue ;
+                                            iof:isAbout ?{obs}_spec ;
+                                            term:observationOf ?product .
+                                   ?{obs}_spec a term:ParameterSpecification . 
+                            """
                     blocks.append(block)
             elif "subconditions" in node:
                 for sub in node["subconditions"]:
@@ -198,11 +206,12 @@ def gen_limit_bindings(rule):
             if "obs" in node:
                 obs = node["obs"]
                 lim = node["limit"]
-                prop = spec_prop_for(lim)
-                key = (obs, prop)
-                if key not in seen:
-                    seen.add(key)
-                    lines.append(f"  ?{obs}_spec base:{prop} ?{obs}_specvalue .")
+                if not lim.isdigit():
+                    prop = spec_prop_for(lim)
+                    key = (obs, prop)
+                    if key not in seen:
+                        seen.add(key)
+                        lines.append(f"  ?{obs}_spec term:{prop} ?{obs}_specvalue .")
             elif "subconditions" in node:
                 for sub in node["subconditions"]:
                     walk(sub)
@@ -227,7 +236,11 @@ def gen_filter_expr(rule):
             if "obs" in node:
                 obs = node["obs"]
                 op = node["operator"]
-                return f"xsd:float(?{obs}_obsvalue) {op} xsd:float(?{obs}_specvalue)"
+                limit = node['limit']
+                if limit.isdigit():
+                    return f"xsd:float(?{obs}_obsvalue) {op} xsd:float({limit})"
+                else:
+                    return f"xsd:float(?{obs}_obsvalue) {op} xsd:float(?{obs}_specvalue)"
             # Logical node (AND/OR)
             elif "logic" in node and "subconditions" in node:
                 sub_exprs = [walk(sub) for sub in node["subconditions"]]
@@ -247,7 +260,7 @@ def gen_filter_expr(rule):
     expr = " && ".join([walk(c) for c in rule["conditions"]])
     return expr
 
-def rule_to_sparql_util(rule_str, verb):
+def rule_to_sparql_util(rule_str, rule_pk, verb):
     """
     Convert a full causal rule string (with →) into one or more SPARQL queries.
     Automatically detects all parameters and effects.
@@ -262,112 +275,147 @@ def rule_to_sparql_util(rule_str, verb):
     limit_bindings = gen_limit_bindings(structured_rule)
     filter_bindings = gen_filter_expr(structured_rule)
     sparql_queries = []
-    uid = str(random.randint(1,100))
     for effect in effects:
+        rule_id = f"{effect}-rule-{rule_pk}"
         query = template_sparql.replace("{VERB}", verb)\
                         .replace("{RELATED_OBS_BINDINGS}", related_block_bindings)\
                         .replace("{EFFECT}", effect)\
-                        .replace("{UID}", uid)\
+                        .replace("{RULE_ID}", rule_id)\
                         .replace("{RULE}", rule_str)\
                         .replace("{OBS_BINDINGS}", obs_bindings)\
                         .replace("{LIMIT_BINDINGS}", limit_bindings)\
                         .replace("{FILTER_EXPR}", filter_bindings)
         sparql_queries.append(query)
         if rule_str not in RULE_QUERY_MAP:
-            RULE_QUERY_MAP[rule_str] = []
-        RULE_QUERY_MAP[rule_str].append(query)
+            RULE_QUERY_MAP[rule_id] = {"name": rule_str, "queries": []}
+        RULE_QUERY_MAP[rule_id]['queries'].append(query)
 
 def rule_to_sparql(verb="CONSTRUCT"):
     for effect, effect_info in CAUSAL_CHAIN_OBJ.items():
         rules = effect_info.get('governed_by', [])
+        rule_pk = 1
         for r in rules:
-            rule_to_sparql_util(r, verb)
+            rule_to_sparql_util(r, rule_pk, verb)
+            rule_pk += 1
     with open(STRUCTURED_RULES_PATH, "w", encoding="utf-8") as f3:
         json.dump(STRUCTURED_RULE_MAP, f3, ensure_ascii=False, indent=2)
     with open(RULE_QUERY_MAP_PATH, "w", encoding="utf-8") as f3:
         json_str = json.dumps(RULE_QUERY_MAP, indent=2).encode('utf-8').decode('unicode_escape')
         f3.write(json_str)
 
-def fire_failure_cause_queries():
-    i = 0
-    for rule, queries in RULE_QUERY_MAP.items():
-        for q in queries:
-            print(q)
-            print("##################")
-            perform_sparql_update(q)
-            i += 1
+def fire_failure_cause_queries(verb):
+    rule_firing_report = {}
+    for rule_id, rule_info in RULE_QUERY_MAP.items():
+        for q in rule_info['queries']:
+            if verb == "INSERT":
+                perform_sparql_update(q)
+            else:
+                print(q)
+                print("##################")
+                construct_res = perform_sparql_query(q)
+                rule_firing_report[rule_id] = len(construct_res)
+    if verb == "CONSTRUCT":
+        with open(f"./app/data/output/epoch3-7/failure_cause_rules_firing_report.json", "w") as f:
+            json.dump(rule_firing_report, f, indent=2)
 
 def create_causal_chain(verb):
     for effect, effect_info in CAUSAL_CHAIN_OBJ.items():
         for cause in effect_info['caused_by']:
             insert_query = f'''
-                PREFIX base: <https://abakai.ai/ontology/semicon-base.owl#>
-                PREFIX product1: <https://abakai.ai/data/semicon-product1.owl#>
+                PREFIX term: <https://neurosymbols.ai/ontology/causal-terminology.owl#>
+                PREFIX assert: <https://neurosymbols.ai/data/causal-assertions.owl#>
+                PREFIX ro: <http://purl.obolibrary.org/obo/>
                 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
                 {verb} {{
-                    ?effect base:causallyInfluencedBy ?cause .
+                    ?effect ro:RO_0002559 ?cause .
+                    ?effect term:directlyCausallyInfluencedBy ?cause .
                 }}
                 WHERE {{
-                    ?effect a base:{effect} .
-                    ?cause  a base:{cause} .
-                    VALUES ?effect_pred {{ base:potentiallyOccursOn base:affects }}
-                    ?effect ?effect_pred ?product1 .
-                    ?cause base:affects ?product2 .
-                    FILTER(?product1 = ?product2)
-                    
+                    ?effect a term:{effect} .
+                    ?cause  a term:{cause} .
+                    VALUES ?effect_pred {{ term:defectOccursOn term:affects }}
+                    ?effect ?effect_pred ?product .
+                    ?cause term:affects ?product .
                 }}
                 '''
             if verb == "INSERT":
                 perform_sparql_update(insert_query)
             else:
+                print(insert_query)
                 print(len(perform_sparql_query(insert_query)))
 
 def infere_root_causes(verb):
-    query = '''
-        PREFIX base: <https://abakai.ai/ontology/semicon-base.owl#>
-        PREFIX product1: <https://abakai.ai/data/semicon-product1.owl#>
+    root_cause_query = f'''
+            PREFIX term: <https://neurosymbols.ai/ontology/causal-terminology.owl#>
+            PREFIX assert: <https://neurosymbols.ai/data/causal-assertions.owl#>
+            PREFIX iof: <https://spec.industrialontologies.org/ontology/core/Core/>
+            PREFIX ro: <http://purl.obolibrary.org/obo/>
+            PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+
+        {verb} {{
+                    ?fc a term:RootCause ;
+                }}
+                WHERE {{
+                ?fc a term:FailureCause ;
+                    term:affects ?product .
+                ?product a iof:MaterialProduct . 
+                FILTER NOT EXISTS {{ ?fc ro:RO_0002559 ?other . }}
+        }}
+    '''
+    attach_root_cause_to_defect = f'''
+        PREFIX term: <https://neurosymbols.ai/ontology/causal-terminology.owl#>
+        PREFIX assert: <https://neurosymbols.ai/data/causal-assertions.owl#>
+        PREFIX iof: <https://spec.industrialontologies.org/ontology/core/Core/>
+        PREFIX ro: <http://purl.obolibrary.org/obo/>
         PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 
-        INSERT {
-                    ?fc a base:RootCause ;
-                }
-                WHERE {
-                ?fc a base:FailureCause .
-                FILTER NOT EXISTS { ?fc base:causallyInfluencedBy ?other . }
-        }
+        {verb} {{
+                    ?defect ro:RO_0002559 ?fc .
+                }}
+                WHERE {{
+                ?fc a term:RootCause ;
+                    term:affects ?product .
+                ?defect a term:Defect ;
+                    term:defectOccursOn ?product
+        }}
     '''
     if verb == "INSERT":
-        perform_sparql_update(query)
+        perform_sparql_update(root_cause_query)
+        perform_sparql_update(attach_root_cause_to_defect)
     else:
-        print(len(perform_sparql_query(query)))
+        print(len(perform_sparql_query(root_cause_query)))
+        print(len(perform_sparql_query(attach_root_cause_to_defect)))
 
 def attach_corrective_action_to_root_causes(verb):
     query = '''
-        PREFIX base: <https://abakai.ai/ontology/semicon-base.owl#>
-        PREFIX product1: <https://abakai.ai/data/semicon-product1.owl#>
+        PREFIX term: <https://neurosymbols.ai/ontology/causal-terminology.owl#>
+        PREFIX assert: <https://neurosymbols.ai/data/causal-assertions.owl#>
+        PREFIX ro: <http://purl.obolibrary.org/obo/>
         PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 
         SELECT ?rootcause ?effect
 
         WHERE {
-                ?rootcause a base:RootCause ;
-                        base:causallyInfluences ?effect .
-                ?effect a base:Defect .
+                ?rootcause a term:RootCause ;
+                        ro:RO_0002566 ?effect ;
+                        term:affects ?product .
+                ?effect a term:Defect .
             }
     '''
     ca_query_temp = f'''
-        PREFIX base: <https://abakai.ai/ontology/semicon-base.owl#>
-        PREFIX product1: <https://abakai.ai/data/semicon-product1.owl#>
+        PREFIX term: <https://neurosymbols.ai/ontology/causal-terminology.owl#>
+        PREFIX assert: <https://neurosymbols.ai/data/causal-assertions.owl#>
         PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
         {verb} {{
-            ?action a base:CorrectiveAction ;
+            ?action a term:CorrectiveAction ;
                     rdfs:label ?action_label .
-            ?fc base:hasCorrectiveAction ?action .
+            ?fc term:isCorrectedBy ?action .
         }}
         WHERE{{
-            ?fc a base:RootCause ;
+            ?fc a term:RootCause ;
+                term:affects ?product .
     		FILTER(STR(?fc) = "{{fc_uri}}")
-            BIND(IRI("product1:{{ca_uri}}") as ?action)
+            BIND(IRI("assert:{{ca_uri}}") as ?action)
             BIND("{{ca_label}}" as ?action_label)
         }}
     '''
@@ -387,11 +435,12 @@ def attach_corrective_action_to_root_causes(verb):
             if verb == "INSERT":
                 perform_sparql_update(ca_query)
             else:
+                print(ca_query)
                 print(len(perform_sparql_query(ca_query)))
             
 
 rule_to_sparql(verb="INSERT")
-fire_failure_cause_queries()
+fire_failure_cause_queries(verb="INSERT")
 create_causal_chain(verb="INSERT")
 infere_root_causes(verb="INSERT")
 attach_corrective_action_to_root_causes(verb="INSERT")

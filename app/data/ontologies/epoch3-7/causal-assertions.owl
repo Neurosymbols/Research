@@ -585,7 +585,7 @@
   <rdf:type rdf:resource="https://neurosymbols.ai/ontology/causal-terminology.owl#ApertureAreaRatioObs"/>
   <Core:isAbout rdf:resource="#S13-spec"/>
   <caus:observationOf rdf:resource="#PCB1"/>
-  <caus:hasObservedValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0.658</caus:hasObservedValue>
+  <caus:hasObservedValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0.694</caus:hasObservedValue>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#StencilThickness_PCB1_Obs">
@@ -651,6 +651,20 @@
   <caus:hasObservedValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">183.269</caus:hasObservedValue>
 </owl:NamedIndividual>
 
+<owl:NamedIndividual rdf:about="#TimeAboveLiquidus_PCB1_Obs">
+  <rdf:type rdf:resource="https://neurosymbols.ai/ontology/causal-terminology.owl#TimeAboveLiquidusObs"/>
+  <Core:isAbout rdf:resource="#S42-spec"/>
+  <caus:observationOf rdf:resource="#PCB1"/>
+  <caus:hasObservedValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">67.42</caus:hasObservedValue>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#AmbientRh_PCB1_Obs">
+  <rdf:type rdf:resource="https://neurosymbols.ai/ontology/causal-terminology.owl#AmbientRhObs"/>
+  <Core:isAbout rdf:resource="#S37-spec"/>
+  <caus:observationOf rdf:resource="#PCB1"/>
+  <caus:hasObservedValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">37.389</caus:hasObservedValue>
+</owl:NamedIndividual>
+
 <owl:NamedIndividual rdf:about="#MetalLoad_PCB1_Obs">
   <rdf:type rdf:resource="https://neurosymbols.ai/ontology/causal-terminology.owl#MetalLoadObs"/>
   <Core:isAbout rdf:resource="#S40-spec"/>
@@ -665,13 +679,6 @@
   <caus:hasObservedValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">258.749</caus:hasObservedValue>
 </owl:NamedIndividual>
 
-<owl:NamedIndividual rdf:about="#TimeAboveLiquidus_PCB1_Obs">
-  <rdf:type rdf:resource="https://neurosymbols.ai/ontology/causal-terminology.owl#TimeAboveLiquidusObs"/>
-  <Core:isAbout rdf:resource="#S42-spec"/>
-  <caus:observationOf rdf:resource="#PCB1"/>
-  <caus:hasObservedValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">43.67</caus:hasObservedValue>
-</owl:NamedIndividual>
-
 <owl:NamedIndividual rdf:about="#PCB2">
   <rdf:type rdf:resource="https://neurosymbols.ai/ontology/causal-terminology.owl#PCB"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PCB2</rdfs:label>
@@ -681,7 +688,7 @@
   <rdf:type rdf:resource="https://neurosymbols.ai/ontology/causal-terminology.owl#ApertureAreaRatioObs"/>
   <Core:isAbout rdf:resource="#S13-spec"/>
   <caus:observationOf rdf:resource="#PCB2"/>
-  <caus:hasObservedValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0.623</caus:hasObservedValue>
+  <caus:hasObservedValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0.667</caus:hasObservedValue>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#StencilThickness_PCB2_Obs">
@@ -723,7 +730,7 @@
   <rdf:type rdf:resource="https://neurosymbols.ai/ontology/causal-terminology.owl#SqueegeePressureObs"/>
   <Core:isAbout rdf:resource="#S10-spec"/>
   <caus:observationOf rdf:resource="#PCB2"/>
-  <caus:hasObservedValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0.304</caus:hasObservedValue>
+  <caus:hasObservedValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0.284</caus:hasObservedValue>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#SqueegeeSpeed_PCB2_Obs">
@@ -747,6 +754,20 @@
   <caus:hasObservedValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">201.241</caus:hasObservedValue>
 </owl:NamedIndividual>
 
+<owl:NamedIndividual rdf:about="#TimeAboveLiquidus_PCB2_Obs">
+  <rdf:type rdf:resource="https://neurosymbols.ai/ontology/causal-terminology.owl#TimeAboveLiquidusObs"/>
+  <Core:isAbout rdf:resource="#S42-spec"/>
+  <caus:observationOf rdf:resource="#PCB2"/>
+  <caus:hasObservedValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">53.19</caus:hasObservedValue>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#AmbientRh_PCB2_Obs">
+  <rdf:type rdf:resource="https://neurosymbols.ai/ontology/causal-terminology.owl#AmbientRhObs"/>
+  <Core:isAbout rdf:resource="#S37-spec"/>
+  <caus:observationOf rdf:resource="#PCB2"/>
+  <caus:hasObservedValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">38.408</caus:hasObservedValue>
+</owl:NamedIndividual>
+
 <owl:NamedIndividual rdf:about="#MetalLoad_PCB2_Obs">
   <rdf:type rdf:resource="https://neurosymbols.ai/ontology/causal-terminology.owl#MetalLoadObs"/>
   <Core:isAbout rdf:resource="#S40-spec"/>
@@ -761,13 +782,6 @@
   <caus:hasObservedValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">251.85</caus:hasObservedValue>
 </owl:NamedIndividual>
 
-<owl:NamedIndividual rdf:about="#TimeAboveLiquidus_PCB2_Obs">
-  <rdf:type rdf:resource="https://neurosymbols.ai/ontology/causal-terminology.owl#TimeAboveLiquidusObs"/>
-  <Core:isAbout rdf:resource="#S42-spec"/>
-  <caus:observationOf rdf:resource="#PCB2"/>
-  <caus:hasObservedValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">47.77</caus:hasObservedValue>
-</owl:NamedIndividual>
-
 <owl:NamedIndividual rdf:about="#PCB3">
   <rdf:type rdf:resource="https://neurosymbols.ai/ontology/causal-terminology.owl#PCB"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PCB3</rdfs:label>
@@ -777,7 +791,7 @@
   <rdf:type rdf:resource="https://neurosymbols.ai/ontology/causal-terminology.owl#ApertureAreaRatioObs"/>
   <Core:isAbout rdf:resource="#S13-spec"/>
   <caus:observationOf rdf:resource="#PCB3"/>
-  <caus:hasObservedValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0.616</caus:hasObservedValue>
+  <caus:hasObservedValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0.682</caus:hasObservedValue>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#StencilThickness_PCB3_Obs">
@@ -843,6 +857,20 @@
   <caus:hasObservedValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">214.699</caus:hasObservedValue>
 </owl:NamedIndividual>
 
+<owl:NamedIndividual rdf:about="#TimeAboveLiquidus_PCB3_Obs">
+  <rdf:type rdf:resource="https://neurosymbols.ai/ontology/causal-terminology.owl#TimeAboveLiquidusObs"/>
+  <Core:isAbout rdf:resource="#S42-spec"/>
+  <caus:observationOf rdf:resource="#PCB3"/>
+  <caus:hasObservedValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">71.86</caus:hasObservedValue>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#AmbientRh_PCB3_Obs">
+  <rdf:type rdf:resource="https://neurosymbols.ai/ontology/causal-terminology.owl#AmbientRhObs"/>
+  <Core:isAbout rdf:resource="#S37-spec"/>
+  <caus:observationOf rdf:resource="#PCB3"/>
+  <caus:hasObservedValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">35.349</caus:hasObservedValue>
+</owl:NamedIndividual>
+
 <owl:NamedIndividual rdf:about="#MetalLoad_PCB3_Obs">
   <rdf:type rdf:resource="https://neurosymbols.ai/ontology/causal-terminology.owl#MetalLoadObs"/>
   <Core:isAbout rdf:resource="#S40-spec"/>
@@ -857,13 +885,6 @@
   <caus:hasObservedValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">257.711</caus:hasObservedValue>
 </owl:NamedIndividual>
 
-<owl:NamedIndividual rdf:about="#TimeAboveLiquidus_PCB3_Obs">
-  <rdf:type rdf:resource="https://neurosymbols.ai/ontology/causal-terminology.owl#TimeAboveLiquidusObs"/>
-  <Core:isAbout rdf:resource="#S42-spec"/>
-  <caus:observationOf rdf:resource="#PCB3"/>
-  <caus:hasObservedValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">46.14</caus:hasObservedValue>
-</owl:NamedIndividual>
-
 <owl:NamedIndividual rdf:about="#PCB4">
   <rdf:type rdf:resource="https://neurosymbols.ai/ontology/causal-terminology.owl#PCB"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PCB4</rdfs:label>
@@ -873,7 +894,7 @@
   <rdf:type rdf:resource="https://neurosymbols.ai/ontology/causal-terminology.owl#ApertureAreaRatioObs"/>
   <Core:isAbout rdf:resource="#S13-spec"/>
   <caus:observationOf rdf:resource="#PCB4"/>
-  <caus:hasObservedValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0.706</caus:hasObservedValue>
+  <caus:hasObservedValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0.699</caus:hasObservedValue>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#StencilThickness_PCB4_Obs">
@@ -915,14 +936,14 @@
   <rdf:type rdf:resource="https://neurosymbols.ai/ontology/causal-terminology.owl#SqueegeePressureObs"/>
   <Core:isAbout rdf:resource="#S10-spec"/>
   <caus:observationOf rdf:resource="#PCB4"/>
-  <caus:hasObservedValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0.307</caus:hasObservedValue>
+  <caus:hasObservedValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0.29</caus:hasObservedValue>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#SqueegeeSpeed_PCB4_Obs">
   <rdf:type rdf:resource="https://neurosymbols.ai/ontology/causal-terminology.owl#SqueegeeSpeedObs"/>
   <Core:isAbout rdf:resource="#S11-spec"/>
   <caus:observationOf rdf:resource="#PCB4"/>
-  <caus:hasObservedValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">59.562</caus:hasObservedValue>
+  <caus:hasObservedValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">77.482</caus:hasObservedValue>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#SqueegeeAngle_PCB4_Obs">
@@ -939,6 +960,20 @@
   <caus:hasObservedValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">218.554</caus:hasObservedValue>
 </owl:NamedIndividual>
 
+<owl:NamedIndividual rdf:about="#TimeAboveLiquidus_PCB4_Obs">
+  <rdf:type rdf:resource="https://neurosymbols.ai/ontology/causal-terminology.owl#TimeAboveLiquidusObs"/>
+  <Core:isAbout rdf:resource="#S42-spec"/>
+  <caus:observationOf rdf:resource="#PCB4"/>
+  <caus:hasObservedValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">46.08</caus:hasObservedValue>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#AmbientRh_PCB4_Obs">
+  <rdf:type rdf:resource="https://neurosymbols.ai/ontology/causal-terminology.owl#AmbientRhObs"/>
+  <Core:isAbout rdf:resource="#S37-spec"/>
+  <caus:observationOf rdf:resource="#PCB4"/>
+  <caus:hasObservedValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">30.743</caus:hasObservedValue>
+</owl:NamedIndividual>
+
 <owl:NamedIndividual rdf:about="#MetalLoad_PCB4_Obs">
   <rdf:type rdf:resource="https://neurosymbols.ai/ontology/causal-terminology.owl#MetalLoadObs"/>
   <Core:isAbout rdf:resource="#S40-spec"/>
@@ -953,13 +988,6 @@
   <caus:hasObservedValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">259.705</caus:hasObservedValue>
 </owl:NamedIndividual>
 
-<owl:NamedIndividual rdf:about="#TimeAboveLiquidus_PCB4_Obs">
-  <rdf:type rdf:resource="https://neurosymbols.ai/ontology/causal-terminology.owl#TimeAboveLiquidusObs"/>
-  <Core:isAbout rdf:resource="#S42-spec"/>
-  <caus:observationOf rdf:resource="#PCB4"/>
-  <caus:hasObservedValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">42.16</caus:hasObservedValue>
-</owl:NamedIndividual>
-
 <owl:NamedIndividual rdf:about="#PCB5">
   <rdf:type rdf:resource="https://neurosymbols.ai/ontology/causal-terminology.owl#PCB"/>
   <caus:hasDefect rdf:resource="#SolderBridging_PCB5"/>
@@ -970,7 +998,7 @@
   <rdf:type rdf:resource="https://neurosymbols.ai/ontology/causal-terminology.owl#ApertureAreaRatioObs"/>
   <Core:isAbout rdf:resource="#S13-spec"/>
   <caus:observationOf rdf:resource="#PCB5"/>
-  <caus:hasObservedValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0.703</caus:hasObservedValue>
+  <caus:hasObservedValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0.663</caus:hasObservedValue>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#StencilThickness_PCB5_Obs">
@@ -991,7 +1019,7 @@
   <rdf:type rdf:resource="https://neurosymbols.ai/ontology/causal-terminology.owl#PasteVolumePerApertureObs"/>
   <Core:isAbout rdf:resource="#S7-spec"/>
   <caus:observationOf rdf:resource="#PCB5"/>
-  <caus:hasObservedValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0.04</caus:hasObservedValue>
+  <caus:hasObservedValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0.045</caus:hasObservedValue>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#PasteRollBeadSize_PCB5_Obs">
@@ -1033,14 +1061,28 @@
   <rdf:type rdf:resource="https://neurosymbols.ai/ontology/causal-terminology.owl#PasteViscosityObs"/>
   <Core:isAbout rdf:resource="#S14-spec"/>
   <caus:observationOf rdf:resource="#PCB5"/>
-  <caus:hasObservedValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">148.145</caus:hasObservedValue>
+  <caus:hasObservedValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">199.561</caus:hasObservedValue>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#TimeAboveLiquidus_PCB5_Obs">
+  <rdf:type rdf:resource="https://neurosymbols.ai/ontology/causal-terminology.owl#TimeAboveLiquidusObs"/>
+  <Core:isAbout rdf:resource="#S42-spec"/>
+  <caus:observationOf rdf:resource="#PCB5"/>
+  <caus:hasObservedValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">63.77</caus:hasObservedValue>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#AmbientRh_PCB5_Obs">
+  <rdf:type rdf:resource="https://neurosymbols.ai/ontology/causal-terminology.owl#AmbientRhObs"/>
+  <Core:isAbout rdf:resource="#S37-spec"/>
+  <caus:observationOf rdf:resource="#PCB5"/>
+  <caus:hasObservedValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">60.444</caus:hasObservedValue>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#MetalLoad_PCB5_Obs">
   <rdf:type rdf:resource="https://neurosymbols.ai/ontology/causal-terminology.owl#MetalLoadObs"/>
   <Core:isAbout rdf:resource="#S40-spec"/>
   <caus:observationOf rdf:resource="#PCB5"/>
-  <caus:hasObservedValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">69.98</caus:hasObservedValue>
+  <caus:hasObservedValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">88.889</caus:hasObservedValue>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#PeakReflowTemperature_PCB5_Obs">
@@ -1048,13 +1090,6 @@
   <Core:isAbout rdf:resource="#S31-spec"/>
   <caus:observationOf rdf:resource="#PCB5"/>
   <caus:hasObservedValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">259.716</caus:hasObservedValue>
-</owl:NamedIndividual>
-
-<owl:NamedIndividual rdf:about="#TimeAboveLiquidus_PCB5_Obs">
-  <rdf:type rdf:resource="https://neurosymbols.ai/ontology/causal-terminology.owl#TimeAboveLiquidusObs"/>
-  <Core:isAbout rdf:resource="#S42-spec"/>
-  <caus:observationOf rdf:resource="#PCB5"/>
-  <caus:hasObservedValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">46.49</caus:hasObservedValue>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#SolderBridging_PCB5">
@@ -1071,7 +1106,7 @@
   <rdf:type rdf:resource="https://neurosymbols.ai/ontology/causal-terminology.owl#ApertureAreaRatioObs"/>
   <Core:isAbout rdf:resource="#S13-spec"/>
   <caus:observationOf rdf:resource="#PCB6"/>
-  <caus:hasObservedValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0.694</caus:hasObservedValue>
+  <caus:hasObservedValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0.675</caus:hasObservedValue>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#StencilThickness_PCB6_Obs">
@@ -1137,6 +1172,20 @@
   <caus:hasObservedValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">166.675</caus:hasObservedValue>
 </owl:NamedIndividual>
 
+<owl:NamedIndividual rdf:about="#TimeAboveLiquidus_PCB6_Obs">
+  <rdf:type rdf:resource="https://neurosymbols.ai/ontology/causal-terminology.owl#TimeAboveLiquidusObs"/>
+  <Core:isAbout rdf:resource="#S42-spec"/>
+  <caus:observationOf rdf:resource="#PCB6"/>
+  <caus:hasObservedValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">59.25</caus:hasObservedValue>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#AmbientRh_PCB6_Obs">
+  <rdf:type rdf:resource="https://neurosymbols.ai/ontology/causal-terminology.owl#AmbientRhObs"/>
+  <Core:isAbout rdf:resource="#S37-spec"/>
+  <caus:observationOf rdf:resource="#PCB6"/>
+  <caus:hasObservedValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">43.589</caus:hasObservedValue>
+</owl:NamedIndividual>
+
 <owl:NamedIndividual rdf:about="#MetalLoad_PCB6_Obs">
   <rdf:type rdf:resource="https://neurosymbols.ai/ontology/causal-terminology.owl#MetalLoadObs"/>
   <Core:isAbout rdf:resource="#S40-spec"/>
@@ -1151,13 +1200,6 @@
   <caus:hasObservedValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">250.919</caus:hasObservedValue>
 </owl:NamedIndividual>
 
-<owl:NamedIndividual rdf:about="#TimeAboveLiquidus_PCB6_Obs">
-  <rdf:type rdf:resource="https://neurosymbols.ai/ontology/causal-terminology.owl#TimeAboveLiquidusObs"/>
-  <Core:isAbout rdf:resource="#S42-spec"/>
-  <caus:observationOf rdf:resource="#PCB6"/>
-  <caus:hasObservedValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">52.28</caus:hasObservedValue>
-</owl:NamedIndividual>
-
 <owl:NamedIndividual rdf:about="#PCB7">
   <rdf:type rdf:resource="https://neurosymbols.ai/ontology/causal-terminology.owl#PCB"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PCB7</rdfs:label>
@@ -1167,7 +1209,7 @@
   <rdf:type rdf:resource="https://neurosymbols.ai/ontology/causal-terminology.owl#ApertureAreaRatioObs"/>
   <Core:isAbout rdf:resource="#S13-spec"/>
   <caus:observationOf rdf:resource="#PCB7"/>
-  <caus:hasObservedValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0.634</caus:hasObservedValue>
+  <caus:hasObservedValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0.668</caus:hasObservedValue>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#StencilThickness_PCB7_Obs">
@@ -1233,6 +1275,20 @@
   <caus:hasObservedValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">158.176</caus:hasObservedValue>
 </owl:NamedIndividual>
 
+<owl:NamedIndividual rdf:about="#TimeAboveLiquidus_PCB7_Obs">
+  <rdf:type rdf:resource="https://neurosymbols.ai/ontology/causal-terminology.owl#TimeAboveLiquidusObs"/>
+  <Core:isAbout rdf:resource="#S42-spec"/>
+  <caus:observationOf rdf:resource="#PCB7"/>
+  <caus:hasObservedValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">74.66</caus:hasObservedValue>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#AmbientRh_PCB7_Obs">
+  <rdf:type rdf:resource="https://neurosymbols.ai/ontology/causal-terminology.owl#AmbientRhObs"/>
+  <Core:isAbout rdf:resource="#S37-spec"/>
+  <caus:observationOf rdf:resource="#PCB7"/>
+  <caus:hasObservedValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">32.798</caus:hasObservedValue>
+</owl:NamedIndividual>
+
 <owl:NamedIndividual rdf:about="#MetalLoad_PCB7_Obs">
   <rdf:type rdf:resource="https://neurosymbols.ai/ontology/causal-terminology.owl#MetalLoadObs"/>
   <Core:isAbout rdf:resource="#S40-spec"/>
@@ -1247,13 +1303,6 @@
   <caus:hasObservedValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">257.245</caus:hasObservedValue>
 </owl:NamedIndividual>
 
-<owl:NamedIndividual rdf:about="#TimeAboveLiquidus_PCB7_Obs">
-  <rdf:type rdf:resource="https://neurosymbols.ai/ontology/causal-terminology.owl#TimeAboveLiquidusObs"/>
-  <Core:isAbout rdf:resource="#S42-spec"/>
-  <caus:observationOf rdf:resource="#PCB7"/>
-  <caus:hasObservedValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">43.24</caus:hasObservedValue>
-</owl:NamedIndividual>
-
 <owl:NamedIndividual rdf:about="#PCB8">
   <rdf:type rdf:resource="https://neurosymbols.ai/ontology/causal-terminology.owl#PCB"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PCB8</rdfs:label>
@@ -1263,7 +1312,7 @@
   <rdf:type rdf:resource="https://neurosymbols.ai/ontology/causal-terminology.owl#ApertureAreaRatioObs"/>
   <Core:isAbout rdf:resource="#S13-spec"/>
   <caus:observationOf rdf:resource="#PCB8"/>
-  <caus:hasObservedValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0.682</caus:hasObservedValue>
+  <caus:hasObservedValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0.69</caus:hasObservedValue>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#StencilThickness_PCB8_Obs">
@@ -1305,14 +1354,14 @@
   <rdf:type rdf:resource="https://neurosymbols.ai/ontology/causal-terminology.owl#SqueegeePressureObs"/>
   <Core:isAbout rdf:resource="#S10-spec"/>
   <caus:observationOf rdf:resource="#PCB8"/>
-  <caus:hasObservedValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0.315</caus:hasObservedValue>
+  <caus:hasObservedValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0.286</caus:hasObservedValue>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#SqueegeeSpeed_PCB8_Obs">
   <rdf:type rdf:resource="https://neurosymbols.ai/ontology/causal-terminology.owl#SqueegeeSpeedObs"/>
   <Core:isAbout rdf:resource="#S11-spec"/>
   <caus:observationOf rdf:resource="#PCB8"/>
-  <caus:hasObservedValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">65.126</caus:hasObservedValue>
+  <caus:hasObservedValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">71.936</caus:hasObservedValue>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#SqueegeeAngle_PCB8_Obs">
@@ -1329,6 +1378,20 @@
   <caus:hasObservedValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">220.643</caus:hasObservedValue>
 </owl:NamedIndividual>
 
+<owl:NamedIndividual rdf:about="#TimeAboveLiquidus_PCB8_Obs">
+  <rdf:type rdf:resource="https://neurosymbols.ai/ontology/causal-terminology.owl#TimeAboveLiquidusObs"/>
+  <Core:isAbout rdf:resource="#S42-spec"/>
+  <caus:observationOf rdf:resource="#PCB8"/>
+  <caus:hasObservedValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">49.34</caus:hasObservedValue>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#AmbientRh_PCB8_Obs">
+  <rdf:type rdf:resource="https://neurosymbols.ai/ontology/causal-terminology.owl#AmbientRhObs"/>
+  <Core:isAbout rdf:resource="#S37-spec"/>
+  <caus:observationOf rdf:resource="#PCB8"/>
+  <caus:hasObservedValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">35.299</caus:hasObservedValue>
+</owl:NamedIndividual>
+
 <owl:NamedIndividual rdf:about="#MetalLoad_PCB8_Obs">
   <rdf:type rdf:resource="https://neurosymbols.ai/ontology/causal-terminology.owl#MetalLoadObs"/>
   <Core:isAbout rdf:resource="#S40-spec"/>
@@ -1341,13 +1404,6 @@
   <Core:isAbout rdf:resource="#S31-spec"/>
   <caus:observationOf rdf:resource="#PCB8"/>
   <caus:hasObservedValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">255.081</caus:hasObservedValue>
-</owl:NamedIndividual>
-
-<owl:NamedIndividual rdf:about="#TimeAboveLiquidus_PCB8_Obs">
-  <rdf:type rdf:resource="https://neurosymbols.ai/ontology/causal-terminology.owl#TimeAboveLiquidusObs"/>
-  <Core:isAbout rdf:resource="#S42-spec"/>
-  <caus:observationOf rdf:resource="#PCB8"/>
-  <caus:hasObservedValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">45.33</caus:hasObservedValue>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#PCB9">
@@ -1381,7 +1437,7 @@
   <rdf:type rdf:resource="https://neurosymbols.ai/ontology/causal-terminology.owl#PasteVolumePerApertureObs"/>
   <Core:isAbout rdf:resource="#S7-spec"/>
   <caus:observationOf rdf:resource="#PCB9"/>
-  <caus:hasObservedValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0.038</caus:hasObservedValue>
+  <caus:hasObservedValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0.047</caus:hasObservedValue>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#PasteRollBeadSize_PCB9_Obs">
@@ -1409,14 +1465,14 @@
   <rdf:type rdf:resource="https://neurosymbols.ai/ontology/causal-terminology.owl#SqueegeeSpeedObs"/>
   <Core:isAbout rdf:resource="#S11-spec"/>
   <caus:observationOf rdf:resource="#PCB9"/>
-  <caus:hasObservedValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">69.373</caus:hasObservedValue>
+  <caus:hasObservedValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">79.105</caus:hasObservedValue>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#SqueegeeAngle_PCB9_Obs">
   <rdf:type rdf:resource="https://neurosymbols.ai/ontology/causal-terminology.owl#SqueegeeAngleObs"/>
   <Core:isAbout rdf:resource="#S12-spec"/>
   <caus:observationOf rdf:resource="#PCB9"/>
-  <caus:hasObservedValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">54.597</caus:hasObservedValue>
+  <caus:hasObservedValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">60.0</caus:hasObservedValue>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#PasteViscosity_PCB9_Obs">
@@ -1424,6 +1480,20 @@
   <Core:isAbout rdf:resource="#S14-spec"/>
   <caus:observationOf rdf:resource="#PCB9"/>
   <caus:hasObservedValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">235.395</caus:hasObservedValue>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#TimeAboveLiquidus_PCB9_Obs">
+  <rdf:type rdf:resource="https://neurosymbols.ai/ontology/causal-terminology.owl#TimeAboveLiquidusObs"/>
+  <Core:isAbout rdf:resource="#S42-spec"/>
+  <caus:observationOf rdf:resource="#PCB9"/>
+  <caus:hasObservedValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">68.02</caus:hasObservedValue>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#AmbientRh_PCB9_Obs">
+  <rdf:type rdf:resource="https://neurosymbols.ai/ontology/causal-terminology.owl#AmbientRhObs"/>
+  <Core:isAbout rdf:resource="#S37-spec"/>
+  <caus:observationOf rdf:resource="#PCB9"/>
+  <caus:hasObservedValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">45.868</caus:hasObservedValue>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#MetalLoad_PCB9_Obs">
@@ -1440,13 +1510,6 @@
   <caus:hasObservedValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">259.303</caus:hasObservedValue>
 </owl:NamedIndividual>
 
-<owl:NamedIndividual rdf:about="#TimeAboveLiquidus_PCB9_Obs">
-  <rdf:type rdf:resource="https://neurosymbols.ai/ontology/causal-terminology.owl#TimeAboveLiquidusObs"/>
-  <Core:isAbout rdf:resource="#S42-spec"/>
-  <caus:observationOf rdf:resource="#PCB9"/>
-  <caus:hasObservedValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">45.63</caus:hasObservedValue>
-</owl:NamedIndividual>
-
 <owl:NamedIndividual rdf:about="#SolderBridging_PCB9">
   <rdf:type rdf:resource="https://neurosymbols.ai/ontology/causal-terminology.owl#SolderBridging"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SolderBridging_PCB9</rdfs:label>
@@ -1461,7 +1524,7 @@
   <rdf:type rdf:resource="https://neurosymbols.ai/ontology/causal-terminology.owl#ApertureAreaRatioObs"/>
   <Core:isAbout rdf:resource="#S13-spec"/>
   <caus:observationOf rdf:resource="#PCB10"/>
-  <caus:hasObservedValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0.636</caus:hasObservedValue>
+  <caus:hasObservedValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0.689</caus:hasObservedValue>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#StencilThickness_PCB10_Obs">
@@ -1503,14 +1566,14 @@
   <rdf:type rdf:resource="https://neurosymbols.ai/ontology/causal-terminology.owl#SqueegeePressureObs"/>
   <Core:isAbout rdf:resource="#S10-spec"/>
   <caus:observationOf rdf:resource="#PCB10"/>
-  <caus:hasObservedValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0.32</caus:hasObservedValue>
+  <caus:hasObservedValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0.283</caus:hasObservedValue>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#SqueegeeSpeed_PCB10_Obs">
   <rdf:type rdf:resource="https://neurosymbols.ai/ontology/causal-terminology.owl#SqueegeeSpeedObs"/>
   <Core:isAbout rdf:resource="#S11-spec"/>
   <caus:observationOf rdf:resource="#PCB10"/>
-  <caus:hasObservedValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">71.785</caus:hasObservedValue>
+  <caus:hasObservedValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">73.287</caus:hasObservedValue>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#SqueegeeAngle_PCB10_Obs">
@@ -1527,6 +1590,20 @@
   <caus:hasObservedValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">227.84</caus:hasObservedValue>
 </owl:NamedIndividual>
 
+<owl:NamedIndividual rdf:about="#TimeAboveLiquidus_PCB10_Obs">
+  <rdf:type rdf:resource="https://neurosymbols.ai/ontology/causal-terminology.owl#TimeAboveLiquidusObs"/>
+  <Core:isAbout rdf:resource="#S42-spec"/>
+  <caus:observationOf rdf:resource="#PCB10"/>
+  <caus:hasObservedValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">57.11</caus:hasObservedValue>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#AmbientRh_PCB10_Obs">
+  <rdf:type rdf:resource="https://neurosymbols.ai/ontology/causal-terminology.owl#AmbientRhObs"/>
+  <Core:isAbout rdf:resource="#S37-spec"/>
+  <caus:observationOf rdf:resource="#PCB10"/>
+  <caus:hasObservedValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">33.22</caus:hasObservedValue>
+</owl:NamedIndividual>
+
 <owl:NamedIndividual rdf:about="#MetalLoad_PCB10_Obs">
   <rdf:type rdf:resource="https://neurosymbols.ai/ontology/causal-terminology.owl#MetalLoadObs"/>
   <Core:isAbout rdf:resource="#S40-spec"/>
@@ -1541,13 +1618,6 @@
   <caus:hasObservedValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">256.032</caus:hasObservedValue>
 </owl:NamedIndividual>
 
-<owl:NamedIndividual rdf:about="#TimeAboveLiquidus_PCB10_Obs">
-  <rdf:type rdf:resource="https://neurosymbols.ai/ontology/causal-terminology.owl#TimeAboveLiquidusObs"/>
-  <Core:isAbout rdf:resource="#S42-spec"/>
-  <caus:observationOf rdf:resource="#PCB10"/>
-  <caus:hasObservedValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">46.21</caus:hasObservedValue>
-</owl:NamedIndividual>
-
 <owl:NamedIndividual rdf:about="#PCB11">
   <rdf:type rdf:resource="https://neurosymbols.ai/ontology/causal-terminology.owl#PCB"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PCB11</rdfs:label>
@@ -1557,7 +1627,7 @@
   <rdf:type rdf:resource="https://neurosymbols.ai/ontology/causal-terminology.owl#ApertureAreaRatioObs"/>
   <Core:isAbout rdf:resource="#S13-spec"/>
   <caus:observationOf rdf:resource="#PCB11"/>
-  <caus:hasObservedValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0.69</caus:hasObservedValue>
+  <caus:hasObservedValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0.667</caus:hasObservedValue>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#StencilThickness_PCB11_Obs">
@@ -1623,6 +1693,20 @@
   <caus:hasObservedValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">152.278</caus:hasObservedValue>
 </owl:NamedIndividual>
 
+<owl:NamedIndividual rdf:about="#TimeAboveLiquidus_PCB11_Obs">
+  <rdf:type rdf:resource="https://neurosymbols.ai/ontology/causal-terminology.owl#TimeAboveLiquidusObs"/>
+  <Core:isAbout rdf:resource="#S42-spec"/>
+  <caus:observationOf rdf:resource="#PCB11"/>
+  <caus:hasObservedValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">70.93</caus:hasObservedValue>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#AmbientRh_PCB11_Obs">
+  <rdf:type rdf:resource="https://neurosymbols.ai/ontology/causal-terminology.owl#AmbientRhObs"/>
+  <Core:isAbout rdf:resource="#S37-spec"/>
+  <caus:observationOf rdf:resource="#PCB11"/>
+  <caus:hasObservedValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">44.721</caus:hasObservedValue>
+</owl:NamedIndividual>
+
 <owl:NamedIndividual rdf:about="#MetalLoad_PCB11_Obs">
   <rdf:type rdf:resource="https://neurosymbols.ai/ontology/causal-terminology.owl#MetalLoadObs"/>
   <Core:isAbout rdf:resource="#S40-spec"/>
@@ -1637,13 +1721,6 @@
   <caus:hasObservedValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">253.911</caus:hasObservedValue>
 </owl:NamedIndividual>
 
-<owl:NamedIndividual rdf:about="#TimeAboveLiquidus_PCB11_Obs">
-  <rdf:type rdf:resource="https://neurosymbols.ai/ontology/causal-terminology.owl#TimeAboveLiquidusObs"/>
-  <Core:isAbout rdf:resource="#S42-spec"/>
-  <caus:observationOf rdf:resource="#PCB11"/>
-  <caus:hasObservedValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">43.47</caus:hasObservedValue>
-</owl:NamedIndividual>
-
 <owl:NamedIndividual rdf:about="#PCB12">
   <rdf:type rdf:resource="https://neurosymbols.ai/ontology/causal-terminology.owl#PCB"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PCB12</rdfs:label>
@@ -1653,7 +1730,7 @@
   <rdf:type rdf:resource="https://neurosymbols.ai/ontology/causal-terminology.owl#ApertureAreaRatioObs"/>
   <Core:isAbout rdf:resource="#S13-spec"/>
   <caus:observationOf rdf:resource="#PCB12"/>
-  <caus:hasObservedValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0.637</caus:hasObservedValue>
+  <caus:hasObservedValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0.692</caus:hasObservedValue>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#StencilThickness_PCB12_Obs">
@@ -1695,7 +1772,7 @@
   <rdf:type rdf:resource="https://neurosymbols.ai/ontology/causal-terminology.owl#SqueegeePressureObs"/>
   <Core:isAbout rdf:resource="#S10-spec"/>
   <caus:observationOf rdf:resource="#PCB12"/>
-  <caus:hasObservedValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0.32</caus:hasObservedValue>
+  <caus:hasObservedValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0.289</caus:hasObservedValue>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#SqueegeeSpeed_PCB12_Obs">
@@ -1719,6 +1796,20 @@
   <caus:hasObservedValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">249.612</caus:hasObservedValue>
 </owl:NamedIndividual>
 
+<owl:NamedIndividual rdf:about="#TimeAboveLiquidus_PCB12_Obs">
+  <rdf:type rdf:resource="https://neurosymbols.ai/ontology/causal-terminology.owl#TimeAboveLiquidusObs"/>
+  <Core:isAbout rdf:resource="#S42-spec"/>
+  <caus:observationOf rdf:resource="#PCB12"/>
+  <caus:hasObservedValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">61.48</caus:hasObservedValue>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#AmbientRh_PCB12_Obs">
+  <rdf:type rdf:resource="https://neurosymbols.ai/ontology/causal-terminology.owl#AmbientRhObs"/>
+  <Core:isAbout rdf:resource="#S37-spec"/>
+  <caus:observationOf rdf:resource="#PCB12"/>
+  <caus:hasObservedValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">32.733</caus:hasObservedValue>
+</owl:NamedIndividual>
+
 <owl:NamedIndividual rdf:about="#MetalLoad_PCB12_Obs">
   <rdf:type rdf:resource="https://neurosymbols.ai/ontology/causal-terminology.owl#MetalLoadObs"/>
   <Core:isAbout rdf:resource="#S40-spec"/>
@@ -1733,13 +1824,6 @@
   <caus:hasObservedValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">256.158</caus:hasObservedValue>
 </owl:NamedIndividual>
 
-<owl:NamedIndividual rdf:about="#TimeAboveLiquidus_PCB12_Obs">
-  <rdf:type rdf:resource="https://neurosymbols.ai/ontology/causal-terminology.owl#TimeAboveLiquidusObs"/>
-  <Core:isAbout rdf:resource="#S42-spec"/>
-  <caus:observationOf rdf:resource="#PCB12"/>
-  <caus:hasObservedValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">43.8</caus:hasObservedValue>
-</owl:NamedIndividual>
-
 <owl:NamedIndividual rdf:about="#PCB13">
   <rdf:type rdf:resource="https://neurosymbols.ai/ontology/causal-terminology.owl#PCB"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PCB13</rdfs:label>
@@ -1749,7 +1833,7 @@
   <rdf:type rdf:resource="https://neurosymbols.ai/ontology/causal-terminology.owl#ApertureAreaRatioObs"/>
   <Core:isAbout rdf:resource="#S13-spec"/>
   <caus:observationOf rdf:resource="#PCB13"/>
-  <caus:hasObservedValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0.652</caus:hasObservedValue>
+  <caus:hasObservedValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0.674</caus:hasObservedValue>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#StencilThickness_PCB13_Obs">
@@ -1815,6 +1899,20 @@
   <caus:hasObservedValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">159.339</caus:hasObservedValue>
 </owl:NamedIndividual>
 
+<owl:NamedIndividual rdf:about="#TimeAboveLiquidus_PCB13_Obs">
+  <rdf:type rdf:resource="https://neurosymbols.ai/ontology/causal-terminology.owl#TimeAboveLiquidusObs"/>
+  <Core:isAbout rdf:resource="#S42-spec"/>
+  <caus:observationOf rdf:resource="#PCB13"/>
+  <caus:hasObservedValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">52.77</caus:hasObservedValue>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#AmbientRh_PCB13_Obs">
+  <rdf:type rdf:resource="https://neurosymbols.ai/ontology/causal-terminology.owl#AmbientRhObs"/>
+  <Core:isAbout rdf:resource="#S37-spec"/>
+  <caus:observationOf rdf:resource="#PCB13"/>
+  <caus:hasObservedValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">42.854</caus:hasObservedValue>
+</owl:NamedIndividual>
+
 <owl:NamedIndividual rdf:about="#MetalLoad_PCB13_Obs">
   <rdf:type rdf:resource="https://neurosymbols.ai/ontology/causal-terminology.owl#MetalLoadObs"/>
   <Core:isAbout rdf:resource="#S40-spec"/>
@@ -1829,13 +1927,6 @@
   <caus:hasObservedValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">255.959</caus:hasObservedValue>
 </owl:NamedIndividual>
 
-<owl:NamedIndividual rdf:about="#TimeAboveLiquidus_PCB13_Obs">
-  <rdf:type rdf:resource="https://neurosymbols.ai/ontology/causal-terminology.owl#TimeAboveLiquidusObs"/>
-  <Core:isAbout rdf:resource="#S42-spec"/>
-  <caus:observationOf rdf:resource="#PCB13"/>
-  <caus:hasObservedValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">42.65</caus:hasObservedValue>
-</owl:NamedIndividual>
-
 <owl:NamedIndividual rdf:about="#PCB14">
   <rdf:type rdf:resource="https://neurosymbols.ai/ontology/causal-terminology.owl#PCB"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PCB14</rdfs:label>
@@ -1845,7 +1936,7 @@
   <rdf:type rdf:resource="https://neurosymbols.ai/ontology/causal-terminology.owl#ApertureAreaRatioObs"/>
   <Core:isAbout rdf:resource="#S13-spec"/>
   <caus:observationOf rdf:resource="#PCB14"/>
-  <caus:hasObservedValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0.613</caus:hasObservedValue>
+  <caus:hasObservedValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0.661</caus:hasObservedValue>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#StencilThickness_PCB14_Obs">
@@ -1887,7 +1978,7 @@
   <rdf:type rdf:resource="https://neurosymbols.ai/ontology/causal-terminology.owl#SqueegeePressureObs"/>
   <Core:isAbout rdf:resource="#S10-spec"/>
   <caus:observationOf rdf:resource="#PCB14"/>
-  <caus:hasObservedValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0.32</caus:hasObservedValue>
+  <caus:hasObservedValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0.285</caus:hasObservedValue>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#SqueegeeSpeed_PCB14_Obs">
@@ -1911,6 +2002,20 @@
   <caus:hasObservedValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">241.5</caus:hasObservedValue>
 </owl:NamedIndividual>
 
+<owl:NamedIndividual rdf:about="#TimeAboveLiquidus_PCB14_Obs">
+  <rdf:type rdf:resource="https://neurosymbols.ai/ontology/causal-terminology.owl#TimeAboveLiquidusObs"/>
+  <Core:isAbout rdf:resource="#S42-spec"/>
+  <caus:observationOf rdf:resource="#PCB14"/>
+  <caus:hasObservedValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">45.63</caus:hasObservedValue>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#AmbientRh_PCB14_Obs">
+  <rdf:type rdf:resource="https://neurosymbols.ai/ontology/causal-terminology.owl#AmbientRhObs"/>
+  <Core:isAbout rdf:resource="#S37-spec"/>
+  <caus:observationOf rdf:resource="#PCB14"/>
+  <caus:hasObservedValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">36.037</caus:hasObservedValue>
+</owl:NamedIndividual>
+
 <owl:NamedIndividual rdf:about="#MetalLoad_PCB14_Obs">
   <rdf:type rdf:resource="https://neurosymbols.ai/ontology/causal-terminology.owl#MetalLoadObs"/>
   <Core:isAbout rdf:resource="#S40-spec"/>
@@ -1925,13 +2030,6 @@
   <caus:hasObservedValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">253.567</caus:hasObservedValue>
 </owl:NamedIndividual>
 
-<owl:NamedIndividual rdf:about="#TimeAboveLiquidus_PCB14_Obs">
-  <rdf:type rdf:resource="https://neurosymbols.ai/ontology/causal-terminology.owl#TimeAboveLiquidusObs"/>
-  <Core:isAbout rdf:resource="#S42-spec"/>
-  <caus:observationOf rdf:resource="#PCB14"/>
-  <caus:hasObservedValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">47.88</caus:hasObservedValue>
-</owl:NamedIndividual>
-
 <owl:NamedIndividual rdf:about="#PCB15">
   <rdf:type rdf:resource="https://neurosymbols.ai/ontology/causal-terminology.owl#PCB"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PCB15</rdfs:label>
@@ -1941,7 +2039,7 @@
   <rdf:type rdf:resource="https://neurosymbols.ai/ontology/causal-terminology.owl#ApertureAreaRatioObs"/>
   <Core:isAbout rdf:resource="#S13-spec"/>
   <caus:observationOf rdf:resource="#PCB15"/>
-  <caus:hasObservedValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0.707</caus:hasObservedValue>
+  <caus:hasObservedValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0.699</caus:hasObservedValue>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#StencilThickness_PCB15_Obs">
@@ -1983,7 +2081,7 @@
   <rdf:type rdf:resource="https://neurosymbols.ai/ontology/causal-terminology.owl#SqueegeePressureObs"/>
   <Core:isAbout rdf:resource="#S10-spec"/>
   <caus:observationOf rdf:resource="#PCB15"/>
-  <caus:hasObservedValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0.32</caus:hasObservedValue>
+  <caus:hasObservedValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0.281</caus:hasObservedValue>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#SqueegeeSpeed_PCB15_Obs">
@@ -2007,6 +2105,20 @@
   <caus:hasObservedValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">243.527</caus:hasObservedValue>
 </owl:NamedIndividual>
 
+<owl:NamedIndividual rdf:about="#TimeAboveLiquidus_PCB15_Obs">
+  <rdf:type rdf:resource="https://neurosymbols.ai/ontology/causal-terminology.owl#TimeAboveLiquidusObs"/>
+  <Core:isAbout rdf:resource="#S42-spec"/>
+  <caus:observationOf rdf:resource="#PCB15"/>
+  <caus:hasObservedValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">73.54</caus:hasObservedValue>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#AmbientRh_PCB15_Obs">
+  <rdf:type rdf:resource="https://neurosymbols.ai/ontology/causal-terminology.owl#AmbientRhObs"/>
+  <Core:isAbout rdf:resource="#S37-spec"/>
+  <caus:observationOf rdf:resource="#PCB15"/>
+  <caus:hasObservedValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">43.404</caus:hasObservedValue>
+</owl:NamedIndividual>
+
 <owl:NamedIndividual rdf:about="#MetalLoad_PCB15_Obs">
   <rdf:type rdf:resource="https://neurosymbols.ai/ontology/causal-terminology.owl#MetalLoadObs"/>
   <Core:isAbout rdf:resource="#S40-spec"/>
@@ -2021,13 +2133,6 @@
   <caus:hasObservedValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">259.462</caus:hasObservedValue>
 </owl:NamedIndividual>
 
-<owl:NamedIndividual rdf:about="#TimeAboveLiquidus_PCB15_Obs">
-  <rdf:type rdf:resource="https://neurosymbols.ai/ontology/causal-terminology.owl#TimeAboveLiquidusObs"/>
-  <Core:isAbout rdf:resource="#S42-spec"/>
-  <caus:observationOf rdf:resource="#PCB15"/>
-  <caus:hasObservedValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">42.73</caus:hasObservedValue>
-</owl:NamedIndividual>
-
 <owl:NamedIndividual rdf:about="#PCB16">
   <rdf:type rdf:resource="https://neurosymbols.ai/ontology/causal-terminology.owl#PCB"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PCB16</rdfs:label>
@@ -2037,7 +2142,7 @@
   <rdf:type rdf:resource="https://neurosymbols.ai/ontology/causal-terminology.owl#ApertureAreaRatioObs"/>
   <Core:isAbout rdf:resource="#S13-spec"/>
   <caus:observationOf rdf:resource="#PCB16"/>
-  <caus:hasObservedValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0.695</caus:hasObservedValue>
+  <caus:hasObservedValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0.668</caus:hasObservedValue>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#StencilThickness_PCB16_Obs">
@@ -2103,6 +2208,20 @@
   <caus:hasObservedValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">167.827</caus:hasObservedValue>
 </owl:NamedIndividual>
 
+<owl:NamedIndividual rdf:about="#TimeAboveLiquidus_PCB16_Obs">
+  <rdf:type rdf:resource="https://neurosymbols.ai/ontology/causal-terminology.owl#TimeAboveLiquidusObs"/>
+  <Core:isAbout rdf:resource="#S42-spec"/>
+  <caus:observationOf rdf:resource="#PCB16"/>
+  <caus:hasObservedValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">66.29</caus:hasObservedValue>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#AmbientRh_PCB16_Obs">
+  <rdf:type rdf:resource="https://neurosymbols.ai/ontology/causal-terminology.owl#AmbientRhObs"/>
+  <Core:isAbout rdf:resource="#S37-spec"/>
+  <caus:observationOf rdf:resource="#PCB16"/>
+  <caus:hasObservedValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">37.057</caus:hasObservedValue>
+</owl:NamedIndividual>
+
 <owl:NamedIndividual rdf:about="#MetalLoad_PCB16_Obs">
   <rdf:type rdf:resource="https://neurosymbols.ai/ontology/causal-terminology.owl#MetalLoadObs"/>
   <Core:isAbout rdf:resource="#S40-spec"/>
@@ -2117,13 +2236,6 @@
   <caus:hasObservedValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">252.855</caus:hasObservedValue>
 </owl:NamedIndividual>
 
-<owl:NamedIndividual rdf:about="#TimeAboveLiquidus_PCB16_Obs">
-  <rdf:type rdf:resource="https://neurosymbols.ai/ontology/causal-terminology.owl#TimeAboveLiquidusObs"/>
-  <Core:isAbout rdf:resource="#S42-spec"/>
-  <caus:observationOf rdf:resource="#PCB16"/>
-  <caus:hasObservedValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">46.05</caus:hasObservedValue>
-</owl:NamedIndividual>
-
 <owl:NamedIndividual rdf:about="#PCB17">
   <rdf:type rdf:resource="https://neurosymbols.ai/ontology/causal-terminology.owl#PCB"/>
   <caus:hasDefect rdf:resource="#SolderBridging_PCB17"/>
@@ -2134,7 +2246,7 @@
   <rdf:type rdf:resource="https://neurosymbols.ai/ontology/causal-terminology.owl#ApertureAreaRatioObs"/>
   <Core:isAbout rdf:resource="#S13-spec"/>
   <caus:observationOf rdf:resource="#PCB17"/>
-  <caus:hasObservedValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0.707</caus:hasObservedValue>
+  <caus:hasObservedValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0.687</caus:hasObservedValue>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#StencilThickness_PCB17_Obs">
@@ -2155,7 +2267,7 @@
   <rdf:type rdf:resource="https://neurosymbols.ai/ontology/causal-terminology.owl#PasteVolumePerApertureObs"/>
   <Core:isAbout rdf:resource="#S7-spec"/>
   <caus:observationOf rdf:resource="#PCB17"/>
-  <caus:hasObservedValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0.041</caus:hasObservedValue>
+  <caus:hasObservedValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0.049</caus:hasObservedValue>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#PasteRollBeadSize_PCB17_Obs">
@@ -2176,7 +2288,7 @@
   <rdf:type rdf:resource="https://neurosymbols.ai/ontology/causal-terminology.owl#SqueegeePressureObs"/>
   <Core:isAbout rdf:resource="#S10-spec"/>
   <caus:observationOf rdf:resource="#PCB17"/>
-  <caus:hasObservedValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0.32</caus:hasObservedValue>
+  <caus:hasObservedValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0.3</caus:hasObservedValue>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#SqueegeeSpeed_PCB17_Obs">
@@ -2190,7 +2302,7 @@
   <rdf:type rdf:resource="https://neurosymbols.ai/ontology/causal-terminology.owl#SqueegeeAngleObs"/>
   <Core:isAbout rdf:resource="#S12-spec"/>
   <caus:observationOf rdf:resource="#PCB17"/>
-  <caus:hasObservedValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">54.392</caus:hasObservedValue>
+  <caus:hasObservedValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">53.999</caus:hasObservedValue>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#PasteViscosity_PCB17_Obs">
@@ -2198,6 +2310,20 @@
   <Core:isAbout rdf:resource="#S14-spec"/>
   <caus:observationOf rdf:resource="#PCB17"/>
   <caus:hasObservedValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">166.813</caus:hasObservedValue>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#TimeAboveLiquidus_PCB17_Obs">
+  <rdf:type rdf:resource="https://neurosymbols.ai/ontology/causal-terminology.owl#TimeAboveLiquidusObs"/>
+  <Core:isAbout rdf:resource="#S42-spec"/>
+  <caus:observationOf rdf:resource="#PCB17"/>
+  <caus:hasObservedValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">60.05</caus:hasObservedValue>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#AmbientRh_PCB17_Obs">
+  <rdf:type rdf:resource="https://neurosymbols.ai/ontology/causal-terminology.owl#AmbientRhObs"/>
+  <Core:isAbout rdf:resource="#S37-spec"/>
+  <caus:observationOf rdf:resource="#PCB17"/>
+  <caus:hasObservedValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">49.686</caus:hasObservedValue>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#MetalLoad_PCB17_Obs">
@@ -2214,13 +2340,6 @@
   <caus:hasObservedValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">251.271</caus:hasObservedValue>
 </owl:NamedIndividual>
 
-<owl:NamedIndividual rdf:about="#TimeAboveLiquidus_PCB17_Obs">
-  <rdf:type rdf:resource="https://neurosymbols.ai/ontology/causal-terminology.owl#TimeAboveLiquidusObs"/>
-  <Core:isAbout rdf:resource="#S42-spec"/>
-  <caus:observationOf rdf:resource="#PCB17"/>
-  <caus:hasObservedValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">50.84</caus:hasObservedValue>
-</owl:NamedIndividual>
-
 <owl:NamedIndividual rdf:about="#SolderBridging_PCB17">
   <rdf:type rdf:resource="https://neurosymbols.ai/ontology/causal-terminology.owl#SolderBridging"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SolderBridging_PCB17</rdfs:label>
@@ -2235,7 +2354,7 @@
   <rdf:type rdf:resource="https://neurosymbols.ai/ontology/causal-terminology.owl#ApertureAreaRatioObs"/>
   <Core:isAbout rdf:resource="#S13-spec"/>
   <caus:observationOf rdf:resource="#PCB18"/>
-  <caus:hasObservedValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0.707</caus:hasObservedValue>
+  <caus:hasObservedValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0.695</caus:hasObservedValue>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#StencilThickness_PCB18_Obs">
@@ -2277,14 +2396,14 @@
   <rdf:type rdf:resource="https://neurosymbols.ai/ontology/causal-terminology.owl#SqueegeePressureObs"/>
   <Core:isAbout rdf:resource="#S10-spec"/>
   <caus:observationOf rdf:resource="#PCB18"/>
-  <caus:hasObservedValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0.304</caus:hasObservedValue>
+  <caus:hasObservedValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0.287</caus:hasObservedValue>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#SqueegeeSpeed_PCB18_Obs">
   <rdf:type rdf:resource="https://neurosymbols.ai/ontology/causal-terminology.owl#SqueegeeSpeedObs"/>
   <Core:isAbout rdf:resource="#S11-spec"/>
   <caus:observationOf rdf:resource="#PCB18"/>
-  <caus:hasObservedValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">62.729</caus:hasObservedValue>
+  <caus:hasObservedValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">76.299</caus:hasObservedValue>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#SqueegeeAngle_PCB18_Obs">
@@ -2301,6 +2420,20 @@
   <caus:hasObservedValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">156.393</caus:hasObservedValue>
 </owl:NamedIndividual>
 
+<owl:NamedIndividual rdf:about="#TimeAboveLiquidus_PCB18_Obs">
+  <rdf:type rdf:resource="https://neurosymbols.ai/ontology/causal-terminology.owl#TimeAboveLiquidusObs"/>
+  <Core:isAbout rdf:resource="#S42-spec"/>
+  <caus:observationOf rdf:resource="#PCB18"/>
+  <caus:hasObservedValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">47.92</caus:hasObservedValue>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#AmbientRh_PCB18_Obs">
+  <rdf:type rdf:resource="https://neurosymbols.ai/ontology/causal-terminology.owl#AmbientRhObs"/>
+  <Core:isAbout rdf:resource="#S37-spec"/>
+  <caus:observationOf rdf:resource="#PCB18"/>
+  <caus:hasObservedValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">34.495</caus:hasObservedValue>
+</owl:NamedIndividual>
+
 <owl:NamedIndividual rdf:about="#MetalLoad_PCB18_Obs">
   <rdf:type rdf:resource="https://neurosymbols.ai/ontology/causal-terminology.owl#MetalLoadObs"/>
   <Core:isAbout rdf:resource="#S40-spec"/>
@@ -2315,13 +2448,6 @@
   <caus:hasObservedValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">256.924</caus:hasObservedValue>
 </owl:NamedIndividual>
 
-<owl:NamedIndividual rdf:about="#TimeAboveLiquidus_PCB18_Obs">
-  <rdf:type rdf:resource="https://neurosymbols.ai/ontology/causal-terminology.owl#TimeAboveLiquidusObs"/>
-  <Core:isAbout rdf:resource="#S42-spec"/>
-  <caus:observationOf rdf:resource="#PCB18"/>
-  <caus:hasObservedValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">44.98</caus:hasObservedValue>
-</owl:NamedIndividual>
-
 <owl:NamedIndividual rdf:about="#PCB19">
   <rdf:type rdf:resource="https://neurosymbols.ai/ontology/causal-terminology.owl#PCB"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PCB19</rdfs:label>
@@ -2331,7 +2457,7 @@
   <rdf:type rdf:resource="https://neurosymbols.ai/ontology/causal-terminology.owl#ApertureAreaRatioObs"/>
   <Core:isAbout rdf:resource="#S13-spec"/>
   <caus:observationOf rdf:resource="#PCB19"/>
-  <caus:hasObservedValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0.624</caus:hasObservedValue>
+  <caus:hasObservedValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0.664</caus:hasObservedValue>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#StencilThickness_PCB19_Obs">
@@ -2397,6 +2523,20 @@
   <caus:hasObservedValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">200.469</caus:hasObservedValue>
 </owl:NamedIndividual>
 
+<owl:NamedIndividual rdf:about="#TimeAboveLiquidus_PCB19_Obs">
+  <rdf:type rdf:resource="https://neurosymbols.ai/ontology/causal-terminology.owl#TimeAboveLiquidusObs"/>
+  <Core:isAbout rdf:resource="#S42-spec"/>
+  <caus:observationOf rdf:resource="#PCB19"/>
+  <caus:hasObservedValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">69.31</caus:hasObservedValue>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#AmbientRh_PCB19_Obs">
+  <rdf:type rdf:resource="https://neurosymbols.ai/ontology/causal-terminology.owl#AmbientRhObs"/>
+  <Core:isAbout rdf:resource="#S37-spec"/>
+  <caus:observationOf rdf:resource="#PCB19"/>
+  <caus:hasObservedValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">34.318</caus:hasObservedValue>
+</owl:NamedIndividual>
+
 <owl:NamedIndividual rdf:about="#MetalLoad_PCB19_Obs">
   <rdf:type rdf:resource="https://neurosymbols.ai/ontology/causal-terminology.owl#MetalLoadObs"/>
   <Core:isAbout rdf:resource="#S40-spec"/>
@@ -2411,13 +2551,6 @@
   <caus:hasObservedValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">255.986</caus:hasObservedValue>
 </owl:NamedIndividual>
 
-<owl:NamedIndividual rdf:about="#TimeAboveLiquidus_PCB19_Obs">
-  <rdf:type rdf:resource="https://neurosymbols.ai/ontology/causal-terminology.owl#TimeAboveLiquidusObs"/>
-  <Core:isAbout rdf:resource="#S42-spec"/>
-  <caus:observationOf rdf:resource="#PCB19"/>
-  <caus:hasObservedValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">42.9</caus:hasObservedValue>
-</owl:NamedIndividual>
-
 <owl:NamedIndividual rdf:about="#PCB20">
   <rdf:type rdf:resource="https://neurosymbols.ai/ontology/causal-terminology.owl#PCB"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PCB20</rdfs:label>
@@ -2427,7 +2560,7 @@
   <rdf:type rdf:resource="https://neurosymbols.ai/ontology/causal-terminology.owl#ApertureAreaRatioObs"/>
   <Core:isAbout rdf:resource="#S13-spec"/>
   <caus:observationOf rdf:resource="#PCB20"/>
-  <caus:hasObservedValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0.687</caus:hasObservedValue>
+  <caus:hasObservedValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0.67</caus:hasObservedValue>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#StencilThickness_PCB20_Obs">
@@ -2493,6 +2626,20 @@
   <caus:hasObservedValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">205.431</caus:hasObservedValue>
 </owl:NamedIndividual>
 
+<owl:NamedIndividual rdf:about="#TimeAboveLiquidus_PCB20_Obs">
+  <rdf:type rdf:resource="https://neurosymbols.ai/ontology/causal-terminology.owl#TimeAboveLiquidusObs"/>
+  <Core:isAbout rdf:resource="#S42-spec"/>
+  <caus:observationOf rdf:resource="#PCB20"/>
+  <caus:hasObservedValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">55.46</caus:hasObservedValue>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#AmbientRh_PCB20_Obs">
+  <rdf:type rdf:resource="https://neurosymbols.ai/ontology/causal-terminology.owl#AmbientRhObs"/>
+  <Core:isAbout rdf:resource="#S37-spec"/>
+  <caus:observationOf rdf:resource="#PCB20"/>
+  <caus:hasObservedValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">45.898</caus:hasObservedValue>
+</owl:NamedIndividual>
+
 <owl:NamedIndividual rdf:about="#MetalLoad_PCB20_Obs">
   <rdf:type rdf:resource="https://neurosymbols.ai/ontology/causal-terminology.owl#MetalLoadObs"/>
   <Core:isAbout rdf:resource="#S40-spec"/>
@@ -2507,13 +2654,6 @@
   <caus:hasObservedValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">254.732</caus:hasObservedValue>
 </owl:NamedIndividual>
 
-<owl:NamedIndividual rdf:about="#TimeAboveLiquidus_PCB20_Obs">
-  <rdf:type rdf:resource="https://neurosymbols.ai/ontology/causal-terminology.owl#TimeAboveLiquidusObs"/>
-  <Core:isAbout rdf:resource="#S42-spec"/>
-  <caus:observationOf rdf:resource="#PCB20"/>
-  <caus:hasObservedValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">45.29</caus:hasObservedValue>
-</owl:NamedIndividual>
-
 <owl:NamedIndividual rdf:about="#PCB21">
   <rdf:type rdf:resource="https://neurosymbols.ai/ontology/causal-terminology.owl#PCB"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PCB21</rdfs:label>
@@ -2523,7 +2663,7 @@
   <rdf:type rdf:resource="https://neurosymbols.ai/ontology/causal-terminology.owl#ApertureAreaRatioObs"/>
   <Core:isAbout rdf:resource="#S13-spec"/>
   <caus:observationOf rdf:resource="#PCB21"/>
-  <caus:hasObservedValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0.685</caus:hasObservedValue>
+  <caus:hasObservedValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0.699</caus:hasObservedValue>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#StencilThickness_PCB21_Obs">
@@ -2589,6 +2729,20 @@
   <caus:hasObservedValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">224.404</caus:hasObservedValue>
 </owl:NamedIndividual>
 
+<owl:NamedIndividual rdf:about="#TimeAboveLiquidus_PCB21_Obs">
+  <rdf:type rdf:resource="https://neurosymbols.ai/ontology/causal-terminology.owl#TimeAboveLiquidusObs"/>
+  <Core:isAbout rdf:resource="#S42-spec"/>
+  <caus:observationOf rdf:resource="#PCB21"/>
+  <caus:hasObservedValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">72.18</caus:hasObservedValue>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#AmbientRh_PCB21_Obs">
+  <rdf:type rdf:resource="https://neurosymbols.ai/ontology/causal-terminology.owl#AmbientRhObs"/>
+  <Core:isAbout rdf:resource="#S37-spec"/>
+  <caus:observationOf rdf:resource="#PCB21"/>
+  <caus:hasObservedValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">45.227</caus:hasObservedValue>
+</owl:NamedIndividual>
+
 <owl:NamedIndividual rdf:about="#MetalLoad_PCB21_Obs">
   <rdf:type rdf:resource="https://neurosymbols.ai/ontology/causal-terminology.owl#MetalLoadObs"/>
   <Core:isAbout rdf:resource="#S40-spec"/>
@@ -2603,15 +2757,9 @@
   <caus:hasObservedValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">250.543</caus:hasObservedValue>
 </owl:NamedIndividual>
 
-<owl:NamedIndividual rdf:about="#TimeAboveLiquidus_PCB21_Obs">
-  <rdf:type rdf:resource="https://neurosymbols.ai/ontology/causal-terminology.owl#TimeAboveLiquidusObs"/>
-  <Core:isAbout rdf:resource="#S42-spec"/>
-  <caus:observationOf rdf:resource="#PCB21"/>
-  <caus:hasObservedValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">49.49</caus:hasObservedValue>
-</owl:NamedIndividual>
-
 <owl:NamedIndividual rdf:about="#PCB22">
   <rdf:type rdf:resource="https://neurosymbols.ai/ontology/causal-terminology.owl#PCB"/>
+  <caus:hasDefect rdf:resource="#SolderBridging_PCB22"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PCB22</rdfs:label>
 </owl:NamedIndividual>
 
@@ -2619,14 +2767,14 @@
   <rdf:type rdf:resource="https://neurosymbols.ai/ontology/causal-terminology.owl#ApertureAreaRatioObs"/>
   <Core:isAbout rdf:resource="#S13-spec"/>
   <caus:observationOf rdf:resource="#PCB22"/>
-  <caus:hasObservedValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0.7</caus:hasObservedValue>
+  <caus:hasObservedValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0.671</caus:hasObservedValue>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#StencilThickness_PCB22_Obs">
   <rdf:type rdf:resource="https://neurosymbols.ai/ontology/causal-terminology.owl#StencilThicknessObs"/>
   <Core:isAbout rdf:resource="#S5-spec"/>
   <caus:observationOf rdf:resource="#PCB22"/>
-  <caus:hasObservedValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0.107</caus:hasObservedValue>
+  <caus:hasObservedValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0.104</caus:hasObservedValue>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#ApertureDiameter_PCB22_Obs">
@@ -2640,7 +2788,7 @@
   <rdf:type rdf:resource="https://neurosymbols.ai/ontology/causal-terminology.owl#PasteVolumePerApertureObs"/>
   <Core:isAbout rdf:resource="#S7-spec"/>
   <caus:observationOf rdf:resource="#PCB22"/>
-  <caus:hasObservedValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0.037</caus:hasObservedValue>
+  <caus:hasObservedValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0.048</caus:hasObservedValue>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#PasteRollBeadSize_PCB22_Obs">
@@ -2661,28 +2809,42 @@
   <rdf:type rdf:resource="https://neurosymbols.ai/ontology/causal-terminology.owl#SqueegeePressureObs"/>
   <Core:isAbout rdf:resource="#S10-spec"/>
   <caus:observationOf rdf:resource="#PCB22"/>
-  <caus:hasObservedValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0.32</caus:hasObservedValue>
+  <caus:hasObservedValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0.3</caus:hasObservedValue>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#SqueegeeSpeed_PCB22_Obs">
   <rdf:type rdf:resource="https://neurosymbols.ai/ontology/causal-terminology.owl#SqueegeeSpeedObs"/>
   <Core:isAbout rdf:resource="#S11-spec"/>
   <caus:observationOf rdf:resource="#PCB22"/>
-  <caus:hasObservedValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">57.508</caus:hasObservedValue>
+  <caus:hasObservedValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">70.998</caus:hasObservedValue>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#SqueegeeAngle_PCB22_Obs">
   <rdf:type rdf:resource="https://neurosymbols.ai/ontology/causal-terminology.owl#SqueegeeAngleObs"/>
   <Core:isAbout rdf:resource="#S12-spec"/>
   <caus:observationOf rdf:resource="#PCB22"/>
-  <caus:hasObservedValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">53.982</caus:hasObservedValue>
+  <caus:hasObservedValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">60.101</caus:hasObservedValue>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#PasteViscosity_PCB22_Obs">
   <rdf:type rdf:resource="https://neurosymbols.ai/ontology/causal-terminology.owl#PasteViscosityObs"/>
   <Core:isAbout rdf:resource="#S14-spec"/>
   <caus:observationOf rdf:resource="#PCB22"/>
-  <caus:hasObservedValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">223.127</caus:hasObservedValue>
+  <caus:hasObservedValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">149.127</caus:hasObservedValue>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#TimeAboveLiquidus_PCB22_Obs">
+  <rdf:type rdf:resource="https://neurosymbols.ai/ontology/causal-terminology.owl#TimeAboveLiquidusObs"/>
+  <Core:isAbout rdf:resource="#S42-spec"/>
+  <caus:observationOf rdf:resource="#PCB22"/>
+  <caus:hasObservedValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">62.333</caus:hasObservedValue>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#AmbientRh_PCB22_Obs">
+  <rdf:type rdf:resource="https://neurosymbols.ai/ontology/causal-terminology.owl#AmbientRhObs"/>
+  <Core:isAbout rdf:resource="#S37-spec"/>
+  <caus:observationOf rdf:resource="#PCB22"/>
+  <caus:hasObservedValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">43.94</caus:hasObservedValue>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#MetalLoad_PCB22_Obs">
@@ -2699,11 +2861,9 @@
   <caus:hasObservedValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">266.466</caus:hasObservedValue>
 </owl:NamedIndividual>
 
-<owl:NamedIndividual rdf:about="#TimeAboveLiquidus_PCB22_Obs">
-  <rdf:type rdf:resource="https://neurosymbols.ai/ontology/causal-terminology.owl#TimeAboveLiquidusObs"/>
-  <Core:isAbout rdf:resource="#S42-spec"/>
-  <caus:observationOf rdf:resource="#PCB22"/>
-  <caus:hasObservedValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">65.48</caus:hasObservedValue>
+<owl:NamedIndividual rdf:about="#SolderBridging_PCB22">
+  <rdf:type rdf:resource="https://neurosymbols.ai/ontology/causal-terminology.owl#SolderBridging"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SolderBridging_PCB22</rdfs:label>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#PCB23">
@@ -2715,7 +2875,7 @@
   <rdf:type rdf:resource="https://neurosymbols.ai/ontology/causal-terminology.owl#ApertureAreaRatioObs"/>
   <Core:isAbout rdf:resource="#S13-spec"/>
   <caus:observationOf rdf:resource="#PCB23"/>
-  <caus:hasObservedValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0.699</caus:hasObservedValue>
+  <caus:hasObservedValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0.684</caus:hasObservedValue>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#StencilThickness_PCB23_Obs">
@@ -2781,6 +2941,20 @@
   <caus:hasObservedValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">157.528</caus:hasObservedValue>
 </owl:NamedIndividual>
 
+<owl:NamedIndividual rdf:about="#TimeAboveLiquidus_PCB23_Obs">
+  <rdf:type rdf:resource="https://neurosymbols.ai/ontology/causal-terminology.owl#TimeAboveLiquidusObs"/>
+  <Core:isAbout rdf:resource="#S42-spec"/>
+  <caus:observationOf rdf:resource="#PCB23"/>
+  <caus:hasObservedValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">64.89</caus:hasObservedValue>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#AmbientRh_PCB23_Obs">
+  <rdf:type rdf:resource="https://neurosymbols.ai/ontology/causal-terminology.owl#AmbientRhObs"/>
+  <Core:isAbout rdf:resource="#S37-spec"/>
+  <caus:observationOf rdf:resource="#PCB23"/>
+  <caus:hasObservedValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">40.48</caus:hasObservedValue>
+</owl:NamedIndividual>
+
 <owl:NamedIndividual rdf:about="#MetalLoad_PCB23_Obs">
   <rdf:type rdf:resource="https://neurosymbols.ai/ontology/causal-terminology.owl#MetalLoadObs"/>
   <Core:isAbout rdf:resource="#S40-spec"/>
@@ -2795,13 +2969,6 @@
   <caus:hasObservedValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">257.816</caus:hasObservedValue>
 </owl:NamedIndividual>
 
-<owl:NamedIndividual rdf:about="#TimeAboveLiquidus_PCB23_Obs">
-  <rdf:type rdf:resource="https://neurosymbols.ai/ontology/causal-terminology.owl#TimeAboveLiquidusObs"/>
-  <Core:isAbout rdf:resource="#S42-spec"/>
-  <caus:observationOf rdf:resource="#PCB23"/>
-  <caus:hasObservedValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">47.21</caus:hasObservedValue>
-</owl:NamedIndividual>
-
 <owl:NamedIndividual rdf:about="#PCB24">
   <rdf:type rdf:resource="https://neurosymbols.ai/ontology/causal-terminology.owl#PCB"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PCB24</rdfs:label>
@@ -2811,7 +2978,7 @@
   <rdf:type rdf:resource="https://neurosymbols.ai/ontology/causal-terminology.owl#ApertureAreaRatioObs"/>
   <Core:isAbout rdf:resource="#S13-spec"/>
   <caus:observationOf rdf:resource="#PCB24"/>
-  <caus:hasObservedValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0.692</caus:hasObservedValue>
+  <caus:hasObservedValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0.678</caus:hasObservedValue>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#StencilThickness_PCB24_Obs">
@@ -2877,6 +3044,20 @@
   <caus:hasObservedValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">199.176</caus:hasObservedValue>
 </owl:NamedIndividual>
 
+<owl:NamedIndividual rdf:about="#TimeAboveLiquidus_PCB24_Obs">
+  <rdf:type rdf:resource="https://neurosymbols.ai/ontology/causal-terminology.owl#TimeAboveLiquidusObs"/>
+  <Core:isAbout rdf:resource="#S42-spec"/>
+  <caus:observationOf rdf:resource="#PCB24"/>
+  <caus:hasObservedValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">50.22</caus:hasObservedValue>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#AmbientRh_PCB24_Obs">
+  <rdf:type rdf:resource="https://neurosymbols.ai/ontology/causal-terminology.owl#AmbientRhObs"/>
+  <Core:isAbout rdf:resource="#S37-spec"/>
+  <caus:observationOf rdf:resource="#PCB24"/>
+  <caus:hasObservedValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">41.16</caus:hasObservedValue>
+</owl:NamedIndividual>
+
 <owl:NamedIndividual rdf:about="#MetalLoad_PCB24_Obs">
   <rdf:type rdf:resource="https://neurosymbols.ai/ontology/causal-terminology.owl#MetalLoadObs"/>
   <Core:isAbout rdf:resource="#S40-spec"/>
@@ -2891,13 +3072,6 @@
   <caus:hasObservedValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">255.206</caus:hasObservedValue>
 </owl:NamedIndividual>
 
-<owl:NamedIndividual rdf:about="#TimeAboveLiquidus_PCB24_Obs">
-  <rdf:type rdf:resource="https://neurosymbols.ai/ontology/causal-terminology.owl#TimeAboveLiquidusObs"/>
-  <Core:isAbout rdf:resource="#S42-spec"/>
-  <caus:observationOf rdf:resource="#PCB24"/>
-  <caus:hasObservedValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">44.87</caus:hasObservedValue>
-</owl:NamedIndividual>
-
 <owl:NamedIndividual rdf:about="#PCB25">
   <rdf:type rdf:resource="https://neurosymbols.ai/ontology/causal-terminology.owl#PCB"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PCB25</rdfs:label>
@@ -2907,7 +3081,7 @@
   <rdf:type rdf:resource="https://neurosymbols.ai/ontology/causal-terminology.owl#ApertureAreaRatioObs"/>
   <Core:isAbout rdf:resource="#S13-spec"/>
   <caus:observationOf rdf:resource="#PCB25"/>
-  <caus:hasObservedValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0.656</caus:hasObservedValue>
+  <caus:hasObservedValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0.693</caus:hasObservedValue>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#StencilThickness_PCB25_Obs">
@@ -2949,7 +3123,7 @@
   <rdf:type rdf:resource="https://neurosymbols.ai/ontology/causal-terminology.owl#SqueegeePressureObs"/>
   <Core:isAbout rdf:resource="#S10-spec"/>
   <caus:observationOf rdf:resource="#PCB25"/>
-  <caus:hasObservedValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0.313</caus:hasObservedValue>
+  <caus:hasObservedValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0.29</caus:hasObservedValue>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#SqueegeeSpeed_PCB25_Obs">
@@ -2973,6 +3147,20 @@
   <caus:hasObservedValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">182.261</caus:hasObservedValue>
 </owl:NamedIndividual>
 
+<owl:NamedIndividual rdf:about="#TimeAboveLiquidus_PCB25_Obs">
+  <rdf:type rdf:resource="https://neurosymbols.ai/ontology/causal-terminology.owl#TimeAboveLiquidusObs"/>
+  <Core:isAbout rdf:resource="#S42-spec"/>
+  <caus:observationOf rdf:resource="#PCB25"/>
+  <caus:hasObservedValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">75.0</caus:hasObservedValue>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#AmbientRh_PCB25_Obs">
+  <rdf:type rdf:resource="https://neurosymbols.ai/ontology/causal-terminology.owl#AmbientRhObs"/>
+  <Core:isAbout rdf:resource="#S37-spec"/>
+  <caus:observationOf rdf:resource="#PCB25"/>
+  <caus:hasObservedValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">31.691</caus:hasObservedValue>
+</owl:NamedIndividual>
+
 <owl:NamedIndividual rdf:about="#MetalLoad_PCB25_Obs">
   <rdf:type rdf:resource="https://neurosymbols.ai/ontology/causal-terminology.owl#MetalLoadObs"/>
   <Core:isAbout rdf:resource="#S40-spec"/>
@@ -2987,13 +3175,6 @@
   <caus:hasObservedValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">257.207</caus:hasObservedValue>
 </owl:NamedIndividual>
 
-<owl:NamedIndividual rdf:about="#TimeAboveLiquidus_PCB25_Obs">
-  <rdf:type rdf:resource="https://neurosymbols.ai/ontology/causal-terminology.owl#TimeAboveLiquidusObs"/>
-  <Core:isAbout rdf:resource="#S42-spec"/>
-  <caus:observationOf rdf:resource="#PCB25"/>
-  <caus:hasObservedValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">45.17</caus:hasObservedValue>
-</owl:NamedIndividual>
-
 <owl:NamedIndividual rdf:about="#PCB26">
   <rdf:type rdf:resource="https://neurosymbols.ai/ontology/causal-terminology.owl#PCB"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PCB26</rdfs:label>
@@ -3003,7 +3184,7 @@
   <rdf:type rdf:resource="https://neurosymbols.ai/ontology/causal-terminology.owl#ApertureAreaRatioObs"/>
   <Core:isAbout rdf:resource="#S13-spec"/>
   <caus:observationOf rdf:resource="#PCB26"/>
-  <caus:hasObservedValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0.697</caus:hasObservedValue>
+  <caus:hasObservedValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0.667</caus:hasObservedValue>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#StencilThickness_PCB26_Obs">
@@ -3069,6 +3250,20 @@
   <caus:hasObservedValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">204.653</caus:hasObservedValue>
 </owl:NamedIndividual>
 
+<owl:NamedIndividual rdf:about="#TimeAboveLiquidus_PCB26_Obs">
+  <rdf:type rdf:resource="https://neurosymbols.ai/ontology/causal-terminology.owl#TimeAboveLiquidusObs"/>
+  <Core:isAbout rdf:resource="#S42-spec"/>
+  <caus:observationOf rdf:resource="#PCB26"/>
+  <caus:hasObservedValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">58.64</caus:hasObservedValue>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#AmbientRh_PCB26_Obs">
+  <rdf:type rdf:resource="https://neurosymbols.ai/ontology/causal-terminology.owl#AmbientRhObs"/>
+  <Core:isAbout rdf:resource="#S37-spec"/>
+  <caus:observationOf rdf:resource="#PCB26"/>
+  <caus:hasObservedValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">46.897</caus:hasObservedValue>
+</owl:NamedIndividual>
+
 <owl:NamedIndividual rdf:about="#MetalLoad_PCB26_Obs">
   <rdf:type rdf:resource="https://neurosymbols.ai/ontology/causal-terminology.owl#MetalLoadObs"/>
   <Core:isAbout rdf:resource="#S40-spec"/>
@@ -3083,13 +3278,6 @@
   <caus:hasObservedValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">259.719</caus:hasObservedValue>
 </owl:NamedIndividual>
 
-<owl:NamedIndividual rdf:about="#TimeAboveLiquidus_PCB26_Obs">
-  <rdf:type rdf:resource="https://neurosymbols.ai/ontology/causal-terminology.owl#TimeAboveLiquidusObs"/>
-  <Core:isAbout rdf:resource="#S42-spec"/>
-  <caus:observationOf rdf:resource="#PCB26"/>
-  <caus:hasObservedValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">43.64</caus:hasObservedValue>
-</owl:NamedIndividual>
-
 <owl:NamedIndividual rdf:about="#PCB27">
   <rdf:type rdf:resource="https://neurosymbols.ai/ontology/causal-terminology.owl#PCB"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PCB27</rdfs:label>
@@ -3099,7 +3287,7 @@
   <rdf:type rdf:resource="https://neurosymbols.ai/ontology/causal-terminology.owl#ApertureAreaRatioObs"/>
   <Core:isAbout rdf:resource="#S13-spec"/>
   <caus:observationOf rdf:resource="#PCB27"/>
-  <caus:hasObservedValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0.642</caus:hasObservedValue>
+  <caus:hasObservedValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0.681</caus:hasObservedValue>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#StencilThickness_PCB27_Obs">
@@ -3165,6 +3353,20 @@
   <caus:hasObservedValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">237.286</caus:hasObservedValue>
 </owl:NamedIndividual>
 
+<owl:NamedIndividual rdf:about="#TimeAboveLiquidus_PCB27_Obs">
+  <rdf:type rdf:resource="https://neurosymbols.ai/ontology/causal-terminology.owl#TimeAboveLiquidusObs"/>
+  <Core:isAbout rdf:resource="#S42-spec"/>
+  <caus:observationOf rdf:resource="#PCB27"/>
+  <caus:hasObservedValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">62.91</caus:hasObservedValue>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#AmbientRh_PCB27_Obs">
+  <rdf:type rdf:resource="https://neurosymbols.ai/ontology/causal-terminology.owl#AmbientRhObs"/>
+  <Core:isAbout rdf:resource="#S37-spec"/>
+  <caus:observationOf rdf:resource="#PCB27"/>
+  <caus:hasObservedValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">35.144</caus:hasObservedValue>
+</owl:NamedIndividual>
+
 <owl:NamedIndividual rdf:about="#MetalLoad_PCB27_Obs">
   <rdf:type rdf:resource="https://neurosymbols.ai/ontology/causal-terminology.owl#MetalLoadObs"/>
   <Core:isAbout rdf:resource="#S40-spec"/>
@@ -3179,13 +3381,6 @@
   <caus:hasObservedValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">253.087</caus:hasObservedValue>
 </owl:NamedIndividual>
 
-<owl:NamedIndividual rdf:about="#TimeAboveLiquidus_PCB27_Obs">
-  <rdf:type rdf:resource="https://neurosymbols.ai/ontology/causal-terminology.owl#TimeAboveLiquidusObs"/>
-  <Core:isAbout rdf:resource="#S42-spec"/>
-  <caus:observationOf rdf:resource="#PCB27"/>
-  <caus:hasObservedValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">45.66</caus:hasObservedValue>
-</owl:NamedIndividual>
-
 <owl:NamedIndividual rdf:about="#PCB28">
   <rdf:type rdf:resource="https://neurosymbols.ai/ontology/causal-terminology.owl#PCB"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PCB28</rdfs:label>
@@ -3195,7 +3390,7 @@
   <rdf:type rdf:resource="https://neurosymbols.ai/ontology/causal-terminology.owl#ApertureAreaRatioObs"/>
   <Core:isAbout rdf:resource="#S13-spec"/>
   <caus:observationOf rdf:resource="#PCB28"/>
-  <caus:hasObservedValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0.685</caus:hasObservedValue>
+  <caus:hasObservedValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0.698</caus:hasObservedValue>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#StencilThickness_PCB28_Obs">
@@ -3261,6 +3456,20 @@
   <caus:hasObservedValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">170.0</caus:hasObservedValue>
 </owl:NamedIndividual>
 
+<owl:NamedIndividual rdf:about="#TimeAboveLiquidus_PCB28_Obs">
+  <rdf:type rdf:resource="https://neurosymbols.ai/ontology/causal-terminology.owl#TimeAboveLiquidusObs"/>
+  <Core:isAbout rdf:resource="#S42-spec"/>
+  <caus:observationOf rdf:resource="#PCB28"/>
+  <caus:hasObservedValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">46.55</caus:hasObservedValue>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#AmbientRh_PCB28_Obs">
+  <rdf:type rdf:resource="https://neurosymbols.ai/ontology/causal-terminology.owl#AmbientRhObs"/>
+  <Core:isAbout rdf:resource="#S37-spec"/>
+  <caus:observationOf rdf:resource="#PCB28"/>
+  <caus:hasObservedValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">30.093</caus:hasObservedValue>
+</owl:NamedIndividual>
+
 <owl:NamedIndividual rdf:about="#MetalLoad_PCB28_Obs">
   <rdf:type rdf:resource="https://neurosymbols.ai/ontology/causal-terminology.owl#MetalLoadObs"/>
   <Core:isAbout rdf:resource="#S40-spec"/>
@@ -3275,13 +3484,6 @@
   <caus:hasObservedValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">257.772</caus:hasObservedValue>
 </owl:NamedIndividual>
 
-<owl:NamedIndividual rdf:about="#TimeAboveLiquidus_PCB28_Obs">
-  <rdf:type rdf:resource="https://neurosymbols.ai/ontology/causal-terminology.owl#TimeAboveLiquidusObs"/>
-  <Core:isAbout rdf:resource="#S42-spec"/>
-  <caus:observationOf rdf:resource="#PCB28"/>
-  <caus:hasObservedValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">46.06</caus:hasObservedValue>
-</owl:NamedIndividual>
-
 <owl:NamedIndividual rdf:about="#PCB29">
   <rdf:type rdf:resource="https://neurosymbols.ai/ontology/causal-terminology.owl#PCB"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PCB29</rdfs:label>
@@ -3291,7 +3493,7 @@
   <rdf:type rdf:resource="https://neurosymbols.ai/ontology/causal-terminology.owl#ApertureAreaRatioObs"/>
   <Core:isAbout rdf:resource="#S13-spec"/>
   <caus:observationOf rdf:resource="#PCB29"/>
-  <caus:hasObservedValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0.635</caus:hasObservedValue>
+  <caus:hasObservedValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0.662</caus:hasObservedValue>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#StencilThickness_PCB29_Obs">
@@ -3333,14 +3535,14 @@
   <rdf:type rdf:resource="https://neurosymbols.ai/ontology/causal-terminology.owl#SqueegeePressureObs"/>
   <Core:isAbout rdf:resource="#S10-spec"/>
   <caus:observationOf rdf:resource="#PCB29"/>
-  <caus:hasObservedValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0.32</caus:hasObservedValue>
+  <caus:hasObservedValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0.286</caus:hasObservedValue>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#SqueegeeSpeed_PCB29_Obs">
   <rdf:type rdf:resource="https://neurosymbols.ai/ontology/causal-terminology.owl#SqueegeeSpeedObs"/>
   <Core:isAbout rdf:resource="#S11-spec"/>
   <caus:observationOf rdf:resource="#PCB29"/>
-  <caus:hasObservedValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">61.899</caus:hasObservedValue>
+  <caus:hasObservedValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">75.661</caus:hasObservedValue>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#SqueegeeAngle_PCB29_Obs">
@@ -3357,6 +3559,20 @@
   <caus:hasObservedValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">237.906</caus:hasObservedValue>
 </owl:NamedIndividual>
 
+<owl:NamedIndividual rdf:about="#TimeAboveLiquidus_PCB29_Obs">
+  <rdf:type rdf:resource="https://neurosymbols.ai/ontology/causal-terminology.owl#TimeAboveLiquidusObs"/>
+  <Core:isAbout rdf:resource="#S42-spec"/>
+  <caus:observationOf rdf:resource="#PCB29"/>
+  <caus:hasObservedValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">67.94</caus:hasObservedValue>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#AmbientRh_PCB29_Obs">
+  <rdf:type rdf:resource="https://neurosymbols.ai/ontology/causal-terminology.owl#AmbientRhObs"/>
+  <Core:isAbout rdf:resource="#S37-spec"/>
+  <caus:observationOf rdf:resource="#PCB29"/>
+  <caus:hasObservedValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">36.752</caus:hasObservedValue>
+</owl:NamedIndividual>
+
 <owl:NamedIndividual rdf:about="#MetalLoad_PCB29_Obs">
   <rdf:type rdf:resource="https://neurosymbols.ai/ontology/causal-terminology.owl#MetalLoadObs"/>
   <Core:isAbout rdf:resource="#S40-spec"/>
@@ -3371,13 +3587,6 @@
   <caus:hasObservedValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">250.635</caus:hasObservedValue>
 </owl:NamedIndividual>
 
-<owl:NamedIndividual rdf:about="#TimeAboveLiquidus_PCB29_Obs">
-  <rdf:type rdf:resource="https://neurosymbols.ai/ontology/causal-terminology.owl#TimeAboveLiquidusObs"/>
-  <Core:isAbout rdf:resource="#S42-spec"/>
-  <caus:observationOf rdf:resource="#PCB29"/>
-  <caus:hasObservedValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">52.22</caus:hasObservedValue>
-</owl:NamedIndividual>
-
 <owl:NamedIndividual rdf:about="#PCB30">
   <rdf:type rdf:resource="https://neurosymbols.ai/ontology/causal-terminology.owl#PCB"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PCB30</rdfs:label>
@@ -3387,7 +3596,7 @@
   <rdf:type rdf:resource="https://neurosymbols.ai/ontology/causal-terminology.owl#ApertureAreaRatioObs"/>
   <Core:isAbout rdf:resource="#S13-spec"/>
   <caus:observationOf rdf:resource="#PCB30"/>
-  <caus:hasObservedValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0.67</caus:hasObservedValue>
+  <caus:hasObservedValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0.672</caus:hasObservedValue>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#StencilThickness_PCB30_Obs">
@@ -3453,6 +3662,20 @@
   <caus:hasObservedValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">243.753</caus:hasObservedValue>
 </owl:NamedIndividual>
 
+<owl:NamedIndividual rdf:about="#TimeAboveLiquidus_PCB30_Obs">
+  <rdf:type rdf:resource="https://neurosymbols.ai/ontology/causal-terminology.owl#TimeAboveLiquidusObs"/>
+  <Core:isAbout rdf:resource="#S42-spec"/>
+  <caus:observationOf rdf:resource="#PCB30"/>
+  <caus:hasObservedValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">54.38</caus:hasObservedValue>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#AmbientRh_PCB30_Obs">
+  <rdf:type rdf:resource="https://neurosymbols.ai/ontology/causal-terminology.owl#AmbientRhObs"/>
+  <Core:isAbout rdf:resource="#S37-spec"/>
+  <caus:observationOf rdf:resource="#PCB30"/>
+  <caus:hasObservedValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">46.398</caus:hasObservedValue>
+</owl:NamedIndividual>
+
 <owl:NamedIndividual rdf:about="#MetalLoad_PCB30_Obs">
   <rdf:type rdf:resource="https://neurosymbols.ai/ontology/causal-terminology.owl#MetalLoadObs"/>
   <Core:isAbout rdf:resource="#S40-spec"/>
@@ -3467,13 +3690,6 @@
   <caus:hasObservedValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">255.321</caus:hasObservedValue>
 </owl:NamedIndividual>
 
-<owl:NamedIndividual rdf:about="#TimeAboveLiquidus_PCB30_Obs">
-  <rdf:type rdf:resource="https://neurosymbols.ai/ontology/causal-terminology.owl#TimeAboveLiquidusObs"/>
-  <Core:isAbout rdf:resource="#S42-spec"/>
-  <caus:observationOf rdf:resource="#PCB30"/>
-  <caus:hasObservedValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">43.92</caus:hasObservedValue>
-</owl:NamedIndividual>
-
 <owl:NamedIndividual rdf:about="#PCB31">
   <rdf:type rdf:resource="https://neurosymbols.ai/ontology/causal-terminology.owl#PCB"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PCB31</rdfs:label>
@@ -3483,7 +3699,7 @@
   <rdf:type rdf:resource="https://neurosymbols.ai/ontology/causal-terminology.owl#ApertureAreaRatioObs"/>
   <Core:isAbout rdf:resource="#S13-spec"/>
   <caus:observationOf rdf:resource="#PCB31"/>
-  <caus:hasObservedValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0.658</caus:hasObservedValue>
+  <caus:hasObservedValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0.666</caus:hasObservedValue>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#StencilThickness_PCB31_Obs">
@@ -3549,6 +3765,20 @@
   <caus:hasObservedValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">209.001</caus:hasObservedValue>
 </owl:NamedIndividual>
 
+<owl:NamedIndividual rdf:about="#TimeAboveLiquidus_PCB31_Obs">
+  <rdf:type rdf:resource="https://neurosymbols.ai/ontology/causal-terminology.owl#TimeAboveLiquidusObs"/>
+  <Core:isAbout rdf:resource="#S42-spec"/>
+  <caus:observationOf rdf:resource="#PCB31"/>
+  <caus:hasObservedValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">70.47</caus:hasObservedValue>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#AmbientRh_PCB31_Obs">
+  <rdf:type rdf:resource="https://neurosymbols.ai/ontology/causal-terminology.owl#AmbientRhObs"/>
+  <Core:isAbout rdf:resource="#S37-spec"/>
+  <caus:observationOf rdf:resource="#PCB31"/>
+  <caus:hasObservedValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">40.654</caus:hasObservedValue>
+</owl:NamedIndividual>
+
 <owl:NamedIndividual rdf:about="#MetalLoad_PCB31_Obs">
   <rdf:type rdf:resource="https://neurosymbols.ai/ontology/causal-terminology.owl#MetalLoadObs"/>
   <Core:isAbout rdf:resource="#S40-spec"/>
@@ -3563,13 +3793,6 @@
   <caus:hasObservedValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">259.907</caus:hasObservedValue>
 </owl:NamedIndividual>
 
-<owl:NamedIndividual rdf:about="#TimeAboveLiquidus_PCB31_Obs">
-  <rdf:type rdf:resource="https://neurosymbols.ai/ontology/causal-terminology.owl#TimeAboveLiquidusObs"/>
-  <Core:isAbout rdf:resource="#S42-spec"/>
-  <caus:observationOf rdf:resource="#PCB31"/>
-  <caus:hasObservedValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">43.9</caus:hasObservedValue>
-</owl:NamedIndividual>
-
 <owl:NamedIndividual rdf:about="#PCB32">
   <rdf:type rdf:resource="https://neurosymbols.ai/ontology/causal-terminology.owl#PCB"/>
   <caus:hasDefect rdf:resource="#OpenCircuit_PCB32"/>
@@ -3580,7 +3803,7 @@
   <rdf:type rdf:resource="https://neurosymbols.ai/ontology/causal-terminology.owl#ApertureAreaRatioObs"/>
   <Core:isAbout rdf:resource="#S13-spec"/>
   <caus:observationOf rdf:resource="#PCB32"/>
-  <caus:hasObservedValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0.657</caus:hasObservedValue>
+  <caus:hasObservedValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0.688</caus:hasObservedValue>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#StencilThickness_PCB32_Obs">
@@ -3646,6 +3869,20 @@
   <caus:hasObservedValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">193.583</caus:hasObservedValue>
 </owl:NamedIndividual>
 
+<owl:NamedIndividual rdf:about="#TimeAboveLiquidus_PCB32_Obs">
+  <rdf:type rdf:resource="https://neurosymbols.ai/ontology/causal-terminology.owl#TimeAboveLiquidusObs"/>
+  <Core:isAbout rdf:resource="#S42-spec"/>
+  <caus:observationOf rdf:resource="#PCB32"/>
+  <caus:hasObservedValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">47.43</caus:hasObservedValue>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#AmbientRh_PCB32_Obs">
+  <rdf:type rdf:resource="https://neurosymbols.ai/ontology/causal-terminology.owl#AmbientRhObs"/>
+  <Core:isAbout rdf:resource="#S37-spec"/>
+  <caus:observationOf rdf:resource="#PCB32"/>
+  <caus:hasObservedValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">38.735</caus:hasObservedValue>
+</owl:NamedIndividual>
+
 <owl:NamedIndividual rdf:about="#MetalLoad_PCB32_Obs">
   <rdf:type rdf:resource="https://neurosymbols.ai/ontology/causal-terminology.owl#MetalLoadObs"/>
   <Core:isAbout rdf:resource="#S40-spec"/>
@@ -3658,13 +3895,6 @@
   <Core:isAbout rdf:resource="#S31-spec"/>
   <caus:observationOf rdf:resource="#PCB32"/>
   <caus:hasObservedValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">230.592</caus:hasObservedValue>
-</owl:NamedIndividual>
-
-<owl:NamedIndividual rdf:about="#TimeAboveLiquidus_PCB32_Obs">
-  <rdf:type rdf:resource="https://neurosymbols.ai/ontology/causal-terminology.owl#TimeAboveLiquidusObs"/>
-  <Core:isAbout rdf:resource="#S42-spec"/>
-  <caus:observationOf rdf:resource="#PCB32"/>
-  <caus:hasObservedValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">47.43</caus:hasObservedValue>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#OpenCircuit_PCB32">
@@ -3681,7 +3911,7 @@
   <rdf:type rdf:resource="https://neurosymbols.ai/ontology/causal-terminology.owl#ApertureAreaRatioObs"/>
   <Core:isAbout rdf:resource="#S13-spec"/>
   <caus:observationOf rdf:resource="#PCB33"/>
-  <caus:hasObservedValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0.684</caus:hasObservedValue>
+  <caus:hasObservedValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0.675</caus:hasObservedValue>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#StencilThickness_PCB33_Obs">
@@ -3747,6 +3977,20 @@
   <caus:hasObservedValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">162.049</caus:hasObservedValue>
 </owl:NamedIndividual>
 
+<owl:NamedIndividual rdf:about="#TimeAboveLiquidus_PCB33_Obs">
+  <rdf:type rdf:resource="https://neurosymbols.ai/ontology/causal-terminology.owl#TimeAboveLiquidusObs"/>
+  <Core:isAbout rdf:resource="#S42-spec"/>
+  <caus:observationOf rdf:resource="#PCB33"/>
+  <caus:hasObservedValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">49.73</caus:hasObservedValue>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#AmbientRh_PCB33_Obs">
+  <rdf:type rdf:resource="https://neurosymbols.ai/ontology/causal-terminology.owl#AmbientRhObs"/>
+  <Core:isAbout rdf:resource="#S37-spec"/>
+  <caus:observationOf rdf:resource="#PCB33"/>
+  <caus:hasObservedValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">43.275</caus:hasObservedValue>
+</owl:NamedIndividual>
+
 <owl:NamedIndividual rdf:about="#MetalLoad_PCB33_Obs">
   <rdf:type rdf:resource="https://neurosymbols.ai/ontology/causal-terminology.owl#MetalLoadObs"/>
   <Core:isAbout rdf:resource="#S40-spec"/>
@@ -3761,13 +4005,6 @@
   <caus:hasObservedValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">258.373</caus:hasObservedValue>
 </owl:NamedIndividual>
 
-<owl:NamedIndividual rdf:about="#TimeAboveLiquidus_PCB33_Obs">
-  <rdf:type rdf:resource="https://neurosymbols.ai/ontology/causal-terminology.owl#TimeAboveLiquidusObs"/>
-  <Core:isAbout rdf:resource="#S42-spec"/>
-  <caus:observationOf rdf:resource="#PCB33"/>
-  <caus:hasObservedValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">47.85</caus:hasObservedValue>
-</owl:NamedIndividual>
-
 <owl:NamedIndividual rdf:about="#PCB34">
   <rdf:type rdf:resource="https://neurosymbols.ai/ontology/causal-terminology.owl#PCB"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PCB34</rdfs:label>
@@ -3777,7 +4014,7 @@
   <rdf:type rdf:resource="https://neurosymbols.ai/ontology/causal-terminology.owl#ApertureAreaRatioObs"/>
   <Core:isAbout rdf:resource="#S13-spec"/>
   <caus:observationOf rdf:resource="#PCB34"/>
-  <caus:hasObservedValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0.659</caus:hasObservedValue>
+  <caus:hasObservedValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0.696</caus:hasObservedValue>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#StencilThickness_PCB34_Obs">
@@ -3843,6 +4080,20 @@
   <caus:hasObservedValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">153.894</caus:hasObservedValue>
 </owl:NamedIndividual>
 
+<owl:NamedIndividual rdf:about="#TimeAboveLiquidus_PCB34_Obs">
+  <rdf:type rdf:resource="https://neurosymbols.ai/ontology/causal-terminology.owl#TimeAboveLiquidusObs"/>
+  <Core:isAbout rdf:resource="#S42-spec"/>
+  <caus:observationOf rdf:resource="#PCB34"/>
+  <caus:hasObservedValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">68.91</caus:hasObservedValue>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#AmbientRh_PCB34_Obs">
+  <rdf:type rdf:resource="https://neurosymbols.ai/ontology/causal-terminology.owl#AmbientRhObs"/>
+  <Core:isAbout rdf:resource="#S37-spec"/>
+  <caus:observationOf rdf:resource="#PCB34"/>
+  <caus:hasObservedValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">44.577</caus:hasObservedValue>
+</owl:NamedIndividual>
+
 <owl:NamedIndividual rdf:about="#MetalLoad_PCB34_Obs">
   <rdf:type rdf:resource="https://neurosymbols.ai/ontology/causal-terminology.owl#MetalLoadObs"/>
   <Core:isAbout rdf:resource="#S40-spec"/>
@@ -3857,13 +4108,6 @@
   <caus:hasObservedValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">250.599</caus:hasObservedValue>
 </owl:NamedIndividual>
 
-<owl:NamedIndividual rdf:about="#TimeAboveLiquidus_PCB34_Obs">
-  <rdf:type rdf:resource="https://neurosymbols.ai/ontology/causal-terminology.owl#TimeAboveLiquidusObs"/>
-  <Core:isAbout rdf:resource="#S42-spec"/>
-  <caus:observationOf rdf:resource="#PCB34"/>
-  <caus:hasObservedValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">51.38</caus:hasObservedValue>
-</owl:NamedIndividual>
-
 <owl:NamedIndividual rdf:about="#PCB35">
   <rdf:type rdf:resource="https://neurosymbols.ai/ontology/causal-terminology.owl#PCB"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PCB35</rdfs:label>
@@ -3873,7 +4117,7 @@
   <rdf:type rdf:resource="https://neurosymbols.ai/ontology/causal-terminology.owl#ApertureAreaRatioObs"/>
   <Core:isAbout rdf:resource="#S13-spec"/>
   <caus:observationOf rdf:resource="#PCB35"/>
-  <caus:hasObservedValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0.693</caus:hasObservedValue>
+  <caus:hasObservedValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0.669</caus:hasObservedValue>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#StencilThickness_PCB35_Obs">
@@ -3939,6 +4183,20 @@
   <caus:hasObservedValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">213.963</caus:hasObservedValue>
 </owl:NamedIndividual>
 
+<owl:NamedIndividual rdf:about="#TimeAboveLiquidus_PCB35_Obs">
+  <rdf:type rdf:resource="https://neurosymbols.ai/ontology/causal-terminology.owl#TimeAboveLiquidusObs"/>
+  <Core:isAbout rdf:resource="#S42-spec"/>
+  <caus:observationOf rdf:resource="#PCB35"/>
+  <caus:hasObservedValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">57.46</caus:hasObservedValue>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#AmbientRh_PCB35_Obs">
+  <rdf:type rdf:resource="https://neurosymbols.ai/ontology/causal-terminology.owl#AmbientRhObs"/>
+  <Core:isAbout rdf:resource="#S37-spec"/>
+  <caus:observationOf rdf:resource="#PCB35"/>
+  <caus:hasObservedValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">33.989</caus:hasObservedValue>
+</owl:NamedIndividual>
+
 <owl:NamedIndividual rdf:about="#MetalLoad_PCB35_Obs">
   <rdf:type rdf:resource="https://neurosymbols.ai/ontology/causal-terminology.owl#MetalLoadObs"/>
   <Core:isAbout rdf:resource="#S40-spec"/>
@@ -3953,13 +4211,6 @@
   <caus:hasObservedValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">257.24</caus:hasObservedValue>
 </owl:NamedIndividual>
 
-<owl:NamedIndividual rdf:about="#TimeAboveLiquidus_PCB35_Obs">
-  <rdf:type rdf:resource="https://neurosymbols.ai/ontology/causal-terminology.owl#TimeAboveLiquidusObs"/>
-  <Core:isAbout rdf:resource="#S42-spec"/>
-  <caus:observationOf rdf:resource="#PCB35"/>
-  <caus:hasObservedValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">46.8</caus:hasObservedValue>
-</owl:NamedIndividual>
-
 <owl:NamedIndividual rdf:about="#PCB36">
   <rdf:type rdf:resource="https://neurosymbols.ai/ontology/causal-terminology.owl#PCB"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PCB36</rdfs:label>
@@ -3969,7 +4220,7 @@
   <rdf:type rdf:resource="https://neurosymbols.ai/ontology/causal-terminology.owl#ApertureAreaRatioObs"/>
   <Core:isAbout rdf:resource="#S13-spec"/>
   <caus:observationOf rdf:resource="#PCB36"/>
-  <caus:hasObservedValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0.643</caus:hasObservedValue>
+  <caus:hasObservedValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0.664</caus:hasObservedValue>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#StencilThickness_PCB36_Obs">
@@ -4035,6 +4286,20 @@
   <caus:hasObservedValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">233.179</caus:hasObservedValue>
 </owl:NamedIndividual>
 
+<owl:NamedIndividual rdf:about="#TimeAboveLiquidus_PCB36_Obs">
+  <rdf:type rdf:resource="https://neurosymbols.ai/ontology/causal-terminology.owl#TimeAboveLiquidusObs"/>
+  <Core:isAbout rdf:resource="#S42-spec"/>
+  <caus:observationOf rdf:resource="#PCB36"/>
+  <caus:hasObservedValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">74.22</caus:hasObservedValue>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#AmbientRh_PCB36_Obs">
+  <rdf:type rdf:resource="https://neurosymbols.ai/ontology/causal-terminology.owl#AmbientRhObs"/>
+  <Core:isAbout rdf:resource="#S37-spec"/>
+  <caus:observationOf rdf:resource="#PCB36"/>
+  <caus:hasObservedValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">48.627</caus:hasObservedValue>
+</owl:NamedIndividual>
+
 <owl:NamedIndividual rdf:about="#MetalLoad_PCB36_Obs">
   <rdf:type rdf:resource="https://neurosymbols.ai/ontology/causal-terminology.owl#MetalLoadObs"/>
   <Core:isAbout rdf:resource="#S40-spec"/>
@@ -4049,13 +4314,6 @@
   <caus:hasObservedValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">251.002</caus:hasObservedValue>
 </owl:NamedIndividual>
 
-<owl:NamedIndividual rdf:about="#TimeAboveLiquidus_PCB36_Obs">
-  <rdf:type rdf:resource="https://neurosymbols.ai/ontology/causal-terminology.owl#TimeAboveLiquidusObs"/>
-  <Core:isAbout rdf:resource="#S42-spec"/>
-  <caus:observationOf rdf:resource="#PCB36"/>
-  <caus:hasObservedValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">50.18</caus:hasObservedValue>
-</owl:NamedIndividual>
-
 <owl:NamedIndividual rdf:about="#PCB37">
   <rdf:type rdf:resource="https://neurosymbols.ai/ontology/causal-terminology.owl#PCB"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PCB37</rdfs:label>
@@ -4065,7 +4323,7 @@
   <rdf:type rdf:resource="https://neurosymbols.ai/ontology/causal-terminology.owl#ApertureAreaRatioObs"/>
   <Core:isAbout rdf:resource="#S13-spec"/>
   <caus:observationOf rdf:resource="#PCB37"/>
-  <caus:hasObservedValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0.615</caus:hasObservedValue>
+  <caus:hasObservedValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0.7</caus:hasObservedValue>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#StencilThickness_PCB37_Obs">
@@ -4131,6 +4389,20 @@
   <caus:hasObservedValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">223.473</caus:hasObservedValue>
 </owl:NamedIndividual>
 
+<owl:NamedIndividual rdf:about="#TimeAboveLiquidus_PCB37_Obs">
+  <rdf:type rdf:resource="https://neurosymbols.ai/ontology/causal-terminology.owl#TimeAboveLiquidusObs"/>
+  <Core:isAbout rdf:resource="#S42-spec"/>
+  <caus:observationOf rdf:resource="#PCB37"/>
+  <caus:hasObservedValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">46.37</caus:hasObservedValue>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#AmbientRh_PCB37_Obs">
+  <rdf:type rdf:resource="https://neurosymbols.ai/ontology/causal-terminology.owl#AmbientRhObs"/>
+  <Core:isAbout rdf:resource="#S37-spec"/>
+  <caus:observationOf rdf:resource="#PCB37"/>
+  <caus:hasObservedValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">42.475</caus:hasObservedValue>
+</owl:NamedIndividual>
+
 <owl:NamedIndividual rdf:about="#MetalLoad_PCB37_Obs">
   <rdf:type rdf:resource="https://neurosymbols.ai/ontology/causal-terminology.owl#MetalLoadObs"/>
   <Core:isAbout rdf:resource="#S40-spec"/>
@@ -4145,13 +4417,6 @@
   <caus:hasObservedValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">251.138</caus:hasObservedValue>
 </owl:NamedIndividual>
 
-<owl:NamedIndividual rdf:about="#TimeAboveLiquidus_PCB37_Obs">
-  <rdf:type rdf:resource="https://neurosymbols.ai/ontology/causal-terminology.owl#TimeAboveLiquidusObs"/>
-  <Core:isAbout rdf:resource="#S42-spec"/>
-  <caus:observationOf rdf:resource="#PCB37"/>
-  <caus:hasObservedValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">51.13</caus:hasObservedValue>
-</owl:NamedIndividual>
-
 <owl:NamedIndividual rdf:about="#PCB38">
   <rdf:type rdf:resource="https://neurosymbols.ai/ontology/causal-terminology.owl#PCB"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PCB38</rdfs:label>
@@ -4161,7 +4426,7 @@
   <rdf:type rdf:resource="https://neurosymbols.ai/ontology/causal-terminology.owl#ApertureAreaRatioObs"/>
   <Core:isAbout rdf:resource="#S13-spec"/>
   <caus:observationOf rdf:resource="#PCB38"/>
-  <caus:hasObservedValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0.623</caus:hasObservedValue>
+  <caus:hasObservedValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0.676</caus:hasObservedValue>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#StencilThickness_PCB38_Obs">
@@ -4227,6 +4492,20 @@
   <caus:hasObservedValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">220.769</caus:hasObservedValue>
 </owl:NamedIndividual>
 
+<owl:NamedIndividual rdf:about="#TimeAboveLiquidus_PCB38_Obs">
+  <rdf:type rdf:resource="https://neurosymbols.ai/ontology/causal-terminology.owl#TimeAboveLiquidusObs"/>
+  <Core:isAbout rdf:resource="#S42-spec"/>
+  <caus:observationOf rdf:resource="#PCB38"/>
+  <caus:hasObservedValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">63.58</caus:hasObservedValue>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#AmbientRh_PCB38_Obs">
+  <rdf:type rdf:resource="https://neurosymbols.ai/ontology/causal-terminology.owl#AmbientRhObs"/>
+  <Core:isAbout rdf:resource="#S37-spec"/>
+  <caus:observationOf rdf:resource="#PCB38"/>
+  <caus:hasObservedValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">32.411</caus:hasObservedValue>
+</owl:NamedIndividual>
+
 <owl:NamedIndividual rdf:about="#MetalLoad_PCB38_Obs">
   <rdf:type rdf:resource="https://neurosymbols.ai/ontology/causal-terminology.owl#MetalLoadObs"/>
   <Core:isAbout rdf:resource="#S40-spec"/>
@@ -4241,13 +4520,6 @@
   <caus:hasObservedValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">255.642</caus:hasObservedValue>
 </owl:NamedIndividual>
 
-<owl:NamedIndividual rdf:about="#TimeAboveLiquidus_PCB38_Obs">
-  <rdf:type rdf:resource="https://neurosymbols.ai/ontology/causal-terminology.owl#TimeAboveLiquidusObs"/>
-  <Core:isAbout rdf:resource="#S42-spec"/>
-  <caus:observationOf rdf:resource="#PCB38"/>
-  <caus:hasObservedValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">47.37</caus:hasObservedValue>
-</owl:NamedIndividual>
-
 <owl:NamedIndividual rdf:about="#PCB39">
   <rdf:type rdf:resource="https://neurosymbols.ai/ontology/causal-terminology.owl#PCB"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PCB39</rdfs:label>
@@ -4257,7 +4529,7 @@
   <rdf:type rdf:resource="https://neurosymbols.ai/ontology/causal-terminology.owl#ApertureAreaRatioObs"/>
   <Core:isAbout rdf:resource="#S13-spec"/>
   <caus:observationOf rdf:resource="#PCB39"/>
-  <caus:hasObservedValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0.702</caus:hasObservedValue>
+  <caus:hasObservedValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0.691</caus:hasObservedValue>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#StencilThickness_PCB39_Obs">
@@ -4323,6 +4595,20 @@
   <caus:hasObservedValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">161.783</caus:hasObservedValue>
 </owl:NamedIndividual>
 
+<owl:NamedIndividual rdf:about="#TimeAboveLiquidus_PCB39_Obs">
+  <rdf:type rdf:resource="https://neurosymbols.ai/ontology/causal-terminology.owl#TimeAboveLiquidusObs"/>
+  <Core:isAbout rdf:resource="#S42-spec"/>
+  <caus:observationOf rdf:resource="#PCB39"/>
+  <caus:hasObservedValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">71.05</caus:hasObservedValue>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#AmbientRh_PCB39_Obs">
+  <rdf:type rdf:resource="https://neurosymbols.ai/ontology/causal-terminology.owl#AmbientRhObs"/>
+  <Core:isAbout rdf:resource="#S37-spec"/>
+  <caus:observationOf rdf:resource="#PCB39"/>
+  <caus:hasObservedValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">46.736</caus:hasObservedValue>
+</owl:NamedIndividual>
+
 <owl:NamedIndividual rdf:about="#MetalLoad_PCB39_Obs">
   <rdf:type rdf:resource="https://neurosymbols.ai/ontology/causal-terminology.owl#MetalLoadObs"/>
   <Core:isAbout rdf:resource="#S40-spec"/>
@@ -4337,13 +4623,6 @@
   <caus:hasObservedValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">257.856</caus:hasObservedValue>
 </owl:NamedIndividual>
 
-<owl:NamedIndividual rdf:about="#TimeAboveLiquidus_PCB39_Obs">
-  <rdf:type rdf:resource="https://neurosymbols.ai/ontology/causal-terminology.owl#TimeAboveLiquidusObs"/>
-  <Core:isAbout rdf:resource="#S42-spec"/>
-  <caus:observationOf rdf:resource="#PCB39"/>
-  <caus:hasObservedValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">43.58</caus:hasObservedValue>
-</owl:NamedIndividual>
-
 <owl:NamedIndividual rdf:about="#PCB40">
   <rdf:type rdf:resource="https://neurosymbols.ai/ontology/causal-terminology.owl#PCB"/>
   <caus:hasDefect rdf:resource="#OpenCircuit_PCB40"/>
@@ -4354,7 +4633,7 @@
   <rdf:type rdf:resource="https://neurosymbols.ai/ontology/causal-terminology.owl#ApertureAreaRatioObs"/>
   <Core:isAbout rdf:resource="#S13-spec"/>
   <caus:observationOf rdf:resource="#PCB40"/>
-  <caus:hasObservedValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0.675</caus:hasObservedValue>
+  <caus:hasObservedValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0.665</caus:hasObservedValue>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#StencilThickness_PCB40_Obs">
@@ -4375,7 +4654,7 @@
   <rdf:type rdf:resource="https://neurosymbols.ai/ontology/causal-terminology.owl#PasteVolumePerApertureObs"/>
   <Core:isAbout rdf:resource="#S7-spec"/>
   <caus:observationOf rdf:resource="#PCB40"/>
-  <caus:hasObservedValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0.044</caus:hasObservedValue>
+  <caus:hasObservedValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0.033</caus:hasObservedValue>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#PasteRollBeadSize_PCB40_Obs">
@@ -4420,6 +4699,20 @@
   <caus:hasObservedValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">217.975</caus:hasObservedValue>
 </owl:NamedIndividual>
 
+<owl:NamedIndividual rdf:about="#TimeAboveLiquidus_PCB40_Obs">
+  <rdf:type rdf:resource="https://neurosymbols.ai/ontology/causal-terminology.owl#TimeAboveLiquidusObs"/>
+  <Core:isAbout rdf:resource="#S42-spec"/>
+  <caus:observationOf rdf:resource="#PCB40"/>
+  <caus:hasObservedValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">35.01</caus:hasObservedValue>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#AmbientRh_PCB40_Obs">
+  <rdf:type rdf:resource="https://neurosymbols.ai/ontology/causal-terminology.owl#AmbientRhObs"/>
+  <Core:isAbout rdf:resource="#S37-spec"/>
+  <caus:observationOf rdf:resource="#PCB40"/>
+  <caus:hasObservedValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">33.985</caus:hasObservedValue>
+</owl:NamedIndividual>
+
 <owl:NamedIndividual rdf:about="#MetalLoad_PCB40_Obs">
   <rdf:type rdf:resource="https://neurosymbols.ai/ontology/causal-terminology.owl#MetalLoadObs"/>
   <Core:isAbout rdf:resource="#S40-spec"/>
@@ -4432,13 +4725,6 @@
   <Core:isAbout rdf:resource="#S31-spec"/>
   <caus:observationOf rdf:resource="#PCB40"/>
   <caus:hasObservedValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">255.0</caus:hasObservedValue>
-</owl:NamedIndividual>
-
-<owl:NamedIndividual rdf:about="#TimeAboveLiquidus_PCB40_Obs">
-  <rdf:type rdf:resource="https://neurosymbols.ai/ontology/causal-terminology.owl#TimeAboveLiquidusObs"/>
-  <Core:isAbout rdf:resource="#S42-spec"/>
-  <caus:observationOf rdf:resource="#PCB40"/>
-  <caus:hasObservedValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">35.01</caus:hasObservedValue>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#OpenCircuit_PCB40">
@@ -4455,7 +4741,7 @@
   <rdf:type rdf:resource="https://neurosymbols.ai/ontology/causal-terminology.owl#ApertureAreaRatioObs"/>
   <Core:isAbout rdf:resource="#S13-spec"/>
   <caus:observationOf rdf:resource="#PCB41"/>
-  <caus:hasObservedValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0.686</caus:hasObservedValue>
+  <caus:hasObservedValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0.69</caus:hasObservedValue>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#StencilThickness_PCB41_Obs">
@@ -4521,6 +4807,20 @@
   <caus:hasObservedValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">226.913</caus:hasObservedValue>
 </owl:NamedIndividual>
 
+<owl:NamedIndividual rdf:about="#TimeAboveLiquidus_PCB41_Obs">
+  <rdf:type rdf:resource="https://neurosymbols.ai/ontology/causal-terminology.owl#TimeAboveLiquidusObs"/>
+  <Core:isAbout rdf:resource="#S42-spec"/>
+  <caus:observationOf rdf:resource="#PCB41"/>
+  <caus:hasObservedValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">66.48</caus:hasObservedValue>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#AmbientRh_PCB41_Obs">
+  <rdf:type rdf:resource="https://neurosymbols.ai/ontology/causal-terminology.owl#AmbientRhObs"/>
+  <Core:isAbout rdf:resource="#S37-spec"/>
+  <caus:observationOf rdf:resource="#PCB41"/>
+  <caus:hasObservedValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">47.161</caus:hasObservedValue>
+</owl:NamedIndividual>
+
 <owl:NamedIndividual rdf:about="#MetalLoad_PCB41_Obs">
   <rdf:type rdf:resource="https://neurosymbols.ai/ontology/causal-terminology.owl#MetalLoadObs"/>
   <Core:isAbout rdf:resource="#S40-spec"/>
@@ -4535,13 +4835,6 @@
   <caus:hasObservedValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">253.323</caus:hasObservedValue>
 </owl:NamedIndividual>
 
-<owl:NamedIndividual rdf:about="#TimeAboveLiquidus_PCB41_Obs">
-  <rdf:type rdf:resource="https://neurosymbols.ai/ontology/causal-terminology.owl#TimeAboveLiquidusObs"/>
-  <Core:isAbout rdf:resource="#S42-spec"/>
-  <caus:observationOf rdf:resource="#PCB41"/>
-  <caus:hasObservedValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">46.51</caus:hasObservedValue>
-</owl:NamedIndividual>
-
 <owl:NamedIndividual rdf:about="#PCB42">
   <rdf:type rdf:resource="https://neurosymbols.ai/ontology/causal-terminology.owl#PCB"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PCB42</rdfs:label>
@@ -4551,7 +4844,7 @@
   <rdf:type rdf:resource="https://neurosymbols.ai/ontology/causal-terminology.owl#ApertureAreaRatioObs"/>
   <Core:isAbout rdf:resource="#S13-spec"/>
   <caus:observationOf rdf:resource="#PCB42"/>
-  <caus:hasObservedValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0.656</caus:hasObservedValue>
+  <caus:hasObservedValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0.684</caus:hasObservedValue>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#StencilThickness_PCB42_Obs">
@@ -4593,14 +4886,14 @@
   <rdf:type rdf:resource="https://neurosymbols.ai/ontology/causal-terminology.owl#SqueegeePressureObs"/>
   <Core:isAbout rdf:resource="#S10-spec"/>
   <caus:observationOf rdf:resource="#PCB42"/>
-  <caus:hasObservedValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0.32</caus:hasObservedValue>
+  <caus:hasObservedValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0.288</caus:hasObservedValue>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#SqueegeeSpeed_PCB42_Obs">
   <rdf:type rdf:resource="https://neurosymbols.ai/ontology/causal-terminology.owl#SqueegeeSpeedObs"/>
   <Core:isAbout rdf:resource="#S11-spec"/>
   <caus:observationOf rdf:resource="#PCB42"/>
-  <caus:hasObservedValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">69.307</caus:hasObservedValue>
+  <caus:hasObservedValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">70.842</caus:hasObservedValue>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#SqueegeeAngle_PCB42_Obs">
@@ -4617,6 +4910,20 @@
   <caus:hasObservedValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">214.684</caus:hasObservedValue>
 </owl:NamedIndividual>
 
+<owl:NamedIndividual rdf:about="#TimeAboveLiquidus_PCB42_Obs">
+  <rdf:type rdf:resource="https://neurosymbols.ai/ontology/causal-terminology.owl#TimeAboveLiquidusObs"/>
+  <Core:isAbout rdf:resource="#S42-spec"/>
+  <caus:observationOf rdf:resource="#PCB42"/>
+  <caus:hasObservedValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">47.25</caus:hasObservedValue>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#AmbientRh_PCB42_Obs">
+  <rdf:type rdf:resource="https://neurosymbols.ai/ontology/causal-terminology.owl#AmbientRhObs"/>
+  <Core:isAbout rdf:resource="#S37-spec"/>
+  <caus:observationOf rdf:resource="#PCB42"/>
+  <caus:hasObservedValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">44.165</caus:hasObservedValue>
+</owl:NamedIndividual>
+
 <owl:NamedIndividual rdf:about="#MetalLoad_PCB42_Obs">
   <rdf:type rdf:resource="https://neurosymbols.ai/ontology/causal-terminology.owl#MetalLoadObs"/>
   <Core:isAbout rdf:resource="#S40-spec"/>
@@ -4631,13 +4938,6 @@
   <caus:hasObservedValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">258.064</caus:hasObservedValue>
 </owl:NamedIndividual>
 
-<owl:NamedIndividual rdf:about="#TimeAboveLiquidus_PCB42_Obs">
-  <rdf:type rdf:resource="https://neurosymbols.ai/ontology/causal-terminology.owl#TimeAboveLiquidusObs"/>
-  <Core:isAbout rdf:resource="#S42-spec"/>
-  <caus:observationOf rdf:resource="#PCB42"/>
-  <caus:hasObservedValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">47.17</caus:hasObservedValue>
-</owl:NamedIndividual>
-
 <owl:NamedIndividual rdf:about="#PCB43">
   <rdf:type rdf:resource="https://neurosymbols.ai/ontology/causal-terminology.owl#PCB"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PCB43</rdfs:label>
@@ -4647,7 +4947,7 @@
   <rdf:type rdf:resource="https://neurosymbols.ai/ontology/causal-terminology.owl#ApertureAreaRatioObs"/>
   <Core:isAbout rdf:resource="#S13-spec"/>
   <caus:observationOf rdf:resource="#PCB43"/>
-  <caus:hasObservedValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0.699</caus:hasObservedValue>
+  <caus:hasObservedValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0.698</caus:hasObservedValue>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#StencilThickness_PCB43_Obs">
@@ -4713,6 +5013,20 @@
   <caus:hasObservedValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">163.304</caus:hasObservedValue>
 </owl:NamedIndividual>
 
+<owl:NamedIndividual rdf:about="#TimeAboveLiquidus_PCB43_Obs">
+  <rdf:type rdf:resource="https://neurosymbols.ai/ontology/causal-terminology.owl#TimeAboveLiquidusObs"/>
+  <Core:isAbout rdf:resource="#S42-spec"/>
+  <caus:observationOf rdf:resource="#PCB43"/>
+  <caus:hasObservedValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">72.91</caus:hasObservedValue>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#AmbientRh_PCB43_Obs">
+  <rdf:type rdf:resource="https://neurosymbols.ai/ontology/causal-terminology.owl#AmbientRhObs"/>
+  <Core:isAbout rdf:resource="#S37-spec"/>
+  <caus:observationOf rdf:resource="#PCB43"/>
+  <caus:hasObservedValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">43.734</caus:hasObservedValue>
+</owl:NamedIndividual>
+
 <owl:NamedIndividual rdf:about="#MetalLoad_PCB43_Obs">
   <rdf:type rdf:resource="https://neurosymbols.ai/ontology/causal-terminology.owl#MetalLoadObs"/>
   <Core:isAbout rdf:resource="#S40-spec"/>
@@ -4727,13 +5041,6 @@
   <caus:hasObservedValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">256.267</caus:hasObservedValue>
 </owl:NamedIndividual>
 
-<owl:NamedIndividual rdf:about="#TimeAboveLiquidus_PCB43_Obs">
-  <rdf:type rdf:resource="https://neurosymbols.ai/ontology/causal-terminology.owl#TimeAboveLiquidusObs"/>
-  <Core:isAbout rdf:resource="#S42-spec"/>
-  <caus:observationOf rdf:resource="#PCB43"/>
-  <caus:hasObservedValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">46.67</caus:hasObservedValue>
-</owl:NamedIndividual>
-
 <owl:NamedIndividual rdf:about="#PCB44">
   <rdf:type rdf:resource="https://neurosymbols.ai/ontology/causal-terminology.owl#PCB"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PCB44</rdfs:label>
@@ -4743,7 +5050,7 @@
   <rdf:type rdf:resource="https://neurosymbols.ai/ontology/causal-terminology.owl#ApertureAreaRatioObs"/>
   <Core:isAbout rdf:resource="#S13-spec"/>
   <caus:observationOf rdf:resource="#PCB44"/>
-  <caus:hasObservedValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0.667</caus:hasObservedValue>
+  <caus:hasObservedValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0.673</caus:hasObservedValue>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#StencilThickness_PCB44_Obs">
@@ -4809,6 +5116,20 @@
   <caus:hasObservedValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">197.912</caus:hasObservedValue>
 </owl:NamedIndividual>
 
+<owl:NamedIndividual rdf:about="#TimeAboveLiquidus_PCB44_Obs">
+  <rdf:type rdf:resource="https://neurosymbols.ai/ontology/causal-terminology.owl#TimeAboveLiquidusObs"/>
+  <Core:isAbout rdf:resource="#S42-spec"/>
+  <caus:observationOf rdf:resource="#PCB44"/>
+  <caus:hasObservedValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">59.84</caus:hasObservedValue>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#AmbientRh_PCB44_Obs">
+  <rdf:type rdf:resource="https://neurosymbols.ai/ontology/causal-terminology.owl#AmbientRhObs"/>
+  <Core:isAbout rdf:resource="#S37-spec"/>
+  <caus:observationOf rdf:resource="#PCB44"/>
+  <caus:hasObservedValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">39.908</caus:hasObservedValue>
+</owl:NamedIndividual>
+
 <owl:NamedIndividual rdf:about="#MetalLoad_PCB44_Obs">
   <rdf:type rdf:resource="https://neurosymbols.ai/ontology/causal-terminology.owl#MetalLoadObs"/>
   <Core:isAbout rdf:resource="#S40-spec"/>
@@ -4823,13 +5144,6 @@
   <caus:hasObservedValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">257.88</caus:hasObservedValue>
 </owl:NamedIndividual>
 
-<owl:NamedIndividual rdf:about="#TimeAboveLiquidus_PCB44_Obs">
-  <rdf:type rdf:resource="https://neurosymbols.ai/ontology/causal-terminology.owl#TimeAboveLiquidusObs"/>
-  <Core:isAbout rdf:resource="#S42-spec"/>
-  <caus:observationOf rdf:resource="#PCB44"/>
-  <caus:hasObservedValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">45.94</caus:hasObservedValue>
-</owl:NamedIndividual>
-
 <owl:NamedIndividual rdf:about="#PCB45">
   <rdf:type rdf:resource="https://neurosymbols.ai/ontology/causal-terminology.owl#PCB"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PCB45</rdfs:label>
@@ -4839,7 +5153,7 @@
   <rdf:type rdf:resource="https://neurosymbols.ai/ontology/causal-terminology.owl#ApertureAreaRatioObs"/>
   <Core:isAbout rdf:resource="#S13-spec"/>
   <caus:observationOf rdf:resource="#PCB45"/>
-  <caus:hasObservedValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0.613</caus:hasObservedValue>
+  <caus:hasObservedValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0.686</caus:hasObservedValue>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#StencilThickness_PCB45_Obs">
@@ -4905,6 +5219,20 @@
   <caus:hasObservedValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">225.543</caus:hasObservedValue>
 </owl:NamedIndividual>
 
+<owl:NamedIndividual rdf:about="#TimeAboveLiquidus_PCB45_Obs">
+  <rdf:type rdf:resource="https://neurosymbols.ai/ontology/causal-terminology.owl#TimeAboveLiquidusObs"/>
+  <Core:isAbout rdf:resource="#S42-spec"/>
+  <caus:observationOf rdf:resource="#PCB45"/>
+  <caus:hasObservedValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">68.37</caus:hasObservedValue>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#AmbientRh_PCB45_Obs">
+  <rdf:type rdf:resource="https://neurosymbols.ai/ontology/causal-terminology.owl#AmbientRhObs"/>
+  <Core:isAbout rdf:resource="#S37-spec"/>
+  <caus:observationOf rdf:resource="#PCB45"/>
+  <caus:hasObservedValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">30.104</caus:hasObservedValue>
+</owl:NamedIndividual>
+
 <owl:NamedIndividual rdf:about="#MetalLoad_PCB45_Obs">
   <rdf:type rdf:resource="https://neurosymbols.ai/ontology/causal-terminology.owl#MetalLoadObs"/>
   <Core:isAbout rdf:resource="#S40-spec"/>
@@ -4919,13 +5247,6 @@
   <caus:hasObservedValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">251.926</caus:hasObservedValue>
 </owl:NamedIndividual>
 
-<owl:NamedIndividual rdf:about="#TimeAboveLiquidus_PCB45_Obs">
-  <rdf:type rdf:resource="https://neurosymbols.ai/ontology/causal-terminology.owl#TimeAboveLiquidusObs"/>
-  <Core:isAbout rdf:resource="#S42-spec"/>
-  <caus:observationOf rdf:resource="#PCB45"/>
-  <caus:hasObservedValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">49.52</caus:hasObservedValue>
-</owl:NamedIndividual>
-
 <owl:NamedIndividual rdf:about="#PCB46">
   <rdf:type rdf:resource="https://neurosymbols.ai/ontology/causal-terminology.owl#PCB"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PCB46</rdfs:label>
@@ -4935,7 +5256,7 @@
   <rdf:type rdf:resource="https://neurosymbols.ai/ontology/causal-terminology.owl#ApertureAreaRatioObs"/>
   <Core:isAbout rdf:resource="#S13-spec"/>
   <caus:observationOf rdf:resource="#PCB46"/>
-  <caus:hasObservedValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0.689</caus:hasObservedValue>
+  <caus:hasObservedValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0.679</caus:hasObservedValue>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#StencilThickness_PCB46_Obs">
@@ -4977,7 +5298,7 @@
   <rdf:type rdf:resource="https://neurosymbols.ai/ontology/causal-terminology.owl#SqueegeePressureObs"/>
   <Core:isAbout rdf:resource="#S10-spec"/>
   <caus:observationOf rdf:resource="#PCB46"/>
-  <caus:hasObservedValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0.306</caus:hasObservedValue>
+  <caus:hasObservedValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0.282</caus:hasObservedValue>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#SqueegeeSpeed_PCB46_Obs">
@@ -5001,6 +5322,20 @@
   <caus:hasObservedValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">239.267</caus:hasObservedValue>
 </owl:NamedIndividual>
 
+<owl:NamedIndividual rdf:about="#TimeAboveLiquidus_PCB46_Obs">
+  <rdf:type rdf:resource="https://neurosymbols.ai/ontology/causal-terminology.owl#TimeAboveLiquidusObs"/>
+  <Core:isAbout rdf:resource="#S42-spec"/>
+  <caus:observationOf rdf:resource="#PCB46"/>
+  <caus:hasObservedValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">53.62</caus:hasObservedValue>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#AmbientRh_PCB46_Obs">
+  <rdf:type rdf:resource="https://neurosymbols.ai/ontology/causal-terminology.owl#AmbientRhObs"/>
+  <Core:isAbout rdf:resource="#S37-spec"/>
+  <caus:observationOf rdf:resource="#PCB46"/>
+  <caus:hasObservedValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">30.036</caus:hasObservedValue>
+</owl:NamedIndividual>
+
 <owl:NamedIndividual rdf:about="#MetalLoad_PCB46_Obs">
   <rdf:type rdf:resource="https://neurosymbols.ai/ontology/causal-terminology.owl#MetalLoadObs"/>
   <Core:isAbout rdf:resource="#S40-spec"/>
@@ -5015,13 +5350,6 @@
   <caus:hasObservedValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">252.584</caus:hasObservedValue>
 </owl:NamedIndividual>
 
-<owl:NamedIndividual rdf:about="#TimeAboveLiquidus_PCB46_Obs">
-  <rdf:type rdf:resource="https://neurosymbols.ai/ontology/causal-terminology.owl#TimeAboveLiquidusObs"/>
-  <Core:isAbout rdf:resource="#S42-spec"/>
-  <caus:observationOf rdf:resource="#PCB46"/>
-  <caus:hasObservedValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">50.43</caus:hasObservedValue>
-</owl:NamedIndividual>
-
 <owl:NamedIndividual rdf:about="#PCB47">
   <rdf:type rdf:resource="https://neurosymbols.ai/ontology/causal-terminology.owl#PCB"/>
   <caus:hasDefect rdf:resource="#OpenCircuit_PCB47"/>
@@ -5032,7 +5360,7 @@
   <rdf:type rdf:resource="https://neurosymbols.ai/ontology/causal-terminology.owl#ApertureAreaRatioObs"/>
   <Core:isAbout rdf:resource="#S13-spec"/>
   <caus:observationOf rdf:resource="#PCB47"/>
-  <caus:hasObservedValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0.657</caus:hasObservedValue>
+  <caus:hasObservedValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0.693</caus:hasObservedValue>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#StencilThickness_PCB47_Obs">
@@ -5053,7 +5381,7 @@
   <rdf:type rdf:resource="https://neurosymbols.ai/ontology/causal-terminology.owl#PasteVolumePerApertureObs"/>
   <Core:isAbout rdf:resource="#S7-spec"/>
   <caus:observationOf rdf:resource="#PCB47"/>
-  <caus:hasObservedValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0.039</caus:hasObservedValue>
+  <caus:hasObservedValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0.034</caus:hasObservedValue>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#PasteRollBeadSize_PCB47_Obs">
@@ -5074,7 +5402,7 @@
   <rdf:type rdf:resource="https://neurosymbols.ai/ontology/causal-terminology.owl#SqueegeePressureObs"/>
   <Core:isAbout rdf:resource="#S10-spec"/>
   <caus:observationOf rdf:resource="#PCB47"/>
-  <caus:hasObservedValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0.283</caus:hasObservedValue>
+  <caus:hasObservedValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0.263</caus:hasObservedValue>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#SqueegeeSpeed_PCB47_Obs">
@@ -5098,6 +5426,20 @@
   <caus:hasObservedValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">177.327</caus:hasObservedValue>
 </owl:NamedIndividual>
 
+<owl:NamedIndividual rdf:about="#TimeAboveLiquidus_PCB47_Obs">
+  <rdf:type rdf:resource="https://neurosymbols.ai/ontology/causal-terminology.owl#TimeAboveLiquidusObs"/>
+  <Core:isAbout rdf:resource="#S42-spec"/>
+  <caus:observationOf rdf:resource="#PCB47"/>
+  <caus:hasObservedValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">48.28</caus:hasObservedValue>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#AmbientRh_PCB47_Obs">
+  <rdf:type rdf:resource="https://neurosymbols.ai/ontology/causal-terminology.owl#AmbientRhObs"/>
+  <Core:isAbout rdf:resource="#S37-spec"/>
+  <caus:observationOf rdf:resource="#PCB47"/>
+  <caus:hasObservedValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">48.584</caus:hasObservedValue>
+</owl:NamedIndividual>
+
 <owl:NamedIndividual rdf:about="#MetalLoad_PCB47_Obs">
   <rdf:type rdf:resource="https://neurosymbols.ai/ontology/causal-terminology.owl#MetalLoadObs"/>
   <Core:isAbout rdf:resource="#S40-spec"/>
@@ -5110,13 +5452,6 @@
   <Core:isAbout rdf:resource="#S31-spec"/>
   <caus:observationOf rdf:resource="#PCB47"/>
   <caus:hasObservedValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">240.982</caus:hasObservedValue>
-</owl:NamedIndividual>
-
-<owl:NamedIndividual rdf:about="#TimeAboveLiquidus_PCB47_Obs">
-  <rdf:type rdf:resource="https://neurosymbols.ai/ontology/causal-terminology.owl#TimeAboveLiquidusObs"/>
-  <Core:isAbout rdf:resource="#S42-spec"/>
-  <caus:observationOf rdf:resource="#PCB47"/>
-  <caus:hasObservedValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">48.28</caus:hasObservedValue>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#OpenCircuit_PCB47">
@@ -5133,7 +5468,7 @@
   <rdf:type rdf:resource="https://neurosymbols.ai/ontology/causal-terminology.owl#ApertureAreaRatioObs"/>
   <Core:isAbout rdf:resource="#S13-spec"/>
   <caus:observationOf rdf:resource="#PCB48"/>
-  <caus:hasObservedValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0.67</caus:hasObservedValue>
+  <caus:hasObservedValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0.667</caus:hasObservedValue>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#StencilThickness_PCB48_Obs">
@@ -5199,6 +5534,20 @@
   <caus:hasObservedValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">154.845</caus:hasObservedValue>
 </owl:NamedIndividual>
 
+<owl:NamedIndividual rdf:about="#TimeAboveLiquidus_PCB48_Obs">
+  <rdf:type rdf:resource="https://neurosymbols.ai/ontology/causal-terminology.owl#TimeAboveLiquidusObs"/>
+  <Core:isAbout rdf:resource="#S42-spec"/>
+  <caus:observationOf rdf:resource="#PCB48"/>
+  <caus:hasObservedValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">69.74</caus:hasObservedValue>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#AmbientRh_PCB48_Obs">
+  <rdf:type rdf:resource="https://neurosymbols.ai/ontology/causal-terminology.owl#AmbientRhObs"/>
+  <Core:isAbout rdf:resource="#S37-spec"/>
+  <caus:observationOf rdf:resource="#PCB48"/>
+  <caus:hasObservedValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">42.699</caus:hasObservedValue>
+</owl:NamedIndividual>
+
 <owl:NamedIndividual rdf:about="#MetalLoad_PCB48_Obs">
   <rdf:type rdf:resource="https://neurosymbols.ai/ontology/causal-terminology.owl#MetalLoadObs"/>
   <Core:isAbout rdf:resource="#S40-spec"/>
@@ -5213,13 +5562,6 @@
   <caus:hasObservedValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">253.421</caus:hasObservedValue>
 </owl:NamedIndividual>
 
-<owl:NamedIndividual rdf:about="#TimeAboveLiquidus_PCB48_Obs">
-  <rdf:type rdf:resource="https://neurosymbols.ai/ontology/causal-terminology.owl#TimeAboveLiquidusObs"/>
-  <Core:isAbout rdf:resource="#S42-spec"/>
-  <caus:observationOf rdf:resource="#PCB48"/>
-  <caus:hasObservedValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">49.09</caus:hasObservedValue>
-</owl:NamedIndividual>
-
 <owl:NamedIndividual rdf:about="#PCB49">
   <rdf:type rdf:resource="https://neurosymbols.ai/ontology/causal-terminology.owl#PCB"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PCB49</rdfs:label>
@@ -5229,7 +5571,7 @@
   <rdf:type rdf:resource="https://neurosymbols.ai/ontology/causal-terminology.owl#ApertureAreaRatioObs"/>
   <Core:isAbout rdf:resource="#S13-spec"/>
   <caus:observationOf rdf:resource="#PCB49"/>
-  <caus:hasObservedValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0.694</caus:hasObservedValue>
+  <caus:hasObservedValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0.662</caus:hasObservedValue>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#StencilThickness_PCB49_Obs">
@@ -5295,6 +5637,20 @@
   <caus:hasObservedValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">249.146</caus:hasObservedValue>
 </owl:NamedIndividual>
 
+<owl:NamedIndividual rdf:about="#TimeAboveLiquidus_PCB49_Obs">
+  <rdf:type rdf:resource="https://neurosymbols.ai/ontology/causal-terminology.owl#TimeAboveLiquidusObs"/>
+  <Core:isAbout rdf:resource="#S42-spec"/>
+  <caus:observationOf rdf:resource="#PCB49"/>
+  <caus:hasObservedValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">55.21</caus:hasObservedValue>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#AmbientRh_PCB49_Obs">
+  <rdf:type rdf:resource="https://neurosymbols.ai/ontology/causal-terminology.owl#AmbientRhObs"/>
+  <Core:isAbout rdf:resource="#S37-spec"/>
+  <caus:observationOf rdf:resource="#PCB49"/>
+  <caus:hasObservedValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">30.009</caus:hasObservedValue>
+</owl:NamedIndividual>
+
 <owl:NamedIndividual rdf:about="#MetalLoad_PCB49_Obs">
   <rdf:type rdf:resource="https://neurosymbols.ai/ontology/causal-terminology.owl#MetalLoadObs"/>
   <Core:isAbout rdf:resource="#S40-spec"/>
@@ -5309,13 +5665,6 @@
   <caus:hasObservedValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">252.16</caus:hasObservedValue>
 </owl:NamedIndividual>
 
-<owl:NamedIndividual rdf:about="#TimeAboveLiquidus_PCB49_Obs">
-  <rdf:type rdf:resource="https://neurosymbols.ai/ontology/causal-terminology.owl#TimeAboveLiquidusObs"/>
-  <Core:isAbout rdf:resource="#S42-spec"/>
-  <caus:observationOf rdf:resource="#PCB49"/>
-  <caus:hasObservedValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">45.65</caus:hasObservedValue>
-</owl:NamedIndividual>
-
 <owl:NamedIndividual rdf:about="#PCB50">
   <rdf:type rdf:resource="https://neurosymbols.ai/ontology/causal-terminology.owl#PCB"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PCB50</rdfs:label>
@@ -5325,7 +5674,7 @@
   <rdf:type rdf:resource="https://neurosymbols.ai/ontology/causal-terminology.owl#ApertureAreaRatioObs"/>
   <Core:isAbout rdf:resource="#S13-spec"/>
   <caus:observationOf rdf:resource="#PCB50"/>
-  <caus:hasObservedValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0.631</caus:hasObservedValue>
+  <caus:hasObservedValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0.689</caus:hasObservedValue>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#StencilThickness_PCB50_Obs">
@@ -5391,6 +5740,20 @@
   <caus:hasObservedValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">197.92</caus:hasObservedValue>
 </owl:NamedIndividual>
 
+<owl:NamedIndividual rdf:about="#TimeAboveLiquidus_PCB50_Obs">
+  <rdf:type rdf:resource="https://neurosymbols.ai/ontology/causal-terminology.owl#TimeAboveLiquidusObs"/>
+  <Core:isAbout rdf:resource="#S42-spec"/>
+  <caus:observationOf rdf:resource="#PCB50"/>
+  <caus:hasObservedValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">47.89</caus:hasObservedValue>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#AmbientRh_PCB50_Obs">
+  <rdf:type rdf:resource="https://neurosymbols.ai/ontology/causal-terminology.owl#AmbientRhObs"/>
+  <Core:isAbout rdf:resource="#S37-spec"/>
+  <caus:observationOf rdf:resource="#PCB50"/>
+  <caus:hasObservedValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">36.293</caus:hasObservedValue>
+</owl:NamedIndividual>
+
 <owl:NamedIndividual rdf:about="#MetalLoad_PCB50_Obs">
   <rdf:type rdf:resource="https://neurosymbols.ai/ontology/causal-terminology.owl#MetalLoadObs"/>
   <Core:isAbout rdf:resource="#S40-spec"/>
@@ -5403,13 +5766,6 @@
   <Core:isAbout rdf:resource="#S31-spec"/>
   <caus:observationOf rdf:resource="#PCB50"/>
   <caus:hasObservedValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">258.422</caus:hasObservedValue>
-</owl:NamedIndividual>
-
-<owl:NamedIndividual rdf:about="#TimeAboveLiquidus_PCB50_Obs">
-  <rdf:type rdf:resource="https://neurosymbols.ai/ontology/causal-terminology.owl#TimeAboveLiquidusObs"/>
-  <Core:isAbout rdf:resource="#S42-spec"/>
-  <caus:observationOf rdf:resource="#PCB50"/>
-  <caus:hasObservedValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">44.74</caus:hasObservedValue>
 </owl:NamedIndividual>
 
 

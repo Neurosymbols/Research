@@ -11,7 +11,6 @@ from app.services.utils import replace_iri, add_classes, add_individuals, create
 # Set the IRIs
 BASE_ONTO_IRI = "https://neurosymbols.ai/ontology/causal-terminology.owl"
 PRODUCT_ONTO_IRI = "https://neurosymbols.ai/data/causal-assertions.owl"
-SKOS_IRI = "http://www.w3.org/2004/02/skos/core"
 IOF_IRI = "https://spec.industrialontologies.org/ontology/core/Core/"
 BFO_IRI = "http://purl.obolibrary.org/obo/"
 
@@ -26,7 +25,7 @@ iof = None
 bfo = None
 ro = None
 prov = None
-skos = None
+
 import_ontologies = True
 prefix_onto_map = {
     "IOF": iof,
@@ -89,7 +88,7 @@ def initiate_ontology(
         axioms_dict = None,
         defintions_dict = None
     ):
-    global base_onto, product1_onto, iof, ro, bfo, prov, prefix_onto_map, skos
+    global base_onto, product1_onto, iof, ro, bfo, prov, prefix_onto_map
     base_onto = get_ontology(BASE_ONTO_IRI)
     product1_onto = get_ontology(PRODUCT_ONTO_IRI)
     if not create_new:
@@ -103,7 +102,6 @@ def initiate_ontology(
             bfo = get_ontology(f"{path}/bfo.owl").load(only_local=True)
             ro = get_ontology(f"{path}/ro-causal-properties.owl").load(only_local=True)
             prov = get_ontology(f"{path}/bfo-prov.owl").load(only_local=True)
-            skos = get_ontology(SKOS_IRI).load()
         prefix_onto_map = {
             "IOF": iof,
             "BFO": bfo,
@@ -273,6 +271,8 @@ def define_properties(input_path):
                     if "range" in prop:
                         entity = resolve_entity(prop['range'], search_spaces)
                         cls.range = [entity] if entity else []
+                    if "transitive" in prop:
+                        cls.is_a.append(TransitiveProperty)
 
                 #------------------------------ Data Properties ----------------------------------#
                 for prop in config.get("data_properties", []):
@@ -354,7 +354,6 @@ def add_ishikawa_causal_graph():
 
             causes = graph.get(start, {}).get("caused_by", [])
             for cause in causes:
-                base_onto[create_classname_syntax(start)].equivalent_to.append(target_prop.some(base_onto[create_classname_syntax(cause)]))
                 ind = base_onto[create_classname_syntax(cause)](f"{cause}_1")
                 effect_ind.RO_0002559.append(ind)
                 traverse_paths(graph, cause, target_prop, visited)

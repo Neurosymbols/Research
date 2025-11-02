@@ -8,8 +8,8 @@ import pandas as pd
 from pathlib import Path
 from SPARQLWrapper import SPARQLWrapper, JSON, POST
 
-GDB_URL = "http://localhost:7200"
-REPO = "demo-semicon-shacl"
+GDB_URL = "http://localhost:7201"
+REPO = "demo-semicon"
 
 def create_classname_syntax(classname):
    # Split by any sequence of non-alphanumeric characters
@@ -67,29 +67,23 @@ def clear_graphdb_default_graph():
         print(f"Error clearing default graph: {r.status_code} {r.text}")
 
 def export_ontology_to_graphdb(
-        parent_ontology_path:str,
-        individual_ontology_path:str
+    ontology_paths:list
 ):
     # Upload to repository
     headers = {
         "Content-Type": "application/rdf+xml"
     }
-    with open(parent_ontology_path, "rb") as f:
-        r = requests.post(
-            f"{GDB_URL}/repositories/{REPO}/statements",
-            headers=headers,
-            data=f
-        )
-    with open(individual_ontology_path, "rb") as f:
-        r = requests.post(
-            f"{GDB_URL}/repositories/{REPO}/statements",
-            headers=headers,
-            data=f
-        )
-    if r.status_code == 204:
-        print("OWL file uploaded successfully.")
-    else:
-        print(f"Error uploading: {r.status_code} {r.text}")
+    for op in ontology_paths:
+        with open(op, "rb") as f:
+            r = requests.post(
+                f"{GDB_URL}/repositories/{REPO}/statements",
+                headers=headers,
+                data=f
+            )
+            if r.status_code == 204:
+                print(f"{op} OWL file uploaded successfully.")
+            else:
+                print(f"Error uploading: {r.status_code} {r.text}")
 
 def replace_iri(path):
    # File path to your ontology
