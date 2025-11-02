@@ -1037,9 +1037,9 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ApertureOverfill</rdfs:label>
   <prov:definition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">A causal factor that can lead to defects or process non-conformance related to 'ApertureOverfill' in SMT assembly.</prov:definition>
   <core:example rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Example: Excess paste volume per aperture observed causing tombstoning of 0402 components in lot L-230.</core:example>
+  <triggeredByRuleText rdf:datatype="http://www.w3.org/2001/XMLSchema#string">If ApertureAreaRatio &lt; ApertureAreaRatio_LSL ∨ StencilThickness &gt; StencilThickness_USL → ApertureOverfill</triggeredByRuleText>
   <triggeredByRuleText rdf:datatype="http://www.w3.org/2001/XMLSchema#string">If SqueegeeAngle &lt; SqueegeeAngle_LSL ∧ (SqueegeeSpeed &lt; SqueegeeSpeed_LSL ∨ SqueegeePressure &gt; SqueegeePressure_USL) → ApertureOverfill</triggeredByRuleText>
   <triggeredByRuleText rdf:datatype="http://www.w3.org/2001/XMLSchema#string">If PasteRollBeadSize &gt; PasteRollBeadSize_USL → ApertureOverfill</triggeredByRuleText>
-  <triggeredByRuleText rdf:datatype="http://www.w3.org/2001/XMLSchema#string">If ApertureAreaRatio &lt; ApertureAreaRatio_LSL ∨ StencilThickness &gt; StencilThickness_USL → ApertureOverfill</triggeredByRuleText>
 </owl:Class>
 
 <owl:Class rdf:about="#LowAreaRatio">
@@ -1085,8 +1085,8 @@
 <owl:Class rdf:about="#UndersideSmear">
   <rdfs:subClassOf rdf:resource="#FailureCause"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">UndersideSmear</rdfs:label>
-  <triggeredByRuleText rdf:datatype="http://www.w3.org/2001/XMLSchema#string">If SqueegeePressure &gt; SqueegeePressure_USL → UndersideSmear</triggeredByRuleText>
   <triggeredByRuleText rdf:datatype="http://www.w3.org/2001/XMLSchema#string">If ResidualPasteAllowed &gt; ResidualPasteAllowed_USL → UndersideSmear</triggeredByRuleText>
+  <triggeredByRuleText rdf:datatype="http://www.w3.org/2001/XMLSchema#string">If SqueegeePressure &gt; SqueegeePressure_USL → UndersideSmear</triggeredByRuleText>
 </owl:Class>
 
 <owl:Class rdf:about="#SqueegeePressureTooHigh">
@@ -1118,6 +1118,7 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">LowPasteViscosity</rdfs:label>
   <prov:definition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">A causal factor that can lead to defects or process non-conformance related to 'LowPasteViscosity' in SMT assembly.</prov:definition>
   <core:example rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Example: Excess paste volume per aperture observed causing tombstoning of 0402 components in lot L-230.</core:example>
+  <triggeredByRuleText rdf:datatype="http://www.w3.org/2001/XMLSchema#string">If PasteViscosity &lt; PasteViscosity_LSL → LowPasteViscosity</triggeredByRuleText>
   <triggeredByRuleText rdf:datatype="http://www.w3.org/2001/XMLSchema#string">If PasteMetalLoad &lt; PasteMetalLoad_LSL → LowPasteViscosity</triggeredByRuleText>
 </owl:Class>
 
@@ -1306,6 +1307,7 @@
   <obo:RO_0002559 rdf:resource="#LowMetalContent_1"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">LowPasteViscosity_1</rdfs:label>
   <governedBy rdf:datatype="http://www.w3.org/2001/XMLSchema#string">If PasteMetalLoad &lt; PasteMetalLoad_LSL → LowPasteViscosity</governedBy>
+  <governedBy rdf:datatype="http://www.w3.org/2001/XMLSchema#string">If PasteViscosity &lt; PasteViscosity_LSL → LowPasteViscosity</governedBy>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#HighHumidity_1">

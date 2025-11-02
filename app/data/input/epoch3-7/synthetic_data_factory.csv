@@ -3,11 +3,11 @@ PCB1,0.694,0.104,0.35,0.039,3.884,5.334,0.307,61.941,60.422,183.269,67.42,37.389
 PCB2,0.667,0.098,0.341,0.042,3.601,4.86,0.284,72.264,55.184,201.241,53.19,38.408,89.434,251.85,9.08,,,No,
 PCB3,0.682,0.1,0.347,0.042,4.094,5.324,0.32,72.66,60.512,214.699,71.86,35.349,88.487,257.711,8.977,,,No,
 PCB4,0.699,0.104,0.334,0.044,4.068,5.444,0.29,77.482,57.555,218.554,46.08,30.743,89.995,259.705,8.327,,,No,
-PCB5,0.663,0.102,0.328,0.045,3.894,5.012,0.32,65.204,64.545,199.561,63.77,60.444,88.889,259.716,9.211,"Post print spread-rule-1, Excess Paste volume per aperture-rule-1",High humidity-rule-1,Solder Bridging,Dehumidify/condition cell; maintain RH control
+PCB5,0.663,0.102,0.328,0.045,3.894,5.012,0.32,65.204,64.545,199.561,63.77,60.444,88.889,259.716,9.211,"Post print spread, Excess Paste volume per aperture",High humidity,Solder Bridging,Dehumidify/condition cell; maintain RH control
 PCB6,0.675,0.097,0.348,0.039,3.962,5.446,0.326,74.678,64.761,166.675,59.25,43.589,89.534,250.919,11.962,,,No,
 PCB7,0.668,0.096,0.348,0.041,3.628,4.984,0.321,69.373,62.089,158.176,74.66,32.798,89.081,257.245,8.277,,,No,
 PCB8,0.69,0.099,0.344,0.04,4.234,5.418,0.286,71.936,56.891,220.643,49.34,35.299,88.543,255.081,8.377,,,No,
-PCB9,0.636,0.105,0.345,0.047,4.101,5.146,0.4,79.105,60,235.395,68.02,45.868,88.854,259.303,8.554,"Excess Paste volume per aperture-rule-1, Aperture Overfill-rule-1, Underside smear-rule-1","Squeegee Pressure too high-rule-1, Low area ratio-rule-1",Solder Bridging,"Reduce pressure; verify gasket; improve support , Redesign apertures; electropolish; nano-coating; consider foil change"
+PCB9,0.636,0.105,0.345,0.047,4.101,5.146,0.4,79.105,60,235.395,68.02,45.868,88.854,259.303,8.554,"Excess Paste volume per aperture, Aperture Overfill, Underside smear","Squeegee Pressure too high, Low area ratio",Solder Bridging,"Reduce pressure; verify gasket; improve support , Redesign apertures; electropolish; nano-coating; consider foil change"
 PCB10,0.689,0.095,0.329,0.039,4.096,4.537,0.283,73.287,57.661,227.84,57.11,33.22,89.061,256.032,8.739,,,No,
 PCB11,0.667,0.104,0.338,0.037,4.194,5.334,0.324,74.163,60.035,152.278,70.93,44.721,89.39,253.911,11.471,,,No,
 PCB12,0.692,0.096,0.35,0.043,4.226,4.506,0.289,70.158,57.485,249.612,61.48,32.733,88.684,256.158,9.392,,,No,
@@ -15,12 +15,12 @@ PCB13,0.674,0.096,0.36,0.041,4.166,4.655,0.32,76.733,59.757,159.339,52.77,42.854
 PCB14,0.661,0.099,0.357,0.043,3.622,4.81,0.285,74.537,57.497,241.5,45.63,36.037,89.509,253.567,9.908,,,No,
 PCB15,0.699,0.097,0.342,0.042,3.608,5.075,0.281,74.628,55.1,243.527,73.54,43.404,89.053,259.462,8.478,,,No,
 PCB16,0.668,0.101,0.322,0.041,4.171,4.72,0.315,68.765,62.854,167.827,66.29,37.057,89.247,252.855,11.23,,,No,
-PCB17,0.687,0.109,0.336,0.049,3.833,5.002,0.3,54.105,53.999,166.813,60.05,49.686,89.1,251.271,9.886,"Excess Paste volume per aperture-rule-1, Aperture Overfill-rule-1, Aperture Overfill-rule-3","Stencil Thickness too high-rule-1, squeegee speed too low-rule-1, squeegee angle too low-rule-1",Solder Bridging,"Use thinner foil/step-down; reduce aperture size (home-plate/windowpane); apply nano-coating , Raise speed into window; balance with pressure/angle, re-tune pressure/speed instead of flattening"
+PCB17,0.687,0.109,0.336,0.049,3.833,5.002,0.3,54.105,53.999,166.813,60.05,49.686,89.1,251.271,9.886,"Excess Paste volume per aperture, Aperture Overfill","Stencil Thickness too high, squeegee speed too low, squeegee angle too low",Solder Bridging,"Use thinner foil/step-down; reduce aperture size (home-plate/windowpane); apply nano-coating , Raise speed into window; balance with pressure/angle, Increase angle toward 60–62°; re-tune pressure/speed instead of flattening"
 PCB18,0.695,0.104,0.356,0.041,3.651,5.442,0.287,76.299,55.531,156.393,47.92,34.495,89.03,256.924,9.739,,,No,
 PCB19,0.664,0.096,0.322,0.044,4.031,4.92,0.32,56.555,60.87,200.469,69.31,34.318,89.458,255.986,8.898,,,No,
 PCB20,0.67,0.096,0.359,0.043,4.057,5.01,0.318,57.182,60.475,205.431,55.46,45.898,88.929,254.732,11.845,,,No,
 PCB21,0.699,0.104,0.331,0.039,4.355,5.328,0.32,66.476,62.426,224.404,72.18,45.227,88.029,250.543,10.064,,,No,
-PCB22,0.671,0.104,0.326,0.048,3.785,4.682,0.3,70.998,60.101,149.127,62.333,43.94,88.265,266.466,9.404,"Excess Paste volume per aperture-rule-1, Post print spread-rule-1, Excess Reflow Spreading-rule-1","peak reflow temperature too high-rule-1,  low paste viscosity-rule-1",Solder bridging,"Tune profile; cap peak, Cool paste/stencil; refresh bead; check lot; align mixing practice"
+PCB22,0.671,0.104,0.326,0.048,3.785,4.682,0.3,70.998,60.101,149.127,62.333,43.94,88.265,266.466,9.404,"Excess Paste volume per aperture, Post print spread, Excess Reflow Spreading","peak reflow temperature too high,  low paste viscosity",Solder bridging,"Tune profile; cap peak, Cool paste/stencil; refresh bead; check lot; align mixing practice"
 PCB23,0.684,0.1,0.352,0.042,3.876,4.736,0.32,83.487,62.887,157.528,64.89,40.48,88.646,257.816,9.384,,,No,
 PCB24,0.678,0.095,0.353,0.042,4.006,5.436,0.32,65.49,61.185,199.176,50.22,41.16,88.166,255.206,10.033,,,No,
 PCB25,0.693,0.097,0.345,0.043,4.091,4.692,0.29,82.681,57.136,182.261,75,31.691,89.226,257.207,11.468,,,No,
@@ -30,7 +30,7 @@ PCB28,0.698,0.103,0.358,0.038,3.893,5.479,0.3,63.886,62.486,170,46.55,30.093,89.
 PCB29,0.662,0.101,0.329,0.043,3.83,4.509,0.286,75.661,55.786,237.906,67.94,36.752,89.861,250.635,11.937,,,No,
 PCB30,0.672,0.104,0.348,0.044,3.836,4.523,0.33,71.8,59.699,243.753,54.38,46.398,89.283,255.321,8.102,,,No,
 PCB31,0.666,0.102,0.341,0.042,4.062,4.595,0.32,57.139,63.677,209.001,70.47,40.654,88.671,259.907,10.998,,,No,
-PCB32,0.688,0.095,0.352,0.041,3.864,5.426,0.32,82.854,61.614,193.583,47.43,38.735,88.113,230.592,11.307,Non Coalescence-rule-1,peak reflow temperature too low-rule-1,Open Circuit,Raise peak within vendor band
+PCB32,0.688,0.095,0.352,0.041,3.864,5.426,0.32,82.854,61.614,193.583,47.43,38.735,88.113,230.592,11.307,Non Coalescence,peak reflow temperature too low,Open Circuit,Raise peak within vendor band
 PCB33,0.675,0.095,0.336,0.036,3.958,5.188,0.32,75.101,64.324,162.049,49.73,43.275,89.932,258.373,8.943,,,No,
 PCB34,0.696,0.103,0.332,0.038,4.119,5.003,0.315,70.093,59.224,153.894,68.91,44.577,88.237,250.599,11.575,,,No,
 PCB35,0.669,0.097,0.357,0.036,4.293,5.144,0.301,81.859,60.999,213.963,57.46,33.989,89.341,257.24,9.856,,,No,
@@ -38,14 +38,14 @@ PCB36,0.664,0.104,0.328,0.039,4.238,5.292,0.32,69.057,62.509,233.179,74.22,48.62
 PCB37,0.7,0.1,0.349,0.042,4.35,5.015,0.316,70.593,62.607,223.473,46.37,42.475,89.788,251.138,10.236,,,No,
 PCB38,0.676,0.103,0.359,0.043,3.78,4.735,0.32,81.175,64.661,220.769,63.58,32.411,88.563,255.642,9.764,,,No,
 PCB39,0.691,0.1,0.34,0.043,4.335,4.703,0.322,62.71,64.721,161.783,71.05,46.736,89.966,257.856,10.499,,,No,
-PCB40,0.665,0.103,0.359,0.033,3.945,4.553,0.3,88.456,59.55,217.975,35.01,33.985,88.473,255,9.35,"Insufficient Paste Volume per Aperture-rule-1, Non Coalescence-rule-1","squeegee speed too high-rule-1, time above liquidus too low-rule-1",Open Circuit,"Lower speed into window; confirm with SPI, Increase TAL per paste spec"
+PCB40,0.665,0.103,0.359,0.033,3.945,4.553,0.3,88.456,59.55,217.975,35.01,33.985,88.473,255,9.35,"Insufficient Paste Volume per Aperture, Non Coalescence","squeegee speed too high, time above liquidus too low",Open Circuit,"Lower speed into window; confirm with SPI, Increase TAL per paste spec"
 PCB41,0.69,0.1,0.349,0.041,4.023,5.364,0.32,67.534,63.864,226.913,66.48,47.161,89.639,253.323,8.378,,,No,
 PCB42,0.684,0.098,0.325,0.043,4.157,4.579,0.288,70.842,56.056,214.684,47.25,44.165,89.747,258.064,11.098,,,No,
 PCB43,0.698,0.103,0.327,0.039,4.11,4.668,0.32,56.326,61.18,163.304,72.91,43.734,89.297,256.267,11.362,,,No,
 PCB44,0.673,0.099,0.354,0.037,4.185,4.622,0.32,71.029,61.216,197.912,59.84,39.908,88.041,257.88,11.469,,,No,
 PCB45,0.686,0.103,0.36,0.039,4.363,5.403,0.308,56.065,60.532,225.543,68.37,30.104,89.082,251.926,9.169,,,No,
 PCB46,0.679,0.103,0.331,0.039,4.143,4.73,0.282,77.378,57.25,239.267,53.62,30.036,88.086,252.584,11.962,,,No,
-PCB47,0.693,0.099,0.345,0.034,4.066,5.28,0.263,79.127,55.306,177.327,48.28,48.584,88.391,240.982,11.716,"Insufficient Paste Volume per Aperture-rule-1, Non Coalescence-rule-1","squeegee pressure too low-rule-1, peak reflow temperature too low-rule-1",Open Circuit,"Increase line load to nominal; verify with transducer, Raise peak within vendor band"
+PCB47,0.693,0.099,0.345,0.034,4.066,5.28,0.263,79.127,55.306,177.327,48.28,48.584,88.391,240.982,11.716,"Insufficient Paste Volume per Aperture, Non Coalescence","squeegee pressure too low, peak reflow temperature too low",Open Circuit,"Increase line load to nominal; verify with transducer, Raise peak within vendor band"
 PCB48,0.667,0.1,0.33,0.04,3.859,4.562,0.32,79.931,64.946,154.845,69.74,42.699,89.639,253.421,10.693,,,No,
 PCB49,0.662,0.096,0.359,0.04,4.338,5.164,0.301,68.553,60.101,249.146,55.21,30.009,88.051,252.16,9.632,,,No,
 PCB50,0.689,0.099,0.341,0.038,3.619,4.769,0.32,57.955,58.263,197.92,47.89,36.293,88.997,258.422,10.247,,,No,

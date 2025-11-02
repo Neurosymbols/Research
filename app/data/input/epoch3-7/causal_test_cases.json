@@ -1,0 +1,44 @@
+{
+    "PCB5":[
+        ["Solder Bridging_PCB5", "Excess Paste volume per aperture"],
+        ["Excess Paste volume per aperture", "Post print spread"],
+        ["Post print spread", "High humidity"]
+    ],
+    "PCB9": [
+        ["Solder Bridging_PCB9", "Excess Paste volume per aperture"],
+        ["Excess Paste volume per aperture", "Aperture Overfill"],
+        ["Excess Paste volume per aperture", "Underside smear"],
+        ["Aperture Overfill",  "Low area ratio"],
+        ["Underside smear", "Squeegee Pressure too high"]
+    ],
+    "PCB17":[
+        ["Solder Bridging_PCB17", "Excess Paste volume per aperture"],
+        ["Excess Paste volume per aperture", "Aperture Overfill"],
+        ["Aperture Overfill",  "Stencil Thickness too high"],
+        ["Aperture Overfill",  "squeegee speed too low"],
+        ["Aperture Overfill",  "squeegee angle too low"]
+    ],
+    "PCB22":[
+        ["Solder Bridging_PCB22", "Excess Paste volume per aperture"],
+        ["Solder Bridging_PCB22", "Excess Reflow Spreading"],
+        ["Excess Paste volume per aperture", "Post print spread"],
+        ["Excess Reflow Spreading",  "peak reflow temperature too high"],
+        ["Post print spread",  "low paste viscosity"]
+    ],
+    "PCB32":[
+        ["Open Circuit_PCB32", "Non Coalescence"],
+        ["Non Coalescence", "peak reflow temperature too low"]
+    ],
+    "PCB40":[
+        ["Open Circuit_PCB40", "Insufficient Paste Volume per Aperture"],
+        ["Open Circuit_PCB40", "Non Coalescence"],
+        ["Non Coalescence", "time above liquidus too low"],
+        ["Insufficient Paste Volume per Aperture",  "squeegee speed too high"]
+    ],
+    "PCB47":[
+        ["Open Circuit_PCB47", "Insufficient Paste Volume per Aperture"],
+        ["Open Circuit_PCB47", "Non Coalescence"],
+        ["Non Coalescence", "peak reflow temperature too low"],
+        ["Insufficient Paste Volume per Aperture",  "squeegee pressure too low"]
+    ]
+}
