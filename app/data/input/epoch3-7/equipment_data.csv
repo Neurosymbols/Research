@@ -1,0 +1,7 @@
+material entity,type,process
+Solder Printer,equipment,SolderPrintingProcess
+Reflow Oven,equipment,ReflowSolderingProcess
+Pick and place Machine,equipment,ComponentPlacementProcess
+Stencil,material product,SolderPrintingProcess
+Solder paste,material product,SolderPrintingProcess
+PCB,material product,"SolderPrintingProcess , ReflowSolderingProcess, ComponentPlacementProcess"

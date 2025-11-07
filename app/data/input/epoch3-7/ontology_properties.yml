@@ -39,12 +39,51 @@ object_properties:
     range: PCB
     functional: true
   
+  - name: hasCharacteristic
+    parent: RO_0000053
+    domain: BFO_0000001 #entity
+    range: BFO_0000020 #SDC
+  
+  - name: isDeviationOf
+    parent: RO_0000052
+    domain: FailureCause #SDC
+    range: BFO_0000001 #entity
+  
+  - name: characteristicOf
+    parent: RO_0000052
+    inverse_of: hasCharacteristic
+    domain: BFO_0000020 #SDC
+    range: BFO_0000001 #entity
+
+  - name: hasDeviation
+    parent: RO_0000053
+    inverse_of: isDeviationOf
+    domain: BFO_0000001 #entity
+    range: FailureCause #SDC
+    
   - name: isAffectedBy
     parent: RO_0000053
     domain: PCB
     range: FailureCause
     inverse_of: affects
     inverse_functional: true
+  
+  - name: baseOf
+    domain: BFO_0000001 #entity
+    range: BFO_0000016 #disposition
+  
+  - name: hasBase
+    inverse_of: baseOf
+    domain: BFO_0000016 #disposition
+    range: BFO_0000001 #entity
+  
+  - name: hasRealization
+    domain: BFO_0000016 #disposition
+    range: ConformanceAssessment
+  
+  - name: realizationFor
+    domain: ConformanceAssessment
+    range: BFO_0000016 #disposition
   
   - name: hasAssessmentInput
     parent: used
@@ -107,4 +146,5 @@ data_properties:
 
 annotation_properties:
   - name: triggeredByRuleText
+  - name: termDefinition
 

@@ -45,12 +45,10 @@ super_base_classes = [
     'Requirement Specification',
     'Process Characteristic',
     'Manufacturing Process',
-    'Activity'
+    'Activity',
+    'Disposition'
 ]
 # Create list of SemicON base classes
-semicon_material_artifacts = [
-   'PCB'
-]
 semicon_measurement_ices = [
     'ParameterObservation'
 ]
@@ -78,7 +76,9 @@ semicon_activity = [
 ]
 
 semicon_fc_subtypes = [
-    'RootCause'
+    'RootCause',
+    'ProcessFailureCause',
+    'QualityFailureCause'
 ]
 
 # Initiate the ontology (set create_new = true if ontologies need to be created from scratch everytime)
@@ -116,10 +116,11 @@ def initiate_ontology(
         add_axioms_to_ontology(axioms_dict) # T-Box
         add_base_class_types(base_classes) # T-Box
         add_defintions_and_examples(defintions_dict) # T-Box
-        add_ishikawa_causal_graph() #T-Box
+        add_base_individuals(base_classes)
+        add_ishikawa_causal_graph() #A-Box
         if import_ontologies:
             #idempotently import ontologies
-            base_onto.imported_ontologies.append(skos)
+            # base_onto.imported_ontologies.append(skos)
             base_onto.imported_ontologies.append(prov)
             base_onto.imported_ontologies.append(iof) # SemicON Base Onto imports IOF
             base_onto.imported_ontologies.append(ro)
@@ -138,6 +139,13 @@ def add_base_classes(
     #add base classes
     #T-BOX declaration
     manufacturing_process_concepts = base_classes.get("manufacturing_process_concepts", [])
+    equipment_concepts = [v['equipment'] for v in base_classes.get("equipments_data")]
+    material_product_concepts = list({v["quality_inheritor"] for k,v in base_classes.get('semicon_quality_concepts').items() if v["quality_inheritor"] != "None" })
+    disposition_concepts = []
+    for obj in base_classes.get("defects_and_failure_causes").get("dispositions", []):
+        disposition = obj['disposition']
+        if disposition != "None":
+            disposition_concepts.append(create_classname_syntax(disposition))
     if not import_ontologies:
         add_classes(
             super_base_classes,
@@ -155,7 +163,7 @@ def add_base_classes(
         base_onto
     )
     add_classes(
-        semicon_material_artifacts,
+        material_product_concepts,
         iof.search_one(iri=f"{IOF_IRI}MaterialProduct") if import_ontologies else base_onto.search_one(iri="*MaterialProduct"),
         base_onto
     )
@@ -190,6 +198,16 @@ def add_base_classes(
         base_onto
     )
     add_classes(
+        equipment_concepts,
+        iof.search_one(iri=f"{IOF_IRI}PieceOfEquipment") if import_ontologies else base_onto.search_one(iri="*PieceOfEquipment"),
+        base_onto
+    )
+    add_classes(
+        disposition_concepts,
+        iof.search_one(iri=f"{BFO_IRI}BFO_0000016") if import_ontologies else base_onto.search_one(iri="*Disposition"),
+        base_onto
+    )
+    add_classes(
         [fc for fc in semicon_fc_subtypes],
         base_onto.FailureCause,
         base_onto
@@ -199,7 +217,7 @@ def add_base_class_types(base_classes):
     semicon_defect_concepts = list(base_classes.get("defects_and_failure_causes", {}).get("defect", []))
     semicon_quality_concepts = list(base_classes.get('semicon_quality_concepts').keys())
     semicon_characteristic_concepts = list(base_classes.get("semicon_characteristic_concepts").keys())
-    failure_cause_concepts = list(base_classes.get("defects_and_failure_causes", {}).get("failure_cause", []))
+
     add_classes(
        semicon_quality_concepts,
        base_onto.ParameterQuality,
@@ -225,9 +243,31 @@ def add_base_class_types(base_classes):
         base_onto.Defect,
         base_onto
     )
+    quality_fc_concepts = []
+    process_fc_concepts = []
+    failure_causes_objs = list(base_classes.get("defects_and_failure_causes", {}).get("failure_cause", []))
+    for item in failure_causes_objs:
+        fc = item['failure_cause']
+        chr = item['characteristic']
+        if chr != "None":
+            param_class = base_onto.search_one(iri=f"{BASE_ONTO_IRI}#{create_classname_syntax(chr)}")
+            param_class_types = param_class.is_a
+            if param_class_types:
+                param_class_type_label = param_class_types[0].label
+                if param_class_type_label == ["ParameterCharacteristic"]:
+                    process_fc_concepts.append(fc)
+                elif param_class_type_label == ["ParameterQuality"]:
+                    quality_fc_concepts.append(fc)
+        else:
+            process_fc_concepts.append(fc)
     add_classes(
-        [fc for fc in failure_cause_concepts],
-        base_onto.FailureCause,
+        [fc for fc in quality_fc_concepts],
+        base_onto.QualityFailureCause,
+        base_onto
+    )
+    add_classes(
+        [fc for fc in process_fc_concepts],
+        base_onto.ProcessFailureCause,
         base_onto
     )
 
@@ -294,6 +334,44 @@ def define_properties(input_path):
                 for prop in config.get("annotation_properties", []):
                     cls = types.new_class(prop["name"], (AnnotationProperty,))
 
+def add_base_individuals(base_classes):
+    manufacturing_process_concepts = base_classes.get("manufacturing_process_concepts", [])
+    equipment_concepts = [v['equipment'] for v in base_classes.get("equipments_data")]
+    equipment_process_mapping = base_classes.get("equipments_data")
+    material_process_mapping = base_classes.get("material_products_data")
+    material_product_concepts = list({v["quality_inheritor"] for k,v in base_classes.get('semicon_quality_concepts').items() if v["quality_inheritor"] != "None" })
+    inds = {}
+    for concept in manufacturing_process_concepts:
+        inds[f"{create_classname_syntax(concept)}_1"] = create_classname_syntax(concept)
+    for concept in equipment_concepts:
+        inds[f"{create_classname_syntax(concept)}_1"] = create_classname_syntax(concept)
+    for concept in material_product_concepts:
+        inds[f"{create_classname_syntax(concept)}_1"] = create_classname_syntax(concept)
+    add_individuals(
+        inds,
+        product1_onto,
+        base_onto
+    )
+    with product1_onto:
+        #connect equipment to process
+        for mapping in equipment_process_mapping:
+            #TODO: for multiple processes
+            equipment_ind = product1_onto[f"{create_classname_syntax(mapping['equipment'])}_1"]
+            process_ind = product1_onto[f"{create_classname_syntax(mapping['process_category'])}_1"]
+            equipment_ind.BFO_0000056.append(
+                process_ind
+            )
+        #connect material to process
+        for mapping in material_process_mapping:
+            processes = [p.strip() for p in mapping['process_category'].split(",")]
+            process_inds = [product1_onto[f"{create_classname_syntax(p)}_1"] for p in processes]
+            material_ind = product1_onto[f"{create_classname_syntax(mapping['material_product'])}_1"]
+            process_ind = product1_onto[f"{create_classname_syntax(mapping['process_category'])}_1"]
+            for p in process_inds:
+                material_ind.BFO_0000056.append(
+                    p
+                )
+
 def add_axioms_to_ontology(axioms_dict):
     with base_onto:
         for sub_cls, axiom in axioms_dict.items():
@@ -332,7 +410,7 @@ def add_defintions_and_examples(definitions_dict):
             # locate class or property by IRI
             ent = base_onto.search_one(iri = k)
             if ent:
-                ent.definition.append(v.get('definition', ''))   # plain literal (no lang tag)
+                ent.termDefinition.append(v.get('definition', ''))   # plain literal (no lang tag)
                 ent.example.append(v.get('example', ''))
 
 def add_ishikawa_causal_graph():
@@ -340,12 +418,11 @@ def add_ishikawa_causal_graph():
         """
         Recursively traverse and print causes along 'caused_by' edges.
         """
-        with base_onto:
+        with product1_onto:
             if visited is None:
                 visited = set()
 
             if start in visited:
-                print(f"{start} (cycle detected)")
                 return
             visited.add(start)
             effect_ind = base_onto[create_classname_syntax(start)](f"{start}_1")
@@ -359,15 +436,52 @@ def add_ishikawa_causal_graph():
             causes = graph.get(start, {}).get("caused_by", [])
             for cause in causes:
                 ind = base_onto[create_classname_syntax(cause)](f"{cause}_1")
+                cause_coa_ind = base_onto["ConformanceAssessment"](f"COA_{cause}_1")
+                ind.wasGeneratedBy.append(cause_coa_ind)
                 effect_ind.directlyCausallyInfluencedBy.append(ind)
                 traverse_paths(graph, cause, target_prop, visited)
 
     with open(f"{input_path}/causal_chain.json") as f:
         cc = json.load(f)
         prop_obj = prefix_onto_map["RO"].search_one(iri=f"*RO_0002559")
-        print(prop_obj)
         for defect in cc:
             traverse_paths(cc, defect, prop_obj)
+
+def add_dispositions_to_ontology(fcs, ontology_path):
+    failure_causes = fcs['failure_cause']
+    dispositons = fcs['dispositions']
+    with product1_onto:
+        for item in failure_causes:
+            fc_ind = product1_onto[f"{item['failure_cause']}_1"]
+            if item['characteristic'] != "None":
+                param_class = base_onto.search_one(iri=f"{BASE_ONTO_IRI}#{create_classname_syntax(item['characteristic'])}")
+                param_inds = param_class.instances()
+                if param_inds:
+                    fc_ind.isDeviationOf.append(param_inds[0])
+        for item in dispositons:
+            fc_ind = product1_onto[f"{item['failure_cause']}_1"]
+            # fc_ind.affects.append(product1_onto['PCB_1'])
+            coa_inds = fc_ind.wasGeneratedBy
+            disposition_class_name = create_classname_syntax(item['disposition'])
+            disposition_ind = base_onto[disposition_class_name](f"{disposition_class_name}_1")
+            disposition_ind.label.append(item['disposition'])
+            if item['characteristic'] != "None":
+                param_class = base_onto.search_one(iri=f"{BASE_ONTO_IRI}#{create_classname_syntax(item['characteristic'])}")
+                param_class_types = param_class.is_a
+                param_inds = param_class.instances()
+                if param_inds and param_class_types:
+                    param_ind = param_inds[0]
+                    param_class_type = param_class_types[0].label
+                    param_ind.baseOf.append(disposition_ind)
+                    if param_class_type == ["ParameterQuality"]:
+                        disposition_ind.BFO_0000197.extend(param_ind.BFO_0000197)
+                        if coa_inds:
+                            material_ind = param_ind.BFO_0000197[0]
+                            material_ind.BFO_0000056.append(coa_inds[0])
+                    elif param_class_type == ["ParameterCharacteristic"]:
+                        disposition_ind.characteristicOf.extend(param_ind.BFO_0000132)
+            disposition_ind.hasRealization.extend(fc_ind.wasGeneratedBy)
+        save_ontology(ontology_path)
 
 def add_specs_to_ontology(specs_dict, ontology_path):
     if product1_onto is not None:
@@ -390,9 +504,16 @@ def add_specs_to_ontology(specs_dict, ontology_path):
                         if value == "Quality":
                             onto_ins = onto_class(f"{specs_dict[si]['id']}-quality")
                             onto_ins.label = [f"{si} quality"]
+                            quality_inheritor_ind = product1_onto[f"{create_classname_syntax(specs_dict[si]['quality_inheritor'])}_1"]
+                            onto_ins.BFO_0000197.append(quality_inheritor_ind)
                         elif value == "ProcessCharacteristic":
                             onto_ins = onto_class(f"{specs_dict[si]['id']}-processcharacteristic")
-                            onto_ins.label = [f"{si} quality"]
+                            process_ind = product1_onto[f"{create_classname_syntax(specs_dict[si]['process_category'])}_1"]
+                            onto_ins.label = [f"{si} process characteristic"]
+                            #below line not working
+                            # onto_class.RO_0000052.append(process_ind)
+                            #replaced by
+                            onto_ins.BFO_0000132.append(process_ind)
                         spec_ins.prescribes = [onto_ins]
                     spec_ins.hasUnit = specs_dict[si]['units']
             save_ontology(ontology_path)
