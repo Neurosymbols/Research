@@ -151,7 +151,10 @@ def gen_related_obs(rule):
         walk(cond)
 
     # Generate the SPARQL lines
-    related_lines = [f"       term:hasAssessmentInput ?{o}_obs ;" for o in seen]
+    related_lines = [
+        f"""       term:hasAssessmentInput ?{o}_obs ;
+                   term:hasAssessmentInput ?{o}_spec ;
+        """ for o in seen]
     related_block = "\n".join(related_lines)
 
     return related_block

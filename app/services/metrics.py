@@ -101,7 +101,7 @@ def root_cause_accuracy():
         if set(v) == set(expected_set[k]):
             equivalence_test_passed_boards.append(k)
     test_dict['Test Name'].extend(["top-k root cause", "root-cause set equivalence"])
-    test_dict['System accuracy or response'].extend([(len(top_k_test_passed_boards)/total_boards_to_inspect)*100, round((len(equivalence_test_passed_boards)/total_boards_to_inspect)*100,2)])
+    test_dict['System accuracy or response'].extend([f"{round((len(top_k_test_passed_boards)/total_boards_to_inspect)*100,2)}%", f"{round((len(equivalence_test_passed_boards)/total_boards_to_inspect)*100,2)}%"])
 
 
 #Metric 2
@@ -204,7 +204,7 @@ def chain_recall():
         avg_recall.append(recall)
         avg_precision.append(precision)
     test_dict['Test Name'].extend(["chain recall", "chain precision"])
-    test_dict['System accuracy or response'].extend([np.mean(avg_recall), np.mean(avg_precision)])
+    test_dict['System accuracy or response'].extend([f"{round(np.mean(avg_recall),2)}%", f"{round(np.mean(avg_precision),2)}%"])
 
 root_cause_accuracy()
 test_provenance_completeness()

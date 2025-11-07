@@ -13,6 +13,7 @@ BASE_ONTO_IRI = "https://neurosymbols.ai/ontology/causal-terminology.owl"
 PRODUCT_ONTO_IRI = "https://neurosymbols.ai/data/causal-assertions.owl"
 IOF_IRI = "https://spec.industrialontologies.org/ontology/core/Core/"
 BFO_IRI = "http://purl.obolibrary.org/obo/"
+SKOS_IRI = "http://www.w3.org/2004/02/skos/core#"
 
 base_path = "./app/data"
 path = f"{base_path}/ontologies/epoch3-7"
@@ -25,6 +26,7 @@ iof = None
 bfo = None
 ro = None
 prov = None
+skos = None
 
 import_ontologies = True
 prefix_onto_map = {
@@ -88,7 +90,7 @@ def initiate_ontology(
         axioms_dict = None,
         defintions_dict = None
     ):
-    global base_onto, product1_onto, iof, ro, bfo, prov, prefix_onto_map
+    global base_onto, product1_onto, iof, ro, bfo, prov, prefix_onto_map, skos
     base_onto = get_ontology(BASE_ONTO_IRI)
     product1_onto = get_ontology(PRODUCT_ONTO_IRI)
     if not create_new:
@@ -102,6 +104,7 @@ def initiate_ontology(
             bfo = get_ontology(f"{path}/bfo.owl").load(only_local=True)
             ro = get_ontology(f"{path}/ro-causal-properties.owl").load(only_local=True)
             prov = get_ontology(f"{path}/bfo-prov.owl").load(only_local=True)
+            skos = get_ontology(f"{path}/skos.rdf").load(only_local=True)
         prefix_onto_map = {
             "IOF": iof,
             "BFO": bfo,
@@ -116,6 +119,7 @@ def initiate_ontology(
         add_ishikawa_causal_graph() #T-Box
         if import_ontologies:
             #idempotently import ontologies
+            base_onto.imported_ontologies.append(skos)
             base_onto.imported_ontologies.append(prov)
             base_onto.imported_ontologies.append(iof) # SemicON Base Onto imports IOF
             base_onto.imported_ontologies.append(ro)
@@ -355,7 +359,7 @@ def add_ishikawa_causal_graph():
             causes = graph.get(start, {}).get("caused_by", [])
             for cause in causes:
                 ind = base_onto[create_classname_syntax(cause)](f"{cause}_1")
-                effect_ind.RO_0002559.append(ind)
+                effect_ind.directlyCausallyInfluencedBy.append(ind)
                 traverse_paths(graph, cause, target_prop, visited)
 
     with open(f"{input_path}/causal_chain.json") as f:
@@ -389,7 +393,8 @@ def add_specs_to_ontology(specs_dict, ontology_path):
                         elif value == "ProcessCharacteristic":
                             onto_ins = onto_class(f"{specs_dict[si]['id']}-processcharacteristic")
                             onto_ins.label = [f"{si} quality"]
-                        spec_ins.prescribes = [onto_ins]   
+                        spec_ins.prescribes = [onto_ins]
+                    spec_ins.hasUnit = specs_dict[si]['units']
             save_ontology(ontology_path)
 
 def add_defect_individuals(
@@ -442,9 +447,11 @@ def add_products_to_ontology(
                             observation_individual =  base_onto[f"{onto_class_syntax}Obs"](  # instantiating observed value individuals for Product1
                             f"{onto_class_syntax}_{product_label}_Obs"
                             )
-                            # product_individual.hasObservation.append(observation_individual)
+                            observation_individual.label.append(f"{k} obs")
+                            observation_individual.hasUnit = spec_inds.hasUnit
                             observation_individual.isAbout = [spec_inds]
                             observation_individual.hasObservedValue = float(v)
+                            observation_individual.describes = spec_inds.prescribes
                             observation_individual.observationOf = product_individual
                 product_count += 1
             save_ontology(ontology_path)
