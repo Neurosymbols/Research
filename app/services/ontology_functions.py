@@ -457,7 +457,7 @@ def add_dispositions_to_ontology(fcs, ontology_path):
                 param_class = base_onto.search_one(iri=f"{BASE_ONTO_IRI}#{create_classname_syntax(item['characteristic'])}")
                 param_inds = param_class.instances()
                 if param_inds:
-                    fc_ind.isDeviationOf.append(param_inds[0])
+                    fc_ind.isDeviationOf = param_inds[0]
         for item in dispositons:
             fc_ind = product1_onto[f"{item['failure_cause']}_1"]
             fc_ind.affects = product1_onto['PCB_1']
@@ -479,7 +479,7 @@ def add_dispositions_to_ontology(fcs, ontology_path):
                             material_ind = param_ind.BFO_0000197[0]
                             material_ind.BFO_0000056.append(coa_inds[0])
                     elif param_class_type == ["ParameterCharacteristic"]:
-                        disposition_ind.characteristicOf.extend(param_ind.BFO_0000132)
+                        disposition_ind.RO_0000052 = param_ind.BFO_0000132[0]
             disposition_ind.hasRealization.extend(fc_ind.wasGeneratedBy)
             # if coa_inds:
             #     fc_ind.wasGeneratedBy.extend(coa_inds)
@@ -512,9 +512,6 @@ def add_specs_to_ontology(specs_dict, ontology_path):
                             onto_ins = onto_class(f"{specs_dict[si]['id']}-processcharacteristic")
                             process_ind = product1_onto[f"{create_classname_syntax(specs_dict[si]['process_category'])}_1"]
                             onto_ins.label = [f"{si} process characteristic"]
-                            #below line not working
-                            # onto_class.RO_0000052.append(process_ind)
-                            #replaced by
                             onto_ins.BFO_0000132.append(process_ind)
                         spec_ins.prescribes = [onto_ins]
                     spec_ins.hasUnit = specs_dict[si]['units']
@@ -570,7 +567,7 @@ def add_products_to_ontology(
                             observation_individual =  base_onto[f"{onto_class_syntax}Obs"](  # instantiating observed value individuals for Product1
                             f"{onto_class_syntax}_{product_label}_Obs"
                             )
-                            observation_individual.label.append(f"{k} obs")
+                            observation_individual.label.append(f"{k} obs {product_label}")
                             observation_individual.hasUnit = spec_inds.hasUnit
                             observation_individual.isAbout = [spec_inds]
                             observation_individual.hasObservedValue = float(v)
