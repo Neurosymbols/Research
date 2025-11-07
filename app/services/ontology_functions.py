@@ -408,7 +408,7 @@ def add_defintions_and_examples(definitions_dict):
     with base_onto:
         for k, v in definitions_dict.items():
             # locate class or property by IRI
-            ent = base_onto.search_one(iri = k)
+            ent = base_onto.search_one(iri = f"{BASE_ONTO_IRI}#{create_classname_syntax(k)}")
             if ent:
                 ent.termDefinition.append(v.get('definition', ''))   # plain literal (no lang tag)
                 ent.example.append(v.get('example', ''))
