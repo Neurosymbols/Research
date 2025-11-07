@@ -460,7 +460,7 @@ def add_dispositions_to_ontology(fcs, ontology_path):
                     fc_ind.isDeviationOf.append(param_inds[0])
         for item in dispositons:
             fc_ind = product1_onto[f"{item['failure_cause']}_1"]
-            # fc_ind.affects.append(product1_onto['PCB_1'])
+            fc_ind.affects = product1_onto['PCB_1']
             coa_inds = fc_ind.wasGeneratedBy
             disposition_class_name = create_classname_syntax(item['disposition'])
             disposition_ind = base_onto[disposition_class_name](f"{disposition_class_name}_1")
@@ -481,6 +481,8 @@ def add_dispositions_to_ontology(fcs, ontology_path):
                     elif param_class_type == ["ParameterCharacteristic"]:
                         disposition_ind.characteristicOf.extend(param_ind.BFO_0000132)
             disposition_ind.hasRealization.extend(fc_ind.wasGeneratedBy)
+            # if coa_inds:
+            #     fc_ind.wasGeneratedBy.extend(coa_inds)
         save_ontology(ontology_path)
 
 def add_specs_to_ontology(specs_dict, ontology_path):
