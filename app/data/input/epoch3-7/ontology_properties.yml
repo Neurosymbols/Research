@@ -1,12 +1,10 @@
 object_properties:
   - name: hasObservation
-    parent: describedBy
     domain: PCB
     range: ParameterObservation
     inverse_functional: true
 
   - name: observationOf
-    parent: describes
     inverse_of: hasObservation
     domain: ParameterObservation
     range: PCB
@@ -88,19 +86,15 @@ object_properties:
     transitive: true
   
   - name: directlyCausallyInfluencedBy
-    parent: RO_0002559
     domain: Effect
     range: FailureCause
   
   - name: RO_0002566
-    inverse_of: RO_0002559
     domain: FailureCause
     range: Effect
     transitive: true
   
   - name: directlyCausallyInfluences
-    parent: RO_0002566
-    inverse_of: directlyCausallyInfluencedBy
     domain: FailureCause
     range: Effect
 

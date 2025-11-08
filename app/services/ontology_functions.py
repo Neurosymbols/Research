@@ -378,10 +378,9 @@ def add_axioms_to_ontology(axioms_dict):
         for sub_cls, axiom in axioms_dict.items():
             first_colon_index = axiom.find(":")
             axiom_type = axiom[0:first_colon_index].strip()
-            axiom_text = axiom[first_colon_index:].strip()
+            axiom_text = axiom[first_colon_index+1:].strip()
             axiom_split_by_and = axiom_text.split("and")
-            if len(axiom_split_by_and) > 1:
-                axiom_split_by_and.pop(0)
+            if len(axiom_split_by_and) > 0:
                 for axiom_unit in axiom_split_by_and:
                     #TODO: add generalization and support for not, only etc.
                     axiom_unit = axiom_unit.replace("(", "").replace(")", "")
