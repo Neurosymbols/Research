@@ -135,5 +135,4 @@ data_properties:
 
 annotation_properties:
   - name: triggeredByRuleText
-  - name: termDefinition
 

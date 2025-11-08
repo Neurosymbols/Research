@@ -410,7 +410,7 @@ def add_defintions_and_examples(definitions_dict):
             # locate class or property by IRI
             ent = base_onto.search_one(iri = f"{BASE_ONTO_IRI}#{create_classname_syntax(k)}")
             if ent:
-                ent.termDefinition.append(v.get('definition', ''))   # plain literal (no lang tag)
+                ent.definition.append(v.get('definition', ''))   # plain literal (no lang tag)
                 ent.example.append(v.get('example', ''))
 
 def add_ishikawa_causal_graph():
@@ -437,7 +437,11 @@ def add_ishikawa_causal_graph():
             for cause in causes:
                 ind = base_onto[create_classname_syntax(cause)](f"{cause}_1")
                 cause_coa_ind = base_onto["ConformanceAssessment"](f"COA_{cause}_1")
+                #connect cause to universal product instance
+                ind.affects = product1_onto['PCB_1']
+                #connect cause to conformance assessment
                 ind.wasGeneratedBy.append(cause_coa_ind)
+                #connect effect to cause using directlyCausallyInfluencedBy
                 effect_ind.directlyCausallyInfluencedBy.append(ind)
                 traverse_paths(graph, cause, target_prop, visited)
 
@@ -456,12 +460,17 @@ def add_dispositions_to_ontology(fcs, ontology_path):
             if item['characteristic'] != "None":
                 param_class = base_onto.search_one(iri=f"{BASE_ONTO_IRI}#{create_classname_syntax(item['characteristic'])}")
                 param_inds = param_class.instances()
+                assert len(param_inds) > 0, f"no instances found for {item['characteristic']}" 
                 if param_inds:
+                    #connect characteristic(quality/process characteristic) to its failure cause using isDeviationOf
                     fc_ind.isDeviationOf = param_inds[0]
         for item in dispositons:
             fc_ind = product1_onto[f"{item['failure_cause']}_1"]
-            fc_ind.affects = product1_onto['PCB_1']
+            assert fc_ind is not None , f"no instances found for {item['failure_cause']}"
+            #access conformance assessments for the given failure cause
             coa_inds = fc_ind.wasGeneratedBy
+            assert len(coa_inds) > 0, f"no conformance assessments attached to {item['failure_cause']}"
+            #create disposition
             disposition_class_name = create_classname_syntax(item['disposition'])
             disposition_ind = base_onto[disposition_class_name](f"{disposition_class_name}_1")
             disposition_ind.label.append(item['disposition'])
@@ -472,17 +481,21 @@ def add_dispositions_to_ontology(fcs, ontology_path):
                 if param_inds and param_class_types:
                     param_ind = param_inds[0]
                     param_class_type = param_class_types[0].label
+                    # quadrad rel 1: characteristic baseOf disposition
                     param_ind.baseOf.append(disposition_ind)
                     if param_class_type == ["ParameterQuality"]:
+                        #quadrad rel 4: disposition inheres_in material
+                        assert len(param_ind.BFO_0000197) > 0, f"quality not connected to material via inheres_in"
                         disposition_ind.BFO_0000197.extend(param_ind.BFO_0000197)
-                        if coa_inds:
-                            material_ind = param_ind.BFO_0000197[0]
-                            material_ind.BFO_0000056.append(coa_inds[0])
+                        # quadrad rel 5: material participatesIn conformance assessment
+                        # material_ind = param_ind.BFO_0000197[0]
+                        # material_ind.BFO_0000056.append(coa_inds[0])
                     elif param_class_type == ["ParameterCharacteristic"]:
+                        #quadrad rel 4: disposition characteristic of process
+                        assert len(param_ind.BFO_0000132[0]) > 0, f"process characteristic not connected to material via occurentPartOf"
                         disposition_ind.RO_0000052 = param_ind.BFO_0000132[0]
+            # quadrad rel 2: disposition hasRealization conformance assessment
             disposition_ind.hasRealization.extend(fc_ind.wasGeneratedBy)
-            # if coa_inds:
-            #     fc_ind.wasGeneratedBy.extend(coa_inds)
         save_ontology(ontology_path)
 
 def add_specs_to_ontology(specs_dict, ontology_path):
@@ -502,18 +515,23 @@ def add_specs_to_ontology(specs_dict, ontology_path):
                     elif value_type == "USL":
                         spec_ins.hasUpperValue = value
                     elif value_type == "onto_category":
+                        #onto_class & onto_ins represents processcharacteristic/quality class & individual respectively
                         onto_class = base_onto[f"{classname}"]
                         if value == "Quality":
                             onto_ins = onto_class(f"{specs_dict[si]['id']}-quality")
                             onto_ins.label = [f"{si} quality"]
                             quality_inheritor_ind = product1_onto[f"{create_classname_syntax(specs_dict[si]['quality_inheritor'])}_1"]
+                            #quadrad rel 3: quality inheres_in material
                             onto_ins.BFO_0000197.append(quality_inheritor_ind)
                         elif value == "ProcessCharacteristic":
                             onto_ins = onto_class(f"{specs_dict[si]['id']}-processcharacteristic")
-                            process_ind = product1_onto[f"{create_classname_syntax(specs_dict[si]['process_category'])}_1"]
                             onto_ins.label = [f"{si} process characteristic"]
+                            process_ind = product1_onto[f"{create_classname_syntax(specs_dict[si]['process_category'])}_1"]
+                            #quadrad rel 3: process characteristic occurrentPartOf process
                             onto_ins.BFO_0000132.append(process_ind)
+                        #spec prescribes quality/process characteristics
                         spec_ins.prescribes = [onto_ins]
+                    #attach units to spec individual
                     spec_ins.hasUnit = specs_dict[si]['units']
             save_ontology(ontology_path)
 
