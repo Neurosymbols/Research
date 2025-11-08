@@ -83,8 +83,8 @@ ASK WHERE {
   ?pc term:baseOf ?pcDisposition .
   ?pcDisposition term:hasRealization ?coa .
   ?pc BFO:BFO_0000132 ?process .
-  ?pcDisposition term:characteristicOf ?process .
-  ?pc term:hasDeviation ?fc 
+  ?pcDisposition RO:RO_0000052 ?process .
+  ?pc term:hasDeviation ?fc
 }
 """,
 # failurecause
