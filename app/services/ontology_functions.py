@@ -492,7 +492,7 @@ def add_dispositions_to_ontology(fcs, ontology_path):
                         # material_ind.BFO_0000056.append(coa_inds[0])
                     elif param_class_type == ["ParameterCharacteristic"]:
                         #quadrad rel 4: disposition characteristic of process
-                        assert len(param_ind.BFO_0000132[0]) > 0, f"process characteristic not connected to material via occurentPartOf"
+                        assert len(param_ind.BFO_0000132) > 0, f"process characteristic not connected to material via occurentPartOf"
                         disposition_ind.RO_0000052 = param_ind.BFO_0000132[0]
             # quadrad rel 2: disposition hasRealization conformance assessment
             disposition_ind.hasRealization.extend(fc_ind.wasGeneratedBy)
