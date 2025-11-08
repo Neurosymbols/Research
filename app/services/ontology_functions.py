@@ -440,7 +440,7 @@ def add_ishikawa_causal_graph():
                 #connect cause to universal product instance
                 ind.affects = product1_onto['PCB_1']
                 #connect cause to conformance assessment
-                ind.wasGeneratedBy.append(cause_coa_ind)
+                ind.wasGeneratedBy.extend([cause_coa_ind])
                 #connect effect to cause using directlyCausallyInfluencedBy
                 effect_ind.directlyCausallyInfluencedBy.append(ind)
                 traverse_paths(graph, cause, target_prop, visited)
