@@ -37,25 +37,23 @@ object_properties:
     parent: RO_0000052
     domain: FailureCause
     range: PCB
-    functional: true
 
   - name: isDeviationOf
-    parent: RO_0000052 
     domain: FailureCause #SDC
     range: BFO_0000001 #entity
+    functional: true
 
   - name: hasDeviation
-    parent: RO_0000053
     inverse_of: isDeviationOf
     domain: BFO_0000001 #entity
     range: FailureCause #SDC
+    inverse_functional: true
     
   - name: isAffectedBy
     parent: RO_0000053
     domain: PCB
     range: FailureCause
     inverse_of: affects
-    inverse_functional: true
   
   - name: baseOf
     domain: BFO_0000001 #entity

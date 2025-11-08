@@ -251,6 +251,7 @@ def add_base_class_types(base_classes):
         chr = item['characteristic']
         if chr != "None":
             param_class = base_onto.search_one(iri=f"{BASE_ONTO_IRI}#{create_classname_syntax(chr)}")
+            assert param_class is not None, f"class for {chr} could not be located inside ontology"
             param_class_types = param_class.is_a
             if param_class_types:
                 param_class_type_label = param_class_types[0].label
@@ -521,7 +522,7 @@ def add_specs_to_ontology(specs_dict, ontology_path):
                             onto_ins = onto_class(f"{specs_dict[si]['id']}-quality")
                             onto_ins.label = [f"{si} quality"]
                             quality_inheritor_ind = product1_onto[f"{create_classname_syntax(specs_dict[si]['quality_inheritor'])}_1"]
-                            #quadrad rel 3: quality inheres_in material
+                            #quadrad rel 3: quality inheres_in material/equipment
                             onto_ins.BFO_0000197.append(quality_inheritor_ind)
                         elif value == "ProcessCharacteristic":
                             onto_ins = onto_class(f"{specs_dict[si]['id']}-processcharacteristic")
@@ -557,6 +558,7 @@ def add_products_to_ontology(
     df = pd.read_csv(synthetic_data_factory_file)
     # Strip spaces from column names
     df.columns = df.columns.str.strip() # Check specs in Synthetic Data files
+    df = df.head(batch_size)
     if product1_onto is not None:
         product_count = 0
         with product1_onto: # A-box instantiation

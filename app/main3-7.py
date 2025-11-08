@@ -28,7 +28,7 @@ onto_path.append(path)
 good_ratio = 0.5
 bad_ratio = 0.5
 version = 3
-products_in_ontology = 9999
+products_in_ontology = 20
 data_label = "train"
 defect_threshold = 0.55
 
@@ -131,15 +131,15 @@ def parse_spec_strings(specs_dict):
 
 def extract_specs():
     specs_dict = {}
-    df = pd.read_csv(specs_file, skiprows=2)
+    df = pd.read_csv(specs_file, skiprows=1)
     target_cols = list(df.iloc[:, [0, 1, 2, 3, 4, 5]].itertuples(index=False, name=None))
     #0:id 1:parameter 2:value 3:class 4:quality inheriter 5: process
     spec_category_dict = {}
     for row in target_cols:
         spec_name = row[1]
         spec_category = row[3].split(":")[1].strip()
-        process_category = row[5].strip()
-        quality_inheritor = row[4] if not pd.isna(row[4]) else "None"
+        process_category = row[5].strip() if not pd.isna(row[5]) else "None"
+        quality_inheritor = row[4].strip() if not pd.isna(row[4]) else "None"
         spec_category_dict[normalize_text(spec_name.lower())] = {
             "onto_category": spec_category, 
             "process_category": process_category,
