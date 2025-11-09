@@ -94,7 +94,7 @@ ASK WHERE {
     ?material a iof:MaterialProduct .
     ?coa a term:ConformanceAssessment .
     ?fc term:affects ?material .
-    # ?fc prov:isGeneratedBy ?coa .
+    ?fc prov:wasGeneratedBy ?coa .
 }
 """
 ]
