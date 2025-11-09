@@ -36,7 +36,7 @@ ASK WHERE {
 """
 ASK WHERE {
   ?spec a iof:RequirementSpecification . 
-  ?doc a term:PlanSpecification .
+  ?doc a iof:PlanSpecification .
   ?spec prov:wasDerivedFrom ?doc .
 }
 """,
@@ -93,11 +93,8 @@ ASK WHERE {
     ?fc a term:FailureCause .
     ?material a iof:MaterialProduct .
     ?coa a term:ConformanceAssessment .
-    ?ca a term:CorrectiveAction .
-
-    ?fc term:correctedBy ?ca .
-    ?fc term:affecs ?material .
-    ?fc prov:isGeneratedBy ?coa .
+    ?fc term:affects ?material .
+    # ?fc prov:isGeneratedBy ?coa .
 }
 """
 ]
