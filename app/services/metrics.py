@@ -147,7 +147,7 @@ def cycle_rate():
         PREFIX ro: <http://purl.obolibrary.org/obo/>
 
         ASK WHERE {
-        ?x ro:causally_upstream_of+ ?x .
+        ?x ro:RO_0002559+ ?x .
         }
         '''
     result_1 = perform_sparql_query(test_query)
@@ -177,7 +177,7 @@ def chain_recall():
                 VALUES ?effect_pred { term:defectOccursOn term:affects }
                 ?effect ?effect_pred ?product .
                 ?cause term:affects ?product .
-                ?effect term:directlyCausallyInfluencedBy ?cause .
+                ?effect ro:directlyCausallyInfluencedBy ?cause .
                 ?product rdfs:label ?productlabel .
                 ?effect rdfs:label ?effectlabel .
                 ?cause rdfs:label ?causelabel

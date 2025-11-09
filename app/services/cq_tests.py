@@ -133,3 +133,30 @@ def test_cq_1_causal_chain():
             FILTER(?product = assert:PCB17)
         }
     '''
+
+def test_disposition_quadrad():
+    query = '''
+        PREFIX term: <https://neurosymbols.ai/ontology/causal-terminology.owl#>
+        PREFIX assert: <https://neurosymbols.ai/data/causal-assertions.owl#>
+        PREFIX iof: <https://spec.industrialontologies.org/ontology/core/Core/>
+        PREFIX bfo: <http://purl.obolibrary.org/obo/>
+        PREFIX prov: <http://www.w3.org/ns/prov#>
+        PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+        PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+        PREFIX ro: <http://purl.obolibrary.org/obo/>
+
+        SELECT ?product ?coa ?disposition ?parameterlabel ?inherer
+        WHERE {
+            ?coa a term:ConformanceAssessment .
+            ?cause a term:RootCause .
+            ?coa prov:generated ?cause .
+            ?cause term:affects ?product .
+            ?coa term:realizationOf ?disposition .
+            ?disposition term:hasBase ?parameter .
+            VALUES ?effect_pred { bfo:BFO_0000197 bfo:BFO_0000132 }
+            ?parameter ?effect_pred ?inherer .
+            #access labels
+            ?parameter rdfs:label ?parameterlabel
+            FILTER(?product = assert:PCB17)
+        }
+    '''
