@@ -147,7 +147,7 @@ def add_base_classes(
     for obj in base_classes.get("defects_and_failure_causes").get("dispositions", []):
         disposition = obj['disposition']
         if disposition:
-            disposition_concepts.append(create_classname_syntax(disposition))
+            disposition_concepts.append(create_classname_syntax(f"{obj['failure_cause']}Disposition"))
     if not import_ontologies:
         add_classes(
             super_base_classes,
@@ -494,7 +494,7 @@ def add_dispositions_to_ontology(fcs, ontology_path):
             coa_inds = fc_ind.wasGeneratedBy
             assert len(coa_inds) > 0, f"no conformance assessments attached to {item['failure_cause']}"
             #create disposition
-            disposition_class_name = create_classname_syntax(item['disposition'])
+            disposition_class_name = create_classname_syntax(f"{item['failure_cause']}Disposition")
             disposition_ind = base_onto[disposition_class_name](f"{disposition_class_name}_1")
             disposition_ind.label.append(item['disposition'])
             if item['characteristic']:

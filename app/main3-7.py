@@ -28,7 +28,7 @@ onto_path.append(path)
 good_ratio = 0.5
 bad_ratio = 0.5
 version = 3
-products_in_ontology = 20
+products_in_ontology = 50
 data_label = "train"
 defect_threshold = 0.55
 
