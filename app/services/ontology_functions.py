@@ -142,11 +142,11 @@ def add_base_classes(
     #T-BOX declaration
     manufacturing_process_concepts = base_classes.get("manufacturing_process_concepts", [])
     equipment_concepts = [v['equipment'] for v in base_classes.get("equipments_data")]
-    material_product_concepts = list({v["quality_inheritor"] for k,v in base_classes.get('semicon_quality_concepts').items() if v["quality_inheritor"] != "None" })
+    material_product_concepts = list({v["quality_inheritor"] for k,v in base_classes.get('semicon_quality_concepts').items() if v["quality_inheritor"]})
     disposition_concepts = []
     for obj in base_classes.get("defects_and_failure_causes").get("dispositions", []):
         disposition = obj['disposition']
-        if disposition != "None":
+        if disposition:
             disposition_concepts.append(create_classname_syntax(disposition))
     if not import_ontologies:
         add_classes(
@@ -256,7 +256,7 @@ def add_base_class_types(base_classes):
     for item in failure_causes_objs:
         fc = item['failure_cause']
         chr = item['characteristic']
-        if chr != "None":
+        if chr:
             param_class = base_onto.search_one(iri=f"{BASE_ONTO_IRI}#{create_classname_syntax(chr)}")
             assert param_class is not None, f"class for {chr} could not be located inside ontology"
             param_class_types = param_class.is_a
@@ -347,7 +347,7 @@ def add_base_individuals(base_classes):
     equipment_concepts = [v['equipment'] for v in base_classes.get("equipments_data")]
     equipment_process_mapping = base_classes.get("equipments_data")
     material_process_mapping = base_classes.get("material_products_data")
-    material_product_concepts = list({v["quality_inheritor"] for k,v in base_classes.get('semicon_quality_concepts').items() if v["quality_inheritor"] != "None" })
+    material_product_concepts = list({v["quality_inheritor"] for k,v in base_classes.get('semicon_quality_concepts').items() if v["quality_inheritor"]})
     inds = {}
     for concept in manufacturing_process_concepts:
         inds[f"{create_classname_syntax(concept)}_1"] = create_classname_syntax(concept)
@@ -396,18 +396,27 @@ def add_axioms_to_ontology(axioms_dict):
                     axiom_atoms = [axiom_atom.strip() for axiom_atom in axiom_atoms]
                     prop, obj_cls = axiom_atoms
                     prop_atoms = prop.split(":")
-                    obj_cls_atoms = obj_cls.split(":")
+                    #include edge case for OR in classes
+                    obj_clses = [o.strip() for o in obj_cls.split(" or ")]
+                    obj_clses_atom_tuples = []
+                    for o in obj_clses:
+                        obj_cls_atoms = tuple(o.split(":"))
+                        obj_clses_atom_tuples.append(obj_cls_atoms)
                     if len(prop_atoms) == 2:
                         prop_prefix, prop_name = prop_atoms
                         prop_obj = prefix_onto_map[prop_prefix].search_one(iri=f"*{prop_name}")
                     else:
                         prop_obj = base_onto[prop_atoms[0]]
-                    if len(obj_cls_atoms) == 2:
-                        obj_cls_prefix, obj_cls_name = obj_cls_atoms
-                        obj_cls_obj = prefix_onto_map[obj_cls_prefix].search_one(iri=f"*{obj_cls_name}")
-                    else:
-                        obj_cls_obj = base_onto[obj_cls_atoms[0]]
-                    restrictions.append(prop_obj.some(obj_cls_obj))
+                    obj_cls_objs = []
+                    for atoms_tuple in obj_clses_atom_tuples:
+                        if len(atoms_tuple) == 2:
+                            obj_cls_prefix, obj_cls_name = atoms_tuple
+                            obj_cls_obj = prefix_onto_map[obj_cls_prefix].search_one(iri=f"*{obj_cls_name}")
+                        else:
+                            obj_cls_obj = base_onto[atoms_tuple[0]]
+                        obj_cls_objs.append(obj_cls_obj)
+                    restriction = prop_obj.some(reduce(lambda a, b: a | b, obj_cls_objs))
+                    restrictions.append(restriction)
                 # Combine all class restriction expressions (in 'restrictions' list)
                 # into a single OWL class expression using logical AND ('&').
                 # Input: a list of OWL restrictions like [P1.some(C1), P2.some(C2), ...]
@@ -471,7 +480,7 @@ def add_dispositions_to_ontology(fcs, ontology_path):
     with product1_onto:
         for item in failure_causes:
             fc_ind = product1_onto[f"{item['failure_cause']}_1"]
-            if item['characteristic'] != "None":
+            if item['characteristic']:
                 param_class = base_onto.search_one(iri=f"{BASE_ONTO_IRI}#{create_classname_syntax(item['characteristic'])}")
                 param_inds = param_class.instances()
                 assert len(param_inds) > 0, f"no instances found for {item['characteristic']}" 
@@ -488,7 +497,7 @@ def add_dispositions_to_ontology(fcs, ontology_path):
             disposition_class_name = create_classname_syntax(item['disposition'])
             disposition_ind = base_onto[disposition_class_name](f"{disposition_class_name}_1")
             disposition_ind.label.append(item['disposition'])
-            if item['characteristic'] != "None":
+            if item['characteristic']:
                 param_class = base_onto.search_one(iri=f"{BASE_ONTO_IRI}#{create_classname_syntax(item['characteristic'])}")
                 param_class_types = param_class.is_a
                 param_inds = param_class.instances()

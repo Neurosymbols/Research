@@ -138,9 +138,9 @@ def extract_specs():
     for row in target_cols:
         spec_name = row[1]
         spec_category = row[3].split(":")[1].strip()
-        process_category = row[5].strip() if not pd.isna(row[5]) else "None"
-        quality_inheritor = row[4].strip() if not pd.isna(row[4]) else "None"
-        ppsc_ref =  row[6].strip() if not pd.isna(row[6]) else "None"
+        process_category = row[5].strip() if not pd.isna(row[5]) else None
+        quality_inheritor = row[4].strip() if not pd.isna(row[4]) else None
+        ppsc_ref =  row[6].strip() if not pd.isna(row[6]) else None
         spec_category_dict[normalize_text(spec_name.lower())] = {
             "onto_category": spec_category, 
             "process_category": process_category,
@@ -173,7 +173,7 @@ non_null_specs = {s.lower(): v for s,v in specs.items() if s.lower() not in null
 
 manufacturing_process_concepts = []
 for k, v in non_null_specs.items():
-    if v['process_category'] not in manufacturing_process_concepts:
+    if v['process_category'] and v['process_category'] not in manufacturing_process_concepts:
         manufacturing_process_concepts.append(v['process_category'])
 
 def extract_equipment_concepts():
@@ -204,8 +204,8 @@ target_cols = list(fc_df.iloc[:, [0, 1, 2, 3, 4]].itertuples(index=False, name=N
 for row in target_cols:
     level = row[0].strip()
     item = row[1].strip()
-    disposition = row[3].strip() if not pd.isna(row[3]) else "None"
-    characteristic = row[4].strip() if not pd.isna(row[4]) else "None"
+    disposition = row[3].strip() if not pd.isna(row[3]) else None
+    characteristic = row[4].strip() if not pd.isna(row[4]) else None
     if level == "defect":
         fcs['defect'].append(item)
     elif level == "mechanism" or level == "parameter":
