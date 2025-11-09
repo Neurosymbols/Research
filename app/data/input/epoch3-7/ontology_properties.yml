@@ -37,14 +37,41 @@ object_properties:
     parent: RO_0000052
     domain: FailureCause
     range: PCB
+
+  - name: isDeviationOf
+    domain: FailureCause #SDC
+    range: BFO_0000001 #entity
     functional: true
-  
+
+  - name: hasDeviation
+    inverse_of: isDeviationOf
+    domain: BFO_0000001 #entity
+    range: FailureCause #SDC
+    inverse_functional: true
+    
   - name: isAffectedBy
     parent: RO_0000053
     domain: PCB
     range: FailureCause
     inverse_of: affects
-    inverse_functional: true
+  
+  - name: baseOf
+    domain: BFO_0000001 #entity
+    range: BFO_0000016 #disposition
+  
+  - name: hasBase
+    inverse_of: baseOf
+    domain: BFO_0000016 #disposition
+    range: BFO_0000001 #entity
+  
+  - name: hasRealization
+    domain: BFO_0000016 #disposition
+    range: ConformanceAssessment
+  
+  - name: realizationFor
+    inverse_of: hasRealization
+    domain: ConformanceAssessment
+    range: BFO_0000016 #disposition
   
   - name: hasAssessmentInput
     parent: used
@@ -62,19 +89,15 @@ object_properties:
     transitive: true
   
   - name: directlyCausallyInfluencedBy
-    parent: RO_0002559
     domain: Effect
     range: FailureCause
   
   - name: RO_0002566
-    inverse_of: RO_0002559
     domain: FailureCause
     range: Effect
     transitive: true
   
   - name: directlyCausallyInfluences
-    parent: RO_0002566
-    inverse_of: directlyCausallyInfluencedBy
     domain: FailureCause
     range: Effect
 

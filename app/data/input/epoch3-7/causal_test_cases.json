@@ -40,5 +40,17 @@
         ["Open Circuit_PCB47", "Non Coalescence"],
         ["Non Coalescence", "peak reflow temperature too low"],
         ["Insufficient Paste Volume per Aperture",  "squeegee pressure too low"]
+    ],
+    "PCB14":[
+        ["Solder Bridging_PCB14", "Excess Paste volume per aperture"],
+        ["Excess Paste volume per aperture", "Post print spread"],
+        ["Post print spread", "Low Metal content in paste"],
+        ["Excess Paste volume per aperture", "Aperture Overfill"],
+        ["Aperture Overfill",  "Stencil Thickness too high"]
+    ],
+    "PCB27":[
+        ["Solder Bridging_PCB27", "Excess Paste volume per aperture"],
+        ["Excess Paste volume per aperture", "Post print spread"],
+        ["Post print spread", "Low Metal content in paste"]
     ]
 }

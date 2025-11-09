@@ -9,7 +9,8 @@ from owlready2 import *
 from app.services.utils import *
 from .services.ontology_functions import initiate_ontology,\
     add_specs_to_ontology,\
-    add_products_to_ontology
+    add_products_to_ontology,\
+    add_dispositions_to_ontology
 from .services.bayesian_inference import implement_bayesian_inference
 
 
@@ -19,6 +20,7 @@ input_path = f"{base_path}/input/epoch3-7"
 output_path = f"{base_path}/output/epoch3-7"
 specs_file = f"{input_path}/specs_data.csv"
 fc_file = f"{input_path}/defects_and_failure_causes.csv"
+equipment_file = f"{input_path}/equipment_data.csv"
 
 #set the path where system generated ontologies will be saved
 onto_path.append(path)
@@ -26,7 +28,7 @@ onto_path.append(path)
 good_ratio = 0.5
 bad_ratio = 0.5
 version = 3
-products_in_ontology = 9999
+products_in_ontology = 50
 data_label = "train"
 defect_threshold = 0.55
 
@@ -129,14 +131,22 @@ def parse_spec_strings(specs_dict):
 
 def extract_specs():
     specs_dict = {}
-    df = pd.read_csv(specs_file, skiprows=2)
-    target_cols = list(df.iloc[:, [0, 1, 2, 3, 4, 5]].itertuples(index=False, name=None))
+    df = pd.read_csv(specs_file, skiprows=1)
+    target_cols = list(df.iloc[:, [0, 1, 2, 3, 4, 5, 6]].itertuples(index=False, name=None))
+    #0:id 1:parameter 2:value 3:class 4:quality inheriter 5: process
     spec_category_dict = {}
     for row in target_cols:
         spec_name = row[1]
         spec_category = row[3].split(":")[1].strip()
-        process_category = row[4].strip()
-        spec_category_dict[normalize_text(spec_name.lower())] = {"onto_category": spec_category, "process_category": process_category}
+        process_category = row[5].strip() if not pd.isna(row[5]) else None
+        quality_inheritor = row[4].strip() if not pd.isna(row[4]) else None
+        ppsc_ref =  row[6].strip() if not pd.isna(row[6]) else None
+        spec_category_dict[normalize_text(spec_name.lower())] = {
+            "onto_category": spec_category, 
+            "process_category": process_category,
+            "quality_inheritor": quality_inheritor,
+            "ppsc_ref": ppsc_ref
+        }
         spec_value = row[2]
         specs_dict[normalize_text(spec_name.lower())] = spec_value
     #chain the process
@@ -145,6 +155,8 @@ def extract_specs():
     for k, v in parsed_spec_dict.items():
         parsed_spec_dict[k]['onto_category'] = spec_category_dict[k]['onto_category']
         parsed_spec_dict[k]['process_category'] = spec_category_dict[k]['process_category']
+        parsed_spec_dict[k]["quality_inheritor"] = spec_category_dict[k]["quality_inheritor"]
+        parsed_spec_dict[k]["ppsc_ref"] = spec_category_dict[k]["ppsc_ref"]
 
     with open(f"{output_path}/specs.json", "w") as f:
         json.dump(parsed_spec_dict, f, indent=2, ensure_ascii=False)
@@ -161,17 +173,51 @@ non_null_specs = {s.lower(): v for s,v in specs.items() if s.lower() not in null
 
 manufacturing_process_concepts = []
 for k, v in non_null_specs.items():
-    if v['process_category'] not in manufacturing_process_concepts:
+    if v['process_category'] and v['process_category'] not in manufacturing_process_concepts:
         manufacturing_process_concepts.append(v['process_category'])
 
+def extract_equipment_concepts():
+    df = pd.read_csv(equipment_file)
+    target_cols = list(df.iloc[:, [0, 1, 2]].itertuples(index=False, name=None))
+    equipment_data = []
+    material_product_data = []
+    for row in target_cols:
+        if row[1] == "equipment":
+            equipment_data.append(
+                {
+                    "equipment": row[0], 
+                    "process_category": row[2]
+                }
+            )
+        elif row[1] == "material product":
+            material_product_data.append(
+                {
+                    "material_product": row[0], 
+                    "process_category": row[2]
+                }
+            )
+    return equipment_data, material_product_data
+
 fc_df = pd.read_csv(fc_file)
-fc_df_dict = dict(zip(fc_df['item'], fc_df['level']))
-fcs = {"defect": [], "failure_cause": []}
-for k, v in fc_df_dict.items():
-    if v == "defect":
-        fcs['defect'].append(k)
-    else:
-        fcs['failure_cause'].append(k)
+fcs = {"defect": [], "failure_cause": [], "dispositions": []}
+target_cols = list(fc_df.iloc[:, [0, 1, 2, 3, 4]].itertuples(index=False, name=None))
+for row in target_cols:
+    level = row[0].strip()
+    item = row[1].strip()
+    disposition = row[3].strip() if not pd.isna(row[3]) else None
+    characteristic = row[4].strip() if not pd.isna(row[4]) else None
+    if level == "defect":
+        fcs['defect'].append(item)
+    elif level == "mechanism" or level == "parameter":
+        fcs['failure_cause'].append({"failure_cause": item, "characteristic": characteristic})
+        if disposition:
+            fcs['dispositions'].append(
+                {
+                    "disposition": disposition,
+                    "failure_cause": item,
+                    "characteristic": characteristic
+                }
+            )
 
 def extract_axioms():
     axioms_df = pd.read_csv(f"{input_path}/axioms.csv")
@@ -184,10 +230,10 @@ def extract_axioms():
     return axioms_dict
 
 def extract_definitions_and_examples():
-    prop_df = pd.read_csv(f"{input_path}/definitions_and_examples_object_properties.csv")
-    classes_df = pd.read_csv(f"{input_path}/definitions_and_examples_classes.csv")
-    target_class_cols = list(classes_df.iloc[:, [0, 4, 5]].itertuples(index=False, name=None))
-    target_prop_cols = list(prop_df.iloc[:, [0, 8, 9]].itertuples(index=False, name=None))
+    prop_df = pd.read_csv(f"{input_path}/object_rels_def.csv")
+    classes_df = pd.read_csv(f"{input_path}/classes_def.csv")
+    target_class_cols = list(classes_df.iloc[:, [0, 2, 3]].itertuples(index=False, name=None))
+    target_prop_cols = list(prop_df.iloc[:, [0, 4, 5]].itertuples(index=False, name=None))
     target_dict = {}
     for row in target_class_cols:
         target_dict[row[0]] = {"definition": row[1], "example": row[2]}
@@ -197,6 +243,7 @@ def extract_definitions_and_examples():
 
 axioms_dict = extract_axioms()
 definitions_dict = extract_definitions_and_examples()
+equipments_dict, material_products_dict = extract_equipment_concepts()
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="SemicON Ontology CLI")
@@ -204,6 +251,7 @@ if __name__ == "__main__":
     parser.add_argument("--init", action="store_true", help="Initiate ontology (create_new=False)")
     parser.add_argument("--init-new", action="store_true", help="Initiate ontology (create_new=True)")
     parser.add_argument("--add-specs", action="store_true", help="Add specifications")
+    parser.add_argument("--add-dispositions", action="store_true", help="Add dispositions")
     parser.add_argument("--add-products", action="store_true", help="Add products")
     parser.add_argument("--run-rules", action="store_true", help="Add and run SWRL rules")
     parser.add_argument("--export", action="store_true", help="Export ontology to GraphDB")
@@ -229,7 +277,9 @@ if __name__ == "__main__":
                 "semicon_quality_concepts": {k : v for k,v in non_null_specs.items() if non_null_specs[k]['onto_category'] == 'Quality'},
                 "semicon_characteristic_concepts": {k : v for k,v in non_null_specs.items() if non_null_specs[k]['onto_category'] == 'ProcessCharacteristic'},
                 "manufacturing_process_concepts": manufacturing_process_concepts,
-                "defects_and_failure_causes": fcs
+                "defects_and_failure_causes": fcs,
+                "equipments_data": equipments_dict,
+                "material_products_data": material_products_dict
             },
             axioms_dict,
             definitions_dict
@@ -239,6 +289,11 @@ if __name__ == "__main__":
         add_specs_to_ontology(
             non_null_specs,
             path
+        )
+    
+    if args.add_dispositions:
+        add_dispositions_to_ontology(
+            fcs, path
         )
 
     if args.add_products:

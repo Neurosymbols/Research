@@ -34,6 +34,7 @@ template_sparql = """
     {VERB} { 
     ?coa a term:ConformanceAssessment ;
         term:triggeredByRule "{RULE}" ;
+        term:realizationOf ?disposition ;
     {RELATED_OBS_BINDINGS}
         rdfs:label ?coa_label .
     ?fc a term:{EFFECT} ;
@@ -41,6 +42,7 @@ template_sparql = """
         term:affects ?product ;
         rdfs:label ?fc_label .
     } WHERE {
+    ?disposition a term:{EFFECT}Disposition .
     {OBS_BINDINGS}
     {LIMIT_BINDINGS}
     FILTER({FILTER_EXPR})
@@ -331,7 +333,7 @@ def create_causal_chain(verb):
                 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
                 {verb} {{
                     ?effect ro:RO_0002559 ?cause .
-                    ?effect term:directlyCausallyInfluencedBy ?cause .
+                    ?effect ro:directlyCausallyInfluencedBy ?cause .
                 }}
                 WHERE {{
                     ?effect a term:{effect} .
@@ -428,19 +430,22 @@ def attach_corrective_action_to_root_causes(verb):
             rootcause = binding.get('rootcause').get('value')
             rootcauselabel = rootcause.split('#')[1]
             #TODO: improve this. This is hardcoding
-            rootcauseclass = rootcause.split("#")[1].split("-")[1]
-            ca_label = failure_cause_ca_mapping[rootcauseclass]
-            effect = binding.get('effect').get('value')
-            corrective_action_uri = f"CA-{rootcauselabel}-{effect.split('#')[1]}"
-            ca_query = ca_query_temp.replace("{fc_uri}", rootcause)\
-                        .replace("{ca_uri}", corrective_action_uri)\
-                        .replace("{ca_label}", ca_label)
-            if verb == "INSERT":
-                perform_sparql_update(ca_query)
-            else:
-                print(ca_query)
-                print(len(perform_sparql_query(ca_query)))
-            
+            rootcauselabel_splits = rootcause.split("#")[1].split("-")
+            #ensures the label is of structure FC-{rootcausename}-{pcb id}
+            if len(rootcauselabel_splits) == 3:
+                rootcauseclass = rootcauselabel_splits[1]
+                ca_label = failure_cause_ca_mapping[rootcauseclass]
+                effect = binding.get('effect').get('value')
+                corrective_action_uri = f"CA-{rootcauselabel}-{effect.split('#')[1]}"
+                ca_query = ca_query_temp.replace("{fc_uri}", rootcause)\
+                            .replace("{ca_uri}", corrective_action_uri)\
+                            .replace("{ca_label}", ca_label)
+                if verb == "INSERT":
+                    perform_sparql_update(ca_query)
+                else:
+                    print(ca_query)
+                    print(len(perform_sparql_query(ca_query)))
+
 
 rule_to_sparql(verb="INSERT")
 fire_failure_cause_queries(verb="INSERT")

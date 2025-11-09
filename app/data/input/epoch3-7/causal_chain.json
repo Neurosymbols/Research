@@ -58,9 +58,8 @@
     ]
   },
   "LowPasteViscosity": {
-    "caused_by": ["LowMetalContent"],
+    "caused_by": [],
     "governed_by": [
-      "If PasteMetalLoad < PasteMetalLoad_LSL → LowPasteViscosity",
       "If PasteViscosity < PasteViscosity_LSL → LowPasteViscosity"
     ]
   },
@@ -110,12 +109,6 @@
     "caused_by": [],
     "governed_by": [
       "If AmbientRh > AmbientRh_USL → HighHumidity"
-    ]
-  },
-  "LowMetalContent": {
-    "caused_by": [],
-    "governed_by": [
-      "If PasteMetalLoad < PasteMetalLoad_LSL → LowMetalContent"
     ]
   },
   "PeakReflowTemperatureTooHigh":{

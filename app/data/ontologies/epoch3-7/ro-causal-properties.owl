@@ -316,6 +316,23 @@ We also have the outstanding issue of how to aim different definitions to differ
         <obo:IAO_0000589>causally influences (entity-centric)</obo:IAO_0000589>
         <rdfs:label>causally influences</rdfs:label>
     </owl:ObjectProperty>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/directlyCausallyInfluencedBy -->
+
+    <owl:ObjectProperty rdf:about="http://purl.obolibrary.org/obo/directlyCausallyInfluencedBy">
+        <rdfs:subPropertyOf rdf:resource="http://purl.obolibrary.org/obo/RO_0002559"/>
+        <owl:inverseOf rdf:resource="http://purl.obolibrary.org/obo/directlyCausallyInfluences"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/directlyCausallyInfluences -->
+
+    <owl:ObjectProperty rdf:about="http://purl.obolibrary.org/obo/directlyCausallyInfluences">
+        <rdfs:subPropertyOf rdf:resource="http://purl.obolibrary.org/obo/RO_0002566"/>
+    </owl:ObjectProperty>
 </rdf:RDF>
 
 
