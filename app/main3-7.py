@@ -132,7 +132,7 @@ def parse_spec_strings(specs_dict):
 def extract_specs():
     specs_dict = {}
     df = pd.read_csv(specs_file, skiprows=1)
-    target_cols = list(df.iloc[:, [0, 1, 2, 3, 4, 5]].itertuples(index=False, name=None))
+    target_cols = list(df.iloc[:, [0, 1, 2, 3, 4, 5, 6]].itertuples(index=False, name=None))
     #0:id 1:parameter 2:value 3:class 4:quality inheriter 5: process
     spec_category_dict = {}
     for row in target_cols:
@@ -140,10 +140,12 @@ def extract_specs():
         spec_category = row[3].split(":")[1].strip()
         process_category = row[5].strip() if not pd.isna(row[5]) else "None"
         quality_inheritor = row[4].strip() if not pd.isna(row[4]) else "None"
+        ppsc_ref =  row[6].strip() if not pd.isna(row[6]) else "None"
         spec_category_dict[normalize_text(spec_name.lower())] = {
             "onto_category": spec_category, 
             "process_category": process_category,
-            "quality_inheritor": quality_inheritor
+            "quality_inheritor": quality_inheritor,
+            "ppsc_ref": ppsc_ref
         }
         spec_value = row[2]
         specs_dict[normalize_text(spec_name.lower())] = spec_value
@@ -154,6 +156,7 @@ def extract_specs():
         parsed_spec_dict[k]['onto_category'] = spec_category_dict[k]['onto_category']
         parsed_spec_dict[k]['process_category'] = spec_category_dict[k]['process_category']
         parsed_spec_dict[k]["quality_inheritor"] = spec_category_dict[k]["quality_inheritor"]
+        parsed_spec_dict[k]["ppsc_ref"] = spec_category_dict[k]["ppsc_ref"]
 
     with open(f"{output_path}/specs.json", "w") as f:
         json.dump(parsed_spec_dict, f, indent=2, ensure_ascii=False)

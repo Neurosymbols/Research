@@ -1,12 +1,10 @@
 import json
 import pandas as pd
 import yaml
-from typing import Optional
+
+from functools import reduce
 from owlready2 import *
-import owlready2.reasoning
-# Patch the default -Xmx value
-owlready2.reasoning.JAVA_MEMORY = "12288"
-from app.services.utils import replace_iri, add_classes, add_individuals, create_classname_syntax, get_failure_cause_concepts, perform_sparql_update, perform_sparql_query
+from app.services.utils import add_classes, add_individuals, create_classname_syntax
 
 # Set the IRIs
 BASE_ONTO_IRI = "https://neurosymbols.ai/ontology/causal-terminology.owl"
@@ -46,7 +44,8 @@ super_base_classes = [
     'Process Characteristic',
     'Manufacturing Process',
     'Activity',
-    'Disposition'
+    'Disposition',
+    'Plan Specification'
 ]
 # Create list of SemicON base classes
 semicon_measurement_ices = [
@@ -63,6 +62,9 @@ semicon_process_characteristic = [
 ]
 semicon_action_specifications = [
     'CorrectiveAction'
+]
+semicon_plan_specifications = [
+    'Product Process Specification Document'
 ]
 #TODO: add cause
 semicon_sdcs = [
@@ -185,6 +187,11 @@ def add_base_classes(
     add_classes(
         semicon_req_ices,
         prov.search_one(iri=f"{IOF_IRI}RequirementSpecification") if import_ontologies else base_onto.search_one(iri="*RequirementSpecification"),
+        base_onto
+    )
+    add_classes(
+        semicon_plan_specifications,
+        prov.search_one(iri=f"{IOF_IRI}PlanSpecification") if import_ontologies else base_onto.search_one(iri="*PlanSpecification"),
         base_onto
     )
     add_classes(
@@ -381,6 +388,7 @@ def add_axioms_to_ontology(axioms_dict):
             axiom_text = axiom[first_colon_index+1:].strip()
             axiom_split_by_and = axiom_text.split("and")
             if len(axiom_split_by_and) > 0:
+                restrictions = []
                 for axiom_unit in axiom_split_by_and:
                     #TODO: add generalization and support for not, only etc.
                     axiom_unit = axiom_unit.replace("(", "").replace(")", "")
@@ -399,10 +407,16 @@ def add_axioms_to_ontology(axioms_dict):
                         obj_cls_obj = prefix_onto_map[obj_cls_prefix].search_one(iri=f"*{obj_cls_name}")
                     else:
                         obj_cls_obj = base_onto[obj_cls_atoms[0]]
-                    if axiom_type.lower() == "subclassof":
-                        base_onto[sub_cls].is_a.append(prop_obj.some(obj_cls_obj))
-                    elif axiom_type.lower() == "equivalentto":
-                        base_onto[sub_cls].equivalent_to.append(prop_obj.some(obj_cls_obj))
+                    restrictions.append(prop_obj.some(obj_cls_obj))
+                # Combine all class restriction expressions (in 'restrictions' list)
+                # into a single OWL class expression using logical AND ('&').
+                # Input: a list of OWL restrictions like [P1.some(C1), P2.some(C2), ...]
+                # Output: one composite OWL expression equivalent to (P1 some C1) AND (P2 some C2) AND ...
+                combined_axiom = reduce(lambda a, b: a & b, restrictions)
+                if axiom_type.lower() == "subclassof":
+                    base_onto[sub_cls].is_a.append(combined_axiom)
+                elif axiom_type.lower() == "equivalentto":
+                    base_onto[sub_cls].equivalent_to.append(combined_axiom)
 
 def add_defintions_and_examples(definitions_dict):
     with base_onto:
@@ -503,10 +517,21 @@ def add_specs_to_ontology(specs_dict, ontology_path):
         with product1_onto:
             for si in specs_dict:
                 classname = create_classname_syntax(si)
-                #create spec
+                #create spec individual
                 spec_class = base_onto[f"{classname}Spec"]
+                assert spec_class is not None, f"spec class for {classname} not found"
                 spec_ins = spec_class(f"{specs_dict[si]['id']}-spec")
                 spec_ins.label = [f"{si} spec"]
+                #create spec document ref
+                doc_class = base_onto['ProductProcessSpecificationDocument']
+                assert doc_class is not None, f"product process specification document class not found"
+                spec_doc_ref = doc_class(specs_dict[si]['ppsc_ref'])
+                spec_doc_ref.label = specs_dict[si]['ppsc_ref']
+                #attach spec doc ref to spec individual
+                spec_ins.wasDerivedFrom = [spec_doc_ref]
+                #attach units to spec individual
+                spec_ins.hasUnit = specs_dict[si]['units']
+
                 for value_type, value in specs_dict[si].items():
                     if value_type == "NOM":
                         spec_ins.hasNominalValue = value
@@ -531,8 +556,6 @@ def add_specs_to_ontology(specs_dict, ontology_path):
                             onto_ins.BFO_0000132.append(process_ind)
                         #spec prescribes quality/process characteristics
                         spec_ins.prescribes = [onto_ins]
-                    #attach units to spec individual
-                    spec_ins.hasUnit = specs_dict[si]['units']
             save_ontology(ontology_path)
 
 def add_defect_individuals(

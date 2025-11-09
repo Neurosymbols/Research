@@ -1,9 +1,9 @@
-Class Name,Parent Class,GCA - Necessary,Equivalency - Necessary and sufficient
+c,Parent Class,GCA - Necessary,Equivalency - Necessary and sufficient
 Defect,BFO:Disposition,,EquivalentTo: (defectOccursOn some IOF:MaterialProduct)
-ParameterQuality,BFO:Quality,,subclassOf: (IOF:describedBy some ParameterObservation) and (IOF:prescribedBy some ParameterSpecification)
-ParameterCharacteristic,IOF:ProcessCharacteristic,,subclassOf: (IOF:describedBy some ParameterObservation) and (IOF:prescribedBy some ParameterSpecification)
-ParameterObservation,IOF:MeasurementInformationContentEntity,(observationOf some IOF:MaterialProduct) subClassOf ParameterObservation,subclassOf: (IOF:describes some ParameterCharacteristic) and (IOF:isAbout some ParameterSpecification) and (observationOf some IOF:MaterialProduct)
-ParameterSpecification,IOF:RequirementSpecification,(prov:wasDerivedFrom some ProductProcessSpecificationDocument),subclassOf: (IOF:prescribes some ParameterCharacteristic) and (IOF:isSubjectOf some ParameterObservation)
+ParameterQuality,BFO:Quality,,EquivalentTo: (IOF:describedBy some ParameterObservation) and (IOF:prescribedBy some ParameterSpecification)
+ParameterCharacteristic,IOF:ProcessCharacteristic,,EquivalentTo: (IOF:describedBy some ParameterObservation) and (IOF:prescribedBy some ParameterSpecification)
+ParameterObservation,IOF:MeasurementInformationContentEntity,(observationOf some IOF:MaterialProduct) subClassOf ParameterObservation,EquivalentTo: (IOF:describes some ParameterCharacteristic) and (IOF:isAbout some ParameterSpecification) and (observationOf some IOF:MaterialProduct)
+ParameterSpecification,IOF:RequirementSpecification,(prov:wasDerivedFrom some ProductProcessSpecificationDocument),EquivalentTo: (IOF:prescribes some ParameterCharacteristic) and (IOF:isSubjectOf some ParameterObservation)
 ConformanceAssessment,prov:Activity,(prov:generated some FailureCause) subClassOf ConformanceAssessment,"EquivalentTo: 
   (hasAssessmentInput some ParameterObservation)
   and (hasAssessmentInput some ParameterSpecification)

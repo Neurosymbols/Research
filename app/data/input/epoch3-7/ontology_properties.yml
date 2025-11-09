@@ -67,6 +67,7 @@ object_properties:
     range: ConformanceAssessment
   
   - name: realizationFor
+    inverse_of: hasRealization
     domain: ConformanceAssessment
     range: BFO_0000016 #disposition
   
