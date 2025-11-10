@@ -333,7 +333,7 @@ def create_causal_chain(verb):
                 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
                 {verb} {{
                     ?effect ro:RO_0002559 ?cause .
-                    ?effect ro:directlyCausallyInfluencedBy ?cause .
+                    ?effect term:directlyCausallyInfluencedBy ?cause .
                 }}
                 WHERE {{
                     ?effect a term:{effect} .
