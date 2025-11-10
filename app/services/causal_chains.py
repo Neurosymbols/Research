@@ -62,10 +62,10 @@ LIMIT_TO_SPEC_PROP = {
 
 def parse_rule(rule_str:str):
     grammar = r"""
-        start: "If" expr "→" effects
-        effects: NAME ("∨" NAME)*
-        expr: expr "∧" expr   -> and_
-            | expr "∨" expr   -> or_
+        start: "If" expr "==" effects
+        effects: NAME ("OR" NAME)*
+        expr: expr "AND" expr   -> and_
+            | expr "OR" expr   -> or_
             | cond
             | "(" expr ")"
         cond: NAME OP (NAME | NUMBER)

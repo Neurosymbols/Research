@@ -89,6 +89,7 @@ object_properties:
     transitive: true
   
   - name: directlyCausallyInfluencedBy
+    parent: RO_0002559
     domain: Effect
     range: FailureCause
   
@@ -98,6 +99,7 @@ object_properties:
     transitive: true
   
   - name: directlyCausallyInfluences
+    parent: RO_0002566
     domain: FailureCause
     range: Effect
 

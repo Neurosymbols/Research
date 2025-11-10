@@ -7,9 +7,8 @@
     "PCB9": [
         ["Solder Bridging_PCB9", "Excess Paste volume per aperture"],
         ["Excess Paste volume per aperture", "Aperture Overfill"],
-        ["Excess Paste volume per aperture", "Underside smear"],
         ["Aperture Overfill",  "Low area ratio"],
-        ["Underside smear", "Squeegee Pressure too high"]
+        ["Aperture Overfill",  "Stencil Thickness too high"]
     ],
     "PCB17":[
         ["Solder Bridging_PCB17", "Excess Paste volume per aperture"],
