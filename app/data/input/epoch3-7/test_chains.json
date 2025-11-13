@@ -1,0 +1,558 @@
+{
+ "PCB122": [
+  [
+   "SolderBridging_PCB122",
+   "ExcessReflowSpreading"
+  ],
+  [
+   "ExcessReflowSpreading",
+   "PeakReflowTemperatureTooHigh"
+  ]
+ ],
+ "PCB221": [
+  [
+   "ApertureOverfill",
+   "LowAreaRatio"
+  ]
+ ],
+ "PCB367": [
+  [
+   "ApertureOverfill",
+   "StencilThicknessTooHigh"
+  ]
+ ],
+ "PCB517": [
+  [
+   "OpenCircuit_PCB517",
+   "NonCoalescence"
+  ],
+  [
+   "NonCoalescence",
+   "PeakReflowTemperatureTooLow"
+  ]
+ ],
+ "PCB558": [
+  [
+   "OpenCircuit_PCB558",
+   "NonCoalescence"
+  ],
+  [
+   "NonCoalescence",
+   "PeakReflowTemperatureTooLow"
+  ]
+ ],
+ "PCB716": [
+  [
+   "ApertureOverfill",
+   "LowAreaRatio"
+  ]
+ ],
+ "PCB749": [
+  [
+   "ApertureOverfill",
+   "LowAreaRatio"
+  ]
+ ],
+ "PCB770": [
+  [
+   "ApertureOverfill",
+   "StencilThicknessTooHigh"
+  ]
+ ],
+ "PCB926": [
+  [
+   "ApertureOverfill",
+   "LowAreaRatio"
+  ]
+ ],
+ "PCB1015": [
+  [
+   "UndersideSmear",
+   "HighResidualPasteVolume"
+  ]
+ ],
+ "PCB1061": [
+  [
+   "SolderBridging_PCB1061",
+   "ExcessPasteVolumePerAperture"
+  ]
+ ],
+ "PCB1077": [
+  [
+   "ApertureOverfill",
+   "SqueegeeAngleTooLow"
+  ]
+ ],
+ "PCB1142": [
+  [
+   "PoorPasteTransfer",
+   "SqueegeePressureTooLow"
+  ]
+ ],
+ "PCB1144": [
+  [
+   "OpenCircuit_PCB1144",
+   "NonCoalescence"
+  ],
+  [
+   "NonCoalescence",
+   "PeakReflowTemperatureTooLow"
+  ]
+ ],
+ "PCB1201": [
+  [
+   "ApertureOverfill",
+   "LowAreaRatio"
+  ]
+ ],
+ "PCB1254": [
+  [
+   "UndersideSmear",
+   "SqueegeePressureTooHigh"
+  ]
+ ],
+ "PCB1363": [
+  [
+   "UndersideSmear",
+   "SqueegeePressureTooHigh"
+  ]
+ ],
+ "PCB1422": [
+  [
+   "UndersideSmear",
+   "HighResidualPasteVolume"
+  ]
+ ],
+ "PCB1505": [
+  [
+   "ApertureOverfill",
+   "LargeBeadSizeOfSolderPaste"
+  ]
+ ],
+ "PCB1514": [
+  [
+   "SolderBridging_PCB1514",
+   "ExcessReflowSpreading"
+  ],
+  [
+   "ExcessReflowSpreading",
+   "PeakReflowTemperatureTooHigh"
+  ]
+ ],
+ "PCB1582": [
+  [
+   "SolderBridging_PCB1582",
+   "ExcessPasteVolumePerAperture"
+  ]
+ ],
+ "PCB1640": [
+  [
+   "UndersideSmear",
+   "HighResidualPasteVolume"
+  ]
+ ],
+ "PCB1645": [
+  [
+   "PoorPasteTransfer",
+   "SqueegeePressureTooLow"
+  ]
+ ],
+ "PCB1683": [
+  [
+   "PoorPasteTransfer",
+   "SqueegeePressureTooLow"
+  ]
+ ],
+ "PCB1684": [],
+ "PCB1713": [
+  [
+   "SolderBridging_PCB1713",
+   "ExcessReflowSpreading"
+  ],
+  [
+   "ExcessReflowSpreading",
+   "PeakReflowTemperatureTooHigh"
+  ]
+ ],
+ "PCB1749": [
+  [
+   "OpenCircuit_PCB1749",
+   "NonCoalescence"
+  ],
+  [
+   "NonCoalescence",
+   "PeakReflowTemperatureTooLow"
+  ]
+ ],
+ "PCB1791": [
+  [
+   "ApertureOverfill",
+   "LowAreaRatio"
+  ]
+ ],
+ "PCB1794": [
+  [
+   "PoorPasteTransfer",
+   "SqueegeePressureTooLow"
+  ]
+ ],
+ "PCB1848": [
+  [
+   "ApertureOverfill",
+   "LargeBeadSizeOfSolderPaste"
+  ]
+ ],
+ "PCB1871": [
+  [
+   "PoorPasteTransfer",
+   "SqueegeePressureTooLow"
+  ]
+ ],
+ "PCB1897": [
+  [
+   "OpenCircuit_PCB1897",
+   "InsufficientPasteVolumePerAperture"
+  ]
+ ],
+ "PCB1934": [
+  [
+   "UndersideSmear",
+   "SqueegeePressureTooHigh"
+  ]
+ ],
+ "PCB1946": [
+  [
+   "SolderBridging_PCB1946",
+   "ExcessPasteVolumePerAperture"
+  ]
+ ],
+ "PCB1984": [
+  [
+   "SolderBridging_PCB1984",
+   "ExcessPasteVolumePerAperture"
+  ]
+ ],
+ "PCB2046": [
+  [
+   "ApertureOverfill",
+   "StencilThicknessTooHigh"
+  ]
+ ],
+ "PCB2050": [],
+ "PCB2069": [
+  [
+   "UndersideSmear",
+   "SqueegeePressureTooHigh"
+  ]
+ ],
+ "PCB2099": [
+  [
+   "SolderBridging_PCB2099",
+   "ExcessPasteVolumePerAperture"
+  ]
+ ],
+ "PCB2100": [
+  [
+   "PoorPasteTransfer",
+   "SqueegeePressureTooLow"
+  ]
+ ],
+ "PCB2101": [
+  [
+   "ApertureOverfill",
+   "SqueegeeAngleTooLow"
+  ]
+ ],
+ "PCB2138": [
+  [
+   "SolderBridging_PCB2138",
+   "ExcessReflowSpreading"
+  ],
+  [
+   "ExcessReflowSpreading",
+   "PeakReflowTemperatureTooHigh"
+  ]
+ ],
+ "PCB2246": [
+  [
+   "ApertureOverfill",
+   "LowAreaRatio"
+  ]
+ ],
+ "PCB2321": [
+  [
+   "ApertureOverfill",
+   "LargeBeadSizeOfSolderPaste"
+  ]
+ ],
+ "PCB2381": [
+  [
+   "SolderBridging_PCB2381",
+   "ExcessReflowSpreading"
+  ],
+  [
+   "ExcessReflowSpreading",
+   "PeakReflowTemperatureTooHigh"
+  ]
+ ],
+ "PCB2458": [
+  [
+   "ApertureOverfill",
+   "StencilThicknessTooHigh"
+  ]
+ ],
+ "PCB2486": [
+  [
+   "ApertureOverfill",
+   "LowAreaRatio"
+  ]
+ ],
+ "PCB2761": [
+  [
+   "OpenCircuit_PCB2761",
+   "InsufficientPasteVolumePerAperture"
+  ]
+ ],
+ "PCB2851": [
+  [
+   "OpenCircuit_PCB2851",
+   "InsufficientPasteVolumePerAperture"
+  ]
+ ],
+ "PCB2877": [
+  [
+   "ApertureOverfill",
+   "StencilThicknessTooHigh"
+  ]
+ ],
+ "PCB2944": [
+  [
+   "ApertureOverfill",
+   "LowAreaRatio"
+  ]
+ ],
+ "PCB2952": [
+  [
+   "SolderBridging_PCB2952",
+   "ExcessPasteVolumePerAperture"
+  ]
+ ],
+ "PCB2970": [
+  [
+   "ApertureOverfill",
+   "LowAreaRatio"
+  ]
+ ],
+ "PCB2987": [],
+ "PCB3059": [
+  [
+   "OpenCircuit_PCB3059",
+   "NonCoalescence"
+  ],
+  [
+   "NonCoalescence",
+   "PeakReflowTemperatureTooLow"
+  ]
+ ],
+ "PCB3096": [],
+ "PCB3101": [
+  [
+   "ApertureOverfill",
+   "LowAreaRatio"
+  ]
+ ],
+ "PCB3201": [
+  [
+   "OpenCircuit_PCB3201",
+   "InsufficientPasteVolumePerAperture"
+  ]
+ ],
+ "PCB3251": [
+  [
+   "OpenCircuit_PCB3251",
+   "InsufficientPasteVolumePerAperture"
+  ]
+ ],
+ "PCB3309": [
+  [
+   "OpenCircuit_PCB3309",
+   "NonCoalescence"
+  ],
+  [
+   "NonCoalescence",
+   "PeakReflowTemperatureTooLow"
+  ]
+ ],
+ "PCB3374": [
+  [
+   "ApertureOverfill",
+   "LargeBeadSizeOfSolderPaste"
+  ]
+ ],
+ "PCB3390": [
+  [
+   "ApertureOverfill",
+   "LowAreaRatio"
+  ]
+ ],
+ "PCB3495": [
+  [
+   "PostPrintSpread",
+   "LowPasteViscosity"
+  ]
+ ],
+ "PCB3537": [
+  [
+   "UndersideSmear",
+   "HighResidualPasteVolume"
+  ]
+ ],
+ "PCB3666": [
+  [
+   "OpenCircuit_PCB3666",
+   "NonCoalescence"
+  ],
+  [
+   "NonCoalescence",
+   "PeakReflowTemperatureTooLow"
+  ]
+ ],
+ "PCB3667": [
+  [
+   "PoorPasteTransfer",
+   "SqueegeePressureTooLow"
+  ]
+ ],
+ "PCB3727": [
+  [
+   "ApertureOverfill",
+   "LowAreaRatio"
+  ]
+ ],
+ "PCB3852": [
+  [
+   "UndersideSmear",
+   "HighResidualPasteVolume"
+  ]
+ ],
+ "PCB3927": [
+  [
+   "ApertureOverfill",
+   "LowAreaRatio"
+  ]
+ ],
+ "PCB3931": [
+  [
+   "UndersideSmear",
+   "HighResidualPasteVolume"
+  ]
+ ],
+ "PCB3933": [
+  [
+   "PostPrintSpread",
+   "LowPasteViscosity"
+  ]
+ ],
+ "PCB4022": [
+  [
+   "ApertureOverfill",
+   "LargeBeadSizeOfSolderPaste"
+  ]
+ ],
+ "PCB4096": [
+  [
+   "OpenCircuit_PCB4096",
+   "InsufficientPasteVolumePerAperture"
+  ]
+ ],
+ "PCB4140": [
+  [
+   "ApertureOverfill",
+   "StencilThicknessTooHigh"
+  ]
+ ],
+ "PCB4157": [
+  [
+   "SolderBridging_PCB4157",
+   "ExcessPasteVolumePerAperture"
+  ]
+ ],
+ "PCB4187": [
+  [
+   "OpenCircuit_PCB4187",
+   "NonCoalescence"
+  ],
+  [
+   "NonCoalescence",
+   "PeakReflowTemperatureTooLow"
+  ]
+ ],
+ "PCB4190": [
+  [
+   "ApertureOverfill",
+   "SqueegeeAngleTooLow"
+  ]
+ ],
+ "PCB4389": [
+  [
+   "OpenCircuit_PCB4389",
+   "NonCoalescence"
+  ],
+  [
+   "NonCoalescence",
+   "PeakReflowTemperatureTooLow"
+  ]
+ ],
+ "PCB4504": [
+  [
+   "SolderBridging_PCB4504",
+   "ExcessPasteVolumePerAperture"
+  ]
+ ],
+ "PCB4530": [
+  [
+   "UndersideSmear",
+   "HighResidualPasteVolume"
+  ]
+ ],
+ "PCB4619": [
+  [
+   "PoorPasteTransfer",
+   "SqueegeePressureTooLow"
+  ]
+ ],
+ "PCB4639": [
+  [
+   "PoorPasteTransfer",
+   "SqueegeePressureTooLow"
+  ]
+ ],
+ "PCB4732": [
+  [
+   "PoorPasteTransfer",
+   "SqueegeePressureTooLow"
+  ]
+ ],
+ "PCB4801": [
+  [
+   "SolderBridging_PCB4801",
+   "ExcessReflowSpreading"
+  ],
+  [
+   "ExcessReflowSpreading",
+   "PeakReflowTemperatureTooHigh"
+  ]
+ ],
+ "PCB4888": [
+  [
+   "ApertureOverfill",
+   "StencilThicknessTooHigh"
+  ]
+ ],
+ "PCB4952": [
+  [
+   "UndersideSmear",
+   "SqueegeePressureTooHigh"
+  ]
+ ]
+}

@@ -28,7 +28,7 @@ onto_path.append(path)
 good_ratio = 0.5
 bad_ratio = 0.5
 version = 3
-products_in_ontology = 50
+products_in_ontology = 1000
 data_label = "train"
 defect_threshold = 0.55
 
@@ -241,6 +241,46 @@ def extract_definitions_and_examples():
         target_dict[row[0]] = {"definition": row[1], "example": row[2]}
     return target_dict
 
+def create_kg_from_scratch():
+    initiate_ontology(
+        True,
+        path,
+        f"{input_path}/ontology_properties.yml",
+        {
+            "semicon_quality_concepts": {k : v for k,v in non_null_specs.items() if non_null_specs[k]['onto_category'] == 'Quality'},
+            "semicon_characteristic_concepts": {k : v for k,v in non_null_specs.items() if non_null_specs[k]['onto_category'] == 'ProcessCharacteristic'},
+            "manufacturing_process_concepts": manufacturing_process_concepts,
+            "defects_and_failure_causes": fcs,
+            "equipments_data": equipments_dict,
+            "material_products_data": material_products_dict
+        },
+        axioms_dict,
+        definitions_dict
+        )
+    add_specs_to_ontology(
+        non_null_specs,
+        path
+    )
+    add_dispositions_to_ontology(
+        fcs, path
+    )
+    add_products_to_ontology(
+        products_in_ontology,
+        f"{input_path}/data.csv",
+        path
+    )
+    clear_graphdb_default_graph()
+    export_ontology_to_graphdb(
+        [
+            f"{path}/bfo-prov.owl",
+            f"{path}/iof-core.rdf",
+            f"{path}/ro-causal-properties.owl",
+            f"{path}/causal-terminology.owl",
+            f"{path}/causal-assertions.owl"
+        ]
+    )
+
+
 axioms_dict = extract_axioms()
 definitions_dict = extract_definitions_and_examples()
 equipments_dict, material_products_dict = extract_equipment_concepts()
@@ -260,6 +300,7 @@ if __name__ == "__main__":
     parser.add_argument("--evaluation-matrix", action="store_true", help="Generate evaluation matrix")
     parser.add_argument("--implement-bayes-inf", action="store_true", help="Implement bayesian inference")
     parser.add_argument("--remove-output-files", action="store_true", help="remove output files given version and path")
+    parser.add_argument("--create-kg", action="store_true", help="create KG")
 
     args = parser.parse_args()
 
@@ -299,7 +340,7 @@ if __name__ == "__main__":
     if args.add_products:
         add_products_to_ontology(
             products_in_ontology,
-            f"{input_path}/synthetic_data_factory.csv",
+            f"{input_path}/data.csv",
             path
         )
 
@@ -316,21 +357,13 @@ if __name__ == "__main__":
     if args.clear:
         clear_graphdb_default_graph()
 
-    if args.implement_bayes_inf:
-        train_dcm = f"{output_path}/defect_cause_matrix_{good_ratio}_{bad_ratio}_v{version}_train.csv"
-        test_dcm = f"{output_path}/defect_cause_matrix_{good_ratio}_{bad_ratio}_v{version}_test.csv"
-        implement_bayesian_inference(
-            train_dcm,
-            test_dcm,
-            output_path,
-            f"{good_ratio}_{bad_ratio}_v{version}",
-            defect_threshold
-        )
-
     if args.remove_output_files:
         remove_version_files(
             base_path,
             "output/epoch3-6",
             version_number=3
         )
+    
+    if args.create_kg:
+        create_kg_from_scratch()
 

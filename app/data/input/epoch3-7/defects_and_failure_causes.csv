@@ -3,13 +3,12 @@ defect,SolderBridging,Reduce upstream EPV drivers first; verify with AOI and ele
 mechanism,ExcessPasteVolumePerAperture,"Target dominant drivers (pressure, angle, bead, viscosity); verify deposit volume/height",Disposition toward excess paste volume per aperture,paste volume per aperture
 mechanism,ApertureOverfill,"Reduce bead, raise blade angle, lower pressure; consider thinner foil/aperture reduction",Disposition toward aperture overfill,
 parameter,LowAreaRatio,Redesign apertures; electropolish; nano-coating; consider foil change,Disposition of aperture area ratio to be too low,aperture area ratio
-parameter,LargeBeadSizeOfSolderPaste,Reduce bead width/mass; level bead; auto-dispense cadence,Disposition of paste bead width/mass to exceed upper limit,paste roll bead size
-parameter,StencilThicknessTooHigh,Use thinner foil/step-down; reduce aperture size (home-plate/windowpane); apply nano-coating,Disposition of stencil thickness to be too high for pitch,stencil thickness
+parameter,StencilThicknessTooHigh,Use thinner foil/step-down; reduce aperture size; apply nano-coating,Disposition of stencil thickness to be too high for pitch,stencil thickness
 parameter,SqueegeeSpeedTooLow,Raise speed into window; balance with pressure/angle,Disposition of squeegee speed to be too low under adverse angle/pressure,squeegee speed 
 parameter,SqueegeeAngleTooLow,Increase angle toward 60–62°; re-tune pressure/speed instead of flattening,Disposition of squeegee blade angle to be too low (flat),squeegee angle
 mechanism,UndersideSmear,"Lower pressure, raise angle; improve underside wipe; fix board support/foil flatness",Disposition toward underside smear / paste bleed,
 parameter,SqueegeePressureTooHigh,Reduce pressure; verify gasket; improve support,Disposition of squeegee pressure to exceed upper limit,squeegee pressure
-parameter,ResidualPasteVolume,Increase wipe frequency; optimize solvent; vac-assist wipe,Disposition of underside wiping to be insufficient,
+parameter,HighResidualPasteVolume,Increase wipe frequency; optimize solvent; vac-assist wipe,Disposition of underside wiping to be insufficient,residual paste
 mechanism,PostPrintSpread,"Control paste/board temp, humidity, and queue time; refresh bead; verify slump",Disposition toward post‑print spread (slump) before reflow,
 parameter,LowPasteViscosity,Cool paste/stencil; refresh bead; check lot; align mixing practice,Disposition of paste viscosity to be below lower limit,paste viscosity
 parameter,HighHumidity,Dehumidify/condition cell; maintain RH control,Disposition of ambient relative humidity to be out of band,ambient rh
@@ -21,5 +20,6 @@ mechanism,NonCoalescence,Tune profile; reduce O2; improve surface solderability,
 parameter,PeakReflowTemperatureTooLow,Raise peak within vendor band,Disposition of peak reflow temperature to be below lower limit,peak reflow temperature
 parameter,TimeAboveLiquidusTooLow,Increase TAL per paste spec,Disposition of time above liquidus to be below lower limit,time above liquidus
 mechanism,InsufficientPasteVolumePerAperture,Improve print transfer/release; mitigate starvation sources,Disposition toward insufficient paste volume per aperture,paste volume per aperture
+mechanism,PoorPasteTransfer,"Release dynamics inadequate (geometry/rheology/process), Tune print knobs; redesign stencil/apertures if systemic",Disposition toward poor paste transfer/release,
 parameter,SqueegeeSpeedTooHigh,Lower speed into window; confirm with SPI,Disposition of squeegee speed to exceed upper limit,squeegee speed 
 parameter,SqueegeePressureTooLow,Increase line load to nominal; verify with transducer,Disposition of squeegee pressure to be below lower limit,squeegee pressure

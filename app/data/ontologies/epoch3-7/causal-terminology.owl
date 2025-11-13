@@ -76,15 +76,6 @@
   <core:example rdf:datatype="http://www.w3.org/2001/XMLSchema#string">FailureCause: ThermalGradientAcrossBoard (derived from reflow oven thermocouple array and PLC logs) affects PCB Lot L2025‑W45‑P12 (panels observed with skew/tombstoning events).</core:example>
 </owl:ObjectProperty>
 
-<owl:ObjectProperty rdf:about="#isAffectedBy">
-  <rdfs:subPropertyOf rdf:resource="http://purl.obolibrary.org/obo/RO_0000053"/>
-  <owl:inverseOf rdf:resource="#affects"/>
-  <rdfs:domain rdf:resource="#PCB"/>
-  <rdfs:range rdf:resource="#FailureCause"/>
-  <core:definition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Inverse of affects. Declares that a PCB’s realized state was influenced by a named FailureCause determined via causal analysis over multi‑modal evidence.</core:definition>
-  <core:example rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PCB Panel P‑019 isAffectedBy LowPasteViscosity (inferred from rheometer logs, printer torque telemetry, and increased post‑print spread observed by vision system).</core:example>
-</owl:ObjectProperty>
-
 <owl:ObjectProperty rdf:about="#isDeviationOf">
   <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
   <rdfs:domain rdf:resource="#FailureCause"/>
@@ -97,6 +88,15 @@
   <owl:inverseOf rdf:resource="#isDeviationOf"/>
   <rdfs:domain rdf:resource="http://purl.obolibrary.org/obo/BFO_0000001"/>
   <rdfs:range rdf:resource="#FailureCause"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#isAffectedBy">
+  <rdfs:subPropertyOf rdf:resource="http://purl.obolibrary.org/obo/RO_0000053"/>
+  <owl:inverseOf rdf:resource="#affects"/>
+  <rdfs:domain rdf:resource="#PCB"/>
+  <rdfs:range rdf:resource="#FailureCause"/>
+  <core:definition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Inverse of affects. Declares that a PCB’s realized state was influenced by a named FailureCause determined via causal analysis over multi‑modal evidence.</core:definition>
+  <core:example rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PCB Panel P‑019 isAffectedBy LowPasteViscosity (inferred from rheometer logs, printer torque telemetry, and increased post‑print spread observed by vision system).</core:example>
 </owl:ObjectProperty>
 
 <owl:ObjectProperty rdf:about="#baseOf">
@@ -139,6 +139,18 @@
   <core:example rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Oven_Profile_TCs_2025‑11‑05.json isAssessmentInputFor COA‑PCB1‑paste_volume_rule (profile used to validate TAL window before rule evaluation).</core:example>
 </owl:ObjectProperty>
 
+<owl:ObjectProperty rdf:about="#directlyCausallyInfluencedBy">
+  <rdfs:subPropertyOf rdf:resource="http://purl.obolibrary.org/obo/RO_0002559"/>
+  <rdfs:domain rdf:resource="#Effect"/>
+  <rdfs:range rdf:resource="#FailureCause"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#directlyCausallyInfluences">
+  <rdfs:subPropertyOf rdf:resource="http://purl.obolibrary.org/obo/RO_0002566"/>
+  <rdfs:domain rdf:resource="#FailureCause"/>
+  <rdfs:range rdf:resource="#Effect"/>
+</owl:ObjectProperty>
+
 <owl:DatatypeProperty rdf:about="#hasUpperValue">
   <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
   <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
@@ -174,70 +186,6 @@
 
 <owl:AnnotationProperty rdf:about="#triggeredByRuleText"/>
 
-<owl:Class rdf:about="#PCB">
-  <rdfs:subClassOf rdf:resource="https://spec.industrialontologies.org/ontology/core/Core/MaterialProduct"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PCB</rdfs:label>
-  <core:definition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Printed Circuit Board substrate and interconnect structure onto which components are assembled.</core:definition>
-  <core:example rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Four-layer FR-4 PCB, 1.6 mm thick, ENIG finish, green solder mask.</core:example>
-</owl:Class>
-
-<owl:Class rdf:about="#ParameterObservation">
-  <rdfs:subClassOf rdf:resource="https://spec.industrialontologies.org/ontology/core/Core/MeasurementInformationContentEntity"/>
-  <owl:equivalentClass>
-    <owl:Class>
-      <owl:intersectionOf rdf:parseType="Collection">
-        <owl:Restriction>
-          <owl:onProperty rdf:resource="https://spec.industrialontologies.org/ontology/core/Core/describes"/>
-          <owl:someValuesFrom>
-            <owl:Class>
-              <owl:unionOf rdf:parseType="Collection">
-                <rdf:Description rdf:about="#ParameterQuality"/>
-                <rdf:Description rdf:about="#ParameterCharacteristic"/>
-              </owl:unionOf>
-            </owl:Class>
-          </owl:someValuesFrom>
-        </owl:Restriction>
-        <owl:Restriction>
-          <owl:onProperty rdf:resource="https://spec.industrialontologies.org/ontology/core/Core/isAbout"/>
-          <owl:someValuesFrom rdf:resource="#ParameterSpecification"/>
-        </owl:Restriction>
-        <owl:Restriction>
-          <owl:onProperty rdf:resource="#observationOf"/>
-          <owl:someValuesFrom rdf:resource="https://spec.industrialontologies.org/ontology/core/Core/MaterialProduct"/>
-        </owl:Restriction>
-      </owl:intersectionOf>
-    </owl:Class>
-  </owl:equivalentClass>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ParameterObservation</rdfs:label>
-  <core:definition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">An information record capturing the measured value(s), method, unit, and context for a specific parameter.</core:definition>
-  <core:example rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SPI report entry: paste volume = 350 nL, threshold = ±15%, board SN 12345.</core:example>
-</owl:Class>
-
-<owl:Class rdf:about="#FailureCause">
-  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000020"/>
-  <owl:equivalentClass>
-    <owl:Class>
-      <owl:intersectionOf rdf:parseType="Collection">
-        <owl:Restriction>
-          <owl:onProperty rdf:resource="#affects"/>
-          <owl:someValuesFrom rdf:resource="https://spec.industrialontologies.org/ontology/core/Core/MaterialProduct"/>
-        </owl:Restriction>
-        <owl:Restriction>
-          <owl:onProperty rdf:resource="http://www.w3.org/ns/prov#wasGeneratedBy"/>
-          <owl:someValuesFrom rdf:resource="#ConformanceAssessment"/>
-        </owl:Restriction>
-        <owl:Restriction>
-          <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/directlyCausallyInfluences"/>
-          <owl:someValuesFrom rdf:resource="#Effect"/>
-        </owl:Restriction>
-      </owl:intersectionOf>
-    </owl:Class>
-  </owl:equivalentClass>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">FailureCause</rdfs:label>
-  <core:definition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">A factor, parameter excursion, or condition that can produce a defect or undesired effect when realized in a process.</core:definition>
-  <core:example rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Low area ratio in stencil apertures causing insufficient paste release and opens.</core:example>
-</owl:Class>
-
 <owl:Class rdf:about="#CorrectiveAction">
   <rdfs:subClassOf rdf:resource="https://spec.industrialontologies.org/ontology/core/Core/ActionSpecification"/>
   <owl:equivalentClass>
@@ -264,25 +212,65 @@
   <core:example rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Solder bridge shorting pins 17–18 of a QFP device.</core:example>
 </owl:Class>
 
-<owl:Class rdf:about="#ConformanceAssessment">
-  <rdfs:subClassOf rdf:resource="http://www.w3.org/ns/prov#Activity"/>
+<owl:Class rdf:about="#FailureCause">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000020"/>
   <owl:equivalentClass>
     <owl:Class>
       <owl:intersectionOf rdf:parseType="Collection">
         <owl:Restriction>
-          <owl:onProperty rdf:resource="#hasAssessmentInput"/>
-          <owl:someValuesFrom rdf:resource="https://spec.industrialontologies.org/ontology/core/Core/MeasurementInformationContentEntity"/>
+          <owl:onProperty rdf:resource="#affects"/>
+          <owl:someValuesFrom rdf:resource="https://spec.industrialontologies.org/ontology/core/Core/MaterialProduct"/>
         </owl:Restriction>
         <owl:Restriction>
-          <owl:onProperty rdf:resource="http://www.w3.org/ns/prov#generated"/>
-          <owl:someValuesFrom rdf:resource="#FailureCause"/>
+          <owl:onProperty rdf:resource="http://www.w3.org/ns/prov#wasGeneratedBy"/>
+          <owl:someValuesFrom rdf:resource="#ConformanceAssessment"/>
+        </owl:Restriction>
+        <owl:Restriction>
+          <owl:onProperty rdf:resource="#directlyCausallyInfluences"/>
+          <owl:someValuesFrom rdf:resource="#Effect"/>
         </owl:Restriction>
       </owl:intersectionOf>
     </owl:Class>
   </owl:equivalentClass>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ConformanceAssessment</rdfs:label>
-  <core:definition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Planned evaluation to determine whether a product or process meets stated requirements or standards.</core:definition>
-  <core:example rdf:datatype="http://www.w3.org/2001/XMLSchema#string">First-article inspection comparing solder paste SPI data and placement Cpk to the build spec.</core:example>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">FailureCause</rdfs:label>
+  <core:definition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">A factor, parameter excursion, or condition that can produce a defect or undesired effect when realized in a process.</core:definition>
+  <core:example rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Low area ratio in stencil apertures causing insufficient paste release and opens.</core:example>
+</owl:Class>
+
+<owl:Class rdf:about="#Effect">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000020"/>
+  <owl:equivalentClass>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="#directlyCausallyInfluencedBy"/>
+      <owl:someValuesFrom rdf:resource="#FailureCause"/>
+    </owl:Restriction>
+  </owl:equivalentClass>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Effect</rdfs:label>
+  <core:definition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">An observable outcome or state resulting from a cause or set of causes in manufacturing or use.</core:definition>
+  <core:example rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Head-in-pillow (effect) resulting from warpage mismatch and insufficient time above liquidus.</core:example>
+</owl:Class>
+
+<owl:Class rdf:about="#Stencil">
+  <rdfs:subClassOf rdf:resource="https://spec.industrialontologies.org/ontology/core/Core/MaterialProduct"/>
+  <rdfs:subClassOf rdf:resource="https://spec.industrialontologies.org/ontology/core/Core/PieceOfEquipment"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Stencil</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#PCB">
+  <rdfs:subClassOf rdf:resource="https://spec.industrialontologies.org/ontology/core/Core/MaterialProduct"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PCB</rdfs:label>
+  <core:definition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Printed Circuit Board substrate and interconnect structure onto which components are assembled.</core:definition>
+  <core:example rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Four-layer FR-4 PCB, 1.6 mm thick, ENIG finish, green solder mask.</core:example>
+</owl:Class>
+
+<owl:Class rdf:about="#Environment">
+  <rdfs:subClassOf rdf:resource="https://spec.industrialontologies.org/ontology/core/Core/MaterialProduct"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Environment</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#SolderPaste">
+  <rdfs:subClassOf rdf:resource="https://spec.industrialontologies.org/ontology/core/Core/MaterialProduct"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Solder Paste</rdfs:label>
 </owl:Class>
 
 <owl:Class rdf:about="#ParameterQuality">
@@ -335,6 +323,38 @@
   <core:example rdf:datatype="http://www.w3.org/2001/XMLSchema#string">In stencil printing, squeegee speed and pressure are controlled ParameterCharacteristics.</core:example>
 </owl:Class>
 
+<owl:Class rdf:about="#ParameterObservation">
+  <rdfs:subClassOf rdf:resource="https://spec.industrialontologies.org/ontology/core/Core/MeasurementInformationContentEntity"/>
+  <owl:equivalentClass>
+    <owl:Class>
+      <owl:intersectionOf rdf:parseType="Collection">
+        <owl:Restriction>
+          <owl:onProperty rdf:resource="https://spec.industrialontologies.org/ontology/core/Core/describes"/>
+          <owl:someValuesFrom>
+            <owl:Class>
+              <owl:unionOf rdf:parseType="Collection">
+                <rdf:Description rdf:about="#ParameterQuality"/>
+                <rdf:Description rdf:about="#ParameterCharacteristic"/>
+              </owl:unionOf>
+            </owl:Class>
+          </owl:someValuesFrom>
+        </owl:Restriction>
+        <owl:Restriction>
+          <owl:onProperty rdf:resource="https://spec.industrialontologies.org/ontology/core/Core/isAbout"/>
+          <owl:someValuesFrom rdf:resource="#ParameterSpecification"/>
+        </owl:Restriction>
+        <owl:Restriction>
+          <owl:onProperty rdf:resource="#observationOf"/>
+          <owl:someValuesFrom rdf:resource="https://spec.industrialontologies.org/ontology/core/Core/MaterialProduct"/>
+        </owl:Restriction>
+      </owl:intersectionOf>
+    </owl:Class>
+  </owl:equivalentClass>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ParameterObservation</rdfs:label>
+  <core:definition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">An information record capturing the measured value(s), method, unit, and context for a specific parameter.</core:definition>
+  <core:example rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SPI report entry: paste volume = 350 nL, threshold = ±15%, board SN 12345.</core:example>
+</owl:Class>
+
 <owl:Class rdf:about="#ParameterSpecification">
   <rdfs:subClassOf rdf:resource="https://spec.industrialontologies.org/ontology/core/Core/RequirementSpecification"/>
   <owl:equivalentClass>
@@ -363,45 +383,30 @@
   <core:example rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Spec: stencil thickness 100 µm ±5 µm, measured per optical micrometer method.</core:example>
 </owl:Class>
 
-<owl:Class rdf:about="#Effect">
-  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000020"/>
-  <owl:equivalentClass>
-    <owl:Restriction>
-      <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/directlyCausallyInfluencedBy"/>
-      <owl:someValuesFrom rdf:resource="#FailureCause"/>
-    </owl:Restriction>
-  </owl:equivalentClass>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Effect</rdfs:label>
-  <core:definition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">An observable outcome or state resulting from a cause or set of causes in manufacturing or use.</core:definition>
-  <core:example rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Head-in-pillow (effect) resulting from warpage mismatch and insufficient time above liquidus.</core:example>
-</owl:Class>
-
-<owl:Class rdf:about="#RootCause">
-  <rdfs:subClassOf rdf:resource="#FailureCause"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">RootCause</rdfs:label>
-  <core:definition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">The most fundamental, addressable cause of a problem which, if corrected, prevents recurrence.</core:definition>
-  <core:example rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Investigation shows squeegee angle at 45° was the root cause of widespread bridging; corrected to 60°.</core:example>
-</owl:Class>
-
 <owl:Class rdf:about="#ProductProcessSpecificationDocument">
   <rdfs:subClassOf rdf:resource="https://spec.industrialontologies.org/ontology/core/Core/PlanSpecification"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Product Process Specification Document</rdfs:label>
 </owl:Class>
 
-<owl:Class rdf:about="#Environment">
-  <rdfs:subClassOf rdf:resource="https://spec.industrialontologies.org/ontology/core/Core/MaterialProduct"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Environment</rdfs:label>
-</owl:Class>
-
-<owl:Class rdf:about="#SolderPaste">
-  <rdfs:subClassOf rdf:resource="https://spec.industrialontologies.org/ontology/core/Core/MaterialProduct"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Solder Paste</rdfs:label>
-</owl:Class>
-
-<owl:Class rdf:about="#Stencil">
-  <rdfs:subClassOf rdf:resource="https://spec.industrialontologies.org/ontology/core/Core/MaterialProduct"/>
-  <rdfs:subClassOf rdf:resource="https://spec.industrialontologies.org/ontology/core/Core/PieceOfEquipment"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Stencil</rdfs:label>
+<owl:Class rdf:about="#ConformanceAssessment">
+  <rdfs:subClassOf rdf:resource="http://www.w3.org/ns/prov#Activity"/>
+  <owl:equivalentClass>
+    <owl:Class>
+      <owl:intersectionOf rdf:parseType="Collection">
+        <owl:Restriction>
+          <owl:onProperty rdf:resource="#hasAssessmentInput"/>
+          <owl:someValuesFrom rdf:resource="https://spec.industrialontologies.org/ontology/core/Core/InformationContentEntity"/>
+        </owl:Restriction>
+        <owl:Restriction>
+          <owl:onProperty rdf:resource="http://www.w3.org/ns/prov#generated"/>
+          <owl:someValuesFrom rdf:resource="#FailureCause"/>
+        </owl:Restriction>
+      </owl:intersectionOf>
+    </owl:Class>
+  </owl:equivalentClass>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ConformanceAssessment</rdfs:label>
+  <core:definition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Planned evaluation to determine whether a product or process meets stated requirements or standards.</core:definition>
+  <core:example rdf:datatype="http://www.w3.org/2001/XMLSchema#string">First-article inspection comparing solder paste SPI data and placement Cpk to the build spec.</core:example>
 </owl:Class>
 
 <owl:Class rdf:about="#SolderPrintingProcess">
@@ -460,11 +465,6 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">LowAreaRatioDisposition</rdfs:label>
 </owl:Class>
 
-<owl:Class rdf:about="#LargeBeadSizeOfSolderPasteDisposition">
-  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">LargeBeadSizeOfSolderPasteDisposition</rdfs:label>
-</owl:Class>
-
 <owl:Class rdf:about="#StencilThicknessTooHighDisposition">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">StencilThicknessTooHighDisposition</rdfs:label>
@@ -490,9 +490,9 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SqueegeePressureTooHighDisposition</rdfs:label>
 </owl:Class>
 
-<owl:Class rdf:about="#ResidualPasteVolumeDisposition">
+<owl:Class rdf:about="#HighResidualPasteVolumeDisposition">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ResidualPasteVolumeDisposition</rdfs:label>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">HighResidualPasteVolumeDisposition</rdfs:label>
 </owl:Class>
 
 <owl:Class rdf:about="#PostPrintSpreadDisposition">
@@ -545,6 +545,11 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">InsufficientPasteVolumePerApertureDisposition</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#PoorPasteTransferDisposition">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PoorPasteTransferDisposition</rdfs:label>
+</owl:Class>
+
 <owl:Class rdf:about="#SqueegeeSpeedTooHighDisposition">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SqueegeeSpeedTooHighDisposition</rdfs:label>
@@ -553,6 +558,13 @@
 <owl:Class rdf:about="#SqueegeePressureTooLowDisposition">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SqueegeePressureTooLowDisposition</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#RootCause">
+  <rdfs:subClassOf rdf:resource="#FailureCause"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">RootCause</rdfs:label>
+  <core:definition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">The most fundamental, addressable cause of a problem which, if corrected, prevents recurrence.</core:definition>
+  <core:example rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Investigation shows squeegee angle at 45° was the root cause of widespread bridging; corrected to 60°.</core:example>
 </owl:Class>
 
 <owl:Class rdf:about="#ProcessFailureCause">
@@ -1155,13 +1167,6 @@
   <core:example rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AAR=0.55 on 0.30×0.15 mm apertures in a 0.10 mm stencil results in insufficient solder and opens.</core:example>
 </owl:Class>
 
-<owl:Class rdf:about="#LargeBeadSizeOfSolderPaste">
-  <rdfs:subClassOf rdf:resource="#QualityFailureCause"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">LargeBeadSizeOfSolderPaste</rdfs:label>
-  <core:definition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Formation of large solder beads adjacent to chip components after reflow, typically due to excess paste volume, low paste viscosity, or inadequate aperture design.</core:definition>
-  <core:example rdf:datatype="http://www.w3.org/2001/XMLSchema#string">0402 resistors exhibit beads &gt;0.3 mm on the component side after reflow.</core:example>
-</owl:Class>
-
 <owl:Class rdf:about="#StencilThicknessTooHigh">
   <rdfs:subClassOf rdf:resource="#QualityFailureCause"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">StencilThicknessTooHigh</rdfs:label>
@@ -1233,11 +1238,9 @@
   <core:example rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Pressure increased to 7 kgf causes paste bleed‑out under the stencil and shorts on QFN pads.</core:example>
 </owl:Class>
 
-<owl:Class rdf:about="#ResidualPasteVolume">
+<owl:Class rdf:about="#HighResidualPasteVolume">
   <rdfs:subClassOf rdf:resource="#ProcessFailureCause"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ResidualPasteVolume</rdfs:label>
-  <core:definition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Solder paste remaining in the stencil aperture after the print stroke, reducing transfer efficiency and causing under‑deposits.</core:definition>
-  <core:example rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SPI indicates 75% transfer efficiency on fine‑pitch pads; 25% residual paste visible in apertures.</core:example>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">HighResidualPasteVolume</rdfs:label>
 </owl:Class>
 
 <owl:Class rdf:about="#PostPrintSpread">
@@ -1274,6 +1277,11 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">InsufficientPasteVolumePerAperture</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#PoorPasteTransfer">
+  <rdfs:subClassOf rdf:resource="#ProcessFailureCause"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PoorPasteTransfer</rdfs:label>
+</owl:Class>
+
 <owl:Class rdf:about="#SqueegeeSpeedTooHigh">
   <rdfs:subClassOf rdf:resource="#ProcessFailureCause"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SqueegeeSpeedTooHigh</rdfs:label>
@@ -1283,16 +1291,6 @@
   <rdfs:subClassOf rdf:resource="#ProcessFailureCause"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SqueegeePressureTooLow</rdfs:label>
 </owl:Class>
-
-<rdf:Description rdf:about="http://purl.obolibrary.org/obo/directlyCausallyInfluences">
-  <rdfs:domain rdf:resource="#FailureCause"/>
-  <rdfs:range rdf:resource="#Effect"/>
-</rdf:Description>
-
-<rdf:Description rdf:about="http://purl.obolibrary.org/obo/directlyCausallyInfluencedBy">
-  <rdfs:domain rdf:resource="#Effect"/>
-  <rdfs:range rdf:resource="#FailureCause"/>
-</rdf:Description>
 
 <rdf:Description rdf:about="http://purl.obolibrary.org/obo/RO_0002559">
   <rdfs:domain rdf:resource="#Effect"/>

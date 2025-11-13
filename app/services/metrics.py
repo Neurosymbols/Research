@@ -18,14 +18,14 @@ def fc_name_syntax(classname):
 
 def get_data_factory():
     base_path = "./app/data"
-    path = f"{base_path}/input/epoch3-7/synthetic_data_factory.csv"
+    path = f"{base_path}/input/epoch3-7/data.csv"
     df = pd.read_csv(path)
     factory = df.to_dict(orient="records")
     return factory
 
 def get_chain_factory():
     base_path = "./app/data"
-    path = f"{base_path}/input/epoch3-7/causal_test_cases.json"
+    path = f"{base_path}/input/epoch3-7/test_chains.json"
     factory = json.load(open(path))
     new_factory = {}
     for k, v in factory.items():
@@ -44,13 +44,20 @@ def root_cause_accuracy():
     factory = get_data_factory()
     expected_set = {}
     for d in factory:
+        root_fcs = []
+        #consider root cause even if defect occurs or not
         if not pd.isna(d['Root Causes']):
             root_fcs = [fc_name_syntax(fc) for fc in d['Root Causes'].split(",")]
-        else:
-            root_fcs = []
-        root_fcs = [fc for fc in root_fcs if fc]
-        if root_fcs:
+            root_fcs = [fc for fc in root_fcs if fc]
             expected_set[d['PCB_ID']] = root_fcs
+        else:
+            #consider mechanism failure causes as root causes
+            if not pd.isna(d['Mechanism Failure Causes']):
+                mech_fcs = [fc_name_syntax(fc) for fc in d['Mechanism Failure Causes'].split(",")]
+                root_fcs.extend(mech_fcs)
+                root_fcs = [fc for fc in root_fcs if fc]
+                expected_set[d['PCB_ID']] = root_fcs
+    print(f"expected set length {len(expected_set.keys())}")
     
     test_query = '''
         PREFIX term: <https://neurosymbols.ai/ontology/causal-terminology.owl#>
@@ -62,15 +69,12 @@ def root_cause_accuracy():
         PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
         PREFIX ro: <http://purl.obolibrary.org/obo/>
 
-        SELECT ?productlabel ?defectlabel ?rootcauselabel ?rule
+        SELECT ?productlabel ?rootcauselabel ?rule
         WHERE {
-            ?defect a term:Defect ;
-                term:defectOccursOn ?product ;
-                ro:RO_0002559 ?rootcause ;
-                rdfs:label ?defectlabel .
             ?rootcause a term:RootCause ;
                     rdfs:label ?rootcauselabel ;
-    				prov:wasGeneratedBy ?ca .
+    				prov:wasGeneratedBy ?ca ;
+    				term:affects ?product .
     		?ca term:triggeredByRule ?rule .
             ?product rdfs:label ?productlabel .
         }
@@ -92,15 +96,23 @@ def root_cause_accuracy():
     total_boards_to_inspect = len(expected_set.keys())
     top_k_test_passed_boards = []
     equivalence_test_passed_boards = []
-    for k,v in pred_set.items():
+    for k,v in expected_set.items():
+        #get root causes of PCBX from expected set
+        set_expected = set([item.lower() for item in v])
+        #get root causes of PCBX from pred set
+        set_v = set([item.lower() for item in pred_set.get(k, [])])
         #% of boards where at least one of the top-k predicted causes matches expert truth
-        intersection = list(set(v).intersection(set(expected_set[k])))
+        intersection = list(set_expected.intersection(set_v))
         if len(intersection) > 0:
             top_k_test_passed_boards.append(k)
         #This test assesses strict semantic agreement between the system-inferred and expert-annotated root-cause sets.
-        if set(v) == set(expected_set[k]):
+        print(k, f"pred: {list(set_v)}", f"expec: {list(set_expected)}", f"result: {set_v == set(set_expected)}")
+        
+        if set_v == set_expected:
             equivalence_test_passed_boards.append(k)
+    # print(total_boards_to_inspect, len(equivalence_test_passed_boards))
     test_dict['Test Name'].extend(["top-k root cause", "root-cause set equivalence"])
+    
     test_dict['System accuracy or response'].extend([f"{round((len(top_k_test_passed_boards)/total_boards_to_inspect)*100,2)}%", f"{round((len(equivalence_test_passed_boards)/total_boards_to_inspect)*100,2)}%"])
 
 
@@ -177,7 +189,7 @@ def chain_recall():
                 VALUES ?effect_pred { term:defectOccursOn term:affects }
                 ?effect ?effect_pred ?product .
                 ?cause term:affects ?product .
-                ?effect ro:directlyCausallyInfluencedBy ?cause .
+                ?effect term:directlyCausallyInfluencedBy ?cause .
                 ?product rdfs:label ?productlabel .
                 ?effect rdfs:label ?effectlabel .
                 ?cause rdfs:label ?causelabel
@@ -196,11 +208,24 @@ def chain_recall():
             effectlabel = b.get("effectlabel").get('value')
             causelabel = b.get("causelabel").get('value')
             pred_set.append((effectlabel, causelabel))
-        pred_set = set((a.lower(), b.lower()) for a, b in pred_set)
-        v = set((a.lower(), b.lower()) for a, b in v)
+        pred_set = {tuple((i.lower() for i in item)) for item in pred_set}
+        v = {tuple(i.lower() for i in item) for item in v}
         intersection = pred_set & v
-        recall = round((len(intersection)/len(v))*100,2)
-        precision = round((len(intersection)/len(pred_set))*100,2)
+        if len(v):
+            recall = round((len(intersection) / len(v)) * 100, 2) if len(v) else 0
+            precision = round((len(intersection)/len(pred_set))*100,2) if pred_set else 0
+        elif len(v) == 0 and len(pred_set) == 0:
+            recall = 100.0
+            precision = 100.0
+        else:
+            recall = 0
+            precision = 0
+        print(f"pred set for {k} {len(list(pred_set))};;", 
+              f"expected set for {k} {len(list(v))};;", 
+              f"intersection set for {k} {len(list(intersection))};;",
+              f"recall for {k} {recall};;",
+              f"precision for {k} {precision}",
+        )
         avg_recall.append(recall)
         avg_precision.append(precision)
     test_dict['Test Name'].extend(["chain recall", "chain precision"])

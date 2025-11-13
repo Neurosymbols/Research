@@ -573,13 +573,17 @@ def add_defect_individuals(
 ):
    if product1_onto is not None:
     with product1_onto:
-        defect_classname = create_classname_syntax(semicon_defect_concept)
-        onto_defect_class = base_onto[defect_classname]
-        if onto_defect_class:
-            product_individual_label = product_individual.label[0]
-            defect_individual = onto_defect_class(f"{defect_classname}_{product_individual_label}")
-            defect_individual.label.append(f"{defect_classname}_{product_individual_label}")
-            product_individual.hasDefect.append(defect_individual)
+        if not pd.isna(semicon_defect_concept):
+            defect_concepts = [d.strip() for d in semicon_defect_concept.split(",")]
+            for c in defect_concepts:
+                assert len(c.split("_")) == 2, "defect string not formulated correctly"
+                defect_classname = create_classname_syntax(c.split("_")[0])
+                onto_defect_class = base_onto[defect_classname]
+                if onto_defect_class:
+                    product_individual_label = product_individual.label[0]
+                    defect_individual = onto_defect_class(f"{defect_classname}_{product_individual_label}")
+                    defect_individual.label.append(f"{defect_classname}_{product_individual_label}")
+                    product_individual.hasDefect.append(defect_individual)
 
 def add_products_to_ontology(
     batch_size:int,
@@ -589,7 +593,11 @@ def add_products_to_ontology(
     df = pd.read_csv(synthetic_data_factory_file)
     # Strip spaces from column names
     df.columns = df.columns.str.strip() # Check specs in Synthetic Data files
-    df = df.head(batch_size)
+    # df = df.head(batch_size)
+    df = df[
+        df[["Defect occured", "Mechanism Failure Causes", "Root Causes"]]
+        .apply(lambda row: row.notna().any() and (row != "").any(), axis=1)
+    ]
     if product1_onto is not None:
         product_count = 0
         with product1_onto: # A-box instantiation
