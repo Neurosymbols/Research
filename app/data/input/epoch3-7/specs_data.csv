@@ -19,7 +19,7 @@ that would record or verify"
 13,Paste shelf-life temp,< 10 °C,bfo:Quality,Solder Paste,,PPSC_61,J-STD-005,Material Traceability Record,ERP / barcode system
 14,Paste open-life time,<= 8h,iof:ProcessCharacteristic,,SolderPrintingProcess,PPSC_61,,,
 15,Paste open-life temp,25 °C ± 1°C,bfo:Quality,Solder Paste,,PPSC_61,J-STD-005,Material Handling Procedure,Shop log / MES
-16,Overprint allowance,≤ 15 % pad area,iof:ProcessCharacteristic,,SolderPrintingInspectionProcess,PPSC_61,IPC-7525,Print Process Specification,SPI volume map
+16,Overprint allowance,≤ 15 % pad area,iof:ProcessCharacteristic,,SolderPrintingProcess,PPSC_61,IPC-7525,Print Process Specification,SPI volume map
 17,Stencil coplanarity,≤ 15 µm across aperture area,bfo:Quality,Stencil,,PPSC_61,IPC-7525 appendix B,Stencil QA Procedure,3D coplanarity gauge
 18,P and P Placement accuracy,0 ± 40 µm,iof:ProcessCharacteristic,,ComponentPlacementProcess,PPSC_61,IPC-7095,Pick-and-Place Process Spec.,Vision alignment camera
 19,Preheat zone temp,175 °C ± 5 °C,bfo:Quality,Solder Paste,ReflowSolderingProcess,PPSC_61,IPC-1782,Reflow Profile Spec.,Thermal profiler

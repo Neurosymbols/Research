@@ -162,7 +162,7 @@ ishikawa_queries = {
                             term:hasAssessmentInput ?ApertureAreaRatio_spec ;
                     
                     rdfs:label ?coa_label .
-                ?fc a term:LowAreaRatio, term:RootCause ;
+                ?fc a term:LowAreaRatio ;
                     prov:wasGeneratedBy ?coa ;
                     term:affects ?product ;
                     rdfs:label ?fc_label .
@@ -187,6 +187,8 @@ ishikawa_queries = {
                 BIND(CONCAT("COA-", STRAFTER(STR(?product), "#"), "-", 'LowAreaRatio-rule-1') AS ?coa_label)
                 BIND(IRI(CONCAT(str(assert:), "FC-", "LowAreaRatio-", STRAFTER(STR(?product), "#"))) AS ?fc)
                 BIND(CONCAT("LowAreaRatio") AS ?fc_label)
+                BIND(IRI(CONCAT(str(assert:), "CA-", "FC-", "LowAreaRatio-", STRAFTER(STR(?product), "#"))) AS ?fc)
+                BIND("Redesign apertures; electropolish; nano-coating; consider foil change" as ?action_label)
                 }
         ''',
         'stencil_thickness_fc_query': '''
@@ -206,7 +208,7 @@ ishikawa_queries = {
                         term:hasAssessmentInput ?StencilThickness_spec ;
                 
                 rdfs:label ?coa_label .
-            ?fc a term:StencilThicknessTooHigh, term:RootCause ;
+            ?fc a term:StencilThicknessTooHigh ;
                 prov:wasGeneratedBy ?coa ;
                 term:affects ?product ;
                 rdfs:label ?fc_label .
@@ -252,7 +254,7 @@ ishikawa_queries = {
                         term:hasAssessmentInput ?SqueegeeSpeed_spec ;
                 
                 rdfs:label ?coa_label .
-            ?fc a term:SqueegeeSpeedTooLow, term:RootCause ;
+            ?fc a term:SqueegeeSpeedTooLow ;
                 prov:wasGeneratedBy ?coa ;
                 term:affects ?product ;
                 rdfs:label ?fc_label .
@@ -298,7 +300,7 @@ ishikawa_queries = {
                         term:hasAssessmentInput ?SqueegeeAngle_spec ;
                 
                 rdfs:label ?coa_label .
-            ?fc a term:SqueegeeAngleTooLow, term:RootCause ;
+            ?fc a term:SqueegeeAngleTooLow ;
                 prov:wasGeneratedBy ?coa ;
                 term:affects ?product ;
                 rdfs:label ?fc_label .
@@ -397,7 +399,7 @@ ishikawa_queries = {
                         term:hasAssessmentInput ?PeakReflowTemperature_spec ;
                 
                 rdfs:label ?coa_label .
-            ?fc a term:PeakReflowTemperatureTooLow, term:RootCause ;
+            ?fc a term:PeakReflowTemperatureTooLow ;
                 prov:wasGeneratedBy ?coa ;
                 term:affects ?product ;
                 rdfs:label ?fc_label .
@@ -443,7 +445,7 @@ ishikawa_queries = {
                         term:hasAssessmentInput ?TimeAboveLiquidus_spec ;
                 
                 rdfs:label ?coa_label .
-            ?fc a term:TimeAboveLiquidusTooLow, term:RootCause ;
+            ?fc a term:TimeAboveLiquidusTooLow ;
                 prov:wasGeneratedBy ?coa ;
                 term:affects ?product ;
                 rdfs:label ?fc_label .

@@ -45,7 +45,9 @@ super_base_classes = [
     'Manufacturing Process',
     'Activity',
     'Disposition',
-    'Plan Specification'
+    'Plan Specification',
+    'Raw Material',
+    'Material Entity'
 ]
 # Create list of SemicON base classes
 semicon_measurement_ices = [
@@ -118,7 +120,7 @@ def initiate_ontology(
         add_axioms_to_ontology(axioms_dict) # T-Box
         add_base_class_types(base_classes) # T-Box
         add_defintions_and_examples(defintions_dict) # T-Box
-        add_base_individuals(base_classes)
+        add_base_individuals()
         add_ishikawa_causal_graph() #A-Box
         if import_ontologies:
             #idempotently import ontologies
@@ -142,7 +144,8 @@ def add_base_classes(
     #T-BOX declaration
     manufacturing_process_concepts = base_classes.get("manufacturing_process_concepts", [])
     equipment_concepts = [v['equipment'] for v in base_classes.get("equipments_data")]
-    material_product_concepts = list({v["quality_inheritor"] for k,v in base_classes.get('semicon_quality_concepts').items() if v["quality_inheritor"]})
+    raw_material_concepts = [v['raw_material'] for v in base_classes.get("raw_materials_data")]
+    material_entity_concepts = [v['material_entity'] for v in base_classes.get("material_entity_data")]
     disposition_concepts = []
     for obj in base_classes.get("defects_and_failure_causes").get("dispositions", []):
         disposition = obj['disposition']
@@ -165,8 +168,8 @@ def add_base_classes(
         base_onto
     )
     add_classes(
-        material_product_concepts,
-        iof.search_one(iri=f"{IOF_IRI}MaterialProduct") if import_ontologies else base_onto.search_one(iri="*MaterialProduct"),
+        raw_material_concepts,
+        iof.search_one(iri=f"{IOF_IRI}RawMaterial") if import_ontologies else base_onto.search_one(iri="*RawMaterial"),
         base_onto
     )
     add_classes(
@@ -207,6 +210,11 @@ def add_base_classes(
     add_classes(
         equipment_concepts,
         iof.search_one(iri=f"{IOF_IRI}PieceOfEquipment") if import_ontologies else base_onto.search_one(iri="*PieceOfEquipment"),
+        base_onto
+    ),
+    add_classes(
+        material_entity_concepts,
+        iof.search_one(iri=f"{BFO_IRI}BFO_0000040") if import_ontologies else base_onto.search_one(iri="*MaterialEntity"),
         base_onto
     )
     add_classes(
@@ -342,42 +350,18 @@ def define_properties(input_path):
                 for prop in config.get("annotation_properties", []):
                     cls = types.new_class(prop["name"], (AnnotationProperty,))
 
-def add_base_individuals(base_classes):
-    manufacturing_process_concepts = base_classes.get("manufacturing_process_concepts", [])
-    equipment_concepts = [v['equipment'] for v in base_classes.get("equipments_data")]
-    equipment_process_mapping = base_classes.get("equipments_data")
-    material_process_mapping = base_classes.get("material_products_data")
-    material_product_concepts = list({v["quality_inheritor"] for k,v in base_classes.get('semicon_quality_concepts').items() if v["quality_inheritor"]})
-    inds = {}
-    for concept in manufacturing_process_concepts:
-        inds[f"{create_classname_syntax(concept)}_1"] = create_classname_syntax(concept)
-    for concept in equipment_concepts:
-        inds[f"{create_classname_syntax(concept)}_1"] = create_classname_syntax(concept)
-    for concept in material_product_concepts:
-        inds[f"{create_classname_syntax(concept)}_1"] = create_classname_syntax(concept)
-    add_individuals(
-        inds,
-        product1_onto,
-        base_onto
-    )
+def add_base_individuals():
     with product1_onto:
-        #connect equipment to process
-        for mapping in equipment_process_mapping:
-            #TODO: for multiple processes
-            equipment_ind = product1_onto[f"{create_classname_syntax(mapping['equipment'])}_1"]
-            process_ind = product1_onto[f"{create_classname_syntax(mapping['process_category'])}_1"]
-            equipment_ind.BFO_0000056.append(
-                process_ind
-            )
-        #connect material to process
-        for mapping in material_process_mapping:
-            processes = [p.strip() for p in mapping['process_category'].split(",")]
-            process_inds = [product1_onto[f"{create_classname_syntax(p)}_1"] for p in processes]
-            material_ind = product1_onto[f"{create_classname_syntax(mapping['material_product'])}_1"]
-            process_ind = product1_onto[f"{create_classname_syntax(mapping['process_category'])}_1"]
-            for p in process_inds:
-                material_ind.BFO_0000056.append(
-                    p
+        df = pd.read_csv(f"{input_path}/equipment_data.csv")
+        for _, row in df.iterrows():
+            material_entity_cls_name = create_classname_syntax(row['material entity'])
+            material_entity_ind = base_onto[material_entity_cls_name](f"{material_entity_cls_name}_1")
+            process_concepts = [p.strip() for p in row['process'].split(",")]
+            for p in process_concepts:
+                process_cls_name = create_classname_syntax(p)
+                process_ind = base_onto[process_cls_name](f"{process_cls_name}_1")
+                material_entity_ind.BFO_0000056.append(
+                    process_ind
                 )
 
 def add_axioms_to_ontology(axioms_dict):

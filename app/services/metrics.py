@@ -177,7 +177,7 @@ def chain_recall():
                 VALUES ?effect_pred { term:defectOccursOn term:affects }
                 ?effect ?effect_pred ?product .
                 ?cause term:affects ?product .
-                ?effect ro:directlyCausallyInfluencedBy ?cause .
+                ?effect term:directlyCausallyInfluencedBy ?cause .
                 ?product rdfs:label ?productlabel .
                 ?effect rdfs:label ?effectlabel .
                 ?cause rdfs:label ?causelabel

@@ -9,7 +9,7 @@ parameter,SqueegeeSpeedTooLow,Raise speed into window; balance with pressure/ang
 parameter,SqueegeeAngleTooLow,Increase angle toward 60–62°; re-tune pressure/speed instead of flattening,Disposition of squeegee blade angle to be too low (flat),squeegee angle
 mechanism,UndersideSmear,"Lower pressure, raise angle; improve underside wipe; fix board support/foil flatness",Disposition toward underside smear / paste bleed,
 parameter,SqueegeePressureTooHigh,Reduce pressure; verify gasket; improve support,Disposition of squeegee pressure to exceed upper limit,squeegee pressure
-parameter,ResidualPasteVolume,Increase wipe frequency; optimize solvent; vac-assist wipe,Disposition of underside wiping to be insufficient,
+parameter,ResidualPasteVolume,Increase wipe frequency; optimize solvent; vac-assist wipe,Disposition of underside wiping to be insufficient,residual paste
 mechanism,PostPrintSpread,"Control paste/board temp, humidity, and queue time; refresh bead; verify slump",Disposition toward post‑print spread (slump) before reflow,
 parameter,LowPasteViscosity,Cool paste/stencil; refresh bead; check lot; align mixing practice,Disposition of paste viscosity to be below lower limit,paste viscosity
 parameter,HighHumidity,Dehumidify/condition cell; maintain RH control,Disposition of ambient relative humidity to be out of band,ambient rh

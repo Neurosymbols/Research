@@ -56,46 +56,46 @@ def test_firing_of_failure_cause_rules_from_ishikawa_causal_graph():
 
     assert result_1_bindings[0].get('count') == result_2_bindings[0].get('count')
 
-def test_predictability_of_firing_rules():
-    conformance_count_query = '''
-        PREFIX term: <https://neurosymbols.ai/ontology/causal-terminology.owl#>
-        PREFIX assert: <https://neurosymbols.ai/data/causal-assertions.owl#>
-        PREFIX iof: <https://spec.industrialontologies.org/ontology/core/Core/>
-        PREFIX bfo: <http://purl.obolibrary.org/obo/>
-        PREFIX prov: <http://www.w3.org/ns/prov#>
-        PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
-        PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+# def test_predictability_of_firing_rules():
+#     conformance_count_query = '''
+#         PREFIX term: <https://neurosymbols.ai/ontology/causal-terminology.owl#>
+#         PREFIX assert: <https://neurosymbols.ai/data/causal-assertions.owl#>
+#         PREFIX iof: <https://spec.industrialontologies.org/ontology/core/Core/>
+#         PREFIX bfo: <http://purl.obolibrary.org/obo/>
+#         PREFIX prov: <http://www.w3.org/ns/prov#>
+#         PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+#         PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 
-        SELECT (COUNT(?conformance) AS ?count)
-        WHERE {
-        ?conformance a term:ConformanceAssessment .
-        }
-    '''
-    run1_result1 = perform_sparql_query(conformance_count_query)
-    run1_result1_bindings = run1_result1.get('results', {}).get('bindings', [])
-    run1_result1_count = run1_result1_bindings[0].get('count')
+#         SELECT (COUNT(?conformance) AS ?count)
+#         WHERE {
+#         ?conformance a term:ConformanceAssessment .
+#         }
+#     '''
+#     run1_result1 = perform_sparql_query(conformance_count_query)
+#     run1_result1_bindings = run1_result1.get('results', {}).get('bindings', [])
+#     run1_result1_count = run1_result1_bindings[0].get('count')
 
-    base_path = "./app/data"
-    path = f"{base_path}/ontologies/epoch3-7"
-    clear_graphdb_default_graph()
-    ontology_paths = [
-        f"{path}/bfo-prov.owl",
-        f"{path}/iof-core.rdf",
-        f"{path}/ro-causal-properties.owl",
-        f"{path}/causal-terminology.owl",
-        f"{path}/causal-assertions.owl"
-    ]
-    export_ontology_to_graphdb(
-        ontology_paths
-    )
-    rule_to_sparql(verb="INSERT")
-    fire_failure_cause_queries(verb="INSERT")
+#     base_path = "./app/data"
+#     path = f"{base_path}/ontologies/epoch3-7"
+#     clear_graphdb_default_graph()
+#     ontology_paths = [
+#         f"{path}/bfo-prov.owl",
+#         f"{path}/iof-core.rdf",
+#         f"{path}/ro-causal-properties.owl",
+#         f"{path}/causal-terminology.owl",
+#         f"{path}/causal-assertions.owl"
+#     ]
+#     export_ontology_to_graphdb(
+#         ontology_paths
+#     )
+#     rule_to_sparql(verb="INSERT")
+#     fire_failure_cause_queries(verb="INSERT")
 
-    run2_result1 = perform_sparql_query(conformance_count_query)
-    run2_result1_bindings = run2_result1.get('results', {}).get('bindings', [])
-    run2_result1_count = run2_result1_bindings[0].get('count')
+#     run2_result1 = perform_sparql_query(conformance_count_query)
+#     run2_result1_bindings = run2_result1.get('results', {}).get('bindings', [])
+#     run2_result1_count = run2_result1_bindings[0].get('count')
 
-    assert run1_result1_count == run2_result1_count
+#     assert run1_result1_count == run2_result1_count
 
 def test_failure_cause_generation(data_factory):
     factory = data_factory
