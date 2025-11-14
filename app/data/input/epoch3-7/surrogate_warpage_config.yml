@@ -1,0 +1,45 @@
+board:
+  cte_ppm_per_C: 16.0
+  glass_transition_Tg_C: 135.0
+  thickness_mm: 1.6
+  youngs_modulus_gpa: 18.0
+model:
+  analytic_params:
+    kappa_scale: 1.0
+    noise_um_rms: 0.0
+    visco_relax: 0.2
+  default_mode: analytic
+  modes:
+  - analytic
+oven_profile:
+  ambient_C: 25.0
+  phases:
+  - T_end_C: 150
+    T_start_C: 25
+    name: preheat
+    t_end_s: 90
+    t_start_s: 0
+  - T_end_C: 180
+    T_start_C: 150
+    name: soak
+    t_end_s: 180
+    t_start_s: 90
+  - T_end_C: 245
+    T_start_C: 180
+    name: reflow
+    t_end_s: 240
+    t_start_s: 180
+  - T_end_C: 80
+    T_start_C: 245
+    name: cool
+    t_end_s: 360
+    t_start_s: 240
+package:
+  cte_ppm_per_C: 2.6
+  size_mm: 7.0
+  thickness_mm: 0.9
+  type: QFN
+  youngs_modulus_gpa: 130.0
+stackup:
+  copper_fraction: 0.25
+  copper_layers: 4
