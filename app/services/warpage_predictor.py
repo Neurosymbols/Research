@@ -81,9 +81,11 @@ def predict_warpage(df, mode='analytic', noise=True):
     ]
     return df
 
+peak_T = 240
 peak_t = time_of_T(240)
 df_in = pads.copy()
 df_in['t_s'] = peak_t
+df_in['T'] = 240
 pred = predict_warpage(df_in, noise=False)
 print(pred)
 
