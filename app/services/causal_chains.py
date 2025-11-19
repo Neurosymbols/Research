@@ -445,13 +445,4 @@ def attach_corrective_action_to_root_causes(verb):
                 else:
                     print(ca_query)
                     print(len(perform_sparql_query(ca_query)))
-
-
-rule_to_sparql(verb="INSERT")
-fire_failure_cause_queries(verb="INSERT")
-create_causal_chain(verb="INSERT")
-infere_root_causes(verb="INSERT")
-attach_corrective_action_to_root_causes(verb="INSERT")
-
-
         

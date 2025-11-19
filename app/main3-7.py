@@ -1,6 +1,7 @@
 import argparse
 import json
 import os
+import glob
 import pandas as pd
 
 from decimal import Decimal, ROUND_HALF_UP
@@ -12,6 +13,9 @@ from .services.ontology_functions import initiate_ontology,\
     add_products_to_ontology,\
     add_dispositions_to_ontology
 from .services.bayesian_inference import implement_bayesian_inference
+from .services.metrics import root_cause_accuracy, test_provenance_completeness, cycle_rate, chain_recall
+from app.services.synthetic_data_generator import generate_ground_truth
+from app.services.causal_chains import rule_to_sparql, fire_failure_cause_queries, create_causal_chain, infere_root_causes, attach_corrective_action_to_root_causes
 
 
 base_path = "./app/data"
@@ -301,6 +305,7 @@ if __name__ == "__main__":
     parser.add_argument("--implement-bayes-inf", action="store_true", help="Implement bayesian inference")
     parser.add_argument("--remove-output-files", action="store_true", help="remove output files given version and path")
     parser.add_argument("--create-kg", action="store_true", help="create KG")
+    parser.add_argument("--create-metrics-report", action="store_true", help="create metrics report")
 
     args = parser.parse_args()
 
@@ -366,4 +371,38 @@ if __name__ == "__main__":
     
     if args.create_kg:
         create_kg_from_scratch()
+    
+    if args.create_metrics_report:
+        count = 30
+        i = 0
+        metrics = []
+        folder = "./app/data/ontologies/epoch3-7"   # change to your folder path
+        while i <= count:
+            #ground truth
+            generate_ground_truth(reuse=False)
+            #create kg
+            create_kg_from_scratch()
+            #causal chains
+            rule_to_sparql(verb="INSERT")
+            fire_failure_cause_queries(verb="INSERT")
+            create_causal_chain(verb="INSERT")
+            infere_root_causes(verb="INSERT")
+            attach_corrective_action_to_root_causes(verb="INSERT")
+            #metrics
+            data = {
+                **root_cause_accuracy(), 
+                **test_provenance_completeness(), 
+                **cycle_rate(), 
+                **chain_recall()
+            }
+            metrics.append(data)
+            i += 1
+            pattern = os.path.join(folder, "causal-*.owl")
+            for file in glob.glob(pattern):
+                print("Deleting:", file)
+                os.remove(file)
+            if i == 30:
+                break
+        df = pd.DataFrame(metrics)
+        df.to_csv(f"{output_path}/metrics_report.csv")
 

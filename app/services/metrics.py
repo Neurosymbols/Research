@@ -113,7 +113,15 @@ def root_cause_accuracy():
     # print(total_boards_to_inspect, len(equivalence_test_passed_boards))
     test_dict['Test Name'].extend(["top-k root cause", "root-cause set equivalence"])
     
-    test_dict['System accuracy or response'].extend([f"{round((len(top_k_test_passed_boards)/total_boards_to_inspect)*100,2)}%", f"{round((len(equivalence_test_passed_boards)/total_boards_to_inspect)*100,2)}%"])
+    test_dict['System accuracy or response'].extend(
+        [f"{round((len(top_k_test_passed_boards)/total_boards_to_inspect)*100,2)}%", 
+         f"{round((len(equivalence_test_passed_boards)/total_boards_to_inspect)*100,2)}%"
+        ]
+    )
+    return {
+       "top-k root cause": f"{round((len(top_k_test_passed_boards)/total_boards_to_inspect)*100,2)}%",
+       "root-cause set equivalence": f"{round((len(equivalence_test_passed_boards)/total_boards_to_inspect)*100,2)}%"
+    }
 
 
 #Metric 2
@@ -144,6 +152,9 @@ def test_provenance_completeness():
         prov_completeness = int(b.get("prov_completeness").get('value'))
     test_dict['Test Name'].extend(["provenance completeness"])
     test_dict['System accuracy or response'].extend([prov_completeness*100])
+    return {
+        "provenance completeness": prov_completeness*100
+    }
 
 #Metric 3
 def cycle_rate():
@@ -164,10 +175,16 @@ def cycle_rate():
         '''
     result_1 = perform_sparql_query(test_query)
     test_dict['Test Name'].extend(["cycle rate"])
+    test_res = None
     if not result_1.get('boolean'):
+        test_res = 'No cycles detected in causal chains'
         test_dict['System accuracy or response'].extend(['No cycles detected in causal chains'])
     else:
+       test_res = 'cycles detected in causal chains'
        test_dict['System accuracy or response'].extend(['cycles detected in causal chains'])
+    return {
+       "cycle rate": test_res
+    }
 
 #Metric 4
 def chain_recall():
@@ -230,10 +247,14 @@ def chain_recall():
         avg_precision.append(precision)
     test_dict['Test Name'].extend(["chain recall", "chain precision"])
     test_dict['System accuracy or response'].extend([f"{round(np.mean(avg_recall),2)}%", f"{round(np.mean(avg_precision),2)}%"])
+    return {
+        "chain recall": f"{round(np.mean(avg_recall),2)}%",
+        "chain precision": f"{round(np.mean(avg_precision),2)}%"
+    }
 
-root_cause_accuracy()
-test_provenance_completeness()
-cycle_rate()
-chain_recall()
+# root_cause_accuracy()
+# test_provenance_completeness()
+# cycle_rate()
+# chain_recall()
 
-print(tabulate(test_dict, headers="keys", tablefmt="github"))
+# print(tabulate(test_dict, headers="keys", tablefmt="github"))

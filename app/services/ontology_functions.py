@@ -100,6 +100,10 @@ def initiate_ontology(
         base_onto = base_onto.load()
         product1_onto = product1_onto.load()
     else:
+        base_onto.destroy()
+        product1_onto.destroy()
+        base_onto = get_ontology(BASE_ONTO_IRI)
+        product1_onto = get_ontology(PRODUCT_ONTO_IRI)
         # When ontologies do not exist in ontologies folder, create them for the first time
         if import_ontologies:
             iof = get_ontology(f"{path}/iof-core.rdf").load(only_local=True)

@@ -8,7 +8,7 @@ import pandas as pd
 from pathlib import Path
 from SPARQLWrapper import SPARQLWrapper, JSON, POST
 
-GDB_URL = "http://localhost:7201"
+GDB_URL = "http://localhost:7200"
 REPO = "demo-semicon"
 
 def create_classname_syntax(classname):

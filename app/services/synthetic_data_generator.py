@@ -8,13 +8,14 @@ output_path = "./app/data/output/epoch3-7"
 input_path = "./app/data/input/epoch3-7"
 
 process_parameters = {
+    # monte carlo simluation, #discrete event simulation
     "Stencil thickness": {
         "NV": 0.100,
         "tolerance": 0.005,
         "USL": 0.105,
         "LSL": 0.095,
         "sigma": 0.00167
-    #  σ = tol/3 → 0.005 / 3 = 0.00167 (1.67% of NV) ✅ realistic (tight dimensional control)
+    #  σ = tol/x → 0.005 / 3 = 0.00167 (1.67% of NV) ✅ realistic (tight dimensional control)
     },
     "Paste volume per aperture": {
         "NV": 0.04,
@@ -386,6 +387,7 @@ def generate_ground_truth(reuse=False):
         inject_spec_violations(df_ppf)
     else:
         df_ppf = data_factory(size=5000)
+        inject_spec_violations(df_ppf)
 
     # --- Apply to DataFrame ---
     root_cause_list = []
@@ -478,4 +480,4 @@ def generate_ground_truth(reuse=False):
 
 # sigma_percent()
 
-generate_ground_truth(reuse=True)
+# generate_ground_truth(reuse=True)
