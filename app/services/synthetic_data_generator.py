@@ -1,7 +1,15 @@
 import random
+import numpy as np
 import pandas as pd
 import scipy.stats as st
 import json
+import re
+
+from asteval import Interpreter
+
+from app.services.utils import create_classname_syntax
+
+aeval = Interpreter()
 
 
 output_path = "./app/data/output/epoch3-7"
@@ -30,8 +38,8 @@ process_parameters = {
         "tolerance": 0.4,
         "USL": 4.4,
         "LSL": 3.6,
-        "sigma": 0.13333
-    #  σ = tol/3 → 0.4 / 3 = 0.13333 (3.3% of NV) ✅ realistic
+        "sigma": 0.1133
+    #  σ = tol/3.53 → 0.4 / 3 = 0.13333 (3.3% of NV) ✅ realistic
     },
     "Residual paste": {
         "NV": 5,
@@ -54,8 +62,8 @@ process_parameters = {
         "tolerance": 14,
         "USL": 84,
         "LSL": 56,
-        "sigma": 2.80
-    # // adjusted σ = (tol/5) ≈ 2.8 (4% of NV) ⚙️ tightened from 4.67 (6.7%) for realism
+        "sigma": 4.2
+    # // adjusted σ = (tol/3.33) ≈ 2.8 (4% of NV) ⚙️ tightened from 4.67 (6.7%) for realism
     },
     "Squeegee angle": {
         "NV": 60,
@@ -70,7 +78,7 @@ process_parameters = {
         "tolerance": None,
         "USL": None,
         "LSL": 0.66,  # since only minimum is specified
-        "target_defect_rate": [0.002, 0.004], #fine tune range here
+        "target_defect_rate": [0.001, 0.002], #fine tune range here
         "sigma_pct": 0.03
     },
     "Paste viscosity": {
@@ -154,12 +162,18 @@ ishikawa_graph = {
       "ApertureOverfill",
       "UndersideSmear",
       "PostPrintSpread"
+    ],
+    "rules": [
+        "If PasteVolumePerAperture > PasteVolumePerAperture_USL == ExcessPasteVolumePerAperture"
     ]
   },
   "ExcessReflowSpreading": {
     "caused_by": [
       "PeakReflowTemperatureTooHigh",
       "TimeAboveLiquidusTooHigh"
+    ],
+    "rules":[
+        "If PeakReflowTemperature > PeakReflowTemperature_USL OR TimeAboveLiquidus > TimeAboveLiquidus_USL == ExcessReflowSpreading"
     ]
   },
   "ApertureOverfill": {
@@ -169,18 +183,31 @@ ishikawa_graph = {
       "StencilThicknessTooHigh",
       "SqueegeeAngleTooLow",
       "SqueegeeSpeedTooLow"
+    ],
+    "rules":[
+        "If PasteRollBeadSize > PasteRollBeadSize_USL == ApertureOverfill",
+        "If ApertureAreaRatio < ApertureAreaRatio_LSL OR StencilThickness > StencilThickness_USL == ApertureOverfill",
+        "If SqueegeeAngle < SqueegeeAngle_LSL AND (SqueegeeSpeed < SqueegeeSpeed_LSL OR SqueegeePressure > SqueegeePressure_USL) == ApertureOverfill"
     ]
   },
   "UndersideSmear": {
     "caused_by": [
       "SqueegeePressureTooHigh",
       "HighResidualPasteVolume"
+    ],
+    "rules":[
+        "If SqueegeePressure > SqueegeePressure_USL OR ResidualPaste > ResidualPaste_USL == UndersideSmear"
     ]
   },
   "PostPrintSpread": {
     "caused_by": [
       "LowPasteViscosity",
-      "HighHumidity"
+      "HighHumidity",
+      "LowMetalLoad"
+    ],
+    "rules":[
+        "If PasteViscosity < PasteViscosity_LSL OR AmbientRh > AmbientRh_USL == PostPrintSpread",
+        "If MetalLoad < MetalLoad_LSL == PostPrintSpread"
     ]
   },
   "OpenCircuit": {
@@ -194,17 +221,26 @@ ishikawa_graph = {
     "caused_by": [
       "TimeAboveLiquidusTooLow",
       "PeakReflowTemperatureTooLow"
+    ],
+    "rules":[
+        "If PeakReflowTemperature < PeakReflowTemperature_LSL OR TimeAboveLiquidus < TimeAboveLiquidus_LSL == NonCoalescence"
     ]
   },
   "InsufficientPasteVolumePerAperture": {
     "caused_by": [
       "PoorPasteTransfer"
+    ],
+    "rules":[
+        "If PasteVolumePerAperture < PasteVolumePerAperture_LSL == InsufficientPasteVolumePerAperture"
     ]
   },
   "PoorPasteTransfer": {
     "caused_by": [
       "SqueegeeSpeedTooHigh",
       "SqueegeePressureTooLow"
+    ],
+    "rules":[
+        "If SqueegeeSpeed > SqueegeeSpeed_USL OR SqueegeePressure < SqueegeePressure_LSL == PoorPasteTransfer"
     ]
   }
 }
@@ -248,17 +284,19 @@ def get_causes(
 # High σ% ⇒ more natural failures / wider tails. For parameters where % of NV is large (≥ ~5–8%), you’ll see more out-of-spec samples and more sensitivity in downstream defect mapping.
 # Low σ% ⇒ very few defects from noise. Parameters like reflow temp (0.65%) will rarely produce out-of-spec events unless the mean shifts.
 
-# Function to generate a single sample using PPF
-def generate_value_ppf(param_info):
-    NV = param_info["NV"]
-    sigma = param_info.get("sigma", None)
-    if sigma:
-        #sigma is now controllable
-        return st.norm.ppf(random.random(), loc=NV, scale=sigma)
-
-# Function to generate multiple samples
+# Function to generate a n samples using PPF for each param
 def generate_samples_ppf(param_info, n=1000):
-    return [generate_value_ppf(param_info) for _ in range(n)]
+    NV = param_info["NV"]
+    sigma = param_info["sigma"]
+
+    # Generate n uniform(0,1) random numbers
+    r = np.random.rand(n)
+
+    # Apply vectorized PPF
+    samples = st.norm.ppf(r, loc=NV, scale=sigma)
+
+    # Return regular python list
+    return samples.tolist()
 
 def sigma_percent():
     data = []
@@ -296,7 +334,7 @@ def calculate_mu_and_sigma_for_on_sided_specs(param_info):
     param_info['sigma'] = sigma
 
 def data_factory(size=1000):
-    # Generate 1000 samples for each parameter
+    # Generate "size" number of samples for each parameter
     for k, v in process_parameters.items():
         if not v['tolerance']:
             calculate_mu_and_sigma_for_on_sided_specs(v)
@@ -304,10 +342,8 @@ def data_factory(size=1000):
         name: generate_samples_ppf(info, size)
         for name, info in process_parameters.items()
     }
-
     # Create a Pandas DataFrame
     df_ppf = pd.DataFrame(samples_ppf)
-
     # Display summary
     print(df_ppf.head(1))
     return df_ppf
@@ -419,10 +455,24 @@ def generate_ground_truth(reuse=False):
             row_mech_causes.extend(mech_causes)
         
         #ishikawa rules - mech causes
+        process_parameters_temp = {create_classname_syntax(k): v for k,v in process_parameters.items()}
         for effect, effect_info in ishikawa_graph.items():
             causes = effect_info['caused_by']
-            if effect_info.get('type', "mech") != "defect":
-                if len(row_root_causes) > 0 and any(x in causes for x in row_root_causes):
+            rules = effect_info.get('rules', [])
+            for rule in rules:
+                before_eq = rule.split("==")[0].replace("If", "").strip()
+                pattern = r'([A-Za-z_][A-Za-z0-9_]*)\s*(<=|>=|<|>)\s*([A-Za-z_][A-Za-z0-9_]*)'
+                pairs = re.findall(pattern, before_eq)
+                result = {left: right for (left, op, right) in pairs}
+                result_with_nums = {}
+                obs_data = {create_classname_syntax(k) : v for k,v in row.to_dict().items()}
+                for k, v in result.items():
+                    result_with_nums[k] = obs_data[k]
+                    result_with_nums[v] = process_parameters_temp[k][v.split("_")[1]]
+                expr = before_eq.replace("AND", "and").replace("OR", "or")
+                aeval.symtable.update(result_with_nums)
+                rule_parsing_res = aeval(expr)
+                if effect_info.get('type', "mech") != "defect" and rule_parsing_res:
                     row_mech_causes.append(effect)
         
         #Optional
@@ -481,3 +531,4 @@ def generate_ground_truth(reuse=False):
 # sigma_percent()
 
 # generate_ground_truth(reuse=True)
+# generate_ground_truth(reuse=False)

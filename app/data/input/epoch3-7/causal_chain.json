@@ -33,9 +33,10 @@
     ],
     "governed_by": [
       "If ApertureAreaRatio < ApertureAreaRatio_LSL OR StencilThickness > StencilThickness_USL == ApertureOverfill",
-      "If SqueegeeAngle < SqueegeeAngle_LSL AND (SqueegeeSpeed < SqueegeeSpeed_LSL OR SqueegeePressure > SqueegeePressure_USL) == ApertureOverfill"
+      "If SqueegeeAngle < SqueegeeAngle_LSL AND (SqueegeeSpeed < SqueegeeSpeed_LSL OR SqueegeePressure > SqueegeePressure_USL) == ApertureOverfill",
+      "If SqueegeeSpeed < SqueegeeSpeed_LSL == ApertureOverfill"
     ]
-  },
+  }, 
   "UndersideSmear": {
     "caused_by": [
       "SqueegeePressureTooHigh",

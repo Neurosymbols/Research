@@ -4,7 +4,7 @@ import yaml
 
 from functools import reduce
 from owlready2 import *
-from app.services.utils import add_classes, add_individuals, create_classname_syntax
+from app.services.utils import add_classes, add_individuals, create_classname_syntax, perform_sparql_query, perform_sparql_update
 
 # Set the IRIs
 BASE_ONTO_IRI = "https://neurosymbols.ai/ontology/causal-terminology.owl"
@@ -642,3 +642,90 @@ def add_products_to_ontology(
             print(f"{product_count} product individuals imported to the ontology")
 
     return {"message": "products added"}
+
+def build_product_triples(row):
+    def get_spec_details(spec_class):
+        query = f'''
+            PREFIX term: <https://neurosymbols.ai/ontology/causal-terminology.owl#>
+            PREFIX assert: <https://neurosymbols.ai/data/causal-assertions.owl#>
+            PREFIX iof: <https://spec.industrialontologies.org/ontology/core/Core/>
+            PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+
+            SELECT ?spec ?specunit ?spec_prescribes
+            WHERE {{
+                ?spec a term:{spec_class}Spec ; term:hasUnit ?specunit ; iof:prescribes ?spec_prescribes .
+            }}
+        '''
+        results = perform_sparql_query(query)
+        assert len(results['results']['bindings']) > 0
+        return {k:v['value'] for k, v in results['results']['bindings'][0].items()}
+
+    triples = []
+
+    pcb_id = create_classname_syntax(row["PCB_ID"])
+    pcb_iri = f"assert:{pcb_id}"
+
+    # --- PCB individual ---
+    triples.append(f"{pcb_iri} a term:PCB ; rdfs:label \"{pcb_id}\" .")
+
+    # --- Defect (multiple values possible) ---
+    if not pd.isna(row["Defect occured"]) and row["Defect occured"] != "":
+        defect_concepts = [d.strip() for d in row["Defect occured"].split(",")]
+        for c in defect_concepts:
+            assert len(c.split("_")) == 2, "defect string not formulated correctly"
+            defect_classname = create_classname_syntax(c.split("_")[0])
+            defect_iri = f"assert:{c}"
+            triples.append(f"{defect_iri} a term:{defect_classname} ; term:defectOccursOn {pcb_iri} ; rdfs:label \"{c}\" .")
+
+    # --- Other observations (Stencil Thickness, Aperture, etc.) ---
+    for k, v in row.items():
+        if k in ["PCB_ID", "Defect occured", "Mechanism Failure Causes", "Root Causes"]:
+            continue
+        if v == "" or pd.isna(v):
+            continue
+
+        cls = create_classname_syntax(k)   # your existing method
+        obs_iri = f"assert:{cls}_{pcb_id}_Obs"
+        spec_details = get_spec_details(cls)
+        triples.append(f"""
+            {obs_iri} a term:{cls}Obs ;
+                term:hasObservedValue "{float(v)}"^^xsd:float ;
+                term:observationOf {pcb_iri} ;
+                term:describes assert:{spec_details['spec_prescribes'].split("#")[1]} ;
+                term:hasUnit \"{spec_details['specunit']}\" ;
+                term:isAbout assert:{spec_details['spec'].split("#")[1]} .
+        """)
+
+    return triples
+
+def add_products_to_graphdb(csv_file):
+    df = pd.read_csv(csv_file)
+    df = df[
+        df[["Defect occured", "Mechanism Failure Causes", "Root Causes"]]
+        .apply(lambda row: row.notna().any() and (row != "").any(), axis=1)
+    ]
+    # df = df.head(batch_size)
+
+    all_triples = []
+
+    for index, row in df.iterrows():
+        triples = build_product_triples(row.to_dict())
+        all_triples += triples
+
+    sparql = f"""
+    PREFIX term: <https://neurosymbols.ai/ontology/causal-terminology.owl#>
+    PREFIX assert: <https://neurosymbols.ai/data/causal-assertions.owl#>
+    PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+
+    INSERT DATA {{
+    GRAPH <http://example.org/graph/products> {{
+        {' '.join(all_triples)}
+    }}
+    }}
+    """
+    perform_sparql_update(query = sparql)
+    print(f"{len(df)} product individuals inserted.")
+
+# add_products_to_graphdb(
+#     csv_file=f"./app/data/input/epoch3-7/data_1.csv"
+# )

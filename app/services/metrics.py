@@ -215,7 +215,9 @@ def chain_recall():
         '''
     avg_recall = []
     avg_precision = []
+    causal_chain_cm = []
     for k,v in factory.items():
+        cm = {"PCB_ID":k, "TP": -1, "TN": -1, "FP": -1, "FN": -1}
         query = test_query.replace("{PCB}", k)
         result_1 = perform_sparql_query(query)
         result_1_bindings = result_1.get('results', {}).get('bindings', [])
@@ -228,15 +230,24 @@ def chain_recall():
         pred_set = {tuple((i.lower() for i in item)) for item in pred_set}
         v = {tuple(i.lower() for i in item) for item in v}
         intersection = pred_set & v
-        if len(v):
+        if len(v) or len(pred_set):
             recall = round((len(intersection) / len(v)) * 100, 2) if len(v) else 0
             precision = round((len(intersection)/len(pred_set))*100,2) if pred_set else 0
+            cm['TP'] = len(intersection)
+            cm['FP'] = len(pred_set.difference(intersection))
+            cm['FN'] = len(v.difference(intersection))
+            cm['TN'] = (len(v) + len(pred_set)) - len(intersection) - (cm['TP'] + cm['FP'] + cm['FN'])
         elif len(v) == 0 and len(pred_set) == 0:
-            recall = 100.0
-            precision = 100.0
-        else:
-            recall = 0
-            precision = 0
+            recall = 100
+            precision = 100
+            cm['TP'] = 0
+            cm['FP'] = 0
+            cm['FN'] = 0
+            cm['TN'] = 1
+        # else:
+        #     recall = 0
+        #     precision = 0
+        causal_chain_cm.append(cm)
         print(f"pred set for {k} {len(list(pred_set))};;", 
               f"expected set for {k} {len(list(v))};;", 
               f"intersection set for {k} {len(list(intersection))};;",
@@ -249,7 +260,8 @@ def chain_recall():
     test_dict['System accuracy or response'].extend([f"{round(np.mean(avg_recall),2)}%", f"{round(np.mean(avg_precision),2)}%"])
     return {
         "chain recall": f"{round(np.mean(avg_recall),2)}%",
-        "chain precision": f"{round(np.mean(avg_precision),2)}%"
+        "chain precision": f"{round(np.mean(avg_precision),2)}%",
+        "causal chain cm": causal_chain_cm
     }
 
 # root_cause_accuracy()

@@ -1,0 +1,54 @@
+{
+ "stencil thickness": {
+  "upper": 8,
+  "lower": 5
+ },
+ "paste volume per aperture": {
+  "upper": 6,
+  "lower": 6
+ },
+ "paste roll bead size": {
+  "upper": 1,
+  "lower": 3
+ },
+ "residual paste": {
+  "upper": 11,
+  "lower": 14
+ },
+ "squeegee pressure": {
+  "upper": 6,
+  "lower": 9
+ },
+ "squeegee speed": {
+  "upper": 5,
+  "lower": 5
+ },
+ "squeegee angle": {
+  "upper": 5,
+  "lower": 11
+ },
+ "aperture area ratio": {
+  "upper": 0,
+  "lower": 5
+ },
+ "paste viscosity": {
+  "upper": 0,
+  "lower": 2
+ },
+ "peak reflow temperature": {
+  "upper": 7,
+  "lower": 6
+ },
+ "ambient rh": {
+  "upper": 0,
+  "lower": 0
+ },
+ "metal load": {
+  "upper": 9,
+  "lower": 11
+ },
+ "time above liquidus": {
+  "upper": 0,
+  "lower": 0
+ }
+}

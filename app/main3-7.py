@@ -5,6 +5,7 @@ import glob
 import pandas as pd
 
 from decimal import Decimal, ROUND_HALF_UP
+from pymongo import MongoClient
 from owlready2 import *
 
 from app.services.utils import *
@@ -17,6 +18,7 @@ from .services.metrics import root_cause_accuracy, test_provenance_completeness,
 from app.services.synthetic_data_generator import generate_ground_truth
 from app.services.causal_chains import rule_to_sparql, fire_failure_cause_queries, create_causal_chain, infere_root_causes, attach_corrective_action_to_root_causes
 
+db_client = MongoClient("mongodb://localhost:27017/")
 
 base_path = "./app/data"
 path = f"{base_path}/ontologies/epoch3-7"
@@ -373,36 +375,56 @@ if __name__ == "__main__":
         create_kg_from_scratch()
     
     if args.create_metrics_report:
-        count = 30
-        i = 0
-        metrics = []
+        run_processing = False
+        db = db_client['semicon']
+        col = db['causal_chain_metrics']
+        col.delete_many({})
         folder = "./app/data/ontologies/epoch3-7"   # change to your folder path
-        while i <= count:
-            #ground truth
-            generate_ground_truth(reuse=False)
-            #create kg
-            create_kg_from_scratch()
-            #causal chains
-            rule_to_sparql(verb="INSERT")
-            fire_failure_cause_queries(verb="INSERT")
-            create_causal_chain(verb="INSERT")
-            infere_root_causes(verb="INSERT")
-            attach_corrective_action_to_root_causes(verb="INSERT")
-            #metrics
-            data = {
-                **root_cause_accuracy(), 
-                **test_provenance_completeness(), 
-                **cycle_rate(), 
-                **chain_recall()
-            }
-            metrics.append(data)
-            i += 1
-            pattern = os.path.join(folder, "causal-*.owl")
-            for file in glob.glob(pattern):
-                print("Deleting:", file)
-                os.remove(file)
-            if i == 30:
-                break
-        df = pd.DataFrame(metrics)
-        df.to_csv(f"{output_path}/metrics_report.csv")
+        if run_processing:
+            count = 30
+            i = 0
+            metrics = []
+            while i <= count:
+                #ground truth
+                generate_ground_truth(reuse=False)
+                #create kg
+                create_kg_from_scratch()
+                #causal chains
+                rule_to_sparql(verb="INSERT")
+                fire_failure_cause_queries(verb="INSERT")
+                create_causal_chain(verb="INSERT")
+                infere_root_causes(verb="INSERT")
+                attach_corrective_action_to_root_causes(verb="INSERT")
+                #metrics
+                chain_metrics = chain_recall()
+                chain_cm_metrics = chain_metrics.pop('causal chain cm')
+                chain_cm_metrics_df = pd.DataFrame(chain_cm_metrics)
+                chain_cm_metrics_df.to_csv(f"{output_path}/chain_cm_report.csv")
+                data = {
+                    **root_cause_accuracy(), 
+                    **test_provenance_completeness(), 
+                    **cycle_rate(), 
+                    **chain_metrics
+                }
+                metrics.append(data)
+                col.insert_one(data.copy())
+                i += 1
+                pattern = os.path.join(folder, "causal-*.owl")
+                for file in glob.glob(pattern):
+                    print("Deleting:", file)
+                    os.remove(file)
+                # if(i == 1):
+                #     break
+            df = pd.DataFrame(metrics)
+            df.to_csv(f"{output_path}/metrics_report.csv")
+        df = pd.read_csv(f"{output_path}/metrics_report.csv")
+        # drop index column (usually the first column) and 'cycle rate'
+        cols_to_drop = ['cycle rate', df.columns[0]]
+        df = df.drop(columns=cols_to_drop)
+        # remove % and convert to float
+        df_clean = df.replace('%', '', regex=True).astype(float)
+        means = df_clean.median()
+        # round + convert to int + append %
+        means = means.astype(str) + '%'
+        print(means)
 

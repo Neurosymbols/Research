@@ -13,3 +13,5 @@ lark-parser
 rdflib
 requests
 tabulate
+asteval
+pymongo
