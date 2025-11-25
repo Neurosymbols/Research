@@ -200,8 +200,10 @@ def chain_recall():
     avg_recall = []
     avg_precision = []
     causal_chain_cm = []
+    causal_chain_cm_ex = []
     for k,v in factory.items():
         cm = {"PCB_ID":k, "TP": -1, "TN": -1, "FP": -1, "FN": -1}
+        cm_ex = {"PCB_ID":k, "TP": [], "TN": [], "FP": [], "FN": []}
         query = test_query.replace("{PCB}", k)
         result_1 = perform_sparql_query(query)
         result_1_bindings = result_1.get('results', {}).get('bindings', [])
@@ -218,8 +220,11 @@ def chain_recall():
             recall = round((len(intersection) / len(v)) * 100, 2) if len(v) else 0
             precision = round((len(intersection)/len(pred_set))*100,2) if pred_set else 0
             cm['TP'] = len(intersection)
+            cm_ex['TP'].extend(list(intersection))
             cm['FP'] = len(pred_set.difference(intersection))
+            cm_ex['FP'].extend(list(pred_set.difference(intersection)))
             cm['FN'] = len(v.difference(intersection))
+            cm_ex['FN'].extend(list(v.difference(intersection)))
             cm['TN'] = (len(v) + len(pred_set)) - len(intersection) - (cm['TP'] + cm['FP'] + cm['FN'])
         elif len(v) == 0 and len(pred_set) == 0:
             recall = 100
@@ -232,6 +237,7 @@ def chain_recall():
         #     recall = 0
         #     precision = 0
         causal_chain_cm.append(cm)
+        causal_chain_cm_ex.append(cm_ex)
         print(f"pred set for {k} {len(list(pred_set))};;", 
               f"expected set for {k} {len(list(v))};;", 
               f"intersection set for {k} {len(list(intersection))};;",
@@ -242,6 +248,8 @@ def chain_recall():
         avg_precision.append(precision)
     test_dict['Test Name'].extend(["chain recall", "chain precision"])
     test_dict['System accuracy or response'].extend([f"{round(np.mean(avg_recall),2)}%", f"{round(np.mean(avg_precision),2)}%"])
+    with open("./app/data/output/epoch3-7/chain_cm_examples_report.json", "w") as f:
+        json.dump(causal_chain_cm_ex, f, indent=2)
     return {
         "chain recall": f"{round(np.mean(avg_recall),2)}%",
         "chain precision": f"{round(np.mean(avg_precision),2)}%",
