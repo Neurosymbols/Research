@@ -384,7 +384,7 @@ if __name__ == "__main__":
             count = 30
             i = 0
             metrics = []
-            while i <= count:
+            while i < count:
                 #ground truth
                 generate_ground_truth(reuse=False)
                 #create kg
@@ -413,8 +413,6 @@ if __name__ == "__main__":
                 for file in glob.glob(pattern):
                     print("Deleting:", file)
                     os.remove(file)
-                # if(i == 1):
-                #     break
             df = pd.DataFrame(metrics)
             df.to_csv(f"{output_path}/metrics_report.csv")
         df = pd.read_csv(f"{output_path}/metrics_report.csv")
@@ -425,6 +423,6 @@ if __name__ == "__main__":
         df_clean = df.replace('%', '', regex=True).astype(float)
         means = df_clean.median()
         # round + convert to int + append %
-        means = means.astype(str) + '%'
+        means = means.astype(str)
         print(means)
 

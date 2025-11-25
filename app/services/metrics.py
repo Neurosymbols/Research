@@ -261,7 +261,13 @@ def chain_recall():
     return {
         "chain recall": f"{round(np.mean(avg_recall),2)}%",
         "chain precision": f"{round(np.mean(avg_precision),2)}%",
-        "causal chain cm": causal_chain_cm
+        "causal chain cm": causal_chain_cm,
+        "sigma recall": str(round(float(np.array(avg_recall).std()), 2)),
+        "min recall":   str(round(float(np.array(avg_recall).min()), 2)),
+        "max recall":   str(round(float(np.array(avg_recall).max()), 2)),
+        "sigma prec":   str(round(float(np.array(avg_precision).std()), 2)),
+        "min prec":     str(round(float(np.array(avg_precision).min()), 2)),
+        "max prec":     str(round(float(np.array(avg_precision).max()), 2))
     }
 
 # root_cause_accuracy()
