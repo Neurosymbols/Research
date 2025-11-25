@@ -102,6 +102,10 @@ def root_cause_accuracy():
             equivalence_test_passed_boards.append(k)
     test_dict['Test Name'].extend(["top-k root cause", "root-cause set equivalence"])
     test_dict['System accuracy or response'].extend([f"{round((len(top_k_test_passed_boards)/total_boards_to_inspect)*100,2)}%", f"{round((len(equivalence_test_passed_boards)/total_boards_to_inspect)*100,2)}%"])
+    return {
+       "top-k root cause": f"{round((len(top_k_test_passed_boards)/total_boards_to_inspect)*100,2)}%",
+       "root-cause set equivalence": f"{round((len(equivalence_test_passed_boards)/total_boards_to_inspect)*100,2)}%"
+    }
 
 
 #Metric 2
@@ -132,6 +136,9 @@ def test_provenance_completeness():
         prov_completeness = int(b.get("prov_completeness").get('value'))
     test_dict['Test Name'].extend(["provenance completeness"])
     test_dict['System accuracy or response'].extend([prov_completeness*100])
+    return {
+        "provenance completeness": prov_completeness*100
+    }
 
 #Metric 3
 def cycle_rate():
@@ -152,10 +159,16 @@ def cycle_rate():
         '''
     result_1 = perform_sparql_query(test_query)
     test_dict['Test Name'].extend(["cycle rate"])
+    test_res = None
     if not result_1.get('boolean'):
+        test_res = 'No cycles detected in causal chains'
         test_dict['System accuracy or response'].extend(['No cycles detected in causal chains'])
     else:
+       test_res = 'cycles detected in causal chains'
        test_dict['System accuracy or response'].extend(['cycles detected in causal chains'])
+    return {
+       "cycle rate": test_res
+    }
 
 #Metric 4
 def chain_recall():
@@ -177,7 +190,7 @@ def chain_recall():
                 VALUES ?effect_pred { term:defectOccursOn term:affects }
                 ?effect ?effect_pred ?product .
                 ?cause term:affects ?product .
-                ?effect ro:directlyCausallyInfluencedBy ?cause .
+                ?effect term:directlyCausallyInfluencedBy ?cause .
                 ?product rdfs:label ?productlabel .
                 ?effect rdfs:label ?effectlabel .
                 ?cause rdfs:label ?causelabel
@@ -186,7 +199,9 @@ def chain_recall():
         '''
     avg_recall = []
     avg_precision = []
+    causal_chain_cm = []
     for k,v in factory.items():
+        cm = {"PCB_ID":k, "TP": -1, "TN": -1, "FP": -1, "FN": -1}
         query = test_query.replace("{PCB}", k)
         result_1 = perform_sparql_query(query)
         result_1_bindings = result_1.get('results', {}).get('bindings', [])
@@ -196,19 +211,46 @@ def chain_recall():
             effectlabel = b.get("effectlabel").get('value')
             causelabel = b.get("causelabel").get('value')
             pred_set.append((effectlabel, causelabel))
-        pred_set = set((a.lower(), b.lower()) for a, b in pred_set)
-        v = set((a.lower(), b.lower()) for a, b in v)
+        pred_set = {tuple((i.lower() for i in item)) for item in pred_set}
+        v = {tuple(i.lower() for i in item) for item in v}
         intersection = pred_set & v
-        recall = round((len(intersection)/len(v))*100,2)
-        precision = round((len(intersection)/len(pred_set))*100,2)
+        if len(v) or len(pred_set):
+            recall = round((len(intersection) / len(v)) * 100, 2) if len(v) else 0
+            precision = round((len(intersection)/len(pred_set))*100,2) if pred_set else 0
+            cm['TP'] = len(intersection)
+            cm['FP'] = len(pred_set.difference(intersection))
+            cm['FN'] = len(v.difference(intersection))
+            cm['TN'] = (len(v) + len(pred_set)) - len(intersection) - (cm['TP'] + cm['FP'] + cm['FN'])
+        elif len(v) == 0 and len(pred_set) == 0:
+            recall = 100
+            precision = 100
+            cm['TP'] = 0
+            cm['FP'] = 0
+            cm['FN'] = 0
+            cm['TN'] = 1
+        # else:
+        #     recall = 0
+        #     precision = 0
+        causal_chain_cm.append(cm)
+        print(f"pred set for {k} {len(list(pred_set))};;", 
+              f"expected set for {k} {len(list(v))};;", 
+              f"intersection set for {k} {len(list(intersection))};;",
+              f"recall for {k} {recall};;",
+              f"precision for {k} {precision}",
+        )
         avg_recall.append(recall)
         avg_precision.append(precision)
     test_dict['Test Name'].extend(["chain recall", "chain precision"])
     test_dict['System accuracy or response'].extend([f"{round(np.mean(avg_recall),2)}%", f"{round(np.mean(avg_precision),2)}%"])
+    return {
+        "chain recall": f"{round(np.mean(avg_recall),2)}%",
+        "chain precision": f"{round(np.mean(avg_precision),2)}%",
+        "causal chain cm": causal_chain_cm
+    }
 
-root_cause_accuracy()
-test_provenance_completeness()
-cycle_rate()
-chain_recall()
+# root_cause_accuracy()
+# test_provenance_completeness()
+# cycle_rate()
+# chain_recall()
 
-print(tabulate(test_dict, headers="keys", tablefmt="github"))
+# print(tabulate(test_dict, headers="keys", tablefmt="github"))

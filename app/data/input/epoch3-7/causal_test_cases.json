@@ -51,5 +51,12 @@
         ["Solder Bridging_PCB27", "Excess Paste volume per aperture"],
         ["Excess Paste volume per aperture", "Post print spread"],
         ["Post print spread", "Low Metal content in paste"]
+    ],
+    "PCB44":[
+        ["Solder Bridging_PCB44", "Excess Paste volume per aperture"],
+        ["Solder Bridging_PCB44", "Excess reflow spreading"],
+        ["Excess Paste volume per aperture", "Aperture Overfill"],
+        ["Aperture Overfill", "Large bead size of solder paste"],
+        ["Excess reflow spreading", "Time above liquidus too high"]
     ]
 }

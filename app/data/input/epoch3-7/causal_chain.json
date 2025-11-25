@@ -27,15 +27,14 @@
   "ApertureOverfill": {
     "caused_by": [
       "LowAreaRatio",
-      "LargeBeadSizeOfSolderPaste",
       "StencilThicknessTooHigh",
       "SqueegeeSpeedTooLow",
       "SqueegeeAngleTooLow"
     ],
     "governed_by": [
       "If ApertureAreaRatio < ApertureAreaRatio_LSL OR StencilThickness > StencilThickness_USL == ApertureOverfill",
-      "If PasteRollBeadSize > PasteRollBeadSize_USL == ApertureOverfill",
-      "If SqueegeeAngle < SqueegeeAngle_LSL AND (SqueegeeSpeed < SqueegeeSpeed_LSL OR SqueegeePressure > SqueegeePressure_USL) == ApertureOverfill"
+      "If SqueegeeAngle < SqueegeeAngle_LSL AND (SqueegeeSpeed < SqueegeeSpeed_LSL OR SqueegeePressure > SqueegeePressure_USL) == ApertureOverfill",
+      "If SqueegeeSpeed < SqueegeeSpeed_LSL == ApertureOverfill"
     ]
   },
   "UndersideSmear": {
@@ -66,12 +65,6 @@
     "caused_by": [],
     "governed_by": [
       "If ApertureAreaRatio < ApertureAreaRatio_LSL == LowAreaRatio"
-    ]
-  },
-  "LargeBeadSizeOfSolderPaste": {
-    "caused_by": [],
-    "governed_by": [
-      "If PasteRollBeadSize > PasteRollBeadSize_USL == LargeBeadSizeOfSolderPaste"
     ]
   },
   "StencilThicknessTooHigh": {

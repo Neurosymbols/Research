@@ -12,7 +12,16 @@ from .services.ontology_functions import initiate_ontology,\
     add_products_to_ontology,\
     add_dispositions_to_ontology
 from .services.bayesian_inference import implement_bayesian_inference
+from .services.causal_chains import rule_to_sparql,\
+    fire_failure_cause_queries,\
+    create_causal_chain,\
+    infere_root_causes,\
+    attach_corrective_action_to_root_causes
 
+from .services.metrics import chain_recall,\
+    root_cause_accuracy,\
+    test_provenance_completeness,\
+    cycle_rate
 
 base_path = "./app/data"
 path = f"{base_path}/ontologies/epoch3-7"
@@ -241,6 +250,46 @@ def extract_definitions_and_examples():
         target_dict[row[0]] = {"definition": row[1], "example": row[2]}
     return target_dict
 
+def create_kg_from_scratch():
+    print("hello")
+    initiate_ontology(
+        True,
+        path,
+        f"{input_path}/ontology_properties.yml",
+        {
+            "semicon_quality_concepts": {k : v for k,v in non_null_specs.items() if non_null_specs[k]['onto_category'] == 'Quality'},
+            "semicon_characteristic_concepts": {k : v for k,v in non_null_specs.items() if non_null_specs[k]['onto_category'] == 'ProcessCharacteristic'},
+            "manufacturing_process_concepts": manufacturing_process_concepts,
+            "defects_and_failure_causes": fcs,
+            "equipments_data": equipments_dict,
+            "material_products_data": material_products_dict
+        },
+        axioms_dict,
+        definitions_dict
+        )
+    add_specs_to_ontology(
+        non_null_specs,
+        path
+    )
+    add_dispositions_to_ontology(
+        fcs, path
+    )
+    add_products_to_ontology(
+        products_in_ontology,
+        f"{input_path}/synthetic_data_factory.csv",
+        path
+    )
+    clear_graphdb_default_graph()
+    export_ontology_to_graphdb(
+        [
+            f"{path}/bfo-prov.owl",
+            f"{path}/iof-core.rdf",
+            f"{path}/ro-causal-properties.owl",
+            f"{path}/causal-terminology.owl",
+            f"{path}/causal-assertions.owl"
+        ]
+    )
+
 axioms_dict = extract_axioms()
 definitions_dict = extract_definitions_and_examples()
 equipments_dict, material_products_dict = extract_equipment_concepts()
@@ -260,6 +309,8 @@ if __name__ == "__main__":
     parser.add_argument("--evaluation-matrix", action="store_true", help="Generate evaluation matrix")
     parser.add_argument("--implement-bayes-inf", action="store_true", help="Implement bayesian inference")
     parser.add_argument("--remove-output-files", action="store_true", help="remove output files given version and path")
+    parser.add_argument("--create-kg", action="store_true", help="create KG")
+    parser.add_argument("--create-metrics-report", action="store_true", help="create metrics report")
 
     args = parser.parse_args()
 
@@ -333,4 +384,41 @@ if __name__ == "__main__":
             "output/epoch3-6",
             version_number=3
         )
+    if args.create_kg:
+        create_kg_from_scratch()
 
+    if args.create_metrics_report:
+        run_processing = True
+        if run_processing:
+            #create kg
+            create_kg_from_scratch()
+            #causal chains
+            rule_to_sparql(verb="INSERT")
+            fire_failure_cause_queries(verb="INSERT")
+            create_causal_chain(verb="INSERT")
+            infere_root_causes(verb="INSERT")
+            attach_corrective_action_to_root_causes(verb="INSERT")
+            #metrics
+            chain_metrics = chain_recall()
+            chain_cm_metrics = chain_metrics.pop('causal chain cm')
+            chain_cm_metrics_df = pd.DataFrame(chain_cm_metrics)
+            chain_cm_metrics_df.to_csv(f"{output_path}/chain_cm_report.csv")
+            metrics = {
+                **root_cause_accuracy(), 
+                **test_provenance_completeness(), 
+                **cycle_rate(), 
+                **chain_metrics
+            }
+            print(metrics)
+            df = pd.DataFrame([metrics])
+            df.to_csv(f"{output_path}/metrics_report.csv")
+        df = pd.read_csv(f"{output_path}/metrics_report.csv")
+        # drop index column (usually the first column) and 'cycle rate'
+        cols_to_drop = ['cycle rate', df.columns[0]]
+        df = df.drop(columns=cols_to_drop)
+        # remove % and convert to float
+        df_clean = df.replace('%', '', regex=True).astype(float)
+        means = df_clean.median()
+        # round + convert to int + append %
+        means = means.astype(str) + '%'
+        print(means)
