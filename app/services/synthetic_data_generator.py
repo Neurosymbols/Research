@@ -15,6 +15,10 @@ aeval = Interpreter()
 output_path = "./app/data/output/epoch3-7"
 input_path = "./app/data/input/epoch3-7"
 
+#def_mod
+#aim: tighter sigma, recall/precision around 90%
+#sigma decreases, def_mod increases, FN decrease
+#decrease one off chains -> 
 process_parameters = {
     # monte carlo simluation, #discrete event simulation
     "Stencil thickness": {
@@ -39,7 +43,8 @@ process_parameters = {
         "USL": 4.4,
         "LSL": 3.6,
         "sigma": 0.1133
-    #  σ = tol/3.53 → 0.4 / 3 = 0.13333 (3.3% of NV) ✅ realistic
+    #  σ = tol/3.53 → 0.4 / 3 = 0.1133 (3.3% of NV) ✅ realistic
+    #  σ = tol/4.5 → 0.4 / 4.5 = 0.08889 (3.3% of NV) ✅ realistic
     },
     "Residual paste": {
         "NV": 5,
@@ -112,6 +117,7 @@ process_parameters = {
         "LSL": 70,
         "sigma": 3.33
     # // σ = tol/3 → 10 / 3 = 3.33 (4.2% of NV) ✅ realistic for alloy composition
+    # // σ = tol/5 → 10 / 5 = 2 (4.2% of NV) ✅ realistic for alloy composition
     },
     "Time Above Liquidus": {
         "NV": 60,
@@ -290,10 +296,9 @@ def generate_samples_ppf(param_info, n=1000):
     sigma = param_info["sigma"]
 
     # Generate n uniform(0,1) random numbers
-    r = np.random.rand(n)
-
+    normals = np.random.rand(n)
     # Apply vectorized PPF
-    samples = st.norm.ppf(r, loc=NV, scale=sigma)
+    samples = st.norm.ppf(normals, loc=NV, scale=sigma)
 
     # Return regular python list
     return samples.tolist()

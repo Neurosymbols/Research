@@ -270,7 +270,7 @@ def create_kg_from_scratch():
     add_dispositions_to_ontology(
         fcs, path
     )
-    add_products_to_ontology(
+    product_insertion_details = add_products_to_ontology(
         products_in_ontology,
         f"{input_path}/data.csv",
         path
@@ -285,6 +285,7 @@ def create_kg_from_scratch():
             f"{path}/causal-assertions.owl"
         ]
     )
+    return product_insertion_details
 
 
 axioms_dict = extract_axioms()
@@ -375,7 +376,7 @@ if __name__ == "__main__":
         create_kg_from_scratch()
     
     if args.create_metrics_report:
-        run_processing = False
+        run_processing = True
         db = db_client['semicon']
         col = db['causal_chain_metrics']
         col.delete_many({})
@@ -388,7 +389,8 @@ if __name__ == "__main__":
                 #ground truth
                 generate_ground_truth(reuse=False)
                 #create kg
-                create_kg_from_scratch()
+                prod_insertion_data = create_kg_from_scratch()
+                prod_insertion_data.pop("message")
                 #causal chains
                 rule_to_sparql(verb="INSERT")
                 fire_failure_cause_queries(verb="INSERT")
@@ -398,9 +400,14 @@ if __name__ == "__main__":
                 #metrics
                 chain_metrics = chain_recall()
                 chain_cm_metrics = chain_metrics.pop('causal chain cm')
+                recall_data = chain_metrics.pop("recall data")
+                prec_data = chain_metrics.pop("prec data")
                 chain_cm_metrics_df = pd.DataFrame(chain_cm_metrics)
                 chain_cm_metrics_df.to_csv(f"{output_path}/chain_cm_report.csv")
+                with open(f"{output_path}/prec_recall.json", "w") as f:
+                    json.dump({"recall data": recall_data, "prec data": prec_data}, f, indent=2)
                 data = {
+                    **prod_insertion_data,
                     **root_cause_accuracy(), 
                     **test_provenance_completeness(), 
                     **cycle_rate(), 

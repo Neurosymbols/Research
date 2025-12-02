@@ -594,10 +594,28 @@ def add_products_to_ontology(
     synthetic_data_factory_file: str,
     ontology_path:str
 ):
+    def is_not_empty(x):
+        return not (pd.isna(x) or x == "")
+
+    def is_empty(x):
+        return pd.isna(x) or x == ""
+
     df = pd.read_csv(synthetic_data_factory_file)
     # Strip spaces from column names
     df.columns = df.columns.str.strip() # Check specs in Synthetic Data files
     # df = df.head(batch_size)
+    # ONLY Defect occured has value
+    only_defect = (
+        df["Defect occured"].apply(is_not_empty)
+    )
+    # NO Defect occured, but other columns have values
+    other_without_defect = (
+        df["Defect occured"].apply(is_empty) &
+        (
+            df["Mechanism Failure Causes"].apply(is_not_empty) |
+            df["Root Causes"].apply(is_not_empty)
+        )
+    )
     df = df[
         df[["Defect occured", "Mechanism Failure Causes", "Root Causes"]]
         .apply(lambda row: row.notna().any() and (row != "").any(), axis=1)
@@ -641,7 +659,11 @@ def add_products_to_ontology(
             #log the number of individuals
             print(f"{product_count} product individuals imported to the ontology")
 
-    return {"message": "products added"}
+    return {
+        "message": "products added", 
+        "only defects": int(only_defect.sum()),
+        "others without defects": int(other_without_defect.sum())
+    }
 
 def build_product_triples(row):
     def get_spec_details(spec_class):

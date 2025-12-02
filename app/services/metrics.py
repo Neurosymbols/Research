@@ -216,7 +216,11 @@ def chain_recall():
     avg_recall = []
     avg_precision = []
     causal_chain_cm = []
+    recall_data = {}
+    prec_data = {}
     for k,v in factory.items():
+        recall_data[k] = 0.0
+        prec_data[k] = 0.0
         cm = {"PCB_ID":k, "TP": -1, "TN": -1, "FP": -1, "FN": -1}
         query = test_query.replace("{PCB}", k)
         result_1 = perform_sparql_query(query)
@@ -256,12 +260,16 @@ def chain_recall():
         )
         avg_recall.append(recall)
         avg_precision.append(precision)
+        recall_data[k] = recall
+        prec_data[k] = precision
     test_dict['Test Name'].extend(["chain recall", "chain precision"])
     test_dict['System accuracy or response'].extend([f"{round(np.mean(avg_recall),2)}%", f"{round(np.mean(avg_precision),2)}%"])
     return {
         "chain recall": f"{round(np.mean(avg_recall),2)}%",
         "chain precision": f"{round(np.mean(avg_precision),2)}%",
         "causal chain cm": causal_chain_cm,
+        "recall data": recall_data,
+        "prec data": prec_data,
         "sigma recall": str(round(float(np.array(avg_recall).std()), 2)),
         "min recall":   str(round(float(np.array(avg_recall).min()), 2)),
         "max recall":   str(round(float(np.array(avg_recall).max()), 2)),
