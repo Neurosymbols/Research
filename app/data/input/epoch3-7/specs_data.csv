@@ -37,3 +37,4 @@ that would record or verify"
 31,Board warpage,< 80 µm,bfo:Quality,PCB,ReflowSolderingProcess,PPSC_61,IPC-6012,PCB QA Procedure,Shadow MOI or laser profiler
 32,metal load,80 ± 10  wt %,bfo:Quality,Solder Paste,,PPSC_61,,,
 33,Time Above Liquidus,60 ± 15 s,iof:ProcessCharacteristic,,ReflowSolderingProcess,PPSC_61,,,
+34,Ambient Temperature,23 ± 3 s,bfo:Quality,Environment,SolderPrintingProcess,PPSC_62,,,

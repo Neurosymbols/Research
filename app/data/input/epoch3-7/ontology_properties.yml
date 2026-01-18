@@ -129,6 +129,27 @@ data_properties:
   
   - name: governedBy
     range: str
+  
+  - name: hasProbability
+    range: float
+
+  - name: hasSource
+    range: str
+
+  - name: hasDescription
+    range: str
+
+  - name: isPresent
+    range: bool
+
+  - name: createdAt
+    range: datetime
+
+  - name: hasRiskLevel
+    range: str
+
+  - name: lastUpdated
+    range: datetime
 
 annotation_properties:
   - name: triggeredByRuleText

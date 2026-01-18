@@ -139,18 +139,6 @@
   <core:example rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Oven_Profile_TCs_2025‑11‑05.json isAssessmentInputFor COA‑PCB1‑paste_volume_rule (profile used to validate TAL window before rule evaluation).</core:example>
 </owl:ObjectProperty>
 
-<owl:ObjectProperty rdf:about="#directlyCausallyInfluencedBy">
-  <rdfs:subPropertyOf rdf:resource="http://purl.obolibrary.org/obo/RO_0002559"/>
-  <rdfs:domain rdf:resource="#Effect"/>
-  <rdfs:range rdf:resource="#FailureCause"/>
-</owl:ObjectProperty>
-
-<owl:ObjectProperty rdf:about="#directlyCausallyInfluences">
-  <rdfs:subPropertyOf rdf:resource="http://purl.obolibrary.org/obo/RO_0002566"/>
-  <rdfs:domain rdf:resource="#FailureCause"/>
-  <rdfs:range rdf:resource="#Effect"/>
-</owl:ObjectProperty>
-
 <owl:DatatypeProperty rdf:about="#hasUpperValue">
   <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
   <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
@@ -182,6 +170,34 @@
 
 <owl:DatatypeProperty rdf:about="#governedBy">
   <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="#hasProbability">
+  <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="#hasSource">
+  <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="#hasDescription">
+  <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="#isPresent">
+  <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="#createdAt">
+  <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="#hasRiskLevel">
+  <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="#lastUpdated">
+  <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
 </owl:DatatypeProperty>
 
 <owl:AnnotationProperty rdf:about="#triggeredByRuleText"/>
@@ -226,7 +242,7 @@
           <owl:someValuesFrom rdf:resource="#ConformanceAssessment"/>
         </owl:Restriction>
         <owl:Restriction>
-          <owl:onProperty rdf:resource="#directlyCausallyInfluences"/>
+          <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/directlyCausallyInfluences"/>
           <owl:someValuesFrom rdf:resource="#Effect"/>
         </owl:Restriction>
       </owl:intersectionOf>
@@ -241,7 +257,7 @@
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000020"/>
   <owl:equivalentClass>
     <owl:Restriction>
-      <owl:onProperty rdf:resource="#directlyCausallyInfluencedBy"/>
+      <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/directlyCausallyInfluencedBy"/>
       <owl:someValuesFrom rdf:resource="#FailureCause"/>
     </owl:Restriction>
   </owl:equivalentClass>
@@ -250,10 +266,14 @@
   <core:example rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Head-in-pillow (effect) resulting from warpage mismatch and insufficient time above liquidus.</core:example>
 </owl:Class>
 
-<owl:Class rdf:about="#Stencil">
+<owl:Class rdf:about="#SolderPaste">
   <rdfs:subClassOf rdf:resource="https://spec.industrialontologies.org/ontology/core/Core/MaterialProduct"/>
-  <rdfs:subClassOf rdf:resource="https://spec.industrialontologies.org/ontology/core/Core/PieceOfEquipment"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Stencil</rdfs:label>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Solder Paste</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#Environment">
+  <rdfs:subClassOf rdf:resource="https://spec.industrialontologies.org/ontology/core/Core/MaterialProduct"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Environment</rdfs:label>
 </owl:Class>
 
 <owl:Class rdf:about="#PCB">
@@ -263,14 +283,10 @@
   <core:example rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Four-layer FR-4 PCB, 1.6 mm thick, ENIG finish, green solder mask.</core:example>
 </owl:Class>
 
-<owl:Class rdf:about="#Environment">
+<owl:Class rdf:about="#Stencil">
   <rdfs:subClassOf rdf:resource="https://spec.industrialontologies.org/ontology/core/Core/MaterialProduct"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Environment</rdfs:label>
-</owl:Class>
-
-<owl:Class rdf:about="#SolderPaste">
-  <rdfs:subClassOf rdf:resource="https://spec.industrialontologies.org/ontology/core/Core/MaterialProduct"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Solder Paste</rdfs:label>
+  <rdfs:subClassOf rdf:resource="https://spec.industrialontologies.org/ontology/core/Core/PieceOfEquipment"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Stencil</rdfs:label>
 </owl:Class>
 
 <owl:Class rdf:about="#ParameterQuality">
@@ -395,7 +411,7 @@
       <owl:intersectionOf rdf:parseType="Collection">
         <owl:Restriction>
           <owl:onProperty rdf:resource="#hasAssessmentInput"/>
-          <owl:someValuesFrom rdf:resource="https://spec.industrialontologies.org/ontology/core/Core/InformationContentEntity"/>
+          <owl:someValuesFrom rdf:resource="https://spec.industrialontologies.org/ontology/core/Core/MeasurementInformationContentEntity"/>
         </owl:Restriction>
         <owl:Restriction>
           <owl:onProperty rdf:resource="http://www.w3.org/ns/prov#generated"/>
@@ -450,14 +466,14 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Pick and place Machine</rdfs:label>
 </owl:Class>
 
-<owl:Class rdf:about="#ExcessPasteVolumePerApertureDisposition">
-  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ExcessPasteVolumePerApertureDisposition</rdfs:label>
-</owl:Class>
-
 <owl:Class rdf:about="#ApertureOverfillDisposition">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ApertureOverfillDisposition</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#HighPasteVolumePerApertureDisposition">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">HighPasteVolumePerApertureDisposition</rdfs:label>
 </owl:Class>
 
 <owl:Class rdf:about="#LowAreaRatioDisposition">
@@ -465,19 +481,29 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">LowAreaRatioDisposition</rdfs:label>
 </owl:Class>
 
-<owl:Class rdf:about="#StencilThicknessTooHighDisposition">
+<owl:Class rdf:about="#HighBeadSizeOfSolderPasteDisposition">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">StencilThicknessTooHighDisposition</rdfs:label>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">HighBeadSizeOfSolderPasteDisposition</rdfs:label>
 </owl:Class>
 
-<owl:Class rdf:about="#SqueegeeSpeedTooLowDisposition">
+<owl:Class rdf:about="#HighStencilThicknessDisposition">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SqueegeeSpeedTooLowDisposition</rdfs:label>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">HighStencilThicknessDisposition</rdfs:label>
 </owl:Class>
 
-<owl:Class rdf:about="#SqueegeeAngleTooLowDisposition">
+<owl:Class rdf:about="#LowSqueegeeSpeedDisposition">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SqueegeeAngleTooLowDisposition</rdfs:label>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">LowSqueegeeSpeedDisposition</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#LowSqueegeeAngleDisposition">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">LowSqueegeeAngleDisposition</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#HighAmbientTemperatureDisposition">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">HighAmbientTemperatureDisposition</rdfs:label>
 </owl:Class>
 
 <owl:Class rdf:about="#UndersideSmearDisposition">
@@ -485,14 +511,14 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">UndersideSmearDisposition</rdfs:label>
 </owl:Class>
 
-<owl:Class rdf:about="#SqueegeePressureTooHighDisposition">
+<owl:Class rdf:about="#HighSqueegeePressureDisposition">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SqueegeePressureTooHighDisposition</rdfs:label>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">HighSqueegeePressureDisposition</rdfs:label>
 </owl:Class>
 
-<owl:Class rdf:about="#HighResidualPasteVolumeDisposition">
+<owl:Class rdf:about="#ResidualPasteVolumeDisposition">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">HighResidualPasteVolumeDisposition</rdfs:label>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ResidualPasteVolumeDisposition</rdfs:label>
 </owl:Class>
 
 <owl:Class rdf:about="#PostPrintSpreadDisposition">
@@ -505,9 +531,9 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">LowPasteViscosityDisposition</rdfs:label>
 </owl:Class>
 
-<owl:Class rdf:about="#HighHumidityDisposition">
+<owl:Class rdf:about="#HighAmbientRhDisposition">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">HighHumidityDisposition</rdfs:label>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">HighAmbientRhDisposition</rdfs:label>
 </owl:Class>
 
 <owl:Class rdf:about="#ExcessReflowSpreadingDisposition">
@@ -515,14 +541,14 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ExcessReflowSpreadingDisposition</rdfs:label>
 </owl:Class>
 
-<owl:Class rdf:about="#PeakReflowTemperatureTooHighDisposition">
+<owl:Class rdf:about="#HighPeakReflowTemperatureDisposition">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PeakReflowTemperatureTooHighDisposition</rdfs:label>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">HighPeakReflowTemperatureDisposition</rdfs:label>
 </owl:Class>
 
-<owl:Class rdf:about="#TimeAboveLiquidusTooHighDisposition">
+<owl:Class rdf:about="#HighTimeAboveLiquidusDisposition">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TimeAboveLiquidusTooHighDisposition</rdfs:label>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">HighTimeAboveLiquidusDisposition</rdfs:label>
 </owl:Class>
 
 <owl:Class rdf:about="#NonCoalescenceDisposition">
@@ -530,19 +556,19 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">NonCoalescenceDisposition</rdfs:label>
 </owl:Class>
 
-<owl:Class rdf:about="#PeakReflowTemperatureTooLowDisposition">
+<owl:Class rdf:about="#LowPeakReflowTemperatureDisposition">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PeakReflowTemperatureTooLowDisposition</rdfs:label>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">LowPeakReflowTemperatureDisposition</rdfs:label>
 </owl:Class>
 
-<owl:Class rdf:about="#TimeAboveLiquidusTooLowDisposition">
+<owl:Class rdf:about="#LowPasteVolumePerApertureDisposition">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TimeAboveLiquidusTooLowDisposition</rdfs:label>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">LowPasteVolumePerApertureDisposition</rdfs:label>
 </owl:Class>
 
-<owl:Class rdf:about="#InsufficientPasteVolumePerApertureDisposition">
+<owl:Class rdf:about="#LowTimeAboveLiquidusDisposition">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">InsufficientPasteVolumePerApertureDisposition</rdfs:label>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">LowTimeAboveLiquidusDisposition</rdfs:label>
 </owl:Class>
 
 <owl:Class rdf:about="#PoorPasteTransferDisposition">
@@ -550,14 +576,34 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PoorPasteTransferDisposition</rdfs:label>
 </owl:Class>
 
-<owl:Class rdf:about="#SqueegeeSpeedTooHighDisposition">
+<owl:Class rdf:about="#LowStencilThicknessDisposition">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SqueegeeSpeedTooHighDisposition</rdfs:label>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">LowStencilThicknessDisposition</rdfs:label>
 </owl:Class>
 
-<owl:Class rdf:about="#SqueegeePressureTooLowDisposition">
+<owl:Class rdf:about="#HighPasteViscosityDisposition">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SqueegeePressureTooLowDisposition</rdfs:label>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">HighPasteViscosityDisposition</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#LowAmbientRhDisposition">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">LowAmbientRhDisposition</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#HighSqueegeeSpeedDisposition">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">HighSqueegeeSpeedDisposition</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#LowSqueegeePressureDisposition">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">LowSqueegeePressureDisposition</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#LowAmbientTemperatureDisposition">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">LowAmbientTemperatureDisposition</rdfs:label>
 </owl:Class>
 
 <owl:Class rdf:about="#RootCause">
@@ -682,6 +728,11 @@
 <owl:Class rdf:about="#MetalLoad">
   <rdfs:subClassOf rdf:resource="#ParameterQuality"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">metal load</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#AmbientTemperature">
+  <rdfs:subClassOf rdf:resource="#ParameterQuality"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ambient temperature</rdfs:label>
 </owl:Class>
 
 <owl:Class rdf:about="#PasteVolumePerAperture">
@@ -875,6 +926,11 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">metal load obs</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#AmbientTemperatureObs">
+  <rdfs:subClassOf rdf:resource="#ParameterObservation"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ambient temperature obs</rdfs:label>
+</owl:Class>
+
 <owl:Class rdf:about="#PasteVolumePerApertureObs">
   <rdfs:subClassOf rdf:resource="#ParameterObservation"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">paste volume per aperture obs</rdfs:label>
@@ -1064,6 +1120,11 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">metal load spec</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#AmbientTemperatureSpec">
+  <rdfs:subClassOf rdf:resource="#ParameterSpecification"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ambient temperature spec</rdfs:label>
+</owl:Class>
+
 <owl:Class rdf:about="#PasteVolumePerApertureSpec">
   <rdfs:subClassOf rdf:resource="#ParameterSpecification"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">paste volume per aperture spec</rdfs:label>
@@ -1148,6 +1209,11 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">time above liquidus spec</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#NoDefect">
+  <rdfs:subClassOf rdf:resource="#Defect"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">NoDefect</rdfs:label>
+</owl:Class>
+
 <owl:Class rdf:about="#SolderBridging">
   <rdfs:subClassOf rdf:resource="#Defect"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SolderBridging</rdfs:label>
@@ -1167,11 +1233,19 @@
   <core:example rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AAR=0.55 on 0.30×0.15 mm apertures in a 0.10 mm stencil results in insufficient solder and opens.</core:example>
 </owl:Class>
 
-<owl:Class rdf:about="#StencilThicknessTooHigh">
+<owl:Class rdf:about="#HighBeadSizeOfSolderPaste">
   <rdfs:subClassOf rdf:resource="#QualityFailureCause"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">StencilThicknessTooHigh</rdfs:label>
-  <core:definition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Use of a stencil thickness above the qualified value for fine‑pitch features, leading to excessive paste volume and bridging.</core:definition>
-  <core:example rdf:datatype="http://www.w3.org/2001/XMLSchema#string">150 µm stencil used with 0.40 mm pitch BGA results in frequent shorts.</core:example>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">HighBeadSizeOfSolderPaste</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#HighStencilThickness">
+  <rdfs:subClassOf rdf:resource="#QualityFailureCause"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">HighStencilThickness</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#HighAmbientTemperature">
+  <rdfs:subClassOf rdf:resource="#QualityFailureCause"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">HighAmbientTemperature</rdfs:label>
 </owl:Class>
 
 <owl:Class rdf:about="#LowPasteViscosity">
@@ -1181,28 +1255,39 @@
   <core:example rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Viscosity 120 Pa·s (Malcom, 25 °C, 10 rpm) vs. spec 160–220 Pa·s; bridges observed on 0.5 mm pitch.</core:example>
 </owl:Class>
 
-<owl:Class rdf:about="#HighHumidity">
+<owl:Class rdf:about="#HighAmbientRh">
   <rdfs:subClassOf rdf:resource="#QualityFailureCause"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">HighHumidity</rdfs:label>
-  <core:definition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Ambient relative humidity above the allowed range for solder paste handling or storage, promoting slump, oxidation, and inconsistent printing.</core:definition>
-  <core:example rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Printing at 70% RH causes paste to slump between 0.4 mm pitch pads, increasing bridging defects.</core:example>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">HighAmbientRh</rdfs:label>
 </owl:Class>
 
-<owl:Class rdf:about="#PeakReflowTemperatureTooHigh">
+<owl:Class rdf:about="#HighPeakReflowTemperature">
   <rdfs:subClassOf rdf:resource="#QualityFailureCause"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PeakReflowTemperatureTooHigh</rdfs:label>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">HighPeakReflowTemperature</rdfs:label>
 </owl:Class>
 
-<owl:Class rdf:about="#PeakReflowTemperatureTooLow">
+<owl:Class rdf:about="#LowPeakReflowTemperature">
   <rdfs:subClassOf rdf:resource="#QualityFailureCause"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PeakReflowTemperatureTooLow</rdfs:label>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">LowPeakReflowTemperature</rdfs:label>
 </owl:Class>
 
-<owl:Class rdf:about="#ExcessPasteVolumePerAperture">
-  <rdfs:subClassOf rdf:resource="#ProcessFailureCause"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ExcessPasteVolumePerAperture</rdfs:label>
-  <core:definition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Condition where a single stencil aperture deposits more paste than intended due to oversize aperture, double-printing, or paste scooping.</core:definition>
-  <core:example rdf:datatype="http://www.w3.org/2001/XMLSchema#string">A misprogrammed double print increases deposit volume by ~60% on 0.5 mm pitch pads, leading to bridges.</core:example>
+<owl:Class rdf:about="#LowStencilThickness">
+  <rdfs:subClassOf rdf:resource="#QualityFailureCause"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">LowStencilThickness</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#HighPasteViscosity">
+  <rdfs:subClassOf rdf:resource="#QualityFailureCause"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">HighPasteViscosity</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#LowAmbientRh">
+  <rdfs:subClassOf rdf:resource="#QualityFailureCause"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">LowAmbientRh</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#LowAmbientTemperature">
+  <rdfs:subClassOf rdf:resource="#QualityFailureCause"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">LowAmbientTemperature</rdfs:label>
 </owl:Class>
 
 <owl:Class rdf:about="#ApertureOverfill">
@@ -1212,18 +1297,19 @@
   <core:example rdf:datatype="http://www.w3.org/2001/XMLSchema#string">0201 capacitor pads printed with a +10% overprint produce paste spreading into the mask dam and intermittent bridges.</core:example>
 </owl:Class>
 
-<owl:Class rdf:about="#SqueegeeSpeedTooLow">
+<owl:Class rdf:about="#HighPasteVolumePerAperture">
   <rdfs:subClassOf rdf:resource="#ProcessFailureCause"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SqueegeeSpeedTooLow</rdfs:label>
-  <core:definition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Squeegee traverse speed below the qualified range, increasing paste dwell time and risk of over‑filling apertures.</core:definition>
-  <core:example rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Reducing speed from 50 mm/s to 15 mm/s leads to over‑deposits on 0.5 mm pitch pads.</core:example>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">HighPasteVolumePerAperture</rdfs:label>
 </owl:Class>
 
-<owl:Class rdf:about="#SqueegeeAngleTooLow">
+<owl:Class rdf:about="#LowSqueegeeSpeed">
   <rdfs:subClassOf rdf:resource="#ProcessFailureCause"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SqueegeeAngleTooLow</rdfs:label>
-  <core:definition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Squeegee blade angle below the qualified range (e.g., &lt;55–60°), promoting paste scooping and excess deposition.</core:definition>
-  <core:example rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Angle set to 45° results in thick deposits and bridging on fine‑pitch features.</core:example>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">LowSqueegeeSpeed</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#LowSqueegeeAngle">
+  <rdfs:subClassOf rdf:resource="#ProcessFailureCause"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">LowSqueegeeAngle</rdfs:label>
 </owl:Class>
 
 <owl:Class rdf:about="#UndersideSmear">
@@ -1231,16 +1317,16 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">UndersideSmear</rdfs:label>
 </owl:Class>
 
-<owl:Class rdf:about="#SqueegeePressureTooHigh">
+<owl:Class rdf:about="#HighSqueegeePressure">
   <rdfs:subClassOf rdf:resource="#ProcessFailureCause"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SqueegeePressureTooHigh</rdfs:label>
-  <core:definition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Squeegee pressure above the qualified window, causing stencil wear, understencil leakage, and smeared deposits.</core:definition>
-  <core:example rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Pressure increased to 7 kgf causes paste bleed‑out under the stencil and shorts on QFN pads.</core:example>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">HighSqueegeePressure</rdfs:label>
 </owl:Class>
 
-<owl:Class rdf:about="#HighResidualPasteVolume">
+<owl:Class rdf:about="#ResidualPasteVolume">
   <rdfs:subClassOf rdf:resource="#ProcessFailureCause"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">HighResidualPasteVolume</rdfs:label>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ResidualPasteVolume</rdfs:label>
+  <core:definition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Solder paste remaining in the stencil aperture after the print stroke, reducing transfer efficiency and causing under‑deposits.</core:definition>
+  <core:example rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SPI indicates 75% transfer efficiency on fine‑pitch pads; 25% residual paste visible in apertures.</core:example>
 </owl:Class>
 
 <owl:Class rdf:about="#PostPrintSpread">
@@ -1257,9 +1343,9 @@
   <core:example rdf:datatype="http://www.w3.org/2001/XMLSchema#string">On a QFN, solder spreads 150 µm into the solder mask channel and creates a short to the adjacent pad.</core:example>
 </owl:Class>
 
-<owl:Class rdf:about="#TimeAboveLiquidusTooHigh">
+<owl:Class rdf:about="#HighTimeAboveLiquidus">
   <rdfs:subClassOf rdf:resource="#ProcessFailureCause"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TimeAboveLiquidusTooHigh</rdfs:label>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">HighTimeAboveLiquidus</rdfs:label>
 </owl:Class>
 
 <owl:Class rdf:about="#NonCoalescence">
@@ -1267,14 +1353,14 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">NonCoalescence</rdfs:label>
 </owl:Class>
 
-<owl:Class rdf:about="#TimeAboveLiquidusTooLow">
+<owl:Class rdf:about="#LowPasteVolumePerAperture">
   <rdfs:subClassOf rdf:resource="#ProcessFailureCause"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TimeAboveLiquidusTooLow</rdfs:label>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">LowPasteVolumePerAperture</rdfs:label>
 </owl:Class>
 
-<owl:Class rdf:about="#InsufficientPasteVolumePerAperture">
+<owl:Class rdf:about="#LowTimeAboveLiquidus">
   <rdfs:subClassOf rdf:resource="#ProcessFailureCause"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">InsufficientPasteVolumePerAperture</rdfs:label>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">LowTimeAboveLiquidus</rdfs:label>
 </owl:Class>
 
 <owl:Class rdf:about="#PoorPasteTransfer">
@@ -1282,14 +1368,14 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PoorPasteTransfer</rdfs:label>
 </owl:Class>
 
-<owl:Class rdf:about="#SqueegeeSpeedTooHigh">
+<owl:Class rdf:about="#HighSqueegeeSpeed">
   <rdfs:subClassOf rdf:resource="#ProcessFailureCause"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SqueegeeSpeedTooHigh</rdfs:label>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">HighSqueegeeSpeed</rdfs:label>
 </owl:Class>
 
-<owl:Class rdf:about="#SqueegeePressureTooLow">
+<owl:Class rdf:about="#LowSqueegeePressure">
   <rdfs:subClassOf rdf:resource="#ProcessFailureCause"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SqueegeePressureTooLow</rdfs:label>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">LowSqueegeePressure</rdfs:label>
 </owl:Class>
 
 <rdf:Description rdf:about="http://purl.obolibrary.org/obo/RO_0002559">
@@ -1302,6 +1388,16 @@
   <rdfs:domain rdf:resource="#FailureCause"/>
   <rdfs:range rdf:resource="#Effect"/>
   <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#TransitiveProperty"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="http://purl.obolibrary.org/obo/directlyCausallyInfluencedBy">
+  <rdfs:domain rdf:resource="#Effect"/>
+  <rdfs:range rdf:resource="#FailureCause"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="http://purl.obolibrary.org/obo/directlyCausallyInfluences">
+  <rdfs:domain rdf:resource="#FailureCause"/>
+  <rdfs:range rdf:resource="#Effect"/>
 </rdf:Description>
 
 

@@ -18,14 +18,31 @@ def fc_name_syntax(classname):
 
 def get_data_factory():
     base_path = "./app/data"
-    path = f"{base_path}/input/epoch3-7/data.csv"
+    path = f"{base_path}/input/epoch3-7/synthetic_data_factory_5.csv"
     df = pd.read_csv(path)
+    def is_empty(x):
+        return pd.isna(x) or str(x).strip() == "" or str(x).strip() == "No Defect"
+
+    def is_not_empty(x):
+        return not is_empty(x)
+    mask = (
+        df["Defect"].apply(is_not_empty) |
+        (
+            df["Defect"].apply(is_empty) &
+            (
+                df["mech causes"].apply(is_not_empty) |
+                df["root causes"].apply(is_not_empty)
+            )
+        )
+    )
+    df = df[mask]
     factory = df.to_dict(orient="records")
+    print(len(factory))
     return factory
 
 def get_chain_factory():
     base_path = "./app/data"
-    path = f"{base_path}/input/epoch3-7/test_chains.json"
+    path = f"{base_path}/input/epoch3-7/test_chains_3.json"
     factory = json.load(open(path))
     new_factory = {}
     for k, v in factory.items():
@@ -37,7 +54,7 @@ def get_chain_factory():
             new_factory[k].append(new_chain)
     return new_factory
 
-test_dict = {"Test Name": [], "System accuracy or response": []}
+test_dict = {"Test Name": [], "System accuracy or response": [], "Interpretation": []}
 
 #Metric 1
 def root_cause_accuracy():
@@ -46,14 +63,14 @@ def root_cause_accuracy():
     for d in factory:
         root_fcs = []
         #consider root cause even if defect occurs or not
-        if not pd.isna(d['Root Causes']):
-            root_fcs = [fc_name_syntax(fc) for fc in d['Root Causes'].split(",")]
+        if not pd.isna(d['root causes']):
+            root_fcs = [fc_name_syntax(fc) for fc in d['root causes'].split(";")]
             root_fcs = [fc for fc in root_fcs if fc]
             expected_set[d['PCB_ID']] = root_fcs
         else:
             #consider mechanism failure causes as root causes
-            if not pd.isna(d['Mechanism Failure Causes']):
-                mech_fcs = [fc_name_syntax(fc) for fc in d['Mechanism Failure Causes'].split(",")]
+            if not pd.isna(d['mech causes']):
+                mech_fcs = [fc_name_syntax(fc) for fc in d['mech causes'].split(";")]
                 root_fcs.extend(mech_fcs)
                 root_fcs = [fc for fc in root_fcs if fc]
                 expected_set[d['PCB_ID']] = root_fcs
@@ -73,9 +90,9 @@ def root_cause_accuracy():
         WHERE {
             ?rootcause a term:RootCause ;
                     rdfs:label ?rootcauselabel ;
-    				prov:wasGeneratedBy ?ca ;
+    				# prov:wasGeneratedBy ?ca ;
     				term:affects ?product .
-    		?ca term:triggeredByRule ?rule .
+    		# ?ca term:triggeredByRule ?rule .
             ?product rdfs:label ?productlabel .
         }
         ORDER BY ?product
@@ -92,35 +109,73 @@ def root_cause_accuracy():
         pred_set[plabel].add(fclabel)
     pred_set = {k:list(v) for k,v in pred_set.items()}
 
-    #top-k accuracy
-    total_boards_to_inspect = len(expected_set.keys())
-    top_k_test_passed_boards = []
-    equivalence_test_passed_boards = []
-    for k,v in expected_set.items():
-        #get root causes of PCBX from expected set
-        set_expected = set([item.lower() for item in v])
-        #get root causes of PCBX from pred set
-        set_v = set([item.lower() for item in pred_set.get(k, [])])
-        #% of boards where at least one of the top-k predicted causes matches expert truth
-        intersection = list(set_expected.intersection(set_v))
-        if len(intersection) > 0:
-            top_k_test_passed_boards.append(k)
-        #This test assesses strict semantic agreement between the system-inferred and expert-annotated root-cause sets.
-        print(k, f"pred: {list(set_v)}", f"expec: {list(set_expected)}", f"result: {set_v == set(set_expected)}")
-        
-        if set_v == set_expected:
-            equivalence_test_passed_boards.append(k)
-    # print(total_boards_to_inspect, len(equivalence_test_passed_boards))
-    test_dict['Test Name'].extend(["top-k root cause", "root-cause set equivalence"])
-    
-    test_dict['System accuracy or response'].extend(
-        [f"{round((len(top_k_test_passed_boards)/total_boards_to_inspect)*100,2)}%", 
-         f"{round((len(equivalence_test_passed_boards)/total_boards_to_inspect)*100,2)}%"
-        ]
-    )
+    total_boards = len(expected_set)
+
+    hit_rate_boards = []
+    exact_match_boards = []
+    jaccard_scores = []
+
+    for pcb_id, expected_causes in expected_set.items():
+        set_expected = {item.lower() for item in expected_causes}
+        set_pred = {item.lower() for item in pred_set.get(pcb_id, [])}
+
+        intersection = set_expected & set_pred
+        union = set_expected | set_pred
+
+        # 1️⃣ Hit Rate: at least one correct root cause
+        if intersection:
+            hit_rate_boards.append(pcb_id)
+
+        # 2️⃣ Exact Match: strict set equality
+        if set_pred == set_expected:
+            exact_match_boards.append(pcb_id)
+
+        # 3️⃣ Jaccard Similarity (soft agreement)
+        jaccard = len(intersection) / len(union) if union else 1.0
+        jaccard_scores.append(jaccard)
+
+        # Debug print (optional)
+        # print(
+        #     pcb_id,
+        #     f"pred: {list(set_pred)}",
+        #     f"expec: {list(set_expected)}",
+        #     f"hit: {bool(intersection)}",
+        #     f"exact_match: {set_pred == set_expected}",
+        #     f"jaccard: {round(jaccard * 100, 2)}%"
+        # )
+
+    # -----------------------------
+    # Aggregate metrics
+    # -----------------------------
+    hit_rate_pct = round(len(hit_rate_boards) / total_boards * 100, 2)
+    exact_match_pct = round(len(exact_match_boards) / total_boards * 100, 2)
+    avg_jaccard_pct = round(sum(jaccard_scores) / total_boards * 100, 2)
+
+    # -----------------------------
+    # Populate results table
+    # -----------------------------
+    test_dict['Test Name'].extend([
+        "Hit Rate (≥1 correct)",
+        "Jaccard Similarity (%)",
+        "Exact Match Accuracy"
+    ])
+
+    test_dict['System accuracy or response'].extend([
+        f"{hit_rate_pct}%",
+        f"{avg_jaccard_pct}%",
+        f"{exact_match_pct}%"
+    ])
+
+    test_dict['Interpretation'].extend([
+        "Did the system get on the right path?",
+        "How close is the system reasoning to the expert?",
+        "How often is the system perfectly aligned with the expert?"
+    ])
+
     return {
-       "top-k root cause": f"{round((len(top_k_test_passed_boards)/total_boards_to_inspect)*100,2)}%",
-       "root-cause set equivalence": f"{round((len(equivalence_test_passed_boards)/total_boards_to_inspect)*100,2)}%"
+        "Hit Rate (≥1 correct)": f"{hit_rate_pct}%",
+        "Jaccard Similarity (%)": f"{avg_jaccard_pct}%",
+        "Exact Match Accuracy": f"{exact_match_pct}%"
     }
 
 
@@ -206,7 +261,7 @@ def chain_recall():
                 VALUES ?effect_pred { term:defectOccursOn term:affects }
                 ?effect ?effect_pred ?product .
                 ?cause term:affects ?product .
-                ?effect term:directlyCausallyInfluencedBy ?cause .
+                ?effect ro:directlyCausallyInfluencedBy ?cause .
                 ?product rdfs:label ?productlabel .
                 ?effect rdfs:label ?effectlabel .
                 ?cause rdfs:label ?causelabel
@@ -218,6 +273,7 @@ def chain_recall():
     causal_chain_cm = []
     recall_data = {}
     prec_data = {}
+    i = 0
     for k,v in factory.items():
         recall_data[k] = 0.0
         prec_data[k] = 0.0
@@ -232,7 +288,9 @@ def chain_recall():
             causelabel = b.get("causelabel").get('value')
             pred_set.append((effectlabel, causelabel))
         pred_set = {tuple((i.lower() for i in item)) for item in pred_set}
+        print(pred_set)
         v = {tuple(i.lower() for i in item) for item in v}
+        print(v)
         intersection = pred_set & v
         if len(v) or len(pred_set):
             recall = round((len(intersection) / len(v)) * 100, 2) if len(v) else 0
@@ -278,9 +336,9 @@ def chain_recall():
         "max prec":     str(round(float(np.array(avg_precision).max()), 2))
     }
 
-# root_cause_accuracy()
+root_cause_accuracy()
 # test_provenance_completeness()
-# cycle_rate()
-# chain_recall()
+cycle_rate()
+chain_recall()
 
-# print(tabulate(test_dict, headers="keys", tablefmt="github"))
+print(tabulate(test_dict, headers="keys", tablefmt="github"))

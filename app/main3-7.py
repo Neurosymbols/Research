@@ -272,7 +272,7 @@ def create_kg_from_scratch():
     )
     product_insertion_details = add_products_to_ontology(
         products_in_ontology,
-        f"{input_path}/data.csv",
+        f"{input_path}/synthetic_data_factory_5.csv",
         path
     )
     clear_graphdb_default_graph()
@@ -348,7 +348,7 @@ if __name__ == "__main__":
     if args.add_products:
         add_products_to_ontology(
             products_in_ontology,
-            f"{input_path}/data.csv",
+            f"{input_path}/synthetic_data_factory_5.csv",
             path
         )
 
@@ -382,7 +382,7 @@ if __name__ == "__main__":
         col.delete_many({})
         folder = "./app/data/ontologies/epoch3-7"   # change to your folder path
         if run_processing:
-            count = 30
+            count = 1
             i = 0
             metrics = []
             while i < count:

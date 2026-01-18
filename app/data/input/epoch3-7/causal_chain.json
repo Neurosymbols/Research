@@ -1,24 +1,25 @@
 {
   "SolderBridging": {
     "caused_by": [
-      "ExcessPasteVolumePerAperture",
-      "ExcessReflowSpreading"
+      "HighPasteVolumePerAperture",
+      "ExcessReflowSpreading",
+      "ApertureOverfill"
     ]
   },
-  "ExcessPasteVolumePerAperture": {
+  "HighPasteVolumePerAperture": {
     "caused_by": [
       "ApertureOverfill",
       "UndersideSmear",
       "PostPrintSpread"
     ],
     "governed_by": [
-      "If PasteVolumePerAperture > PasteVolumePerAperture_USL == ExcessPasteVolumePerAperture"
+      "If PasteVolumePerAperture > PasteVolumePerAperture_USL == HighPasteVolumePerAperture"
     ]
   },
   "ExcessReflowSpreading":{
     "caused_by":[
-      "PeakReflowTemperatureTooHigh",
-      "TimeAboveLiquidusTooHigh"
+      "HighPeakReflowTemperature",
+      "HighTimeAboveLiquidus"
     ],
     "governed_by": [
       "If PeakReflowTemperature > PeakReflowTemperature_USL OR TimeAboveLiquidus > TimeAboveLiquidus_USL == ExcessReflowSpreading"
@@ -27,9 +28,11 @@
   "ApertureOverfill": {
     "caused_by": [
       "LowAreaRatio",
-      "StencilThicknessTooHigh",
-      "SqueegeeSpeedTooLow",
-      "SqueegeeAngleTooLow"
+      "HighBeadSizeOfSolderPaste",
+      "HighStencilThickness",
+      "LowSqueegeeSpeed",
+      "LowSqueegeeAngle",
+      "HighAmbientTemperature"
     ],
     "governed_by": [
       "If ApertureAreaRatio < ApertureAreaRatio_LSL OR StencilThickness > StencilThickness_USL == ApertureOverfill",
@@ -39,8 +42,8 @@
   }, 
   "UndersideSmear": {
     "caused_by": [
-      "SqueegeePressureTooHigh",
-      "HighResidualPasteVolume"
+      "HighSqueegeePressure",
+      "ResidualPasteVolume"
     ],
     "governed_by": [
       "If SqueegeePressure > SqueegeePressure_USL OR ResidualPaste > ResidualPaste_USL == UndersideSmear"
@@ -49,7 +52,7 @@
   "PostPrintSpread": {
     "caused_by": [
       "LowPasteViscosity",
-      "HighHumidity"
+      "HighAmbientRh"
     ],
     "governed_by": [
       "If PasteViscosity < PasteViscosity_LSL OR AmbientRh > AmbientRh_USL == PostPrintSpread"
@@ -67,108 +70,139 @@
       "If ApertureAreaRatio < ApertureAreaRatio_LSL == LowAreaRatio"
     ]
   },
-  "StencilThicknessTooHigh": {
+  "HighBeadSizeOfSolderPaste": {
     "caused_by": [],
     "governed_by": [
-      "If StencilThickness > StencilThickness_USL == StencilThicknessTooHigh"
+      "If PasteRollBeadSize > PasteRollBeadSize_USL == HighBeadSizeOfSolderPaste"
     ]
   },
-  "SqueegeeSpeedTooLow": {
+  "HighStencilThickness": {
     "caused_by": [],
     "governed_by": [
-      "If SqueegeeSpeed < SqueegeeSpeed_LSL == SqueegeeSpeedTooLow"
+      "If StencilThickness > StencilThickness_USL == HighStencilThickness"
     ]
   },
-  "SqueegeeAngleTooLow": {
+  "LowSqueegeeSpeed": {
     "caused_by": [],
     "governed_by": [
-      "If SqueegeeAngle < SqueegeeAngle_LSL == SqueegeeAngleTooLow"
+      "If SqueegeeSpeed < SqueegeeSpeed_LSL == LowSqueegeeSpeed"
     ]
   },
-  "SqueegeePressureTooHigh": {
+  "LowSqueegeeAngle": {
     "caused_by": [],
     "governed_by": [
-      "If SqueegeePressure > SqueegeePressure_USL == SqueegeePressureTooHigh"
+      "If SqueegeeAngle < SqueegeeAngle_LSL == LowSqueegeeAngle"
     ]
   },
-  "HighResidualPasteVolume": {
+  "HighSqueegeePressure": {
     "caused_by": [],
     "governed_by": [
-      "If ResidualPaste > ResidualPaste_USL == HighResidualPasteVolume"
+      "If SqueegeePressure > SqueegeePressure_USL == HighSqueegeePressure"
     ]
   },
-  "HighHumidity": {
+  "ResidualPasteVolume": {
     "caused_by": [],
     "governed_by": [
-      "If AmbientRh > AmbientRh_USL == HighHumidity"
+      "If ResidualPaste > ResidualPaste_USL == ResidualPasteVolume"
     ]
   },
-  "PeakReflowTemperatureTooHigh":{
+  "HighAmbientRh": {
     "caused_by": [],
     "governed_by": [
-      "If PeakReflowTemperature > PeakReflowTemperature_USL == PeakReflowTemperatureTooHigh"
+      "If AmbientRh > AmbientRh_USL == HighAmbientRh"
     ]
   },
-  "TimeAboveLiquidusTooHigh":{
+  "HighPeakReflowTemperature":{
     "caused_by": [],
     "governed_by": [
-      "If TimeAboveLiquidus > TimeAboveLiquidus_USL == TimeAboveLiquidusTooHigh"
+      "If PeakReflowTemperature > PeakReflowTemperature_USL == HighPeakReflowTemperature"
+    ]
+  },
+  "HighTimeAboveLiquidus":{
+    "caused_by": [],
+    "governed_by": [
+      "If TimeAboveLiquidus > TimeAboveLiquidus_USL == HighTimeAboveLiquidus"
     ]
   },
   "OpenCircuit": {
     "caused_by": [
       "NonCoalescence",
-      "InsufficientPasteVolumePerAperture"
+      "LowPasteVolumePerAperture",
+      "PoorPasteTransfer"
     ]
   },
   "NonCoalescence":{
     "caused_by": [
-      "TimeAboveLiquidusTooLow",
-      "PeakReflowTemperatureTooLow"
+      "LowTimeAboveLiquidus",
+      "LowPeakReflowTemperature"
     ],
     "governed_by": [
       "If PeakReflowTemperature < PeakReflowTemperature_LSL OR TimeAboveLiquidus < TimeAboveLiquidus_LSL == NonCoalescence"
     ]
   },
-  "InsufficientPasteVolumePerAperture":{
+  "LowPasteVolumePerAperture":{
     "caused_by": [
       "PoorPasteTransfer"
     ],
     "governed_by": [
-      "If PasteVolumePerAperture < PasteVolumePerAperture_LSL == InsufficientPasteVolumePerAperture"
+      "If PasteVolumePerAperture < PasteVolumePerAperture_LSL == LowPasteVolumePerAperture"
     ]
   },
   "PoorPasteTransfer":{
     "caused_by": [
-      "SqueegeeSpeedTooHigh",
-      "SqueegeePressureTooLow"
+      "LowStencilThickness",
+      "LowAmbientRh",
+      "HighPasteViscosity",
+      "HighSqueegeeSpeed",
+      "LowSqueegeePressure",
+      "LowAmbientTemperature"
     ],
     "governed_by": [
+      "If StencilThickness < StencilThickness_LSL OR PasteViscosity > PasteViscosity_USL == PoorPasteTransfer",
+      "If AmbientRh < AmbientRh_LSL AND PasteViscosity > PasteViscosity_USL == PoorPasteTransfer",
       "If SqueegeeSpeed > SqueegeeSpeed_USL OR SqueegeePressure < SqueegeePressure_LSL == PoorPasteTransfer"
     ]
   },
-    "SqueegeeSpeedTooHigh": {
+  "LowTimeAboveLiquidus":{
     "caused_by": [],
     "governed_by": [
-      "If SqueegeeSpeed > SqueegeeSpeed_USL == SqueegeeSpeedTooHigh"
+      "If TimeAboveLiquidus < TimeAboveLiquidus_LSL == LowTimeAboveLiquidus"
     ]
   },
-  "SqueegeePressureTooLow": {
+  "LowPeakReflowTemperature":{
     "caused_by": [],
     "governed_by": [
-      "If SqueegeePressure < SqueegeePressure_LSL == SqueegeePressureTooLow"
+      "If PeakReflowTemperature < PeakReflowTemperature_LSL == LowPeakReflowTemperature"
     ]
   },
-  "TimeAboveLiquidusTooLow":{
+  "HighSqueegeeSpeed": {
     "caused_by": [],
     "governed_by": [
-      "If TimeAboveLiquidus < TimeAboveLiquidus_LSL == TimeAboveLiquidusTooLow"
+      "If SqueegeeSpeed > SqueegeeSpeed_USL == HighSqueegeeSpeed"
     ]
   },
-  "PeakReflowTemperatureTooLow":{
+  "LowSqueegeePressure": {
     "caused_by": [],
     "governed_by": [
-      "If PeakReflowTemperature < PeakReflowTemperature_LSL == PeakReflowTemperatureTooLow"
+      "If SqueegeePressure < SqueegeePressure_LSL == LowSqueegeePressure"
+    ]
+  },
+  "HighPasteViscosity": {
+    "caused_by": [],
+    "governed_by": [
+      "If PasteViscosity > PasteViscosity_USL == HighPasteViscosity"
+    ]
+  },
+  "LowAmbientRh": {
+    "caused_by": [],
+    "governed_by": [
+      "If AmbientRh < AmbientRh_LSL == LowAmbientRh"
+    ]
+  },
+  "LowStencilThickness": {
+    "caused_by": [],
+    "governed_by": [
+      "If StencilThickness < StencilThickness_LSL == LowStencilThickness"
     ]
   }
 }

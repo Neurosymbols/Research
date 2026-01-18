@@ -340,7 +340,7 @@ def define_properties(input_path):
                         cls = types.new_class(prop["name"], tuple(bases))
                     if "domain" in prop:
                         cls.domain = [base_onto[prop["domain"]]]
-                    type_map = {"float": float, "int": int, "str": str}
+                    type_map = {"float": float, "int": int, "str": str, "bool": bool, "datetime": datetime.datetime}
                     cls.range = [type_map[prop["range"]]]
                 
                 for prop in config.get("annotation_properties", []):
@@ -573,53 +573,44 @@ def add_specs_to_ontology(specs_dict, ontology_path):
 
 def add_defect_individuals(
     product_individual,
-    semicon_defect_concept:str
+    semicon_defect_concepts:list[str]
 ):
    if product1_onto is not None:
     with product1_onto:
-        if not pd.isna(semicon_defect_concept):
-            defect_concepts = [d.strip() for d in semicon_defect_concept.split(",")]
-            for c in defect_concepts:
-                assert len(c.split("_")) == 2, "defect string not formulated correctly"
-                defect_classname = create_classname_syntax(c.split("_")[0])
-                onto_defect_class = base_onto[defect_classname]
-                if onto_defect_class:
-                    product_individual_label = product_individual.label[0]
-                    defect_individual = onto_defect_class(f"{defect_classname}_{product_individual_label}")
-                    defect_individual.label.append(f"{defect_classname}_{product_individual_label}")
-                    product_individual.hasDefect.append(defect_individual)
+        for c in semicon_defect_concepts:
+            defect_classname = create_classname_syntax(c)
+            onto_defect_class = base_onto[defect_classname]
+            if onto_defect_class:
+                product_individual_label = product_individual.label[0]
+                defect_individual = onto_defect_class(f"{defect_classname}_{product_individual_label}")
+                defect_individual.label.append(f"{defect_classname}_{product_individual_label}")
+                product_individual.hasDefect.append(defect_individual)
 
 def add_products_to_ontology(
     batch_size:int,
     synthetic_data_factory_file: str,
     ontology_path:str
 ):
-    def is_not_empty(x):
-        return not (pd.isna(x) or x == "")
-
     def is_empty(x):
-        return pd.isna(x) or x == ""
+        return pd.isna(x) or str(x).strip() == "" or str(x).strip() == "No Defect"
+
+    def is_not_empty(x):
+        return not is_empty(x)
 
     df = pd.read_csv(synthetic_data_factory_file)
-    # Strip spaces from column names
-    df.columns = df.columns.str.strip() # Check specs in Synthetic Data files
-    # df = df.head(batch_size)
-    # ONLY Defect occured has value
-    only_defect = (
-        df["Defect occured"].apply(is_not_empty)
-    )
-    # NO Defect occured, but other columns have values
-    other_without_defect = (
-        df["Defect occured"].apply(is_empty) &
+    df.columns = df.columns.str.strip()
+
+    mask = (
+        df["Defect"].apply(is_not_empty) |
         (
-            df["Mechanism Failure Causes"].apply(is_not_empty) |
-            df["Root Causes"].apply(is_not_empty)
+            df["Defect"].apply(is_empty) &
+            (
+                df["mech causes"].apply(is_not_empty) |
+                df["root causes"].apply(is_not_empty)
+            )
         )
     )
-    df = df[
-        df[["Defect occured", "Mechanism Failure Causes", "Root Causes"]]
-        .apply(lambda row: row.notna().any() and (row != "").any(), axis=1)
-    ]
+    df = df[mask]
     if product1_onto is not None:
         product_count = 0
         with product1_onto: # A-box instantiation
@@ -632,12 +623,11 @@ def add_products_to_ontology(
                         product_individual = base_onto['PCB'](v) # start creating Product1 individuals
                         product_individual.label = [v] # assign a label
                         product_label = v
-                    elif k == "Defect occured":
-                        add_defect_individuals(
-                            product_individual,
-                            v,
-                        )
-                    else:
+                        # add_defect_individuals(
+                        #     product_individual,
+                        #     ['SolderBridging', 'OpenCircuit', 'NoDefect']
+                        # )
+                    elif k not in ['Defect', 'mech causes', 'root causes', 'Defect_Probability']:
                         onto_class_syntax = create_classname_syntax(k)
                         onto_class = base_onto[onto_class_syntax]
                         if onto_class:
@@ -661,8 +651,8 @@ def add_products_to_ontology(
 
     return {
         "message": "products added", 
-        "only defects": int(only_defect.sum()),
-        "others without defects": int(other_without_defect.sum())
+        # "only defects": int(only_defect.sum()),
+        # "others without defects": int(other_without_defect.sum())
     }
 
 def build_product_triples(row):

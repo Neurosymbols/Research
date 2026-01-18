@@ -130,79 +130,70 @@ process_parameters = {
 }
 # --- Spec + failure cause mapping ---
 cause_mapping = {
-    "ExcessPasteVolumePerAperture": "paste volume per aperture",
-    "InsufficientPasteVolumePerAperture": "paste volume per aperture",
+    "HighPasteVolumePerAperture": "paste volume per aperture",
+    "LowPasteVolumePerAperture": "paste volume per aperture",
     "LowAreaRatio": "aperture area ratio",
-    "LargeBeadSizeOfSolderPaste": "paste roll bead size",
-    "StencilThicknessTooHigh": "stencil thickness",
-    "SqueegeeSpeedTooLow": "squeegee speed",
-    "SqueegeeSpeedTooHigh": "squeegee speed",
-    "SqueegeeAngleTooLow": "squeegee angle",
-    "SqueegeePressureTooHigh": "squeegee pressure",
-    "SqueegeePressureTooLow": "squeegee pressure",
-    "HighResidualPasteVolume": "residual paste",
+    "HighBeadSizeOfSolderPaste": "paste roll bead size",
+    "HighStencilThickness": "stencil thickness",
+    "LowStencilThickness": "stencil thickness",
+    "HighSqueegeeSpeed": "squeegee speed",
+    "LowSqueegeeSpeed": "squeegee speed",
+    "HighSqueegeeAngle": "squeegee angle",
+    "HighSqueegeePressure": "squeegee pressure",
+    "LowSqueegeePressure": "squeegee pressure",
+    "ResidualPasteVolume": "residual paste",
     "LowPasteViscosity": "paste viscosity",
-    "HighHumidity": "ambient rh",
-    "PeakReflowTemperatureTooHigh": "peak reflow temperature",
-    "PeakReflowTemperatureTooLow": "peak reflow temperature",
-    "TimeAboveLiquidusTooHigh": "time above liquidus",
-    "TimeAboveLiquidusTooLow": "time above liquidus",
+    "HighPasteViscosity": "paste viscosity",
+    "HighAmbientRh": "ambient rh",
+    "LowAmbientRh": "ambient rh",
+    "HighPeakReflowTemperature": "peak reflow temperature",
+    "LowPeakReflowTemperature": "peak reflow temperature",
+    "HighTimeAboveLiquidus": "time above liquidus",
+    "LowTimeAboveLiquidus": "time above liquidus",
     "LowMetalLoad": "metal load"
 }
 
 mechanism_failures = [
-    "ExcessPasteVolumePerAperture",
-    "InsufficientPasteVolumePerAperture"
+    "HighPasteVolumePerAperture",
+    "LowPasteVolumePerAperture"
 ]
 
 ishikawa_graph = {
   "SolderBridging": {
     "caused_by": [
-      "ExcessPasteVolumePerAperture",
+      "HighPasteVolumePerAperture",
       "ExcessReflowSpreading"
     ],
     "type": "defect"
   },
-  "ExcessPasteVolumePerAperture": {
+  "HighPasteVolumePerAperture": {
     "caused_by": [
       "ApertureOverfill",
       "UndersideSmear",
       "PostPrintSpread"
-    ],
-    "rules": [
-        "If PasteVolumePerAperture > PasteVolumePerAperture_USL == ExcessPasteVolumePerAperture"
     ]
   },
   "ExcessReflowSpreading": {
     "caused_by": [
-      "PeakReflowTemperatureTooHigh",
-      "TimeAboveLiquidusTooHigh"
+      "HighPeakReflowTemperature",
+      "HighTimeAboveLiquidus"
     ],
-    "rules":[
-        "If PeakReflowTemperature > PeakReflowTemperature_USL OR TimeAboveLiquidus > TimeAboveLiquidus_USL == ExcessReflowSpreading"
-    ]
   },
   "ApertureOverfill": {
     "caused_by": [
       "LowAreaRatio",
-      "LargeBeadSizeOfSolderPaste",
-      "StencilThicknessTooHigh",
-      "SqueegeeAngleTooLow",
-      "SqueegeeSpeedTooLow"
-    ],
-    "rules":[
-        "If PasteRollBeadSize > PasteRollBeadSize_USL == ApertureOverfill",
-        "If ApertureAreaRatio < ApertureAreaRatio_LSL OR StencilThickness > StencilThickness_USL == ApertureOverfill",
-        "If SqueegeeAngle < SqueegeeAngle_LSL AND (SqueegeeSpeed < SqueegeeSpeed_LSL OR SqueegeePressure > SqueegeePressure_USL) == ApertureOverfill"
+      "HighBeadSizeOfSolderPaste",
+      "HighStencilThickness",
+      "LowSqueegeeAngle",
+      "LowSqueegeeSpeed",
+      "LowPasteViscosity",
+      "HighAmbientRh"
     ]
   },
   "UndersideSmear": {
     "caused_by": [
-      "SqueegeePressureTooHigh",
-      "HighResidualPasteVolume"
-    ],
-    "rules":[
-        "If SqueegeePressure > SqueegeePressure_USL OR ResidualPaste > ResidualPaste_USL == UndersideSmear"
+      "HighSqueegeePressure",
+      "ResidualPasteVolume"
     ]
   },
   "PostPrintSpread": {
@@ -210,10 +201,6 @@ ishikawa_graph = {
       "LowPasteViscosity",
       "HighHumidity",
       "LowMetalLoad"
-    ],
-    "rules":[
-        "If PasteViscosity < PasteViscosity_LSL OR AmbientRh > AmbientRh_USL == PostPrintSpread",
-        "If MetalLoad < MetalLoad_LSL == PostPrintSpread"
     ]
   },
   "OpenCircuit": {
@@ -225,28 +212,22 @@ ishikawa_graph = {
   },
   "NonCoalescence": {
     "caused_by": [
-      "TimeAboveLiquidusTooLow",
-      "PeakReflowTemperatureTooLow"
-    ],
-    "rules":[
-        "If PeakReflowTemperature < PeakReflowTemperature_LSL OR TimeAboveLiquidus < TimeAboveLiquidus_LSL == NonCoalescence"
+      "TimeAboveLiquidus",
+      "PeakReflowTemperature"
     ]
   },
   "InsufficientPasteVolumePerAperture": {
     "caused_by": [
       "PoorPasteTransfer"
-    ],
-    "rules":[
-        "If PasteVolumePerAperture < PasteVolumePerAperture_LSL == InsufficientPasteVolumePerAperture"
     ]
   },
   "PoorPasteTransfer": {
     "caused_by": [
-      "SqueegeeSpeedTooHigh",
-      "SqueegeePressureTooLow"
-    ],
-    "rules":[
-        "If SqueegeeSpeed > SqueegeeSpeed_USL OR SqueegeePressure < SqueegeePressure_LSL == PoorPasteTransfer"
+      "LowStencilThickness",
+      "LowAmbientRh",
+      "HighPasteViscosity",
+      "HighSqueegeeSpeed",
+      "LowSqueegeePressure"
     ]
   }
 }

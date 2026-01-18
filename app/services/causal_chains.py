@@ -333,7 +333,8 @@ def create_causal_chain(verb):
                 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
                 {verb} {{
                     ?effect ro:RO_0002559 ?cause .
-                    ?effect term:directlyCausallyInfluencedBy ?cause .
+                    ?effect ro:directlyCausallyInfluencedBy ?cause .
+                    ?effect rdf:type term:Effect .
                 }}
                 WHERE {{
                     ?effect a term:{effect} .
@@ -445,4 +446,13 @@ def attach_corrective_action_to_root_causes(verb):
                 else:
                     print(ca_query)
                     print(len(perform_sparql_query(ca_query)))
+
+
+# rule_to_sparql(verb="INSERT")
+# fire_failure_cause_queries(verb="INSERT")
+# create_causal_chain(verb="INSERT")
+# infere_root_causes(verb="INSERT")
+# attach_corrective_action_to_root_causes(verb="INSERT")
+
+
         
