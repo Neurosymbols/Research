@@ -1,0 +1,7638 @@
+[
+  {
+    "id": "PCB0",
+    "expected": [],
+    "predicted": []
+  },
+  {
+    "id": "PCB1",
+    "expected": [],
+    "predicted": []
+  },
+  {
+    "id": "PCB2",
+    "expected": [],
+    "predicted": []
+  },
+  {
+    "id": "PCB4",
+    "expected": [
+      [
+        "noncoalescence",
+        "lowtimeaboveliquidus"
+      ],
+      [
+        "opencircuit_pcb4",
+        "noncoalescence"
+      ]
+    ],
+    "predicted": [
+      [
+        "noncoalescence",
+        "lowtimeaboveliquidus"
+      ],
+      [
+        "opencircuit_pcb4",
+        "noncoalescence"
+      ]
+    ]
+  },
+  {
+    "id": "PCB6",
+    "expected": [],
+    "predicted": []
+  },
+  {
+    "id": "PCB7",
+    "expected": [],
+    "predicted": []
+  },
+  {
+    "id": "PCB16",
+    "expected": [
+      [
+        "solderbridging_pcb16",
+        "apertureoverfill"
+      ],
+      [
+        "apertureoverfill",
+        "highstencilthickness"
+      ]
+    ],
+    "predicted": [
+      [
+        "solderbridging_pcb16",
+        "apertureoverfill"
+      ],
+      [
+        "apertureoverfill",
+        "highstencilthickness"
+      ]
+    ]
+  },
+  {
+    "id": "PCB21",
+    "expected": [
+      [
+        "opencircuit_pcb21",
+        "poorpastetransfer"
+      ]
+    ],
+    "predicted": [
+      [
+        "opencircuit_pcb21",
+        "poorpastetransfer"
+      ]
+    ]
+  },
+  {
+    "id": "PCB23",
+    "expected": [
+      [
+        "solderbridging_pcb23",
+        "excessreflowspreading"
+      ],
+      [
+        "excessreflowspreading",
+        "highpeakreflowtemperature"
+      ]
+    ],
+    "predicted": [
+      [
+        "solderbridging_pcb23",
+        "excessreflowspreading"
+      ]
+    ]
+  },
+  {
+    "id": "PCB25",
+    "expected": [],
+    "predicted": []
+  },
+  {
+    "id": "PCB26",
+    "expected": [
+      [
+        "solderbridging_pcb26",
+        "excessreflowspreading"
+      ],
+      [
+        "excessreflowspreading",
+        "highpeakreflowtemperature"
+      ]
+    ],
+    "predicted": [
+      [
+        "solderbridging_pcb26",
+        "excessreflowspreading"
+      ],
+      [
+        "excessreflowspreading",
+        "highpeakreflowtemperature"
+      ]
+    ]
+  },
+  {
+    "id": "PCB27",
+    "expected": [],
+    "predicted": []
+  },
+  {
+    "id": "PCB29",
+    "expected": [
+      [
+        "solderbridging_pcb29",
+        "apertureoverfill"
+      ],
+      [
+        "apertureoverfill",
+        "highstencilthickness"
+      ]
+    ],
+    "predicted": [
+      [
+        "solderbridging_pcb29",
+        "apertureoverfill"
+      ],
+      [
+        "apertureoverfill",
+        "highstencilthickness"
+      ]
+    ]
+  },
+  {
+    "id": "PCB30",
+    "expected": [],
+    "predicted": []
+  },
+  {
+    "id": "PCB32",
+    "expected": [
+      [
+        "solderbridging_pcb32",
+        "apertureoverfill"
+      ],
+      [
+        "apertureoverfill",
+        "highstencilthickness"
+      ]
+    ],
+    "predicted": [
+      [
+        "solderbridging_pcb32",
+        "apertureoverfill"
+      ],
+      [
+        "apertureoverfill",
+        "highstencilthickness"
+      ]
+    ]
+  },
+  {
+    "id": "PCB33",
+    "expected": [
+      [
+        "noncoalescence",
+        "lowtimeaboveliquidus"
+      ],
+      [
+        "opencircuit_pcb33",
+        "noncoalescence"
+      ]
+    ],
+    "predicted": [
+      [
+        "noncoalescence",
+        "lowtimeaboveliquidus"
+      ],
+      [
+        "opencircuit_pcb33",
+        "noncoalescence"
+      ]
+    ]
+  },
+  {
+    "id": "PCB34",
+    "expected": [],
+    "predicted": []
+  },
+  {
+    "id": "PCB35",
+    "expected": [],
+    "predicted": []
+  },
+  {
+    "id": "PCB37",
+    "expected": [
+      [
+        "solderbridging_pcb37",
+        "apertureoverfill"
+      ],
+      [
+        "apertureoverfill",
+        "highstencilthickness"
+      ]
+    ],
+    "predicted": []
+  },
+  {
+    "id": "PCB50",
+    "expected": [
+      [
+        "solderbridging_pcb50",
+        "apertureoverfill"
+      ],
+      [
+        "apertureoverfill",
+        "lowpasteviscosity"
+      ]
+    ],
+    "predicted": [
+      [
+        "solderbridging_pcb50",
+        "apertureoverfill"
+      ]
+    ]
+  },
+  {
+    "id": "PCB54",
+    "expected": [
+      [
+        "solderbridging_pcb54",
+        "apertureoverfill"
+      ],
+      [
+        "apertureoverfill",
+        "highstencilthickness"
+      ]
+    ],
+    "predicted": [
+      [
+        "solderbridging_pcb54",
+        "apertureoverfill"
+      ],
+      [
+        "apertureoverfill",
+        "highstencilthickness"
+      ]
+    ]
+  },
+  {
+    "id": "PCB61",
+    "expected": [
+      [
+        "solderbridging_pcb61",
+        "apertureoverfill"
+      ],
+      [
+        "apertureoverfill",
+        "highstencilthickness"
+      ]
+    ],
+    "predicted": [
+      [
+        "solderbridging_pcb61",
+        "apertureoverfill"
+      ],
+      [
+        "apertureoverfill",
+        "highstencilthickness"
+      ]
+    ]
+  },
+  {
+    "id": "PCB64",
+    "expected": [
+      [
+        "noncoalescence",
+        "lowpeakreflowtemperature"
+      ],
+      [
+        "opencircuit_pcb64",
+        "noncoalescence"
+      ]
+    ],
+    "predicted": []
+  },
+  {
+    "id": "PCB69",
+    "expected": [
+      [
+        "solderbridging_pcb69",
+        "excessreflowspreading"
+      ],
+      [
+        "excessreflowspreading",
+        "highpeakreflowtemperature"
+      ]
+    ],
+    "predicted": [
+      [
+        "solderbridging_pcb69",
+        "excessreflowspreading"
+      ],
+      [
+        "excessreflowspreading",
+        "highpeakreflowtemperature"
+      ]
+    ]
+  },
+  {
+    "id": "PCB73",
+    "expected": [],
+    "predicted": []
+  },
+  {
+    "id": "PCB74",
+    "expected": [],
+    "predicted": []
+  },
+  {
+    "id": "PCB75",
+    "expected": [
+      [
+        "solderbridging_pcb75",
+        "excessreflowspreading"
+      ],
+      [
+        "apertureoverfill",
+        "highstencilthickness"
+      ],
+      [
+        "excessreflowspreading",
+        "hightimeaboveliquidus"
+      ],
+      [
+        "solderbridging_pcb75",
+        "apertureoverfill"
+      ]
+    ],
+    "predicted": [
+      [
+        "solderbridging_pcb75",
+        "excessreflowspreading"
+      ],
+      [
+        "apertureoverfill",
+        "highstencilthickness"
+      ],
+      [
+        "excessreflowspreading",
+        "hightimeaboveliquidus"
+      ],
+      [
+        "solderbridging_pcb75",
+        "apertureoverfill"
+      ]
+    ]
+  },
+  {
+    "id": "PCB76",
+    "expected": [],
+    "predicted": []
+  },
+  {
+    "id": "PCB78",
+    "expected": [
+      [
+        "apertureoverfill",
+        "highstencilthickness"
+      ],
+      [
+        "solderbridging_pcb78",
+        "apertureoverfill"
+      ]
+    ],
+    "predicted": [
+      [
+        "apertureoverfill",
+        "highstencilthickness"
+      ],
+      [
+        "solderbridging_pcb78",
+        "apertureoverfill"
+      ]
+    ]
+  },
+  {
+    "id": "PCB81",
+    "expected": [
+      [
+        "solderbridging_pcb81",
+        "apertureoverfill"
+      ],
+      [
+        "apertureoverfill",
+        "highstencilthickness"
+      ]
+    ],
+    "predicted": []
+  },
+  {
+    "id": "PCB85",
+    "expected": [
+      [
+        "solderbridging_pcb85",
+        "excessreflowspreading"
+      ],
+      [
+        "excessreflowspreading",
+        "hightimeaboveliquidus"
+      ]
+    ],
+    "predicted": [
+      [
+        "solderbridging_pcb85",
+        "excessreflowspreading"
+      ],
+      [
+        "excessreflowspreading",
+        "hightimeaboveliquidus"
+      ]
+    ]
+  },
+  {
+    "id": "PCB87",
+    "expected": [],
+    "predicted": []
+  },
+  {
+    "id": "PCB89",
+    "expected": [
+      [
+        "noncoalescence",
+        "lowpeakreflowtemperature"
+      ],
+      [
+        "opencircuit_pcb89",
+        "noncoalescence"
+      ]
+    ],
+    "predicted": [
+      [
+        "noncoalescence",
+        "lowpeakreflowtemperature"
+      ],
+      [
+        "opencircuit_pcb89",
+        "noncoalescence"
+      ]
+    ]
+  },
+  {
+    "id": "PCB90",
+    "expected": [
+      [
+        "apertureoverfill",
+        "highambientrh"
+      ],
+      [
+        "apertureoverfill",
+        "highstencilthickness"
+      ],
+      [
+        "apertureoverfill",
+        "lowpasteviscosity"
+      ],
+      [
+        "solderbridging_pcb90",
+        "apertureoverfill"
+      ]
+    ],
+    "predicted": [
+      [
+        "apertureoverfill",
+        "highstencilthickness"
+      ],
+      [
+        "solderbridging_pcb90",
+        "apertureoverfill"
+      ]
+    ]
+  },
+  {
+    "id": "PCB91",
+    "expected": [
+      [
+        "solderbridging_pcb91",
+        "apertureoverfill"
+      ],
+      [
+        "apertureoverfill",
+        "highstencilthickness"
+      ]
+    ],
+    "predicted": [
+      [
+        "solderbridging_pcb91",
+        "apertureoverfill"
+      ],
+      [
+        "apertureoverfill",
+        "highstencilthickness"
+      ]
+    ]
+  },
+  {
+    "id": "PCB93",
+    "expected": [
+      [
+        "apertureoverfill",
+        "highstencilthickness"
+      ],
+      [
+        "solderbridging_pcb93",
+        "apertureoverfill"
+      ]
+    ],
+    "predicted": [
+      [
+        "solderbridging_pcb93",
+        "apertureoverfill"
+      ]
+    ]
+  },
+  {
+    "id": "PCB94",
+    "expected": [
+      [
+        "apertureoverfill",
+        "highstencilthickness"
+      ],
+      [
+        "solderbridging_pcb94",
+        "apertureoverfill"
+      ]
+    ],
+    "predicted": [
+      [
+        "apertureoverfill",
+        "highstencilthickness"
+      ],
+      [
+        "solderbridging_pcb94",
+        "apertureoverfill"
+      ]
+    ]
+  },
+  {
+    "id": "PCB102",
+    "expected": [
+      [
+        "apertureoverfill",
+        "highstencilthickness"
+      ],
+      [
+        "solderbridging_pcb102",
+        "apertureoverfill"
+      ]
+    ],
+    "predicted": [
+      [
+        "apertureoverfill",
+        "highstencilthickness"
+      ],
+      [
+        "solderbridging_pcb102",
+        "apertureoverfill"
+      ]
+    ]
+  },
+  {
+    "id": "PCB103",
+    "expected": [
+      [
+        "opencircuit_pcb103",
+        "poorpastetransfer"
+      ],
+      [
+        "poorpastetransfer",
+        "highpasteviscosity"
+      ],
+      [
+        "poorpastetransfer",
+        "lowambienttemperature"
+      ]
+    ],
+    "predicted": [
+      [
+        "opencircuit_pcb103",
+        "poorpastetransfer"
+      ],
+      [
+        "poorpastetransfer",
+        "highpasteviscosity"
+      ]
+    ]
+  },
+  {
+    "id": "PCB105",
+    "expected": [],
+    "predicted": []
+  },
+  {
+    "id": "PCB111",
+    "expected": [
+      [
+        "opencircuit_pcb111",
+        "poorpastetransfer"
+      ]
+    ],
+    "predicted": []
+  },
+  {
+    "id": "PCB113",
+    "expected": [
+      [
+        "solderbridging_pcb113",
+        "excessreflowspreading"
+      ],
+      [
+        "excessreflowspreading",
+        "highpeakreflowtemperature"
+      ]
+    ],
+    "predicted": [
+      [
+        "solderbridging_pcb113",
+        "excessreflowspreading"
+      ],
+      [
+        "excessreflowspreading",
+        "highpeakreflowtemperature"
+      ]
+    ]
+  },
+  {
+    "id": "PCB114",
+    "expected": [
+      [
+        "apertureoverfill",
+        "highstencilthickness"
+      ],
+      [
+        "solderbridging_pcb114",
+        "apertureoverfill"
+      ]
+    ],
+    "predicted": [
+      [
+        "apertureoverfill",
+        "highstencilthickness"
+      ],
+      [
+        "solderbridging_pcb114",
+        "apertureoverfill"
+      ]
+    ]
+  },
+  {
+    "id": "PCB116",
+    "expected": [
+      [
+        "solderbridging_pcb116",
+        "apertureoverfill"
+      ],
+      [
+        "apertureoverfill",
+        "highstencilthickness"
+      ]
+    ],
+    "predicted": [
+      [
+        "solderbridging_pcb116",
+        "apertureoverfill"
+      ],
+      [
+        "apertureoverfill",
+        "highstencilthickness"
+      ]
+    ]
+  },
+  {
+    "id": "PCB124",
+    "expected": [
+      [
+        "opencircuit_pcb124",
+        "poorpastetransfer"
+      ]
+    ],
+    "predicted": []
+  },
+  {
+    "id": "PCB126",
+    "expected": [
+      [
+        "apertureoverfill",
+        "highstencilthickness"
+      ],
+      [
+        "solderbridging_pcb126",
+        "apertureoverfill"
+      ]
+    ],
+    "predicted": [
+      [
+        "apertureoverfill",
+        "highstencilthickness"
+      ],
+      [
+        "solderbridging_pcb126",
+        "apertureoverfill"
+      ]
+    ]
+  },
+  {
+    "id": "PCB128",
+    "expected": [
+      [
+        "apertureoverfill",
+        "highstencilthickness"
+      ],
+      [
+        "solderbridging_pcb128",
+        "apertureoverfill"
+      ]
+    ],
+    "predicted": [
+      [
+        "opencircuit_pcb128",
+        "noncoalescence"
+      ],
+      [
+        "noncoalescence",
+        "lowtimeaboveliquidus"
+      ]
+    ]
+  },
+  {
+    "id": "PCB129",
+    "expected": [],
+    "predicted": []
+  },
+  {
+    "id": "PCB130",
+    "expected": [
+      [
+        "apertureoverfill",
+        "highstencilthickness"
+      ],
+      [
+        "solderbridging_pcb130",
+        "apertureoverfill"
+      ]
+    ],
+    "predicted": [
+      [
+        "apertureoverfill",
+        "highstencilthickness"
+      ],
+      [
+        "solderbridging_pcb130",
+        "apertureoverfill"
+      ]
+    ]
+  },
+  {
+    "id": "PCB131",
+    "expected": [
+      [
+        "solderbridging_pcb131",
+        "apertureoverfill"
+      ],
+      [
+        "apertureoverfill",
+        "lowpasteviscosity"
+      ]
+    ],
+    "predicted": [
+      [
+        "solderbridging_pcb131",
+        "apertureoverfill"
+      ]
+    ]
+  },
+  {
+    "id": "PCB133",
+    "expected": [
+      [
+        "apertureoverfill",
+        "highstencilthickness"
+      ],
+      [
+        "solderbridging_pcb133",
+        "apertureoverfill"
+      ]
+    ],
+    "predicted": [
+      [
+        "apertureoverfill",
+        "highstencilthickness"
+      ],
+      [
+        "solderbridging_pcb133",
+        "apertureoverfill"
+      ]
+    ]
+  },
+  {
+    "id": "PCB134",
+    "expected": [],
+    "predicted": []
+  },
+  {
+    "id": "PCB136",
+    "expected": [],
+    "predicted": []
+  },
+  {
+    "id": "PCB137",
+    "expected": [
+      [
+        "noncoalescence",
+        "lowtimeaboveliquidus"
+      ],
+      [
+        "opencircuit_pcb137",
+        "noncoalescence"
+      ]
+    ],
+    "predicted": [
+      [
+        "opencircuit_pcb137",
+        "noncoalescence"
+      ]
+    ]
+  },
+  {
+    "id": "PCB138",
+    "expected": [
+      [
+        "excessreflowspreading",
+        "hightimeaboveliquidus"
+      ],
+      [
+        "solderbridging_pcb138",
+        "excessreflowspreading"
+      ]
+    ],
+    "predicted": [
+      [
+        "excessreflowspreading",
+        "hightimeaboveliquidus"
+      ],
+      [
+        "solderbridging_pcb138",
+        "excessreflowspreading"
+      ]
+    ]
+  },
+  {
+    "id": "PCB139",
+    "expected": [
+      [
+        "apertureoverfill",
+        "highstencilthickness"
+      ],
+      [
+        "solderbridging_pcb139",
+        "apertureoverfill"
+      ]
+    ],
+    "predicted": [
+      [
+        "solderbridging_pcb139",
+        "apertureoverfill"
+      ]
+    ]
+  },
+  {
+    "id": "PCB141",
+    "expected": [
+      [
+        "solderbridging_pcb141",
+        "apertureoverfill"
+      ],
+      [
+        "apertureoverfill",
+        "highstencilthickness"
+      ]
+    ],
+    "predicted": [
+      [
+        "solderbridging_pcb141",
+        "apertureoverfill"
+      ]
+    ]
+  },
+  {
+    "id": "PCB143",
+    "expected": [],
+    "predicted": []
+  },
+  {
+    "id": "PCB145",
+    "expected": [
+      [
+        "solderbridging_pcb145",
+        "apertureoverfill"
+      ],
+      [
+        "apertureoverfill",
+        "highstencilthickness"
+      ]
+    ],
+    "predicted": [
+      [
+        "solderbridging_pcb145",
+        "apertureoverfill"
+      ],
+      [
+        "apertureoverfill",
+        "highstencilthickness"
+      ]
+    ]
+  },
+  {
+    "id": "PCB148",
+    "expected": [
+      [
+        "apertureoverfill",
+        "highstencilthickness"
+      ],
+      [
+        "solderbridging_pcb148",
+        "apertureoverfill"
+      ]
+    ],
+    "predicted": [
+      [
+        "apertureoverfill",
+        "highstencilthickness"
+      ],
+      [
+        "solderbridging_pcb148",
+        "apertureoverfill"
+      ]
+    ]
+  },
+  {
+    "id": "PCB150",
+    "expected": [
+      [
+        "apertureoverfill",
+        "highstencilthickness"
+      ],
+      [
+        "solderbridging_pcb150",
+        "apertureoverfill"
+      ]
+    ],
+    "predicted": [
+      [
+        "apertureoverfill",
+        "highstencilthickness"
+      ],
+      [
+        "solderbridging_pcb150",
+        "apertureoverfill"
+      ]
+    ]
+  },
+  {
+    "id": "PCB154",
+    "expected": [
+      [
+        "poorpastetransfer",
+        "lowambienttemperature"
+      ],
+      [
+        "opencircuit_pcb154",
+        "poorpastetransfer"
+      ]
+    ],
+    "predicted": [
+      [
+        "poorpastetransfer",
+        "lowambienttemperature"
+      ],
+      [
+        "opencircuit_pcb154",
+        "poorpastetransfer"
+      ]
+    ]
+  },
+  {
+    "id": "PCB155",
+    "expected": [
+      [
+        "solderbridging_pcb155",
+        "apertureoverfill"
+      ],
+      [
+        "apertureoverfill",
+        "highstencilthickness"
+      ]
+    ],
+    "predicted": [
+      [
+        "solderbridging_pcb155",
+        "apertureoverfill"
+      ],
+      [
+        "apertureoverfill",
+        "highstencilthickness"
+      ]
+    ]
+  },
+  {
+    "id": "PCB158",
+    "expected": [
+      [
+        "solderbridging_pcb158",
+        "apertureoverfill"
+      ],
+      [
+        "apertureoverfill",
+        "highstencilthickness"
+      ]
+    ],
+    "predicted": [
+      [
+        "solderbridging_pcb158",
+        "apertureoverfill"
+      ],
+      [
+        "apertureoverfill",
+        "highstencilthickness"
+      ]
+    ]
+  },
+  {
+    "id": "PCB159",
+    "expected": [
+      [
+        "apertureoverfill",
+        "highstencilthickness"
+      ],
+      [
+        "solderbridging_pcb159",
+        "apertureoverfill"
+      ]
+    ],
+    "predicted": [
+      [
+        "solderbridging_pcb159",
+        "apertureoverfill"
+      ]
+    ]
+  },
+  {
+    "id": "PCB161",
+    "expected": [
+      [
+        "solderbridging_pcb161",
+        "apertureoverfill"
+      ],
+      [
+        "apertureoverfill",
+        "highstencilthickness"
+      ]
+    ],
+    "predicted": [
+      [
+        "solderbridging_pcb161",
+        "apertureoverfill"
+      ],
+      [
+        "apertureoverfill",
+        "highstencilthickness"
+      ]
+    ]
+  },
+  {
+    "id": "PCB162",
+    "expected": [],
+    "predicted": []
+  },
+  {
+    "id": "PCB164",
+    "expected": [
+      [
+        "apertureoverfill",
+        "highstencilthickness"
+      ],
+      [
+        "solderbridging_pcb164",
+        "apertureoverfill"
+      ]
+    ],
+    "predicted": [
+      [
+        "apertureoverfill",
+        "highstencilthickness"
+      ],
+      [
+        "solderbridging_pcb164",
+        "apertureoverfill"
+      ]
+    ]
+  },
+  {
+    "id": "PCB165",
+    "expected": [
+      [
+        "apertureoverfill",
+        "highstencilthickness"
+      ],
+      [
+        "solderbridging_pcb165",
+        "apertureoverfill"
+      ]
+    ],
+    "predicted": [
+      [
+        "apertureoverfill",
+        "highstencilthickness"
+      ],
+      [
+        "solderbridging_pcb165",
+        "apertureoverfill"
+      ]
+    ]
+  },
+  {
+    "id": "PCB169",
+    "expected": [
+      [
+        "noncoalescence",
+        "lowpeakreflowtemperature"
+      ],
+      [
+        "opencircuit_pcb169",
+        "noncoalescence"
+      ]
+    ],
+    "predicted": []
+  },
+  {
+    "id": "PCB172",
+    "expected": [],
+    "predicted": []
+  },
+  {
+    "id": "PCB176",
+    "expected": [
+      [
+        "solderbridging_pcb176",
+        "excessreflowspreading"
+      ],
+      [
+        "excessreflowspreading",
+        "highpeakreflowtemperature"
+      ]
+    ],
+    "predicted": [
+      [
+        "solderbridging_pcb176",
+        "excessreflowspreading"
+      ]
+    ]
+  },
+  {
+    "id": "PCB177",
+    "expected": [
+      [
+        "solderbridging_pcb177",
+        "apertureoverfill"
+      ],
+      [
+        "apertureoverfill",
+        "highstencilthickness"
+      ]
+    ],
+    "predicted": [
+      [
+        "solderbridging_pcb177",
+        "apertureoverfill"
+      ],
+      [
+        "apertureoverfill",
+        "highstencilthickness"
+      ]
+    ]
+  },
+  {
+    "id": "PCB179",
+    "expected": [
+      [
+        "apertureoverfill",
+        "highstencilthickness"
+      ],
+      [
+        "solderbridging_pcb179",
+        "apertureoverfill"
+      ]
+    ],
+    "predicted": [
+      [
+        "apertureoverfill",
+        "highstencilthickness"
+      ],
+      [
+        "solderbridging_pcb179",
+        "apertureoverfill"
+      ]
+    ]
+  },
+  {
+    "id": "PCB180",
+    "expected": [],
+    "predicted": []
+  },
+  {
+    "id": "PCB181",
+    "expected": [
+      [
+        "solderbridging_pcb181",
+        "apertureoverfill"
+      ],
+      [
+        "apertureoverfill",
+        "highstencilthickness"
+      ]
+    ],
+    "predicted": [
+      [
+        "solderbridging_pcb181",
+        "apertureoverfill"
+      ],
+      [
+        "apertureoverfill",
+        "highstencilthickness"
+      ]
+    ]
+  },
+  {
+    "id": "PCB182",
+    "expected": [],
+    "predicted": []
+  },
+  {
+    "id": "PCB193",
+    "expected": [],
+    "predicted": []
+  },
+  {
+    "id": "PCB194",
+    "expected": [
+      [
+        "solderbridging_pcb194",
+        "apertureoverfill"
+      ],
+      [
+        "apertureoverfill",
+        "highstencilthickness"
+      ]
+    ],
+    "predicted": [
+      [
+        "solderbridging_pcb194",
+        "apertureoverfill"
+      ],
+      [
+        "apertureoverfill",
+        "highstencilthickness"
+      ]
+    ]
+  },
+  {
+    "id": "PCB195",
+    "expected": [
+      [
+        "poorpastetransfer",
+        "lowambientrh"
+      ],
+      [
+        "opencircuit_pcb195",
+        "poorpastetransfer"
+      ],
+      [
+        "poorpastetransfer",
+        "highpasteviscosity"
+      ]
+    ],
+    "predicted": [
+      [
+        "opencircuit_pcb195",
+        "poorpastetransfer"
+      ],
+      [
+        "poorpastetransfer",
+        "highpasteviscosity"
+      ]
+    ]
+  },
+  {
+    "id": "PCB205",
+    "expected": [],
+    "predicted": []
+  },
+  {
+    "id": "PCB211",
+    "expected": [
+      [
+        "noncoalescence",
+        "lowtimeaboveliquidus"
+      ],
+      [
+        "opencircuit_pcb211",
+        "noncoalescence"
+      ]
+    ],
+    "predicted": []
+  },
+  {
+    "id": "PCB215",
+    "expected": [
+      [
+        "opencircuit_pcb215",
+        "noncoalescence"
+      ],
+      [
+        "noncoalescence",
+        "lowtimeaboveliquidus"
+      ]
+    ],
+    "predicted": [
+      [
+        "opencircuit_pcb215",
+        "noncoalescence"
+      ],
+      [
+        "noncoalescence",
+        "lowtimeaboveliquidus"
+      ]
+    ]
+  },
+  {
+    "id": "PCB220",
+    "expected": [],
+    "predicted": []
+  },
+  {
+    "id": "PCB222",
+    "expected": [
+      [
+        "solderbridging_pcb222",
+        "excessreflowspreading"
+      ],
+      [
+        "excessreflowspreading",
+        "hightimeaboveliquidus"
+      ]
+    ],
+    "predicted": [
+      [
+        "solderbridging_pcb222",
+        "excessreflowspreading"
+      ],
+      [
+        "excessreflowspreading",
+        "hightimeaboveliquidus"
+      ]
+    ]
+  },
+  {
+    "id": "PCB224",
+    "expected": [
+      [
+        "noncoalescence",
+        "lowpeakreflowtemperature"
+      ],
+      [
+        "opencircuit_pcb224",
+        "noncoalescence"
+      ]
+    ],
+    "predicted": []
+  },
+  {
+    "id": "PCB225",
+    "expected": [
+      [
+        "solderbridging_pcb225",
+        "excessreflowspreading"
+      ],
+      [
+        "excessreflowspreading",
+        "highpeakreflowtemperature"
+      ]
+    ],
+    "predicted": [
+      [
+        "solderbridging_pcb225",
+        "excessreflowspreading"
+      ],
+      [
+        "excessreflowspreading",
+        "highpeakreflowtemperature"
+      ]
+    ]
+  },
+  {
+    "id": "PCB229",
+    "expected": [
+      [
+        "apertureoverfill",
+        "highstencilthickness"
+      ],
+      [
+        "solderbridging_pcb229",
+        "apertureoverfill"
+      ]
+    ],
+    "predicted": [
+      [
+        "apertureoverfill",
+        "highstencilthickness"
+      ],
+      [
+        "solderbridging_pcb229",
+        "apertureoverfill"
+      ]
+    ]
+  },
+  {
+    "id": "PCB236",
+    "expected": [
+      [
+        "apertureoverfill",
+        "highambientrh"
+      ],
+      [
+        "solderbridging_pcb236",
+        "apertureoverfill"
+      ],
+      [
+        "apertureoverfill",
+        "lowpasteviscosity"
+      ]
+    ],
+    "predicted": [
+      [
+        "solderbridging_pcb236",
+        "apertureoverfill"
+      ]
+    ]
+  },
+  {
+    "id": "PCB237",
+    "expected": [
+      [
+        "apertureoverfill",
+        "highstencilthickness"
+      ],
+      [
+        "solderbridging_pcb237",
+        "apertureoverfill"
+      ]
+    ],
+    "predicted": [
+      [
+        "apertureoverfill",
+        "highstencilthickness"
+      ],
+      [
+        "solderbridging_pcb237",
+        "apertureoverfill"
+      ]
+    ]
+  },
+  {
+    "id": "PCB238",
+    "expected": [
+      [
+        "solderbridging_pcb238",
+        "apertureoverfill"
+      ],
+      [
+        "apertureoverfill",
+        "highstencilthickness"
+      ]
+    ],
+    "predicted": [
+      [
+        "solderbridging_pcb238",
+        "apertureoverfill"
+      ],
+      [
+        "apertureoverfill",
+        "highstencilthickness"
+      ]
+    ]
+  },
+  {
+    "id": "PCB241",
+    "expected": [],
+    "predicted": []
+  },
+  {
+    "id": "PCB242",
+    "expected": [],
+    "predicted": []
+  },
+  {
+    "id": "PCB243",
+    "expected": [],
+    "predicted": []
+  },
+  {
+    "id": "PCB244",
+    "expected": [
+      [
+        "poorpastetransfer",
+        "lowambientrh"
+      ],
+      [
+        "poorpastetransfer",
+        "highpasteviscosity"
+      ],
+      [
+        "opencircuit_pcb244",
+        "poorpastetransfer"
+      ]
+    ],
+    "predicted": [
+      [
+        "poorpastetransfer",
+        "lowambientrh"
+      ],
+      [
+        "poorpastetransfer",
+        "highpasteviscosity"
+      ],
+      [
+        "opencircuit_pcb244",
+        "poorpastetransfer"
+      ]
+    ]
+  },
+  {
+    "id": "PCB245",
+    "expected": [
+      [
+        "solderbridging_pcb245",
+        "excessreflowspreading"
+      ],
+      [
+        "excessreflowspreading",
+        "highpeakreflowtemperature"
+      ]
+    ],
+    "predicted": [
+      [
+        "solderbridging_pcb245",
+        "excessreflowspreading"
+      ],
+      [
+        "excessreflowspreading",
+        "highpeakreflowtemperature"
+      ]
+    ]
+  },
+  {
+    "id": "PCB246",
+    "expected": [
+      [
+        "solderbridging_pcb246",
+        "apertureoverfill"
+      ],
+      [
+        "apertureoverfill",
+        "highstencilthickness"
+      ]
+    ],
+    "predicted": [
+      [
+        "solderbridging_pcb246",
+        "apertureoverfill"
+      ]
+    ]
+  },
+  {
+    "id": "PCB252",
+    "expected": [
+      [
+        "solderbridging_pcb252",
+        "apertureoverfill"
+      ],
+      [
+        "apertureoverfill",
+        "highstencilthickness"
+      ]
+    ],
+    "predicted": [
+      [
+        "solderbridging_pcb252",
+        "apertureoverfill"
+      ],
+      [
+        "apertureoverfill",
+        "highstencilthickness"
+      ]
+    ]
+  },
+  {
+    "id": "PCB255",
+    "expected": [
+      [
+        "solderbridging_pcb255",
+        "apertureoverfill"
+      ],
+      [
+        "apertureoverfill",
+        "highstencilthickness"
+      ]
+    ],
+    "predicted": [
+      [
+        "solderbridging_pcb255",
+        "apertureoverfill"
+      ]
+    ]
+  },
+  {
+    "id": "PCB256",
+    "expected": [
+      [
+        "apertureoverfill",
+        "highstencilthickness"
+      ],
+      [
+        "solderbridging_pcb256",
+        "apertureoverfill"
+      ]
+    ],
+    "predicted": [
+      [
+        "apertureoverfill",
+        "highstencilthickness"
+      ],
+      [
+        "solderbridging_pcb256",
+        "apertureoverfill"
+      ]
+    ]
+  },
+  {
+    "id": "PCB259",
+    "expected": [
+      [
+        "apertureoverfill",
+        "highstencilthickness"
+      ],
+      [
+        "solderbridging_pcb259",
+        "apertureoverfill"
+      ]
+    ],
+    "predicted": [
+      [
+        "solderbridging_pcb259",
+        "apertureoverfill"
+      ]
+    ]
+  },
+  {
+    "id": "PCB261",
+    "expected": [
+      [
+        "apertureoverfill",
+        "highstencilthickness"
+      ],
+      [
+        "solderbridging_pcb261",
+        "apertureoverfill"
+      ]
+    ],
+    "predicted": [
+      [
+        "solderbridging_pcb261",
+        "apertureoverfill"
+      ]
+    ]
+  },
+  {
+    "id": "PCB263",
+    "expected": [
+      [
+        "apertureoverfill",
+        "highstencilthickness"
+      ],
+      [
+        "solderbridging_pcb263",
+        "apertureoverfill"
+      ]
+    ],
+    "predicted": [
+      [
+        "apertureoverfill",
+        "highstencilthickness"
+      ],
+      [
+        "solderbridging_pcb263",
+        "apertureoverfill"
+      ]
+    ]
+  },
+  {
+    "id": "PCB267",
+    "expected": [],
+    "predicted": []
+  },
+  {
+    "id": "PCB270",
+    "expected": [
+      [
+        "opencircuit_pcb270",
+        "poorpastetransfer"
+      ]
+    ],
+    "predicted": []
+  },
+  {
+    "id": "PCB271",
+    "expected": [],
+    "predicted": []
+  },
+  {
+    "id": "PCB274",
+    "expected": [],
+    "predicted": []
+  },
+  {
+    "id": "PCB276",
+    "expected": [],
+    "predicted": []
+  },
+  {
+    "id": "PCB277",
+    "expected": [
+      [
+        "opencircuit_pcb277",
+        "poorpastetransfer"
+      ]
+    ],
+    "predicted": [
+      [
+        "opencircuit_pcb277",
+        "poorpastetransfer"
+      ]
+    ]
+  },
+  {
+    "id": "PCB285",
+    "expected": [
+      [
+        "solderbridging_pcb285",
+        "excessreflowspreading"
+      ],
+      [
+        "excessreflowspreading",
+        "hightimeaboveliquidus"
+      ],
+      [
+        "excessreflowspreading",
+        "highpeakreflowtemperature"
+      ]
+    ],
+    "predicted": [
+      [
+        "solderbridging_pcb285",
+        "excessreflowspreading"
+      ],
+      [
+        "excessreflowspreading",
+        "highpeakreflowtemperature"
+      ]
+    ]
+  },
+  {
+    "id": "PCB289",
+    "expected": [
+      [
+        "noncoalescence",
+        "lowpeakreflowtemperature"
+      ],
+      [
+        "opencircuit_pcb289",
+        "noncoalescence"
+      ]
+    ],
+    "predicted": [
+      [
+        "opencircuit_pcb289",
+        "noncoalescence"
+      ]
+    ]
+  },
+  {
+    "id": "PCB292",
+    "expected": [
+      [
+        "solderbridging_pcb292",
+        "apertureoverfill"
+      ],
+      [
+        "apertureoverfill",
+        "highstencilthickness"
+      ]
+    ],
+    "predicted": [
+      [
+        "solderbridging_pcb292",
+        "apertureoverfill"
+      ],
+      [
+        "apertureoverfill",
+        "highstencilthickness"
+      ]
+    ]
+  },
+  {
+    "id": "PCB293",
+    "expected": [],
+    "predicted": []
+  },
+  {
+    "id": "PCB296",
+    "expected": [
+      [
+        "solderbridging_pcb296",
+        "apertureoverfill"
+      ],
+      [
+        "apertureoverfill",
+        "lowpasteviscosity"
+      ]
+    ],
+    "predicted": [
+      [
+        "solderbridging_pcb296",
+        "apertureoverfill"
+      ]
+    ]
+  },
+  {
+    "id": "PCB298",
+    "expected": [
+      [
+        "noncoalescence",
+        "lowtimeaboveliquidus"
+      ],
+      [
+        "opencircuit_pcb298",
+        "noncoalescence"
+      ]
+    ],
+    "predicted": [
+      [
+        "noncoalescence",
+        "lowtimeaboveliquidus"
+      ],
+      [
+        "opencircuit_pcb298",
+        "noncoalescence"
+      ]
+    ]
+  },
+  {
+    "id": "PCB300",
+    "expected": [],
+    "predicted": []
+  },
+  {
+    "id": "PCB301",
+    "expected": [
+      [
+        "excessreflowspreading",
+        "highpeakreflowtemperature"
+      ],
+      [
+        "solderbridging_pcb301",
+        "excessreflowspreading"
+      ]
+    ],
+    "predicted": [
+      [
+        "solderbridging_pcb301",
+        "excessreflowspreading"
+      ]
+    ]
+  },
+  {
+    "id": "PCB305",
+    "expected": [],
+    "predicted": []
+  },
+  {
+    "id": "PCB306",
+    "expected": [
+      [
+        "solderbridging_pcb306",
+        "apertureoverfill"
+      ],
+      [
+        "apertureoverfill",
+        "highstencilthickness"
+      ]
+    ],
+    "predicted": [
+      [
+        "poorpastetransfer",
+        "lowambientrh"
+      ],
+      [
+        "poorpastetransfer",
+        "highpasteviscosity"
+      ],
+      [
+        "opencircuit_pcb306",
+        "poorpastetransfer"
+      ]
+    ]
+  },
+  {
+    "id": "PCB308",
+    "expected": [
+      [
+        "solderbridging_pcb308",
+        "apertureoverfill"
+      ],
+      [
+        "apertureoverfill",
+        "highstencilthickness"
+      ]
+    ],
+    "predicted": [
+      [
+        "solderbridging_pcb308",
+        "apertureoverfill"
+      ],
+      [
+        "apertureoverfill",
+        "highstencilthickness"
+      ]
+    ]
+  },
+  {
+    "id": "PCB310",
+    "expected": [],
+    "predicted": []
+  },
+  {
+    "id": "PCB311",
+    "expected": [
+      [
+        "solderbridging_pcb311",
+        "apertureoverfill"
+      ],
+      [
+        "apertureoverfill",
+        "highstencilthickness"
+      ]
+    ],
+    "predicted": [
+      [
+        "solderbridging_pcb311",
+        "excessreflowspreading"
+      ]
+    ]
+  },
+  {
+    "id": "PCB312",
+    "expected": [
+      [
+        "solderbridging_pcb312",
+        "apertureoverfill"
+      ],
+      [
+        "apertureoverfill",
+        "highstencilthickness"
+      ]
+    ],
+    "predicted": [
+      [
+        "solderbridging_pcb312",
+        "apertureoverfill"
+      ],
+      [
+        "apertureoverfill",
+        "highstencilthickness"
+      ]
+    ]
+  },
+  {
+    "id": "PCB318",
+    "expected": [
+      [
+        "poorpastetransfer",
+        "lowambienttemperature"
+      ],
+      [
+        "poorpastetransfer",
+        "highpasteviscosity"
+      ],
+      [
+        "opencircuit_pcb318",
+        "poorpastetransfer"
+      ]
+    ],
+    "predicted": [
+      [
+        "poorpastetransfer",
+        "lowambienttemperature"
+      ],
+      [
+        "poorpastetransfer",
+        "highpasteviscosity"
+      ],
+      [
+        "opencircuit_pcb318",
+        "poorpastetransfer"
+      ]
+    ]
+  },
+  {
+    "id": "PCB320",
+    "expected": [],
+    "predicted": []
+  },
+  {
+    "id": "PCB324",
+    "expected": [],
+    "predicted": []
+  },
+  {
+    "id": "PCB326",
+    "expected": [],
+    "predicted": []
+  },
+  {
+    "id": "PCB327",
+    "expected": [
+      [
+        "apertureoverfill",
+        "highstencilthickness"
+      ],
+      [
+        "solderbridging_pcb327",
+        "apertureoverfill"
+      ]
+    ],
+    "predicted": [
+      [
+        "apertureoverfill",
+        "highstencilthickness"
+      ],
+      [
+        "solderbridging_pcb327",
+        "apertureoverfill"
+      ]
+    ]
+  },
+  {
+    "id": "PCB329",
+    "expected": [],
+    "predicted": []
+  },
+  {
+    "id": "PCB331",
+    "expected": [
+      [
+        "poorpastetransfer",
+        "lowambienttemperature"
+      ],
+      [
+        "opencircuit_pcb331",
+        "poorpastetransfer"
+      ],
+      [
+        "poorpastetransfer",
+        "highpasteviscosity"
+      ]
+    ],
+    "predicted": [
+      [
+        "poorpastetransfer",
+        "lowambienttemperature"
+      ],
+      [
+        "opencircuit_pcb331",
+        "poorpastetransfer"
+      ],
+      [
+        "poorpastetransfer",
+        "highpasteviscosity"
+      ]
+    ]
+  },
+  {
+    "id": "PCB335",
+    "expected": [
+      [
+        "apertureoverfill",
+        "highstencilthickness"
+      ],
+      [
+        "solderbridging_pcb335",
+        "apertureoverfill"
+      ]
+    ],
+    "predicted": [
+      [
+        "solderbridging_pcb335",
+        "apertureoverfill"
+      ]
+    ]
+  },
+  {
+    "id": "PCB339",
+    "expected": [],
+    "predicted": []
+  },
+  {
+    "id": "PCB342",
+    "expected": [
+      [
+        "solderbridging_pcb342",
+        "excessreflowspreading"
+      ],
+      [
+        "excessreflowspreading",
+        "highpeakreflowtemperature"
+      ]
+    ],
+    "predicted": [
+      [
+        "solderbridging_pcb342",
+        "excessreflowspreading"
+      ],
+      [
+        "excessreflowspreading",
+        "highpeakreflowtemperature"
+      ]
+    ]
+  },
+  {
+    "id": "PCB347",
+    "expected": [
+      [
+        "apertureoverfill",
+        "highstencilthickness"
+      ],
+      [
+        "solderbridging_pcb347",
+        "apertureoverfill"
+      ]
+    ],
+    "predicted": [
+      [
+        "apertureoverfill",
+        "highstencilthickness"
+      ],
+      [
+        "solderbridging_pcb347",
+        "apertureoverfill"
+      ]
+    ]
+  },
+  {
+    "id": "PCB348",
+    "expected": [],
+    "predicted": []
+  },
+  {
+    "id": "PCB349",
+    "expected": [
+      [
+        "apertureoverfill",
+        "highstencilthickness"
+      ],
+      [
+        "solderbridging_pcb349",
+        "apertureoverfill"
+      ]
+    ],
+    "predicted": [
+      [
+        "apertureoverfill",
+        "highstencilthickness"
+      ],
+      [
+        "solderbridging_pcb349",
+        "apertureoverfill"
+      ]
+    ]
+  },
+  {
+    "id": "PCB354",
+    "expected": [],
+    "predicted": []
+  },
+  {
+    "id": "PCB355",
+    "expected": [
+      [
+        "solderbridging_pcb355",
+        "apertureoverfill"
+      ],
+      [
+        "apertureoverfill",
+        "highstencilthickness"
+      ]
+    ],
+    "predicted": [
+      [
+        "solderbridging_pcb355",
+        "apertureoverfill"
+      ],
+      [
+        "apertureoverfill",
+        "highstencilthickness"
+      ]
+    ]
+  },
+  {
+    "id": "PCB357",
+    "expected": [
+      [
+        "apertureoverfill",
+        "highstencilthickness"
+      ],
+      [
+        "solderbridging_pcb357",
+        "apertureoverfill"
+      ]
+    ],
+    "predicted": [
+      [
+        "apertureoverfill",
+        "highstencilthickness"
+      ],
+      [
+        "solderbridging_pcb357",
+        "apertureoverfill"
+      ]
+    ]
+  },
+  {
+    "id": "PCB361",
+    "expected": [
+      [
+        "solderbridging_pcb361",
+        "apertureoverfill"
+      ],
+      [
+        "apertureoverfill",
+        "highstencilthickness"
+      ]
+    ],
+    "predicted": [
+      [
+        "solderbridging_pcb361",
+        "apertureoverfill"
+      ],
+      [
+        "apertureoverfill",
+        "highstencilthickness"
+      ]
+    ]
+  },
+  {
+    "id": "PCB362",
+    "expected": [],
+    "predicted": []
+  },
+  {
+    "id": "PCB363",
+    "expected": [],
+    "predicted": []
+  },
+  {
+    "id": "PCB365",
+    "expected": [],
+    "predicted": []
+  },
+  {
+    "id": "PCB366",
+    "expected": [
+      [
+        "noncoalescence",
+        "lowtimeaboveliquidus"
+      ],
+      [
+        "opencircuit_pcb366",
+        "noncoalescence"
+      ]
+    ],
+    "predicted": [
+      [
+        "noncoalescence",
+        "lowtimeaboveliquidus"
+      ],
+      [
+        "opencircuit_pcb366",
+        "noncoalescence"
+      ]
+    ]
+  },
+  {
+    "id": "PCB368",
+    "expected": [],
+    "predicted": []
+  },
+  {
+    "id": "PCB373",
+    "expected": [],
+    "predicted": []
+  },
+  {
+    "id": "PCB376",
+    "expected": [
+      [
+        "solderbridging_pcb376",
+        "apertureoverfill"
+      ],
+      [
+        "apertureoverfill",
+        "lowpasteviscosity"
+      ]
+    ],
+    "predicted": []
+  },
+  {
+    "id": "PCB380",
+    "expected": [
+      [
+        "noncoalescence",
+        "lowpeakreflowtemperature"
+      ],
+      [
+        "opencircuit_pcb380",
+        "noncoalescence"
+      ]
+    ],
+    "predicted": [
+      [
+        "noncoalescence",
+        "lowpeakreflowtemperature"
+      ],
+      [
+        "opencircuit_pcb380",
+        "noncoalescence"
+      ]
+    ]
+  },
+  {
+    "id": "PCB381",
+    "expected": [
+      [
+        "apertureoverfill",
+        "highstencilthickness"
+      ],
+      [
+        "solderbridging_pcb381",
+        "apertureoverfill"
+      ]
+    ],
+    "predicted": [
+      [
+        "apertureoverfill",
+        "highstencilthickness"
+      ],
+      [
+        "solderbridging_pcb381",
+        "apertureoverfill"
+      ]
+    ]
+  },
+  {
+    "id": "PCB383",
+    "expected": [
+      [
+        "solderbridging_pcb383",
+        "apertureoverfill"
+      ],
+      [
+        "apertureoverfill",
+        "highstencilthickness"
+      ]
+    ],
+    "predicted": [
+      [
+        "solderbridging_pcb383",
+        "apertureoverfill"
+      ],
+      [
+        "apertureoverfill",
+        "highstencilthickness"
+      ]
+    ]
+  },
+  {
+    "id": "PCB384",
+    "expected": [],
+    "predicted": []
+  },
+  {
+    "id": "PCB386",
+    "expected": [
+      [
+        "apertureoverfill",
+        "lowpasteviscosity"
+      ],
+      [
+        "solderbridging_pcb386",
+        "apertureoverfill"
+      ]
+    ],
+    "predicted": [
+      [
+        "solderbridging_pcb386",
+        "apertureoverfill"
+      ]
+    ]
+  },
+  {
+    "id": "PCB387",
+    "expected": [
+      [
+        "apertureoverfill",
+        "highstencilthickness"
+      ],
+      [
+        "solderbridging_pcb387",
+        "apertureoverfill"
+      ]
+    ],
+    "predicted": []
+  },
+  {
+    "id": "PCB388",
+    "expected": [
+      [
+        "apertureoverfill",
+        "highstencilthickness"
+      ],
+      [
+        "solderbridging_pcb388",
+        "apertureoverfill"
+      ]
+    ],
+    "predicted": [
+      [
+        "apertureoverfill",
+        "highstencilthickness"
+      ],
+      [
+        "solderbridging_pcb388",
+        "apertureoverfill"
+      ]
+    ]
+  },
+  {
+    "id": "PCB396",
+    "expected": [
+      [
+        "apertureoverfill",
+        "highstencilthickness"
+      ],
+      [
+        "solderbridging_pcb396",
+        "apertureoverfill"
+      ]
+    ],
+    "predicted": [
+      [
+        "apertureoverfill",
+        "highstencilthickness"
+      ],
+      [
+        "solderbridging_pcb396",
+        "apertureoverfill"
+      ]
+    ]
+  },
+  {
+    "id": "PCB397",
+    "expected": [
+      [
+        "excessreflowspreading",
+        "hightimeaboveliquidus"
+      ],
+      [
+        "solderbridging_pcb397",
+        "excessreflowspreading"
+      ]
+    ],
+    "predicted": [
+      [
+        "excessreflowspreading",
+        "hightimeaboveliquidus"
+      ],
+      [
+        "solderbridging_pcb397",
+        "excessreflowspreading"
+      ]
+    ]
+  },
+  {
+    "id": "PCB401",
+    "expected": [
+      [
+        "solderbridging_pcb401",
+        "excessreflowspreading"
+      ],
+      [
+        "excessreflowspreading",
+        "highpeakreflowtemperature"
+      ]
+    ],
+    "predicted": [
+      [
+        "solderbridging_pcb401",
+        "excessreflowspreading"
+      ],
+      [
+        "excessreflowspreading",
+        "highpeakreflowtemperature"
+      ]
+    ]
+  },
+  {
+    "id": "PCB402",
+    "expected": [],
+    "predicted": []
+  },
+  {
+    "id": "PCB403",
+    "expected": [],
+    "predicted": []
+  },
+  {
+    "id": "PCB406",
+    "expected": [
+      [
+        "apertureoverfill",
+        "highstencilthickness"
+      ],
+      [
+        "solderbridging_pcb406",
+        "apertureoverfill"
+      ]
+    ],
+    "predicted": [
+      [
+        "apertureoverfill",
+        "highstencilthickness"
+      ],
+      [
+        "solderbridging_pcb406",
+        "apertureoverfill"
+      ]
+    ]
+  },
+  {
+    "id": "PCB407",
+    "expected": [
+      [
+        "solderbridging_pcb407",
+        "apertureoverfill"
+      ],
+      [
+        "apertureoverfill",
+        "highstencilthickness"
+      ]
+    ],
+    "predicted": [
+      [
+        "solderbridging_pcb407",
+        "apertureoverfill"
+      ],
+      [
+        "apertureoverfill",
+        "highstencilthickness"
+      ]
+    ]
+  },
+  {
+    "id": "PCB408",
+    "expected": [
+      [
+        "solderbridging_pcb408",
+        "apertureoverfill"
+      ],
+      [
+        "apertureoverfill",
+        "lowpasteviscosity"
+      ]
+    ],
+    "predicted": [
+      [
+        "solderbridging_pcb408",
+        "apertureoverfill"
+      ]
+    ]
+  },
+  {
+    "id": "PCB410",
+    "expected": [
+      [
+        "apertureoverfill",
+        "highstencilthickness"
+      ],
+      [
+        "solderbridging_pcb410",
+        "apertureoverfill"
+      ]
+    ],
+    "predicted": [
+      [
+        "apertureoverfill",
+        "highstencilthickness"
+      ],
+      [
+        "solderbridging_pcb410",
+        "apertureoverfill"
+      ]
+    ]
+  },
+  {
+    "id": "PCB418",
+    "expected": [],
+    "predicted": []
+  },
+  {
+    "id": "PCB420",
+    "expected": [],
+    "predicted": []
+  },
+  {
+    "id": "PCB421",
+    "expected": [
+      [
+        "solderbridging_pcb421",
+        "apertureoverfill"
+      ],
+      [
+        "apertureoverfill",
+        "highstencilthickness"
+      ]
+    ],
+    "predicted": [
+      [
+        "solderbridging_pcb421",
+        "apertureoverfill"
+      ],
+      [
+        "apertureoverfill",
+        "highstencilthickness"
+      ]
+    ]
+  },
+  {
+    "id": "PCB425",
+    "expected": [
+      [
+        "noncoalescence",
+        "lowtimeaboveliquidus"
+      ],
+      [
+        "opencircuit_pcb425",
+        "noncoalescence"
+      ]
+    ],
+    "predicted": [
+      [
+        "noncoalescence",
+        "lowtimeaboveliquidus"
+      ],
+      [
+        "opencircuit_pcb425",
+        "noncoalescence"
+      ]
+    ]
+  },
+  {
+    "id": "PCB426",
+    "expected": [
+      [
+        "apertureoverfill",
+        "highstencilthickness"
+      ],
+      [
+        "solderbridging_pcb426",
+        "apertureoverfill"
+      ]
+    ],
+    "predicted": [
+      [
+        "apertureoverfill",
+        "highstencilthickness"
+      ],
+      [
+        "solderbridging_pcb426",
+        "apertureoverfill"
+      ]
+    ]
+  },
+  {
+    "id": "PCB428",
+    "expected": [],
+    "predicted": []
+  },
+  {
+    "id": "PCB429",
+    "expected": [],
+    "predicted": []
+  },
+  {
+    "id": "PCB433",
+    "expected": [
+      [
+        "solderbridging_pcb433",
+        "excessreflowspreading"
+      ],
+      [
+        "excessreflowspreading",
+        "hightimeaboveliquidus"
+      ]
+    ],
+    "predicted": [
+      [
+        "excessreflowspreading",
+        "hightimeaboveliquidus"
+      ]
+    ]
+  },
+  {
+    "id": "PCB434",
+    "expected": [
+      [
+        "apertureoverfill",
+        "highstencilthickness"
+      ],
+      [
+        "solderbridging_pcb434",
+        "apertureoverfill"
+      ]
+    ],
+    "predicted": [
+      [
+        "solderbridging_pcb434",
+        "excessreflowspreading"
+      ],
+      [
+        "solderbridging_pcb434",
+        "apertureoverfill"
+      ],
+      [
+        "apertureoverfill",
+        "highstencilthickness"
+      ]
+    ]
+  },
+  {
+    "id": "PCB435",
+    "expected": [],
+    "predicted": []
+  },
+  {
+    "id": "PCB438",
+    "expected": [
+      [
+        "poorpastetransfer",
+        "lowambienttemperature"
+      ],
+      [
+        "poorpastetransfer",
+        "highpasteviscosity"
+      ],
+      [
+        "opencircuit_pcb438",
+        "poorpastetransfer"
+      ]
+    ],
+    "predicted": [
+      [
+        "poorpastetransfer",
+        "lowambienttemperature"
+      ],
+      [
+        "poorpastetransfer",
+        "highpasteviscosity"
+      ],
+      [
+        "opencircuit_pcb438",
+        "poorpastetransfer"
+      ]
+    ]
+  },
+  {
+    "id": "PCB439",
+    "expected": [],
+    "predicted": []
+  },
+  {
+    "id": "PCB441",
+    "expected": [
+      [
+        "apertureoverfill",
+        "highstencilthickness"
+      ],
+      [
+        "solderbridging_pcb441",
+        "apertureoverfill"
+      ]
+    ],
+    "predicted": [
+      [
+        "apertureoverfill",
+        "highstencilthickness"
+      ],
+      [
+        "solderbridging_pcb441",
+        "apertureoverfill"
+      ]
+    ]
+  },
+  {
+    "id": "PCB443",
+    "expected": [],
+    "predicted": []
+  },
+  {
+    "id": "PCB447",
+    "expected": [],
+    "predicted": []
+  },
+  {
+    "id": "PCB450",
+    "expected": [],
+    "predicted": []
+  },
+  {
+    "id": "PCB451",
+    "expected": [
+      [
+        "solderbridging_pcb451",
+        "apertureoverfill"
+      ],
+      [
+        "apertureoverfill",
+        "highstencilthickness"
+      ]
+    ],
+    "predicted": [
+      [
+        "solderbridging_pcb451",
+        "apertureoverfill"
+      ],
+      [
+        "apertureoverfill",
+        "highstencilthickness"
+      ]
+    ]
+  },
+  {
+    "id": "PCB453",
+    "expected": [
+      [
+        "noncoalescence",
+        "lowtimeaboveliquidus"
+      ],
+      [
+        "opencircuit_pcb453",
+        "noncoalescence"
+      ]
+    ],
+    "predicted": [
+      [
+        "noncoalescence",
+        "lowtimeaboveliquidus"
+      ],
+      [
+        "opencircuit_pcb453",
+        "noncoalescence"
+      ]
+    ]
+  },
+  {
+    "id": "PCB455",
+    "expected": [],
+    "predicted": []
+  },
+  {
+    "id": "PCB458",
+    "expected": [
+      [
+        "opencircuit_pcb458",
+        "poorpastetransfer"
+      ],
+      [
+        "poorpastetransfer",
+        "lowstencilthickness"
+      ]
+    ],
+    "predicted": [
+      [
+        "opencircuit_pcb458",
+        "poorpastetransfer"
+      ],
+      [
+        "poorpastetransfer",
+        "lowstencilthickness"
+      ]
+    ]
+  },
+  {
+    "id": "PCB460",
+    "expected": [],
+    "predicted": []
+  },
+  {
+    "id": "PCB461",
+    "expected": [
+      [
+        "apertureoverfill",
+        "highstencilthickness"
+      ],
+      [
+        "solderbridging_pcb461",
+        "apertureoverfill"
+      ]
+    ],
+    "predicted": [
+      [
+        "apertureoverfill",
+        "highstencilthickness"
+      ],
+      [
+        "solderbridging_pcb461",
+        "apertureoverfill"
+      ]
+    ]
+  },
+  {
+    "id": "PCB463",
+    "expected": [
+      [
+        "apertureoverfill",
+        "highstencilthickness"
+      ],
+      [
+        "solderbridging_pcb463",
+        "apertureoverfill"
+      ]
+    ],
+    "predicted": [
+      [
+        "apertureoverfill",
+        "highstencilthickness"
+      ],
+      [
+        "solderbridging_pcb463",
+        "apertureoverfill"
+      ]
+    ]
+  },
+  {
+    "id": "PCB468",
+    "expected": [],
+    "predicted": []
+  },
+  {
+    "id": "PCB474",
+    "expected": [],
+    "predicted": []
+  },
+  {
+    "id": "PCB477",
+    "expected": [
+      [
+        "solderbridging_pcb477",
+        "excessreflowspreading"
+      ],
+      [
+        "excessreflowspreading",
+        "highpeakreflowtemperature"
+      ]
+    ],
+    "predicted": [
+      [
+        "solderbridging_pcb477",
+        "excessreflowspreading"
+      ],
+      [
+        "excessreflowspreading",
+        "highpeakreflowtemperature"
+      ]
+    ]
+  },
+  {
+    "id": "PCB478",
+    "expected": [
+      [
+        "apertureoverfill",
+        "highstencilthickness"
+      ],
+      [
+        "solderbridging_pcb478",
+        "apertureoverfill"
+      ]
+    ],
+    "predicted": [
+      [
+        "apertureoverfill",
+        "highstencilthickness"
+      ],
+      [
+        "solderbridging_pcb478",
+        "apertureoverfill"
+      ]
+    ]
+  },
+  {
+    "id": "PCB481",
+    "expected": [
+      [
+        "noncoalescence",
+        "lowpeakreflowtemperature"
+      ],
+      [
+        "opencircuit_pcb481",
+        "noncoalescence"
+      ]
+    ],
+    "predicted": []
+  },
+  {
+    "id": "PCB482",
+    "expected": [
+      [
+        "solderbridging_pcb482",
+        "excessreflowspreading"
+      ],
+      [
+        "excessreflowspreading",
+        "hightimeaboveliquidus"
+      ]
+    ],
+    "predicted": [
+      [
+        "solderbridging_pcb482",
+        "apertureoverfill"
+      ],
+      [
+        "solderbridging_pcb482",
+        "excessreflowspreading"
+      ]
+    ]
+  },
+  {
+    "id": "PCB488",
+    "expected": [],
+    "predicted": []
+  },
+  {
+    "id": "PCB500",
+    "expected": [
+      [
+        "apertureoverfill",
+        "highstencilthickness"
+      ],
+      [
+        "solderbridging_pcb500",
+        "apertureoverfill"
+      ]
+    ],
+    "predicted": [
+      [
+        "apertureoverfill",
+        "highstencilthickness"
+      ],
+      [
+        "solderbridging_pcb500",
+        "apertureoverfill"
+      ]
+    ]
+  },
+  {
+    "id": "PCB502",
+    "expected": [
+      [
+        "solderbridging_pcb502",
+        "apertureoverfill"
+      ],
+      [
+        "apertureoverfill",
+        "lowpasteviscosity"
+      ]
+    ],
+    "predicted": []
+  },
+  {
+    "id": "PCB506",
+    "expected": [
+      [
+        "solderbridging_pcb506",
+        "apertureoverfill"
+      ],
+      [
+        "apertureoverfill",
+        "highstencilthickness"
+      ]
+    ],
+    "predicted": [
+      [
+        "solderbridging_pcb506",
+        "apertureoverfill"
+      ],
+      [
+        "apertureoverfill",
+        "highstencilthickness"
+      ]
+    ]
+  },
+  {
+    "id": "PCB507",
+    "expected": [
+      [
+        "solderbridging_pcb507",
+        "apertureoverfill"
+      ],
+      [
+        "apertureoverfill",
+        "highstencilthickness"
+      ],
+      [
+        "apertureoverfill",
+        "lowpasteviscosity"
+      ]
+    ],
+    "predicted": [
+      [
+        "solderbridging_pcb507",
+        "apertureoverfill"
+      ]
+    ]
+  },
+  {
+    "id": "PCB508",
+    "expected": [
+      [
+        "solderbridging_pcb508",
+        "apertureoverfill"
+      ],
+      [
+        "apertureoverfill",
+        "highstencilthickness"
+      ]
+    ],
+    "predicted": [
+      [
+        "solderbridging_pcb508",
+        "apertureoverfill"
+      ],
+      [
+        "apertureoverfill",
+        "highstencilthickness"
+      ]
+    ]
+  },
+  {
+    "id": "PCB511",
+    "expected": [],
+    "predicted": []
+  },
+  {
+    "id": "PCB514",
+    "expected": [],
+    "predicted": []
+  },
+  {
+    "id": "PCB516",
+    "expected": [],
+    "predicted": []
+  },
+  {
+    "id": "PCB517",
+    "expected": [
+      [
+        "opencircuit_pcb517",
+        "poorpastetransfer"
+      ]
+    ],
+    "predicted": [
+      [
+        "opencircuit_pcb517",
+        "poorpastetransfer"
+      ]
+    ]
+  },
+  {
+    "id": "PCB519",
+    "expected": [
+      [
+        "apertureoverfill",
+        "highstencilthickness"
+      ],
+      [
+        "solderbridging_pcb519",
+        "apertureoverfill"
+      ]
+    ],
+    "predicted": [
+      [
+        "apertureoverfill",
+        "highstencilthickness"
+      ],
+      [
+        "solderbridging_pcb519",
+        "apertureoverfill"
+      ]
+    ]
+  },
+  {
+    "id": "PCB530",
+    "expected": [
+      [
+        "excessreflowspreading",
+        "hightimeaboveliquidus"
+      ],
+      [
+        "solderbridging_pcb530",
+        "excessreflowspreading"
+      ]
+    ],
+    "predicted": [
+      [
+        "excessreflowspreading",
+        "hightimeaboveliquidus"
+      ],
+      [
+        "solderbridging_pcb530",
+        "excessreflowspreading"
+      ]
+    ]
+  },
+  {
+    "id": "PCB531",
+    "expected": [
+      [
+        "apertureoverfill",
+        "highstencilthickness"
+      ],
+      [
+        "apertureoverfill",
+        "lowpasteviscosity"
+      ],
+      [
+        "solderbridging_pcb531",
+        "apertureoverfill"
+      ]
+    ],
+    "predicted": [
+      [
+        "solderbridging_pcb531",
+        "apertureoverfill"
+      ]
+    ]
+  },
+  {
+    "id": "PCB532",
+    "expected": [
+      [
+        "apertureoverfill",
+        "highstencilthickness"
+      ],
+      [
+        "solderbridging_pcb532",
+        "apertureoverfill"
+      ]
+    ],
+    "predicted": [
+      [
+        "apertureoverfill",
+        "highstencilthickness"
+      ],
+      [
+        "solderbridging_pcb532",
+        "apertureoverfill"
+      ]
+    ]
+  },
+  {
+    "id": "PCB533",
+    "expected": [
+      [
+        "apertureoverfill",
+        "highstencilthickness"
+      ],
+      [
+        "solderbridging_pcb533",
+        "apertureoverfill"
+      ]
+    ],
+    "predicted": []
+  },
+  {
+    "id": "PCB534",
+    "expected": [],
+    "predicted": []
+  },
+  {
+    "id": "PCB535",
+    "expected": [],
+    "predicted": []
+  },
+  {
+    "id": "PCB536",
+    "expected": [],
+    "predicted": []
+  },
+  {
+    "id": "PCB538",
+    "expected": [],
+    "predicted": []
+  },
+  {
+    "id": "PCB543",
+    "expected": [],
+    "predicted": []
+  },
+  {
+    "id": "PCB549",
+    "expected": [
+      [
+        "excessreflowspreading",
+        "hightimeaboveliquidus"
+      ],
+      [
+        "solderbridging_pcb549",
+        "excessreflowspreading"
+      ]
+    ],
+    "predicted": []
+  },
+  {
+    "id": "PCB555",
+    "expected": [
+      [
+        "apertureoverfill",
+        "highstencilthickness"
+      ],
+      [
+        "solderbridging_pcb555",
+        "apertureoverfill"
+      ]
+    ],
+    "predicted": [
+      [
+        "apertureoverfill",
+        "highstencilthickness"
+      ],
+      [
+        "solderbridging_pcb555",
+        "apertureoverfill"
+      ]
+    ]
+  },
+  {
+    "id": "PCB557",
+    "expected": [
+      [
+        "solderbridging_pcb557",
+        "excessreflowspreading"
+      ],
+      [
+        "excessreflowspreading",
+        "highpeakreflowtemperature"
+      ]
+    ],
+    "predicted": [
+      [
+        "solderbridging_pcb557",
+        "excessreflowspreading"
+      ],
+      [
+        "excessreflowspreading",
+        "highpeakreflowtemperature"
+      ]
+    ]
+  },
+  {
+    "id": "PCB562",
+    "expected": [
+      [
+        "apertureoverfill",
+        "highstencilthickness"
+      ],
+      [
+        "solderbridging_pcb562",
+        "apertureoverfill"
+      ]
+    ],
+    "predicted": [
+      [
+        "solderbridging_pcb562",
+        "apertureoverfill"
+      ]
+    ]
+  },
+  {
+    "id": "PCB564",
+    "expected": [],
+    "predicted": []
+  },
+  {
+    "id": "PCB568",
+    "expected": [
+      [
+        "opencircuit_pcb568",
+        "poorpastetransfer"
+      ]
+    ],
+    "predicted": [
+      [
+        "opencircuit_pcb568",
+        "poorpastetransfer"
+      ]
+    ]
+  },
+  {
+    "id": "PCB574",
+    "expected": [
+      [
+        "solderbridging_pcb574",
+        "apertureoverfill"
+      ],
+      [
+        "apertureoverfill",
+        "highstencilthickness"
+      ]
+    ],
+    "predicted": [
+      [
+        "solderbridging_pcb574",
+        "apertureoverfill"
+      ],
+      [
+        "apertureoverfill",
+        "highstencilthickness"
+      ]
+    ]
+  },
+  {
+    "id": "PCB575",
+    "expected": [
+      [
+        "excessreflowspreading",
+        "hightimeaboveliquidus"
+      ],
+      [
+        "solderbridging_pcb575",
+        "excessreflowspreading"
+      ]
+    ],
+    "predicted": [
+      [
+        "excessreflowspreading",
+        "hightimeaboveliquidus"
+      ],
+      [
+        "solderbridging_pcb575",
+        "excessreflowspreading"
+      ]
+    ]
+  },
+  {
+    "id": "PCB577",
+    "expected": [
+      [
+        "noncoalescence",
+        "lowpeakreflowtemperature"
+      ],
+      [
+        "opencircuit_pcb577",
+        "noncoalescence"
+      ]
+    ],
+    "predicted": []
+  },
+  {
+    "id": "PCB579",
+    "expected": [],
+    "predicted": []
+  },
+  {
+    "id": "PCB581",
+    "expected": [],
+    "predicted": []
+  },
+  {
+    "id": "PCB584",
+    "expected": [
+      [
+        "opencircuit_pcb584",
+        "noncoalescence"
+      ],
+      [
+        "noncoalescence",
+        "lowtimeaboveliquidus"
+      ]
+    ],
+    "predicted": [
+      [
+        "noncoalescence",
+        "lowtimeaboveliquidus"
+      ]
+    ]
+  },
+  {
+    "id": "PCB585",
+    "expected": [
+      [
+        "apertureoverfill",
+        "highstencilthickness"
+      ],
+      [
+        "solderbridging_pcb585",
+        "apertureoverfill"
+      ]
+    ],
+    "predicted": [
+      [
+        "apertureoverfill",
+        "highstencilthickness"
+      ],
+      [
+        "solderbridging_pcb585",
+        "apertureoverfill"
+      ]
+    ]
+  },
+  {
+    "id": "PCB586",
+    "expected": [],
+    "predicted": []
+  },
+  {
+    "id": "PCB587",
+    "expected": [
+      [
+        "solderbridging_pcb587",
+        "apertureoverfill"
+      ],
+      [
+        "apertureoverfill",
+        "highstencilthickness"
+      ]
+    ],
+    "predicted": [
+      [
+        "solderbridging_pcb587",
+        "apertureoverfill"
+      ],
+      [
+        "apertureoverfill",
+        "highstencilthickness"
+      ]
+    ]
+  },
+  {
+    "id": "PCB588",
+    "expected": [],
+    "predicted": []
+  },
+  {
+    "id": "PCB591",
+    "expected": [],
+    "predicted": []
+  },
+  {
+    "id": "PCB593",
+    "expected": [
+      [
+        "solderbridging_pcb593",
+        "apertureoverfill"
+      ],
+      [
+        "apertureoverfill",
+        "highstencilthickness"
+      ]
+    ],
+    "predicted": [
+      [
+        "solderbridging_pcb593",
+        "apertureoverfill"
+      ],
+      [
+        "apertureoverfill",
+        "highstencilthickness"
+      ]
+    ]
+  },
+  {
+    "id": "PCB594",
+    "expected": [],
+    "predicted": []
+  },
+  {
+    "id": "PCB596",
+    "expected": [],
+    "predicted": []
+  },
+  {
+    "id": "PCB598",
+    "expected": [],
+    "predicted": []
+  },
+  {
+    "id": "PCB600",
+    "expected": [
+      [
+        "poorpastetransfer",
+        "lowambienttemperature"
+      ],
+      [
+        "opencircuit_pcb600",
+        "poorpastetransfer"
+      ],
+      [
+        "poorpastetransfer",
+        "lowstencilthickness"
+      ]
+    ],
+    "predicted": [
+      [
+        "poorpastetransfer",
+        "lowambienttemperature"
+      ],
+      [
+        "opencircuit_pcb600",
+        "poorpastetransfer"
+      ],
+      [
+        "poorpastetransfer",
+        "lowstencilthickness"
+      ]
+    ]
+  },
+  {
+    "id": "PCB601",
+    "expected": [],
+    "predicted": []
+  },
+  {
+    "id": "PCB602",
+    "expected": [
+      [
+        "apertureoverfill",
+        "highstencilthickness"
+      ],
+      [
+        "solderbridging_pcb602",
+        "apertureoverfill"
+      ]
+    ],
+    "predicted": [
+      [
+        "apertureoverfill",
+        "highstencilthickness"
+      ],
+      [
+        "solderbridging_pcb602",
+        "apertureoverfill"
+      ]
+    ]
+  },
+  {
+    "id": "PCB608",
+    "expected": [],
+    "predicted": []
+  },
+  {
+    "id": "PCB609",
+    "expected": [],
+    "predicted": []
+  },
+  {
+    "id": "PCB616",
+    "expected": [
+      [
+        "opencircuit_pcb616",
+        "poorpastetransfer"
+      ]
+    ],
+    "predicted": [
+      [
+        "opencircuit_pcb616",
+        "poorpastetransfer"
+      ]
+    ]
+  },
+  {
+    "id": "PCB617",
+    "expected": [],
+    "predicted": [
+      [
+        "poorpastetransfer",
+        "lowambientrh"
+      ],
+      [
+        "poorpastetransfer",
+        "highpasteviscosity"
+      ]
+    ]
+  },
+  {
+    "id": "PCB623",
+    "expected": [
+      [
+        "solderbridging_pcb623",
+        "excessreflowspreading"
+      ],
+      [
+        "apertureoverfill",
+        "highstencilthickness"
+      ],
+      [
+        "excessreflowspreading",
+        "hightimeaboveliquidus"
+      ],
+      [
+        "solderbridging_pcb623",
+        "apertureoverfill"
+      ]
+    ],
+    "predicted": [
+      [
+        "solderbridging_pcb623",
+        "excessreflowspreading"
+      ],
+      [
+        "excessreflowspreading",
+        "hightimeaboveliquidus"
+      ],
+      [
+        "solderbridging_pcb623",
+        "apertureoverfill"
+      ]
+    ]
+  },
+  {
+    "id": "PCB624",
+    "expected": [
+      [
+        "solderbridging_pcb624",
+        "excessreflowspreading"
+      ],
+      [
+        "excessreflowspreading",
+        "highpeakreflowtemperature"
+      ]
+    ],
+    "predicted": [
+      [
+        "solderbridging_pcb624",
+        "excessreflowspreading"
+      ],
+      [
+        "excessreflowspreading",
+        "highpeakreflowtemperature"
+      ]
+    ]
+  },
+  {
+    "id": "PCB628",
+    "expected": [],
+    "predicted": []
+  },
+  {
+    "id": "PCB633",
+    "expected": [],
+    "predicted": []
+  },
+  {
+    "id": "PCB637",
+    "expected": [],
+    "predicted": []
+  },
+  {
+    "id": "PCB643",
+    "expected": [
+      [
+        "apertureoverfill",
+        "highstencilthickness"
+      ],
+      [
+        "solderbridging_pcb643",
+        "apertureoverfill"
+      ]
+    ],
+    "predicted": [
+      [
+        "solderbridging_pcb643",
+        "apertureoverfill"
+      ]
+    ]
+  },
+  {
+    "id": "PCB655",
+    "expected": [
+      [
+        "opencircuit_pcb655",
+        "poorpastetransfer"
+      ],
+      [
+        "poorpastetransfer",
+        "lowambienttemperature"
+      ],
+      [
+        "poorpastetransfer",
+        "highpasteviscosity"
+      ]
+    ],
+    "predicted": [
+      [
+        "opencircuit_pcb655",
+        "poorpastetransfer"
+      ],
+      [
+        "poorpastetransfer",
+        "lowambienttemperature"
+      ],
+      [
+        "poorpastetransfer",
+        "highpasteviscosity"
+      ]
+    ]
+  },
+  {
+    "id": "PCB660",
+    "expected": [],
+    "predicted": []
+  },
+  {
+    "id": "PCB666",
+    "expected": [
+      [
+        "noncoalescence",
+        "lowpeakreflowtemperature"
+      ],
+      [
+        "opencircuit_pcb666",
+        "noncoalescence"
+      ]
+    ],
+    "predicted": []
+  },
+  {
+    "id": "PCB668",
+    "expected": [],
+    "predicted": []
+  },
+  {
+    "id": "PCB671",
+    "expected": [
+      [
+        "poorpastetransfer",
+        "highpasteviscosity"
+      ],
+      [
+        "opencircuit_pcb671",
+        "poorpastetransfer"
+      ]
+    ],
+    "predicted": [
+      [
+        "opencircuit_pcb671",
+        "poorpastetransfer"
+      ]
+    ]
+  },
+  {
+    "id": "PCB673",
+    "expected": [],
+    "predicted": []
+  },
+  {
+    "id": "PCB676",
+    "expected": [
+      [
+        "apertureoverfill",
+        "highstencilthickness"
+      ],
+      [
+        "solderbridging_pcb676",
+        "apertureoverfill"
+      ]
+    ],
+    "predicted": [
+      [
+        "solderbridging_pcb676",
+        "apertureoverfill"
+      ]
+    ]
+  },
+  {
+    "id": "PCB681",
+    "expected": [],
+    "predicted": []
+  },
+  {
+    "id": "PCB684",
+    "expected": [
+      [
+        "apertureoverfill",
+        "highstencilthickness"
+      ],
+      [
+        "solderbridging_pcb684",
+        "apertureoverfill"
+      ]
+    ],
+    "predicted": [
+      [
+        "apertureoverfill",
+        "highstencilthickness"
+      ],
+      [
+        "solderbridging_pcb684",
+        "apertureoverfill"
+      ]
+    ]
+  },
+  {
+    "id": "PCB686",
+    "expected": [
+      [
+        "noncoalescence",
+        "lowpeakreflowtemperature"
+      ],
+      [
+        "opencircuit_pcb686",
+        "noncoalescence"
+      ]
+    ],
+    "predicted": [
+      [
+        "noncoalescence",
+        "lowpeakreflowtemperature"
+      ],
+      [
+        "opencircuit_pcb686",
+        "noncoalescence"
+      ]
+    ]
+  },
+  {
+    "id": "PCB687",
+    "expected": [],
+    "predicted": []
+  },
+  {
+    "id": "PCB688",
+    "expected": [],
+    "predicted": []
+  },
+  {
+    "id": "PCB690",
+    "expected": [
+      [
+        "solderbridging_pcb690",
+        "apertureoverfill"
+      ],
+      [
+        "apertureoverfill",
+        "highstencilthickness"
+      ]
+    ],
+    "predicted": []
+  },
+  {
+    "id": "PCB691",
+    "expected": [
+      [
+        "solderbridging_pcb691",
+        "apertureoverfill"
+      ],
+      [
+        "apertureoverfill",
+        "highstencilthickness"
+      ]
+    ],
+    "predicted": [
+      [
+        "solderbridging_pcb691",
+        "apertureoverfill"
+      ],
+      [
+        "apertureoverfill",
+        "highstencilthickness"
+      ]
+    ]
+  },
+  {
+    "id": "PCB697",
+    "expected": [
+      [
+        "apertureoverfill",
+        "lowpasteviscosity"
+      ],
+      [
+        "solderbridging_pcb697",
+        "apertureoverfill"
+      ]
+    ],
+    "predicted": [
+      [
+        "solderbridging_pcb697",
+        "apertureoverfill"
+      ]
+    ]
+  },
+  {
+    "id": "PCB703",
+    "expected": [],
+    "predicted": []
+  },
+  {
+    "id": "PCB710",
+    "expected": [],
+    "predicted": []
+  },
+  {
+    "id": "PCB711",
+    "expected": [],
+    "predicted": []
+  },
+  {
+    "id": "PCB712",
+    "expected": [],
+    "predicted": []
+  },
+  {
+    "id": "PCB715",
+    "expected": [],
+    "predicted": []
+  },
+  {
+    "id": "PCB716",
+    "expected": [
+      [
+        "poorpastetransfer",
+        "highpasteviscosity"
+      ],
+      [
+        "opencircuit_pcb716",
+        "poorpastetransfer"
+      ]
+    ],
+    "predicted": [
+      [
+        "opencircuit_pcb716",
+        "poorpastetransfer"
+      ]
+    ]
+  },
+  {
+    "id": "PCB717",
+    "expected": [],
+    "predicted": []
+  },
+  {
+    "id": "PCB725",
+    "expected": [],
+    "predicted": []
+  },
+  {
+    "id": "PCB726",
+    "expected": [],
+    "predicted": []
+  },
+  {
+    "id": "PCB732",
+    "expected": [],
+    "predicted": []
+  },
+  {
+    "id": "PCB738",
+    "expected": [
+      [
+        "poorpastetransfer",
+        "lowambienttemperature"
+      ],
+      [
+        "opencircuit_pcb738",
+        "poorpastetransfer"
+      ],
+      [
+        "poorpastetransfer",
+        "highpasteviscosity"
+      ]
+    ],
+    "predicted": [
+      [
+        "poorpastetransfer",
+        "lowambienttemperature"
+      ],
+      [
+        "opencircuit_pcb738",
+        "poorpastetransfer"
+      ],
+      [
+        "poorpastetransfer",
+        "highpasteviscosity"
+      ]
+    ]
+  },
+  {
+    "id": "PCB740",
+    "expected": [
+      [
+        "solderbridging_pcb740",
+        "excessreflowspreading"
+      ],
+      [
+        "excessreflowspreading",
+        "hightimeaboveliquidus"
+      ]
+    ],
+    "predicted": [
+      [
+        "solderbridging_pcb740",
+        "excessreflowspreading"
+      ],
+      [
+        "excessreflowspreading",
+        "hightimeaboveliquidus"
+      ]
+    ]
+  },
+  {
+    "id": "PCB742",
+    "expected": [],
+    "predicted": []
+  },
+  {
+    "id": "PCB745",
+    "expected": [
+      [
+        "poorpastetransfer",
+        "lowambienttemperature"
+      ],
+      [
+        "poorpastetransfer",
+        "highpasteviscosity"
+      ],
+      [
+        "opencircuit_pcb745",
+        "poorpastetransfer"
+      ]
+    ],
+    "predicted": [
+      [
+        "poorpastetransfer",
+        "lowambienttemperature"
+      ],
+      [
+        "poorpastetransfer",
+        "highpasteviscosity"
+      ],
+      [
+        "opencircuit_pcb745",
+        "poorpastetransfer"
+      ]
+    ]
+  },
+  {
+    "id": "PCB746",
+    "expected": [],
+    "predicted": []
+  },
+  {
+    "id": "PCB748",
+    "expected": [
+      [
+        "apertureoverfill",
+        "highstencilthickness"
+      ],
+      [
+        "solderbridging_pcb748",
+        "apertureoverfill"
+      ]
+    ],
+    "predicted": [
+      [
+        "apertureoverfill",
+        "highstencilthickness"
+      ],
+      [
+        "solderbridging_pcb748",
+        "apertureoverfill"
+      ]
+    ]
+  },
+  {
+    "id": "PCB750",
+    "expected": [
+      [
+        "apertureoverfill",
+        "highstencilthickness"
+      ],
+      [
+        "solderbridging_pcb750",
+        "apertureoverfill"
+      ]
+    ],
+    "predicted": [
+      [
+        "apertureoverfill",
+        "highstencilthickness"
+      ],
+      [
+        "solderbridging_pcb750",
+        "apertureoverfill"
+      ]
+    ]
+  },
+  {
+    "id": "PCB752",
+    "expected": [
+      [
+        "apertureoverfill",
+        "highstencilthickness"
+      ],
+      [
+        "solderbridging_pcb752",
+        "apertureoverfill"
+      ]
+    ],
+    "predicted": [
+      [
+        "apertureoverfill",
+        "highstencilthickness"
+      ],
+      [
+        "solderbridging_pcb752",
+        "apertureoverfill"
+      ]
+    ]
+  },
+  {
+    "id": "PCB753",
+    "expected": [],
+    "predicted": []
+  },
+  {
+    "id": "PCB754",
+    "expected": [],
+    "predicted": []
+  },
+  {
+    "id": "PCB756",
+    "expected": [],
+    "predicted": []
+  },
+  {
+    "id": "PCB758",
+    "expected": [],
+    "predicted": []
+  },
+  {
+    "id": "PCB762",
+    "expected": [
+      [
+        "noncoalescence",
+        "lowpeakreflowtemperature"
+      ],
+      [
+        "opencircuit_pcb762",
+        "noncoalescence"
+      ]
+    ],
+    "predicted": []
+  },
+  {
+    "id": "PCB766",
+    "expected": [
+      [
+        "solderbridging_pcb766",
+        "apertureoverfill"
+      ],
+      [
+        "apertureoverfill",
+        "highstencilthickness"
+      ]
+    ],
+    "predicted": [
+      [
+        "solderbridging_pcb766",
+        "apertureoverfill"
+      ]
+    ]
+  },
+  {
+    "id": "PCB767",
+    "expected": [
+      [
+        "apertureoverfill",
+        "highstencilthickness"
+      ],
+      [
+        "solderbridging_pcb767",
+        "apertureoverfill"
+      ]
+    ],
+    "predicted": [
+      [
+        "apertureoverfill",
+        "highstencilthickness"
+      ],
+      [
+        "solderbridging_pcb767",
+        "apertureoverfill"
+      ]
+    ]
+  },
+  {
+    "id": "PCB768",
+    "expected": [],
+    "predicted": []
+  },
+  {
+    "id": "PCB769",
+    "expected": [
+      [
+        "apertureoverfill",
+        "highstencilthickness"
+      ],
+      [
+        "solderbridging_pcb769",
+        "apertureoverfill"
+      ]
+    ],
+    "predicted": [
+      [
+        "apertureoverfill",
+        "highstencilthickness"
+      ],
+      [
+        "solderbridging_pcb769",
+        "apertureoverfill"
+      ]
+    ]
+  },
+  {
+    "id": "PCB770",
+    "expected": [
+      [
+        "solderbridging_pcb770",
+        "apertureoverfill"
+      ],
+      [
+        "apertureoverfill",
+        "highstencilthickness"
+      ]
+    ],
+    "predicted": [
+      [
+        "solderbridging_pcb770",
+        "apertureoverfill"
+      ],
+      [
+        "apertureoverfill",
+        "highstencilthickness"
+      ]
+    ]
+  },
+  {
+    "id": "PCB777",
+    "expected": [
+      [
+        "apertureoverfill",
+        "highambientrh"
+      ],
+      [
+        "solderbridging_pcb777",
+        "apertureoverfill"
+      ],
+      [
+        "apertureoverfill",
+        "highstencilthickness"
+      ]
+    ],
+    "predicted": [
+      [
+        "solderbridging_pcb777",
+        "apertureoverfill"
+      ],
+      [
+        "apertureoverfill",
+        "highstencilthickness"
+      ]
+    ]
+  },
+  {
+    "id": "PCB780",
+    "expected": [],
+    "predicted": []
+  },
+  {
+    "id": "PCB786",
+    "expected": [
+      [
+        "poorpastetransfer",
+        "lowambienttemperature"
+      ],
+      [
+        "poorpastetransfer",
+        "highpasteviscosity"
+      ],
+      [
+        "opencircuit_pcb786",
+        "poorpastetransfer"
+      ]
+    ],
+    "predicted": [
+      [
+        "poorpastetransfer",
+        "highpasteviscosity"
+      ],
+      [
+        "opencircuit_pcb786",
+        "poorpastetransfer"
+      ]
+    ]
+  },
+  {
+    "id": "PCB787",
+    "expected": [
+      [
+        "solderbridging_pcb787",
+        "excessreflowspreading"
+      ],
+      [
+        "excessreflowspreading",
+        "hightimeaboveliquidus"
+      ]
+    ],
+    "predicted": []
+  },
+  {
+    "id": "PCB789",
+    "expected": [
+      [
+        "noncoalescence",
+        "lowtimeaboveliquidus"
+      ],
+      [
+        "opencircuit_pcb789",
+        "noncoalescence"
+      ]
+    ],
+    "predicted": [
+      [
+        "noncoalescence",
+        "lowtimeaboveliquidus"
+      ],
+      [
+        "opencircuit_pcb789",
+        "noncoalescence"
+      ]
+    ]
+  },
+  {
+    "id": "PCB792",
+    "expected": [
+      [
+        "solderbridging_pcb792",
+        "apertureoverfill"
+      ],
+      [
+        "apertureoverfill",
+        "lowpasteviscosity"
+      ]
+    ],
+    "predicted": []
+  },
+  {
+    "id": "PCB793",
+    "expected": [
+      [
+        "apertureoverfill",
+        "highstencilthickness"
+      ],
+      [
+        "solderbridging_pcb793",
+        "apertureoverfill"
+      ]
+    ],
+    "predicted": [
+      [
+        "apertureoverfill",
+        "highstencilthickness"
+      ],
+      [
+        "solderbridging_pcb793",
+        "apertureoverfill"
+      ]
+    ]
+  },
+  {
+    "id": "PCB798",
+    "expected": [],
+    "predicted": []
+  },
+  {
+    "id": "PCB799",
+    "expected": [],
+    "predicted": []
+  },
+  {
+    "id": "PCB800",
+    "expected": [
+      [
+        "solderbridging_pcb800",
+        "excessreflowspreading"
+      ],
+      [
+        "excessreflowspreading",
+        "highpeakreflowtemperature"
+      ]
+    ],
+    "predicted": [
+      [
+        "solderbridging_pcb800",
+        "excessreflowspreading"
+      ],
+      [
+        "excessreflowspreading",
+        "highpeakreflowtemperature"
+      ]
+    ]
+  },
+  {
+    "id": "PCB801",
+    "expected": [],
+    "predicted": []
+  },
+  {
+    "id": "PCB802",
+    "expected": [
+      [
+        "opencircuit_pcb802",
+        "poorpastetransfer"
+      ],
+      [
+        "poorpastetransfer",
+        "highpasteviscosity"
+      ],
+      [
+        "poorpastetransfer",
+        "lowambienttemperature"
+      ]
+    ],
+    "predicted": [
+      [
+        "opencircuit_pcb802",
+        "poorpastetransfer"
+      ],
+      [
+        "poorpastetransfer",
+        "highpasteviscosity"
+      ],
+      [
+        "poorpastetransfer",
+        "lowambienttemperature"
+      ]
+    ]
+  },
+  {
+    "id": "PCB804",
+    "expected": [
+      [
+        "opencircuit_pcb804",
+        "poorpastetransfer"
+      ]
+    ],
+    "predicted": []
+  },
+  {
+    "id": "PCB809",
+    "expected": [
+      [
+        "opencircuit_pcb809",
+        "poorpastetransfer"
+      ],
+      [
+        "poorpastetransfer",
+        "lowambientrh"
+      ]
+    ],
+    "predicted": [
+      [
+        "opencircuit_pcb809",
+        "poorpastetransfer"
+      ]
+    ]
+  },
+  {
+    "id": "PCB812",
+    "expected": [
+      [
+        "solderbridging_pcb812",
+        "apertureoverfill"
+      ],
+      [
+        "apertureoverfill",
+        "highstencilthickness"
+      ]
+    ],
+    "predicted": [
+      [
+        "solderbridging_pcb812",
+        "apertureoverfill"
+      ],
+      [
+        "apertureoverfill",
+        "highstencilthickness"
+      ]
+    ]
+  },
+  {
+    "id": "PCB819",
+    "expected": [],
+    "predicted": []
+  },
+  {
+    "id": "PCB822",
+    "expected": [
+      [
+        "apertureoverfill",
+        "highstencilthickness"
+      ],
+      [
+        "solderbridging_pcb822",
+        "apertureoverfill"
+      ]
+    ],
+    "predicted": [
+      [
+        "apertureoverfill",
+        "highstencilthickness"
+      ],
+      [
+        "solderbridging_pcb822",
+        "apertureoverfill"
+      ]
+    ]
+  },
+  {
+    "id": "PCB823",
+    "expected": [],
+    "predicted": []
+  },
+  {
+    "id": "PCB825",
+    "expected": [
+      [
+        "solderbridging_pcb825",
+        "excessreflowspreading"
+      ],
+      [
+        "excessreflowspreading",
+        "highpeakreflowtemperature"
+      ]
+    ],
+    "predicted": [
+      [
+        "solderbridging_pcb825",
+        "excessreflowspreading"
+      ]
+    ]
+  },
+  {
+    "id": "PCB828",
+    "expected": [],
+    "predicted": []
+  },
+  {
+    "id": "PCB830",
+    "expected": [
+      [
+        "opencircuit_pcb830",
+        "poorpastetransfer"
+      ],
+      [
+        "poorpastetransfer",
+        "highpasteviscosity"
+      ],
+      [
+        "poorpastetransfer",
+        "lowambienttemperature"
+      ]
+    ],
+    "predicted": [
+      [
+        "opencircuit_pcb830",
+        "poorpastetransfer"
+      ],
+      [
+        "poorpastetransfer",
+        "highpasteviscosity"
+      ]
+    ]
+  },
+  {
+    "id": "PCB832",
+    "expected": [
+      [
+        "solderbridging_pcb832",
+        "excessreflowspreading"
+      ],
+      [
+        "excessreflowspreading",
+        "highpeakreflowtemperature"
+      ]
+    ],
+    "predicted": [
+      [
+        "solderbridging_pcb832",
+        "excessreflowspreading"
+      ],
+      [
+        "excessreflowspreading",
+        "highpeakreflowtemperature"
+      ]
+    ]
+  },
+  {
+    "id": "PCB834",
+    "expected": [
+      [
+        "opencircuit_pcb834",
+        "noncoalescence"
+      ],
+      [
+        "noncoalescence",
+        "lowpeakreflowtemperature"
+      ]
+    ],
+    "predicted": [
+      [
+        "opencircuit_pcb834",
+        "noncoalescence"
+      ],
+      [
+        "noncoalescence",
+        "lowpeakreflowtemperature"
+      ]
+    ]
+  },
+  {
+    "id": "PCB835",
+    "expected": [
+      [
+        "opencircuit_pcb835",
+        "noncoalescence"
+      ],
+      [
+        "noncoalescence",
+        "lowtimeaboveliquidus"
+      ]
+    ],
+    "predicted": [
+      [
+        "opencircuit_pcb835",
+        "noncoalescence"
+      ],
+      [
+        "noncoalescence",
+        "lowtimeaboveliquidus"
+      ]
+    ]
+  },
+  {
+    "id": "PCB839",
+    "expected": [],
+    "predicted": []
+  },
+  {
+    "id": "PCB840",
+    "expected": [],
+    "predicted": []
+  },
+  {
+    "id": "PCB843",
+    "expected": [
+      [
+        "solderbridging_pcb843",
+        "apertureoverfill"
+      ],
+      [
+        "apertureoverfill",
+        "lowpasteviscosity"
+      ]
+    ],
+    "predicted": []
+  },
+  {
+    "id": "PCB845",
+    "expected": [
+      [
+        "apertureoverfill",
+        "highstencilthickness"
+      ],
+      [
+        "solderbridging_pcb845",
+        "apertureoverfill"
+      ]
+    ],
+    "predicted": [
+      [
+        "apertureoverfill",
+        "highstencilthickness"
+      ],
+      [
+        "solderbridging_pcb845",
+        "apertureoverfill"
+      ]
+    ]
+  },
+  {
+    "id": "PCB851",
+    "expected": [
+      [
+        "excessreflowspreading",
+        "hightimeaboveliquidus"
+      ],
+      [
+        "solderbridging_pcb851",
+        "excessreflowspreading"
+      ]
+    ],
+    "predicted": [
+      [
+        "excessreflowspreading",
+        "hightimeaboveliquidus"
+      ],
+      [
+        "solderbridging_pcb851",
+        "excessreflowspreading"
+      ]
+    ]
+  },
+  {
+    "id": "PCB859",
+    "expected": [],
+    "predicted": []
+  },
+  {
+    "id": "PCB860",
+    "expected": [
+      [
+        "apertureoverfill",
+        "highstencilthickness"
+      ],
+      [
+        "solderbridging_pcb860",
+        "apertureoverfill"
+      ]
+    ],
+    "predicted": [
+      [
+        "apertureoverfill",
+        "highstencilthickness"
+      ],
+      [
+        "solderbridging_pcb860",
+        "apertureoverfill"
+      ]
+    ]
+  },
+  {
+    "id": "PCB861",
+    "expected": [
+      [
+        "opencircuit_pcb861",
+        "poorpastetransfer"
+      ],
+      [
+        "poorpastetransfer",
+        "highpasteviscosity"
+      ]
+    ],
+    "predicted": [
+      [
+        "opencircuit_pcb861",
+        "poorpastetransfer"
+      ],
+      [
+        "poorpastetransfer",
+        "highpasteviscosity"
+      ]
+    ]
+  },
+  {
+    "id": "PCB862",
+    "expected": [
+      [
+        "opencircuit_pcb862",
+        "noncoalescence"
+      ],
+      [
+        "noncoalescence",
+        "lowtimeaboveliquidus"
+      ]
+    ],
+    "predicted": [
+      [
+        "opencircuit_pcb862",
+        "noncoalescence"
+      ],
+      [
+        "noncoalescence",
+        "lowtimeaboveliquidus"
+      ]
+    ]
+  },
+  {
+    "id": "PCB864",
+    "expected": [],
+    "predicted": []
+  },
+  {
+    "id": "PCB867",
+    "expected": [
+      [
+        "opencircuit_pcb867",
+        "noncoalescence"
+      ],
+      [
+        "noncoalescence",
+        "lowtimeaboveliquidus"
+      ]
+    ],
+    "predicted": [
+      [
+        "opencircuit_pcb867",
+        "noncoalescence"
+      ],
+      [
+        "noncoalescence",
+        "lowtimeaboveliquidus"
+      ]
+    ]
+  },
+  {
+    "id": "PCB869",
+    "expected": [
+      [
+        "apertureoverfill",
+        "highstencilthickness"
+      ],
+      [
+        "solderbridging_pcb869",
+        "apertureoverfill"
+      ]
+    ],
+    "predicted": [
+      [
+        "apertureoverfill",
+        "highstencilthickness"
+      ],
+      [
+        "solderbridging_pcb869",
+        "apertureoverfill"
+      ]
+    ]
+  },
+  {
+    "id": "PCB874",
+    "expected": [
+      [
+        "solderbridging_pcb874",
+        "apertureoverfill"
+      ],
+      [
+        "apertureoverfill",
+        "lowpasteviscosity"
+      ]
+    ],
+    "predicted": [
+      [
+        "solderbridging_pcb874",
+        "apertureoverfill"
+      ]
+    ]
+  },
+  {
+    "id": "PCB876",
+    "expected": [
+      [
+        "excessreflowspreading",
+        "hightimeaboveliquidus"
+      ],
+      [
+        "solderbridging_pcb876",
+        "excessreflowspreading"
+      ]
+    ],
+    "predicted": [
+      [
+        "excessreflowspreading",
+        "hightimeaboveliquidus"
+      ],
+      [
+        "solderbridging_pcb876",
+        "excessreflowspreading"
+      ]
+    ]
+  },
+  {
+    "id": "PCB879",
+    "expected": [],
+    "predicted": []
+  },
+  {
+    "id": "PCB885",
+    "expected": [],
+    "predicted": []
+  },
+  {
+    "id": "PCB887",
+    "expected": [],
+    "predicted": []
+  },
+  {
+    "id": "PCB891",
+    "expected": [],
+    "predicted": []
+  },
+  {
+    "id": "PCB892",
+    "expected": [
+      [
+        "solderbridging_pcb892",
+        "excessreflowspreading"
+      ],
+      [
+        "excessreflowspreading",
+        "highpeakreflowtemperature"
+      ]
+    ],
+    "predicted": [
+      [
+        "solderbridging_pcb892",
+        "excessreflowspreading"
+      ],
+      [
+        "excessreflowspreading",
+        "highpeakreflowtemperature"
+      ]
+    ]
+  },
+  {
+    "id": "PCB894",
+    "expected": [
+      [
+        "excessreflowspreading",
+        "hightimeaboveliquidus"
+      ],
+      [
+        "solderbridging_pcb894",
+        "excessreflowspreading"
+      ]
+    ],
+    "predicted": [
+      [
+        "excessreflowspreading",
+        "hightimeaboveliquidus"
+      ],
+      [
+        "solderbridging_pcb894",
+        "excessreflowspreading"
+      ]
+    ]
+  },
+  {
+    "id": "PCB899",
+    "expected": [],
+    "predicted": []
+  },
+  {
+    "id": "PCB903",
+    "expected": [],
+    "predicted": []
+  },
+  {
+    "id": "PCB904",
+    "expected": [],
+    "predicted": []
+  },
+  {
+    "id": "PCB905",
+    "expected": [
+      [
+        "solderbridging_pcb905",
+        "apertureoverfill"
+      ],
+      [
+        "apertureoverfill",
+        "highstencilthickness"
+      ]
+    ],
+    "predicted": [
+      [
+        "solderbridging_pcb905",
+        "apertureoverfill"
+      ]
+    ]
+  },
+  {
+    "id": "PCB909",
+    "expected": [
+      [
+        "solderbridging_pcb909",
+        "excessreflowspreading"
+      ],
+      [
+        "excessreflowspreading",
+        "hightimeaboveliquidus"
+      ]
+    ],
+    "predicted": [
+      [
+        "solderbridging_pcb909",
+        "excessreflowspreading"
+      ],
+      [
+        "excessreflowspreading",
+        "hightimeaboveliquidus"
+      ]
+    ]
+  },
+  {
+    "id": "PCB912",
+    "expected": [
+      [
+        "apertureoverfill",
+        "highstencilthickness"
+      ],
+      [
+        "solderbridging_pcb912",
+        "apertureoverfill"
+      ]
+    ],
+    "predicted": [
+      [
+        "apertureoverfill",
+        "highstencilthickness"
+      ],
+      [
+        "solderbridging_pcb912",
+        "apertureoverfill"
+      ]
+    ]
+  },
+  {
+    "id": "PCB916",
+    "expected": [
+      [
+        "solderbridging_pcb916",
+        "apertureoverfill"
+      ],
+      [
+        "apertureoverfill",
+        "lowpasteviscosity"
+      ]
+    ],
+    "predicted": [
+      [
+        "solderbridging_pcb916",
+        "apertureoverfill"
+      ]
+    ]
+  },
+  {
+    "id": "PCB919",
+    "expected": [],
+    "predicted": []
+  },
+  {
+    "id": "PCB920",
+    "expected": [],
+    "predicted": []
+  },
+  {
+    "id": "PCB924",
+    "expected": [
+      [
+        "opencircuit_pcb924",
+        "poorpastetransfer"
+      ]
+    ],
+    "predicted": [
+      [
+        "opencircuit_pcb924",
+        "poorpastetransfer"
+      ]
+    ]
+  },
+  {
+    "id": "PCB925",
+    "expected": [
+      [
+        "poorpastetransfer",
+        "lowambienttemperature"
+      ],
+      [
+        "opencircuit_pcb925",
+        "poorpastetransfer"
+      ],
+      [
+        "poorpastetransfer",
+        "lowstencilthickness"
+      ]
+    ],
+    "predicted": [
+      [
+        "poorpastetransfer",
+        "lowambienttemperature"
+      ],
+      [
+        "opencircuit_pcb925",
+        "poorpastetransfer"
+      ],
+      [
+        "poorpastetransfer",
+        "lowstencilthickness"
+      ]
+    ]
+  },
+  {
+    "id": "PCB938",
+    "expected": [],
+    "predicted": []
+  },
+  {
+    "id": "PCB946",
+    "expected": [],
+    "predicted": []
+  },
+  {
+    "id": "PCB951",
+    "expected": [
+      [
+        "opencircuit_pcb951",
+        "poorpastetransfer"
+      ],
+      [
+        "poorpastetransfer",
+        "highpasteviscosity"
+      ]
+    ],
+    "predicted": [
+      [
+        "opencircuit_pcb951",
+        "poorpastetransfer"
+      ]
+    ]
+  },
+  {
+    "id": "PCB954",
+    "expected": [
+      [
+        "solderbridging_pcb954",
+        "excessreflowspreading"
+      ],
+      [
+        "excessreflowspreading",
+        "highpeakreflowtemperature"
+      ]
+    ],
+    "predicted": [
+      [
+        "solderbridging_pcb954",
+        "excessreflowspreading"
+      ],
+      [
+        "excessreflowspreading",
+        "highpeakreflowtemperature"
+      ]
+    ]
+  },
+  {
+    "id": "PCB955",
+    "expected": [],
+    "predicted": []
+  },
+  {
+    "id": "PCB957",
+    "expected": [
+      [
+        "apertureoverfill",
+        "highstencilthickness"
+      ],
+      [
+        "solderbridging_pcb957",
+        "apertureoverfill"
+      ]
+    ],
+    "predicted": [
+      [
+        "apertureoverfill",
+        "highstencilthickness"
+      ],
+      [
+        "solderbridging_pcb957",
+        "apertureoverfill"
+      ]
+    ]
+  },
+  {
+    "id": "PCB962",
+    "expected": [
+      [
+        "opencircuit_pcb962",
+        "noncoalescence"
+      ],
+      [
+        "noncoalescence",
+        "lowpeakreflowtemperature"
+      ]
+    ],
+    "predicted": []
+  },
+  {
+    "id": "PCB967",
+    "expected": [
+      [
+        "apertureoverfill",
+        "highstencilthickness"
+      ],
+      [
+        "solderbridging_pcb967",
+        "apertureoverfill"
+      ]
+    ],
+    "predicted": [
+      [
+        "apertureoverfill",
+        "highstencilthickness"
+      ],
+      [
+        "solderbridging_pcb967",
+        "apertureoverfill"
+      ]
+    ]
+  },
+  {
+    "id": "PCB975",
+    "expected": [
+      [
+        "excessreflowspreading",
+        "hightimeaboveliquidus"
+      ],
+      [
+        "solderbridging_pcb975",
+        "excessreflowspreading"
+      ]
+    ],
+    "predicted": [
+      [
+        "excessreflowspreading",
+        "hightimeaboveliquidus"
+      ],
+      [
+        "solderbridging_pcb975",
+        "excessreflowspreading"
+      ]
+    ]
+  },
+  {
+    "id": "PCB978",
+    "expected": [
+      [
+        "apertureoverfill",
+        "highstencilthickness"
+      ],
+      [
+        "solderbridging_pcb978",
+        "apertureoverfill"
+      ]
+    ],
+    "predicted": [
+      [
+        "apertureoverfill",
+        "highstencilthickness"
+      ],
+      [
+        "solderbridging_pcb978",
+        "apertureoverfill"
+      ]
+    ]
+  },
+  {
+    "id": "PCB981",
+    "expected": [
+      [
+        "apertureoverfill",
+        "highstencilthickness"
+      ],
+      [
+        "solderbridging_pcb981",
+        "apertureoverfill"
+      ]
+    ],
+    "predicted": [
+      [
+        "apertureoverfill",
+        "highstencilthickness"
+      ],
+      [
+        "solderbridging_pcb981",
+        "apertureoverfill"
+      ]
+    ]
+  },
+  {
+    "id": "PCB982",
+    "expected": [
+      [
+        "solderbridging_pcb982",
+        "excessreflowspreading"
+      ],
+      [
+        "excessreflowspreading",
+        "hightimeaboveliquidus"
+      ]
+    ],
+    "predicted": [
+      [
+        "solderbridging_pcb982",
+        "excessreflowspreading"
+      ],
+      [
+        "excessreflowspreading",
+        "hightimeaboveliquidus"
+      ]
+    ]
+  },
+  {
+    "id": "PCB987",
+    "expected": [
+      [
+        "noncoalescence",
+        "lowtimeaboveliquidus"
+      ],
+      [
+        "opencircuit_pcb987",
+        "noncoalescence"
+      ]
+    ],
+    "predicted": [
+      [
+        "noncoalescence",
+        "lowtimeaboveliquidus"
+      ],
+      [
+        "opencircuit_pcb987",
+        "noncoalescence"
+      ]
+    ]
+  },
+  {
+    "id": "PCB990",
+    "expected": [
+      [
+        "solderbridging_pcb990",
+        "apertureoverfill"
+      ],
+      [
+        "apertureoverfill",
+        "highstencilthickness"
+      ]
+    ],
+    "predicted": [
+      [
+        "solderbridging_pcb990",
+        "apertureoverfill"
+      ],
+      [
+        "apertureoverfill",
+        "highstencilthickness"
+      ]
+    ]
+  },
+  {
+    "id": "PCB992",
+    "expected": [
+      [
+        "apertureoverfill",
+        "lowpasteviscosity"
+      ],
+      [
+        "solderbridging_pcb992",
+        "apertureoverfill"
+      ]
+    ],
+    "predicted": [
+      [
+        "solderbridging_pcb992",
+        "apertureoverfill"
+      ]
+    ]
+  },
+  {
+    "id": "PCB998",
+    "expected": [
+      [
+        "solderbridging_pcb998",
+        "apertureoverfill"
+      ],
+      [
+        "apertureoverfill",
+        "highstencilthickness"
+      ]
+    ],
+    "predicted": [
+      [
+        "solderbridging_pcb998",
+        "apertureoverfill"
+      ],
+      [
+        "apertureoverfill",
+        "highstencilthickness"
+      ]
+    ]
+  },
+  {
+    "id": "PCB1002",
+    "expected": [],
+    "predicted": []
+  },
+  {
+    "id": "PCB1006",
+    "expected": [],
+    "predicted": []
+  },
+  {
+    "id": "PCB1007",
+    "expected": [
+      [
+        "opencircuit_pcb1007",
+        "poorpastetransfer"
+      ],
+      [
+        "poorpastetransfer",
+        "lowambienttemperature"
+      ],
+      [
+        "poorpastetransfer",
+        "highpasteviscosity"
+      ]
+    ],
+    "predicted": [
+      [
+        "opencircuit_pcb1007",
+        "poorpastetransfer"
+      ],
+      [
+        "poorpastetransfer",
+        "lowambienttemperature"
+      ],
+      [
+        "poorpastetransfer",
+        "highpasteviscosity"
+      ]
+    ]
+  },
+  {
+    "id": "PCB1008",
+    "expected": [
+      [
+        "apertureoverfill",
+        "highstencilthickness"
+      ],
+      [
+        "solderbridging_pcb1008",
+        "apertureoverfill"
+      ]
+    ],
+    "predicted": []
+  },
+  {
+    "id": "PCB1010",
+    "expected": [
+      [
+        "apertureoverfill",
+        "highstencilthickness"
+      ],
+      [
+        "solderbridging_pcb1010",
+        "apertureoverfill"
+      ]
+    ],
+    "predicted": [
+      [
+        "solderbridging_pcb1010",
+        "apertureoverfill"
+      ]
+    ]
+  },
+  {
+    "id": "PCB1011",
+    "expected": [
+      [
+        "opencircuit_pcb1011",
+        "poorpastetransfer"
+      ],
+      [
+        "poorpastetransfer",
+        "highpasteviscosity"
+      ]
+    ],
+    "predicted": [
+      [
+        "opencircuit_pcb1011",
+        "poorpastetransfer"
+      ],
+      [
+        "poorpastetransfer",
+        "highpasteviscosity"
+      ]
+    ]
+  },
+  {
+    "id": "PCB1013",
+    "expected": [
+      [
+        "solderbridging_pcb1013",
+        "excessreflowspreading"
+      ],
+      [
+        "excessreflowspreading",
+        "highpeakreflowtemperature"
+      ]
+    ],
+    "predicted": [
+      [
+        "solderbridging_pcb1013",
+        "excessreflowspreading"
+      ],
+      [
+        "excessreflowspreading",
+        "highpeakreflowtemperature"
+      ]
+    ]
+  },
+  {
+    "id": "PCB1014",
+    "expected": [
+      [
+        "apertureoverfill",
+        "highstencilthickness"
+      ],
+      [
+        "solderbridging_pcb1014",
+        "apertureoverfill"
+      ]
+    ],
+    "predicted": [
+      [
+        "solderbridging_pcb1014",
+        "apertureoverfill"
+      ]
+    ]
+  },
+  {
+    "id": "PCB1015",
+    "expected": [],
+    "predicted": []
+  },
+  {
+    "id": "PCB1020",
+    "expected": [
+      [
+        "opencircuit_pcb1020",
+        "noncoalescence"
+      ],
+      [
+        "noncoalescence",
+        "lowtimeaboveliquidus"
+      ]
+    ],
+    "predicted": [
+      [
+        "opencircuit_pcb1020",
+        "noncoalescence"
+      ],
+      [
+        "noncoalescence",
+        "lowtimeaboveliquidus"
+      ]
+    ]
+  },
+  {
+    "id": "PCB1021",
+    "expected": [],
+    "predicted": []
+  },
+  {
+    "id": "PCB1022",
+    "expected": [
+      [
+        "poorpastetransfer",
+        "highpasteviscosity"
+      ],
+      [
+        "opencircuit_pcb1022",
+        "poorpastetransfer"
+      ]
+    ],
+    "predicted": [
+      [
+        "poorpastetransfer",
+        "highpasteviscosity"
+      ],
+      [
+        "opencircuit_pcb1022",
+        "poorpastetransfer"
+      ]
+    ]
+  },
+  {
+    "id": "PCB1023",
+    "expected": [],
+    "predicted": []
+  },
+  {
+    "id": "PCB1027",
+    "expected": [
+      [
+        "noncoalescence",
+        "lowpeakreflowtemperature"
+      ],
+      [
+        "opencircuit_pcb1027",
+        "noncoalescence"
+      ]
+    ],
+    "predicted": [
+      [
+        "noncoalescence",
+        "lowpeakreflowtemperature"
+      ],
+      [
+        "opencircuit_pcb1027",
+        "noncoalescence"
+      ]
+    ]
+  },
+  {
+    "id": "PCB1028",
+    "expected": [
+      [
+        "apertureoverfill",
+        "highstencilthickness"
+      ],
+      [
+        "solderbridging_pcb1028",
+        "apertureoverfill"
+      ]
+    ],
+    "predicted": [
+      [
+        "apertureoverfill",
+        "highstencilthickness"
+      ],
+      [
+        "solderbridging_pcb1028",
+        "apertureoverfill"
+      ]
+    ]
+  },
+  {
+    "id": "PCB1031",
+    "expected": [],
+    "predicted": []
+  },
+  {
+    "id": "PCB1033",
+    "expected": [
+      [
+        "apertureoverfill",
+        "highstencilthickness"
+      ],
+      [
+        "solderbridging_pcb1033",
+        "apertureoverfill"
+      ]
+    ],
+    "predicted": [
+      [
+        "apertureoverfill",
+        "highstencilthickness"
+      ],
+      [
+        "solderbridging_pcb1033",
+        "apertureoverfill"
+      ]
+    ]
+  },
+  {
+    "id": "PCB1034",
+    "expected": [
+      [
+        "apertureoverfill",
+        "highstencilthickness"
+      ],
+      [
+        "solderbridging_pcb1034",
+        "apertureoverfill"
+      ]
+    ],
+    "predicted": []
+  },
+  {
+    "id": "PCB1037",
+    "expected": [
+      [
+        "apertureoverfill",
+        "highstencilthickness"
+      ],
+      [
+        "solderbridging_pcb1037",
+        "apertureoverfill"
+      ]
+    ],
+    "predicted": [
+      [
+        "solderbridging_pcb1037",
+        "apertureoverfill"
+      ]
+    ]
+  },
+  {
+    "id": "PCB1042",
+    "expected": [],
+    "predicted": []
+  },
+  {
+    "id": "PCB1043",
+    "expected": [
+      [
+        "opencircuit_pcb1043",
+        "poorpastetransfer"
+      ]
+    ],
+    "predicted": [
+      [
+        "opencircuit_pcb1043",
+        "poorpastetransfer"
+      ]
+    ]
+  },
+  {
+    "id": "PCB1045",
+    "expected": [],
+    "predicted": []
+  },
+  {
+    "id": "PCB1048",
+    "expected": [],
+    "predicted": []
+  },
+  {
+    "id": "PCB1049",
+    "expected": [
+      [
+        "apertureoverfill",
+        "highstencilthickness"
+      ],
+      [
+        "solderbridging_pcb1049",
+        "apertureoverfill"
+      ]
+    ],
+    "predicted": []
+  },
+  {
+    "id": "PCB1051",
+    "expected": [
+      [
+        "solderbridging_pcb1051",
+        "apertureoverfill"
+      ],
+      [
+        "apertureoverfill",
+        "highstencilthickness"
+      ]
+    ],
+    "predicted": [
+      [
+        "solderbridging_pcb1051",
+        "apertureoverfill"
+      ],
+      [
+        "apertureoverfill",
+        "highstencilthickness"
+      ]
+    ]
+  },
+  {
+    "id": "PCB1054",
+    "expected": [],
+    "predicted": []
+  },
+  {
+    "id": "PCB1056",
+    "expected": [],
+    "predicted": []
+  },
+  {
+    "id": "PCB1057",
+    "expected": [],
+    "predicted": []
+  },
+  {
+    "id": "PCB1058",
+    "expected": [],
+    "predicted": []
+  },
+  {
+    "id": "PCB1059",
+    "expected": [],
+    "predicted": []
+  },
+  {
+    "id": "PCB1064",
+    "expected": [],
+    "predicted": []
+  },
+  {
+    "id": "PCB1070",
+    "expected": [],
+    "predicted": []
+  },
+  {
+    "id": "PCB1071",
+    "expected": [
+      [
+        "apertureoverfill",
+        "highambientrh"
+      ],
+      [
+        "apertureoverfill",
+        "highstencilthickness"
+      ],
+      [
+        "solderbridging_pcb1071",
+        "apertureoverfill"
+      ]
+    ],
+    "predicted": [
+      [
+        "solderbridging_pcb1071",
+        "apertureoverfill"
+      ]
+    ]
+  },
+  {
+    "id": "PCB1073",
+    "expected": [],
+    "predicted": []
+  },
+  {
+    "id": "PCB1077",
+    "expected": [
+      [
+        "solderbridging_pcb1077",
+        "apertureoverfill"
+      ],
+      [
+        "apertureoverfill",
+        "highstencilthickness"
+      ]
+    ],
+    "predicted": [
+      [
+        "solderbridging_pcb1077",
+        "apertureoverfill"
+      ],
+      [
+        "apertureoverfill",
+        "highstencilthickness"
+      ]
+    ]
+  },
+  {
+    "id": "PCB1081",
+    "expected": [
+      [
+        "apertureoverfill",
+        "highstencilthickness"
+      ],
+      [
+        "solderbridging_pcb1081",
+        "apertureoverfill"
+      ]
+    ],
+    "predicted": [
+      [
+        "apertureoverfill",
+        "highstencilthickness"
+      ],
+      [
+        "solderbridging_pcb1081",
+        "apertureoverfill"
+      ]
+    ]
+  },
+  {
+    "id": "PCB1083",
+    "expected": [],
+    "predicted": []
+  },
+  {
+    "id": "PCB1084",
+    "expected": [],
+    "predicted": []
+  },
+  {
+    "id": "PCB1085",
+    "expected": [],
+    "predicted": []
+  },
+  {
+    "id": "PCB1092",
+    "expected": [
+      [
+        "opencircuit_pcb1092",
+        "noncoalescence"
+      ],
+      [
+        "noncoalescence",
+        "lowpeakreflowtemperature"
+      ]
+    ],
+    "predicted": [
+      [
+        "opencircuit_pcb1092",
+        "noncoalescence"
+      ],
+      [
+        "noncoalescence",
+        "lowpeakreflowtemperature"
+      ]
+    ]
+  },
+  {
+    "id": "PCB1101",
+    "expected": [],
+    "predicted": []
+  },
+  {
+    "id": "PCB1102",
+    "expected": [
+      [
+        "solderbridging_pcb1102",
+        "apertureoverfill"
+      ],
+      [
+        "apertureoverfill",
+        "lowpasteviscosity"
+      ]
+    ],
+    "predicted": [
+      [
+        "solderbridging_pcb1102",
+        "apertureoverfill"
+      ]
+    ]
+  },
+  {
+    "id": "PCB1111",
+    "expected": [],
+    "predicted": []
+  },
+  {
+    "id": "PCB1112",
+    "expected": [
+      [
+        "opencircuit_pcb1112",
+        "noncoalescence"
+      ],
+      [
+        "noncoalescence",
+        "lowtimeaboveliquidus"
+      ]
+    ],
+    "predicted": [
+      [
+        "opencircuit_pcb1112",
+        "noncoalescence"
+      ],
+      [
+        "noncoalescence",
+        "lowtimeaboveliquidus"
+      ]
+    ]
+  },
+  {
+    "id": "PCB1115",
+    "expected": [
+      [
+        "solderbridging_pcb1115",
+        "apertureoverfill"
+      ],
+      [
+        "apertureoverfill",
+        "highstencilthickness"
+      ]
+    ],
+    "predicted": [
+      [
+        "solderbridging_pcb1115",
+        "apertureoverfill"
+      ],
+      [
+        "apertureoverfill",
+        "highstencilthickness"
+      ]
+    ]
+  },
+  {
+    "id": "PCB1120",
+    "expected": [],
+    "predicted": []
+  },
+  {
+    "id": "PCB1123",
+    "expected": [
+      [
+        "apertureoverfill",
+        "lowpasteviscosity"
+      ],
+      [
+        "solderbridging_pcb1123",
+        "apertureoverfill"
+      ]
+    ],
+    "predicted": [
+      [
+        "solderbridging_pcb1123",
+        "apertureoverfill"
+      ]
+    ]
+  },
+  {
+    "id": "PCB1127",
+    "expected": [
+      [
+        "opencircuit_pcb1127",
+        "poorpastetransfer"
+      ],
+      [
+        "poorpastetransfer",
+        "lowambientrh"
+      ],
+      [
+        "poorpastetransfer",
+        "highpasteviscosity"
+      ]
+    ],
+    "predicted": [
+      [
+        "opencircuit_pcb1127",
+        "poorpastetransfer"
+      ],
+      [
+        "poorpastetransfer",
+        "highpasteviscosity"
+      ]
+    ]
+  },
+  {
+    "id": "PCB1129",
+    "expected": [],
+    "predicted": []
+  },
+  {
+    "id": "PCB1131",
+    "expected": [],
+    "predicted": []
+  },
+  {
+    "id": "PCB1141",
+    "expected": [
+      [
+        "solderbridging_pcb1141",
+        "excessreflowspreading"
+      ],
+      [
+        "excessreflowspreading",
+        "highpeakreflowtemperature"
+      ]
+    ],
+    "predicted": [
+      [
+        "solderbridging_pcb1141",
+        "excessreflowspreading"
+      ],
+      [
+        "excessreflowspreading",
+        "highpeakreflowtemperature"
+      ]
+    ]
+  },
+  {
+    "id": "PCB1152",
+    "expected": [
+      [
+        "solderbridging_pcb1152",
+        "excessreflowspreading"
+      ],
+      [
+        "excessreflowspreading",
+        "highpeakreflowtemperature"
+      ]
+    ],
+    "predicted": []
+  },
+  {
+    "id": "PCB1153",
+    "expected": [
+      [
+        "apertureoverfill",
+        "lowpasteviscosity"
+      ],
+      [
+        "solderbridging_pcb1153",
+        "apertureoverfill"
+      ]
+    ],
+    "predicted": [
+      [
+        "solderbridging_pcb1153",
+        "apertureoverfill"
+      ]
+    ]
+  },
+  {
+    "id": "PCB1157",
+    "expected": [
+      [
+        "solderbridging_pcb1157",
+        "apertureoverfill"
+      ],
+      [
+        "apertureoverfill",
+        "highstencilthickness"
+      ]
+    ],
+    "predicted": [
+      [
+        "solderbridging_pcb1157",
+        "apertureoverfill"
+      ],
+      [
+        "apertureoverfill",
+        "highstencilthickness"
+      ]
+    ]
+  },
+  {
+    "id": "PCB1159",
+    "expected": [
+      [
+        "solderbridging_pcb1159",
+        "apertureoverfill"
+      ],
+      [
+        "apertureoverfill",
+        "lowpasteviscosity"
+      ]
+    ],
+    "predicted": [
+      [
+        "solderbridging_pcb1159",
+        "apertureoverfill"
+      ]
+    ]
+  },
+  {
+    "id": "PCB1160",
+    "expected": [
+      [
+        "solderbridging_pcb1160",
+        "apertureoverfill"
+      ],
+      [
+        "apertureoverfill",
+        "highstencilthickness"
+      ]
+    ],
+    "predicted": [
+      [
+        "solderbridging_pcb1160",
+        "apertureoverfill"
+      ],
+      [
+        "apertureoverfill",
+        "highstencilthickness"
+      ]
+    ]
+  },
+  {
+    "id": "PCB1164",
+    "expected": [],
+    "predicted": []
+  },
+  {
+    "id": "PCB1166",
+    "expected": [],
+    "predicted": []
+  },
+  {
+    "id": "PCB1167",
+    "expected": [
+      [
+        "opencircuit_pcb1167",
+        "noncoalescence"
+      ],
+      [
+        "noncoalescence",
+        "lowtimeaboveliquidus"
+      ],
+      [
+        "opencircuit_pcb1167",
+        "poorpastetransfer"
+      ]
+    ],
+    "predicted": [
+      [
+        "opencircuit_pcb1167",
+        "noncoalescence"
+      ],
+      [
+        "noncoalescence",
+        "lowtimeaboveliquidus"
+      ],
+      [
+        "opencircuit_pcb1167",
+        "poorpastetransfer"
+      ]
+    ]
+  },
+  {
+    "id": "PCB1177",
+    "expected": [],
+    "predicted": []
+  },
+  {
+    "id": "PCB1180",
+    "expected": [],
+    "predicted": []
+  },
+  {
+    "id": "PCB1187",
+    "expected": [],
+    "predicted": []
+  },
+  {
+    "id": "PCB1188",
+    "expected": [
+      [
+        "apertureoverfill",
+        "highstencilthickness"
+      ],
+      [
+        "solderbridging_pcb1188",
+        "apertureoverfill"
+      ]
+    ],
+    "predicted": []
+  },
+  {
+    "id": "PCB1190",
+    "expected": [
+      [
+        "noncoalescence",
+        "lowpeakreflowtemperature"
+      ],
+      [
+        "opencircuit_pcb1190",
+        "noncoalescence"
+      ]
+    ],
+    "predicted": [
+      [
+        "noncoalescence",
+        "lowpeakreflowtemperature"
+      ],
+      [
+        "opencircuit_pcb1190",
+        "noncoalescence"
+      ]
+    ]
+  },
+  {
+    "id": "PCB1194",
+    "expected": [],
+    "predicted": []
+  },
+  {
+    "id": "PCB1196",
+    "expected": [],
+    "predicted": []
+  },
+  {
+    "id": "PCB1197",
+    "expected": [
+      [
+        "apertureoverfill",
+        "highstencilthickness"
+      ],
+      [
+        "solderbridging_pcb1197",
+        "apertureoverfill"
+      ]
+    ],
+    "predicted": [
+      [
+        "apertureoverfill",
+        "highstencilthickness"
+      ],
+      [
+        "solderbridging_pcb1197",
+        "apertureoverfill"
+      ]
+    ]
+  },
+  {
+    "id": "PCB1198",
+    "expected": [
+      [
+        "solderbridging_pcb1198",
+        "excessreflowspreading"
+      ],
+      [
+        "excessreflowspreading",
+        "hightimeaboveliquidus"
+      ],
+      [
+        "excessreflowspreading",
+        "highpeakreflowtemperature"
+      ]
+    ],
+    "predicted": [
+      [
+        "solderbridging_pcb1198",
+        "excessreflowspreading"
+      ],
+      [
+        "excessreflowspreading",
+        "highpeakreflowtemperature"
+      ]
+    ]
+  },
+  {
+    "id": "PCB1204",
+    "expected": [
+      [
+        "solderbridging_pcb1204",
+        "apertureoverfill"
+      ],
+      [
+        "apertureoverfill",
+        "lowpasteviscosity"
+      ]
+    ],
+    "predicted": []
+  },
+  {
+    "id": "PCB1208",
+    "expected": [
+      [
+        "poorpastetransfer",
+        "highpasteviscosity"
+      ],
+      [
+        "opencircuit_pcb1208",
+        "poorpastetransfer"
+      ]
+    ],
+    "predicted": [
+      [
+        "poorpastetransfer",
+        "highpasteviscosity"
+      ],
+      [
+        "opencircuit_pcb1208",
+        "poorpastetransfer"
+      ]
+    ]
+  },
+  {
+    "id": "PCB1210",
+    "expected": [],
+    "predicted": []
+  },
+  {
+    "id": "PCB1211",
+    "expected": [
+      [
+        "opencircuit_pcb1211",
+        "poorpastetransfer"
+      ],
+      [
+        "poorpastetransfer",
+        "lowambienttemperature"
+      ]
+    ],
+    "predicted": [
+      [
+        "opencircuit_pcb1211",
+        "poorpastetransfer"
+      ],
+      [
+        "poorpastetransfer",
+        "lowambienttemperature"
+      ]
+    ]
+  },
+  {
+    "id": "PCB1213",
+    "expected": [
+      [
+        "solderbridging_pcb1213",
+        "apertureoverfill"
+      ],
+      [
+        "apertureoverfill",
+        "highstencilthickness"
+      ]
+    ],
+    "predicted": [
+      [
+        "solderbridging_pcb1213",
+        "apertureoverfill"
+      ],
+      [
+        "apertureoverfill",
+        "highstencilthickness"
+      ]
+    ]
+  },
+  {
+    "id": "PCB1222",
+    "expected": [],
+    "predicted": []
+  },
+  {
+    "id": "PCB1225",
+    "expected": [
+      [
+        "opencircuit_pcb1225",
+        "poorpastetransfer"
+      ],
+      [
+        "poorpastetransfer",
+        "lowambientrh"
+      ]
+    ],
+    "predicted": [
+      [
+        "opencircuit_pcb1225",
+        "poorpastetransfer"
+      ]
+    ]
+  },
+  {
+    "id": "PCB1227",
+    "expected": [],
+    "predicted": []
+  },
+  {
+    "id": "PCB1230",
+    "expected": [],
+    "predicted": []
+  },
+  {
+    "id": "PCB1234",
+    "expected": [
+      [
+        "solderbridging_pcb1234",
+        "excessreflowspreading"
+      ],
+      [
+        "excessreflowspreading",
+        "highpeakreflowtemperature"
+      ]
+    ],
+    "predicted": [
+      [
+        "solderbridging_pcb1234",
+        "excessreflowspreading"
+      ],
+      [
+        "excessreflowspreading",
+        "highpeakreflowtemperature"
+      ]
+    ]
+  },
+  {
+    "id": "PCB1235",
+    "expected": [
+      [
+        "apertureoverfill",
+        "lowpasteviscosity"
+      ],
+      [
+        "solderbridging_pcb1235",
+        "apertureoverfill"
+      ]
+    ],
+    "predicted": [
+      [
+        "solderbridging_pcb1235",
+        "apertureoverfill"
+      ]
+    ]
+  },
+  {
+    "id": "PCB1236",
+    "expected": [
+      [
+        "opencircuit_pcb1236",
+        "poorpastetransfer"
+      ],
+      [
+        "poorpastetransfer",
+        "highpasteviscosity"
+      ],
+      [
+        "poorpastetransfer",
+        "lowambienttemperature"
+      ]
+    ],
+    "predicted": [
+      [
+        "opencircuit_pcb1236",
+        "poorpastetransfer"
+      ],
+      [
+        "poorpastetransfer",
+        "highpasteviscosity"
+      ],
+      [
+        "poorpastetransfer",
+        "lowambienttemperature"
+      ]
+    ]
+  },
+  {
+    "id": "PCB1248",
+    "expected": [
+      [
+        "solderbridging_pcb1248",
+        "apertureoverfill"
+      ],
+      [
+        "apertureoverfill",
+        "highstencilthickness"
+      ]
+    ],
+    "predicted": [
+      [
+        "solderbridging_pcb1248",
+        "apertureoverfill"
+      ],
+      [
+        "apertureoverfill",
+        "highstencilthickness"
+      ]
+    ]
+  },
+  {
+    "id": "PCB1256",
+    "expected": [
+      [
+        "solderbridging_pcb1256",
+        "apertureoverfill"
+      ],
+      [
+        "apertureoverfill",
+        "highstencilthickness"
+      ]
+    ],
+    "predicted": [
+      [
+        "solderbridging_pcb1256",
+        "apertureoverfill"
+      ],
+      [
+        "apertureoverfill",
+        "highstencilthickness"
+      ]
+    ]
+  },
+  {
+    "id": "PCB1258",
+    "expected": [
+      [
+        "solderbridging_pcb1258",
+        "apertureoverfill"
+      ],
+      [
+        "apertureoverfill",
+        "highstencilthickness"
+      ]
+    ],
+    "predicted": [
+      [
+        "solderbridging_pcb1258",
+        "apertureoverfill"
+      ],
+      [
+        "apertureoverfill",
+        "highstencilthickness"
+      ]
+    ]
+  },
+  {
+    "id": "PCB1263",
+    "expected": [],
+    "predicted": []
+  },
+  {
+    "id": "PCB1269",
+    "expected": [],
+    "predicted": []
+  },
+  {
+    "id": "PCB1276",
+    "expected": [],
+    "predicted": []
+  },
+  {
+    "id": "PCB1280",
+    "expected": [],
+    "predicted": []
+  },
+  {
+    "id": "PCB1281",
+    "expected": [
+      [
+        "opencircuit_pcb1281",
+        "noncoalescence"
+      ],
+      [
+        "noncoalescence",
+        "lowtimeaboveliquidus"
+      ]
+    ],
+    "predicted": [
+      [
+        "opencircuit_pcb1281",
+        "noncoalescence"
+      ],
+      [
+        "noncoalescence",
+        "lowtimeaboveliquidus"
+      ]
+    ]
+  },
+  {
+    "id": "PCB1286",
+    "expected": [
+      [
+        "excessreflowspreading",
+        "highpeakreflowtemperature"
+      ],
+      [
+        "solderbridging_pcb1286",
+        "excessreflowspreading"
+      ]
+    ],
+    "predicted": [
+      [
+        "excessreflowspreading",
+        "highpeakreflowtemperature"
+      ],
+      [
+        "solderbridging_pcb1286",
+        "excessreflowspreading"
+      ]
+    ]
+  },
+  {
+    "id": "PCB1287",
+    "expected": [],
+    "predicted": []
+  },
+  {
+    "id": "PCB1288",
+    "expected": [
+      [
+        "solderbridging_pcb1288",
+        "apertureoverfill"
+      ],
+      [
+        "apertureoverfill",
+        "highstencilthickness"
+      ]
+    ],
+    "predicted": [
+      [
+        "solderbridging_pcb1288",
+        "apertureoverfill"
+      ],
+      [
+        "apertureoverfill",
+        "highstencilthickness"
+      ]
+    ]
+  },
+  {
+    "id": "PCB1292",
+    "expected": [
+      [
+        "opencircuit_pcb1292",
+        "noncoalescence"
+      ],
+      [
+        "noncoalescence",
+        "lowpeakreflowtemperature"
+      ]
+    ],
+    "predicted": [
+      [
+        "opencircuit_pcb1292",
+        "noncoalescence"
+      ],
+      [
+        "noncoalescence",
+        "lowpeakreflowtemperature"
+      ]
+    ]
+  },
+  {
+    "id": "PCB1294",
+    "expected": [
+      [
+        "noncoalescence",
+        "lowtimeaboveliquidus"
+      ],
+      [
+        "opencircuit_pcb1294",
+        "noncoalescence"
+      ]
+    ],
+    "predicted": [
+      [
+        "opencircuit_pcb1294",
+        "noncoalescence"
+      ]
+    ]
+  },
+  {
+    "id": "PCB1295",
+    "expected": [
+      [
+        "noncoalescence",
+        "lowtimeaboveliquidus"
+      ],
+      [
+        "opencircuit_pcb1295",
+        "noncoalescence"
+      ]
+    ],
+    "predicted": [
+      [
+        "noncoalescence",
+        "lowtimeaboveliquidus"
+      ],
+      [
+        "opencircuit_pcb1295",
+        "noncoalescence"
+      ]
+    ]
+  },
+  {
+    "id": "PCB1297",
+    "expected": [
+      [
+        "solderbridging_pcb1297",
+        "apertureoverfill"
+      ],
+      [
+        "apertureoverfill",
+        "lowpasteviscosity"
+      ]
+    ],
+    "predicted": [
+      [
+        "solderbridging_pcb1297",
+        "apertureoverfill"
+      ]
+    ]
+  },
+  {
+    "id": "PCB1298",
+    "expected": [],
+    "predicted": []
+  },
+  {
+    "id": "PCB1299",
+    "expected": [],
+    "predicted": []
+  },
+  {
+    "id": "PCB1302",
+    "expected": [],
+    "predicted": []
+  },
+  {
+    "id": "PCB1310",
+    "expected": [],
+    "predicted": []
+  },
+  {
+    "id": "PCB1313",
+    "expected": [],
+    "predicted": []
+  },
+  {
+    "id": "PCB1316",
+    "expected": [],
+    "predicted": []
+  },
+  {
+    "id": "PCB1319",
+    "expected": [
+      [
+        "noncoalescence",
+        "lowtimeaboveliquidus"
+      ],
+      [
+        "opencircuit_pcb1319",
+        "noncoalescence"
+      ]
+    ],
+    "predicted": [
+      [
+        "noncoalescence",
+        "lowtimeaboveliquidus"
+      ],
+      [
+        "opencircuit_pcb1319",
+        "noncoalescence"
+      ]
+    ]
+  },
+  {
+    "id": "PCB1320",
+    "expected": [
+      [
+        "solderbridging_pcb1320",
+        "apertureoverfill"
+      ],
+      [
+        "apertureoverfill",
+        "highstencilthickness"
+      ]
+    ],
+    "predicted": [
+      [
+        "solderbridging_pcb1320",
+        "apertureoverfill"
+      ],
+      [
+        "noncoalescence",
+        "lowpeakreflowtemperature"
+      ]
+    ]
+  },
+  {
+    "id": "PCB1322",
+    "expected": [],
+    "predicted": []
+  },
+  {
+    "id": "PCB1323",
+    "expected": [
+      [
+        "poorpastetransfer",
+        "lowambienttemperature"
+      ],
+      [
+        "poorpastetransfer",
+        "highpasteviscosity"
+      ],
+      [
+        "opencircuit_pcb1323",
+        "poorpastetransfer"
+      ]
+    ],
+    "predicted": [
+      [
+        "poorpastetransfer",
+        "highpasteviscosity"
+      ],
+      [
+        "opencircuit_pcb1323",
+        "lowpastevolumeperaperture"
+      ],
+      [
+        "opencircuit_pcb1323",
+        "poorpastetransfer"
+      ]
+    ]
+  },
+  {
+    "id": "PCB1328",
+    "expected": [],
+    "predicted": []
+  },
+  {
+    "id": "PCB1330",
+    "expected": [],
+    "predicted": []
+  },
+  {
+    "id": "PCB1331",
+    "expected": [
+      [
+        "poorpastetransfer",
+        "lowambienttemperature"
+      ],
+      [
+        "poorpastetransfer",
+        "highpasteviscosity"
+      ],
+      [
+        "opencircuit_pcb1331",
+        "poorpastetransfer"
+      ]
+    ],
+    "predicted": [
+      [
+        "poorpastetransfer",
+        "highpasteviscosity"
+      ],
+      [
+        "opencircuit_pcb1331",
+        "poorpastetransfer"
+      ]
+    ]
+  },
+  {
+    "id": "PCB1332",
+    "expected": [
+      [
+        "apertureoverfill",
+        "highstencilthickness"
+      ],
+      [
+        "solderbridging_pcb1332",
+        "apertureoverfill"
+      ]
+    ],
+    "predicted": [
+      [
+        "apertureoverfill",
+        "highstencilthickness"
+      ],
+      [
+        "solderbridging_pcb1332",
+        "apertureoverfill"
+      ]
+    ]
+  },
+  {
+    "id": "PCB1333",
+    "expected": [
+      [
+        "noncoalescence",
+        "lowtimeaboveliquidus"
+      ],
+      [
+        "opencircuit_pcb1333",
+        "noncoalescence"
+      ]
+    ],
+    "predicted": [
+      [
+        "noncoalescence",
+        "lowtimeaboveliquidus"
+      ],
+      [
+        "opencircuit_pcb1333",
+        "noncoalescence"
+      ]
+    ]
+  },
+  {
+    "id": "PCB1334",
+    "expected": [
+      [
+        "apertureoverfill",
+        "highstencilthickness"
+      ],
+      [
+        "solderbridging_pcb1334",
+        "apertureoverfill"
+      ]
+    ],
+    "predicted": [
+      [
+        "apertureoverfill",
+        "highstencilthickness"
+      ],
+      [
+        "solderbridging_pcb1334",
+        "apertureoverfill"
+      ]
+    ]
+  },
+  {
+    "id": "PCB1337",
+    "expected": [
+      [
+        "solderbridging_pcb1337",
+        "apertureoverfill"
+      ],
+      [
+        "apertureoverfill",
+        "highstencilthickness"
+      ]
+    ],
+    "predicted": [
+      [
+        "solderbridging_pcb1337",
+        "apertureoverfill"
+      ]
+    ]
+  },
+  {
+    "id": "PCB1338",
+    "expected": [
+      [
+        "solderbridging_pcb1338",
+        "excessreflowspreading"
+      ],
+      [
+        "excessreflowspreading",
+        "highpeakreflowtemperature"
+      ]
+    ],
+    "predicted": [
+      [
+        "solderbridging_pcb1338",
+        "excessreflowspreading"
+      ],
+      [
+        "excessreflowspreading",
+        "highpeakreflowtemperature"
+      ]
+    ]
+  },
+  {
+    "id": "PCB1341",
+    "expected": [
+      [
+        "solderbridging_pcb1341",
+        "apertureoverfill"
+      ],
+      [
+        "apertureoverfill",
+        "highstencilthickness"
+      ]
+    ],
+    "predicted": [
+      [
+        "solderbridging_pcb1341",
+        "apertureoverfill"
+      ]
+    ]
+  },
+  {
+    "id": "PCB1343",
+    "expected": [
+      [
+        "noncoalescence",
+        "lowpeakreflowtemperature"
+      ],
+      [
+        "opencircuit_pcb1343",
+        "noncoalescence"
+      ]
+    ],
+    "predicted": [
+      [
+        "noncoalescence",
+        "lowpeakreflowtemperature"
+      ],
+      [
+        "opencircuit_pcb1343",
+        "noncoalescence"
+      ]
+    ]
+  },
+  {
+    "id": "PCB1345",
+    "expected": [],
+    "predicted": []
+  },
+  {
+    "id": "PCB1349",
+    "expected": [
+      [
+        "apertureoverfill",
+        "highstencilthickness"
+      ],
+      [
+        "solderbridging_pcb1349",
+        "apertureoverfill"
+      ]
+    ],
+    "predicted": [
+      [
+        "apertureoverfill",
+        "highstencilthickness"
+      ],
+      [
+        "solderbridging_pcb1349",
+        "apertureoverfill"
+      ]
+    ]
+  },
+  {
+    "id": "PCB1356",
+    "expected": [
+      [
+        "solderbridging_pcb1356",
+        "excessreflowspreading"
+      ],
+      [
+        "excessreflowspreading",
+        "highpeakreflowtemperature"
+      ]
+    ],
+    "predicted": [
+      [
+        "solderbridging_pcb1356",
+        "excessreflowspreading"
+      ],
+      [
+        "excessreflowspreading",
+        "highpeakreflowtemperature"
+      ]
+    ]
+  },
+  {
+    "id": "PCB1361",
+    "expected": [],
+    "predicted": []
+  },
+  {
+    "id": "PCB1367",
+    "expected": [
+      [
+        "poorpastetransfer",
+        "highpasteviscosity"
+      ],
+      [
+        "opencircuit_pcb1367",
+        "poorpastetransfer"
+      ]
+    ],
+    "predicted": [
+      [
+        "poorpastetransfer",
+        "highpasteviscosity"
+      ],
+      [
+        "opencircuit_pcb1367",
+        "poorpastetransfer"
+      ]
+    ]
+  },
+  {
+    "id": "PCB1369",
+    "expected": [],
+    "predicted": []
+  },
+  {
+    "id": "PCB1372",
+    "expected": [
+      [
+        "solderbridging_pcb1372",
+        "excessreflowspreading"
+      ],
+      [
+        "excessreflowspreading",
+        "highpeakreflowtemperature"
+      ]
+    ],
+    "predicted": [
+      [
+        "solderbridging_pcb1372",
+        "excessreflowspreading"
+      ],
+      [
+        "excessreflowspreading",
+        "highpeakreflowtemperature"
+      ]
+    ]
+  },
+  {
+    "id": "PCB1374",
+    "expected": [
+      [
+        "opencircuit_pcb1374",
+        "poorpastetransfer"
+      ],
+      [
+        "poorpastetransfer",
+        "highpasteviscosity"
+      ]
+    ],
+    "predicted": []
+  },
+  {
+    "id": "PCB1376",
+    "expected": [
+      [
+        "apertureoverfill",
+        "highambientrh"
+      ],
+      [
+        "solderbridging_pcb1376",
+        "apertureoverfill"
+      ],
+      [
+        "apertureoverfill",
+        "lowpasteviscosity"
+      ]
+    ],
+    "predicted": []
+  },
+  {
+    "id": "PCB1379",
+    "expected": [],
+    "predicted": []
+  },
+  {
+    "id": "PCB1386",
+    "expected": [
+      [
+        "opencircuit_pcb1386",
+        "noncoalescence"
+      ],
+      [
+        "noncoalescence",
+        "lowtimeaboveliquidus"
+      ]
+    ],
+    "predicted": [
+      [
+        "opencircuit_pcb1386",
+        "noncoalescence"
+      ],
+      [
+        "noncoalescence",
+        "lowtimeaboveliquidus"
+      ]
+    ]
+  },
+  {
+    "id": "PCB1392",
+    "expected": [
+      [
+        "solderbridging_pcb1392",
+        "apertureoverfill"
+      ],
+      [
+        "apertureoverfill",
+        "highstencilthickness"
+      ]
+    ],
+    "predicted": [
+      [
+        "solderbridging_pcb1392",
+        "apertureoverfill"
+      ],
+      [
+        "apertureoverfill",
+        "highstencilthickness"
+      ]
+    ]
+  },
+  {
+    "id": "PCB1393",
+    "expected": [
+      [
+        "solderbridging_pcb1393",
+        "apertureoverfill"
+      ],
+      [
+        "apertureoverfill",
+        "lowpasteviscosity"
+      ]
+    ],
+    "predicted": []
+  },
+  {
+    "id": "PCB1394",
+    "expected": [],
+    "predicted": []
+  },
+  {
+    "id": "PCB1395",
+    "expected": [
+      [
+        "solderbridging_pcb1395",
+        "apertureoverfill"
+      ]
+    ],
+    "predicted": [
+      [
+        "solderbridging_pcb1395",
+        "apertureoverfill"
+      ]
+    ]
+  },
+  {
+    "id": "PCB1399",
+    "expected": [
+      [
+        "noncoalescence",
+        "lowpeakreflowtemperature"
+      ],
+      [
+        "opencircuit_pcb1399",
+        "noncoalescence"
+      ]
+    ],
+    "predicted": [
+      [
+        "noncoalescence",
+        "lowpeakreflowtemperature"
+      ],
+      [
+        "opencircuit_pcb1399",
+        "noncoalescence"
+      ]
+    ]
+  },
+  {
+    "id": "PCB1401",
+    "expected": [
+      [
+        "solderbridging_pcb1401",
+        "excessreflowspreading"
+      ],
+      [
+        "excessreflowspreading",
+        "hightimeaboveliquidus"
+      ]
+    ],
+    "predicted": [
+      [
+        "solderbridging_pcb1401",
+        "excessreflowspreading"
+      ],
+      [
+        "excessreflowspreading",
+        "hightimeaboveliquidus"
+      ]
+    ]
+  },
+  {
+    "id": "PCB1403",
+    "expected": [],
+    "predicted": []
+  },
+  {
+    "id": "PCB1407",
+    "expected": [
+      [
+        "solderbridging_pcb1407",
+        "excessreflowspreading"
+      ],
+      [
+        "excessreflowspreading",
+        "hightimeaboveliquidus"
+      ]
+    ],
+    "predicted": [
+      [
+        "solderbridging_pcb1407",
+        "excessreflowspreading"
+      ],
+      [
+        "excessreflowspreading",
+        "hightimeaboveliquidus"
+      ]
+    ]
+  },
+  {
+    "id": "PCB1412",
+    "expected": [
+      [
+        "noncoalescence",
+        "lowpeakreflowtemperature"
+      ],
+      [
+        "opencircuit_pcb1412",
+        "noncoalescence"
+      ]
+    ],
+    "predicted": [
+      [
+        "noncoalescence",
+        "lowpeakreflowtemperature"
+      ],
+      [
+        "opencircuit_pcb1412",
+        "noncoalescence"
+      ]
+    ]
+  },
+  {
+    "id": "PCB1414",
+    "expected": [],
+    "predicted": []
+  },
+  {
+    "id": "PCB1419",
+    "expected": [],
+    "predicted": []
+  },
+  {
+    "id": "PCB1427",
+    "expected": [
+      [
+        "apertureoverfill",
+        "highstencilthickness"
+      ],
+      [
+        "solderbridging_pcb1427",
+        "apertureoverfill"
+      ]
+    ],
+    "predicted": [
+      [
+        "noncoalescence",
+        "lowtimeaboveliquidus"
+      ],
+      [
+        "solderbridging_pcb1427",
+        "apertureoverfill"
+      ]
+    ]
+  },
+  {
+    "id": "PCB1428",
+    "expected": [
+      [
+        "solderbridging_pcb1428",
+        "apertureoverfill"
+      ],
+      [
+        "apertureoverfill",
+        "lowpasteviscosity"
+      ]
+    ],
+    "predicted": [
+      [
+        "solderbridging_pcb1428",
+        "apertureoverfill"
+      ]
+    ]
+  },
+  {
+    "id": "PCB1429",
+    "expected": [],
+    "predicted": []
+  }
+]

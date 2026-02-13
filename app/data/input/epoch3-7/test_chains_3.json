@@ -1,9 +1,22 @@
 {
- "PCB8": [],
- "PCB15": [],
- "PCB22": [
+ "PCB0": [],
+ "PCB1": [],
+ "PCB2": [],
+ "PCB4": [
   [
-   "SolderBridging_PCB22",
+   "OpenCircuit_PCB4",
+   "NonCoalescence"
+  ],
+  [
+   "NonCoalescence",
+   "LowTimeAboveLiquidus"
+  ]
+ ],
+ "PCB6": [],
+ "PCB7": [],
+ "PCB16": [
+  [
+   "SolderBridging_PCB16",
    "ApertureOverfill"
   ],
   [
@@ -11,14 +24,80 @@
    "HighStencilThickness"
   ]
  ],
- "PCB26": [],
- "PCB45": [
+ "PCB21": [
   [
-   "SolderBridging_PCB45",
-   "HighPasteVolumePerAperture"
+   "OpenCircuit_PCB21",
+   "PoorPasteTransfer"
+  ]
+ ],
+ "PCB23": [
+  [
+   "SolderBridging_PCB23",
+   "ExcessReflowSpreading"
   ],
   [
-   "HighPasteVolumePerAperture",
+   "ExcessReflowSpreading",
+   "HighPeakReflowTemperature"
+  ]
+ ],
+ "PCB25": [],
+ "PCB26": [
+  [
+   "SolderBridging_PCB26",
+   "ExcessReflowSpreading"
+  ],
+  [
+   "ExcessReflowSpreading",
+   "HighPeakReflowTemperature"
+  ]
+ ],
+ "PCB27": [],
+ "PCB29": [
+  [
+   "SolderBridging_PCB29",
+   "ApertureOverfill"
+  ],
+  [
+   "ApertureOverfill",
+   "HighStencilThickness"
+  ]
+ ],
+ "PCB30": [],
+ "PCB32": [
+  [
+   "SolderBridging_PCB32",
+   "ApertureOverfill"
+  ],
+  [
+   "ApertureOverfill",
+   "HighStencilThickness"
+  ]
+ ],
+ "PCB33": [
+  [
+   "OpenCircuit_PCB33",
+   "NonCoalescence"
+  ],
+  [
+   "NonCoalescence",
+   "LowTimeAboveLiquidus"
+  ]
+ ],
+ "PCB34": [],
+ "PCB35": [],
+ "PCB37": [
+  [
+   "SolderBridging_PCB37",
+   "ApertureOverfill"
+  ],
+  [
+   "ApertureOverfill",
+   "HighStencilThickness"
+  ]
+ ],
+ "PCB50": [
+  [
+   "SolderBridging_PCB50",
    "ApertureOverfill"
   ],
   [
@@ -26,14 +105,9 @@
    "LowPasteViscosity"
   ]
  ],
- "PCB51": [],
- "PCB53": [],
- "PCB54": [],
- "PCB55": [],
- "PCB70": [],
- "PCB73": [
+ "PCB54": [
   [
-   "SolderBridging_PCB73",
+   "SolderBridging_PCB54",
    "ApertureOverfill"
   ],
   [
@@ -41,10 +115,119 @@
    "HighStencilThickness"
   ]
  ],
- "PCB77": [],
+ "PCB61": [
+  [
+   "SolderBridging_PCB61",
+   "ApertureOverfill"
+  ],
+  [
+   "ApertureOverfill",
+   "HighStencilThickness"
+  ]
+ ],
+ "PCB64": [
+  [
+   "OpenCircuit_PCB64",
+   "NonCoalescence"
+  ],
+  [
+   "NonCoalescence",
+   "LowPeakReflowTemperature"
+  ]
+ ],
+ "PCB69": [
+  [
+   "SolderBridging_PCB69",
+   "ExcessReflowSpreading"
+  ],
+  [
+   "ExcessReflowSpreading",
+   "HighPeakReflowTemperature"
+  ]
+ ],
+ "PCB73": [],
+ "PCB74": [],
+ "PCB75": [
+  [
+   "SolderBridging_PCB75",
+   "ExcessReflowSpreading"
+  ],
+  [
+   "ExcessReflowSpreading",
+   "HighTimeAboveLiquidus"
+  ],
+  [
+   "SolderBridging_PCB75",
+   "ApertureOverfill"
+  ],
+  [
+   "ApertureOverfill",
+   "HighStencilThickness"
+  ]
+ ],
+ "PCB76": [],
+ "PCB78": [
+  [
+   "SolderBridging_PCB78",
+   "ApertureOverfill"
+  ],
+  [
+   "ApertureOverfill",
+   "HighStencilThickness"
+  ]
+ ],
+ "PCB81": [
+  [
+   "SolderBridging_PCB81",
+   "ApertureOverfill"
+  ],
+  [
+   "ApertureOverfill",
+   "HighStencilThickness"
+  ]
+ ],
  "PCB85": [
   [
    "SolderBridging_PCB85",
+   "ExcessReflowSpreading"
+  ],
+  [
+   "ExcessReflowSpreading",
+   "HighTimeAboveLiquidus"
+  ]
+ ],
+ "PCB87": [],
+ "PCB89": [
+  [
+   "OpenCircuit_PCB89",
+   "NonCoalescence"
+  ],
+  [
+   "NonCoalescence",
+   "LowPeakReflowTemperature"
+  ]
+ ],
+ "PCB90": [
+  [
+   "SolderBridging_PCB90",
+   "ApertureOverfill"
+  ],
+  [
+   "ApertureOverfill",
+   "HighStencilThickness"
+  ],
+  [
+   "ApertureOverfill",
+   "LowPasteViscosity"
+  ],
+  [
+   "ApertureOverfill",
+   "HighAmbientRh"
+  ]
+ ],
+ "PCB91": [
+  [
+   "SolderBridging_PCB91",
    "ApertureOverfill"
   ],
   [
@@ -52,8 +235,6 @@
    "HighStencilThickness"
   ]
  ],
- "PCB88": [],
- "PCB89": [],
  "PCB93": [
   [
    "SolderBridging_PCB93",
@@ -64,19 +245,60 @@
    "HighStencilThickness"
   ]
  ],
- "PCB101": [
+ "PCB94": [
   [
-   "SolderBridging_PCB101",
+   "SolderBridging_PCB94",
    "ApertureOverfill"
   ],
   [
    "ApertureOverfill",
    "HighStencilThickness"
+  ]
+ ],
+ "PCB102": [
+  [
+   "SolderBridging_PCB102",
+   "ApertureOverfill"
+  ],
+  [
+   "ApertureOverfill",
+   "HighStencilThickness"
+  ]
+ ],
+ "PCB103": [
+  [
+   "OpenCircuit_PCB103",
+   "PoorPasteTransfer"
+  ],
+  [
+   "PoorPasteTransfer",
+   "HighPasteViscosity"
+  ],
+  [
+   "PoorPasteTransfer",
+   "LowAmbientTemperature"
+  ]
+ ],
+ "PCB105": [],
+ "PCB111": [
+  [
+   "OpenCircuit_PCB111",
+   "PoorPasteTransfer"
   ]
  ],
  "PCB113": [
   [
    "SolderBridging_PCB113",
+   "ExcessReflowSpreading"
+  ],
+  [
+   "ExcessReflowSpreading",
+   "HighPeakReflowTemperature"
+  ]
+ ],
+ "PCB114": [
+  [
+   "SolderBridging_PCB114",
    "ApertureOverfill"
   ],
   [
@@ -84,9 +306,53 @@
    "HighStencilThickness"
   ]
  ],
- "PCB114": [],
- "PCB122": [],
- "PCB127": [],
+ "PCB116": [
+  [
+   "SolderBridging_PCB116",
+   "ApertureOverfill"
+  ],
+  [
+   "ApertureOverfill",
+   "HighStencilThickness"
+  ]
+ ],
+ "PCB124": [
+  [
+   "OpenCircuit_PCB124",
+   "PoorPasteTransfer"
+  ]
+ ],
+ "PCB126": [
+  [
+   "SolderBridging_PCB126",
+   "ApertureOverfill"
+  ],
+  [
+   "ApertureOverfill",
+   "HighStencilThickness"
+  ]
+ ],
+ "PCB128": [
+  [
+   "SolderBridging_PCB128",
+   "ApertureOverfill"
+  ],
+  [
+   "ApertureOverfill",
+   "HighStencilThickness"
+  ]
+ ],
+ "PCB129": [],
+ "PCB130": [
+  [
+   "SolderBridging_PCB130",
+   "ApertureOverfill"
+  ],
+  [
+   "ApertureOverfill",
+   "HighStencilThickness"
+  ]
+ ],
  "PCB131": [
   [
    "SolderBridging_PCB131",
@@ -94,26 +360,105 @@
   ],
   [
    "ApertureOverfill",
-   "HighStencilThickness"
+   "LowPasteViscosity"
   ]
  ],
- "PCB135": [
+ "PCB133": [
   [
-   "SolderBridging_PCB135",
+   "SolderBridging_PCB133",
    "ApertureOverfill"
   ],
   [
    "ApertureOverfill",
-   "LowPasteViscosity"
+   "HighStencilThickness"
   ]
  ],
- "PCB152": [
+ "PCB134": [],
+ "PCB136": [],
+ "PCB137": [
   [
-   "SolderBridging_PCB152",
-   "HighPasteVolumePerAperture"
+   "OpenCircuit_PCB137",
+   "NonCoalescence"
   ],
   [
-   "HighPasteVolumePerAperture",
+   "NonCoalescence",
+   "LowTimeAboveLiquidus"
+  ]
+ ],
+ "PCB138": [
+  [
+   "SolderBridging_PCB138",
+   "ExcessReflowSpreading"
+  ],
+  [
+   "ExcessReflowSpreading",
+   "HighTimeAboveLiquidus"
+  ]
+ ],
+ "PCB139": [
+  [
+   "SolderBridging_PCB139",
+   "ApertureOverfill"
+  ],
+  [
+   "ApertureOverfill",
+   "HighStencilThickness"
+  ]
+ ],
+ "PCB141": [
+  [
+   "SolderBridging_PCB141",
+   "ApertureOverfill"
+  ],
+  [
+   "ApertureOverfill",
+   "HighStencilThickness"
+  ]
+ ],
+ "PCB143": [],
+ "PCB145": [
+  [
+   "SolderBridging_PCB145",
+   "ApertureOverfill"
+  ],
+  [
+   "ApertureOverfill",
+   "HighStencilThickness"
+  ]
+ ],
+ "PCB148": [
+  [
+   "SolderBridging_PCB148",
+   "ApertureOverfill"
+  ],
+  [
+   "ApertureOverfill",
+   "HighStencilThickness"
+  ]
+ ],
+ "PCB150": [
+  [
+   "SolderBridging_PCB150",
+   "ApertureOverfill"
+  ],
+  [
+   "ApertureOverfill",
+   "HighStencilThickness"
+  ]
+ ],
+ "PCB154": [
+  [
+   "OpenCircuit_PCB154",
+   "PoorPasteTransfer"
+  ],
+  [
+   "PoorPasteTransfer",
+   "LowAmbientTemperature"
+  ]
+ ],
+ "PCB155": [
+  [
+   "SolderBridging_PCB155",
    "ApertureOverfill"
   ],
   [
@@ -131,9 +476,9 @@
    "HighStencilThickness"
   ]
  ],
- "PCB166": [
+ "PCB159": [
   [
-   "SolderBridging_PCB166",
+   "SolderBridging_PCB159",
    "ApertureOverfill"
   ],
   [
@@ -141,14 +486,61 @@
    "HighStencilThickness"
   ]
  ],
- "PCB173": [],
+ "PCB161": [
+  [
+   "SolderBridging_PCB161",
+   "ApertureOverfill"
+  ],
+  [
+   "ApertureOverfill",
+   "HighStencilThickness"
+  ]
+ ],
+ "PCB162": [],
+ "PCB164": [
+  [
+   "SolderBridging_PCB164",
+   "ApertureOverfill"
+  ],
+  [
+   "ApertureOverfill",
+   "HighStencilThickness"
+  ]
+ ],
+ "PCB165": [
+  [
+   "SolderBridging_PCB165",
+   "ApertureOverfill"
+  ],
+  [
+   "ApertureOverfill",
+   "HighStencilThickness"
+  ]
+ ],
+ "PCB169": [
+  [
+   "OpenCircuit_PCB169",
+   "NonCoalescence"
+  ],
+  [
+   "NonCoalescence",
+   "LowPeakReflowTemperature"
+  ]
+ ],
+ "PCB172": [],
+ "PCB176": [
+  [
+   "SolderBridging_PCB176",
+   "ExcessReflowSpreading"
+  ],
+  [
+   "ExcessReflowSpreading",
+   "HighPeakReflowTemperature"
+  ]
+ ],
  "PCB177": [
   [
    "SolderBridging_PCB177",
-   "HighPasteVolumePerAperture"
-  ],
-  [
-   "HighPasteVolumePerAperture",
    "ApertureOverfill"
   ],
   [
@@ -156,9 +548,9 @@
    "HighStencilThickness"
   ]
  ],
- "PCB178": [
+ "PCB179": [
   [
-   "SolderBridging_PCB178",
+   "SolderBridging_PCB179",
    "ApertureOverfill"
   ],
   [
@@ -166,13 +558,22 @@
    "HighStencilThickness"
   ]
  ],
- "PCB187": [],
+ "PCB180": [],
+ "PCB181": [
+  [
+   "SolderBridging_PCB181",
+   "ApertureOverfill"
+  ],
+  [
+   "ApertureOverfill",
+   "HighStencilThickness"
+  ]
+ ],
+ "PCB182": [],
  "PCB193": [],
- "PCB194": [],
- "PCB196": [],
- "PCB201": [
+ "PCB194": [
   [
-   "SolderBridging_PCB201",
+   "SolderBridging_PCB194",
    "ApertureOverfill"
   ],
   [
@@ -180,86 +581,9 @@
    "HighStencilThickness"
   ]
  ],
- "PCB208": [
+ "PCB195": [
   [
-   "SolderBridging_PCB208",
-   "ApertureOverfill"
-  ],
-  [
-   "ApertureOverfill",
-   "LowPasteViscosity"
-  ],
-  [
-   "ApertureOverfill",
-   "HighAmbientTemperature"
-  ]
- ],
- "PCB213": [
-  [
-   "SolderBridging_PCB213",
-   "ApertureOverfill"
-  ],
-  [
-   "ApertureOverfill",
-   "LowPasteViscosity"
-  ],
-  [
-   "ApertureOverfill",
-   "HighAmbientRh"
-  ]
- ],
- "PCB221": [
-  [
-   "SolderBridging_PCB221",
-   "ApertureOverfill"
-  ],
-  [
-   "ApertureOverfill",
-   "LowPasteViscosity"
-  ],
-  [
-   "ApertureOverfill",
-   "HighAmbientRh"
-  ]
- ],
- "PCB224": [
-  [
-   "SolderBridging_PCB224",
-   "ApertureOverfill"
-  ],
-  [
-   "ApertureOverfill",
-   "HighStencilThickness"
-  ]
- ],
- "PCB225": [
-  [
-   "SolderBridging_PCB225",
-   "ApertureOverfill"
-  ],
-  [
-   "ApertureOverfill",
-   "HighStencilThickness"
-  ]
- ],
- "PCB228": [
-  [
-   "SolderBridging_PCB228",
-   "ApertureOverfill"
-  ],
-  [
-   "ApertureOverfill",
-   "HighStencilThickness"
-  ]
- ],
- "PCB232": [],
- "PCB233": [
-  [
-   "OpenCircuit_PCB233",
-   "LowPasteVolumePerAperture"
-  ],
-  [
-   "LowPasteVolumePerAperture",
+   "OpenCircuit_PCB195",
    "PoorPasteTransfer"
   ],
   [
@@ -271,13 +595,61 @@
    "HighPasteViscosity"
   ]
  ],
- "PCB234": [
+ "PCB205": [],
+ "PCB211": [
   [
-   "SolderBridging_PCB234",
-   "HighPasteVolumePerAperture"
+   "OpenCircuit_PCB211",
+   "NonCoalescence"
   ],
   [
-   "HighPasteVolumePerAperture",
+   "NonCoalescence",
+   "LowTimeAboveLiquidus"
+  ]
+ ],
+ "PCB215": [
+  [
+   "OpenCircuit_PCB215",
+   "NonCoalescence"
+  ],
+  [
+   "NonCoalescence",
+   "LowTimeAboveLiquidus"
+  ]
+ ],
+ "PCB220": [],
+ "PCB222": [
+  [
+   "SolderBridging_PCB222",
+   "ExcessReflowSpreading"
+  ],
+  [
+   "ExcessReflowSpreading",
+   "HighTimeAboveLiquidus"
+  ]
+ ],
+ "PCB224": [
+  [
+   "OpenCircuit_PCB224",
+   "NonCoalescence"
+  ],
+  [
+   "NonCoalescence",
+   "LowPeakReflowTemperature"
+  ]
+ ],
+ "PCB225": [
+  [
+   "SolderBridging_PCB225",
+   "ExcessReflowSpreading"
+  ],
+  [
+   "ExcessReflowSpreading",
+   "HighPeakReflowTemperature"
+  ]
+ ],
+ "PCB229": [
+  [
+   "SolderBridging_PCB229",
    "ApertureOverfill"
   ],
   [
@@ -285,9 +657,90 @@
    "HighStencilThickness"
   ]
  ],
- "PCB248": [
+ "PCB236": [
   [
-   "SolderBridging_PCB248",
+   "SolderBridging_PCB236",
+   "ApertureOverfill"
+  ],
+  [
+   "ApertureOverfill",
+   "LowPasteViscosity"
+  ],
+  [
+   "ApertureOverfill",
+   "HighAmbientRh"
+  ]
+ ],
+ "PCB237": [
+  [
+   "SolderBridging_PCB237",
+   "ApertureOverfill"
+  ],
+  [
+   "ApertureOverfill",
+   "HighStencilThickness"
+  ]
+ ],
+ "PCB238": [
+  [
+   "SolderBridging_PCB238",
+   "ApertureOverfill"
+  ],
+  [
+   "ApertureOverfill",
+   "HighStencilThickness"
+  ]
+ ],
+ "PCB241": [],
+ "PCB242": [],
+ "PCB243": [],
+ "PCB244": [
+  [
+   "OpenCircuit_PCB244",
+   "PoorPasteTransfer"
+  ],
+  [
+   "PoorPasteTransfer",
+   "LowAmbientRh"
+  ],
+  [
+   "PoorPasteTransfer",
+   "HighPasteViscosity"
+  ]
+ ],
+ "PCB245": [
+  [
+   "SolderBridging_PCB245",
+   "ExcessReflowSpreading"
+  ],
+  [
+   "ExcessReflowSpreading",
+   "HighPeakReflowTemperature"
+  ]
+ ],
+ "PCB246": [
+  [
+   "SolderBridging_PCB246",
+   "ApertureOverfill"
+  ],
+  [
+   "ApertureOverfill",
+   "HighStencilThickness"
+  ]
+ ],
+ "PCB252": [
+  [
+   "SolderBridging_PCB252",
+   "ApertureOverfill"
+  ],
+  [
+   "ApertureOverfill",
+   "HighStencilThickness"
+  ]
+ ],
+ "PCB255": [
+  [
+   "SolderBridging_PCB255",
    "ApertureOverfill"
   ],
   [
@@ -315,9 +768,9 @@
    "HighStencilThickness"
   ]
  ],
- "PCB267": [
+ "PCB261": [
   [
-   "SolderBridging_PCB267",
+   "SolderBridging_PCB261",
    "ApertureOverfill"
   ],
   [
@@ -325,10 +778,9 @@
    "HighStencilThickness"
   ]
  ],
- "PCB275": [],
- "PCB283": [
+ "PCB263": [
   [
-   "SolderBridging_PCB283",
+   "SolderBridging_PCB263",
    "ApertureOverfill"
   ],
   [
@@ -336,23 +788,49 @@
    "HighStencilThickness"
   ]
  ],
- "PCB286": [
+ "PCB267": [],
+ "PCB270": [
   [
-   "OpenCircuit_PCB286",
+   "OpenCircuit_PCB270",
    "PoorPasteTransfer"
-  ],
-  [
-   "PoorPasteTransfer",
-   "LowAmbientRh"
-  ],
-  [
-   "PoorPasteTransfer",
-   "HighPasteViscosity"
   ]
  ],
- "PCB294": [
+ "PCB271": [],
+ "PCB274": [],
+ "PCB276": [],
+ "PCB277": [
   [
-   "SolderBridging_PCB294",
+   "OpenCircuit_PCB277",
+   "PoorPasteTransfer"
+  ]
+ ],
+ "PCB285": [
+  [
+   "SolderBridging_PCB285",
+   "ExcessReflowSpreading"
+  ],
+  [
+   "ExcessReflowSpreading",
+   "HighPeakReflowTemperature"
+  ],
+  [
+   "ExcessReflowSpreading",
+   "HighTimeAboveLiquidus"
+  ]
+ ],
+ "PCB289": [
+  [
+   "OpenCircuit_PCB289",
+   "NonCoalescence"
+  ],
+  [
+   "NonCoalescence",
+   "LowPeakReflowTemperature"
+  ]
+ ],
+ "PCB292": [
+  [
+   "SolderBridging_PCB292",
    "ApertureOverfill"
   ],
   [
@@ -360,16 +838,36 @@
    "HighStencilThickness"
   ]
  ],
- "PCB298": [],
- "PCB299": [],
- "PCB300": [
+ "PCB293": [],
+ "PCB296": [
   [
-   "SolderBridging_PCB300",
+   "SolderBridging_PCB296",
    "ApertureOverfill"
   ],
   [
    "ApertureOverfill",
-   "HighStencilThickness"
+   "LowPasteViscosity"
+  ]
+ ],
+ "PCB298": [
+  [
+   "OpenCircuit_PCB298",
+   "NonCoalescence"
+  ],
+  [
+   "NonCoalescence",
+   "LowTimeAboveLiquidus"
+  ]
+ ],
+ "PCB300": [],
+ "PCB301": [
+  [
+   "SolderBridging_PCB301",
+   "ExcessReflowSpreading"
+  ],
+  [
+   "ExcessReflowSpreading",
+   "HighPeakReflowTemperature"
   ]
  ],
  "PCB305": [],
@@ -383,14 +881,9 @@
    "HighStencilThickness"
   ]
  ],
- "PCB313": [],
- "PCB324": [
+ "PCB308": [
   [
-   "SolderBridging_PCB324",
-   "HighPasteVolumePerAperture"
-  ],
-  [
-   "HighPasteVolumePerAperture",
+   "SolderBridging_PCB308",
    "ApertureOverfill"
   ],
   [
@@ -398,12 +891,104 @@
    "HighStencilThickness"
   ]
  ],
- "PCB333": [],
- "PCB343": [],
- "PCB351": [],
- "PCB353": [
+ "PCB310": [],
+ "PCB311": [
   [
-   "SolderBridging_PCB353",
+   "SolderBridging_PCB311",
+   "ApertureOverfill"
+  ],
+  [
+   "ApertureOverfill",
+   "HighStencilThickness"
+  ]
+ ],
+ "PCB312": [
+  [
+   "SolderBridging_PCB312",
+   "ApertureOverfill"
+  ],
+  [
+   "ApertureOverfill",
+   "HighStencilThickness"
+  ]
+ ],
+ "PCB318": [
+  [
+   "OpenCircuit_PCB318",
+   "PoorPasteTransfer"
+  ],
+  [
+   "PoorPasteTransfer",
+   "HighPasteViscosity"
+  ],
+  [
+   "PoorPasteTransfer",
+   "LowAmbientTemperature"
+  ]
+ ],
+ "PCB320": [],
+ "PCB324": [],
+ "PCB326": [],
+ "PCB327": [
+  [
+   "SolderBridging_PCB327",
+   "ApertureOverfill"
+  ],
+  [
+   "ApertureOverfill",
+   "HighStencilThickness"
+  ]
+ ],
+ "PCB329": [],
+ "PCB331": [
+  [
+   "OpenCircuit_PCB331",
+   "PoorPasteTransfer"
+  ],
+  [
+   "PoorPasteTransfer",
+   "HighPasteViscosity"
+  ],
+  [
+   "PoorPasteTransfer",
+   "LowAmbientTemperature"
+  ]
+ ],
+ "PCB335": [
+  [
+   "SolderBridging_PCB335",
+   "ApertureOverfill"
+  ],
+  [
+   "ApertureOverfill",
+   "HighStencilThickness"
+  ]
+ ],
+ "PCB339": [],
+ "PCB342": [
+  [
+   "SolderBridging_PCB342",
+   "ExcessReflowSpreading"
+  ],
+  [
+   "ExcessReflowSpreading",
+   "HighPeakReflowTemperature"
+  ]
+ ],
+ "PCB347": [
+  [
+   "SolderBridging_PCB347",
+   "ApertureOverfill"
+  ],
+  [
+   "ApertureOverfill",
+   "HighStencilThickness"
+  ]
+ ],
+ "PCB348": [],
+ "PCB349": [
+  [
+   "SolderBridging_PCB349",
    "ApertureOverfill"
   ],
   [
@@ -412,6 +997,26 @@
   ]
  ],
  "PCB354": [],
+ "PCB355": [
+  [
+   "SolderBridging_PCB355",
+   "ApertureOverfill"
+  ],
+  [
+   "ApertureOverfill",
+   "HighStencilThickness"
+  ]
+ ],
+ "PCB357": [
+  [
+   "SolderBridging_PCB357",
+   "ApertureOverfill"
+  ],
+  [
+   "ApertureOverfill",
+   "HighStencilThickness"
+  ]
+ ],
  "PCB361": [
   [
    "SolderBridging_PCB361",
@@ -422,9 +1027,44 @@
    "HighStencilThickness"
   ]
  ],
- "PCB377": [
+ "PCB362": [],
+ "PCB363": [],
+ "PCB365": [],
+ "PCB366": [
   [
-   "SolderBridging_PCB377",
+   "OpenCircuit_PCB366",
+   "NonCoalescence"
+  ],
+  [
+   "NonCoalescence",
+   "LowTimeAboveLiquidus"
+  ]
+ ],
+ "PCB368": [],
+ "PCB373": [],
+ "PCB376": [
+  [
+   "SolderBridging_PCB376",
+   "ApertureOverfill"
+  ],
+  [
+   "ApertureOverfill",
+   "LowPasteViscosity"
+  ]
+ ],
+ "PCB380": [
+  [
+   "OpenCircuit_PCB380",
+   "NonCoalescence"
+  ],
+  [
+   "NonCoalescence",
+   "LowPeakReflowTemperature"
+  ]
+ ],
+ "PCB381": [
+  [
+   "SolderBridging_PCB381",
    "ApertureOverfill"
   ],
   [
@@ -442,29 +1082,20 @@
    "HighStencilThickness"
   ]
  ],
- "PCB391": [],
- "PCB392": [],
- "PCB395": [
+ "PCB384": [],
+ "PCB386": [
   [
-   "SolderBridging_PCB395",
+   "SolderBridging_PCB386",
    "ApertureOverfill"
   ],
   [
    "ApertureOverfill",
    "LowPasteViscosity"
-  ],
-  [
-   "ApertureOverfill",
-   "HighAmbientRh"
   ]
  ],
- "PCB408": [
+ "PCB387": [
   [
-   "SolderBridging_PCB408",
-   "HighPasteVolumePerAperture"
-  ],
-  [
-   "HighPasteVolumePerAperture",
+   "SolderBridging_PCB387",
    "ApertureOverfill"
   ],
   [
@@ -472,9 +1103,93 @@
    "HighStencilThickness"
   ]
  ],
- "PCB415": [
+ "PCB388": [
   [
-   "SolderBridging_PCB415",
+   "SolderBridging_PCB388",
+   "ApertureOverfill"
+  ],
+  [
+   "ApertureOverfill",
+   "HighStencilThickness"
+  ]
+ ],
+ "PCB396": [
+  [
+   "SolderBridging_PCB396",
+   "ApertureOverfill"
+  ],
+  [
+   "ApertureOverfill",
+   "HighStencilThickness"
+  ]
+ ],
+ "PCB397": [
+  [
+   "SolderBridging_PCB397",
+   "ExcessReflowSpreading"
+  ],
+  [
+   "ExcessReflowSpreading",
+   "HighTimeAboveLiquidus"
+  ]
+ ],
+ "PCB401": [
+  [
+   "SolderBridging_PCB401",
+   "ExcessReflowSpreading"
+  ],
+  [
+   "ExcessReflowSpreading",
+   "HighPeakReflowTemperature"
+  ]
+ ],
+ "PCB402": [],
+ "PCB403": [],
+ "PCB406": [
+  [
+   "SolderBridging_PCB406",
+   "ApertureOverfill"
+  ],
+  [
+   "ApertureOverfill",
+   "HighStencilThickness"
+  ]
+ ],
+ "PCB407": [
+  [
+   "SolderBridging_PCB407",
+   "ApertureOverfill"
+  ],
+  [
+   "ApertureOverfill",
+   "HighStencilThickness"
+  ]
+ ],
+ "PCB408": [
+  [
+   "SolderBridging_PCB408",
+   "ApertureOverfill"
+  ],
+  [
+   "ApertureOverfill",
+   "LowPasteViscosity"
+  ]
+ ],
+ "PCB410": [
+  [
+   "SolderBridging_PCB410",
+   "ApertureOverfill"
+  ],
+  [
+   "ApertureOverfill",
+   "HighStencilThickness"
+  ]
+ ],
+ "PCB418": [],
+ "PCB420": [],
+ "PCB421": [
+  [
+   "SolderBridging_PCB421",
    "ApertureOverfill"
   ],
   [
@@ -484,11 +1199,17 @@
  ],
  "PCB425": [
   [
-   "SolderBridging_PCB425",
-   "HighPasteVolumePerAperture"
+   "OpenCircuit_PCB425",
+   "NonCoalescence"
   ],
   [
-   "HighPasteVolumePerAperture",
+   "NonCoalescence",
+   "LowTimeAboveLiquidus"
+  ]
+ ],
+ "PCB426": [
+  [
+   "SolderBridging_PCB426",
    "ApertureOverfill"
   ],
   [
@@ -496,33 +1217,21 @@
    "HighStencilThickness"
   ]
  ],
- "PCB430": [
+ "PCB428": [],
+ "PCB429": [],
+ "PCB433": [
   [
-   "SolderBridging_PCB430",
-   "ApertureOverfill"
+   "SolderBridging_PCB433",
+   "ExcessReflowSpreading"
   ],
   [
-   "ApertureOverfill",
-   "LowPasteViscosity"
+   "ExcessReflowSpreading",
+   "HighTimeAboveLiquidus"
   ]
  ],
- "PCB436": [
+ "PCB434": [
   [
-   "SolderBridging_PCB436",
-   "ApertureOverfill"
-  ],
-  [
-   "ApertureOverfill",
-   "LowPasteViscosity"
-  ],
-  [
-   "ApertureOverfill",
-   "HighAmbientRh"
-  ]
- ],
- "PCB446": [
-  [
-   "SolderBridging_PCB446",
+   "SolderBridging_PCB434",
    "ApertureOverfill"
   ],
   [
@@ -530,84 +1239,481 @@
    "HighStencilThickness"
   ]
  ],
- "PCB459": [
+ "PCB435": [],
+ "PCB438": [
   [
-   "SolderBridging_PCB459",
-   "ApertureOverfill"
-  ],
-  [
-   "ApertureOverfill",
-   "HighStencilThickness"
-  ]
- ],
- "PCB462": [
-  [
-   "SolderBridging_PCB462",
-   "HighPasteVolumePerAperture"
-  ],
-  [
-   "HighPasteVolumePerAperture",
-   "ApertureOverfill"
-  ],
-  [
-   "ApertureOverfill",
-   "HighStencilThickness"
-  ]
- ],
- "PCB474": [],
- "PCB483": [
-  [
-   "SolderBridging_PCB483",
-   "ApertureOverfill"
-  ],
-  [
-   "ApertureOverfill",
-   "HighStencilThickness"
-  ]
- ],
- "PCB485": [
-  [
-   "SolderBridging_PCB485",
-   "ApertureOverfill"
-  ],
-  [
-   "ApertureOverfill",
-   "HighStencilThickness"
-  ]
- ],
- "PCB489": [
-  [
-   "SolderBridging_PCB489",
-   "ApertureOverfill"
-  ],
-  [
-   "ApertureOverfill",
-   "HighStencilThickness"
-  ]
- ],
- "PCB495": [
-  [
-   "SolderBridging_PCB495",
-   "ApertureOverfill"
-  ],
-  [
-   "ApertureOverfill",
-   "HighStencilThickness"
-  ]
- ],
- "PCB497": [
-  [
-   "OpenCircuit_PCB497",
+   "OpenCircuit_PCB438",
    "PoorPasteTransfer"
   ],
   [
    "PoorPasteTransfer",
    "HighPasteViscosity"
+  ],
+  [
+   "PoorPasteTransfer",
+   "LowAmbientTemperature"
+  ]
+ ],
+ "PCB439": [],
+ "PCB441": [
+  [
+   "SolderBridging_PCB441",
+   "ApertureOverfill"
+  ],
+  [
+   "ApertureOverfill",
+   "HighStencilThickness"
+  ]
+ ],
+ "PCB443": [],
+ "PCB447": [],
+ "PCB450": [],
+ "PCB451": [
+  [
+   "SolderBridging_PCB451",
+   "ApertureOverfill"
+  ],
+  [
+   "ApertureOverfill",
+   "HighStencilThickness"
+  ]
+ ],
+ "PCB453": [
+  [
+   "OpenCircuit_PCB453",
+   "NonCoalescence"
+  ],
+  [
+   "NonCoalescence",
+   "LowTimeAboveLiquidus"
+  ]
+ ],
+ "PCB455": [],
+ "PCB458": [
+  [
+   "OpenCircuit_PCB458",
+   "PoorPasteTransfer"
+  ],
+  [
+   "PoorPasteTransfer",
+   "LowStencilThickness"
+  ]
+ ],
+ "PCB460": [],
+ "PCB461": [
+  [
+   "SolderBridging_PCB461",
+   "ApertureOverfill"
+  ],
+  [
+   "ApertureOverfill",
+   "HighStencilThickness"
+  ]
+ ],
+ "PCB463": [
+  [
+   "SolderBridging_PCB463",
+   "ApertureOverfill"
+  ],
+  [
+   "ApertureOverfill",
+   "HighStencilThickness"
+  ]
+ ],
+ "PCB468": [],
+ "PCB474": [],
+ "PCB477": [
+  [
+   "SolderBridging_PCB477",
+   "ExcessReflowSpreading"
+  ],
+  [
+   "ExcessReflowSpreading",
+   "HighPeakReflowTemperature"
+  ]
+ ],
+ "PCB478": [
+  [
+   "SolderBridging_PCB478",
+   "ApertureOverfill"
+  ],
+  [
+   "ApertureOverfill",
+   "HighStencilThickness"
+  ]
+ ],
+ "PCB481": [
+  [
+   "OpenCircuit_PCB481",
+   "NonCoalescence"
+  ],
+  [
+   "NonCoalescence",
+   "LowPeakReflowTemperature"
+  ]
+ ],
+ "PCB482": [
+  [
+   "SolderBridging_PCB482",
+   "ExcessReflowSpreading"
+  ],
+  [
+   "ExcessReflowSpreading",
+   "HighTimeAboveLiquidus"
+  ]
+ ],
+ "PCB488": [],
+ "PCB500": [
+  [
+   "SolderBridging_PCB500",
+   "ApertureOverfill"
+  ],
+  [
+   "ApertureOverfill",
+   "HighStencilThickness"
   ]
  ],
  "PCB502": [
   [
-   "OpenCircuit_PCB502",
+   "SolderBridging_PCB502",
+   "ApertureOverfill"
+  ],
+  [
+   "ApertureOverfill",
+   "LowPasteViscosity"
+  ]
+ ],
+ "PCB506": [
+  [
+   "SolderBridging_PCB506",
+   "ApertureOverfill"
+  ],
+  [
+   "ApertureOverfill",
+   "HighStencilThickness"
+  ]
+ ],
+ "PCB507": [
+  [
+   "SolderBridging_PCB507",
+   "ApertureOverfill"
+  ],
+  [
+   "ApertureOverfill",
+   "HighStencilThickness"
+  ],
+  [
+   "ApertureOverfill",
+   "LowPasteViscosity"
+  ]
+ ],
+ "PCB508": [
+  [
+   "SolderBridging_PCB508",
+   "ApertureOverfill"
+  ],
+  [
+   "ApertureOverfill",
+   "HighStencilThickness"
+  ]
+ ],
+ "PCB511": [],
+ "PCB514": [],
+ "PCB516": [],
+ "PCB517": [
+  [
+   "OpenCircuit_PCB517",
+   "PoorPasteTransfer"
+  ]
+ ],
+ "PCB519": [
+  [
+   "SolderBridging_PCB519",
+   "ApertureOverfill"
+  ],
+  [
+   "ApertureOverfill",
+   "HighStencilThickness"
+  ]
+ ],
+ "PCB530": [
+  [
+   "SolderBridging_PCB530",
+   "ExcessReflowSpreading"
+  ],
+  [
+   "ExcessReflowSpreading",
+   "HighTimeAboveLiquidus"
+  ]
+ ],
+ "PCB531": [
+  [
+   "SolderBridging_PCB531",
+   "ApertureOverfill"
+  ],
+  [
+   "ApertureOverfill",
+   "HighStencilThickness"
+  ],
+  [
+   "ApertureOverfill",
+   "LowPasteViscosity"
+  ]
+ ],
+ "PCB532": [
+  [
+   "SolderBridging_PCB532",
+   "ApertureOverfill"
+  ],
+  [
+   "ApertureOverfill",
+   "HighStencilThickness"
+  ]
+ ],
+ "PCB533": [
+  [
+   "SolderBridging_PCB533",
+   "ApertureOverfill"
+  ],
+  [
+   "ApertureOverfill",
+   "HighStencilThickness"
+  ]
+ ],
+ "PCB534": [],
+ "PCB535": [],
+ "PCB536": [],
+ "PCB538": [],
+ "PCB543": [],
+ "PCB549": [
+  [
+   "SolderBridging_PCB549",
+   "ExcessReflowSpreading"
+  ],
+  [
+   "ExcessReflowSpreading",
+   "HighTimeAboveLiquidus"
+  ]
+ ],
+ "PCB555": [
+  [
+   "SolderBridging_PCB555",
+   "ApertureOverfill"
+  ],
+  [
+   "ApertureOverfill",
+   "HighStencilThickness"
+  ]
+ ],
+ "PCB557": [
+  [
+   "SolderBridging_PCB557",
+   "ExcessReflowSpreading"
+  ],
+  [
+   "ExcessReflowSpreading",
+   "HighPeakReflowTemperature"
+  ]
+ ],
+ "PCB562": [
+  [
+   "SolderBridging_PCB562",
+   "ApertureOverfill"
+  ],
+  [
+   "ApertureOverfill",
+   "HighStencilThickness"
+  ]
+ ],
+ "PCB564": [],
+ "PCB568": [
+  [
+   "OpenCircuit_PCB568",
+   "PoorPasteTransfer"
+  ]
+ ],
+ "PCB574": [
+  [
+   "SolderBridging_PCB574",
+   "ApertureOverfill"
+  ],
+  [
+   "ApertureOverfill",
+   "HighStencilThickness"
+  ]
+ ],
+ "PCB575": [
+  [
+   "SolderBridging_PCB575",
+   "ExcessReflowSpreading"
+  ],
+  [
+   "ExcessReflowSpreading",
+   "HighTimeAboveLiquidus"
+  ]
+ ],
+ "PCB577": [
+  [
+   "OpenCircuit_PCB577",
+   "NonCoalescence"
+  ],
+  [
+   "NonCoalescence",
+   "LowPeakReflowTemperature"
+  ]
+ ],
+ "PCB579": [],
+ "PCB581": [],
+ "PCB584": [
+  [
+   "OpenCircuit_PCB584",
+   "NonCoalescence"
+  ],
+  [
+   "NonCoalescence",
+   "LowTimeAboveLiquidus"
+  ]
+ ],
+ "PCB585": [
+  [
+   "SolderBridging_PCB585",
+   "ApertureOverfill"
+  ],
+  [
+   "ApertureOverfill",
+   "HighStencilThickness"
+  ]
+ ],
+ "PCB586": [],
+ "PCB587": [
+  [
+   "SolderBridging_PCB587",
+   "ApertureOverfill"
+  ],
+  [
+   "ApertureOverfill",
+   "HighStencilThickness"
+  ]
+ ],
+ "PCB588": [],
+ "PCB591": [],
+ "PCB593": [
+  [
+   "SolderBridging_PCB593",
+   "ApertureOverfill"
+  ],
+  [
+   "ApertureOverfill",
+   "HighStencilThickness"
+  ]
+ ],
+ "PCB594": [],
+ "PCB596": [],
+ "PCB598": [],
+ "PCB600": [
+  [
+   "OpenCircuit_PCB600",
+   "PoorPasteTransfer"
+  ],
+  [
+   "PoorPasteTransfer",
+   "LowStencilThickness"
+  ],
+  [
+   "PoorPasteTransfer",
+   "LowAmbientTemperature"
+  ]
+ ],
+ "PCB601": [],
+ "PCB602": [
+  [
+   "SolderBridging_PCB602",
+   "ApertureOverfill"
+  ],
+  [
+   "ApertureOverfill",
+   "HighStencilThickness"
+  ]
+ ],
+ "PCB608": [],
+ "PCB609": [],
+ "PCB616": [
+  [
+   "OpenCircuit_PCB616",
+   "PoorPasteTransfer"
+  ]
+ ],
+ "PCB617": [],
+ "PCB623": [
+  [
+   "SolderBridging_PCB623",
+   "ExcessReflowSpreading"
+  ],
+  [
+   "ExcessReflowSpreading",
+   "HighTimeAboveLiquidus"
+  ],
+  [
+   "SolderBridging_PCB623",
+   "ApertureOverfill"
+  ],
+  [
+   "ApertureOverfill",
+   "HighStencilThickness"
+  ]
+ ],
+ "PCB624": [
+  [
+   "SolderBridging_PCB624",
+   "ExcessReflowSpreading"
+  ],
+  [
+   "ExcessReflowSpreading",
+   "HighPeakReflowTemperature"
+  ]
+ ],
+ "PCB628": [],
+ "PCB633": [],
+ "PCB637": [],
+ "PCB643": [
+  [
+   "SolderBridging_PCB643",
+   "ApertureOverfill"
+  ],
+  [
+   "ApertureOverfill",
+   "HighStencilThickness"
+  ]
+ ],
+ "PCB655": [
+  [
+   "OpenCircuit_PCB655",
+   "PoorPasteTransfer"
+  ],
+  [
+   "PoorPasteTransfer",
+   "HighPasteViscosity"
+  ],
+  [
+   "PoorPasteTransfer",
+   "LowAmbientTemperature"
+  ]
+ ],
+ "PCB660": [],
+ "PCB666": [
+  [
+   "OpenCircuit_PCB666",
+   "NonCoalescence"
+  ],
+  [
+   "NonCoalescence",
+   "LowPeakReflowTemperature"
+  ]
+ ],
+ "PCB668": [],
+ "PCB671": [
+  [
+   "OpenCircuit_PCB671",
    "PoorPasteTransfer"
   ],
   [
@@ -615,216 +1721,10 @@
    "HighPasteViscosity"
   ]
  ],
- "PCB504": [],
- "PCB505": [
-  [
-   "SolderBridging_PCB505",
-   "ApertureOverfill"
-  ],
-  [
-   "ApertureOverfill",
-   "HighStencilThickness"
-  ]
- ],
- "PCB512": [
-  [
-   "SolderBridging_PCB512",
-   "ApertureOverfill"
-  ],
-  [
-   "ApertureOverfill",
-   "LowPasteViscosity"
-  ]
- ],
- "PCB540": [
-  [
-   "SolderBridging_PCB540",
-   "ApertureOverfill"
-  ],
-  [
-   "ApertureOverfill",
-   "HighStencilThickness"
-  ]
- ],
- "PCB541": [],
- "PCB547": [
-  [
-   "SolderBridging_PCB547",
-   "ApertureOverfill"
-  ],
-  [
-   "ApertureOverfill",
-   "HighStencilThickness"
-  ]
- ],
- "PCB551": [
-  [
-   "SolderBridging_PCB551",
-   "ApertureOverfill"
-  ],
-  [
-   "ApertureOverfill",
-   "HighStencilThickness"
-  ]
- ],
- "PCB561": [
-  [
-   "SolderBridging_PCB561",
-   "ApertureOverfill"
-  ],
-  [
-   "ApertureOverfill",
-   "HighStencilThickness"
-  ]
- ],
- "PCB566": [
-  [
-   "SolderBridging_PCB566",
-   "ApertureOverfill"
-  ],
-  [
-   "ApertureOverfill",
-   "HighStencilThickness"
-  ]
- ],
- "PCB568": [],
- "PCB577": [],
- "PCB580": [
-  [
-   "SolderBridging_PCB580",
-   "HighPasteVolumePerAperture"
-  ],
-  [
-   "HighPasteVolumePerAperture",
-   "ApertureOverfill"
-  ],
-  [
-   "ApertureOverfill",
-   "HighStencilThickness"
-  ],
-  [
-   "ApertureOverfill",
-   "LowPasteViscosity"
-  ],
-  [
-   "ApertureOverfill",
-   "HighAmbientRh"
-  ]
- ],
- "PCB590": [],
- "PCB591": [],
- "PCB592": [
-  [
-   "SolderBridging_PCB592",
-   "ApertureOverfill"
-  ],
-  [
-   "ApertureOverfill",
-   "HighStencilThickness"
-  ]
- ],
- "PCB599": [
-  [
-   "SolderBridging_PCB599",
-   "ApertureOverfill"
-  ],
-  [
-   "ApertureOverfill",
-   "HighStencilThickness"
-  ]
- ],
- "PCB604": [
-  [
-   "SolderBridging_PCB604",
-   "ApertureOverfill"
-  ],
-  [
-   "ApertureOverfill",
-   "LowPasteViscosity"
-  ],
-  [
-   "ApertureOverfill",
-   "HighAmbientTemperature"
-  ]
- ],
- "PCB616": [
-  [
-   "SolderBridging_PCB616",
-   "ApertureOverfill"
-  ],
-  [
-   "ApertureOverfill",
-   "HighStencilThickness"
-  ]
- ],
- "PCB617": [],
- "PCB620": [
-  [
-   "SolderBridging_PCB620",
-   "ApertureOverfill"
-  ],
-  [
-   "ApertureOverfill",
-   "HighStencilThickness"
-  ]
- ],
- "PCB621": [],
- "PCB626": [],
- "PCB629": [],
- "PCB631": [],
- "PCB639": [],
- "PCB640": [],
- "PCB643": [],
- "PCB644": [
-  [
-   "SolderBridging_PCB644",
-   "ApertureOverfill"
-  ],
-  [
-   "ApertureOverfill",
-   "LowPasteViscosity"
-  ]
- ],
- "PCB649": [
-  [
-   "SolderBridging_PCB649",
-   "ApertureOverfill"
-  ],
-  [
-   "ApertureOverfill",
-   "HighStencilThickness"
-  ]
- ],
- "PCB656": [
-  [
-   "SolderBridging_PCB656",
-   "ApertureOverfill"
-  ],
-  [
-   "ApertureOverfill",
-   "HighStencilThickness"
-  ]
- ],
- "PCB659": [
-  [
-   "SolderBridging_PCB659",
-   "ApertureOverfill"
-  ],
-  [
-   "ApertureOverfill",
-   "LowPasteViscosity"
-  ],
-  [
-   "ApertureOverfill",
-   "HighAmbientRh"
-  ]
- ],
- "PCB660": [],
- "PCB667": [],
  "PCB673": [],
- "PCB677": [
+ "PCB676": [
   [
-   "SolderBridging_PCB677",
+   "SolderBridging_PCB676",
    "ApertureOverfill"
   ],
   [
@@ -832,10 +1732,10 @@
    "HighStencilThickness"
   ]
  ],
- "PCB680": [],
- "PCB692": [
+ "PCB681": [],
+ "PCB684": [
   [
-   "SolderBridging_PCB692",
+   "SolderBridging_PCB684",
    "ApertureOverfill"
   ],
   [
@@ -843,9 +1743,21 @@
    "HighStencilThickness"
   ]
  ],
- "PCB693": [
+ "PCB686": [
   [
-   "SolderBridging_PCB693",
+   "OpenCircuit_PCB686",
+   "NonCoalescence"
+  ],
+  [
+   "NonCoalescence",
+   "LowPeakReflowTemperature"
+  ]
+ ],
+ "PCB687": [],
+ "PCB688": [],
+ "PCB690": [
+  [
+   "SolderBridging_PCB690",
    "ApertureOverfill"
   ],
   [
@@ -853,10 +1765,9 @@
    "HighStencilThickness"
   ]
  ],
- "PCB696": [],
- "PCB700": [
+ "PCB691": [
   [
-   "SolderBridging_PCB700",
+   "SolderBridging_PCB691",
    "ApertureOverfill"
   ],
   [
@@ -864,9 +1775,9 @@
    "HighStencilThickness"
   ]
  ],
- "PCB705": [
+ "PCB697": [
   [
-   "SolderBridging_PCB705",
+   "SolderBridging_PCB697",
    "ApertureOverfill"
   ],
   [
@@ -874,36 +1785,25 @@
    "LowPasteViscosity"
   ]
  ],
- "PCB707": [
+ "PCB703": [],
+ "PCB710": [],
+ "PCB711": [],
+ "PCB712": [],
+ "PCB715": [],
+ "PCB716": [
   [
-   "SolderBridging_PCB707",
-   "ApertureOverfill"
+   "OpenCircuit_PCB716",
+   "PoorPasteTransfer"
   ],
   [
-   "ApertureOverfill",
-   "HighStencilThickness"
+   "PoorPasteTransfer",
+   "HighPasteViscosity"
   ]
  ],
- "PCB708": [
-  [
-   "SolderBridging_PCB708",
-   "ApertureOverfill"
-  ],
-  [
-   "ApertureOverfill",
-   "HighStencilThickness"
-  ]
- ],
- "PCB717": [
-  [
-   "SolderBridging_PCB717",
-   "ApertureOverfill"
-  ],
-  [
-   "ApertureOverfill",
-   "HighStencilThickness"
-  ]
- ],
+ "PCB717": [],
+ "PCB725": [],
+ "PCB726": [],
+ "PCB732": [],
  "PCB738": [
   [
    "OpenCircuit_PCB738",
@@ -912,31 +1812,41 @@
   [
    "PoorPasteTransfer",
    "HighPasteViscosity"
-  ]
- ],
- "PCB741": [
-  [
-   "SolderBridging_PCB741",
-   "ApertureOverfill"
   ],
   [
-   "ApertureOverfill",
-   "HighStencilThickness"
+   "PoorPasteTransfer",
+   "LowAmbientTemperature"
   ]
  ],
- "PCB744": [
+ "PCB740": [
   [
-   "SolderBridging_PCB744",
-   "ApertureOverfill"
+   "SolderBridging_PCB740",
+   "ExcessReflowSpreading"
   ],
   [
-   "ApertureOverfill",
-   "HighStencilThickness"
+   "ExcessReflowSpreading",
+   "HighTimeAboveLiquidus"
   ]
  ],
+ "PCB742": [],
  "PCB745": [
   [
-   "SolderBridging_PCB745",
+   "OpenCircuit_PCB745",
+   "PoorPasteTransfer"
+  ],
+  [
+   "PoorPasteTransfer",
+   "HighPasteViscosity"
+  ],
+  [
+   "PoorPasteTransfer",
+   "LowAmbientTemperature"
+  ]
+ ],
+ "PCB746": [],
+ "PCB748": [
+  [
+   "SolderBridging_PCB748",
    "ApertureOverfill"
   ],
   [
@@ -944,11 +1854,9 @@
    "HighStencilThickness"
   ]
  ],
- "PCB752": [],
- "PCB776": [],
- "PCB780": [
+ "PCB750": [
   [
-   "SolderBridging_PCB780",
+   "SolderBridging_PCB750",
    "ApertureOverfill"
   ],
   [
@@ -956,9 +1864,9 @@
    "HighStencilThickness"
   ]
  ],
- "PCB785": [
+ "PCB752": [
   [
-   "SolderBridging_PCB785",
+   "SolderBridging_PCB752",
    "ApertureOverfill"
   ],
   [
@@ -966,10 +1874,23 @@
    "HighStencilThickness"
   ]
  ],
- "PCB791": [],
- "PCB797": [
+ "PCB753": [],
+ "PCB754": [],
+ "PCB756": [],
+ "PCB758": [],
+ "PCB762": [
   [
-   "SolderBridging_PCB797",
+   "OpenCircuit_PCB762",
+   "NonCoalescence"
+  ],
+  [
+   "NonCoalescence",
+   "LowPeakReflowTemperature"
+  ]
+ ],
+ "PCB766": [
+  [
+   "SolderBridging_PCB766",
    "ApertureOverfill"
   ],
   [
@@ -977,91 +1898,465 @@
    "HighStencilThickness"
   ]
  ],
+ "PCB767": [
+  [
+   "SolderBridging_PCB767",
+   "ApertureOverfill"
+  ],
+  [
+   "ApertureOverfill",
+   "HighStencilThickness"
+  ]
+ ],
+ "PCB768": [],
+ "PCB769": [
+  [
+   "SolderBridging_PCB769",
+   "ApertureOverfill"
+  ],
+  [
+   "ApertureOverfill",
+   "HighStencilThickness"
+  ]
+ ],
+ "PCB770": [
+  [
+   "SolderBridging_PCB770",
+   "ApertureOverfill"
+  ],
+  [
+   "ApertureOverfill",
+   "HighStencilThickness"
+  ]
+ ],
+ "PCB777": [
+  [
+   "SolderBridging_PCB777",
+   "ApertureOverfill"
+  ],
+  [
+   "ApertureOverfill",
+   "HighStencilThickness"
+  ],
+  [
+   "ApertureOverfill",
+   "HighAmbientRh"
+  ]
+ ],
+ "PCB780": [],
+ "PCB786": [
+  [
+   "OpenCircuit_PCB786",
+   "PoorPasteTransfer"
+  ],
+  [
+   "PoorPasteTransfer",
+   "HighPasteViscosity"
+  ],
+  [
+   "PoorPasteTransfer",
+   "LowAmbientTemperature"
+  ]
+ ],
+ "PCB787": [
+  [
+   "SolderBridging_PCB787",
+   "ExcessReflowSpreading"
+  ],
+  [
+   "ExcessReflowSpreading",
+   "HighTimeAboveLiquidus"
+  ]
+ ],
+ "PCB789": [
+  [
+   "OpenCircuit_PCB789",
+   "NonCoalescence"
+  ],
+  [
+   "NonCoalescence",
+   "LowTimeAboveLiquidus"
+  ]
+ ],
+ "PCB792": [
+  [
+   "SolderBridging_PCB792",
+   "ApertureOverfill"
+  ],
+  [
+   "ApertureOverfill",
+   "LowPasteViscosity"
+  ]
+ ],
+ "PCB793": [
+  [
+   "SolderBridging_PCB793",
+   "ApertureOverfill"
+  ],
+  [
+   "ApertureOverfill",
+   "HighStencilThickness"
+  ]
+ ],
+ "PCB798": [],
+ "PCB799": [],
+ "PCB800": [
+  [
+   "SolderBridging_PCB800",
+   "ExcessReflowSpreading"
+  ],
+  [
+   "ExcessReflowSpreading",
+   "HighPeakReflowTemperature"
+  ]
+ ],
+ "PCB801": [],
  "PCB802": [
   [
-   "SolderBridging_PCB802",
-   "ApertureOverfill"
+   "OpenCircuit_PCB802",
+   "PoorPasteTransfer"
   ],
   [
-   "ApertureOverfill",
-   "LowPasteViscosity"
+   "PoorPasteTransfer",
+   "HighPasteViscosity"
+  ],
+  [
+   "PoorPasteTransfer",
+   "LowAmbientTemperature"
   ]
  ],
- "PCB805": [
+ "PCB804": [
   [
-   "SolderBridging_PCB805",
-   "ApertureOverfill"
-  ],
-  [
-   "ApertureOverfill",
-   "LowPasteViscosity"
+   "OpenCircuit_PCB804",
+   "PoorPasteTransfer"
   ]
  ],
- "PCB807": [],
- "PCB810": [],
- "PCB838": [
+ "PCB809": [
   [
-   "SolderBridging_PCB838",
-   "ApertureOverfill"
-  ],
-  [
-   "ApertureOverfill",
-   "HighStencilThickness"
-  ]
- ],
- "PCB840": [],
- "PCB842": [],
- "PCB844": [],
- "PCB846": [],
- "PCB850": [],
- "PCB857": [],
- "PCB869": [],
- "PCB876": [],
- "PCB885": [],
- "PCB893": [
-  [
-   "SolderBridging_PCB893",
-   "ApertureOverfill"
-  ],
-  [
-   "ApertureOverfill",
-   "HighStencilThickness"
-  ]
- ],
- "PCB909": [],
- "PCB911": [],
- "PCB918": [],
- "PCB921": [],
- "PCB924": [],
- "PCB928": [],
- "PCB944": [],
- "PCB960": [],
- "PCB970": [],
- "PCB971": [
-  [
-   "OpenCircuit_PCB971",
-   "LowPasteVolumePerAperture"
-  ],
-  [
-   "LowPasteVolumePerAperture",
+   "OpenCircuit_PCB809",
    "PoorPasteTransfer"
   ],
   [
    "PoorPasteTransfer",
    "LowAmbientRh"
+  ]
+ ],
+ "PCB812": [
+  [
+   "SolderBridging_PCB812",
+   "ApertureOverfill"
+  ],
+  [
+   "ApertureOverfill",
+   "HighStencilThickness"
+  ]
+ ],
+ "PCB819": [],
+ "PCB822": [
+  [
+   "SolderBridging_PCB822",
+   "ApertureOverfill"
+  ],
+  [
+   "ApertureOverfill",
+   "HighStencilThickness"
+  ]
+ ],
+ "PCB823": [],
+ "PCB825": [
+  [
+   "SolderBridging_PCB825",
+   "ExcessReflowSpreading"
+  ],
+  [
+   "ExcessReflowSpreading",
+   "HighPeakReflowTemperature"
+  ]
+ ],
+ "PCB828": [],
+ "PCB830": [
+  [
+   "OpenCircuit_PCB830",
+   "PoorPasteTransfer"
+  ],
+  [
+   "PoorPasteTransfer",
+   "HighPasteViscosity"
+  ],
+  [
+   "PoorPasteTransfer",
+   "LowAmbientTemperature"
+  ]
+ ],
+ "PCB832": [
+  [
+   "SolderBridging_PCB832",
+   "ExcessReflowSpreading"
+  ],
+  [
+   "ExcessReflowSpreading",
+   "HighPeakReflowTemperature"
+  ]
+ ],
+ "PCB834": [
+  [
+   "OpenCircuit_PCB834",
+   "NonCoalescence"
+  ],
+  [
+   "NonCoalescence",
+   "LowPeakReflowTemperature"
+  ]
+ ],
+ "PCB835": [
+  [
+   "OpenCircuit_PCB835",
+   "NonCoalescence"
+  ],
+  [
+   "NonCoalescence",
+   "LowTimeAboveLiquidus"
+  ]
+ ],
+ "PCB839": [],
+ "PCB840": [],
+ "PCB843": [
+  [
+   "SolderBridging_PCB843",
+   "ApertureOverfill"
+  ],
+  [
+   "ApertureOverfill",
+   "LowPasteViscosity"
+  ]
+ ],
+ "PCB845": [
+  [
+   "SolderBridging_PCB845",
+   "ApertureOverfill"
+  ],
+  [
+   "ApertureOverfill",
+   "HighStencilThickness"
+  ]
+ ],
+ "PCB851": [
+  [
+   "SolderBridging_PCB851",
+   "ExcessReflowSpreading"
+  ],
+  [
+   "ExcessReflowSpreading",
+   "HighTimeAboveLiquidus"
+  ]
+ ],
+ "PCB859": [],
+ "PCB860": [
+  [
+   "SolderBridging_PCB860",
+   "ApertureOverfill"
+  ],
+  [
+   "ApertureOverfill",
+   "HighStencilThickness"
+  ]
+ ],
+ "PCB861": [
+  [
+   "OpenCircuit_PCB861",
+   "PoorPasteTransfer"
   ],
   [
    "PoorPasteTransfer",
    "HighPasteViscosity"
   ]
  ],
- "PCB972": [
+ "PCB862": [
   [
-   "SolderBridging_PCB972",
-   "HighPasteVolumePerAperture"
+   "OpenCircuit_PCB862",
+   "NonCoalescence"
   ],
   [
-   "HighPasteVolumePerAperture",
+   "NonCoalescence",
+   "LowTimeAboveLiquidus"
+  ]
+ ],
+ "PCB864": [],
+ "PCB867": [
+  [
+   "OpenCircuit_PCB867",
+   "NonCoalescence"
+  ],
+  [
+   "NonCoalescence",
+   "LowTimeAboveLiquidus"
+  ]
+ ],
+ "PCB869": [
+  [
+   "SolderBridging_PCB869",
+   "ApertureOverfill"
+  ],
+  [
+   "ApertureOverfill",
+   "HighStencilThickness"
+  ]
+ ],
+ "PCB874": [
+  [
+   "SolderBridging_PCB874",
+   "ApertureOverfill"
+  ],
+  [
+   "ApertureOverfill",
+   "LowPasteViscosity"
+  ]
+ ],
+ "PCB876": [
+  [
+   "SolderBridging_PCB876",
+   "ExcessReflowSpreading"
+  ],
+  [
+   "ExcessReflowSpreading",
+   "HighTimeAboveLiquidus"
+  ]
+ ],
+ "PCB879": [],
+ "PCB885": [],
+ "PCB887": [],
+ "PCB891": [],
+ "PCB892": [
+  [
+   "SolderBridging_PCB892",
+   "ExcessReflowSpreading"
+  ],
+  [
+   "ExcessReflowSpreading",
+   "HighPeakReflowTemperature"
+  ]
+ ],
+ "PCB894": [
+  [
+   "SolderBridging_PCB894",
+   "ExcessReflowSpreading"
+  ],
+  [
+   "ExcessReflowSpreading",
+   "HighTimeAboveLiquidus"
+  ]
+ ],
+ "PCB899": [],
+ "PCB903": [],
+ "PCB904": [],
+ "PCB905": [
+  [
+   "SolderBridging_PCB905",
+   "ApertureOverfill"
+  ],
+  [
+   "ApertureOverfill",
+   "HighStencilThickness"
+  ]
+ ],
+ "PCB909": [
+  [
+   "SolderBridging_PCB909",
+   "ExcessReflowSpreading"
+  ],
+  [
+   "ExcessReflowSpreading",
+   "HighTimeAboveLiquidus"
+  ]
+ ],
+ "PCB912": [
+  [
+   "SolderBridging_PCB912",
+   "ApertureOverfill"
+  ],
+  [
+   "ApertureOverfill",
+   "HighStencilThickness"
+  ]
+ ],
+ "PCB916": [
+  [
+   "SolderBridging_PCB916",
+   "ApertureOverfill"
+  ],
+  [
+   "ApertureOverfill",
+   "LowPasteViscosity"
+  ]
+ ],
+ "PCB919": [],
+ "PCB920": [],
+ "PCB924": [
+  [
+   "OpenCircuit_PCB924",
+   "PoorPasteTransfer"
+  ]
+ ],
+ "PCB925": [
+  [
+   "OpenCircuit_PCB925",
+   "PoorPasteTransfer"
+  ],
+  [
+   "PoorPasteTransfer",
+   "LowStencilThickness"
+  ],
+  [
+   "PoorPasteTransfer",
+   "LowAmbientTemperature"
+  ]
+ ],
+ "PCB938": [],
+ "PCB946": [],
+ "PCB951": [
+  [
+   "OpenCircuit_PCB951",
+   "PoorPasteTransfer"
+  ],
+  [
+   "PoorPasteTransfer",
+   "HighPasteViscosity"
+  ]
+ ],
+ "PCB954": [
+  [
+   "SolderBridging_PCB954",
+   "ExcessReflowSpreading"
+  ],
+  [
+   "ExcessReflowSpreading",
+   "HighPeakReflowTemperature"
+  ]
+ ],
+ "PCB955": [],
+ "PCB957": [
+  [
+   "SolderBridging_PCB957",
+   "ApertureOverfill"
+  ],
+  [
+   "ApertureOverfill",
+   "HighStencilThickness"
+  ]
+ ],
+ "PCB962": [
+  [
+   "OpenCircuit_PCB962",
+   "NonCoalescence"
+  ],
+  [
+   "NonCoalescence",
+   "LowPeakReflowTemperature"
+  ]
+ ],
+ "PCB967": [
+  [
+   "SolderBridging_PCB967",
    "ApertureOverfill"
   ],
   [
@@ -1072,10 +2367,16 @@
  "PCB975": [
   [
    "SolderBridging_PCB975",
-   "HighPasteVolumePerAperture"
+   "ExcessReflowSpreading"
   ],
   [
-   "HighPasteVolumePerAperture",
+   "ExcessReflowSpreading",
+   "HighTimeAboveLiquidus"
+  ]
+ ],
+ "PCB978": [
+  [
+   "SolderBridging_PCB978",
    "ApertureOverfill"
   ],
   [
@@ -1083,12 +2384,9 @@
    "HighStencilThickness"
   ]
  ],
- "PCB977": [],
- "PCB987": [],
- "PCB1000": [],
- "PCB1003": [
+ "PCB981": [
   [
-   "SolderBridging_PCB1003",
+   "SolderBridging_PCB981",
    "ApertureOverfill"
   ],
   [
@@ -1096,14 +2394,75 @@
    "HighStencilThickness"
   ]
  ],
- "PCB1004": [],
+ "PCB982": [
+  [
+   "SolderBridging_PCB982",
+   "ExcessReflowSpreading"
+  ],
+  [
+   "ExcessReflowSpreading",
+   "HighTimeAboveLiquidus"
+  ]
+ ],
+ "PCB987": [
+  [
+   "OpenCircuit_PCB987",
+   "NonCoalescence"
+  ],
+  [
+   "NonCoalescence",
+   "LowTimeAboveLiquidus"
+  ]
+ ],
+ "PCB990": [
+  [
+   "SolderBridging_PCB990",
+   "ApertureOverfill"
+  ],
+  [
+   "ApertureOverfill",
+   "HighStencilThickness"
+  ]
+ ],
+ "PCB992": [
+  [
+   "SolderBridging_PCB992",
+   "ApertureOverfill"
+  ],
+  [
+   "ApertureOverfill",
+   "LowPasteViscosity"
+  ]
+ ],
+ "PCB998": [
+  [
+   "SolderBridging_PCB998",
+   "ApertureOverfill"
+  ],
+  [
+   "ApertureOverfill",
+   "HighStencilThickness"
+  ]
+ ],
+ "PCB1002": [],
+ "PCB1006": [],
+ "PCB1007": [
+  [
+   "OpenCircuit_PCB1007",
+   "PoorPasteTransfer"
+  ],
+  [
+   "PoorPasteTransfer",
+   "HighPasteViscosity"
+  ],
+  [
+   "PoorPasteTransfer",
+   "LowAmbientTemperature"
+  ]
+ ],
  "PCB1008": [
   [
    "SolderBridging_PCB1008",
-   "HighPasteVolumePerAperture"
-  ],
-  [
-   "HighPasteVolumePerAperture",
    "ApertureOverfill"
   ],
   [
@@ -1118,26 +2477,12 @@
   ],
   [
    "ApertureOverfill",
-   "LowPasteViscosity"
-  ]
- ],
- "PCB1018": [
-  [
-   "SolderBridging_PCB1018",
-   "HighPasteVolumePerAperture"
-  ],
-  [
-   "HighPasteVolumePerAperture",
-   "ApertureOverfill"
-  ],
-  [
-   "ApertureOverfill",
    "HighStencilThickness"
   ]
  ],
- "PCB1023": [
+ "PCB1011": [
   [
-   "OpenCircuit_PCB1023",
+   "OpenCircuit_PCB1011",
    "PoorPasteTransfer"
   ],
   [
@@ -1145,20 +2490,19 @@
    "HighPasteViscosity"
   ]
  ],
- "PCB1032": [],
- "PCB1036": [
+ "PCB1013": [
   [
-   "SolderBridging_PCB1036",
-   "ApertureOverfill"
+   "SolderBridging_PCB1013",
+   "ExcessReflowSpreading"
   ],
   [
-   "ApertureOverfill",
-   "LowPasteViscosity"
+   "ExcessReflowSpreading",
+   "HighPeakReflowTemperature"
   ]
  ],
- "PCB1047": [
+ "PCB1014": [
   [
-   "SolderBridging_PCB1047",
+   "SolderBridging_PCB1014",
    "ApertureOverfill"
   ],
   [
@@ -1166,10 +2510,92 @@
    "HighStencilThickness"
   ]
  ],
+ "PCB1015": [],
+ "PCB1020": [
+  [
+   "OpenCircuit_PCB1020",
+   "NonCoalescence"
+  ],
+  [
+   "NonCoalescence",
+   "LowTimeAboveLiquidus"
+  ]
+ ],
+ "PCB1021": [],
+ "PCB1022": [
+  [
+   "OpenCircuit_PCB1022",
+   "PoorPasteTransfer"
+  ],
+  [
+   "PoorPasteTransfer",
+   "HighPasteViscosity"
+  ]
+ ],
+ "PCB1023": [],
+ "PCB1027": [
+  [
+   "OpenCircuit_PCB1027",
+   "NonCoalescence"
+  ],
+  [
+   "NonCoalescence",
+   "LowPeakReflowTemperature"
+  ]
+ ],
+ "PCB1028": [
+  [
+   "SolderBridging_PCB1028",
+   "ApertureOverfill"
+  ],
+  [
+   "ApertureOverfill",
+   "HighStencilThickness"
+  ]
+ ],
+ "PCB1031": [],
+ "PCB1033": [
+  [
+   "SolderBridging_PCB1033",
+   "ApertureOverfill"
+  ],
+  [
+   "ApertureOverfill",
+   "HighStencilThickness"
+  ]
+ ],
+ "PCB1034": [
+  [
+   "SolderBridging_PCB1034",
+   "ApertureOverfill"
+  ],
+  [
+   "ApertureOverfill",
+   "HighStencilThickness"
+  ]
+ ],
+ "PCB1037": [
+  [
+   "SolderBridging_PCB1037",
+   "ApertureOverfill"
+  ],
+  [
+   "ApertureOverfill",
+   "HighStencilThickness"
+  ]
+ ],
+ "PCB1042": [],
+ "PCB1043": [
+  [
+   "OpenCircuit_PCB1043",
+   "PoorPasteTransfer"
+  ]
+ ],
+ "PCB1045": [],
  "PCB1048": [],
- "PCB1055": [
+ "PCB1049": [
   [
-   "SolderBridging_PCB1055",
+   "SolderBridging_PCB1049",
    "ApertureOverfill"
   ],
   [
@@ -1177,10 +2603,41 @@
    "HighStencilThickness"
   ]
  ],
+ "PCB1051": [
+  [
+   "SolderBridging_PCB1051",
+   "ApertureOverfill"
+  ],
+  [
+   "ApertureOverfill",
+   "HighStencilThickness"
+  ]
+ ],
+ "PCB1054": [],
+ "PCB1056": [],
+ "PCB1057": [],
+ "PCB1058": [],
+ "PCB1059": [],
+ "PCB1064": [],
  "PCB1070": [],
- "PCB1076": [
+ "PCB1071": [
   [
-   "SolderBridging_PCB1076",
+   "SolderBridging_PCB1071",
+   "ApertureOverfill"
+  ],
+  [
+   "ApertureOverfill",
+   "HighStencilThickness"
+  ],
+  [
+   "ApertureOverfill",
+   "HighAmbientRh"
+  ]
+ ],
+ "PCB1073": [],
+ "PCB1077": [
+  [
+   "SolderBridging_PCB1077",
    "ApertureOverfill"
   ],
   [
@@ -1188,9 +2645,9 @@
    "HighStencilThickness"
   ]
  ],
- "PCB1097": [
+ "PCB1081": [
   [
-   "SolderBridging_PCB1097",
+   "SolderBridging_PCB1081",
    "ApertureOverfill"
   ],
   [
@@ -1198,14 +2655,23 @@
    "HighStencilThickness"
   ]
  ],
- "PCB1102": [],
- "PCB1108": [
+ "PCB1083": [],
+ "PCB1084": [],
+ "PCB1085": [],
+ "PCB1092": [
   [
-   "SolderBridging_PCB1108",
-   "HighPasteVolumePerAperture"
+   "OpenCircuit_PCB1092",
+   "NonCoalescence"
   ],
   [
-   "HighPasteVolumePerAperture",
+   "NonCoalescence",
+   "LowPeakReflowTemperature"
+  ]
+ ],
+ "PCB1101": [],
+ "PCB1102": [
+  [
+   "SolderBridging_PCB1102",
    "ApertureOverfill"
   ],
   [
@@ -1213,9 +2679,20 @@
    "LowPasteViscosity"
   ]
  ],
- "PCB1109": [
+ "PCB1111": [],
+ "PCB1112": [
   [
-   "SolderBridging_PCB1109",
+   "OpenCircuit_PCB1112",
+   "NonCoalescence"
+  ],
+  [
+   "NonCoalescence",
+   "LowTimeAboveLiquidus"
+  ]
+ ],
+ "PCB1115": [
+  [
+   "SolderBridging_PCB1115",
    "ApertureOverfill"
   ],
   [
@@ -1223,76 +2700,20 @@
    "HighStencilThickness"
   ]
  ],
- "PCB1110": [
+ "PCB1120": [],
+ "PCB1123": [
   [
-   "OpenCircuit_PCB1110",
-   "PoorPasteTransfer"
-  ],
-  [
-   "PoorPasteTransfer",
-   "HighPasteViscosity"
-  ]
- ],
- "PCB1117": [
-  [
-   "SolderBridging_PCB1117",
+   "SolderBridging_PCB1123",
    "ApertureOverfill"
   ],
   [
    "ApertureOverfill",
-   "HighStencilThickness"
+   "LowPasteViscosity"
   ]
  ],
- "PCB1128": [
+ "PCB1127": [
   [
-   "SolderBridging_PCB1128",
-   "ApertureOverfill"
-  ],
-  [
-   "ApertureOverfill",
-   "HighStencilThickness"
-  ]
- ],
- "PCB1129": [],
- "PCB1130": [],
- "PCB1135": [
-  [
-   "SolderBridging_PCB1135",
-   "HighPasteVolumePerAperture"
-  ],
-  [
-   "HighPasteVolumePerAperture",
-   "ApertureOverfill"
-  ],
-  [
-   "ApertureOverfill",
-   "HighStencilThickness"
-  ]
- ],
- "PCB1159": [],
- "PCB1160": [
-  [
-   "SolderBridging_PCB1160",
-   "ApertureOverfill"
-  ],
-  [
-   "ApertureOverfill",
-   "HighStencilThickness"
-  ]
- ],
- "PCB1163": [
-  [
-   "SolderBridging_PCB1163",
-   "ApertureOverfill"
-  ],
-  [
-   "ApertureOverfill",
-   "HighStencilThickness"
-  ]
- ],
- "PCB1170": [
-  [
-   "OpenCircuit_PCB1170",
+   "OpenCircuit_PCB1127",
    "PoorPasteTransfer"
   ],
   [
@@ -1304,15 +2725,146 @@
    "HighPasteViscosity"
   ]
  ],
- "PCB1172": [],
- "PCB1173": [],
- "PCB1177": [
+ "PCB1129": [],
+ "PCB1131": [],
+ "PCB1141": [
   [
-   "OpenCircuit_PCB1177",
-   "LowPasteVolumePerAperture"
+   "SolderBridging_PCB1141",
+   "ExcessReflowSpreading"
   ],
   [
-   "LowPasteVolumePerAperture",
+   "ExcessReflowSpreading",
+   "HighPeakReflowTemperature"
+  ]
+ ],
+ "PCB1152": [
+  [
+   "SolderBridging_PCB1152",
+   "ExcessReflowSpreading"
+  ],
+  [
+   "ExcessReflowSpreading",
+   "HighPeakReflowTemperature"
+  ]
+ ],
+ "PCB1153": [
+  [
+   "SolderBridging_PCB1153",
+   "ApertureOverfill"
+  ],
+  [
+   "ApertureOverfill",
+   "LowPasteViscosity"
+  ]
+ ],
+ "PCB1157": [
+  [
+   "SolderBridging_PCB1157",
+   "ApertureOverfill"
+  ],
+  [
+   "ApertureOverfill",
+   "HighStencilThickness"
+  ]
+ ],
+ "PCB1159": [
+  [
+   "SolderBridging_PCB1159",
+   "ApertureOverfill"
+  ],
+  [
+   "ApertureOverfill",
+   "LowPasteViscosity"
+  ]
+ ],
+ "PCB1160": [
+  [
+   "SolderBridging_PCB1160",
+   "ApertureOverfill"
+  ],
+  [
+   "ApertureOverfill",
+   "HighStencilThickness"
+  ]
+ ],
+ "PCB1164": [],
+ "PCB1166": [],
+ "PCB1167": [
+  [
+   "OpenCircuit_PCB1167",
+   "NonCoalescence"
+  ],
+  [
+   "NonCoalescence",
+   "LowTimeAboveLiquidus"
+  ],
+  [
+   "OpenCircuit_PCB1167",
+   "PoorPasteTransfer"
+  ]
+ ],
+ "PCB1177": [],
+ "PCB1180": [],
+ "PCB1187": [],
+ "PCB1188": [
+  [
+   "SolderBridging_PCB1188",
+   "ApertureOverfill"
+  ],
+  [
+   "ApertureOverfill",
+   "HighStencilThickness"
+  ]
+ ],
+ "PCB1190": [
+  [
+   "OpenCircuit_PCB1190",
+   "NonCoalescence"
+  ],
+  [
+   "NonCoalescence",
+   "LowPeakReflowTemperature"
+  ]
+ ],
+ "PCB1194": [],
+ "PCB1196": [],
+ "PCB1197": [
+  [
+   "SolderBridging_PCB1197",
+   "ApertureOverfill"
+  ],
+  [
+   "ApertureOverfill",
+   "HighStencilThickness"
+  ]
+ ],
+ "PCB1198": [
+  [
+   "SolderBridging_PCB1198",
+   "ExcessReflowSpreading"
+  ],
+  [
+   "ExcessReflowSpreading",
+   "HighPeakReflowTemperature"
+  ],
+  [
+   "ExcessReflowSpreading",
+   "HighTimeAboveLiquidus"
+  ]
+ ],
+ "PCB1204": [
+  [
+   "SolderBridging_PCB1204",
+   "ApertureOverfill"
+  ],
+  [
+   "ApertureOverfill",
+   "LowPasteViscosity"
+  ]
+ ],
+ "PCB1208": [
+  [
+   "OpenCircuit_PCB1208",
    "PoorPasteTransfer"
   ],
   [
@@ -1320,9 +2872,63 @@
    "HighPasteViscosity"
   ]
  ],
- "PCB1197": [
+ "PCB1210": [],
+ "PCB1211": [
   [
-   "OpenCircuit_PCB1197",
+   "OpenCircuit_PCB1211",
+   "PoorPasteTransfer"
+  ],
+  [
+   "PoorPasteTransfer",
+   "LowAmbientTemperature"
+  ]
+ ],
+ "PCB1213": [
+  [
+   "SolderBridging_PCB1213",
+   "ApertureOverfill"
+  ],
+  [
+   "ApertureOverfill",
+   "HighStencilThickness"
+  ]
+ ],
+ "PCB1222": [],
+ "PCB1225": [
+  [
+   "OpenCircuit_PCB1225",
+   "PoorPasteTransfer"
+  ],
+  [
+   "PoorPasteTransfer",
+   "LowAmbientRh"
+  ]
+ ],
+ "PCB1227": [],
+ "PCB1230": [],
+ "PCB1234": [
+  [
+   "SolderBridging_PCB1234",
+   "ExcessReflowSpreading"
+  ],
+  [
+   "ExcessReflowSpreading",
+   "HighPeakReflowTemperature"
+  ]
+ ],
+ "PCB1235": [
+  [
+   "SolderBridging_PCB1235",
+   "ApertureOverfill"
+  ],
+  [
+   "ApertureOverfill",
+   "LowPasteViscosity"
+  ]
+ ],
+ "PCB1236": [
+  [
+   "OpenCircuit_PCB1236",
    "PoorPasteTransfer"
   ],
   [
@@ -1334,22 +2940,9 @@
    "LowAmbientTemperature"
   ]
  ],
- "PCB1204": [
+ "PCB1248": [
   [
-   "OpenCircuit_PCB1204",
-   "PoorPasteTransfer"
-  ],
-  [
-   "PoorPasteTransfer",
-   "HighPasteViscosity"
-  ]
- ],
- "PCB1205": [],
- "PCB1209": [],
- "PCB1211": [],
- "PCB1222": [
-  [
-   "SolderBridging_PCB1222",
+   "SolderBridging_PCB1248",
    "ApertureOverfill"
   ],
   [
@@ -1357,12 +2950,9 @@
    "HighStencilThickness"
   ]
  ],
- "PCB1241": [],
- "PCB1251": [],
- "PCB1252": [],
- "PCB1264": [
+ "PCB1256": [
   [
-   "SolderBridging_PCB1264",
+   "SolderBridging_PCB1256",
    "ApertureOverfill"
   ],
   [
@@ -1370,30 +2960,79 @@
    "HighStencilThickness"
   ]
  ],
- "PCB1271": [
+ "PCB1258": [
   [
-   "SolderBridging_PCB1271",
-   "HighPasteVolumePerAperture"
-  ],
-  [
-   "HighPasteVolumePerAperture",
+   "SolderBridging_PCB1258",
    "ApertureOverfill"
   ],
   [
    "ApertureOverfill",
-   "LowPasteViscosity"
+   "HighStencilThickness"
   ]
  ],
- "PCB1272": [],
- "PCB1274": [],
- "PCB1277": [
+ "PCB1263": [],
+ "PCB1269": [],
+ "PCB1276": [],
+ "PCB1280": [],
+ "PCB1281": [
   [
-   "SolderBridging_PCB1277",
+   "OpenCircuit_PCB1281",
+   "NonCoalescence"
+  ],
+  [
+   "NonCoalescence",
+   "LowTimeAboveLiquidus"
+  ]
+ ],
+ "PCB1286": [
+  [
+   "SolderBridging_PCB1286",
+   "ExcessReflowSpreading"
+  ],
+  [
+   "ExcessReflowSpreading",
+   "HighPeakReflowTemperature"
+  ]
+ ],
+ "PCB1287": [],
+ "PCB1288": [
+  [
+   "SolderBridging_PCB1288",
    "ApertureOverfill"
   ],
   [
    "ApertureOverfill",
-   "LowPasteViscosity"
+   "HighStencilThickness"
+  ]
+ ],
+ "PCB1292": [
+  [
+   "OpenCircuit_PCB1292",
+   "NonCoalescence"
+  ],
+  [
+   "NonCoalescence",
+   "LowPeakReflowTemperature"
+  ]
+ ],
+ "PCB1294": [
+  [
+   "OpenCircuit_PCB1294",
+   "NonCoalescence"
+  ],
+  [
+   "NonCoalescence",
+   "LowTimeAboveLiquidus"
+  ]
+ ],
+ "PCB1295": [
+  [
+   "OpenCircuit_PCB1295",
+   "NonCoalescence"
+  ],
+  [
+   "NonCoalescence",
+   "LowTimeAboveLiquidus"
   ]
  ],
  "PCB1297": [
@@ -1406,13 +3045,25 @@
    "LowPasteViscosity"
   ]
  ],
- "PCB1298": [
+ "PCB1298": [],
+ "PCB1299": [],
+ "PCB1302": [],
+ "PCB1310": [],
+ "PCB1313": [],
+ "PCB1316": [],
+ "PCB1319": [
   [
-   "SolderBridging_PCB1298",
-   "HighPasteVolumePerAperture"
+   "OpenCircuit_PCB1319",
+   "NonCoalescence"
   ],
   [
-   "HighPasteVolumePerAperture",
+   "NonCoalescence",
+   "LowTimeAboveLiquidus"
+  ]
+ ],
+ "PCB1320": [
+  [
+   "SolderBridging_PCB1320",
    "ApertureOverfill"
   ],
   [
@@ -1420,50 +3071,26 @@
    "HighStencilThickness"
   ]
  ],
- "PCB1303": [],
- "PCB1307": [],
- "PCB1309": [
+ "PCB1322": [],
+ "PCB1323": [
   [
-   "SolderBridging_PCB1309",
-   "ApertureOverfill"
+   "OpenCircuit_PCB1323",
+   "PoorPasteTransfer"
   ],
   [
-   "ApertureOverfill",
-   "LowPasteViscosity"
+   "PoorPasteTransfer",
+   "HighPasteViscosity"
+  ],
+  [
+   "PoorPasteTransfer",
+   "LowAmbientTemperature"
   ]
  ],
- "PCB1315": [],
- "PCB1324": [],
- "PCB1326": [],
- "PCB1329": [],
+ "PCB1328": [],
  "PCB1330": [],
- "PCB1332": [],
- "PCB1343": [],
- "PCB1352": [],
- "PCB1360": [
+ "PCB1331": [
   [
-   "SolderBridging_PCB1360",
-   "ApertureOverfill"
-  ],
-  [
-   "ApertureOverfill",
-   "HighStencilThickness"
-  ]
- ],
- "PCB1365": [
-  [
-   "SolderBridging_PCB1365",
-   "ApertureOverfill"
-  ],
-  [
-   "ApertureOverfill",
-   "HighStencilThickness"
-  ]
- ],
- "PCB1368": [],
- "PCB1373": [
-  [
-   "OpenCircuit_PCB1373",
+   "OpenCircuit_PCB1331",
    "PoorPasteTransfer"
   ],
   [
@@ -1475,9 +3102,9 @@
    "LowAmbientTemperature"
   ]
  ],
- "PCB1379": [
+ "PCB1332": [
   [
-   "SolderBridging_PCB1379",
+   "SolderBridging_PCB1332",
    "ApertureOverfill"
   ],
   [
@@ -1485,46 +3112,122 @@
    "HighStencilThickness"
   ]
  ],
- "PCB1384": [],
- "PCB1389": [],
- "PCB1391": [],
- "PCB1392": [],
- "PCB1395": [],
- "PCB1398": [],
- "PCB1402": [],
- "PCB1405": [
+ "PCB1333": [
   [
-   "SolderBridging_PCB1405",
+   "OpenCircuit_PCB1333",
+   "NonCoalescence"
+  ],
+  [
+   "NonCoalescence",
+   "LowTimeAboveLiquidus"
+  ]
+ ],
+ "PCB1334": [
+  [
+   "SolderBridging_PCB1334",
    "ApertureOverfill"
   ],
   [
    "ApertureOverfill",
-   "LowPasteViscosity"
+   "HighStencilThickness"
   ]
  ],
- "PCB1408": [],
- "PCB1416": [],
- "PCB1418": [],
- "PCB1420": [
+ "PCB1337": [
   [
-   "OpenCircuit_PCB1420",
-   "PoorPasteTransfer"
+   "SolderBridging_PCB1337",
+   "ApertureOverfill"
   ],
   [
-   "PoorPasteTransfer",
-   "LowAmbientRh"
+   "ApertureOverfill",
+   "HighStencilThickness"
+  ]
+ ],
+ "PCB1338": [
+  [
+   "SolderBridging_PCB1338",
+   "ExcessReflowSpreading"
+  ],
+  [
+   "ExcessReflowSpreading",
+   "HighPeakReflowTemperature"
+  ]
+ ],
+ "PCB1341": [
+  [
+   "SolderBridging_PCB1341",
+   "ApertureOverfill"
+  ],
+  [
+   "ApertureOverfill",
+   "HighStencilThickness"
+  ]
+ ],
+ "PCB1343": [
+  [
+   "OpenCircuit_PCB1343",
+   "NonCoalescence"
+  ],
+  [
+   "NonCoalescence",
+   "LowPeakReflowTemperature"
+  ]
+ ],
+ "PCB1345": [],
+ "PCB1349": [
+  [
+   "SolderBridging_PCB1349",
+   "ApertureOverfill"
+  ],
+  [
+   "ApertureOverfill",
+   "HighStencilThickness"
+  ]
+ ],
+ "PCB1356": [
+  [
+   "SolderBridging_PCB1356",
+   "ExcessReflowSpreading"
+  ],
+  [
+   "ExcessReflowSpreading",
+   "HighPeakReflowTemperature"
+  ]
+ ],
+ "PCB1361": [],
+ "PCB1367": [
+  [
+   "OpenCircuit_PCB1367",
+   "PoorPasteTransfer"
   ],
   [
    "PoorPasteTransfer",
    "HighPasteViscosity"
   ]
  ],
- "PCB1429": [],
- "PCB1432": [],
- "PCB1438": [],
- "PCB1445": [
+ "PCB1369": [],
+ "PCB1372": [
   [
-   "SolderBridging_PCB1445",
+   "SolderBridging_PCB1372",
+   "ExcessReflowSpreading"
+  ],
+  [
+   "ExcessReflowSpreading",
+   "HighPeakReflowTemperature"
+  ]
+ ],
+ "PCB1374": [
+  [
+   "OpenCircuit_PCB1374",
+   "PoorPasteTransfer"
+  ],
+  [
+   "PoorPasteTransfer",
+   "HighPasteViscosity"
+  ]
+ ],
+ "PCB1376": [
+  [
+   "SolderBridging_PCB1376",
    "ApertureOverfill"
   ],
   [
@@ -1536,63 +3239,20 @@
    "HighAmbientRh"
   ]
  ],
- "PCB1457": [],
- "PCB1458": [],
- "PCB1459": [
+ "PCB1379": [],
+ "PCB1386": [
   [
-   "OpenCircuit_PCB1459",
-   "LowPasteVolumePerAperture"
+   "OpenCircuit_PCB1386",
+   "NonCoalescence"
   ],
   [
-   "LowPasteVolumePerAperture",
-   "PoorPasteTransfer"
-  ],
-  [
-   "PoorPasteTransfer",
-   "LowStencilThickness"
+   "NonCoalescence",
+   "LowTimeAboveLiquidus"
   ]
  ],
- "PCB1462": [
+ "PCB1392": [
   [
-   "OpenCircuit_PCB1462",
-   "LowPasteVolumePerAperture"
-  ],
-  [
-   "LowPasteVolumePerAperture",
-   "PoorPasteTransfer"
-  ],
-  [
-   "PoorPasteTransfer",
-   "HighPasteViscosity"
-  ],
-  [
-   "PoorPasteTransfer",
-   "LowAmbientTemperature"
-  ]
- ],
- "PCB1467": [
-  [
-   "SolderBridging_PCB1467",
-   "HighPasteVolumePerAperture"
-  ],
-  [
-   "HighPasteVolumePerAperture",
-   "ApertureOverfill"
-  ],
-  [
-   "ApertureOverfill",
-   "HighStencilThickness"
-  ],
-  [
-   "ApertureOverfill",
-   "HighAmbientRh"
-  ]
- ],
- "PCB1476": [],
- "PCB1480": [],
- "PCB1489": [
-  [
-   "SolderBridging_PCB1489",
+   "SolderBridging_PCB1392",
    "ApertureOverfill"
   ],
   [
@@ -1600,23 +3260,69 @@
    "HighStencilThickness"
   ]
  ],
- "PCB1496": [
+ "PCB1393": [
   [
-   "SolderBridging_PCB1496",
+   "SolderBridging_PCB1393",
    "ApertureOverfill"
   ],
   [
    "ApertureOverfill",
    "LowPasteViscosity"
-  ],
-  [
-   "ApertureOverfill",
-   "HighAmbientRh"
   ]
  ],
- "PCB1503": [
+ "PCB1394": [],
+ "PCB1395": [
   [
-   "SolderBridging_PCB1503",
+   "SolderBridging_PCB1395",
+   "ApertureOverfill"
+  ]
+ ],
+ "PCB1399": [
+  [
+   "OpenCircuit_PCB1399",
+   "NonCoalescence"
+  ],
+  [
+   "NonCoalescence",
+   "LowPeakReflowTemperature"
+  ]
+ ],
+ "PCB1401": [
+  [
+   "SolderBridging_PCB1401",
+   "ExcessReflowSpreading"
+  ],
+  [
+   "ExcessReflowSpreading",
+   "HighTimeAboveLiquidus"
+  ]
+ ],
+ "PCB1403": [],
+ "PCB1407": [
+  [
+   "SolderBridging_PCB1407",
+   "ExcessReflowSpreading"
+  ],
+  [
+   "ExcessReflowSpreading",
+   "HighTimeAboveLiquidus"
+  ]
+ ],
+ "PCB1412": [
+  [
+   "OpenCircuit_PCB1412",
+   "NonCoalescence"
+  ],
+  [
+   "NonCoalescence",
+   "LowPeakReflowTemperature"
+  ]
+ ],
+ "PCB1414": [],
+ "PCB1419": [],
+ "PCB1427": [
+  [
+   "SolderBridging_PCB1427",
    "ApertureOverfill"
   ],
   [
@@ -1624,10 +3330,9 @@
    "HighStencilThickness"
   ]
  ],
- "PCB1511": [],
- "PCB1523": [
+ "PCB1428": [
   [
-   "SolderBridging_PCB1523",
+   "SolderBridging_PCB1428",
    "ApertureOverfill"
   ],
   [
@@ -1635,3313 +3340,5 @@
    "LowPasteViscosity"
   ]
  ],
- "PCB1532": [],
- "PCB1536": [],
- "PCB1548": [
-  [
-   "OpenCircuit_PCB1548",
-   "PoorPasteTransfer"
-  ],
-  [
-   "PoorPasteTransfer",
-   "HighPasteViscosity"
-  ],
-  [
-   "PoorPasteTransfer",
-   "LowAmbientTemperature"
-  ]
- ],
- "PCB1552": [],
- "PCB1554": [],
- "PCB1562": [],
- "PCB1575": [
-  [
-   "SolderBridging_PCB1575",
-   "ApertureOverfill"
-  ],
-  [
-   "ApertureOverfill",
-   "HighStencilThickness"
-  ]
- ],
- "PCB1577": [],
- "PCB1588": [],
- "PCB1590": [],
- "PCB1592": [],
- "PCB1599": [],
- "PCB1600": [
-  [
-   "SolderBridging_PCB1600",
-   "HighPasteVolumePerAperture"
-  ],
-  [
-   "HighPasteVolumePerAperture",
-   "ApertureOverfill"
-  ],
-  [
-   "ApertureOverfill",
-   "HighStencilThickness"
-  ]
- ],
- "PCB1605": [],
- "PCB1607": [],
- "PCB1608": [
-  [
-   "SolderBridging_PCB1608",
-   "ApertureOverfill"
-  ],
-  [
-   "ApertureOverfill",
-   "LowPasteViscosity"
-  ]
- ],
- "PCB1620": [
-  [
-   "SolderBridging_PCB1620",
-   "HighPasteVolumePerAperture"
-  ],
-  [
-   "HighPasteVolumePerAperture",
-   "ApertureOverfill"
-  ],
-  [
-   "ApertureOverfill",
-   "HighStencilThickness"
-  ]
- ],
- "PCB1622": [],
- "PCB1630": [],
- "PCB1634": [
-  [
-   "SolderBridging_PCB1634",
-   "HighPasteVolumePerAperture"
-  ],
-  [
-   "HighPasteVolumePerAperture",
-   "ApertureOverfill"
-  ],
-  [
-   "ApertureOverfill",
-   "HighStencilThickness"
-  ]
- ],
- "PCB1636": [],
- "PCB1640": [],
- "PCB1641": [
-  [
-   "OpenCircuit_PCB1641",
-   "LowPasteVolumePerAperture"
-  ],
-  [
-   "LowPasteVolumePerAperture",
-   "PoorPasteTransfer"
-  ],
-  [
-   "PoorPasteTransfer",
-   "LowAmbientRh"
-  ],
-  [
-   "PoorPasteTransfer",
-   "HighPasteViscosity"
-  ]
- ],
- "PCB1644": [],
- "PCB1646": [],
- "PCB1659": [],
- "PCB1660": [
-  [
-   "SolderBridging_PCB1660",
-   "ApertureOverfill"
-  ],
-  [
-   "ApertureOverfill",
-   "HighStencilThickness"
-  ]
- ],
- "PCB1662": [],
- "PCB1663": [
-  [
-   "OpenCircuit_PCB1663",
-   "PoorPasteTransfer"
-  ],
-  [
-   "PoorPasteTransfer",
-   "HighPasteViscosity"
-  ]
- ],
- "PCB1665": [],
- "PCB1669": [],
- "PCB1678": [
-  [
-   "OpenCircuit_PCB1678",
-   "PoorPasteTransfer"
-  ],
-  [
-   "PoorPasteTransfer",
-   "HighPasteViscosity"
-  ]
- ],
- "PCB1682": [
-  [
-   "OpenCircuit_PCB1682",
-   "LowPasteVolumePerAperture"
-  ],
-  [
-   "LowPasteVolumePerAperture",
-   "PoorPasteTransfer"
-  ],
-  [
-   "PoorPasteTransfer",
-   "LowAmbientRh"
-  ],
-  [
-   "PoorPasteTransfer",
-   "HighPasteViscosity"
-  ]
- ],
- "PCB1690": [],
- "PCB1697": [],
- "PCB1701": [],
- "PCB1708": [],
- "PCB1712": [],
- "PCB1718": [],
- "PCB1719": [],
- "PCB1721": [],
- "PCB1727": [],
- "PCB1730": [
-  [
-   "OpenCircuit_PCB1730",
-   "PoorPasteTransfer"
-  ],
-  [
-   "PoorPasteTransfer",
-   "LowStencilThickness"
-  ]
- ],
- "PCB1732": [],
- "PCB1733": [
-  [
-   "SolderBridging_PCB1733",
-   "HighPasteVolumePerAperture"
-  ],
-  [
-   "HighPasteVolumePerAperture",
-   "ApertureOverfill"
-  ],
-  [
-   "ApertureOverfill",
-   "LowPasteViscosity"
-  ],
-  [
-   "ApertureOverfill",
-   "HighAmbientRh"
-  ]
- ],
- "PCB1738": [],
- "PCB1740": [
-  [
-   "SolderBridging_PCB1740",
-   "ApertureOverfill"
-  ],
-  [
-   "ApertureOverfill",
-   "HighStencilThickness"
-  ]
- ],
- "PCB1746": [
-  [
-   "OpenCircuit_PCB1746",
-   "PoorPasteTransfer"
-  ],
-  [
-   "PoorPasteTransfer",
-   "HighPasteViscosity"
-  ],
-  [
-   "PoorPasteTransfer",
-   "LowAmbientTemperature"
-  ]
- ],
- "PCB1756": [],
- "PCB1760": [],
- "PCB1771": [],
- "PCB1780": [],
- "PCB1788": [],
- "PCB1789": [
-  [
-   "SolderBridging_PCB1789",
-   "ApertureOverfill"
-  ],
-  [
-   "ApertureOverfill",
-   "HighStencilThickness"
-  ]
- ],
- "PCB1800": [],
- "PCB1808": [],
- "PCB1818": [
-  [
-   "OpenCircuit_PCB1818",
-   "PoorPasteTransfer"
-  ],
-  [
-   "PoorPasteTransfer",
-   "HighPasteViscosity"
-  ],
-  [
-   "PoorPasteTransfer",
-   "LowAmbientTemperature"
-  ]
- ],
- "PCB1821": [],
- "PCB1825": [
-  [
-   "OpenCircuit_PCB1825",
-   "PoorPasteTransfer"
-  ],
-  [
-   "PoorPasteTransfer",
-   "LowStencilThickness"
-  ]
- ],
- "PCB1827": [
-  [
-   "SolderBridging_PCB1827",
-   "ApertureOverfill"
-  ],
-  [
-   "ApertureOverfill",
-   "HighStencilThickness"
-  ]
- ],
- "PCB1840": [
-  [
-   "OpenCircuit_PCB1840",
-   "PoorPasteTransfer"
-  ],
-  [
-   "PoorPasteTransfer",
-   "HighPasteViscosity"
-  ],
-  [
-   "PoorPasteTransfer",
-   "LowAmbientTemperature"
-  ]
- ],
- "PCB1842": [],
- "PCB1843": [],
- "PCB1848": [],
- "PCB1853": [
-  [
-   "OpenCircuit_PCB1853",
-   "PoorPasteTransfer"
-  ],
-  [
-   "PoorPasteTransfer",
-   "HighPasteViscosity"
-  ]
- ],
- "PCB1855": [],
- "PCB1869": [],
- "PCB1873": [],
- "PCB1874": [],
- "PCB1878": [],
- "PCB1894": [],
- "PCB1896": [],
- "PCB1900": [],
- "PCB1903": [],
- "PCB1904": [
-  [
-   "OpenCircuit_PCB1904",
-   "PoorPasteTransfer"
-  ],
-  [
-   "PoorPasteTransfer",
-   "HighPasteViscosity"
-  ],
-  [
-   "PoorPasteTransfer",
-   "LowAmbientTemperature"
-  ]
- ],
- "PCB1905": [],
- "PCB1917": [
-  [
-   "SolderBridging_PCB1917",
-   "ApertureOverfill"
-  ],
-  [
-   "ApertureOverfill",
-   "LowPasteViscosity"
-  ]
- ],
- "PCB1919": [],
- "PCB1921": [
-  [
-   "OpenCircuit_PCB1921",
-   "PoorPasteTransfer"
-  ],
-  [
-   "PoorPasteTransfer",
-   "HighPasteViscosity"
-  ]
- ],
- "PCB1922": [
-  [
-   "SolderBridging_PCB1922",
-   "ApertureOverfill"
-  ],
-  [
-   "ApertureOverfill",
-   "LowPasteViscosity"
-  ],
-  [
-   "ApertureOverfill",
-   "HighAmbientRh"
-  ]
- ],
- "PCB1926": [],
- "PCB1928": [],
- "PCB1936": [],
- "PCB1938": [
-  [
-   "SolderBridging_PCB1938",
-   "ApertureOverfill"
-  ],
-  [
-   "ApertureOverfill",
-   "LowPasteViscosity"
-  ]
- ],
- "PCB1939": [],
- "PCB1947": [],
- "PCB1955": [
-  [
-   "OpenCircuit_PCB1955",
-   "LowPasteVolumePerAperture"
-  ],
-  [
-   "LowPasteVolumePerAperture",
-   "PoorPasteTransfer"
-  ],
-  [
-   "PoorPasteTransfer",
-   "LowStencilThickness"
-  ],
-  [
-   "PoorPasteTransfer",
-   "LowAmbientRh"
-  ]
- ],
- "PCB1958": [],
- "PCB1961": [],
- "PCB1976": [],
- "PCB1982": [],
- "PCB1989": [
-  [
-   "OpenCircuit_PCB1989",
-   "PoorPasteTransfer"
-  ],
-  [
-   "PoorPasteTransfer",
-   "HighPasteViscosity"
-  ],
-  [
-   "PoorPasteTransfer",
-   "LowAmbientTemperature"
-  ]
- ],
- "PCB1990": [
-  [
-   "OpenCircuit_PCB1990",
-   "PoorPasteTransfer"
-  ],
-  [
-   "PoorPasteTransfer",
-   "LowStencilThickness"
-  ]
- ],
- "PCB1995": [],
- "PCB2000": [
-  [
-   "SolderBridging_PCB2000",
-   "ApertureOverfill"
-  ],
-  [
-   "ApertureOverfill",
-   "LowPasteViscosity"
-  ]
- ],
- "PCB2005": [],
- "PCB2013": [],
- "PCB2017": [],
- "PCB2037": [],
- "PCB2038": [
-  [
-   "SolderBridging_PCB2038",
-   "HighPasteVolumePerAperture"
-  ],
-  [
-   "HighPasteVolumePerAperture",
-   "ApertureOverfill"
-  ],
-  [
-   "ApertureOverfill",
-   "LowPasteViscosity"
-  ]
- ],
- "PCB2040": [],
- "PCB2044": [],
- "PCB2055": [],
- "PCB2060": [],
- "PCB2061": [],
- "PCB2067": [],
- "PCB2068": [],
- "PCB2070": [],
- "PCB2072": [
-  [
-   "SolderBridging_PCB2072",
-   "HighPasteVolumePerAperture"
-  ],
-  [
-   "HighPasteVolumePerAperture",
-   "ApertureOverfill"
-  ],
-  [
-   "ApertureOverfill",
-   "HighStencilThickness"
-  ]
- ],
- "PCB2077": [
-  [
-   "SolderBridging_PCB2077",
-   "HighPasteVolumePerAperture"
-  ],
-  [
-   "HighPasteVolumePerAperture",
-   "ApertureOverfill"
-  ],
-  [
-   "ApertureOverfill",
-   "HighStencilThickness"
-  ]
- ],
- "PCB2079": [
-  [
-   "OpenCircuit_PCB2079",
-   "LowPasteVolumePerAperture"
-  ],
-  [
-   "LowPasteVolumePerAperture",
-   "PoorPasteTransfer"
-  ],
-  [
-   "PoorPasteTransfer",
-   "HighPasteViscosity"
-  ],
-  [
-   "PoorPasteTransfer",
-   "LowAmbientTemperature"
-  ]
- ],
- "PCB2080": [],
- "PCB2081": [],
- "PCB2092": [],
- "PCB2094": [],
- "PCB2096": [],
- "PCB2108": [],
- "PCB2117": [
-  [
-   "OpenCircuit_PCB2117",
-   "PoorPasteTransfer"
-  ],
-  [
-   "PoorPasteTransfer",
-   "LowAmbientRh"
-  ],
-  [
-   "PoorPasteTransfer",
-   "HighPasteViscosity"
-  ]
- ],
- "PCB2123": [],
- "PCB2139": [],
- "PCB2140": [
-  [
-   "OpenCircuit_PCB2140",
-   "PoorPasteTransfer"
-  ],
-  [
-   "PoorPasteTransfer",
-   "HighPasteViscosity"
-  ],
-  [
-   "PoorPasteTransfer",
-   "LowAmbientTemperature"
-  ]
- ],
- "PCB2143": [
-  [
-   "SolderBridging_PCB2143",
-   "ApertureOverfill"
-  ],
-  [
-   "ApertureOverfill",
-   "HighStencilThickness"
-  ]
- ],
- "PCB2144": [],
- "PCB2148": [
-  [
-   "OpenCircuit_PCB2148",
-   "LowPasteVolumePerAperture"
-  ],
-  [
-   "LowPasteVolumePerAperture",
-   "PoorPasteTransfer"
-  ],
-  [
-   "PoorPasteTransfer",
-   "LowAmbientRh"
-  ],
-  [
-   "PoorPasteTransfer",
-   "HighPasteViscosity"
-  ]
- ],
- "PCB2151": [],
- "PCB2154": [
-  [
-   "SolderBridging_PCB2154",
-   "ApertureOverfill"
-  ],
-  [
-   "ApertureOverfill",
-   "LowPasteViscosity"
-  ],
-  [
-   "ApertureOverfill",
-   "HighAmbientRh"
-  ]
- ],
- "PCB2155": [],
- "PCB2170": [],
- "PCB2176": [],
- "PCB2185": [],
- "PCB2191": [],
- "PCB2193": [
-  [
-   "OpenCircuit_PCB2193",
-   "LowPasteVolumePerAperture"
-  ],
-  [
-   "LowPasteVolumePerAperture",
-   "PoorPasteTransfer"
-  ],
-  [
-   "PoorPasteTransfer",
-   "LowStencilThickness"
-  ]
- ],
- "PCB2195": [],
- "PCB2200": [],
- "PCB2201": [],
- "PCB2237": [
-  [
-   "OpenCircuit_PCB2237",
-   "LowPasteVolumePerAperture"
-  ],
-  [
-   "LowPasteVolumePerAperture",
-   "PoorPasteTransfer"
-  ],
-  [
-   "PoorPasteTransfer",
-   "LowStencilThickness"
-  ],
-  [
-   "PoorPasteTransfer",
-   "LowAmbientTemperature"
-  ]
- ],
- "PCB2238": [],
- "PCB2240": [],
- "PCB2246": [
-  [
-   "OpenCircuit_PCB2246",
-   "LowPasteVolumePerAperture"
-  ],
-  [
-   "LowPasteVolumePerAperture",
-   "PoorPasteTransfer"
-  ],
-  [
-   "PoorPasteTransfer",
-   "HighPasteViscosity"
-  ],
-  [
-   "PoorPasteTransfer",
-   "LowAmbientTemperature"
-  ]
- ],
- "PCB2252": [
-  [
-   "SolderBridging_PCB2252",
-   "ApertureOverfill"
-  ],
-  [
-   "ApertureOverfill",
-   "LowPasteViscosity"
-  ]
- ],
- "PCB2259": [],
- "PCB2270": [],
- "PCB2271": [],
- "PCB2276": [],
- "PCB2278": [],
- "PCB2286": [
-  [
-   "SolderBridging_PCB2286",
-   "ApertureOverfill"
-  ],
-  [
-   "ApertureOverfill",
-   "LowPasteViscosity"
-  ]
- ],
- "PCB2288": [],
- "PCB2298": [],
- "PCB2305": [
-  [
-   "SolderBridging_PCB2305",
-   "ApertureOverfill"
-  ],
-  [
-   "ApertureOverfill",
-   "LowPasteViscosity"
-  ]
- ],
- "PCB2311": [],
- "PCB2319": [],
- "PCB2320": [],
- "PCB2327": [],
- "PCB2332": [],
- "PCB2333": [],
- "PCB2337": [],
- "PCB2338": [],
- "PCB2339": [],
- "PCB2346": [],
- "PCB2347": [
-  [
-   "OpenCircuit_PCB2347",
-   "PoorPasteTransfer"
-  ],
-  [
-   "PoorPasteTransfer",
-   "HighPasteViscosity"
-  ],
-  [
-   "PoorPasteTransfer",
-   "LowAmbientTemperature"
-  ]
- ],
- "PCB2348": [],
- "PCB2352": [],
- "PCB2355": [],
- "PCB2358": [],
- "PCB2359": [
-  [
-   "OpenCircuit_PCB2359",
-   "PoorPasteTransfer"
-  ],
-  [
-   "PoorPasteTransfer",
-   "HighPasteViscosity"
-  ],
-  [
-   "PoorPasteTransfer",
-   "LowAmbientTemperature"
-  ]
- ],
- "PCB2371": [],
- "PCB2372": [],
- "PCB2382": [
-  [
-   "SolderBridging_PCB2382",
-   "HighPasteVolumePerAperture"
-  ],
-  [
-   "HighPasteVolumePerAperture",
-   "ApertureOverfill"
-  ],
-  [
-   "ApertureOverfill",
-   "HighStencilThickness"
-  ]
- ],
- "PCB2384": [],
- "PCB2391": [
-  [
-   "SolderBridging_PCB2391",
-   "ApertureOverfill"
-  ],
-  [
-   "ApertureOverfill",
-   "LowPasteViscosity"
-  ]
- ],
- "PCB2394": [],
- "PCB2397": [],
- "PCB2398": [],
- "PCB2401": [
-  [
-   "SolderBridging_PCB2401",
-   "ApertureOverfill"
-  ],
-  [
-   "ApertureOverfill",
-   "LowPasteViscosity"
-  ]
- ],
- "PCB2405": [],
- "PCB2406": [],
- "PCB2412": [],
- "PCB2422": [],
- "PCB2426": [],
- "PCB2431": [],
- "PCB2435": [],
- "PCB2449": [],
- "PCB2450": [
-  [
-   "SolderBridging_PCB2450",
-   "HighPasteVolumePerAperture"
-  ],
-  [
-   "HighPasteVolumePerAperture",
-   "ApertureOverfill"
-  ],
-  [
-   "ApertureOverfill",
-   "HighStencilThickness"
-  ]
- ],
- "PCB2451": [],
- "PCB2452": [],
- "PCB2453": [],
- "PCB2459": [],
- "PCB2461": [],
- "PCB2462": [],
- "PCB2479": [
-  [
-   "SolderBridging_PCB2479",
-   "ApertureOverfill"
-  ],
-  [
-   "ApertureOverfill",
-   "HighStencilThickness"
-  ]
- ],
- "PCB2493": [
-  [
-   "OpenCircuit_PCB2493",
-   "PoorPasteTransfer"
-  ],
-  [
-   "PoorPasteTransfer",
-   "LowAmbientRh"
-  ],
-  [
-   "PoorPasteTransfer",
-   "HighPasteViscosity"
-  ]
- ],
- "PCB2498": [],
- "PCB2504": [],
- "PCB2506": [],
- "PCB2520": [],
- "PCB2531": [],
- "PCB2538": [
-  [
-   "SolderBridging_PCB2538",
-   "ApertureOverfill"
-  ],
-  [
-   "ApertureOverfill",
-   "LowPasteViscosity"
-  ],
-  [
-   "ApertureOverfill",
-   "HighAmbientRh"
-  ]
- ],
- "PCB2549": [
-  [
-   "OpenCircuit_PCB2549",
-   "PoorPasteTransfer"
-  ],
-  [
-   "PoorPasteTransfer",
-   "HighPasteViscosity"
-  ],
-  [
-   "PoorPasteTransfer",
-   "LowAmbientTemperature"
-  ]
- ],
- "PCB2551": [
-  [
-   "OpenCircuit_PCB2551",
-   "PoorPasteTransfer"
-  ],
-  [
-   "PoorPasteTransfer",
-   "LowAmbientRh"
-  ],
-  [
-   "PoorPasteTransfer",
-   "HighPasteViscosity"
-  ]
- ],
- "PCB2559": [],
- "PCB2570": [],
- "PCB2576": [
-  [
-   "OpenCircuit_PCB2576",
-   "PoorPasteTransfer"
-  ],
-  [
-   "PoorPasteTransfer",
-   "LowStencilThickness"
-  ]
- ],
- "PCB2581": [],
- "PCB2583": [],
- "PCB2591": [],
- "PCB2592": [],
- "PCB2609": [],
- "PCB2611": [],
- "PCB2613": [],
- "PCB2614": [
-  [
-   "SolderBridging_PCB2614",
-   "ApertureOverfill"
-  ],
-  [
-   "ApertureOverfill",
-   "HighStencilThickness"
-  ]
- ],
- "PCB2616": [],
- "PCB2622": [
-  [
-   "OpenCircuit_PCB2622",
-   "PoorPasteTransfer"
-  ],
-  [
-   "PoorPasteTransfer",
-   "LowStencilThickness"
-  ]
- ],
- "PCB2626": [],
- "PCB2636": [],
- "PCB2638": [],
- "PCB2640": [],
- "PCB2642": [
-  [
-   "OpenCircuit_PCB2642",
-   "PoorPasteTransfer"
-  ],
-  [
-   "PoorPasteTransfer",
-   "LowAmbientRh"
-  ],
-  [
-   "PoorPasteTransfer",
-   "HighPasteViscosity"
-  ],
-  [
-   "PoorPasteTransfer",
-   "LowAmbientTemperature"
-  ]
- ],
- "PCB2644": [],
- "PCB2646": [
-  [
-   "SolderBridging_PCB2646",
-   "HighPasteVolumePerAperture"
-  ],
-  [
-   "HighPasteVolumePerAperture",
-   "ApertureOverfill"
-  ],
-  [
-   "ApertureOverfill",
-   "HighStencilThickness"
-  ],
-  [
-   "ApertureOverfill",
-   "LowPasteViscosity"
-  ]
- ],
- "PCB2647": [],
- "PCB2648": [],
- "PCB2650": [
-  [
-   "OpenCircuit_PCB2650",
-   "PoorPasteTransfer"
-  ],
-  [
-   "PoorPasteTransfer",
-   "HighPasteViscosity"
-  ]
- ],
- "PCB2655": [],
- "PCB2665": [],
- "PCB2666": [
-  [
-   "SolderBridging_PCB2666",
-   "ApertureOverfill"
-  ],
-  [
-   "ApertureOverfill",
-   "LowPasteViscosity"
-  ],
-  [
-   "ApertureOverfill",
-   "HighAmbientRh"
-  ]
- ],
- "PCB2667": [],
- "PCB2671": [],
- "PCB2678": [],
- "PCB2684": [
-  [
-   "SolderBridging_PCB2684",
-   "ApertureOverfill"
-  ],
-  [
-   "ApertureOverfill",
-   "LowPasteViscosity"
-  ]
- ],
- "PCB2688": [
-  [
-   "SolderBridging_PCB2688",
-   "ApertureOverfill"
-  ],
-  [
-   "ApertureOverfill",
-   "LowPasteViscosity"
-  ],
-  [
-   "ApertureOverfill",
-   "HighAmbientRh"
-  ]
- ],
- "PCB2695": [
-  [
-   "SolderBridging_PCB2695",
-   "ApertureOverfill"
-  ],
-  [
-   "ApertureOverfill",
-   "LowPasteViscosity"
-  ]
- ],
- "PCB2697": [],
- "PCB2707": [],
- "PCB2709": [
-  [
-   "OpenCircuit_PCB2709",
-   "LowPasteVolumePerAperture"
-  ],
-  [
-   "LowPasteVolumePerAperture",
-   "PoorPasteTransfer"
-  ],
-  [
-   "PoorPasteTransfer",
-   "LowStencilThickness"
-  ]
- ],
- "PCB2710": [],
- "PCB2720": [],
- "PCB2721": [],
- "PCB2731": [],
- "PCB2732": [],
- "PCB2734": [],
- "PCB2735": [],
- "PCB2739": [],
- "PCB2744": [
-  [
-   "OpenCircuit_PCB2744",
-   "LowPasteVolumePerAperture"
-  ],
-  [
-   "LowPasteVolumePerAperture",
-   "PoorPasteTransfer"
-  ],
-  [
-   "PoorPasteTransfer",
-   "HighPasteViscosity"
-  ],
-  [
-   "PoorPasteTransfer",
-   "LowAmbientTemperature"
-  ]
- ],
- "PCB2750": [],
- "PCB2758": [
-  [
-   "SolderBridging_PCB2758",
-   "ApertureOverfill"
-  ],
-  [
-   "ApertureOverfill",
-   "LowPasteViscosity"
-  ]
- ],
- "PCB2759": [],
- "PCB2761": [],
- "PCB2770": [],
- "PCB2771": [],
- "PCB2775": [],
- "PCB2777": [],
- "PCB2783": [],
- "PCB2784": [
-  [
-   "SolderBridging_PCB2784",
-   "ApertureOverfill"
-  ],
-  [
-   "ApertureOverfill",
-   "LowPasteViscosity"
-  ]
- ],
- "PCB2790": [
-  [
-   "OpenCircuit_PCB2790",
-   "PoorPasteTransfer"
-  ],
-  [
-   "PoorPasteTransfer",
-   "HighPasteViscosity"
-  ],
-  [
-   "PoorPasteTransfer",
-   "LowAmbientTemperature"
-  ]
- ],
- "PCB2791": [],
- "PCB2801": [],
- "PCB2803": [],
- "PCB2820": [],
- "PCB2821": [],
- "PCB2822": [
-  [
-   "SolderBridging_PCB2822",
-   "HighPasteVolumePerAperture"
-  ],
-  [
-   "HighPasteVolumePerAperture",
-   "ApertureOverfill"
-  ],
-  [
-   "ApertureOverfill",
-   "HighStencilThickness"
-  ]
- ],
- "PCB2824": [],
- "PCB2825": [
-  [
-   "OpenCircuit_PCB2825",
-   "LowPasteVolumePerAperture"
-  ],
-  [
-   "LowPasteVolumePerAperture",
-   "PoorPasteTransfer"
-  ],
-  [
-   "PoorPasteTransfer",
-   "LowStencilThickness"
-  ],
-  [
-   "PoorPasteTransfer",
-   "LowAmbientTemperature"
-  ]
- ],
- "PCB2830": [
-  [
-   "OpenCircuit_PCB2830",
-   "PoorPasteTransfer"
-  ],
-  [
-   "PoorPasteTransfer",
-   "LowStencilThickness"
-  ],
-  [
-   "PoorPasteTransfer",
-   "LowAmbientTemperature"
-  ]
- ],
- "PCB2832": [],
- "PCB2835": [
-  [
-   "OpenCircuit_PCB2835",
-   "PoorPasteTransfer"
-  ],
-  [
-   "PoorPasteTransfer",
-   "HighPasteViscosity"
-  ],
-  [
-   "PoorPasteTransfer",
-   "LowAmbientTemperature"
-  ]
- ],
- "PCB2836": [],
- "PCB2843": [],
- "PCB2845": [],
- "PCB2846": [
-  [
-   "SolderBridging_PCB2846",
-   "ApertureOverfill"
-  ],
-  [
-   "ApertureOverfill",
-   "HighStencilThickness"
-  ]
- ],
- "PCB2852": [],
- "PCB2854": [],
- "PCB2865": [],
- "PCB2875": [],
- "PCB2876": [],
- "PCB2877": [],
- "PCB2887": [],
- "PCB2889": [],
- "PCB2892": [],
- "PCB2898": [],
- "PCB2900": [
-  [
-   "OpenCircuit_PCB2900",
-   "PoorPasteTransfer"
-  ],
-  [
-   "PoorPasteTransfer",
-   "LowStencilThickness"
-  ],
-  [
-   "PoorPasteTransfer",
-   "LowAmbientTemperature"
-  ]
- ],
- "PCB2907": [],
- "PCB2911": [],
- "PCB2912": [],
- "PCB2913": [],
- "PCB2917": [
-  [
-   "SolderBridging_PCB2917",
-   "ApertureOverfill"
-  ],
-  [
-   "ApertureOverfill",
-   "LowPasteViscosity"
-  ]
- ],
- "PCB2919": [],
- "PCB2924": [],
- "PCB2925": [
-  [
-   "SolderBridging_PCB2925",
-   "ApertureOverfill"
-  ],
-  [
-   "ApertureOverfill",
-   "HighStencilThickness"
-  ]
- ],
- "PCB2931": [
-  [
-   "SolderBridging_PCB2931",
-   "ApertureOverfill"
-  ],
-  [
-   "ApertureOverfill",
-   "LowPasteViscosity"
-  ]
- ],
- "PCB2934": [],
- "PCB2937": [],
- "PCB2942": [],
- "PCB2943": [],
- "PCB2944": [
-  [
-   "OpenCircuit_PCB2944",
-   "LowPasteVolumePerAperture"
-  ],
-  [
-   "LowPasteVolumePerAperture",
-   "PoorPasteTransfer"
-  ],
-  [
-   "PoorPasteTransfer",
-   "LowStencilThickness"
-  ]
- ],
- "PCB2947": [],
- "PCB2954": [],
- "PCB2964": [
-  [
-   "SolderBridging_PCB2964",
-   "ApertureOverfill"
-  ],
-  [
-   "ApertureOverfill",
-   "LowPasteViscosity"
-  ]
- ],
- "PCB2965": [],
- "PCB2966": [],
- "PCB2969": [],
- "PCB2971": [
-  [
-   "OpenCircuit_PCB2971",
-   "PoorPasteTransfer"
-  ],
-  [
-   "PoorPasteTransfer",
-   "LowStencilThickness"
-  ]
- ],
- "PCB2974": [],
- "PCB2977": [],
- "PCB2983": [],
- "PCB2984": [],
- "PCB2987": [
-  [
-   "SolderBridging_PCB2987",
-   "HighPasteVolumePerAperture"
-  ],
-  [
-   "HighPasteVolumePerAperture",
-   "ApertureOverfill"
-  ],
-  [
-   "ApertureOverfill",
-   "LowPasteViscosity"
-  ],
-  [
-   "ApertureOverfill",
-   "HighAmbientRh"
-  ]
- ],
- "PCB2994": [],
- "PCB2998": [],
- "PCB3000": [],
- "PCB3003": [],
- "PCB3015": [],
- "PCB3019": [],
- "PCB3039": [
-  [
-   "OpenCircuit_PCB3039",
-   "PoorPasteTransfer"
-  ],
-  [
-   "PoorPasteTransfer",
-   "LowStencilThickness"
-  ]
- ],
- "PCB3042": [],
- "PCB3053": [],
- "PCB3054": [],
- "PCB3056": [
-  [
-   "OpenCircuit_PCB3056",
-   "LowPasteVolumePerAperture"
-  ],
-  [
-   "LowPasteVolumePerAperture",
-   "PoorPasteTransfer"
-  ],
-  [
-   "PoorPasteTransfer",
-   "LowStencilThickness"
-  ]
- ],
- "PCB3058": [],
- "PCB3061": [
-  [
-   "OpenCircuit_PCB3061",
-   "LowPasteVolumePerAperture"
-  ],
-  [
-   "LowPasteVolumePerAperture",
-   "PoorPasteTransfer"
-  ],
-  [
-   "PoorPasteTransfer",
-   "HighPasteViscosity"
-  ],
-  [
-   "PoorPasteTransfer",
-   "LowAmbientTemperature"
-  ]
- ],
- "PCB3064": [
-  [
-   "OpenCircuit_PCB3064",
-   "PoorPasteTransfer"
-  ],
-  [
-   "PoorPasteTransfer",
-   "HighPasteViscosity"
-  ]
- ],
- "PCB3065": [],
- "PCB3076": [],
- "PCB3088": [],
- "PCB3089": [],
- "PCB3093": [],
- "PCB3096": [],
- "PCB3098": [],
- "PCB3101": [],
- "PCB3109": [],
- "PCB3111": [],
- "PCB3113": [
-  [
-   "OpenCircuit_PCB3113",
-   "LowPasteVolumePerAperture"
-  ],
-  [
-   "LowPasteVolumePerAperture",
-   "PoorPasteTransfer"
-  ],
-  [
-   "PoorPasteTransfer",
-   "LowStencilThickness"
-  ]
- ],
- "PCB3115": [
-  [
-   "OpenCircuit_PCB3115",
-   "LowPasteVolumePerAperture"
-  ],
-  [
-   "LowPasteVolumePerAperture",
-   "PoorPasteTransfer"
-  ],
-  [
-   "PoorPasteTransfer",
-   "HighPasteViscosity"
-  ],
-  [
-   "PoorPasteTransfer",
-   "LowAmbientTemperature"
-  ]
- ],
- "PCB3121": [],
- "PCB3123": [],
- "PCB3124": [],
- "PCB3137": [],
- "PCB3146": [],
- "PCB3147": [
-  [
-   "OpenCircuit_PCB3147",
-   "LowPasteVolumePerAperture"
-  ],
-  [
-   "LowPasteVolumePerAperture",
-   "PoorPasteTransfer"
-  ],
-  [
-   "PoorPasteTransfer",
-   "LowStencilThickness"
-  ]
- ],
- "PCB3150": [],
- "PCB3159": [
-  [
-   "SolderBridging_PCB3159",
-   "ApertureOverfill"
-  ],
-  [
-   "ApertureOverfill",
-   "LowPasteViscosity"
-  ]
- ],
- "PCB3163": [
-  [
-   "OpenCircuit_PCB3163",
-   "PoorPasteTransfer"
-  ],
-  [
-   "PoorPasteTransfer",
-   "LowAmbientRh"
-  ],
-  [
-   "PoorPasteTransfer",
-   "HighPasteViscosity"
-  ]
- ],
- "PCB3168": [],
- "PCB3170": [],
- "PCB3171": [
-  [
-   "SolderBridging_PCB3171",
-   "ApertureOverfill"
-  ],
-  [
-   "ApertureOverfill",
-   "LowPasteViscosity"
-  ]
- ],
- "PCB3172": [],
- "PCB3180": [],
- "PCB3185": [],
- "PCB3195": [],
- "PCB3197": [],
- "PCB3205": [],
- "PCB3213": [],
- "PCB3220": [],
- "PCB3221": [],
- "PCB3223": [],
- "PCB3226": [],
- "PCB3230": [],
- "PCB3234": [
-  [
-   "OpenCircuit_PCB3234",
-   "LowPasteVolumePerAperture"
-  ],
-  [
-   "LowPasteVolumePerAperture",
-   "PoorPasteTransfer"
-  ],
-  [
-   "PoorPasteTransfer",
-   "LowStencilThickness"
-  ]
- ],
- "PCB3236": [],
- "PCB3243": [],
- "PCB3244": [],
- "PCB3248": [],
- "PCB3268": [
-  [
-   "OpenCircuit_PCB3268",
-   "LowPasteVolumePerAperture"
-  ],
-  [
-   "LowPasteVolumePerAperture",
-   "PoorPasteTransfer"
-  ],
-  [
-   "PoorPasteTransfer",
-   "LowStencilThickness"
-  ]
- ],
- "PCB3271": [
-  [
-   "OpenCircuit_PCB3271",
-   "LowPasteVolumePerAperture"
-  ],
-  [
-   "LowPasteVolumePerAperture",
-   "PoorPasteTransfer"
-  ],
-  [
-   "PoorPasteTransfer",
-   "LowStencilThickness"
-  ]
- ],
- "PCB3279": [],
- "PCB3281": [],
- "PCB3283": [],
- "PCB3289": [
-  [
-   "OpenCircuit_PCB3289",
-   "LowPasteVolumePerAperture"
-  ],
-  [
-   "LowPasteVolumePerAperture",
-   "PoorPasteTransfer"
-  ],
-  [
-   "PoorPasteTransfer",
-   "HighPasteViscosity"
-  ],
-  [
-   "PoorPasteTransfer",
-   "LowAmbientTemperature"
-  ]
- ],
- "PCB3316": [],
- "PCB3318": [
-  [
-   "OpenCircuit_PCB3318",
-   "LowPasteVolumePerAperture"
-  ],
-  [
-   "LowPasteVolumePerAperture",
-   "PoorPasteTransfer"
-  ],
-  [
-   "PoorPasteTransfer",
-   "LowStencilThickness"
-  ]
- ],
- "PCB3324": [],
- "PCB3325": [],
- "PCB3326": [
-  [
-   "OpenCircuit_PCB3326",
-   "PoorPasteTransfer"
-  ],
-  [
-   "PoorPasteTransfer",
-   "LowStencilThickness"
-  ]
- ],
- "PCB3328": [],
- "PCB3341": [],
- "PCB3350": [],
- "PCB3357": [],
- "PCB3362": [
-  [
-   "OpenCircuit_PCB3362",
-   "PoorPasteTransfer"
-  ],
-  [
-   "PoorPasteTransfer",
-   "HighPasteViscosity"
-  ],
-  [
-   "PoorPasteTransfer",
-   "LowAmbientTemperature"
-  ]
- ],
- "PCB3369": [],
- "PCB3378": [
-  [
-   "SolderBridging_PCB3378",
-   "ApertureOverfill"
-  ],
-  [
-   "ApertureOverfill",
-   "LowPasteViscosity"
-  ]
- ],
- "PCB3380": [],
- "PCB3388": [],
- "PCB3393": [],
- "PCB3400": [],
- "PCB3401": [],
- "PCB3411": [],
- "PCB3440": [],
- "PCB3461": [
-  [
-   "OpenCircuit_PCB3461",
-   "PoorPasteTransfer"
-  ],
-  [
-   "PoorPasteTransfer",
-   "LowStencilThickness"
-  ]
- ],
- "PCB3463": [
-  [
-   "OpenCircuit_PCB3463",
-   "PoorPasteTransfer"
-  ],
-  [
-   "PoorPasteTransfer",
-   "HighPasteViscosity"
-  ],
-  [
-   "PoorPasteTransfer",
-   "LowAmbientTemperature"
-  ]
- ],
- "PCB3472": [
-  [
-   "OpenCircuit_PCB3472",
-   "PoorPasteTransfer"
-  ],
-  [
-   "PoorPasteTransfer",
-   "LowStencilThickness"
-  ]
- ],
- "PCB3477": [
-  [
-   "SolderBridging_PCB3477",
-   "HighPasteVolumePerAperture"
-  ],
-  [
-   "HighPasteVolumePerAperture",
-   "ApertureOverfill"
-  ],
-  [
-   "ApertureOverfill",
-   "LowPasteViscosity"
-  ],
-  [
-   "ApertureOverfill",
-   "HighAmbientRh"
-  ]
- ],
- "PCB3478": [],
- "PCB3483": [
-  [
-   "OpenCircuit_PCB3483",
-   "PoorPasteTransfer"
-  ],
-  [
-   "PoorPasteTransfer",
-   "LowStencilThickness"
-  ]
- ],
- "PCB3486": [],
- "PCB3487": [],
- "PCB3488": [],
- "PCB3492": [],
- "PCB3496": [
-  [
-   "SolderBridging_PCB3496",
-   "HighPasteVolumePerAperture"
-  ],
-  [
-   "HighPasteVolumePerAperture",
-   "ApertureOverfill"
-  ],
-  [
-   "ApertureOverfill",
-   "LowPasteViscosity"
-  ],
-  [
-   "ApertureOverfill",
-   "HighAmbientRh"
-  ]
- ],
- "PCB3499": [
-  [
-   "OpenCircuit_PCB3499",
-   "PoorPasteTransfer"
-  ],
-  [
-   "PoorPasteTransfer",
-   "LowStencilThickness"
-  ]
- ],
- "PCB3501": [],
- "PCB3503": [],
- "PCB3525": [],
- "PCB3526": [],
- "PCB3527": [
-  [
-   "OpenCircuit_PCB3527",
-   "PoorPasteTransfer"
-  ],
-  [
-   "PoorPasteTransfer",
-   "HighPasteViscosity"
-  ]
- ],
- "PCB3541": [],
- "PCB3545": [],
- "PCB3547": [
-  [
-   "OpenCircuit_PCB3547",
-   "PoorPasteTransfer"
-  ],
-  [
-   "PoorPasteTransfer",
-   "LowStencilThickness"
-  ]
- ],
- "PCB3550": [],
- "PCB3551": [],
- "PCB3560": [
-  [
-   "OpenCircuit_PCB3560",
-   "PoorPasteTransfer"
-  ],
-  [
-   "PoorPasteTransfer",
-   "LowStencilThickness"
-  ],
-  [
-   "PoorPasteTransfer",
-   "LowAmbientTemperature"
-  ]
- ],
- "PCB3565": [],
- "PCB3572": [
-  [
-   "SolderBridging_PCB3572",
-   "ApertureOverfill"
-  ],
-  [
-   "ApertureOverfill",
-   "LowPasteViscosity"
-  ],
-  [
-   "ApertureOverfill",
-   "HighAmbientRh"
-  ]
- ],
- "PCB3575": [],
- "PCB3579": [
-  [
-   "OpenCircuit_PCB3579",
-   "PoorPasteTransfer"
-  ],
-  [
-   "PoorPasteTransfer",
-   "LowStencilThickness"
-  ]
- ],
- "PCB3583": [
-  [
-   "OpenCircuit_PCB3583",
-   "PoorPasteTransfer"
-  ],
-  [
-   "PoorPasteTransfer",
-   "LowStencilThickness"
-  ]
- ],
- "PCB3603": [],
- "PCB3609": [
-  [
-   "SolderBridging_PCB3609",
-   "ApertureOverfill"
-  ],
-  [
-   "ApertureOverfill",
-   "LowPasteViscosity"
-  ]
- ],
- "PCB3610": [
-  [
-   "OpenCircuit_PCB3610",
-   "PoorPasteTransfer"
-  ],
-  [
-   "PoorPasteTransfer",
-   "LowStencilThickness"
-  ]
- ],
- "PCB3627": [],
- "PCB3630": [],
- "PCB3632": [],
- "PCB3643": [
-  [
-   "OpenCircuit_PCB3643",
-   "LowPasteVolumePerAperture"
-  ],
-  [
-   "LowPasteVolumePerAperture",
-   "PoorPasteTransfer"
-  ],
-  [
-   "PoorPasteTransfer",
-   "HighPasteViscosity"
-  ],
-  [
-   "PoorPasteTransfer",
-   "LowAmbientTemperature"
-  ]
- ],
- "PCB3648": [],
- "PCB3653": [],
- "PCB3655": [],
- "PCB3657": [
-  [
-   "OpenCircuit_PCB3657",
-   "LowPasteVolumePerAperture"
-  ],
-  [
-   "LowPasteVolumePerAperture",
-   "PoorPasteTransfer"
-  ],
-  [
-   "PoorPasteTransfer",
-   "LowStencilThickness"
-  ]
- ],
- "PCB3663": [],
- "PCB3664": [],
- "PCB3668": [],
- "PCB3670": [],
- "PCB3676": [
-  [
-   "OpenCircuit_PCB3676",
-   "PoorPasteTransfer"
-  ],
-  [
-   "PoorPasteTransfer",
-   "LowStencilThickness"
-  ]
- ],
- "PCB3681": [
-  [
-   "OpenCircuit_PCB3681",
-   "PoorPasteTransfer"
-  ],
-  [
-   "PoorPasteTransfer",
-   "LowStencilThickness"
-  ]
- ],
- "PCB3682": [
-  [
-   "OpenCircuit_PCB3682",
-   "LowPasteVolumePerAperture"
-  ],
-  [
-   "LowPasteVolumePerAperture",
-   "PoorPasteTransfer"
-  ],
-  [
-   "PoorPasteTransfer",
-   "LowAmbientRh"
-  ],
-  [
-   "PoorPasteTransfer",
-   "HighPasteViscosity"
-  ]
- ],
- "PCB3684": [],
- "PCB3687": [],
- "PCB3689": [],
- "PCB3706": [
-  [
-   "OpenCircuit_PCB3706",
-   "PoorPasteTransfer"
-  ],
-  [
-   "PoorPasteTransfer",
-   "LowStencilThickness"
-  ]
- ],
- "PCB3718": [],
- "PCB3719": [
-  [
-   "SolderBridging_PCB3719",
-   "ApertureOverfill"
-  ],
-  [
-   "ApertureOverfill",
-   "LowPasteViscosity"
-  ]
- ],
- "PCB3726": [
-  [
-   "OpenCircuit_PCB3726",
-   "PoorPasteTransfer"
-  ],
-  [
-   "PoorPasteTransfer",
-   "LowStencilThickness"
-  ]
- ],
- "PCB3731": [
-  [
-   "SolderBridging_PCB3731",
-   "HighPasteVolumePerAperture"
-  ],
-  [
-   "HighPasteVolumePerAperture",
-   "ApertureOverfill"
-  ],
-  [
-   "ApertureOverfill",
-   "LowPasteViscosity"
-  ]
- ],
- "PCB3752": [],
- "PCB3758": [],
- "PCB3759": [],
- "PCB3762": [
-  [
-   "OpenCircuit_PCB3762",
-   "PoorPasteTransfer"
-  ],
-  [
-   "PoorPasteTransfer",
-   "HighPasteViscosity"
-  ],
-  [
-   "PoorPasteTransfer",
-   "LowAmbientTemperature"
-  ]
- ],
- "PCB3764": [
-  [
-   "SolderBridging_PCB3764",
-   "HighPasteVolumePerAperture"
-  ],
-  [
-   "HighPasteVolumePerAperture",
-   "ApertureOverfill"
-  ],
-  [
-   "ApertureOverfill",
-   "HighStencilThickness"
-  ]
- ],
- "PCB3765": [],
- "PCB3771": [
-  [
-   "SolderBridging_PCB3771",
-   "ApertureOverfill"
-  ],
-  [
-   "ApertureOverfill",
-   "HighStencilThickness"
-  ]
- ],
- "PCB3783": [
-  [
-   "SolderBridging_PCB3783",
-   "ApertureOverfill"
-  ],
-  [
-   "ApertureOverfill",
-   "LowPasteViscosity"
-  ]
- ],
- "PCB3786": [
-  [
-   "OpenCircuit_PCB3786",
-   "PoorPasteTransfer"
-  ],
-  [
-   "PoorPasteTransfer",
-   "LowStencilThickness"
-  ]
- ],
- "PCB3807": [
-  [
-   "SolderBridging_PCB3807",
-   "ApertureOverfill"
-  ],
-  [
-   "ApertureOverfill",
-   "HighStencilThickness"
-  ]
- ],
- "PCB3822": [],
- "PCB3827": [
-  [
-   "OpenCircuit_PCB3827",
-   "PoorPasteTransfer"
-  ],
-  [
-   "PoorPasteTransfer",
-   "LowStencilThickness"
-  ]
- ],
- "PCB3828": [],
- "PCB3832": [
-  [
-   "SolderBridging_PCB3832",
-   "ApertureOverfill"
-  ],
-  [
-   "ApertureOverfill",
-   "LowPasteViscosity"
-  ]
- ],
- "PCB3836": [],
- "PCB3840": [],
- "PCB3844": [],
- "PCB3848": [],
- "PCB3855": [
-  [
-   "OpenCircuit_PCB3855",
-   "PoorPasteTransfer"
-  ],
-  [
-   "PoorPasteTransfer",
-   "HighPasteViscosity"
-  ],
-  [
-   "PoorPasteTransfer",
-   "LowAmbientTemperature"
-  ]
- ],
- "PCB3856": [],
- "PCB3859": [
-  [
-   "OpenCircuit_PCB3859",
-   "LowPasteVolumePerAperture"
-  ],
-  [
-   "LowPasteVolumePerAperture",
-   "PoorPasteTransfer"
-  ],
-  [
-   "PoorPasteTransfer",
-   "LowStencilThickness"
-  ]
- ],
- "PCB3878": [
-  [
-   "OpenCircuit_PCB3878",
-   "LowPasteVolumePerAperture"
-  ],
-  [
-   "LowPasteVolumePerAperture",
-   "PoorPasteTransfer"
-  ],
-  [
-   "PoorPasteTransfer",
-   "LowStencilThickness"
-  ],
-  [
-   "PoorPasteTransfer",
-   "HighPasteViscosity"
-  ]
- ],
- "PCB3888": [
-  [
-   "OpenCircuit_PCB3888",
-   "PoorPasteTransfer"
-  ],
-  [
-   "PoorPasteTransfer",
-   "HighPasteViscosity"
-  ]
- ],
- "PCB3897": [],
- "PCB3899": [
-  [
-   "SolderBridging_PCB3899",
-   "HighPasteVolumePerAperture"
-  ],
-  [
-   "HighPasteVolumePerAperture",
-   "ApertureOverfill"
-  ],
-  [
-   "ApertureOverfill",
-   "HighStencilThickness"
-  ]
- ],
- "PCB3912": [
-  [
-   "OpenCircuit_PCB3912",
-   "PoorPasteTransfer"
-  ],
-  [
-   "PoorPasteTransfer",
-   "LowStencilThickness"
-  ]
- ],
- "PCB3935": [
-  [
-   "OpenCircuit_PCB3935",
-   "PoorPasteTransfer"
-  ],
-  [
-   "PoorPasteTransfer",
-   "LowStencilThickness"
-  ]
- ],
- "PCB3943": [],
- "PCB3948": [
-  [
-   "OpenCircuit_PCB3948",
-   "PoorPasteTransfer"
-  ],
-  [
-   "PoorPasteTransfer",
-   "HighPasteViscosity"
-  ]
- ],
- "PCB3954": [],
- "PCB3963": [
-  [
-   "SolderBridging_PCB3963",
-   "ApertureOverfill"
-  ],
-  [
-   "ApertureOverfill",
-   "HighStencilThickness"
-  ]
- ],
- "PCB3971": [],
- "PCB3977": [],
- "PCB3979": [
-  [
-   "SolderBridging_PCB3979",
-   "ApertureOverfill"
-  ],
-  [
-   "ApertureOverfill",
-   "LowPasteViscosity"
-  ]
- ],
- "PCB3982": [
-  [
-   "OpenCircuit_PCB3982",
-   "PoorPasteTransfer"
-  ],
-  [
-   "PoorPasteTransfer",
-   "LowStencilThickness"
-  ]
- ],
- "PCB3985": [],
- "PCB3988": [
-  [
-   "OpenCircuit_PCB3988",
-   "PoorPasteTransfer"
-  ],
-  [
-   "PoorPasteTransfer",
-   "LowStencilThickness"
-  ],
-  [
-   "PoorPasteTransfer",
-   "LowAmbientTemperature"
-  ]
- ],
- "PCB3993": [],
- "PCB4002": [
-  [
-   "OpenCircuit_PCB4002",
-   "PoorPasteTransfer"
-  ],
-  [
-   "PoorPasteTransfer",
-   "LowStencilThickness"
-  ]
- ],
- "PCB4009": [],
- "PCB4011": [
-  [
-   "OpenCircuit_PCB4011",
-   "PoorPasteTransfer"
-  ],
-  [
-   "PoorPasteTransfer",
-   "LowStencilThickness"
-  ]
- ],
- "PCB4017": [],
- "PCB4021": [
-  [
-   "OpenCircuit_PCB4021",
-   "PoorPasteTransfer"
-  ],
-  [
-   "PoorPasteTransfer",
-   "LowStencilThickness"
-  ],
-  [
-   "PoorPasteTransfer",
-   "LowAmbientTemperature"
-  ]
- ],
- "PCB4025": [],
- "PCB4026": [
-  [
-   "SolderBridging_PCB4026",
-   "ApertureOverfill"
-  ],
-  [
-   "ApertureOverfill",
-   "HighStencilThickness"
-  ]
- ],
- "PCB4048": [],
- "PCB4050": [
-  [
-   "OpenCircuit_PCB4050",
-   "PoorPasteTransfer"
-  ],
-  [
-   "PoorPasteTransfer",
-   "LowStencilThickness"
-  ]
- ],
- "PCB4052": [],
- "PCB4060": [],
- "PCB4063": [
-  [
-   "OpenCircuit_PCB4063",
-   "PoorPasteTransfer"
-  ],
-  [
-   "PoorPasteTransfer",
-   "LowStencilThickness"
-  ]
- ],
- "PCB4067": [
-  [
-   "OpenCircuit_PCB4067",
-   "PoorPasteTransfer"
-  ],
-  [
-   "PoorPasteTransfer",
-   "LowStencilThickness"
-  ]
- ],
- "PCB4068": [],
- "PCB4069": [
-  [
-   "OpenCircuit_PCB4069",
-   "LowPasteVolumePerAperture"
-  ],
-  [
-   "LowPasteVolumePerAperture",
-   "PoorPasteTransfer"
-  ],
-  [
-   "PoorPasteTransfer",
-   "LowStencilThickness"
-  ]
- ],
- "PCB4072": [],
- "PCB4077": [
-  [
-   "OpenCircuit_PCB4077",
-   "PoorPasteTransfer"
-  ],
-  [
-   "PoorPasteTransfer",
-   "LowStencilThickness"
-  ]
- ],
- "PCB4081": [],
- "PCB4102": [],
- "PCB4106": [
-  [
-   "OpenCircuit_PCB4106",
-   "PoorPasteTransfer"
-  ],
-  [
-   "PoorPasteTransfer",
-   "HighPasteViscosity"
-  ],
-  [
-   "PoorPasteTransfer",
-   "LowAmbientTemperature"
-  ]
- ],
- "PCB4118": [],
- "PCB4119": [
-  [
-   "OpenCircuit_PCB4119",
-   "PoorPasteTransfer"
-  ],
-  [
-   "PoorPasteTransfer",
-   "LowStencilThickness"
-  ]
- ],
- "PCB4120": [],
- "PCB4125": [],
- "PCB4140": [
-  [
-   "OpenCircuit_PCB4140",
-   "PoorPasteTransfer"
-  ],
-  [
-   "PoorPasteTransfer",
-   "LowStencilThickness"
-  ]
- ],
- "PCB4141": [],
- "PCB4143": [
-  [
-   "OpenCircuit_PCB4143",
-   "LowPasteVolumePerAperture"
-  ],
-  [
-   "LowPasteVolumePerAperture",
-   "PoorPasteTransfer"
-  ],
-  [
-   "PoorPasteTransfer",
-   "LowStencilThickness"
-  ]
- ],
- "PCB4144": [
-  [
-   "SolderBridging_PCB4144",
-   "ApertureOverfill"
-  ],
-  [
-   "ApertureOverfill",
-   "LowPasteViscosity"
-  ]
- ],
- "PCB4150": [
-  [
-   "OpenCircuit_PCB4150",
-   "PoorPasteTransfer"
-  ],
-  [
-   "PoorPasteTransfer",
-   "LowStencilThickness"
-  ]
- ],
- "PCB4156": [],
- "PCB4160": [
-  [
-   "OpenCircuit_PCB4160",
-   "PoorPasteTransfer"
-  ],
-  [
-   "PoorPasteTransfer",
-   "LowStencilThickness"
-  ]
- ],
- "PCB4163": [
-  [
-   "OpenCircuit_PCB4163",
-   "LowPasteVolumePerAperture"
-  ],
-  [
-   "LowPasteVolumePerAperture",
-   "PoorPasteTransfer"
-  ],
-  [
-   "PoorPasteTransfer",
-   "LowStencilThickness"
-  ],
-  [
-   "PoorPasteTransfer",
-   "LowAmbientRh"
-  ]
- ],
- "PCB4180": [
-  [
-   "OpenCircuit_PCB4180",
-   "LowPasteVolumePerAperture"
-  ],
-  [
-   "LowPasteVolumePerAperture",
-   "PoorPasteTransfer"
-  ],
-  [
-   "PoorPasteTransfer",
-   "LowStencilThickness"
-  ]
- ],
- "PCB4187": [],
- "PCB4195": [
-  [
-   "OpenCircuit_PCB4195",
-   "LowPasteVolumePerAperture"
-  ],
-  [
-   "LowPasteVolumePerAperture",
-   "PoorPasteTransfer"
-  ],
-  [
-   "PoorPasteTransfer",
-   "LowStencilThickness"
-  ]
- ],
- "PCB4205": [
-  [
-   "OpenCircuit_PCB4205",
-   "PoorPasteTransfer"
-  ],
-  [
-   "PoorPasteTransfer",
-   "LowStencilThickness"
-  ]
- ],
- "PCB4215": [
-  [
-   "OpenCircuit_PCB4215",
-   "PoorPasteTransfer"
-  ],
-  [
-   "PoorPasteTransfer",
-   "HighPasteViscosity"
-  ],
-  [
-   "PoorPasteTransfer",
-   "LowAmbientTemperature"
-  ]
- ],
- "PCB4224": [
-  [
-   "OpenCircuit_PCB4224",
-   "PoorPasteTransfer"
-  ],
-  [
-   "PoorPasteTransfer",
-   "HighPasteViscosity"
-  ],
-  [
-   "PoorPasteTransfer",
-   "LowAmbientTemperature"
-  ]
- ],
- "PCB4233": [
-  [
-   "OpenCircuit_PCB4233",
-   "PoorPasteTransfer"
-  ],
-  [
-   "PoorPasteTransfer",
-   "LowStencilThickness"
-  ]
- ],
- "PCB4240": [
-  [
-   "OpenCircuit_PCB4240",
-   "PoorPasteTransfer"
-  ],
-  [
-   "PoorPasteTransfer",
-   "LowStencilThickness"
-  ]
- ],
- "PCB4241": [
-  [
-   "SolderBridging_PCB4241",
-   "ApertureOverfill"
-  ],
-  [
-   "ApertureOverfill",
-   "LowPasteViscosity"
-  ]
- ],
- "PCB4243": [
-  [
-   "OpenCircuit_PCB4243",
-   "PoorPasteTransfer"
-  ],
-  [
-   "PoorPasteTransfer",
-   "LowStencilThickness"
-  ]
- ],
- "PCB4246": [],
- "PCB4262": [],
- "PCB4268": [],
- "PCB4269": [],
- "PCB4273": [
-  [
-   "OpenCircuit_PCB4273",
-   "PoorPasteTransfer"
-  ],
-  [
-   "PoorPasteTransfer",
-   "LowStencilThickness"
-  ]
- ],
- "PCB4277": [],
- "PCB4280": [
-  [
-   "SolderBridging_PCB4280",
-   "ApertureOverfill"
-  ],
-  [
-   "ApertureOverfill",
-   "LowPasteViscosity"
-  ]
- ],
- "PCB4284": [],
- "PCB4285": [
-  [
-   "SolderBridging_PCB4285",
-   "ApertureOverfill"
-  ],
-  [
-   "ApertureOverfill",
-   "LowPasteViscosity"
-  ],
-  [
-   "ApertureOverfill",
-   "HighAmbientRh"
-  ]
- ],
- "PCB4292": [
-  [
-   "OpenCircuit_PCB4292",
-   "PoorPasteTransfer"
-  ],
-  [
-   "PoorPasteTransfer",
-   "LowStencilThickness"
-  ]
- ],
- "PCB4323": [],
- "PCB4325": [
-  [
-   "SolderBridging_PCB4325",
-   "HighPasteVolumePerAperture"
-  ],
-  [
-   "HighPasteVolumePerAperture",
-   "ApertureOverfill"
-  ],
-  [
-   "ApertureOverfill",
-   "HighStencilThickness"
-  ]
- ],
- "PCB4328": [
-  [
-   "OpenCircuit_PCB4328",
-   "PoorPasteTransfer"
-  ],
-  [
-   "PoorPasteTransfer",
-   "LowStencilThickness"
-  ]
- ],
- "PCB4337": [
-  [
-   "OpenCircuit_PCB4337",
-   "PoorPasteTransfer"
-  ],
-  [
-   "PoorPasteTransfer",
-   "LowStencilThickness"
-  ]
- ],
- "PCB4340": [
-  [
-   "OpenCircuit_PCB4340",
-   "PoorPasteTransfer"
-  ],
-  [
-   "PoorPasteTransfer",
-   "HighPasteViscosity"
-  ]
- ],
- "PCB4348": [],
- "PCB4360": [
-  [
-   "OpenCircuit_PCB4360",
-   "PoorPasteTransfer"
-  ],
-  [
-   "PoorPasteTransfer",
-   "LowStencilThickness"
-  ]
- ],
- "PCB4387": [
-  [
-   "OpenCircuit_PCB4387",
-   "PoorPasteTransfer"
-  ],
-  [
-   "PoorPasteTransfer",
-   "HighPasteViscosity"
-  ]
- ],
- "PCB4395": [
-  [
-   "OpenCircuit_PCB4395",
-   "PoorPasteTransfer"
-  ],
-  [
-   "PoorPasteTransfer",
-   "LowStencilThickness"
-  ]
- ],
- "PCB4400": [
-  [
-   "SolderBridging_PCB4400",
-   "ApertureOverfill"
-  ],
-  [
-   "ApertureOverfill",
-   "LowPasteViscosity"
-  ]
- ],
- "PCB4404": [],
- "PCB4407": [
-  [
-   "OpenCircuit_PCB4407",
-   "PoorPasteTransfer"
-  ],
-  [
-   "PoorPasteTransfer",
-   "HighPasteViscosity"
-  ]
- ],
- "PCB4412": [
-  [
-   "OpenCircuit_PCB4412",
-   "PoorPasteTransfer"
-  ],
-  [
-   "PoorPasteTransfer",
-   "LowStencilThickness"
-  ]
- ],
- "PCB4418": [
-  [
-   "OpenCircuit_PCB4418",
-   "LowPasteVolumePerAperture"
-  ],
-  [
-   "LowPasteVolumePerAperture",
-   "PoorPasteTransfer"
-  ],
-  [
-   "PoorPasteTransfer",
-   "LowStencilThickness"
-  ]
- ],
- "PCB4422": [],
- "PCB4431": [
-  [
-   "OpenCircuit_PCB4431",
-   "PoorPasteTransfer"
-  ],
-  [
-   "PoorPasteTransfer",
-   "LowStencilThickness"
-  ]
- ],
- "PCB4434": [],
- "PCB4435": [
-  [
-   "OpenCircuit_PCB4435",
-   "PoorPasteTransfer"
-  ],
-  [
-   "PoorPasteTransfer",
-   "LowStencilThickness"
-  ]
- ],
- "PCB4445": [],
- "PCB4450": [
-  [
-   "OpenCircuit_PCB4450",
-   "PoorPasteTransfer"
-  ],
-  [
-   "PoorPasteTransfer",
-   "HighPasteViscosity"
-  ]
- ],
- "PCB4451": [],
- "PCB4460": [
-  [
-   "OpenCircuit_PCB4460",
-   "LowPasteVolumePerAperture"
-  ],
-  [
-   "LowPasteVolumePerAperture",
-   "PoorPasteTransfer"
-  ],
-  [
-   "PoorPasteTransfer",
-   "LowStencilThickness"
-  ]
- ],
- "PCB4474": [
-  [
-   "OpenCircuit_PCB4474",
-   "PoorPasteTransfer"
-  ],
-  [
-   "PoorPasteTransfer",
-   "LowStencilThickness"
-  ]
- ],
- "PCB4478": [
-  [
-   "OpenCircuit_PCB4478",
-   "PoorPasteTransfer"
-  ],
-  [
-   "PoorPasteTransfer",
-   "LowStencilThickness"
-  ]
- ],
- "PCB4480": [
-  [
-   "OpenCircuit_PCB4480",
-   "PoorPasteTransfer"
-  ],
-  [
-   "PoorPasteTransfer",
-   "LowStencilThickness"
-  ]
- ],
- "PCB4487": [],
- "PCB4495": [
-  [
-   "OpenCircuit_PCB4495",
-   "LowPasteVolumePerAperture"
-  ],
-  [
-   "LowPasteVolumePerAperture",
-   "PoorPasteTransfer"
-  ],
-  [
-   "PoorPasteTransfer",
-   "LowStencilThickness"
-  ]
- ],
- "PCB4498": [
-  [
-   "OpenCircuit_PCB4498",
-   "PoorPasteTransfer"
-  ],
-  [
-   "PoorPasteTransfer",
-   "LowStencilThickness"
-  ]
- ],
- "PCB4503": [
-  [
-   "OpenCircuit_PCB4503",
-   "PoorPasteTransfer"
-  ],
-  [
-   "PoorPasteTransfer",
-   "HighPasteViscosity"
-  ]
- ],
- "PCB4508": [],
- "PCB4514": [],
- "PCB4530": [
-  [
-   "OpenCircuit_PCB4530",
-   "PoorPasteTransfer"
-  ],
-  [
-   "PoorPasteTransfer",
-   "LowStencilThickness"
-  ]
- ],
- "PCB4534": [],
- "PCB4535": [],
- "PCB4537": [
-  [
-   "OpenCircuit_PCB4537",
-   "PoorPasteTransfer"
-  ],
-  [
-   "PoorPasteTransfer",
-   "LowStencilThickness"
-  ]
- ],
- "PCB4540": [
-  [
-   "SolderBridging_PCB4540",
-   "HighPasteVolumePerAperture"
-  ],
-  [
-   "HighPasteVolumePerAperture",
-   "ApertureOverfill"
-  ],
-  [
-   "ApertureOverfill",
-   "LowPasteViscosity"
-  ]
- ],
- "PCB4543": [
-  [
-   "OpenCircuit_PCB4543",
-   "PoorPasteTransfer"
-  ],
-  [
-   "PoorPasteTransfer",
-   "LowStencilThickness"
-  ]
- ],
- "PCB4552": [
-  [
-   "OpenCircuit_PCB4552",
-   "PoorPasteTransfer"
-  ],
-  [
-   "PoorPasteTransfer",
-   "LowStencilThickness"
-  ]
- ],
- "PCB4567": [
-  [
-   "OpenCircuit_PCB4567",
-   "LowPasteVolumePerAperture"
-  ],
-  [
-   "LowPasteVolumePerAperture",
-   "PoorPasteTransfer"
-  ],
-  [
-   "PoorPasteTransfer",
-   "LowStencilThickness"
-  ]
- ],
- "PCB4568": [],
- "PCB4572": [],
- "PCB4602": [
-  [
-   "OpenCircuit_PCB4602",
-   "LowPasteVolumePerAperture"
-  ],
-  [
-   "LowPasteVolumePerAperture",
-   "PoorPasteTransfer"
-  ],
-  [
-   "PoorPasteTransfer",
-   "LowStencilThickness"
-  ]
- ],
- "PCB4605": [
-  [
-   "OpenCircuit_PCB4605",
-   "PoorPasteTransfer"
-  ],
-  [
-   "PoorPasteTransfer",
-   "LowStencilThickness"
-  ]
- ],
- "PCB4606": [
-  [
-   "OpenCircuit_PCB4606",
-   "PoorPasteTransfer"
-  ],
-  [
-   "PoorPasteTransfer",
-   "LowStencilThickness"
-  ]
- ],
- "PCB4613": [],
- "PCB4621": [],
- "PCB4625": [
-  [
-   "OpenCircuit_PCB4625",
-   "PoorPasteTransfer"
-  ],
-  [
-   "PoorPasteTransfer",
-   "LowStencilThickness"
-  ]
- ],
- "PCB4626": [],
- "PCB4631": [
-  [
-   "OpenCircuit_PCB4631",
-   "PoorPasteTransfer"
-  ],
-  [
-   "PoorPasteTransfer",
-   "LowStencilThickness"
-  ]
- ],
- "PCB4642": [
-  [
-   "OpenCircuit_PCB4642",
-   "PoorPasteTransfer"
-  ],
-  [
-   "PoorPasteTransfer",
-   "HighPasteViscosity"
-  ],
-  [
-   "PoorPasteTransfer",
-   "LowAmbientTemperature"
-  ]
- ],
- "PCB4648": [
-  [
-   "OpenCircuit_PCB4648",
-   "PoorPasteTransfer"
-  ],
-  [
-   "PoorPasteTransfer",
-   "LowStencilThickness"
-  ]
- ],
- "PCB4657": [
-  [
-   "OpenCircuit_PCB4657",
-   "LowPasteVolumePerAperture"
-  ],
-  [
-   "LowPasteVolumePerAperture",
-   "PoorPasteTransfer"
-  ],
-  [
-   "PoorPasteTransfer",
-   "LowStencilThickness"
-  ]
- ],
- "PCB4671": [],
- "PCB4672": [
-  [
-   "SolderBridging_PCB4672",
-   "HighPasteVolumePerAperture"
-  ],
-  [
-   "HighPasteVolumePerAperture",
-   "ApertureOverfill"
-  ],
-  [
-   "ApertureOverfill",
-   "HighStencilThickness"
-  ]
- ],
- "PCB4694": [],
- "PCB4699": [
-  [
-   "OpenCircuit_PCB4699",
-   "PoorPasteTransfer"
-  ],
-  [
-   "PoorPasteTransfer",
-   "LowStencilThickness"
-  ]
- ],
- "PCB4700": [
-  [
-   "OpenCircuit_PCB4700",
-   "PoorPasteTransfer"
-  ],
-  [
-   "PoorPasteTransfer",
-   "LowStencilThickness"
-  ]
- ],
- "PCB4707": [
-  [
-   "OpenCircuit_PCB4707",
-   "PoorPasteTransfer"
-  ],
-  [
-   "PoorPasteTransfer",
-   "LowStencilThickness"
-  ]
- ],
- "PCB4708": [
-  [
-   "OpenCircuit_PCB4708",
-   "PoorPasteTransfer"
-  ],
-  [
-   "PoorPasteTransfer",
-   "LowStencilThickness"
-  ]
- ],
- "PCB4711": [],
- "PCB4713": [
-  [
-   "OpenCircuit_PCB4713",
-   "PoorPasteTransfer"
-  ],
-  [
-   "PoorPasteTransfer",
-   "LowStencilThickness"
-  ]
- ],
- "PCB4736": [],
- "PCB4748": [
-  [
-   "OpenCircuit_PCB4748",
-   "PoorPasteTransfer"
-  ],
-  [
-   "PoorPasteTransfer",
-   "LowStencilThickness"
-  ]
- ],
- "PCB4749": [
-  [
-   "OpenCircuit_PCB4749",
-   "PoorPasteTransfer"
-  ],
-  [
-   "PoorPasteTransfer",
-   "LowStencilThickness"
-  ]
- ],
- "PCB4758": [
-  [
-   "OpenCircuit_PCB4758",
-   "PoorPasteTransfer"
-  ],
-  [
-   "PoorPasteTransfer",
-   "LowStencilThickness"
-  ]
- ],
- "PCB4763": [
-  [
-   "OpenCircuit_PCB4763",
-   "PoorPasteTransfer"
-  ],
-  [
-   "PoorPasteTransfer",
-   "LowStencilThickness"
-  ]
- ],
- "PCB4764": [],
- "PCB4771": [
-  [
-   "OpenCircuit_PCB4771",
-   "PoorPasteTransfer"
-  ],
-  [
-   "PoorPasteTransfer",
-   "LowStencilThickness"
-  ]
- ],
- "PCB4777": [],
- "PCB4783": [
-  [
-   "OpenCircuit_PCB4783",
-   "PoorPasteTransfer"
-  ],
-  [
-   "PoorPasteTransfer",
-   "LowStencilThickness"
-  ]
- ],
- "PCB4788": [
-  [
-   "OpenCircuit_PCB4788",
-   "PoorPasteTransfer"
-  ],
-  [
-   "PoorPasteTransfer",
-   "LowStencilThickness"
-  ]
- ],
- "PCB4791": [
-  [
-   "OpenCircuit_PCB4791",
-   "PoorPasteTransfer"
-  ],
-  [
-   "PoorPasteTransfer",
-   "LowStencilThickness"
-  ]
- ],
- "PCB4807": [
-  [
-   "OpenCircuit_PCB4807",
-   "PoorPasteTransfer"
-  ],
-  [
-   "PoorPasteTransfer",
-   "LowStencilThickness"
-  ]
- ],
- "PCB4810": [],
- "PCB4813": [],
- "PCB4814": [],
- "PCB4815": [],
- "PCB4817": [
-  [
-   "OpenCircuit_PCB4817",
-   "PoorPasteTransfer"
-  ],
-  [
-   "PoorPasteTransfer",
-   "LowStencilThickness"
-  ]
- ],
- "PCB4819": [
-  [
-   "OpenCircuit_PCB4819",
-   "LowPasteVolumePerAperture"
-  ],
-  [
-   "LowPasteVolumePerAperture",
-   "PoorPasteTransfer"
-  ],
-  [
-   "PoorPasteTransfer",
-   "LowStencilThickness"
-  ]
- ],
- "PCB4836": [],
- "PCB4845": [
-  [
-   "OpenCircuit_PCB4845",
-   "PoorPasteTransfer"
-  ],
-  [
-   "PoorPasteTransfer",
-   "LowStencilThickness"
-  ]
- ],
- "PCB4846": [],
- "PCB4850": [
-  [
-   "OpenCircuit_PCB4850",
-   "PoorPasteTransfer"
-  ],
-  [
-   "PoorPasteTransfer",
-   "LowStencilThickness"
-  ]
- ],
- "PCB4854": [
-  [
-   "OpenCircuit_PCB4854",
-   "PoorPasteTransfer"
-  ],
-  [
-   "PoorPasteTransfer",
-   "LowStencilThickness"
-  ]
- ],
- "PCB4858": [],
- "PCB4866": [
-  [
-   "OpenCircuit_PCB4866",
-   "PoorPasteTransfer"
-  ],
-  [
-   "PoorPasteTransfer",
-   "LowStencilThickness"
-  ]
- ],
- "PCB4884": [
-  [
-   "OpenCircuit_PCB4884",
-   "PoorPasteTransfer"
-  ],
-  [
-   "PoorPasteTransfer",
-   "LowStencilThickness"
-  ]
- ],
- "PCB4889": [],
- "PCB4899": [
-  [
-   "SolderBridging_PCB4899",
-   "ApertureOverfill"
-  ],
-  [
-   "ApertureOverfill",
-   "LowPasteViscosity"
-  ],
-  [
-   "ApertureOverfill",
-   "HighAmbientTemperature"
-  ]
- ],
- "PCB4905": [
-  [
-   "OpenCircuit_PCB4905",
-   "PoorPasteTransfer"
-  ],
-  [
-   "PoorPasteTransfer",
-   "LowStencilThickness"
-  ]
- ],
- "PCB4923": [
-  [
-   "OpenCircuit_PCB4923",
-   "PoorPasteTransfer"
-  ],
-  [
-   "PoorPasteTransfer",
-   "LowStencilThickness"
-  ]
- ],
- "PCB4943": [
-  [
-   "OpenCircuit_PCB4943",
-   "PoorPasteTransfer"
-  ],
-  [
-   "PoorPasteTransfer",
-   "LowStencilThickness"
-  ]
- ],
- "PCB4944": [
-  [
-   "OpenCircuit_PCB4944",
-   "PoorPasteTransfer"
-  ],
-  [
-   "PoorPasteTransfer",
-   "LowStencilThickness"
-  ]
- ],
- "PCB4945": [
-  [
-   "OpenCircuit_PCB4945",
-   "PoorPasteTransfer"
-  ],
-  [
-   "PoorPasteTransfer",
-   "LowStencilThickness"
-  ]
- ],
- "PCB4964": [],
- "PCB4965": [
-  [
-   "OpenCircuit_PCB4965",
-   "LowPasteVolumePerAperture"
-  ],
-  [
-   "LowPasteVolumePerAperture",
-   "PoorPasteTransfer"
-  ],
-  [
-   "PoorPasteTransfer",
-   "LowStencilThickness"
-  ]
- ],
- "PCB4967": [],
- "PCB4974": [
-  [
-   "OpenCircuit_PCB4974",
-   "PoorPasteTransfer"
-  ],
-  [
-   "PoorPasteTransfer",
-   "LowStencilThickness"
-  ]
- ],
- "PCB4981": [],
- "PCB4982": [
-  [
-   "OpenCircuit_PCB4982",
-   "PoorPasteTransfer"
-  ],
-  [
-   "PoorPasteTransfer",
-   "LowStencilThickness"
-  ]
- ],
- "PCB4984": [],
- "PCB4985": [
-  [
-   "OpenCircuit_PCB4985",
-   "PoorPasteTransfer"
-  ],
-  [
-   "PoorPasteTransfer",
-   "LowStencilThickness"
-  ]
- ],
- "PCB4992": [
-  [
-   "OpenCircuit_PCB4992",
-   "PoorPasteTransfer"
-  ],
-  [
-   "PoorPasteTransfer",
-   "LowStencilThickness"
-  ]
- ]
+ "PCB1429": []
 }

@@ -1,19 +1,10 @@
 {
   "SolderBridging": {
     "caused_by": [
-      "HighPasteVolumePerAperture",
       "ExcessReflowSpreading",
-      "ApertureOverfill"
-    ]
-  },
-  "HighPasteVolumePerAperture": {
-    "caused_by": [
       "ApertureOverfill",
       "UndersideSmear",
       "PostPrintSpread"
-    ],
-    "governed_by": [
-      "If PasteVolumePerAperture > PasteVolumePerAperture_USL == HighPasteVolumePerAperture"
     ]
   },
   "ExcessReflowSpreading":{
@@ -33,6 +24,9 @@
       "LowSqueegeeSpeed",
       "LowSqueegeeAngle",
       "HighAmbientTemperature"
+    ],
+    "supported_by": [
+      "HighPasteVolumePerAperture"
     ],
     "governed_by": [
       "If ApertureAreaRatio < ApertureAreaRatio_LSL OR StencilThickness > StencilThickness_USL == ApertureOverfill",
@@ -127,8 +121,8 @@
   "OpenCircuit": {
     "caused_by": [
       "NonCoalescence",
-      "LowPasteVolumePerAperture",
-      "PoorPasteTransfer"
+      "PoorPasteTransfer",
+      "LowPasteVolumePerAperture"
     ]
   },
   "NonCoalescence":{
@@ -140,14 +134,6 @@
       "If PeakReflowTemperature < PeakReflowTemperature_LSL OR TimeAboveLiquidus < TimeAboveLiquidus_LSL == NonCoalescence"
     ]
   },
-  "LowPasteVolumePerAperture":{
-    "caused_by": [
-      "PoorPasteTransfer"
-    ],
-    "governed_by": [
-      "If PasteVolumePerAperture < PasteVolumePerAperture_LSL == LowPasteVolumePerAperture"
-    ]
-  },
   "PoorPasteTransfer":{
     "caused_by": [
       "LowStencilThickness",
@@ -156,6 +142,9 @@
       "HighSqueegeeSpeed",
       "LowSqueegeePressure",
       "LowAmbientTemperature"
+    ],
+    "supported_by":[
+      "LowPasteVolumePerAperture"
     ],
     "governed_by": [
       "If StencilThickness < StencilThickness_LSL OR PasteViscosity > PasteViscosity_USL == PoorPasteTransfer",

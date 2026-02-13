@@ -4,7 +4,7 @@
 (IPC, J-STD or similar)","Typical Spec Doc 
 (in an EMS shop)","Shop Floor Instrument / Sensor
 that would record or verify"
-1,Stencil thickness,0.100 mm ± 0.005 mm,bfo:Quality,Stencil,,PPSC_61,IPC-7525,Stencil Fabrication Drawing,Micrometer
+1,Stencil thickness,100 um ± 5 um,bfo:Quality,Stencil,,PPSC_61,IPC-7525,Stencil Fabrication Drawing,Micrometer
 2,Aperture diameter,0.34 mm ± 0.02 mm,bfo:Quality,Stencil,,PPSC_61,IPC-7525,Stencil Fabrication Drawing,Optical aperture gauge
 3,Paste volume per aperture,0.04 mm³ ± 0.004 mm³,iof:ProcessCharacteristic,,SolderPrintingProcess,PPSC_61,IPC-7525,Print Process Specification,SPI machine
 4,Paste roll bead size,4 mm³ ± 0.4 mm³,bfo:Quality,Solder Paste,SolderPrintingProcess,PPSC_61,IPC-7525,Print Process Specification,Vision bead profiler

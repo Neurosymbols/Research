@@ -1,0 +1,4544 @@
+[
+  {
+    "id": "PCB0",
+    "expected": [
+      "LowAmbientTemperature"
+    ],
+    "predicted": []
+  },
+  {
+    "id": "PCB1",
+    "expected": [
+      "LowAmbientTemperature"
+    ],
+    "predicted": [
+      "LowAmbientTemperature"
+    ]
+  },
+  {
+    "id": "PCB2",
+    "expected": [
+      "LowAmbientTemperature"
+    ],
+    "predicted": [
+      "LowAmbientTemperature"
+    ]
+  },
+  {
+    "id": "PCB4",
+    "expected": [
+      "LowTimeAboveLiquidus"
+    ],
+    "predicted": [
+      "LowTimeAboveLiquidus"
+    ]
+  },
+  {
+    "id": "PCB6",
+    "expected": [
+      "LowAmbientTemperature"
+    ],
+    "predicted": []
+  },
+  {
+    "id": "PCB7",
+    "expected": [
+      "LowAmbientTemperature"
+    ],
+    "predicted": [
+      "LowAmbientTemperature"
+    ]
+  },
+  {
+    "id": "PCB16",
+    "expected": [
+      "HighStencilThickness"
+    ],
+    "predicted": [
+      "HighStencilThickness",
+      "HighPasteVolumePerAperture"
+    ]
+  },
+  {
+    "id": "PCB21",
+    "expected": [
+      "PoorPasteTransfer"
+    ],
+    "predicted": [
+      "PoorPasteTransfer"
+    ]
+  },
+  {
+    "id": "PCB23",
+    "expected": [
+      "HighPeakReflowTemperature"
+    ],
+    "predicted": [
+      "ExcessReflowSpreading"
+    ]
+  },
+  {
+    "id": "PCB25",
+    "expected": [
+      "LowAmbientRh"
+    ],
+    "predicted": []
+  },
+  {
+    "id": "PCB26",
+    "expected": [
+      "HighPeakReflowTemperature"
+    ],
+    "predicted": [
+      "HighPeakReflowTemperature"
+    ]
+  },
+  {
+    "id": "PCB27",
+    "expected": [
+      "HighAmbientRh",
+      "LowAmbientTemperature"
+    ],
+    "predicted": [
+      "HighAmbientRh",
+      "LowAmbientTemperature"
+    ]
+  },
+  {
+    "id": "PCB29",
+    "expected": [
+      "HighStencilThickness",
+      "LowAmbientTemperature"
+    ],
+    "predicted": [
+      "HighStencilThickness"
+    ]
+  },
+  {
+    "id": "PCB30",
+    "expected": [
+      "LowAmbientRh"
+    ],
+    "predicted": [
+      "LowAmbientRh"
+    ]
+  },
+  {
+    "id": "PCB32",
+    "expected": [
+      "HighStencilThickness"
+    ],
+    "predicted": [
+      "HighStencilThickness"
+    ]
+  },
+  {
+    "id": "PCB33",
+    "expected": [
+      "LowTimeAboveLiquidus"
+    ],
+    "predicted": [
+      "LowTimeAboveLiquidus"
+    ]
+  },
+  {
+    "id": "PCB34",
+    "expected": [
+      "LowAmbientTemperature"
+    ],
+    "predicted": [
+      "LowAmbientTemperature"
+    ]
+  },
+  {
+    "id": "PCB35",
+    "expected": [
+      "LowAmbientTemperature"
+    ],
+    "predicted": [
+      "LowAmbientTemperature"
+    ]
+  },
+  {
+    "id": "PCB37",
+    "expected": [
+      "HighStencilThickness"
+    ],
+    "predicted": []
+  },
+  {
+    "id": "PCB50",
+    "expected": [
+      "LowPasteViscosity"
+    ],
+    "predicted": [
+      "LowPasteViscosity",
+      "ApertureOverfill"
+    ]
+  },
+  {
+    "id": "PCB54",
+    "expected": [
+      "HighStencilThickness"
+    ],
+    "predicted": [
+      "HighStencilThickness"
+    ]
+  },
+  {
+    "id": "PCB61",
+    "expected": [
+      "HighStencilThickness"
+    ],
+    "predicted": [
+      "HighStencilThickness"
+    ]
+  },
+  {
+    "id": "PCB64",
+    "expected": [
+      "LowPeakReflowTemperature"
+    ],
+    "predicted": []
+  },
+  {
+    "id": "PCB69",
+    "expected": [
+      "HighPeakReflowTemperature"
+    ],
+    "predicted": [
+      "HighPeakReflowTemperature"
+    ]
+  },
+  {
+    "id": "PCB73",
+    "expected": [
+      "LowAmbientTemperature"
+    ],
+    "predicted": [
+      "LowAmbientTemperature"
+    ]
+  },
+  {
+    "id": "PCB74",
+    "expected": [
+      "LowAmbientTemperature"
+    ],
+    "predicted": [
+      "LowAmbientTemperature"
+    ]
+  },
+  {
+    "id": "PCB75",
+    "expected": [
+      "HighStencilThickness",
+      "HighTimeAboveLiquidus"
+    ],
+    "predicted": [
+      "HighTimeAboveLiquidus",
+      "HighStencilThickness"
+    ]
+  },
+  {
+    "id": "PCB76",
+    "expected": [
+      "LowAmbientTemperature"
+    ],
+    "predicted": [
+      "LowAmbientTemperature"
+    ]
+  },
+  {
+    "id": "PCB78",
+    "expected": [
+      "HighStencilThickness"
+    ],
+    "predicted": [
+      "HighStencilThickness"
+    ]
+  },
+  {
+    "id": "PCB81",
+    "expected": [
+      "HighStencilThickness"
+    ],
+    "predicted": []
+  },
+  {
+    "id": "PCB85",
+    "expected": [
+      "HighTimeAboveLiquidus"
+    ],
+    "predicted": [
+      "HighTimeAboveLiquidus"
+    ]
+  },
+  {
+    "id": "PCB87",
+    "expected": [
+      "LowAmbientTemperature"
+    ],
+    "predicted": []
+  },
+  {
+    "id": "PCB89",
+    "expected": [
+      "LowPeakReflowTemperature"
+    ],
+    "predicted": [
+      "LowPeakReflowTemperature"
+    ]
+  },
+  {
+    "id": "PCB90",
+    "expected": [
+      "LowPasteViscosity",
+      "HighStencilThickness",
+      "HighAmbientRh"
+    ],
+    "predicted": [
+      "HighAmbientRh",
+      "LowPasteViscosity",
+      "HighStencilThickness",
+      "HighPasteVolumePerAperture"
+    ]
+  },
+  {
+    "id": "PCB91",
+    "expected": [
+      "HighStencilThickness"
+    ],
+    "predicted": [
+      "HighStencilThickness"
+    ]
+  },
+  {
+    "id": "PCB93",
+    "expected": [
+      "HighStencilThickness"
+    ],
+    "predicted": [
+      "ApertureOverfill"
+    ]
+  },
+  {
+    "id": "PCB94",
+    "expected": [
+      "HighStencilThickness"
+    ],
+    "predicted": [
+      "HighStencilThickness"
+    ]
+  },
+  {
+    "id": "PCB102",
+    "expected": [
+      "HighStencilThickness"
+    ],
+    "predicted": [
+      "HighStencilThickness"
+    ]
+  },
+  {
+    "id": "PCB103",
+    "expected": [
+      "LowAmbientTemperature",
+      "HighPasteViscosity"
+    ],
+    "predicted": [
+      "HighPasteViscosity"
+    ]
+  },
+  {
+    "id": "PCB105",
+    "expected": [
+      "LowAmbientTemperature"
+    ],
+    "predicted": []
+  },
+  {
+    "id": "PCB111",
+    "expected": [
+      "PoorPasteTransfer"
+    ],
+    "predicted": []
+  },
+  {
+    "id": "PCB113",
+    "expected": [
+      "HighPeakReflowTemperature"
+    ],
+    "predicted": [
+      "HighPeakReflowTemperature"
+    ]
+  },
+  {
+    "id": "PCB114",
+    "expected": [
+      "HighStencilThickness"
+    ],
+    "predicted": [
+      "HighStencilThickness"
+    ]
+  },
+  {
+    "id": "PCB116",
+    "expected": [
+      "HighStencilThickness"
+    ],
+    "predicted": [
+      "HighStencilThickness"
+    ]
+  },
+  {
+    "id": "PCB124",
+    "expected": [
+      "PoorPasteTransfer"
+    ],
+    "predicted": []
+  },
+  {
+    "id": "PCB126",
+    "expected": [
+      "HighStencilThickness"
+    ],
+    "predicted": [
+      "HighStencilThickness"
+    ]
+  },
+  {
+    "id": "PCB128",
+    "expected": [
+      "LowTimeAboveLiquidus",
+      "HighStencilThickness"
+    ],
+    "predicted": [
+      "LowTimeAboveLiquidus"
+    ]
+  },
+  {
+    "id": "PCB129",
+    "expected": [
+      "LowAmbientTemperature"
+    ],
+    "predicted": [
+      "LowAmbientTemperature"
+    ]
+  },
+  {
+    "id": "PCB130",
+    "expected": [
+      "HighStencilThickness"
+    ],
+    "predicted": [
+      "HighStencilThickness"
+    ]
+  },
+  {
+    "id": "PCB131",
+    "expected": [
+      "LowPasteViscosity"
+    ],
+    "predicted": [
+      "LowPasteViscosity",
+      "ApertureOverfill"
+    ]
+  },
+  {
+    "id": "PCB133",
+    "expected": [
+      "HighStencilThickness",
+      "LowAmbientTemperature"
+    ],
+    "predicted": [
+      "HighStencilThickness"
+    ]
+  },
+  {
+    "id": "PCB134",
+    "expected": [
+      "LowAmbientTemperature"
+    ],
+    "predicted": []
+  },
+  {
+    "id": "PCB136",
+    "expected": [
+      "LowAmbientTemperature"
+    ],
+    "predicted": [
+      "LowAmbientTemperature"
+    ]
+  },
+  {
+    "id": "PCB137",
+    "expected": [
+      "LowTimeAboveLiquidus"
+    ],
+    "predicted": [
+      "NonCoalescence"
+    ]
+  },
+  {
+    "id": "PCB138",
+    "expected": [
+      "HighTimeAboveLiquidus"
+    ],
+    "predicted": [
+      "HighTimeAboveLiquidus",
+      "PoorPasteTransfer"
+    ]
+  },
+  {
+    "id": "PCB139",
+    "expected": [
+      "HighStencilThickness"
+    ],
+    "predicted": [
+      "ApertureOverfill"
+    ]
+  },
+  {
+    "id": "PCB141",
+    "expected": [
+      "LowAmbientTemperature",
+      "LowPeakReflowTemperature",
+      "HighStencilThickness"
+    ],
+    "predicted": [
+      "NonCoalescence",
+      "ApertureOverfill"
+    ]
+  },
+  {
+    "id": "PCB143",
+    "expected": [
+      "LowAmbientTemperature"
+    ],
+    "predicted": [
+      "LowAmbientTemperature"
+    ]
+  },
+  {
+    "id": "PCB145",
+    "expected": [
+      "HighStencilThickness",
+      "LowAmbientTemperature"
+    ],
+    "predicted": [
+      "HighStencilThickness"
+    ]
+  },
+  {
+    "id": "PCB148",
+    "expected": [
+      "HighStencilThickness",
+      "LowAmbientTemperature"
+    ],
+    "predicted": [
+      "HighStencilThickness"
+    ]
+  },
+  {
+    "id": "PCB150",
+    "expected": [
+      "HighStencilThickness"
+    ],
+    "predicted": [
+      "HighStencilThickness"
+    ]
+  },
+  {
+    "id": "PCB154",
+    "expected": [
+      "LowAmbientTemperature"
+    ],
+    "predicted": [
+      "LowAmbientTemperature"
+    ]
+  },
+  {
+    "id": "PCB155",
+    "expected": [
+      "HighStencilThickness"
+    ],
+    "predicted": [
+      "HighStencilThickness"
+    ]
+  },
+  {
+    "id": "PCB158",
+    "expected": [
+      "HighStencilThickness"
+    ],
+    "predicted": [
+      "HighStencilThickness"
+    ]
+  },
+  {
+    "id": "PCB159",
+    "expected": [
+      "HighStencilThickness"
+    ],
+    "predicted": [
+      "ApertureOverfill"
+    ]
+  },
+  {
+    "id": "PCB161",
+    "expected": [
+      "HighStencilThickness"
+    ],
+    "predicted": [
+      "HighStencilThickness"
+    ]
+  },
+  {
+    "id": "PCB162",
+    "expected": [
+      "LowAmbientTemperature"
+    ],
+    "predicted": [
+      "LowAmbientTemperature"
+    ]
+  },
+  {
+    "id": "PCB164",
+    "expected": [
+      "HighStencilThickness",
+      "LowAmbientRh"
+    ],
+    "predicted": [
+      "HighStencilThickness"
+    ]
+  },
+  {
+    "id": "PCB165",
+    "expected": [
+      "HighStencilThickness",
+      "LowAmbientTemperature"
+    ],
+    "predicted": [
+      "HighStencilThickness"
+    ]
+  },
+  {
+    "id": "PCB169",
+    "expected": [
+      "LowPeakReflowTemperature"
+    ],
+    "predicted": [
+      "NonCoalescence"
+    ]
+  },
+  {
+    "id": "PCB172",
+    "expected": [
+      "LowAmbientTemperature"
+    ],
+    "predicted": [
+      "LowAmbientTemperature"
+    ]
+  },
+  {
+    "id": "PCB176",
+    "expected": [
+      "LowTimeAboveLiquidus",
+      "HighPeakReflowTemperature"
+    ],
+    "predicted": [
+      "ExcessReflowSpreading"
+    ]
+  },
+  {
+    "id": "PCB177",
+    "expected": [
+      "HighStencilThickness"
+    ],
+    "predicted": [
+      "HighStencilThickness"
+    ]
+  },
+  {
+    "id": "PCB179",
+    "expected": [
+      "HighStencilThickness"
+    ],
+    "predicted": [
+      "HighStencilThickness"
+    ]
+  },
+  {
+    "id": "PCB180",
+    "expected": [
+      "LowAmbientTemperature"
+    ],
+    "predicted": [
+      "LowAmbientTemperature"
+    ]
+  },
+  {
+    "id": "PCB181",
+    "expected": [
+      "HighStencilThickness"
+    ],
+    "predicted": [
+      "HighStencilThickness"
+    ]
+  },
+  {
+    "id": "PCB182",
+    "expected": [
+      "LowAmbientTemperature"
+    ],
+    "predicted": []
+  },
+  {
+    "id": "PCB193",
+    "expected": [
+      "LowAmbientTemperature"
+    ],
+    "predicted": [
+      "LowAmbientTemperature"
+    ]
+  },
+  {
+    "id": "PCB194",
+    "expected": [
+      "HighStencilThickness"
+    ],
+    "predicted": [
+      "HighStencilThickness"
+    ]
+  },
+  {
+    "id": "PCB195",
+    "expected": [
+      "HighPasteViscosity",
+      "LowAmbientRh"
+    ],
+    "predicted": [
+      "HighPasteViscosity"
+    ]
+  },
+  {
+    "id": "PCB205",
+    "expected": [
+      "LowAmbientTemperature"
+    ],
+    "predicted": [
+      "LowAmbientTemperature"
+    ]
+  },
+  {
+    "id": "PCB211",
+    "expected": [
+      "LowAmbientTemperature",
+      "LowTimeAboveLiquidus"
+    ],
+    "predicted": [
+      "LowAmbientTemperature"
+    ]
+  },
+  {
+    "id": "PCB215",
+    "expected": [
+      "LowTimeAboveLiquidus"
+    ],
+    "predicted": [
+      "LowTimeAboveLiquidus"
+    ]
+  },
+  {
+    "id": "PCB220",
+    "expected": [
+      "LowAmbientTemperature"
+    ],
+    "predicted": [
+      "LowAmbientTemperature"
+    ]
+  },
+  {
+    "id": "PCB222",
+    "expected": [
+      "LowAmbientRh",
+      "HighTimeAboveLiquidus"
+    ],
+    "predicted": [
+      "HighTimeAboveLiquidus"
+    ]
+  },
+  {
+    "id": "PCB224",
+    "expected": [
+      "LowPeakReflowTemperature"
+    ],
+    "predicted": [
+      "NonCoalescence"
+    ]
+  },
+  {
+    "id": "PCB225",
+    "expected": [
+      "HighPeakReflowTemperature"
+    ],
+    "predicted": [
+      "HighPeakReflowTemperature"
+    ]
+  },
+  {
+    "id": "PCB229",
+    "expected": [
+      "HighStencilThickness",
+      "LowAmbientTemperature"
+    ],
+    "predicted": [
+      "HighStencilThickness"
+    ]
+  },
+  {
+    "id": "PCB236",
+    "expected": [
+      "LowPasteViscosity",
+      "HighAmbientRh"
+    ],
+    "predicted": [
+      "HighAmbientRh",
+      "LowPasteViscosity",
+      "ApertureOverfill"
+    ]
+  },
+  {
+    "id": "PCB237",
+    "expected": [
+      "HighStencilThickness"
+    ],
+    "predicted": [
+      "HighStencilThickness",
+      "HighPasteVolumePerAperture"
+    ]
+  },
+  {
+    "id": "PCB238",
+    "expected": [
+      "HighStencilThickness"
+    ],
+    "predicted": [
+      "HighStencilThickness",
+      "HighPasteVolumePerAperture"
+    ]
+  },
+  {
+    "id": "PCB241",
+    "expected": [
+      "LowAmbientTemperature"
+    ],
+    "predicted": [
+      "LowAmbientTemperature"
+    ]
+  },
+  {
+    "id": "PCB242",
+    "expected": [
+      "LowAmbientTemperature"
+    ],
+    "predicted": [
+      "LowAmbientTemperature"
+    ]
+  },
+  {
+    "id": "PCB243",
+    "expected": [
+      "LowAmbientTemperature"
+    ],
+    "predicted": []
+  },
+  {
+    "id": "PCB244",
+    "expected": [
+      "LowAmbientRh",
+      "HighPasteViscosity"
+    ],
+    "predicted": [
+      "HighPasteViscosity",
+      "LowAmbientRh"
+    ]
+  },
+  {
+    "id": "PCB245",
+    "expected": [
+      "HighPeakReflowTemperature"
+    ],
+    "predicted": [
+      "HighPeakReflowTemperature"
+    ]
+  },
+  {
+    "id": "PCB246",
+    "expected": [
+      "HighStencilThickness"
+    ],
+    "predicted": [
+      "ApertureOverfill"
+    ]
+  },
+  {
+    "id": "PCB252",
+    "expected": [
+      "HighStencilThickness"
+    ],
+    "predicted": [
+      "HighStencilThickness"
+    ]
+  },
+  {
+    "id": "PCB255",
+    "expected": [
+      "LowAmbientTemperature",
+      "HighStencilThickness"
+    ],
+    "predicted": [
+      "ApertureOverfill"
+    ]
+  },
+  {
+    "id": "PCB256",
+    "expected": [
+      "HighStencilThickness"
+    ],
+    "predicted": [
+      "HighStencilThickness"
+    ]
+  },
+  {
+    "id": "PCB259",
+    "expected": [
+      "HighStencilThickness"
+    ],
+    "predicted": [
+      "ApertureOverfill"
+    ]
+  },
+  {
+    "id": "PCB261",
+    "expected": [
+      "HighStencilThickness"
+    ],
+    "predicted": [
+      "ApertureOverfill"
+    ]
+  },
+  {
+    "id": "PCB263",
+    "expected": [
+      "HighStencilThickness"
+    ],
+    "predicted": [
+      "HighStencilThickness"
+    ]
+  },
+  {
+    "id": "PCB267",
+    "expected": [
+      "LowAmbientTemperature"
+    ],
+    "predicted": [
+      "LowAmbientTemperature"
+    ]
+  },
+  {
+    "id": "PCB270",
+    "expected": [
+      "PoorPasteTransfer"
+    ],
+    "predicted": []
+  },
+  {
+    "id": "PCB271",
+    "expected": [
+      "LowAmbientTemperature"
+    ],
+    "predicted": [
+      "LowAmbientTemperature"
+    ]
+  },
+  {
+    "id": "PCB274",
+    "expected": [
+      "LowAmbientRh"
+    ],
+    "predicted": []
+  },
+  {
+    "id": "PCB276",
+    "expected": [
+      "HighAmbientRh"
+    ],
+    "predicted": [
+      "HighAmbientRh"
+    ]
+  },
+  {
+    "id": "PCB277",
+    "expected": [
+      "PoorPasteTransfer"
+    ],
+    "predicted": [
+      "PoorPasteTransfer"
+    ]
+  },
+  {
+    "id": "PCB285",
+    "expected": [
+      "HighPeakReflowTemperature",
+      "HighTimeAboveLiquidus"
+    ],
+    "predicted": [
+      "HighPeakReflowTemperature"
+    ]
+  },
+  {
+    "id": "PCB289",
+    "expected": [
+      "LowPeakReflowTemperature"
+    ],
+    "predicted": [
+      "NonCoalescence"
+    ]
+  },
+  {
+    "id": "PCB292",
+    "expected": [
+      "HighStencilThickness"
+    ],
+    "predicted": [
+      "HighStencilThickness"
+    ]
+  },
+  {
+    "id": "PCB293",
+    "expected": [
+      "LowAmbientTemperature"
+    ],
+    "predicted": [
+      "LowAmbientTemperature"
+    ]
+  },
+  {
+    "id": "PCB296",
+    "expected": [
+      "LowPasteViscosity"
+    ],
+    "predicted": [
+      "LowPasteViscosity",
+      "ApertureOverfill"
+    ]
+  },
+  {
+    "id": "PCB298",
+    "expected": [
+      "LowTimeAboveLiquidus"
+    ],
+    "predicted": [
+      "LowTimeAboveLiquidus"
+    ]
+  },
+  {
+    "id": "PCB300",
+    "expected": [
+      "LowAmbientTemperature"
+    ],
+    "predicted": [
+      "LowAmbientTemperature"
+    ]
+  },
+  {
+    "id": "PCB301",
+    "expected": [
+      "HighPeakReflowTemperature"
+    ],
+    "predicted": [
+      "ExcessReflowSpreading"
+    ]
+  },
+  {
+    "id": "PCB305",
+    "expected": [
+      "LowAmbientTemperature",
+      "HighAmbientRh"
+    ],
+    "predicted": [
+      "HighAmbientRh",
+      "LowAmbientTemperature"
+    ]
+  },
+  {
+    "id": "PCB306",
+    "expected": [
+      "LowAmbientRh",
+      "HighPasteViscosity",
+      "HighStencilThickness"
+    ],
+    "predicted": [
+      "HighPasteViscosity",
+      "LowAmbientRh"
+    ]
+  },
+  {
+    "id": "PCB308",
+    "expected": [
+      "HighStencilThickness"
+    ],
+    "predicted": [
+      "HighStencilThickness"
+    ]
+  },
+  {
+    "id": "PCB310",
+    "expected": [
+      "LowAmbientRh"
+    ],
+    "predicted": []
+  },
+  {
+    "id": "PCB311",
+    "expected": [
+      "HighStencilThickness"
+    ],
+    "predicted": [
+      "ExcessReflowSpreading"
+    ]
+  },
+  {
+    "id": "PCB312",
+    "expected": [
+      "HighStencilThickness"
+    ],
+    "predicted": [
+      "HighStencilThickness"
+    ]
+  },
+  {
+    "id": "PCB318",
+    "expected": [
+      "LowAmbientTemperature",
+      "HighPasteViscosity"
+    ],
+    "predicted": [
+      "LowAmbientTemperature",
+      "HighPasteViscosity"
+    ]
+  },
+  {
+    "id": "PCB320",
+    "expected": [
+      "LowAmbientTemperature"
+    ],
+    "predicted": [
+      "LowAmbientTemperature"
+    ]
+  },
+  {
+    "id": "PCB324",
+    "expected": [
+      "LowAmbientTemperature"
+    ],
+    "predicted": [
+      "ExcessReflowSpreading"
+    ]
+  },
+  {
+    "id": "PCB326",
+    "expected": [
+      "LowAmbientTemperature"
+    ],
+    "predicted": [
+      "LowAmbientTemperature"
+    ]
+  },
+  {
+    "id": "PCB327",
+    "expected": [
+      "HighStencilThickness"
+    ],
+    "predicted": [
+      "HighStencilThickness"
+    ]
+  },
+  {
+    "id": "PCB329",
+    "expected": [
+      "LowAmbientTemperature"
+    ],
+    "predicted": []
+  },
+  {
+    "id": "PCB331",
+    "expected": [
+      "HighPasteViscosity",
+      "LowAmbientTemperature"
+    ],
+    "predicted": [
+      "LowAmbientTemperature",
+      "HighPasteViscosity"
+    ]
+  },
+  {
+    "id": "PCB335",
+    "expected": [
+      "HighStencilThickness"
+    ],
+    "predicted": [
+      "ApertureOverfill"
+    ]
+  },
+  {
+    "id": "PCB339",
+    "expected": [
+      "LowAmbientTemperature"
+    ],
+    "predicted": [
+      "LowAmbientTemperature"
+    ]
+  },
+  {
+    "id": "PCB342",
+    "expected": [
+      "HighPeakReflowTemperature"
+    ],
+    "predicted": [
+      "HighPeakReflowTemperature"
+    ]
+  },
+  {
+    "id": "PCB347",
+    "expected": [
+      "HighStencilThickness"
+    ],
+    "predicted": [
+      "HighStencilThickness"
+    ]
+  },
+  {
+    "id": "PCB348",
+    "expected": [
+      "HighAmbientRh",
+      "LowAmbientTemperature"
+    ],
+    "predicted": [
+      "HighAmbientRh",
+      "LowAmbientTemperature"
+    ]
+  },
+  {
+    "id": "PCB349",
+    "expected": [
+      "HighStencilThickness"
+    ],
+    "predicted": [
+      "HighStencilThickness",
+      "HighPasteVolumePerAperture"
+    ]
+  },
+  {
+    "id": "PCB354",
+    "expected": [
+      "LowAmbientTemperature"
+    ],
+    "predicted": []
+  },
+  {
+    "id": "PCB355",
+    "expected": [
+      "HighStencilThickness"
+    ],
+    "predicted": [
+      "HighStencilThickness"
+    ]
+  },
+  {
+    "id": "PCB357",
+    "expected": [
+      "HighStencilThickness",
+      "LowAmbientTemperature"
+    ],
+    "predicted": [
+      "HighStencilThickness"
+    ]
+  },
+  {
+    "id": "PCB361",
+    "expected": [
+      "HighStencilThickness"
+    ],
+    "predicted": [
+      "HighStencilThickness"
+    ]
+  },
+  {
+    "id": "PCB362",
+    "expected": [
+      "LowAmbientRh"
+    ],
+    "predicted": [
+      "LowAmbientRh"
+    ]
+  },
+  {
+    "id": "PCB363",
+    "expected": [
+      "LowAmbientTemperature"
+    ],
+    "predicted": [
+      "LowAmbientTemperature"
+    ]
+  },
+  {
+    "id": "PCB365",
+    "expected": [
+      "LowAmbientTemperature"
+    ],
+    "predicted": [
+      "LowAmbientTemperature"
+    ]
+  },
+  {
+    "id": "PCB366",
+    "expected": [
+      "LowTimeAboveLiquidus"
+    ],
+    "predicted": [
+      "LowTimeAboveLiquidus"
+    ]
+  },
+  {
+    "id": "PCB368",
+    "expected": [
+      "LowAmbientTemperature"
+    ],
+    "predicted": [
+      "LowAmbientTemperature"
+    ]
+  },
+  {
+    "id": "PCB373",
+    "expected": [
+      "LowAmbientTemperature"
+    ],
+    "predicted": []
+  },
+  {
+    "id": "PCB376",
+    "expected": [
+      "LowPasteViscosity"
+    ],
+    "predicted": [
+      "ApertureOverfill"
+    ]
+  },
+  {
+    "id": "PCB380",
+    "expected": [
+      "LowPeakReflowTemperature"
+    ],
+    "predicted": [
+      "LowPeakReflowTemperature"
+    ]
+  },
+  {
+    "id": "PCB381",
+    "expected": [
+      "HighStencilThickness"
+    ],
+    "predicted": [
+      "HighStencilThickness",
+      "HighPasteVolumePerAperture"
+    ]
+  },
+  {
+    "id": "PCB383",
+    "expected": [
+      "HighStencilThickness",
+      "LowTimeAboveLiquidus"
+    ],
+    "predicted": [
+      "NonCoalescence",
+      "HighStencilThickness"
+    ]
+  },
+  {
+    "id": "PCB384",
+    "expected": [
+      "LowAmbientTemperature"
+    ],
+    "predicted": [
+      "LowAmbientTemperature"
+    ]
+  },
+  {
+    "id": "PCB386",
+    "expected": [
+      "LowPasteViscosity"
+    ],
+    "predicted": [
+      "ApertureOverfill"
+    ]
+  },
+  {
+    "id": "PCB387",
+    "expected": [
+      "HighStencilThickness"
+    ],
+    "predicted": [
+      "ApertureOverfill"
+    ]
+  },
+  {
+    "id": "PCB388",
+    "expected": [
+      "HighStencilThickness",
+      "LowAmbientTemperature"
+    ],
+    "predicted": [
+      "HighStencilThickness"
+    ]
+  },
+  {
+    "id": "PCB396",
+    "expected": [
+      "HighStencilThickness"
+    ],
+    "predicted": [
+      "HighStencilThickness"
+    ]
+  },
+  {
+    "id": "PCB397",
+    "expected": [
+      "HighTimeAboveLiquidus"
+    ],
+    "predicted": [
+      "HighTimeAboveLiquidus"
+    ]
+  },
+  {
+    "id": "PCB401",
+    "expected": [
+      "HighPeakReflowTemperature"
+    ],
+    "predicted": [
+      "HighPeakReflowTemperature"
+    ]
+  },
+  {
+    "id": "PCB402",
+    "expected": [
+      "LowAmbientTemperature"
+    ],
+    "predicted": [
+      "LowAmbientTemperature"
+    ]
+  },
+  {
+    "id": "PCB403",
+    "expected": [
+      "LowAmbientTemperature"
+    ],
+    "predicted": [
+      "LowAmbientTemperature"
+    ]
+  },
+  {
+    "id": "PCB406",
+    "expected": [
+      "HighStencilThickness"
+    ],
+    "predicted": [
+      "HighStencilThickness"
+    ]
+  },
+  {
+    "id": "PCB407",
+    "expected": [
+      "HighStencilThickness",
+      "LowAmbientTemperature"
+    ],
+    "predicted": [
+      "HighStencilThickness"
+    ]
+  },
+  {
+    "id": "PCB408",
+    "expected": [
+      "LowPasteViscosity"
+    ],
+    "predicted": [
+      "LowPasteViscosity",
+      "ApertureOverfill"
+    ]
+  },
+  {
+    "id": "PCB410",
+    "expected": [
+      "HighStencilThickness"
+    ],
+    "predicted": [
+      "HighStencilThickness"
+    ]
+  },
+  {
+    "id": "PCB418",
+    "expected": [
+      "LowAmbientTemperature"
+    ],
+    "predicted": [
+      "LowAmbientTemperature"
+    ]
+  },
+  {
+    "id": "PCB420",
+    "expected": [
+      "LowAmbientTemperature"
+    ],
+    "predicted": [
+      "LowAmbientTemperature"
+    ]
+  },
+  {
+    "id": "PCB421",
+    "expected": [
+      "HighStencilThickness"
+    ],
+    "predicted": [
+      "HighStencilThickness"
+    ]
+  },
+  {
+    "id": "PCB425",
+    "expected": [
+      "LowTimeAboveLiquidus"
+    ],
+    "predicted": [
+      "LowTimeAboveLiquidus"
+    ]
+  },
+  {
+    "id": "PCB426",
+    "expected": [
+      "HighStencilThickness"
+    ],
+    "predicted": [
+      "HighStencilThickness"
+    ]
+  },
+  {
+    "id": "PCB428",
+    "expected": [
+      "LowAmbientTemperature"
+    ],
+    "predicted": [
+      "LowAmbientTemperature"
+    ]
+  },
+  {
+    "id": "PCB429",
+    "expected": [
+      "LowAmbientTemperature",
+      "HighAmbientRh"
+    ],
+    "predicted": [
+      "HighAmbientRh",
+      "LowAmbientTemperature"
+    ]
+  },
+  {
+    "id": "PCB433",
+    "expected": [
+      "LowAmbientTemperature",
+      "HighTimeAboveLiquidus"
+    ],
+    "predicted": [
+      "HighTimeAboveLiquidus"
+    ]
+  },
+  {
+    "id": "PCB434",
+    "expected": [
+      "HighStencilThickness"
+    ],
+    "predicted": [
+      "ExcessReflowSpreading",
+      "HighStencilThickness"
+    ]
+  },
+  {
+    "id": "PCB435",
+    "expected": [
+      "HighAmbientRh",
+      "LowAmbientTemperature"
+    ],
+    "predicted": [
+      "HighAmbientRh",
+      "LowAmbientTemperature"
+    ]
+  },
+  {
+    "id": "PCB438",
+    "expected": [
+      "LowAmbientTemperature",
+      "HighPasteViscosity"
+    ],
+    "predicted": [
+      "LowAmbientTemperature",
+      "HighPasteViscosity"
+    ]
+  },
+  {
+    "id": "PCB439",
+    "expected": [
+      "LowAmbientRh"
+    ],
+    "predicted": [
+      "LowAmbientRh"
+    ]
+  },
+  {
+    "id": "PCB441",
+    "expected": [
+      "HighStencilThickness"
+    ],
+    "predicted": [
+      "HighStencilThickness"
+    ]
+  },
+  {
+    "id": "PCB443",
+    "expected": [
+      "LowAmbientTemperature"
+    ],
+    "predicted": [
+      "LowAmbientTemperature"
+    ]
+  },
+  {
+    "id": "PCB447",
+    "expected": [
+      "LowAmbientTemperature"
+    ],
+    "predicted": [
+      "LowAmbientTemperature"
+    ]
+  },
+  {
+    "id": "PCB450",
+    "expected": [
+      "LowAmbientTemperature"
+    ],
+    "predicted": [
+      "LowAmbientTemperature"
+    ]
+  },
+  {
+    "id": "PCB451",
+    "expected": [
+      "HighStencilThickness"
+    ],
+    "predicted": [
+      "HighStencilThickness"
+    ]
+  },
+  {
+    "id": "PCB453",
+    "expected": [
+      "LowTimeAboveLiquidus"
+    ],
+    "predicted": [
+      "LowTimeAboveLiquidus"
+    ]
+  },
+  {
+    "id": "PCB455",
+    "expected": [
+      "HighAmbientRh"
+    ],
+    "predicted": []
+  },
+  {
+    "id": "PCB458",
+    "expected": [
+      "LowStencilThickness"
+    ],
+    "predicted": [
+      "LowStencilThickness"
+    ]
+  },
+  {
+    "id": "PCB460",
+    "expected": [
+      "HighAmbientRh"
+    ],
+    "predicted": [
+      "HighAmbientRh"
+    ]
+  },
+  {
+    "id": "PCB461",
+    "expected": [
+      "HighStencilThickness"
+    ],
+    "predicted": [
+      "HighStencilThickness"
+    ]
+  },
+  {
+    "id": "PCB463",
+    "expected": [
+      "HighStencilThickness"
+    ],
+    "predicted": [
+      "HighStencilThickness"
+    ]
+  },
+  {
+    "id": "PCB468",
+    "expected": [
+      "LowAmbientTemperature",
+      "HighAmbientRh"
+    ],
+    "predicted": [
+      "LowAmbientTemperature"
+    ]
+  },
+  {
+    "id": "PCB474",
+    "expected": [
+      "LowAmbientTemperature"
+    ],
+    "predicted": []
+  },
+  {
+    "id": "PCB477",
+    "expected": [
+      "HighPeakReflowTemperature",
+      "LowAmbientTemperature"
+    ],
+    "predicted": [
+      "HighPeakReflowTemperature"
+    ]
+  },
+  {
+    "id": "PCB478",
+    "expected": [
+      "HighStencilThickness"
+    ],
+    "predicted": [
+      "HighStencilThickness"
+    ]
+  },
+  {
+    "id": "PCB481",
+    "expected": [
+      "LowAmbientTemperature",
+      "LowPeakReflowTemperature"
+    ],
+    "predicted": [
+      "LowAmbientTemperature"
+    ]
+  },
+  {
+    "id": "PCB482",
+    "expected": [
+      "HighTimeAboveLiquidus"
+    ],
+    "predicted": [
+      "ExcessReflowSpreading",
+      "ApertureOverfill"
+    ]
+  },
+  {
+    "id": "PCB488",
+    "expected": [
+      "LowAmbientTemperature",
+      "HighAmbientRh"
+    ],
+    "predicted": [
+      "HighAmbientRh",
+      "LowAmbientTemperature"
+    ]
+  },
+  {
+    "id": "PCB500",
+    "expected": [
+      "HighStencilThickness"
+    ],
+    "predicted": [
+      "HighStencilThickness"
+    ]
+  },
+  {
+    "id": "PCB502",
+    "expected": [
+      "LowPasteViscosity"
+    ],
+    "predicted": []
+  },
+  {
+    "id": "PCB506",
+    "expected": [
+      "LowAmbientTemperature",
+      "HighStencilThickness"
+    ],
+    "predicted": [
+      "HighStencilThickness",
+      "LowAmbientTemperature"
+    ]
+  },
+  {
+    "id": "PCB507",
+    "expected": [
+      "LowPasteViscosity",
+      "HighStencilThickness"
+    ],
+    "predicted": [
+      "LowPasteViscosity",
+      "ApertureOverfill",
+      "HighPasteVolumePerAperture"
+    ]
+  },
+  {
+    "id": "PCB508",
+    "expected": [
+      "HighStencilThickness"
+    ],
+    "predicted": [
+      "HighStencilThickness"
+    ]
+  },
+  {
+    "id": "PCB511",
+    "expected": [
+      "LowAmbientTemperature"
+    ],
+    "predicted": [
+      "LowAmbientTemperature"
+    ]
+  },
+  {
+    "id": "PCB514",
+    "expected": [
+      "LowAmbientRh"
+    ],
+    "predicted": [
+      "LowAmbientRh"
+    ]
+  },
+  {
+    "id": "PCB516",
+    "expected": [
+      "LowAmbientTemperature"
+    ],
+    "predicted": [
+      "LowAmbientTemperature"
+    ]
+  },
+  {
+    "id": "PCB517",
+    "expected": [
+      "PoorPasteTransfer"
+    ],
+    "predicted": [
+      "PoorPasteTransfer"
+    ]
+  },
+  {
+    "id": "PCB519",
+    "expected": [
+      "HighStencilThickness"
+    ],
+    "predicted": [
+      "HighStencilThickness"
+    ]
+  },
+  {
+    "id": "PCB530",
+    "expected": [
+      "LowAmbientTemperature",
+      "HighTimeAboveLiquidus"
+    ],
+    "predicted": [
+      "HighTimeAboveLiquidus",
+      "LowAmbientTemperature"
+    ]
+  },
+  {
+    "id": "PCB531",
+    "expected": [
+      "HighStencilThickness",
+      "LowPasteViscosity"
+    ],
+    "predicted": [
+      "ApertureOverfill",
+      "HighPasteVolumePerAperture"
+    ]
+  },
+  {
+    "id": "PCB532",
+    "expected": [
+      "HighStencilThickness"
+    ],
+    "predicted": [
+      "HighStencilThickness"
+    ]
+  },
+  {
+    "id": "PCB533",
+    "expected": [
+      "HighStencilThickness"
+    ],
+    "predicted": []
+  },
+  {
+    "id": "PCB534",
+    "expected": [
+      "HighAmbientRh"
+    ],
+    "predicted": []
+  },
+  {
+    "id": "PCB535",
+    "expected": [
+      "LowAmbientTemperature"
+    ],
+    "predicted": [
+      "LowAmbientTemperature"
+    ]
+  },
+  {
+    "id": "PCB536",
+    "expected": [
+      "LowAmbientTemperature"
+    ],
+    "predicted": [
+      "LowAmbientTemperature"
+    ]
+  },
+  {
+    "id": "PCB538",
+    "expected": [
+      "LowAmbientRh"
+    ],
+    "predicted": []
+  },
+  {
+    "id": "PCB543",
+    "expected": [
+      "LowAmbientTemperature"
+    ],
+    "predicted": [
+      "LowAmbientTemperature"
+    ]
+  },
+  {
+    "id": "PCB549",
+    "expected": [
+      "HighTimeAboveLiquidus"
+    ],
+    "predicted": [
+      "ExcessReflowSpreading"
+    ]
+  },
+  {
+    "id": "PCB555",
+    "expected": [
+      "HighStencilThickness"
+    ],
+    "predicted": [
+      "HighStencilThickness"
+    ]
+  },
+  {
+    "id": "PCB557",
+    "expected": [
+      "LowAmbientTemperature",
+      "HighPeakReflowTemperature"
+    ],
+    "predicted": [
+      "HighPeakReflowTemperature",
+      "LowAmbientTemperature"
+    ]
+  },
+  {
+    "id": "PCB562",
+    "expected": [
+      "HighStencilThickness"
+    ],
+    "predicted": [
+      "ApertureOverfill"
+    ]
+  },
+  {
+    "id": "PCB564",
+    "expected": [
+      "LowAmbientTemperature"
+    ],
+    "predicted": [
+      "LowAmbientTemperature"
+    ]
+  },
+  {
+    "id": "PCB568",
+    "expected": [
+      "PoorPasteTransfer"
+    ],
+    "predicted": [
+      "PoorPasteTransfer"
+    ]
+  },
+  {
+    "id": "PCB574",
+    "expected": [
+      "HighStencilThickness"
+    ],
+    "predicted": [
+      "HighStencilThickness"
+    ]
+  },
+  {
+    "id": "PCB575",
+    "expected": [
+      "HighTimeAboveLiquidus"
+    ],
+    "predicted": [
+      "HighTimeAboveLiquidus"
+    ]
+  },
+  {
+    "id": "PCB577",
+    "expected": [
+      "LowPeakReflowTemperature"
+    ],
+    "predicted": [
+      "NonCoalescence"
+    ]
+  },
+  {
+    "id": "PCB579",
+    "expected": [
+      "LowAmbientTemperature"
+    ],
+    "predicted": [
+      "LowAmbientTemperature"
+    ]
+  },
+  {
+    "id": "PCB581",
+    "expected": [
+      "LowAmbientTemperature"
+    ],
+    "predicted": [
+      "LowAmbientTemperature"
+    ]
+  },
+  {
+    "id": "PCB584",
+    "expected": [
+      "LowTimeAboveLiquidus"
+    ],
+    "predicted": [
+      "LowTimeAboveLiquidus"
+    ]
+  },
+  {
+    "id": "PCB585",
+    "expected": [
+      "HighStencilThickness",
+      "LowAmbientTemperature"
+    ],
+    "predicted": [
+      "HighStencilThickness"
+    ]
+  },
+  {
+    "id": "PCB586",
+    "expected": [
+      "LowAmbientTemperature"
+    ],
+    "predicted": [
+      "LowAmbientTemperature"
+    ]
+  },
+  {
+    "id": "PCB587",
+    "expected": [
+      "HighStencilThickness"
+    ],
+    "predicted": [
+      "HighStencilThickness"
+    ]
+  },
+  {
+    "id": "PCB588",
+    "expected": [
+      "LowAmbientTemperature"
+    ],
+    "predicted": [
+      "LowAmbientTemperature"
+    ]
+  },
+  {
+    "id": "PCB591",
+    "expected": [
+      "LowAmbientTemperature"
+    ],
+    "predicted": [
+      "LowAmbientTemperature"
+    ]
+  },
+  {
+    "id": "PCB593",
+    "expected": [
+      "HighStencilThickness"
+    ],
+    "predicted": [
+      "HighStencilThickness"
+    ]
+  },
+  {
+    "id": "PCB594",
+    "expected": [
+      "LowAmbientRh"
+    ],
+    "predicted": [
+      "LowAmbientRh"
+    ]
+  },
+  {
+    "id": "PCB596",
+    "expected": [
+      "LowAmbientTemperature"
+    ],
+    "predicted": [
+      "LowAmbientTemperature"
+    ]
+  },
+  {
+    "id": "PCB598",
+    "expected": [
+      "LowAmbientTemperature"
+    ],
+    "predicted": [
+      "LowAmbientTemperature"
+    ]
+  },
+  {
+    "id": "PCB600",
+    "expected": [
+      "LowAmbientTemperature",
+      "LowStencilThickness"
+    ],
+    "predicted": [
+      "LowStencilThickness",
+      "LowAmbientTemperature"
+    ]
+  },
+  {
+    "id": "PCB601",
+    "expected": [
+      "LowAmbientTemperature"
+    ],
+    "predicted": []
+  },
+  {
+    "id": "PCB602",
+    "expected": [
+      "HighStencilThickness"
+    ],
+    "predicted": [
+      "HighStencilThickness"
+    ]
+  },
+  {
+    "id": "PCB608",
+    "expected": [
+      "LowAmbientTemperature"
+    ],
+    "predicted": [
+      "LowAmbientTemperature"
+    ]
+  },
+  {
+    "id": "PCB609",
+    "expected": [
+      "LowAmbientTemperature"
+    ],
+    "predicted": []
+  },
+  {
+    "id": "PCB616",
+    "expected": [
+      "PoorPasteTransfer"
+    ],
+    "predicted": [
+      "PoorPasteTransfer"
+    ]
+  },
+  {
+    "id": "PCB617",
+    "expected": [
+      "LowAmbientRh"
+    ],
+    "predicted": [
+      "HighPasteViscosity",
+      "LowAmbientRh"
+    ]
+  },
+  {
+    "id": "PCB623",
+    "expected": [
+      "HighTimeAboveLiquidus",
+      "HighStencilThickness"
+    ],
+    "predicted": [
+      "ApertureOverfill",
+      "HighTimeAboveLiquidus"
+    ]
+  },
+  {
+    "id": "PCB624",
+    "expected": [
+      "HighPeakReflowTemperature"
+    ],
+    "predicted": [
+      "HighPeakReflowTemperature"
+    ]
+  },
+  {
+    "id": "PCB628",
+    "expected": [
+      "LowAmbientTemperature"
+    ],
+    "predicted": [
+      "LowAmbientTemperature"
+    ]
+  },
+  {
+    "id": "PCB633",
+    "expected": [
+      "LowAmbientTemperature"
+    ],
+    "predicted": [
+      "LowAmbientTemperature"
+    ]
+  },
+  {
+    "id": "PCB637",
+    "expected": [
+      "LowAmbientTemperature"
+    ],
+    "predicted": [
+      "LowAmbientTemperature"
+    ]
+  },
+  {
+    "id": "PCB643",
+    "expected": [
+      "LowAmbientRh",
+      "HighStencilThickness"
+    ],
+    "predicted": [
+      "ApertureOverfill",
+      "LowAmbientRh"
+    ]
+  },
+  {
+    "id": "PCB655",
+    "expected": [
+      "LowAmbientTemperature",
+      "HighPasteViscosity"
+    ],
+    "predicted": [
+      "LowAmbientTemperature",
+      "HighPasteViscosity"
+    ]
+  },
+  {
+    "id": "PCB660",
+    "expected": [
+      "LowAmbientTemperature"
+    ],
+    "predicted": [
+      "LowAmbientTemperature"
+    ]
+  },
+  {
+    "id": "PCB666",
+    "expected": [
+      "LowPeakReflowTemperature"
+    ],
+    "predicted": []
+  },
+  {
+    "id": "PCB668",
+    "expected": [
+      "LowAmbientTemperature"
+    ],
+    "predicted": [
+      "LowAmbientTemperature"
+    ]
+  },
+  {
+    "id": "PCB671",
+    "expected": [
+      "HighPasteViscosity"
+    ],
+    "predicted": [
+      "PoorPasteTransfer"
+    ]
+  },
+  {
+    "id": "PCB673",
+    "expected": [
+      "LowAmbientTemperature"
+    ],
+    "predicted": []
+  },
+  {
+    "id": "PCB676",
+    "expected": [
+      "HighStencilThickness"
+    ],
+    "predicted": [
+      "ApertureOverfill"
+    ]
+  },
+  {
+    "id": "PCB681",
+    "expected": [
+      "LowAmbientRh"
+    ],
+    "predicted": [
+      "LowAmbientRh"
+    ]
+  },
+  {
+    "id": "PCB684",
+    "expected": [
+      "HighStencilThickness"
+    ],
+    "predicted": [
+      "HighStencilThickness"
+    ]
+  },
+  {
+    "id": "PCB686",
+    "expected": [
+      "LowPeakReflowTemperature"
+    ],
+    "predicted": [
+      "LowPeakReflowTemperature"
+    ]
+  },
+  {
+    "id": "PCB687",
+    "expected": [
+      "LowAmbientTemperature"
+    ],
+    "predicted": []
+  },
+  {
+    "id": "PCB688",
+    "expected": [
+      "LowAmbientTemperature"
+    ],
+    "predicted": [
+      "LowAmbientTemperature"
+    ]
+  },
+  {
+    "id": "PCB690",
+    "expected": [
+      "HighStencilThickness"
+    ],
+    "predicted": []
+  },
+  {
+    "id": "PCB691",
+    "expected": [
+      "HighStencilThickness"
+    ],
+    "predicted": [
+      "HighStencilThickness"
+    ]
+  },
+  {
+    "id": "PCB697",
+    "expected": [
+      "LowPasteViscosity"
+    ],
+    "predicted": [
+      "LowPasteViscosity",
+      "ApertureOverfill"
+    ]
+  },
+  {
+    "id": "PCB703",
+    "expected": [
+      "HighAmbientRh"
+    ],
+    "predicted": []
+  },
+  {
+    "id": "PCB710",
+    "expected": [
+      "HighAmbientRh"
+    ],
+    "predicted": [
+      "HighAmbientRh"
+    ]
+  },
+  {
+    "id": "PCB711",
+    "expected": [
+      "LowAmbientTemperature"
+    ],
+    "predicted": [
+      "LowAmbientTemperature"
+    ]
+  },
+  {
+    "id": "PCB712",
+    "expected": [
+      "LowAmbientTemperature"
+    ],
+    "predicted": [
+      "LowAmbientTemperature"
+    ]
+  },
+  {
+    "id": "PCB715",
+    "expected": [
+      "LowAmbientTemperature"
+    ],
+    "predicted": []
+  },
+  {
+    "id": "PCB716",
+    "expected": [
+      "HighPasteViscosity"
+    ],
+    "predicted": [
+      "PoorPasteTransfer"
+    ]
+  },
+  {
+    "id": "PCB717",
+    "expected": [
+      "LowAmbientTemperature"
+    ],
+    "predicted": [
+      "LowAmbientTemperature"
+    ]
+  },
+  {
+    "id": "PCB725",
+    "expected": [
+      "LowAmbientTemperature"
+    ],
+    "predicted": [
+      "LowAmbientTemperature"
+    ]
+  },
+  {
+    "id": "PCB726",
+    "expected": [
+      "LowAmbientRh"
+    ],
+    "predicted": [
+      "LowAmbientRh"
+    ]
+  },
+  {
+    "id": "PCB732",
+    "expected": [
+      "LowAmbientTemperature"
+    ],
+    "predicted": []
+  },
+  {
+    "id": "PCB738",
+    "expected": [
+      "LowAmbientTemperature",
+      "HighPasteViscosity"
+    ],
+    "predicted": [
+      "LowAmbientTemperature",
+      "HighPasteViscosity"
+    ]
+  },
+  {
+    "id": "PCB740",
+    "expected": [
+      "HighTimeAboveLiquidus"
+    ],
+    "predicted": [
+      "HighTimeAboveLiquidus"
+    ]
+  },
+  {
+    "id": "PCB742",
+    "expected": [
+      "LowAmbientTemperature",
+      "HighAmbientRh"
+    ],
+    "predicted": [
+      "HighAmbientRh",
+      "LowAmbientTemperature"
+    ]
+  },
+  {
+    "id": "PCB745",
+    "expected": [
+      "LowAmbientTemperature",
+      "HighPasteViscosity"
+    ],
+    "predicted": [
+      "LowAmbientTemperature",
+      "HighPasteViscosity"
+    ]
+  },
+  {
+    "id": "PCB746",
+    "expected": [
+      "LowAmbientTemperature"
+    ],
+    "predicted": [
+      "LowAmbientTemperature"
+    ]
+  },
+  {
+    "id": "PCB748",
+    "expected": [
+      "HighStencilThickness"
+    ],
+    "predicted": [
+      "HighStencilThickness"
+    ]
+  },
+  {
+    "id": "PCB750",
+    "expected": [
+      "HighStencilThickness"
+    ],
+    "predicted": [
+      "HighStencilThickness"
+    ]
+  },
+  {
+    "id": "PCB752",
+    "expected": [
+      "HighStencilThickness"
+    ],
+    "predicted": [
+      "HighStencilThickness"
+    ]
+  },
+  {
+    "id": "PCB753",
+    "expected": [
+      "LowAmbientTemperature"
+    ],
+    "predicted": [
+      "LowAmbientTemperature"
+    ]
+  },
+  {
+    "id": "PCB754",
+    "expected": [
+      "LowAmbientTemperature"
+    ],
+    "predicted": [
+      "LowAmbientTemperature"
+    ]
+  },
+  {
+    "id": "PCB756",
+    "expected": [
+      "LowAmbientTemperature"
+    ],
+    "predicted": [
+      "LowAmbientTemperature"
+    ]
+  },
+  {
+    "id": "PCB758",
+    "expected": [
+      "LowAmbientRh",
+      "HighAmbientTemperature"
+    ],
+    "predicted": [
+      "HighAmbientTemperature"
+    ]
+  },
+  {
+    "id": "PCB762",
+    "expected": [
+      "LowPeakReflowTemperature"
+    ],
+    "predicted": []
+  },
+  {
+    "id": "PCB766",
+    "expected": [
+      "HighStencilThickness"
+    ],
+    "predicted": [
+      "ApertureOverfill"
+    ]
+  },
+  {
+    "id": "PCB767",
+    "expected": [
+      "HighStencilThickness"
+    ],
+    "predicted": [
+      "HighStencilThickness"
+    ]
+  },
+  {
+    "id": "PCB768",
+    "expected": [
+      "LowAmbientTemperature"
+    ],
+    "predicted": [
+      "LowAmbientTemperature"
+    ]
+  },
+  {
+    "id": "PCB769",
+    "expected": [
+      "HighStencilThickness"
+    ],
+    "predicted": [
+      "HighStencilThickness"
+    ]
+  },
+  {
+    "id": "PCB770",
+    "expected": [
+      "HighStencilThickness"
+    ],
+    "predicted": [
+      "HighStencilThickness"
+    ]
+  },
+  {
+    "id": "PCB777",
+    "expected": [
+      "HighStencilThickness",
+      "LowAmbientTemperature",
+      "HighAmbientRh"
+    ],
+    "predicted": [
+      "HighAmbientRh",
+      "HighStencilThickness",
+      "HighPasteVolumePerAperture",
+      "LowAmbientTemperature"
+    ]
+  },
+  {
+    "id": "PCB780",
+    "expected": [
+      "LowAmbientTemperature"
+    ],
+    "predicted": []
+  },
+  {
+    "id": "PCB786",
+    "expected": [
+      "HighPasteViscosity",
+      "LowAmbientTemperature"
+    ],
+    "predicted": [
+      "HighPasteViscosity"
+    ]
+  },
+  {
+    "id": "PCB787",
+    "expected": [
+      "HighTimeAboveLiquidus"
+    ],
+    "predicted": [
+      "ExcessReflowSpreading"
+    ]
+  },
+  {
+    "id": "PCB789",
+    "expected": [
+      "HighAmbientRh",
+      "LowTimeAboveLiquidus"
+    ],
+    "predicted": [
+      "LowTimeAboveLiquidus"
+    ]
+  },
+  {
+    "id": "PCB792",
+    "expected": [
+      "LowPasteViscosity"
+    ],
+    "predicted": []
+  },
+  {
+    "id": "PCB793",
+    "expected": [
+      "HighStencilThickness"
+    ],
+    "predicted": [
+      "HighStencilThickness"
+    ]
+  },
+  {
+    "id": "PCB798",
+    "expected": [
+      "LowAmbientTemperature"
+    ],
+    "predicted": []
+  },
+  {
+    "id": "PCB799",
+    "expected": [
+      "LowAmbientTemperature"
+    ],
+    "predicted": [
+      "LowAmbientTemperature"
+    ]
+  },
+  {
+    "id": "PCB800",
+    "expected": [
+      "HighPeakReflowTemperature"
+    ],
+    "predicted": [
+      "HighPeakReflowTemperature"
+    ]
+  },
+  {
+    "id": "PCB801",
+    "expected": [
+      "LowAmbientTemperature"
+    ],
+    "predicted": [
+      "LowAmbientTemperature"
+    ]
+  },
+  {
+    "id": "PCB802",
+    "expected": [
+      "LowAmbientTemperature",
+      "HighPasteViscosity"
+    ],
+    "predicted": [
+      "LowAmbientTemperature",
+      "HighPasteViscosity"
+    ]
+  },
+  {
+    "id": "PCB804",
+    "expected": [
+      "PoorPasteTransfer"
+    ],
+    "predicted": []
+  },
+  {
+    "id": "PCB809",
+    "expected": [
+      "LowAmbientRh"
+    ],
+    "predicted": [
+      "PoorPasteTransfer"
+    ]
+  },
+  {
+    "id": "PCB812",
+    "expected": [
+      "HighStencilThickness"
+    ],
+    "predicted": [
+      "HighStencilThickness"
+    ]
+  },
+  {
+    "id": "PCB819",
+    "expected": [
+      "LowAmbientTemperature"
+    ],
+    "predicted": []
+  },
+  {
+    "id": "PCB822",
+    "expected": [
+      "HighStencilThickness"
+    ],
+    "predicted": [
+      "HighStencilThickness"
+    ]
+  },
+  {
+    "id": "PCB823",
+    "expected": [
+      "LowAmbientTemperature"
+    ],
+    "predicted": [
+      "LowAmbientTemperature"
+    ]
+  },
+  {
+    "id": "PCB825",
+    "expected": [
+      "HighPeakReflowTemperature"
+    ],
+    "predicted": [
+      "ExcessReflowSpreading"
+    ]
+  },
+  {
+    "id": "PCB828",
+    "expected": [
+      "HighAmbientRh",
+      "LowAmbientTemperature"
+    ],
+    "predicted": [
+      "LowAmbientTemperature"
+    ]
+  },
+  {
+    "id": "PCB830",
+    "expected": [
+      "HighPasteViscosity",
+      "LowAmbientTemperature"
+    ],
+    "predicted": [
+      "HighPasteViscosity"
+    ]
+  },
+  {
+    "id": "PCB832",
+    "expected": [
+      "HighPeakReflowTemperature"
+    ],
+    "predicted": [
+      "HighPeakReflowTemperature"
+    ]
+  },
+  {
+    "id": "PCB834",
+    "expected": [
+      "LowPeakReflowTemperature"
+    ],
+    "predicted": [
+      "LowPeakReflowTemperature"
+    ]
+  },
+  {
+    "id": "PCB835",
+    "expected": [
+      "LowTimeAboveLiquidus"
+    ],
+    "predicted": [
+      "LowTimeAboveLiquidus"
+    ]
+  },
+  {
+    "id": "PCB839",
+    "expected": [
+      "LowAmbientTemperature"
+    ],
+    "predicted": [
+      "LowAmbientTemperature"
+    ]
+  },
+  {
+    "id": "PCB840",
+    "expected": [
+      "LowAmbientTemperature"
+    ],
+    "predicted": [
+      "LowAmbientTemperature"
+    ]
+  },
+  {
+    "id": "PCB843",
+    "expected": [
+      "LowPasteViscosity"
+    ],
+    "predicted": [
+      "NonCoalescence",
+      "ApertureOverfill"
+    ]
+  },
+  {
+    "id": "PCB845",
+    "expected": [
+      "HighStencilThickness"
+    ],
+    "predicted": [
+      "HighStencilThickness"
+    ]
+  },
+  {
+    "id": "PCB851",
+    "expected": [
+      "HighTimeAboveLiquidus"
+    ],
+    "predicted": [
+      "HighTimeAboveLiquidus"
+    ]
+  },
+  {
+    "id": "PCB859",
+    "expected": [
+      "LowAmbientTemperature"
+    ],
+    "predicted": [
+      "LowAmbientTemperature"
+    ]
+  },
+  {
+    "id": "PCB860",
+    "expected": [
+      "HighStencilThickness"
+    ],
+    "predicted": [
+      "HighStencilThickness"
+    ]
+  },
+  {
+    "id": "PCB861",
+    "expected": [
+      "HighPasteViscosity"
+    ],
+    "predicted": [
+      "HighPasteViscosity"
+    ]
+  },
+  {
+    "id": "PCB862",
+    "expected": [
+      "LowTimeAboveLiquidus"
+    ],
+    "predicted": [
+      "LowTimeAboveLiquidus"
+    ]
+  },
+  {
+    "id": "PCB864",
+    "expected": [
+      "LowAmbientTemperature"
+    ],
+    "predicted": [
+      "LowAmbientTemperature"
+    ]
+  },
+  {
+    "id": "PCB867",
+    "expected": [
+      "LowTimeAboveLiquidus"
+    ],
+    "predicted": [
+      "LowTimeAboveLiquidus"
+    ]
+  },
+  {
+    "id": "PCB869",
+    "expected": [
+      "HighStencilThickness"
+    ],
+    "predicted": [
+      "HighStencilThickness"
+    ]
+  },
+  {
+    "id": "PCB874",
+    "expected": [
+      "LowPasteViscosity"
+    ],
+    "predicted": [
+      "ApertureOverfill"
+    ]
+  },
+  {
+    "id": "PCB876",
+    "expected": [
+      "HighTimeAboveLiquidus"
+    ],
+    "predicted": [
+      "HighTimeAboveLiquidus"
+    ]
+  },
+  {
+    "id": "PCB879",
+    "expected": [
+      "LowAmbientRh"
+    ],
+    "predicted": [
+      "LowAmbientRh"
+    ]
+  },
+  {
+    "id": "PCB885",
+    "expected": [
+      "LowAmbientTemperature"
+    ],
+    "predicted": []
+  },
+  {
+    "id": "PCB887",
+    "expected": [
+      "LowAmbientTemperature"
+    ],
+    "predicted": [
+      "LowAmbientTemperature"
+    ]
+  },
+  {
+    "id": "PCB891",
+    "expected": [
+      "LowAmbientTemperature"
+    ],
+    "predicted": [
+      "LowAmbientTemperature"
+    ]
+  },
+  {
+    "id": "PCB892",
+    "expected": [
+      "HighPeakReflowTemperature",
+      "LowAmbientTemperature"
+    ],
+    "predicted": [
+      "HighPeakReflowTemperature"
+    ]
+  },
+  {
+    "id": "PCB894",
+    "expected": [
+      "HighTimeAboveLiquidus"
+    ],
+    "predicted": [
+      "HighTimeAboveLiquidus"
+    ]
+  },
+  {
+    "id": "PCB899",
+    "expected": [
+      "LowAmbientTemperature"
+    ],
+    "predicted": [
+      "LowAmbientTemperature"
+    ]
+  },
+  {
+    "id": "PCB903",
+    "expected": [
+      "LowAmbientTemperature"
+    ],
+    "predicted": [
+      "LowAmbientTemperature"
+    ]
+  },
+  {
+    "id": "PCB904",
+    "expected": [
+      "LowAmbientTemperature"
+    ],
+    "predicted": [
+      "LowAmbientTemperature"
+    ]
+  },
+  {
+    "id": "PCB905",
+    "expected": [
+      "LowAmbientTemperature",
+      "HighStencilThickness"
+    ],
+    "predicted": [
+      "ApertureOverfill",
+      "LowAmbientTemperature"
+    ]
+  },
+  {
+    "id": "PCB909",
+    "expected": [
+      "HighTimeAboveLiquidus",
+      "LowAmbientTemperature",
+      "HighPasteViscosity"
+    ],
+    "predicted": [
+      "HighTimeAboveLiquidus"
+    ]
+  },
+  {
+    "id": "PCB912",
+    "expected": [
+      "HighStencilThickness"
+    ],
+    "predicted": [
+      "HighStencilThickness"
+    ]
+  },
+  {
+    "id": "PCB916",
+    "expected": [
+      "LowPasteViscosity"
+    ],
+    "predicted": [
+      "LowPasteViscosity",
+      "ApertureOverfill"
+    ]
+  },
+  {
+    "id": "PCB919",
+    "expected": [
+      "LowAmbientTemperature"
+    ],
+    "predicted": []
+  },
+  {
+    "id": "PCB920",
+    "expected": [
+      "LowAmbientRh"
+    ],
+    "predicted": []
+  },
+  {
+    "id": "PCB924",
+    "expected": [
+      "PoorPasteTransfer"
+    ],
+    "predicted": [
+      "PoorPasteTransfer"
+    ]
+  },
+  {
+    "id": "PCB925",
+    "expected": [
+      "LowAmbientTemperature",
+      "LowStencilThickness"
+    ],
+    "predicted": [
+      "LowStencilThickness",
+      "LowAmbientTemperature"
+    ]
+  },
+  {
+    "id": "PCB938",
+    "expected": [
+      "LowAmbientTemperature"
+    ],
+    "predicted": [
+      "LowAmbientTemperature"
+    ]
+  },
+  {
+    "id": "PCB946",
+    "expected": [
+      "LowAmbientTemperature"
+    ],
+    "predicted": [
+      "LowAmbientTemperature"
+    ]
+  },
+  {
+    "id": "PCB951",
+    "expected": [
+      "HighPasteViscosity"
+    ],
+    "predicted": [
+      "PoorPasteTransfer"
+    ]
+  },
+  {
+    "id": "PCB954",
+    "expected": [
+      "HighPeakReflowTemperature"
+    ],
+    "predicted": [
+      "HighPeakReflowTemperature"
+    ]
+  },
+  {
+    "id": "PCB955",
+    "expected": [
+      "LowAmbientTemperature"
+    ],
+    "predicted": [
+      "LowAmbientTemperature"
+    ]
+  },
+  {
+    "id": "PCB957",
+    "expected": [
+      "HighStencilThickness"
+    ],
+    "predicted": [
+      "HighStencilThickness"
+    ]
+  },
+  {
+    "id": "PCB962",
+    "expected": [
+      "LowAmbientTemperature",
+      "LowPeakReflowTemperature"
+    ],
+    "predicted": [
+      "NonCoalescence",
+      "LowAmbientTemperature"
+    ]
+  },
+  {
+    "id": "PCB967",
+    "expected": [
+      "HighStencilThickness"
+    ],
+    "predicted": [
+      "HighStencilThickness"
+    ]
+  },
+  {
+    "id": "PCB975",
+    "expected": [
+      "HighTimeAboveLiquidus",
+      "LowAmbientTemperature"
+    ],
+    "predicted": [
+      "HighTimeAboveLiquidus"
+    ]
+  },
+  {
+    "id": "PCB978",
+    "expected": [
+      "HighStencilThickness"
+    ],
+    "predicted": [
+      "HighStencilThickness"
+    ]
+  },
+  {
+    "id": "PCB981",
+    "expected": [
+      "HighStencilThickness"
+    ],
+    "predicted": [
+      "HighStencilThickness"
+    ]
+  },
+  {
+    "id": "PCB982",
+    "expected": [
+      "HighTimeAboveLiquidus",
+      "HighPasteViscosity"
+    ],
+    "predicted": [
+      "HighTimeAboveLiquidus"
+    ]
+  },
+  {
+    "id": "PCB987",
+    "expected": [
+      "LowTimeAboveLiquidus"
+    ],
+    "predicted": [
+      "LowTimeAboveLiquidus"
+    ]
+  },
+  {
+    "id": "PCB990",
+    "expected": [
+      "HighStencilThickness"
+    ],
+    "predicted": [
+      "HighStencilThickness"
+    ]
+  },
+  {
+    "id": "PCB992",
+    "expected": [
+      "LowPasteViscosity"
+    ],
+    "predicted": [
+      "LowPasteViscosity",
+      "ApertureOverfill"
+    ]
+  },
+  {
+    "id": "PCB998",
+    "expected": [
+      "HighStencilThickness"
+    ],
+    "predicted": [
+      "HighStencilThickness"
+    ]
+  },
+  {
+    "id": "PCB1002",
+    "expected": [
+      "LowAmbientTemperature"
+    ],
+    "predicted": [
+      "LowAmbientTemperature"
+    ]
+  },
+  {
+    "id": "PCB1006",
+    "expected": [
+      "LowAmbientTemperature"
+    ],
+    "predicted": []
+  },
+  {
+    "id": "PCB1007",
+    "expected": [
+      "LowAmbientTemperature",
+      "HighPasteViscosity"
+    ],
+    "predicted": [
+      "LowAmbientTemperature",
+      "HighPasteViscosity"
+    ]
+  },
+  {
+    "id": "PCB1008",
+    "expected": [
+      "HighStencilThickness"
+    ],
+    "predicted": []
+  },
+  {
+    "id": "PCB1010",
+    "expected": [
+      "LowAmbientTemperature",
+      "HighStencilThickness"
+    ],
+    "predicted": [
+      "ApertureOverfill"
+    ]
+  },
+  {
+    "id": "PCB1011",
+    "expected": [
+      "HighPasteViscosity"
+    ],
+    "predicted": [
+      "HighPasteViscosity"
+    ]
+  },
+  {
+    "id": "PCB1013",
+    "expected": [
+      "HighPeakReflowTemperature"
+    ],
+    "predicted": [
+      "HighPeakReflowTemperature"
+    ]
+  },
+  {
+    "id": "PCB1014",
+    "expected": [
+      "HighStencilThickness"
+    ],
+    "predicted": [
+      "ApertureOverfill"
+    ]
+  },
+  {
+    "id": "PCB1015",
+    "expected": [
+      "LowAmbientTemperature"
+    ],
+    "predicted": [
+      "LowAmbientTemperature"
+    ]
+  },
+  {
+    "id": "PCB1020",
+    "expected": [
+      "LowTimeAboveLiquidus"
+    ],
+    "predicted": [
+      "LowTimeAboveLiquidus"
+    ]
+  },
+  {
+    "id": "PCB1021",
+    "expected": [
+      "LowAmbientTemperature"
+    ],
+    "predicted": [
+      "LowAmbientTemperature"
+    ]
+  },
+  {
+    "id": "PCB1022",
+    "expected": [
+      "HighPasteViscosity"
+    ],
+    "predicted": [
+      "HighPasteViscosity"
+    ]
+  },
+  {
+    "id": "PCB1023",
+    "expected": [
+      "LowAmbientTemperature"
+    ],
+    "predicted": [
+      "LowAmbientTemperature"
+    ]
+  },
+  {
+    "id": "PCB1027",
+    "expected": [
+      "LowPeakReflowTemperature"
+    ],
+    "predicted": [
+      "LowPeakReflowTemperature"
+    ]
+  },
+  {
+    "id": "PCB1028",
+    "expected": [
+      "HighStencilThickness"
+    ],
+    "predicted": [
+      "HighStencilThickness"
+    ]
+  },
+  {
+    "id": "PCB1031",
+    "expected": [
+      "LowAmbientTemperature"
+    ],
+    "predicted": [
+      "LowAmbientTemperature"
+    ]
+  },
+  {
+    "id": "PCB1033",
+    "expected": [
+      "HighStencilThickness"
+    ],
+    "predicted": [
+      "HighStencilThickness"
+    ]
+  },
+  {
+    "id": "PCB1034",
+    "expected": [
+      "HighStencilThickness"
+    ],
+    "predicted": []
+  },
+  {
+    "id": "PCB1037",
+    "expected": [
+      "HighStencilThickness"
+    ],
+    "predicted": [
+      "ApertureOverfill"
+    ]
+  },
+  {
+    "id": "PCB1042",
+    "expected": [
+      "LowAmbientRh"
+    ],
+    "predicted": [
+      "ExcessReflowSpreading"
+    ]
+  },
+  {
+    "id": "PCB1043",
+    "expected": [
+      "PoorPasteTransfer"
+    ],
+    "predicted": [
+      "PoorPasteTransfer"
+    ]
+  },
+  {
+    "id": "PCB1045",
+    "expected": [
+      "LowAmbientTemperature"
+    ],
+    "predicted": []
+  },
+  {
+    "id": "PCB1048",
+    "expected": [
+      "LowAmbientTemperature"
+    ],
+    "predicted": [
+      "LowAmbientTemperature"
+    ]
+  },
+  {
+    "id": "PCB1049",
+    "expected": [
+      "HighStencilThickness"
+    ],
+    "predicted": []
+  },
+  {
+    "id": "PCB1051",
+    "expected": [
+      "HighStencilThickness"
+    ],
+    "predicted": [
+      "HighStencilThickness"
+    ]
+  },
+  {
+    "id": "PCB1054",
+    "expected": [
+      "LowAmbientTemperature"
+    ],
+    "predicted": [
+      "LowAmbientTemperature"
+    ]
+  },
+  {
+    "id": "PCB1056",
+    "expected": [
+      "LowAmbientRh"
+    ],
+    "predicted": [
+      "LowAmbientRh"
+    ]
+  },
+  {
+    "id": "PCB1057",
+    "expected": [
+      "LowAmbientRh"
+    ],
+    "predicted": []
+  },
+  {
+    "id": "PCB1058",
+    "expected": [
+      "LowAmbientTemperature"
+    ],
+    "predicted": []
+  },
+  {
+    "id": "PCB1059",
+    "expected": [
+      "LowAmbientTemperature"
+    ],
+    "predicted": [
+      "LowAmbientTemperature"
+    ]
+  },
+  {
+    "id": "PCB1064",
+    "expected": [
+      "LowAmbientTemperature"
+    ],
+    "predicted": [
+      "LowAmbientTemperature"
+    ]
+  },
+  {
+    "id": "PCB1070",
+    "expected": [
+      "LowAmbientRh"
+    ],
+    "predicted": []
+  },
+  {
+    "id": "PCB1071",
+    "expected": [
+      "HighStencilThickness",
+      "HighAmbientRh"
+    ],
+    "predicted": [
+      "ApertureOverfill"
+    ]
+  },
+  {
+    "id": "PCB1073",
+    "expected": [
+      "LowAmbientRh"
+    ],
+    "predicted": []
+  },
+  {
+    "id": "PCB1077",
+    "expected": [
+      "HighStencilThickness"
+    ],
+    "predicted": [
+      "HighStencilThickness"
+    ]
+  },
+  {
+    "id": "PCB1081",
+    "expected": [
+      "HighStencilThickness"
+    ],
+    "predicted": [
+      "HighStencilThickness"
+    ]
+  },
+  {
+    "id": "PCB1083",
+    "expected": [
+      "LowAmbientTemperature"
+    ],
+    "predicted": [
+      "LowAmbientTemperature"
+    ]
+  },
+  {
+    "id": "PCB1084",
+    "expected": [
+      "LowAmbientTemperature"
+    ],
+    "predicted": [
+      "LowAmbientTemperature"
+    ]
+  },
+  {
+    "id": "PCB1085",
+    "expected": [
+      "LowAmbientTemperature"
+    ],
+    "predicted": [
+      "LowAmbientTemperature"
+    ]
+  },
+  {
+    "id": "PCB1092",
+    "expected": [
+      "LowPeakReflowTemperature"
+    ],
+    "predicted": [
+      "LowPeakReflowTemperature"
+    ]
+  },
+  {
+    "id": "PCB1101",
+    "expected": [
+      "HighAmbientRh"
+    ],
+    "predicted": [
+      "HighAmbientRh"
+    ]
+  },
+  {
+    "id": "PCB1102",
+    "expected": [
+      "LowPasteViscosity"
+    ],
+    "predicted": [
+      "LowPasteViscosity",
+      "ApertureOverfill"
+    ]
+  },
+  {
+    "id": "PCB1111",
+    "expected": [
+      "LowAmbientTemperature"
+    ],
+    "predicted": []
+  },
+  {
+    "id": "PCB1112",
+    "expected": [
+      "LowTimeAboveLiquidus"
+    ],
+    "predicted": [
+      "LowTimeAboveLiquidus"
+    ]
+  },
+  {
+    "id": "PCB1115",
+    "expected": [
+      "HighStencilThickness"
+    ],
+    "predicted": [
+      "HighStencilThickness"
+    ]
+  },
+  {
+    "id": "PCB1120",
+    "expected": [
+      "LowAmbientTemperature"
+    ],
+    "predicted": [
+      "LowAmbientTemperature"
+    ]
+  },
+  {
+    "id": "PCB1123",
+    "expected": [
+      "LowPasteViscosity"
+    ],
+    "predicted": [
+      "LowPasteViscosity",
+      "ApertureOverfill"
+    ]
+  },
+  {
+    "id": "PCB1127",
+    "expected": [
+      "HighPasteViscosity",
+      "LowAmbientRh"
+    ],
+    "predicted": [
+      "HighPasteViscosity"
+    ]
+  },
+  {
+    "id": "PCB1129",
+    "expected": [
+      "LowAmbientTemperature"
+    ],
+    "predicted": [
+      "LowAmbientTemperature"
+    ]
+  },
+  {
+    "id": "PCB1131",
+    "expected": [
+      "LowAmbientTemperature"
+    ],
+    "predicted": [
+      "LowAmbientTemperature"
+    ]
+  },
+  {
+    "id": "PCB1141",
+    "expected": [
+      "LowAmbientRh",
+      "HighPeakReflowTemperature"
+    ],
+    "predicted": [
+      "HighPeakReflowTemperature",
+      "LowAmbientRh"
+    ]
+  },
+  {
+    "id": "PCB1152",
+    "expected": [
+      "HighPeakReflowTemperature"
+    ],
+    "predicted": [
+      "ExcessReflowSpreading"
+    ]
+  },
+  {
+    "id": "PCB1153",
+    "expected": [
+      "LowPasteViscosity"
+    ],
+    "predicted": [
+      "LowPasteViscosity",
+      "ApertureOverfill"
+    ]
+  },
+  {
+    "id": "PCB1157",
+    "expected": [
+      "HighStencilThickness"
+    ],
+    "predicted": [
+      "HighStencilThickness"
+    ]
+  },
+  {
+    "id": "PCB1159",
+    "expected": [
+      "LowPasteViscosity"
+    ],
+    "predicted": [
+      "ApertureOverfill"
+    ]
+  },
+  {
+    "id": "PCB1160",
+    "expected": [
+      "HighStencilThickness"
+    ],
+    "predicted": [
+      "HighStencilThickness"
+    ]
+  },
+  {
+    "id": "PCB1164",
+    "expected": [
+      "LowAmbientTemperature"
+    ],
+    "predicted": [
+      "LowAmbientTemperature"
+    ]
+  },
+  {
+    "id": "PCB1166",
+    "expected": [
+      "LowAmbientTemperature"
+    ],
+    "predicted": [
+      "LowAmbientTemperature"
+    ]
+  },
+  {
+    "id": "PCB1167",
+    "expected": [
+      "LowTimeAboveLiquidus"
+    ],
+    "predicted": [
+      "PoorPasteTransfer",
+      "LowTimeAboveLiquidus"
+    ]
+  },
+  {
+    "id": "PCB1177",
+    "expected": [
+      "HighAmbientRh"
+    ],
+    "predicted": []
+  },
+  {
+    "id": "PCB1180",
+    "expected": [
+      "HighAmbientRh"
+    ],
+    "predicted": []
+  },
+  {
+    "id": "PCB1187",
+    "expected": [
+      "LowAmbientTemperature"
+    ],
+    "predicted": [
+      "LowAmbientTemperature"
+    ]
+  },
+  {
+    "id": "PCB1188",
+    "expected": [
+      "HighStencilThickness"
+    ],
+    "predicted": [
+      "ApertureOverfill"
+    ]
+  },
+  {
+    "id": "PCB1190",
+    "expected": [
+      "LowPeakReflowTemperature"
+    ],
+    "predicted": [
+      "LowPeakReflowTemperature"
+    ]
+  },
+  {
+    "id": "PCB1194",
+    "expected": [
+      "LowAmbientTemperature"
+    ],
+    "predicted": [
+      "LowAmbientTemperature"
+    ]
+  },
+  {
+    "id": "PCB1196",
+    "expected": [
+      "HighAmbientTemperature",
+      "LowAmbientRh"
+    ],
+    "predicted": [
+      "HighAmbientTemperature"
+    ]
+  },
+  {
+    "id": "PCB1197",
+    "expected": [
+      "HighStencilThickness"
+    ],
+    "predicted": [
+      "HighStencilThickness"
+    ]
+  },
+  {
+    "id": "PCB1198",
+    "expected": [
+      "HighPeakReflowTemperature",
+      "HighTimeAboveLiquidus"
+    ],
+    "predicted": [
+      "HighPeakReflowTemperature"
+    ]
+  },
+  {
+    "id": "PCB1204",
+    "expected": [
+      "LowPasteViscosity"
+    ],
+    "predicted": []
+  },
+  {
+    "id": "PCB1208",
+    "expected": [
+      "HighPasteViscosity"
+    ],
+    "predicted": [
+      "HighPasteViscosity"
+    ]
+  },
+  {
+    "id": "PCB1210",
+    "expected": [
+      "LowAmbientTemperature",
+      "HighAmbientRh"
+    ],
+    "predicted": [
+      "HighAmbientRh",
+      "LowAmbientTemperature"
+    ]
+  },
+  {
+    "id": "PCB1211",
+    "expected": [
+      "LowAmbientTemperature"
+    ],
+    "predicted": [
+      "LowAmbientTemperature"
+    ]
+  },
+  {
+    "id": "PCB1213",
+    "expected": [
+      "HighStencilThickness"
+    ],
+    "predicted": [
+      "HighStencilThickness"
+    ]
+  },
+  {
+    "id": "PCB1222",
+    "expected": [
+      "LowAmbientTemperature"
+    ],
+    "predicted": []
+  },
+  {
+    "id": "PCB1225",
+    "expected": [
+      "LowAmbientRh"
+    ],
+    "predicted": [
+      "PoorPasteTransfer"
+    ]
+  },
+  {
+    "id": "PCB1227",
+    "expected": [
+      "LowAmbientTemperature"
+    ],
+    "predicted": [
+      "LowAmbientTemperature"
+    ]
+  },
+  {
+    "id": "PCB1230",
+    "expected": [
+      "HighAmbientRh"
+    ],
+    "predicted": []
+  },
+  {
+    "id": "PCB1234",
+    "expected": [
+      "HighPeakReflowTemperature"
+    ],
+    "predicted": [
+      "HighPeakReflowTemperature"
+    ]
+  },
+  {
+    "id": "PCB1235",
+    "expected": [
+      "LowPasteViscosity"
+    ],
+    "predicted": [
+      "LowPasteViscosity",
+      "ApertureOverfill"
+    ]
+  },
+  {
+    "id": "PCB1236",
+    "expected": [
+      "LowAmbientTemperature",
+      "HighPasteViscosity"
+    ],
+    "predicted": [
+      "LowAmbientTemperature",
+      "HighPasteViscosity"
+    ]
+  },
+  {
+    "id": "PCB1248",
+    "expected": [
+      "HighStencilThickness"
+    ],
+    "predicted": [
+      "HighStencilThickness"
+    ]
+  },
+  {
+    "id": "PCB1256",
+    "expected": [
+      "HighStencilThickness"
+    ],
+    "predicted": [
+      "HighStencilThickness"
+    ]
+  },
+  {
+    "id": "PCB1258",
+    "expected": [
+      "HighStencilThickness"
+    ],
+    "predicted": [
+      "HighStencilThickness"
+    ]
+  },
+  {
+    "id": "PCB1263",
+    "expected": [
+      "LowAmbientTemperature",
+      "HighAmbientRh"
+    ],
+    "predicted": [
+      "HighAmbientRh",
+      "LowAmbientTemperature"
+    ]
+  },
+  {
+    "id": "PCB1269",
+    "expected": [
+      "LowAmbientTemperature"
+    ],
+    "predicted": [
+      "LowAmbientTemperature"
+    ]
+  },
+  {
+    "id": "PCB1276",
+    "expected": [
+      "LowAmbientTemperature",
+      "HighAmbientRh"
+    ],
+    "predicted": [
+      "LowAmbientTemperature"
+    ]
+  },
+  {
+    "id": "PCB1280",
+    "expected": [
+      "LowAmbientTemperature",
+      "HighAmbientRh"
+    ],
+    "predicted": [
+      "LowAmbientTemperature"
+    ]
+  },
+  {
+    "id": "PCB1281",
+    "expected": [
+      "LowTimeAboveLiquidus"
+    ],
+    "predicted": [
+      "LowTimeAboveLiquidus"
+    ]
+  },
+  {
+    "id": "PCB1286",
+    "expected": [
+      "LowAmbientTemperature",
+      "HighAmbientRh",
+      "HighPeakReflowTemperature"
+    ],
+    "predicted": [
+      "HighAmbientRh",
+      "HighPeakReflowTemperature",
+      "LowAmbientTemperature"
+    ]
+  },
+  {
+    "id": "PCB1287",
+    "expected": [
+      "LowAmbientTemperature"
+    ],
+    "predicted": [
+      "LowAmbientTemperature"
+    ]
+  },
+  {
+    "id": "PCB1288",
+    "expected": [
+      "HighStencilThickness"
+    ],
+    "predicted": [
+      "HighStencilThickness"
+    ]
+  },
+  {
+    "id": "PCB1292",
+    "expected": [
+      "LowPeakReflowTemperature"
+    ],
+    "predicted": [
+      "LowPeakReflowTemperature"
+    ]
+  },
+  {
+    "id": "PCB1294",
+    "expected": [
+      "LowTimeAboveLiquidus"
+    ],
+    "predicted": [
+      "NonCoalescence"
+    ]
+  },
+  {
+    "id": "PCB1295",
+    "expected": [
+      "LowTimeAboveLiquidus"
+    ],
+    "predicted": [
+      "LowTimeAboveLiquidus"
+    ]
+  },
+  {
+    "id": "PCB1297",
+    "expected": [
+      "LowPasteViscosity"
+    ],
+    "predicted": [
+      "ApertureOverfill"
+    ]
+  },
+  {
+    "id": "PCB1298",
+    "expected": [
+      "LowAmbientTemperature"
+    ],
+    "predicted": []
+  },
+  {
+    "id": "PCB1299",
+    "expected": [
+      "LowAmbientTemperature"
+    ],
+    "predicted": [
+      "LowAmbientTemperature"
+    ]
+  },
+  {
+    "id": "PCB1302",
+    "expected": [
+      "LowAmbientTemperature"
+    ],
+    "predicted": [
+      "LowAmbientTemperature"
+    ]
+  },
+  {
+    "id": "PCB1310",
+    "expected": [
+      "LowAmbientTemperature"
+    ],
+    "predicted": []
+  },
+  {
+    "id": "PCB1313",
+    "expected": [
+      "HighAmbientRh"
+    ],
+    "predicted": [
+      "HighAmbientRh"
+    ]
+  },
+  {
+    "id": "PCB1316",
+    "expected": [
+      "HighAmbientTemperature"
+    ],
+    "predicted": [
+      "HighAmbientTemperature"
+    ]
+  },
+  {
+    "id": "PCB1319",
+    "expected": [
+      "LowTimeAboveLiquidus",
+      "LowAmbientTemperature"
+    ],
+    "predicted": [
+      "LowTimeAboveLiquidus"
+    ]
+  },
+  {
+    "id": "PCB1320",
+    "expected": [
+      "LowPeakReflowTemperature",
+      "HighStencilThickness"
+    ],
+    "predicted": [
+      "ApertureOverfill",
+      "LowPeakReflowTemperature"
+    ]
+  },
+  {
+    "id": "PCB1322",
+    "expected": [
+      "LowAmbientTemperature"
+    ],
+    "predicted": [
+      "LowAmbientTemperature"
+    ]
+  },
+  {
+    "id": "PCB1323",
+    "expected": [
+      "HighPasteViscosity",
+      "LowAmbientTemperature"
+    ],
+    "predicted": [
+      "LowPasteVolumePerAperture",
+      "HighPasteViscosity"
+    ]
+  },
+  {
+    "id": "PCB1328",
+    "expected": [
+      "LowAmbientTemperature"
+    ],
+    "predicted": [
+      "LowAmbientTemperature"
+    ]
+  },
+  {
+    "id": "PCB1330",
+    "expected": [
+      "LowAmbientTemperature",
+      "HighAmbientRh"
+    ],
+    "predicted": [
+      "LowAmbientTemperature"
+    ]
+  },
+  {
+    "id": "PCB1331",
+    "expected": [
+      "HighPasteViscosity",
+      "LowAmbientTemperature"
+    ],
+    "predicted": [
+      "HighPasteViscosity"
+    ]
+  },
+  {
+    "id": "PCB1332",
+    "expected": [
+      "HighStencilThickness"
+    ],
+    "predicted": [
+      "HighStencilThickness"
+    ]
+  },
+  {
+    "id": "PCB1333",
+    "expected": [
+      "LowTimeAboveLiquidus"
+    ],
+    "predicted": [
+      "LowTimeAboveLiquidus"
+    ]
+  },
+  {
+    "id": "PCB1334",
+    "expected": [
+      "HighStencilThickness"
+    ],
+    "predicted": [
+      "HighStencilThickness"
+    ]
+  },
+  {
+    "id": "PCB1337",
+    "expected": [
+      "HighStencilThickness"
+    ],
+    "predicted": [
+      "ApertureOverfill"
+    ]
+  },
+  {
+    "id": "PCB1338",
+    "expected": [
+      "HighPeakReflowTemperature"
+    ],
+    "predicted": [
+      "HighPeakReflowTemperature"
+    ]
+  },
+  {
+    "id": "PCB1341",
+    "expected": [
+      "HighStencilThickness"
+    ],
+    "predicted": [
+      "NonCoalescence",
+      "ApertureOverfill"
+    ]
+  },
+  {
+    "id": "PCB1343",
+    "expected": [
+      "LowPeakReflowTemperature"
+    ],
+    "predicted": [
+      "LowPeakReflowTemperature"
+    ]
+  },
+  {
+    "id": "PCB1345",
+    "expected": [
+      "LowAmbientTemperature"
+    ],
+    "predicted": [
+      "LowAmbientTemperature"
+    ]
+  },
+  {
+    "id": "PCB1349",
+    "expected": [
+      "HighStencilThickness"
+    ],
+    "predicted": [
+      "HighStencilThickness"
+    ]
+  },
+  {
+    "id": "PCB1356",
+    "expected": [
+      "HighPeakReflowTemperature"
+    ],
+    "predicted": [
+      "HighPeakReflowTemperature"
+    ]
+  },
+  {
+    "id": "PCB1361",
+    "expected": [
+      "LowAmbientTemperature",
+      "HighAmbientRh"
+    ],
+    "predicted": [
+      "HighAmbientRh",
+      "LowAmbientTemperature"
+    ]
+  },
+  {
+    "id": "PCB1367",
+    "expected": [
+      "HighPasteViscosity"
+    ],
+    "predicted": [
+      "HighPasteViscosity"
+    ]
+  },
+  {
+    "id": "PCB1369",
+    "expected": [
+      "HighAmbientTemperature"
+    ],
+    "predicted": [
+      "HighAmbientTemperature"
+    ]
+  },
+  {
+    "id": "PCB1372",
+    "expected": [
+      "HighPeakReflowTemperature"
+    ],
+    "predicted": [
+      "HighPeakReflowTemperature"
+    ]
+  },
+  {
+    "id": "PCB1374",
+    "expected": [
+      "HighPasteViscosity"
+    ],
+    "predicted": [
+      "PoorPasteTransfer"
+    ]
+  },
+  {
+    "id": "PCB1376",
+    "expected": [
+      "HighAmbientRh",
+      "LowPasteViscosity"
+    ],
+    "predicted": [
+      "HighAmbientRh"
+    ]
+  },
+  {
+    "id": "PCB1379",
+    "expected": [
+      "LowAmbientTemperature"
+    ],
+    "predicted": [
+      "LowAmbientTemperature"
+    ]
+  },
+  {
+    "id": "PCB1386",
+    "expected": [
+      "LowTimeAboveLiquidus"
+    ],
+    "predicted": [
+      "LowTimeAboveLiquidus"
+    ]
+  },
+  {
+    "id": "PCB1392",
+    "expected": [
+      "HighStencilThickness"
+    ],
+    "predicted": [
+      "HighStencilThickness"
+    ]
+  },
+  {
+    "id": "PCB1393",
+    "expected": [
+      "LowPasteViscosity"
+    ],
+    "predicted": []
+  },
+  {
+    "id": "PCB1394",
+    "expected": [
+      "LowAmbientTemperature"
+    ],
+    "predicted": []
+  },
+  {
+    "id": "PCB1395",
+    "expected": [
+      "ApertureOverfill"
+    ],
+    "predicted": [
+      "ApertureOverfill"
+    ]
+  },
+  {
+    "id": "PCB1399",
+    "expected": [
+      "LowPeakReflowTemperature"
+    ],
+    "predicted": [
+      "LowPeakReflowTemperature"
+    ]
+  },
+  {
+    "id": "PCB1401",
+    "expected": [
+      "HighTimeAboveLiquidus"
+    ],
+    "predicted": [
+      "HighTimeAboveLiquidus"
+    ]
+  },
+  {
+    "id": "PCB1403",
+    "expected": [
+      "LowAmbientTemperature"
+    ],
+    "predicted": []
+  },
+  {
+    "id": "PCB1407",
+    "expected": [
+      "HighTimeAboveLiquidus"
+    ],
+    "predicted": [
+      "HighTimeAboveLiquidus"
+    ]
+  },
+  {
+    "id": "PCB1412",
+    "expected": [
+      "LowPeakReflowTemperature"
+    ],
+    "predicted": [
+      "LowPeakReflowTemperature"
+    ]
+  },
+  {
+    "id": "PCB1414",
+    "expected": [
+      "LowAmbientTemperature"
+    ],
+    "predicted": []
+  },
+  {
+    "id": "PCB1419",
+    "expected": [
+      "HighAmbientRh",
+      "LowAmbientTemperature"
+    ],
+    "predicted": [
+      "HighAmbientRh",
+      "LowAmbientTemperature"
+    ]
+  },
+  {
+    "id": "PCB1427",
+    "expected": [
+      "LowAmbientTemperature",
+      "LowTimeAboveLiquidus",
+      "HighStencilThickness"
+    ],
+    "predicted": [
+      "ApertureOverfill",
+      "LowAmbientTemperature",
+      "LowTimeAboveLiquidus"
+    ]
+  },
+  {
+    "id": "PCB1428",
+    "expected": [
+      "LowPasteViscosity"
+    ],
+    "predicted": [
+      "LowPasteViscosity",
+      "ApertureOverfill"
+    ]
+  },
+  {
+    "id": "PCB1429",
+    "expected": [
+      "LowAmbientTemperature"
+    ],
+    "predicted": [
+      "LowAmbientTemperature"
+    ]
+  }
+]

@@ -93,6 +93,10 @@ object_properties:
     domain: Effect
     range: FailureCause
   
+  - name: supportedBy
+    domain: Effect
+    range: FailureCause
+  
   - name: RO_0002566
     domain: FailureCause
     range: Effect
@@ -102,6 +106,15 @@ object_properties:
     parent: RO_0002566
     domain: FailureCause
     range: Effect
+  
+  - name: supports
+    domain: FailureCause
+    range: Effect
+  
+  - name: performedOn
+    domain: ConformanceAssessment
+    range: PCB
+
 
 data_properties:
   - name: hasUpperValue
@@ -139,17 +152,32 @@ data_properties:
   - name: hasDescription
     range: str
 
-  - name: isPresent
-    range: bool
-
   - name: createdAt
     range: datetime
 
-  - name: hasRiskLevel
-    range: str
-
   - name: lastUpdated
     range: datetime
+  
+  - name: hasUpperValue
+    range: float
+  
+  - name: modelType
+    range: str
+  
+  - name: modelVersion
+    range: int
+  
+  - name: totalFeatures
+    range: int
+  
+  - name: defectClasses
+    range: int
+  
+  - name: mechanismClasses
+    range: int
+  
+  - name: rawFeatures
+    range: int
 
 annotation_properties:
   - name: triggeredByRuleText

@@ -14,9 +14,21 @@ from .services.ontology_functions import initiate_ontology,\
     add_products_to_ontology,\
     add_dispositions_to_ontology
 from .services.bayesian_inference import implement_bayesian_inference
-from .services.metrics import root_cause_accuracy, test_provenance_completeness, cycle_rate, chain_recall
+from .services.metrics import (
+    root_cause_accuracy, 
+    test_provenance_completeness, 
+    cycle_rate, 
+    chain_recall
+)
 from app.services.synthetic_data_generator import generate_ground_truth
-from app.services.causal_chains import rule_to_sparql, fire_failure_cause_queries, create_causal_chain, infere_root_causes, attach_corrective_action_to_root_causes
+from app.services.causal_chains import (
+    rule_to_sparql, 
+    fire_failure_cause_queries, 
+    create_causal_chain, 
+    infere_root_causes, 
+    attach_corrective_action_to_root_causes
+)
+from app.config.onto_config import products_in_ontology
 
 db_client = MongoClient("mongodb://localhost:27017/")
 
@@ -34,7 +46,6 @@ onto_path.append(path)
 good_ratio = 0.5
 bad_ratio = 0.5
 version = 3
-products_in_ontology = 1000
 data_label = "train"
 defect_threshold = 0.55
 
@@ -164,7 +175,7 @@ def extract_specs():
         parsed_spec_dict[k]["quality_inheritor"] = spec_category_dict[k]["quality_inheritor"]
         parsed_spec_dict[k]["ppsc_ref"] = spec_category_dict[k]["ppsc_ref"]
 
-    with open(f"{output_path}/specs.json", "w") as f:
+    with open(f"{input_path}/specs.json", "w") as f:
         json.dump(parsed_spec_dict, f, indent=2, ensure_ascii=False)
     return parsed_spec_dict
 
