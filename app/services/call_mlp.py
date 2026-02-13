@@ -43,33 +43,41 @@ def extract_for_kg(mlp_response: dict):
     defect_raw = mlp_response.get("defect", {})
 
     defect = {
-        "class": defect_raw.get("class"),
+        "name": defect_raw.get("class"),
         "probability": float(defect_raw.get("confidence", 0.0)),
         "description": defect_raw.get("description", ""),
         "source": defect_raw.get("source", "MLP")
     }
 
     # -----------------------------
-    # MECHANISM (derived from class)
+    # PRINT STAGE MECHANISM (derived from class)
     # -----------------------------
-    mechanism = None
-    mech_raw = mlp_response.get("mechanism", {})
-
-    mech_class = mech_raw.get("class")
-    mech_confidence = float(mech_raw.get("confidence", 0.0))
-
+    mech_raw = mlp_response.get("printing_mechanism", {})
     # Treat "No Mechanism" as absence
-    if mech_class and mech_class.lower() not in {"no mechanism", "none"}:
-        mechanism = {
-            "name": mech_class,
-            "probability": mech_confidence,
-            "description": mech_raw.get(
-                "description",
-                f"{mech_class} detected"
-            ),
-            "present": True,
-            "source": mech_raw.get("source", "MLP")
-        }
+    print_mechanism = {
+        "name": mech_raw.get("class"),
+        "probability": float(mech_raw.get("confidence", 0.0)),
+        "description": mech_raw.get(
+            "description",
+            f"{mech_raw.get('class')} detected"
+        ),
+        "source": mech_raw.get("source", "MLP")
+    }
+    
+    # -----------------------------
+    # REFLOW STAGE MECHANISM (derived from class)
+    # -----------------------------
+    mech_raw = mlp_response.get("reflow_mechanism", {})
+    # Treat "No Mechanism" as absence
+    reflow_mechanism = {
+        "name": mech_raw.get("class"),
+        "probability": float(mech_raw.get("confidence", 0.0)),
+        "description": mech_raw.get(
+            "description",
+            f"{mech_raw.get('class')} detected"
+        ),
+        "source": mech_raw.get("source", "MLP")
+    }
 
     # -----------------------------
     # VIOLATIONS (derived from parameters)
@@ -82,19 +90,19 @@ def extract_for_kg(mlp_response: dict):
     }
     for param_name, param_data in parameters.items():
         pn = param_map.get(param_name, param_name)
-        if param_data.get("direction") == "Safe":
-            continue  # skip non-risk parameters
-
-        violations.append({
-            "parameter": pn,
-            "direction": param_data.get("direction"),
-            "probability": float(param_data.get("risk_score", 0.0)),
-            "warning": param_data.get("status"),
-            "source": "MLP"
-        })
+        risk_score =  param_data.get("risk_score", 0.0)
+        risk_score_threshold = 0.60
+        if risk_score >= risk_score_threshold:
+            violations.append({
+                "parameter": pn,
+                "direction": param_data.get("direction"),
+                "probability": float(param_data.get("risk_score", 0.0)),
+                "source": "MLP"
+            })
 
     return {
         "defect": defect,
-        "mechanism": mechanism,
+        "print_mechanism": print_mechanism,
+        "reflow_mechanism": reflow_mechanism,
         "violations": violations
     }

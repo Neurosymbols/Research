@@ -4,8 +4,10 @@ import json
 from tabulate import tabulate
 from copy import copy
 import numpy as np
+import math
 
 from app.services.utils import perform_sparql_query
+from app.config.onto_config import products_in_ontology
 
 def fc_name_syntax(classname):
    # Split by any sequence of non-alphanumeric characters
@@ -35,7 +37,7 @@ def get_data_factory():
             )
         )
     )
-    df = df[mask]
+    df = df[mask].head(products_in_ontology)
     factory = df.to_dict(orient="records")
     print(len(factory))
     return factory
@@ -86,13 +88,18 @@ def root_cause_accuracy():
         PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
         PREFIX ro: <http://purl.obolibrary.org/obo/>
 
-        SELECT ?productlabel ?rootcauselabel ?rule
+        SELECT ?productlabel ?rootcauselabel ?prob
         WHERE {
             ?rootcause a term:RootCause ;
                     rdfs:label ?rootcauselabel ;
-    				# prov:wasGeneratedBy ?ca ;
     				term:affects ?product .
-    		# ?ca term:triggeredByRule ?rule .
+    		OPTIONAL {
+                ?rootcause prov:wasGeneratedBy ?ca .
+                ?ca term:hasProbability ?prob .
+    		}
+            OPTIONAL {
+        		?rootcause term:hasProbability ?prob .
+            }
             ?product rdfs:label ?productlabel .
         }
         ORDER BY ?product
@@ -101,12 +108,17 @@ def root_cause_accuracy():
     result_1_bindings = result_1.get('results', {}).get('bindings', [])
 
     pred_set = dict()
+    pred_set_with_prob = dict()
     for b in result_1_bindings:
         plabel = b.get("productlabel").get('value')
         fclabel = b.get("rootcauselabel").get('value')
+        prob_value = float(b.get("prob", {}).get('value', 0.0))
         if plabel not in pred_set:
             pred_set[plabel] = set()
-        pred_set[plabel].add(fclabel)
+            pred_set_with_prob[plabel] = dict()
+        if fclabel not in ["NoPrintingMech", "NoReflowMech"]:
+            pred_set[plabel].add(fclabel)
+            pred_set_with_prob[plabel][fclabel] = prob_value
     pred_set = {k:list(v) for k,v in pred_set.items()}
 
     total_boards = len(expected_set)
@@ -114,10 +126,23 @@ def root_cause_accuracy():
     hit_rate_boards = []
     exact_match_boards = []
     jaccard_scores = []
+    mrr_scores = []
+
+    data = []
 
     for pcb_id, expected_causes in expected_set.items():
         set_expected = {item.lower() for item in expected_causes}
         set_pred = {item.lower() for item in pred_set.get(pcb_id, [])}
+        data.append({
+            "id": pcb_id, 
+            "expected": list(expected_causes), 
+            "predicted": list(pred_set.get(pcb_id, []))
+        })
+        d = pred_set_with_prob.get(pcb_id, {})
+        max_root_cause = max(d, key=d.get) if d else ""
+        rank = expected_causes.index(max_root_cause) if max_root_cause in expected_causes else math.inf
+        mrr = 1/(rank+1)
+        mrr_scores.append(mrr)
 
         intersection = set_expected & set_pred
         union = set_expected | set_pred
@@ -150,6 +175,7 @@ def root_cause_accuracy():
     hit_rate_pct = round(len(hit_rate_boards) / total_boards * 100, 2)
     exact_match_pct = round(len(exact_match_boards) / total_boards * 100, 2)
     avg_jaccard_pct = round(sum(jaccard_scores) / total_boards * 100, 2)
+    avg_mrr = round(sum(mrr_scores) / total_boards, 2)
 
     # -----------------------------
     # Populate results table
@@ -157,25 +183,32 @@ def root_cause_accuracy():
     test_dict['Test Name'].extend([
         "Hit Rate (≥1 correct)",
         "Jaccard Similarity (%)",
-        "Exact Match Accuracy"
+        "Exact Match Accuracy",
+        "Mean Reciprocal Rank"
     ])
 
     test_dict['System accuracy or response'].extend([
         f"{hit_rate_pct}%",
         f"{avg_jaccard_pct}%",
-        f"{exact_match_pct}%"
+        f"{exact_match_pct}%",
+        avg_mrr
     ])
 
     test_dict['Interpretation'].extend([
         "Did the system get on the right path?",
         "How close is the system reasoning to the expert?",
-        "How often is the system perfectly aligned with the expert?"
+        "How often is the system perfectly aligned with the expert?",
+        "How quickly the most dominant ground-truth cause appears"
     ])
+
+    with open("./root_cause_match.json", "w") as f:
+        json.dump(data, f , indent =2)
 
     return {
         "Hit Rate (≥1 correct)": f"{hit_rate_pct}%",
         "Jaccard Similarity (%)": f"{avg_jaccard_pct}%",
-        "Exact Match Accuracy": f"{exact_match_pct}%"
+        "Exact Match Accuracy": f"{exact_match_pct}%",
+        "Mean Reciprocal Rank": avg_mrr
     }
 
 
@@ -237,6 +270,9 @@ def cycle_rate():
     else:
        test_res = 'cycles detected in causal chains'
        test_dict['System accuracy or response'].extend(['cycles detected in causal chains'])
+    test_dict['Interpretation'].extend([
+        "Are the generated explanations structurally valid?"
+    ])
     return {
        "cycle rate": test_res
     }
@@ -274,6 +310,7 @@ def chain_recall():
     recall_data = {}
     prec_data = {}
     i = 0
+    chain_data = []
     for k,v in factory.items():
         recall_data[k] = 0.0
         prec_data[k] = 0.0
@@ -288,10 +325,11 @@ def chain_recall():
             causelabel = b.get("causelabel").get('value')
             pred_set.append((effectlabel, causelabel))
         pred_set = {tuple((i.lower() for i in item)) for item in pred_set}
-        print(pred_set)
+        # print(pred_set)
         v = {tuple(i.lower() for i in item) for item in v}
-        print(v)
+        # print(v)
         intersection = pred_set & v
+        chain_data.append({"id": k, "expected": list(v), "predicted": list(pred_set)})
         if len(v) or len(pred_set):
             recall = round((len(intersection) / len(v)) * 100, 2) if len(v) else 0
             precision = round((len(intersection)/len(pred_set))*100,2) if pred_set else 0
@@ -322,6 +360,12 @@ def chain_recall():
         prec_data[k] = precision
     test_dict['Test Name'].extend(["chain recall", "chain precision"])
     test_dict['System accuracy or response'].extend([f"{round(np.mean(avg_recall),2)}%", f"{round(np.mean(avg_precision),2)}%"])
+    test_dict['Interpretation'].extend([
+        "How close is the system reasoning to the expert?",
+        "How often is the system perfectly aligned with the expert?"
+    ])
+    with open("./chain_match.json", "w") as f:
+        json.dump(chain_data, f , indent =2)
     return {
         "chain recall": f"{round(np.mean(avg_recall),2)}%",
         "chain precision": f"{round(np.mean(avg_precision),2)}%",

@@ -4,7 +4,7 @@ import yaml
 
 from functools import reduce
 from owlready2 import *
-from app.services.utils import add_classes, add_individuals, create_classname_syntax, perform_sparql_query, perform_sparql_update
+from app.services.utils import add_classes, add_individuals, create_classname_syntax, perform_sparql_query, perform_sparql_update, is_subclass_of
 
 # Set the IRIs
 BASE_ONTO_IRI = "https://neurosymbols.ai/ontology/causal-terminology.owl"
@@ -48,6 +48,9 @@ super_base_classes = [
     'Plan Specification'
 ]
 # Create list of SemicON base classes
+semicon_ices = [
+    "PredictiveModel"
+]
 semicon_measurement_ices = [
     'ParameterObservation'
 ]
@@ -186,6 +189,11 @@ def add_base_classes(
     add_classes(
         semicon_measurement_ices,
         iof.search_one(iri=f"{IOF_IRI}MeasurementInformationContentEntity") if import_ontologies else base_onto.search_one(iri="*MeasurementInformationContentEntity"),
+        base_onto
+    )
+    add_classes(
+        semicon_ices,
+        iof.search_one(iri=f"{IOF_IRI}InformationContentEntity") if import_ontologies else base_onto.search_one(iri="*InformationContentEntity"),
         base_onto
     )
     add_classes(
@@ -453,6 +461,10 @@ def add_ishikawa_causal_graph():
                 return
             visited.add(start)
             effect_ind = base_onto[create_classname_syntax(start)](f"{start}_1")
+            # Add Effect as an additional type
+            effect_ind.is_a.append(base_onto.Effect)
+            if is_subclass_of(base_onto[create_classname_syntax(start)], base_onto.Defect):
+                effect_ind.defectOccursOn = product1_onto['PCB_1']
             if len(effect_ind.label) == 0: 
                 effect_ind.label.append(f"{start}_1")
             rules = graph.get(start, {}).get("governed_by", [])
@@ -471,6 +483,17 @@ def add_ishikawa_causal_graph():
                 #connect effect to cause using directlyCausallyInfluencedBy
                 effect_ind.directlyCausallyInfluencedBy.append(ind)
                 traverse_paths(graph, cause, target_prop, visited)
+            supports = graph.get(start, {}).get("supported_by", [])
+            for support in supports:
+                ind = base_onto[create_classname_syntax(support)](f"{support}_1")
+                support_coa_ind = base_onto["ConformanceAssessment"](f"COA_{support}_1")
+                #connect support to universal product instance
+                ind.affects = product1_onto['PCB_1']
+                #connect support to conformance assessment
+                ind.wasGeneratedBy.extend([support_coa_ind])
+                #connect effect to support using supportedBy
+                effect_ind.supportedBy.append(ind)
+
 
     with open(f"{input_path}/causal_chain.json") as f:
         cc = json.load(f)
@@ -610,7 +633,7 @@ def add_products_to_ontology(
             )
         )
     )
-    df = df[mask]
+    df = df[mask].head(batch_size)
     if product1_onto is not None:
         product_count = 0
         with product1_onto: # A-box instantiation

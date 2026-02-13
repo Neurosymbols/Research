@@ -3,6 +3,7 @@ import json
 
 
 from app.services.utils import create_classname_syntax
+from app.config.onto_config import products_in_ontology
 
 output_path = "./app/data/output/epoch3-7"
 input_path = "./app/data/input/epoch3-7"
@@ -40,18 +41,10 @@ mechanism_failures = [
 ishikawa_graph = {
   "SolderBridging": {
     "caused_by": [
-      "HighPasteVolumePerAperture",
       "ExcessReflowSpreading",
       "ApertureOverfill"
     ],
     "type": "defect"
-  },
-  "HighPasteVolumePerAperture": {
-    "caused_by": [
-      "ApertureOverfill",
-      "UndersideSmear",
-      "PostPrintSpread"
-    ]
   },
   "ExcessReflowSpreading": {
     "caused_by": [
@@ -87,20 +80,14 @@ ishikawa_graph = {
   "OpenCircuit": {
     "caused_by": [
       "NonCoalescence",
-      "LowPasteVolumePerAperture",
       "PoorPasteTransfer"
     ],
     "type": "defect"
   },
   "NonCoalescence": {
     "caused_by": [
-      "TimeAboveLiquidus",
-      "PeakReflowTemperature"
-    ]
-  },
-  "LowPasteVolumePerAperture": {
-    "caused_by": [
-      "PoorPasteTransfer"
+      "LowTimeAboveLiquidus",
+      "LowPeakReflowTemperature"
     ]
   },
   "PoorPasteTransfer": {
@@ -116,6 +103,7 @@ ishikawa_graph = {
 }
 
 def create_gt_causal_chains(
+        idx,
         effect, 
         row_mech_causes, 
         row_root_causes,
@@ -127,7 +115,8 @@ def create_gt_causal_chains(
         for cause in ishikawa_graph[defect_name]['caused_by']:
             if cause in row_mech_causes:
                 chain.append([effect, cause])
-                return create_gt_causal_chains(
+                create_gt_causal_chains(
+                    idx,
                     cause,
                     [r for r in row_mech_causes if r != cause],
                     row_root_causes,
@@ -141,7 +130,8 @@ def create_gt_causal_chains(
         for cause in ishikawa_graph[effect]['caused_by']:
             if cause in row_mech_causes:
                 chain.append([effect, cause])
-                return create_gt_causal_chains(
+                create_gt_causal_chains(
+                    idx,
                     cause,
                     [r for r in row_mech_causes if r != cause],
                     row_root_causes,
@@ -157,7 +147,7 @@ def create_gt_causal_chains(
                 chain.append([effect, cause])
         return chain
 
-def generate_ground_truth(reuse=False):
+def generate_ground_truth(products_in_ontology:int, reuse=False):
     def is_empty(x):
         return pd.isna(x) or str(x).strip() == "" or str(x).strip() == "No Defect"
 
@@ -182,20 +172,16 @@ def generate_ground_truth(reuse=False):
             )
         )
     )
-    df_ppf = df_ppf[mask]
+    df_ppf = df_ppf[mask].head(products_in_ontology)
     print(len(df_ppf))
 
     # --- Apply to DataFrame ---
     root_cause_list = []
     mechanism_failure_list = []
     defect_list = []
-    pcb_ids = []
     pcb_chains = {}
 
-    df_ppf['PCB_ID'] = None
     for index, row in df_ppf.iterrows():
-        pcb_ids.append(f"PCB{index+1}")
-        df_ppf.loc[index, 'PCB_ID'] = f"PCB{index+1}"
         row_root_causes = []
         row_mech_causes = []
         defects = []
@@ -204,35 +190,32 @@ def generate_ground_truth(reuse=False):
         if not pd.isna(row['mech causes']):
             row_mech_causes = [create_classname_syntax(r.strip().lower()) for r in row['mech causes'].split(";")]
         if not pd.isna(row['Defect']):
-            defects = [f"{create_classname_syntax(r.strip().lower())}_PCB{index+1}" for r in row['Defect'].split(";") if r.strip().lower() != "no defect"]
+            defects = [f"{create_classname_syntax(r.strip().lower())}_PCB{index}" for r in row['Defect'].split(";") if r.strip().lower() != "no defect"]
         if len(defects) > 0 or len(row_root_causes) > 0:
             chain = []
             if len(defects) > 0:
                 for d in defects:
                     chain_a = create_gt_causal_chains(
-                        d, row_mech_causes, row_root_causes, []
+                        index, d, row_mech_causes, row_root_causes, []
                     )
                     chain.extend(chain_a)
             else:
                 if len(row_mech_causes) > 0:
                     row_mech_causes_dup = [v for v in row_mech_causes]
                     chain_a = create_gt_causal_chains(
-                            row_mech_causes_dup.pop(0), row_mech_causes, row_root_causes, []
+                            index, row_mech_causes_dup.pop(0), row_mech_causes, row_root_causes, []
                         )
                     chain.extend(chain_a)
                 # else:
                 #     chain.append(row_root_causes)
-            pcb_chains[f"PCB{index+1}"] = chain
+            pcb_chains[f"PCB{index}"] = chain
 
         root_cause_list.append(", ".join(list(set(row_root_causes))))
         mechanism_failure_list.append(", ".join(list(set(row_mech_causes))))
         defect_list.append(", ".join(list(set(defects))))
 
-    cols = ['PCB_ID'] + [c for c in df_ppf.columns if c != 'PCB_ID']
-    df_ppf = df_ppf[cols]
-    df_ppf.to_csv(f"{input_path}/synthetic_data_factory_5.csv", index=False)
     with open(f"{input_path}/test_chains_3.json", "w") as f:
         json.dump(pcb_chains, f, indent=1)
 
-generate_ground_truth(reuse=True)
+generate_ground_truth(products_in_ontology=products_in_ontology, reuse=True)
 

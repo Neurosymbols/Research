@@ -20,6 +20,9 @@ def create_classname_syntax(classname):
     elif len(parts) == 1:
         return parts[0]
 
+def is_subclass_of(cls, parent_cls):
+    return parent_cls in cls.ancestors()
+
 def clean_param_name(raw):
     # 1. Remove text in parentheses (units)
     raw = re.sub(r"\(.*?\)", "", raw)
