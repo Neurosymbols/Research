@@ -18,29 +18,24 @@ from .services.ontology_functions import initiate_ontology,\
     add_specs_to_ontology,\
     add_products_to_ontology,\
     add_dispositions_to_ontology
-# from app.services.causal_chains import (
-#     create_causal_chain, 
-#     infere_root_causes,
-#     attach_corrective_action_to_root_causes
-# )
-# from .services.metrics import (
-#     root_cause_accuracy, 
-#     test_provenance_completeness, 
-#     cycle_rate, 
-#     chain_recall
-# )
+from app.services.ccc import perform_conformance_assessment_mlp
+from app.services.causal_chains import (
+    create_causal_chain, 
+    infere_root_causes,
+    attach_corrective_action_to_root_causes
+)
+from .services.metrics import collect_metrics
 
-
-db_client = MongoClient("mongodb://localhost:27017/")
+# db_client = MongoClient("mongodb://localhost:27017/")
 
 #set the path where system generated ontologies will be saved
 onto_path.append(folders.onto)
 
-good_ratio = 0.5
-bad_ratio = 0.5
-version = 3
-data_label = "train"
-defect_threshold = 0.55
+# good_ratio = 0.5
+# bad_ratio = 0.5
+# version = 3
+# data_label = "train"
+# defect_threshold = 0.55
 
 def parse_rule(rule: str):
     rule = normalize_text(rule)
@@ -347,10 +342,14 @@ def step_export(ctx:PipelineContext):
     ])
 
 def step_generate_causal_hypothesis(ctx:PipelineContext):
-    pass
+    perform_conformance_assessment_mlp(ctx)
+    create_causal_chain(verb="INSERT")
+    infere_root_causes(verb="INSERT")
+    # attach_corrective_action_to_root_causes(verb="INSERT")
+    print("✅ GraphDB update completed successfully")
 
 def step_generate_metrics(ctx:PipelineContext):
-    pass
+    collect_metrics(ctx)
 
 PIPELINE = [
     ("ground_truth", step_create_ground_truth),
@@ -360,8 +359,8 @@ PIPELINE = [
     ("products", step_products),
     ("clear_db", step_clear_db),
     ("export", step_export),
-    # ("causal_hypothesis", step_generate_causal_hypothesis),
-    # ("metrics", step_generate_metrics)
+    ("causal_hypothesis", step_generate_causal_hypothesis),
+    ("metrics", step_generate_metrics)
 ]
 
 def run_pipeline(steps=None, ctx=None):

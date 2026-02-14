@@ -5,8 +5,8 @@ from datetime import datetime, timezone
 
 from .call_mlp import extract_for_kg, call_mlp_api
 from .utils import perform_sparql_update, create_classname_syntax
-from .causal_chains import create_causal_chain, infere_root_causes, attach_corrective_action_to_root_causes
-from app.config.onto_config import products_in_ontology
+from app.models import *
+from app.config.data_paths import resources
 
 def build_mlp_payload(row: dict, default_temp: float = 25.0) -> dict:
     """
@@ -34,11 +34,6 @@ PREFIX ind: <https://neurosymbols.ai/data/causal-assertions.owl#>
 PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
 PREFIX prov: <http://www.w3.org/ns/prov#>
 """
-# ------------------------------------------------------------------
-# Load PCB data
-# ------------------------------------------------------------------
-
-df = pd.read_csv("./app/data/input/epoch3-7/synthetic_data_factory_5.csv")
 
 # ------------------------------------------------------------------
 # Upsert ML Model Object
@@ -146,7 +141,7 @@ def create_mechanism(pcb_id, mech):
 # ------------------------------------------------------------------
 def create_violation(pcb_id, v, ml_model_iri):
     parameter_spec_map = {}
-    with open("./app/data/input/epoch3-7/specs.json") as f:
+    with open(resources.specs_json) as f:
         specs_dict = json.load(f)
         parameter_spec_map = {create_classname_syntax(k):v['id'] for k, v in specs_dict.items()}
 
@@ -220,50 +215,30 @@ def create_violation(pcb_id, v, ml_model_iri):
 # ------------------------------------------------------------------
 # 7. Main loop
 # ------------------------------------------------------------------
+def perform_conformance_assessment_mlp(ctx: PipelineContext):
+    df = ctx.runtime.factory_data
+    i = 0
+    for _, row in df.iterrows():
+        pcb_id = row["PCB_ID"]
+        mlp_payload = build_mlp_payload(dict(row))
+        mlp_result_api = call_mlp_api(mlp_payload)
+        ml_model_iri = upsert_ml_model(mlp_result_api["model_metadata"])
+        kg_ready_resp = extract_for_kg(mlp_result_api)
 
-i = 0
-def is_empty(x):
-    return pd.isna(x) or str(x).strip() == "" or str(x).strip() == "No Defect"
+        # 1. Update defect (existing individual)
+        update_defect(pcb_id, kg_ready_resp["defect"])
 
-def is_not_empty(x):
-    return not is_empty(x)
-mask = (
-    df["Defect"].apply(is_not_empty) |
-    (
-        df["Defect"].apply(is_empty) &
-        (
-            df["mech causes"].apply(is_not_empty) |
-            df["root causes"].apply(is_not_empty)
-        )
-    )
-)
-df = df[mask].head(products_in_ontology)
-for _, row in df.iterrows():
-    pcb_id = row["PCB_ID"]
-    mlp_payload = build_mlp_payload(dict(row))
-    mlp_result_api = call_mlp_api(mlp_payload)
-    ml_model_iri = upsert_ml_model(mlp_result_api["model_metadata"])
-    kg_ready_resp = extract_for_kg(mlp_result_api)
+        # 2. Create mechanisms
+        print_mech = kg_ready_resp["print_mechanism"]
+        print_mech_iri = create_mechanism(pcb_id, print_mech)
 
-    # 1. Update defect (existing individual)
-    update_defect(pcb_id, kg_ready_resp["defect"])
+        reflow_mech = kg_ready_resp["reflow_mechanism"]
+        reflow_mech_iri = create_mechanism(pcb_id, reflow_mech)
 
-    # 2. Create mechanisms
-    print_mech = kg_ready_resp["print_mechanism"]
-    print_mech_iri = create_mechanism(pcb_id, print_mech)
-
-    reflow_mech = kg_ready_resp["reflow_mechanism"]
-    reflow_mech_iri = create_mechanism(pcb_id, reflow_mech)
-
-    # 3. Create violations
-    for v in kg_ready_resp["violations"]:
-        create_violation(pcb_id, v, ml_model_iri)
-    i += 1
-    print(i)
-    if(i == 1000):
-        break
-
-create_causal_chain(verb="INSERT")
-infere_root_causes(verb="INSERT")
-# attach_corrective_action_to_root_causes(verb="INSERT")
-print("✅ GraphDB update completed successfully")
+        # 3. Create violations
+        for v in kg_ready_resp["violations"]:
+            create_violation(pcb_id, v, ml_model_iri)
+        i += 1
+        print(i)
+        if(i == 1000):
+            break

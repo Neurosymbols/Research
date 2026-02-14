@@ -7,7 +7,7 @@ import numpy as np
 import math
 
 from app.services.utils import perform_sparql_query
-from app.config.onto_config import products_in_ontology
+from app.models import *
 
 def fc_name_syntax(classname):
    # Split by any sequence of non-alphanumeric characters
@@ -18,49 +18,20 @@ def fc_name_syntax(classname):
     elif len(parts) == 1:
         return parts[0]
 
-def get_data_factory():
-    base_path = "./app/data"
-    path = f"{base_path}/input/epoch3-7/synthetic_data_factory_5.csv"
-    df = pd.read_csv(path)
-    def is_empty(x):
-        return pd.isna(x) or str(x).strip() == "" or str(x).strip() == "No Defect"
-
-    def is_not_empty(x):
-        return not is_empty(x)
-    mask = (
-        df["Defect"].apply(is_not_empty) |
-        (
-            df["Defect"].apply(is_empty) &
-            (
-                df["mech causes"].apply(is_not_empty) |
-                df["root causes"].apply(is_not_empty)
-            )
-        )
-    )
-    df = df[mask].head(products_in_ontology)
-    factory = df.to_dict(orient="records")
-    print(len(factory))
-    return factory
-
-def get_chain_factory():
-    base_path = "./app/data"
-    path = f"{base_path}/input/epoch3-7/test_chains_3.json"
-    factory = json.load(open(path))
-    new_factory = {}
-    for k, v in factory.items():
-        new_factory[k] = []
+def get_chain_factory(ctx: PipelineContext):
+    chain_factory = {}
+    for k, v in ctx.runtime.chain_gt.items():
+        chain_factory[k] = []
         for chain in v:
             new_chain = []
             for chain_item in chain:
                 new_chain.append(fc_name_syntax(chain_item))
-            new_factory[k].append(new_chain)
-    return new_factory
-
-test_dict = {"Test Name": [], "System accuracy or response": [], "Interpretation": []}
+            chain_factory[k].append(new_chain)
+    return chain_factory
 
 #Metric 1
-def root_cause_accuracy():
-    factory = get_data_factory()
+def root_cause_accuracy(data_factory, metrics_obj):
+    factory = data_factory
     expected_set = {}
     for d in factory:
         root_fcs = []
@@ -180,21 +151,21 @@ def root_cause_accuracy():
     # -----------------------------
     # Populate results table
     # -----------------------------
-    test_dict['Test Name'].extend([
+    metrics_obj['Test Name'].extend([
         "Hit Rate (≥1 correct)",
         "Jaccard Similarity (%)",
         "Exact Match Accuracy",
         "Mean Reciprocal Rank"
     ])
 
-    test_dict['System accuracy or response'].extend([
+    metrics_obj['System accuracy or response'].extend([
         f"{hit_rate_pct}%",
         f"{avg_jaccard_pct}%",
         f"{exact_match_pct}%",
         avg_mrr
     ])
 
-    test_dict['Interpretation'].extend([
+    metrics_obj['Interpretation'].extend([
         "Did the system get on the right path?",
         "How close is the system reasoning to the expert?",
         "How often is the system perfectly aligned with the expert?",
@@ -213,7 +184,7 @@ def root_cause_accuracy():
 
 
 #Metric 2
-def test_provenance_completeness():
+def test_provenance_completeness(metrics_obj):
     test_query = '''
         PREFIX base: <https://abakai.ai/ontology/semicon-base.owl#>
         PREFIX term: <https://neurosymbols.ai/ontology/causal-terminology.owl#>
@@ -238,14 +209,14 @@ def test_provenance_completeness():
     result_1_bindings = result_1.get('results', {}).get('bindings', [])
     for b in result_1_bindings:
         prov_completeness = int(b.get("prov_completeness").get('value'))
-    test_dict['Test Name'].extend(["provenance completeness"])
-    test_dict['System accuracy or response'].extend([prov_completeness*100])
+    metrics_obj['Test Name'].extend(["provenance completeness"])
+    metrics_obj['System accuracy or response'].extend([prov_completeness*100])
     return {
         "provenance completeness": prov_completeness*100
     }
 
 #Metric 3
-def cycle_rate():
+def cycle_rate(metrics_obj):
     test_query = '''
         PREFIX base: <https://abakai.ai/ontology/semicon-base.owl#>
         PREFIX term: <https://neurosymbols.ai/ontology/causal-terminology.owl#>
@@ -262,15 +233,15 @@ def cycle_rate():
         }
         '''
     result_1 = perform_sparql_query(test_query)
-    test_dict['Test Name'].extend(["cycle rate"])
+    metrics_obj['Test Name'].extend(["cycle rate"])
     test_res = None
     if not result_1.get('boolean'):
         test_res = 'No cycles detected in causal chains'
-        test_dict['System accuracy or response'].extend(['No cycles detected in causal chains'])
+        metrics_obj['System accuracy or response'].extend(['No cycles detected in causal chains'])
     else:
        test_res = 'cycles detected in causal chains'
-       test_dict['System accuracy or response'].extend(['cycles detected in causal chains'])
-    test_dict['Interpretation'].extend([
+       metrics_obj['System accuracy or response'].extend(['cycles detected in causal chains'])
+    metrics_obj['Interpretation'].extend([
         "Are the generated explanations structurally valid?"
     ])
     return {
@@ -278,8 +249,8 @@ def cycle_rate():
     }
 
 #Metric 4
-def chain_recall():
-    factory = get_chain_factory()
+def chain_metrics(chain_factory, metrics_obj):
+    factory = chain_factory
     test_query = '''
             PREFIX term: <https://neurosymbols.ai/ontology/causal-terminology.owl#>
             PREFIX assert: <https://neurosymbols.ai/data/causal-assertions.owl#>
@@ -348,19 +319,19 @@ def chain_recall():
         #     recall = 0
         #     precision = 0
         causal_chain_cm.append(cm)
-        print(f"pred set for {k} {len(list(pred_set))};;", 
-              f"expected set for {k} {len(list(v))};;", 
-              f"intersection set for {k} {len(list(intersection))};;",
-              f"recall for {k} {recall};;",
-              f"precision for {k} {precision}",
-        )
+        # print(f"pred set for {k} {len(list(pred_set))};;", 
+        #       f"expected set for {k} {len(list(v))};;", 
+        #       f"intersection set for {k} {len(list(intersection))};;",
+        #       f"recall for {k} {recall};;",
+        #       f"precision for {k} {precision}",
+        # )
         avg_recall.append(recall)
         avg_precision.append(precision)
         recall_data[k] = recall
         prec_data[k] = precision
-    test_dict['Test Name'].extend(["chain recall", "chain precision"])
-    test_dict['System accuracy or response'].extend([f"{round(np.mean(avg_recall),2)}%", f"{round(np.mean(avg_precision),2)}%"])
-    test_dict['Interpretation'].extend([
+    metrics_obj['Test Name'].extend(["chain recall", "chain precision"])
+    metrics_obj['System accuracy or response'].extend([f"{round(np.mean(avg_recall),2)}%", f"{round(np.mean(avg_precision),2)}%"])
+    metrics_obj['Interpretation'].extend([
         "How close is the system reasoning to the expert?",
         "How often is the system perfectly aligned with the expert?"
     ])
@@ -380,9 +351,13 @@ def chain_recall():
         "max prec":     str(round(float(np.array(avg_precision).max()), 2))
     }
 
-root_cause_accuracy()
-# test_provenance_completeness()
-cycle_rate()
-chain_recall()
-
-print(tabulate(test_dict, headers="keys", tablefmt="github"))
+def collect_metrics(ctx: PipelineContext):
+    df = ctx.runtime.factory_data
+    data_factory = df.to_dict(orient="records")
+    chain_factory = get_chain_factory(ctx)
+    metrics_obj = {"Test Name": [], "System accuracy or response": [], "Interpretation": []}
+    root_cause_accuracy(data_factory, metrics_obj)
+    # # test_provenance_completeness()
+    cycle_rate(metrics_obj)
+    chain_metrics(chain_factory, metrics_obj)
+    print(tabulate(metrics_obj, headers="keys", tablefmt="github"))

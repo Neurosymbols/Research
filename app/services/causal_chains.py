@@ -6,18 +6,18 @@ import re
 from lark import Lark, Transformer
 
 from .utils import perform_sparql_query, perform_sparql_update
+from app.config.data_paths import resources
 
-CAUSAL_CHAIN_PATH = "./app/data/input/epoch3-7/causal_chain.json"
-SPARQL_QUERIES = "./app/data/input/epoch3-7/queries.txt"
-STRUCTURED_RULES_PATH = "./app/data/output/epoch3-7/structured_rules.json"
-RULE_QUERY_MAP_PATH = "./app/data/output/epoch3-7/rules_query.txt"
-FAILURE_CAUSES = pd.read_csv("./app/data/input/epoch3-7/defects_and_failure_causes.csv")
-failure_cause_ca_mapping = dict(zip(FAILURE_CAUSES['item'], FAILURE_CAUSES['corrective action']))
+# SPARQL_QUERIES = "./app/data/input/epoch3-7/queries.txt"
+# STRUCTURED_RULES_PATH = "./app/data/output/epoch3-7/structured_rules.json"
+# RULE_QUERY_MAP_PATH = "./app/data/output/epoch3-7/rules_query.txt"
+# FAILURE_CAUSES = pd.read_csv("./app/data/input/epoch3-7/defects_and_failure_causes.csv")
+# failure_cause_ca_mapping = dict(zip(FAILURE_CAUSES['item'], FAILURE_CAUSES['corrective action']))
 
 STRUCTURED_RULE_MAP = {}
 RULE_QUERY_MAP = {}
 
-with open(CAUSAL_CHAIN_PATH) as f:
+with open(resources.ishikawa) as f:
     CAUSAL_CHAIN_OBJ = json.load(f)
 
 # for one product and one failure mechanism, multiple rules can fire. Using product name and failure cause name is necessary but not enough to create a unique identiier for coa individuals. It needs rule id too
