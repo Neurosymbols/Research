@@ -1,0 +1,58 @@
+PREFIX term: <https://neurosymbols.ai/ontology/causal-terminology.owl#>
+PREFIX assert: <https://neurosymbols.ai/data/causal-assertions.owl#>
+PREFIX iof: <https://spec.industrialontologies.org/ontology/core/Core/>
+PREFIX bfo: <http://purl.obolibrary.org/obo/>
+PREFIX prov: <http://www.w3.org/ns/prov#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX ro: <http://purl.obolibrary.org/obo/>
+PREFIX obo: <http://purl.obolibrary.org/obo/>
+
+SELECT
+    ?product
+    ?defect
+	?defect_prob
+    ?mechanism
+	?mechanism_prob
+    ?rootcause
+	(?ca AS ?assessment)
+	?assesment_done_by
+    (ROUND(?probability_dec * 1000) / 1000 AS ?probability)
+    (?iso8601 AS ?assessment_done_on)
+	(?spec as ?specification)
+    ?upper_limit
+	(?obs as ?observation)
+	?observed_value
+	?lower_limit
+WHERE {
+    ?defect a term:Defect ;
+            obo:directlyCausallyInfluencedBy ?mechanism ;
+            term:defectOccursOn ?product ;
+    		term:hasProbability ?defect_prob .
+
+    ?mechanism ro:RO_0002559 ?rootcause ;
+    			term:hasProbability ?mechanism_prob .
+
+    ?rootcause a term:RootCause ;
+               prov:wasGeneratedBy ?ca .
+
+    ?ca term:hasProbability ?probability_raw ;
+        term:createdAt ?assessment_done_on_raw ;
+        term:hasAssessmentInput ?spec ;
+    	term:hasAssessmentInput ?obs ;
+    	prov:used ?assesment_done_by .
+    ?spec a term:ParameterSpecification .
+    ?obs a term:ParameterObservation .
+    
+    ?spec term:hasUpperValue ?upper_limit ;
+    	  term:hasLowerValue ?lower_limit .
+    ?obs term:hasObservedValue ?observed_value . 
+    
+
+    # ---- Cast to proper datatypes ----
+    BIND(xsd:decimal(?probability_raw) AS ?probability_dec)
+    BIND(SUBSTR(STR(xsd:dateTime(?assessment_done_on_raw)), 1, 19) AS ?iso8601)
+
+    FILTER(?product = assert:PCB21)
+}
+ORDER BY DESC(?probability)

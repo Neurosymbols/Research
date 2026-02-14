@@ -1,51 +1,51 @@
 ,PCB_ID,Stencil thickness,Paste volume per aperture,Paste viscosity,Time above liquidus,Ambient RH,Peak reflow temperature,Ambient temperature,mech causes,root causes,Defect
-0,PCB1,104,0.039,183.269,67.42,37.389,258.749,22.41,,,No Defect
-1,PCB2,98,0.041,170.241,53.19,38.408,251.85,24.87,,,No Defect
-2,PCB3,100,0.042,214.699,71.86,35.349,257.711,21.96,,,No Defect
-3,PCB4,106,0.044,218.554,46.08,30.743,259.705,23.52,aperture overfill; excess reflow spreading; non coalescence,high stencil thickness; high peak reflow temperature; low time above liquidus; low ambient rh,Solder Bridging
-4,PCB5,102,0.045,199.561,63.77,60.444,259.716,26.01,aperture overfill; excess reflow spreading,high ambient rh; high ambient temperature; high peak reflow temperature,Solder Bridging
-5,PCB6,97,0.039,166.675,59.25,43.589,250.919,20.98,,,No Defect
-6,PCB7,96,0.041,158.176,74.66,32.798,257.245,22.73,excess reflow spreading,high time above liquidus,Solder Bridging
-7,PCB8,99,0.04,220.643,49.34,35.299,255.081,23.11,,,No Defect
-8,PCB9,105,0.047,235.395,68.02,45.868,259.303,24.56,aperture overfill,high stencil thickness,Solder Bridging
-9,PCB10,95,0.039,227.84,57.11,33.22,256.032,21.42,poor paste transfer,low stencil thickness,Open Circuit
-10,PCB11,104,0.037,152.278,70.93,44.721,253.911,22.09,aperture overfill,low paste viscosity,Solder Bridging
-11,PCB12,96,0.043,249.612,61.48,32.733,256.158,23.88,poor paste transfer,high paste viscosity,Open Circuit
-12,PCB13,96,0.041,159.339,52.77,42.854,255.959,25.14,,,No Defect
-13,PCB14,106,0.047,149.88,45.63,36.037,253.567,19.97,aperture overfill; non coalescence,high stencil thickness; low ambient temperature; low paste viscosity; low time above liquidus,Solder Bridging
-14,PCB15,97,0.042,243.527,73.54,43.404,259.462,23.36,,,No Defect
-15,PCB16,101,0.041,167.827,66.29,37.057,252.855,24.02,,,No Defect
-16,PCB17,109,0.049,166.813,60.05,49.686,251.271,21.65,aperture overfill,high stencil thickness; high ambient rh,Solder Bridging
-17,PCB18,104,0.041,156.393,47.92,34.495,256.924,22.94,,,No Defect
-18,PCB19,96,0.044,200.469,69.31,34.318,255.986,23.47,aperture overfill,,Solder Bridging
-19,PCB20,96,0.043,205.431,55.46,45.898,254.732,24.91,,,No Defect
-20,PCB21,104,0.039,224.404,72.18,45.227,250.543,20.54,,,No Defect
-21,PCB22,104,0.048,149.127,62.333,43.94,266.466,22.28,aperture overfill; excess reflow spreading,high peak reflow temperature; low paste viscosity,Solder Bridging
-22,PCB23,100,0.042,157.528,64.89,40.48,257.816,23.03,,,No Defect
-23,PCB24,95,0.042,199.176,50.22,41.16,255.206,25.67,poor paste transfer,low stencil thickness,Open Circuit
-24,PCB25,97,0.043,182.261,75.0,31.691,257.207,21.11,excess reflow spreading,high time above liquidus,Solder Bridging
-25,PCB26,101,0.044,204.653,58.64,46.897,259.719,22.62,aperture overfill; excess reflow spreading,high peak reflow temperature,Solder Bridging
-26,PCB27,104,0.047,140.241,62.91,35.144,253.087,23.95,aperture overfill,low paste viscosity,Solder Bridging
-27,PCB28,103,0.038,170.0,46.55,30.093,257.772,24.18,,low ambient rh,No Defect
-28,PCB29,101,0.043,237.906,67.94,36.752,250.635,22.04,,,No Defect
-29,PCB30,104,0.044,243.753,54.38,46.398,255.321,23.29,aperture overfill,,Solder Bridging
-30,PCB31,102,0.042,209.001,70.47,40.654,259.907,21.88,excess reflow spreading,high peak reflow temperature,Solder Bridging
-31,PCB32,95,0.041,193.583,47.43,38.735,230.592,24.73,poor paste transfer; non coalescence,low peak reflow temperature; low stencil thickness,Open Circuit
-32,PCB33,95,0.036,162.049,49.73,43.275,258.373,22.91,poor paste transfer,low stencil thickness,Open Circuit
-33,PCB34,103,0.038,153.894,68.91,44.577,250.599,23.61,aperture overfill,low paste viscosity,Solder Bridging
-34,PCB35,97,0.036,213.963,57.46,33.989,257.24,25.02,poor paste transfer,,Open Circuit
-35,PCB36,104,0.039,233.179,74.22,48.627,251.002,20.83,excess reflow spreading,high time above liquidus,Solder Bridging
-36,PCB37,100,0.042,223.473,46.37,42.475,251.138,22.47,,,No Defect
-37,PCB38,103,0.043,220.769,63.58,32.411,255.642,23.08,,,No Defect
-38,PCB39,100,0.043,161.783,71.05,46.736,257.856,24.39,,,No Defect
-39,PCB40,103,0.033,217.975,35.01,30.985,255.0,21.36,poor paste transfer; non coalescence,low time above liquidus,Open Circuit
-40,PCB41,100,0.041,226.913,66.48,47.161,253.323,22.76,,,No Defect
-41,PCB42,98,0.043,214.684,47.25,44.165,258.064,23.92,,,No Defect
-42,PCB43,103,0.039,163.304,72.91,43.734,256.267,24.64,,,No Defect
-43,PCB44,99,0.037,197.912,59.84,39.908,257.88,21.74,,,No Defect
-44,PCB45,103,0.039,225.543,68.37,30.104,251.926,22.15,,low ambient rh,No Defect
-45,PCB46,103,0.039,239.267,53.62,30.036,252.584,23.55,,low ambient rh,No Defect
-46,PCB47,99,0.034,149.327,48.28,48.584,240.982,24.07,aperture overfill; poor paste transfer; non coalescence,low peak reflow temperature; low paste viscosity,Solder Bridging
-47,PCB48,100,0.04,154.845,69.74,42.699,253.421,22.58,,,No Defect
-48,PCB49,96,0.04,249.146,55.21,30.009,252.16,23.19,poor paste transfer,low ambient rh; high paste viscosity,Open Circuit
-49,PCB50,99,0.038,197.92,47.89,36.293,258.422,24.65,,,No Defect
+0,PCB0,104,0.039,183.269,67.42,37.389,258.749,22.41,,,No Defect
+1,PCB1,98,0.041,170.241,53.19,38.408,251.85,24.87,,,No Defect
+2,PCB2,100,0.042,214.699,71.86,35.349,257.711,21.96,,,No Defect
+3,PCB3,106,0.044,218.554,46.08,30.743,259.705,23.52,aperture overfill; excess reflow spreading; non coalescence,high stencil thickness; high peak reflow temperature; low time above liquidus; low ambient rh,Solder Bridging
+4,PCB4,102,0.045,199.561,63.77,60.444,259.716,26.01,aperture overfill; excess reflow spreading,high ambient rh; high ambient temperature; high peak reflow temperature,Solder Bridging
+5,PCB5,97,0.039,166.675,59.25,43.589,250.919,20.98,,,No Defect
+6,PCB6,96,0.041,158.176,74.66,32.798,257.245,22.73,excess reflow spreading,high time above liquidus,Solder Bridging
+7,PCB7,99,0.04,220.643,49.34,35.299,255.081,23.11,,,No Defect
+8,PCB8,105,0.047,235.395,68.02,45.868,259.303,24.56,aperture overfill,high stencil thickness,Solder Bridging
+9,PCB9,95,0.039,227.84,57.11,33.22,256.032,21.42,poor paste transfer,low stencil thickness,Open Circuit
+10,PCB10,104,0.037,152.278,70.93,44.721,253.911,22.09,aperture overfill,low paste viscosity,Solder Bridging
+11,PCB11,96,0.043,249.612,61.48,32.733,256.158,23.88,poor paste transfer,high paste viscosity,Open Circuit
+12,PCB12,96,0.041,159.339,52.77,42.854,255.959,25.14,,,No Defect
+13,PCB13,106,0.047,149.88,45.63,36.037,253.567,19.97,aperture overfill; non coalescence,high stencil thickness; low ambient temperature; low paste viscosity; low time above liquidus,Solder Bridging
+14,PCB14,97,0.042,243.527,73.54,43.404,259.462,23.36,,,No Defect
+15,PCB15,101,0.041,167.827,66.29,37.057,252.855,24.02,,,No Defect
+16,PCB16,109,0.049,166.813,60.05,49.686,251.271,21.65,aperture overfill,high stencil thickness; high ambient rh,Solder Bridging
+17,PCB17,104,0.041,156.393,47.92,34.495,256.924,22.94,,,No Defect
+18,PCB18,96,0.044,200.469,69.31,34.318,255.986,23.47,aperture overfill,,Solder Bridging
+19,PCB19,96,0.043,205.431,55.46,45.898,254.732,24.91,,,No Defect
+20,PCB20,104,0.039,224.404,72.18,45.227,250.543,20.54,,,No Defect
+21,PCB21,104,0.048,149.127,62.333,43.94,266.466,22.28,aperture overfill; excess reflow spreading,high peak reflow temperature; low paste viscosity,Solder Bridging
+22,PCB22,100,0.042,157.528,64.89,40.48,257.816,23.03,,,No Defect
+23,PCB23,95,0.042,199.176,50.22,41.16,255.206,25.67,poor paste transfer,low stencil thickness,Open Circuit
+24,PCB24,97,0.043,182.261,75,31.691,257.207,21.11,excess reflow spreading,high time above liquidus,Solder Bridging
+25,PCB25,101,0.044,204.653,58.64,46.897,259.719,22.62,aperture overfill; excess reflow spreading,high peak reflow temperature,Solder Bridging
+26,PCB26,104,0.047,140.241,62.91,35.144,253.087,23.95,aperture overfill,low paste viscosity,Solder Bridging
+27,PCB27,103,0.038,170,46.55,30.093,257.772,24.18,,low ambient rh,No Defect
+28,PCB28,101,0.043,237.906,67.94,36.752,250.635,22.04,,,No Defect
+29,PCB29,104,0.044,243.753,54.38,46.398,255.321,23.29,aperture overfill,,Solder Bridging
+30,PCB30,102,0.042,209.001,70.47,40.654,259.907,21.88,excess reflow spreading,high peak reflow temperature,Solder Bridging
+31,PCB31,95,0.041,193.583,47.43,38.735,230.592,24.73,poor paste transfer; non coalescence,low peak reflow temperature; low stencil thickness,Open Circuit
+32,PCB32,95,0.036,162.049,49.73,43.275,258.373,22.91,poor paste transfer,low stencil thickness,Open Circuit
+33,PCB33,103,0.038,153.894,68.91,44.577,250.599,23.61,aperture overfill,low paste viscosity,Solder Bridging
+34,PCB34,97,0.036,213.963,57.46,33.989,257.24,25.02,poor paste transfer,,Open Circuit
+35,PCB35,104,0.039,233.179,74.22,48.627,251.002,20.83,excess reflow spreading,high time above liquidus,Solder Bridging
+36,PCB36,100,0.042,223.473,46.37,42.475,251.138,22.47,,,No Defect
+37,PCB37,103,0.043,220.769,63.58,32.411,255.642,23.08,,,No Defect
+38,PCB38,100,0.043,161.783,71.05,46.736,257.856,24.39,,,No Defect
+39,PCB39,103,0.033,217.975,35.01,30.985,255,21.36,poor paste transfer; non coalescence,low time above liquidus,Open Circuit
+40,PCB40,100,0.041,226.913,66.48,47.161,253.323,22.76,,,No Defect
+41,PCB41,98,0.043,214.684,47.25,44.165,258.064,23.92,,,No Defect
+42,PCB42,103,0.039,163.304,72.91,43.734,256.267,24.64,,,No Defect
+43,PCB43,99,0.037,197.912,59.84,39.908,257.88,21.74,,,No Defect
+44,PCB44,103,0.039,225.543,68.37,30.104,251.926,22.15,,low ambient rh,No Defect
+45,PCB45,103,0.039,239.267,53.62,30.036,252.584,23.55,,low ambient rh,No Defect
+46,PCB46,99,0.034,149.327,48.28,48.584,240.982,24.07,aperture overfill; poor paste transfer; non coalescence,low peak reflow temperature; low paste viscosity,Solder Bridging
+47,PCB47,100,0.04,154.845,69.74,42.699,253.421,22.58,,,No Defect
+48,PCB48,96,0.04,249.146,55.21,30.009,252.16,23.19,poor paste transfer,low ambient rh; high paste viscosity,Open Circuit
+49,PCB49,99,0.038,197.92,47.89,36.293,258.422,24.65,,,No Defect

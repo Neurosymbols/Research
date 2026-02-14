@@ -1,4 +1,22 @@
 {
+ "PCB3": [
+  [
+   "SolderBridging_PCB3",
+   "ExcessReflowSpreading"
+  ],
+  [
+   "ExcessReflowSpreading",
+   "HighPeakReflowTemperature"
+  ],
+  [
+   "SolderBridging_PCB3",
+   "ApertureOverfill"
+  ],
+  [
+   "ApertureOverfill",
+   "HighStencilThickness"
+  ]
+ ],
  "PCB4": [
   [
    "SolderBridging_PCB4",
@@ -14,24 +32,6 @@
   ],
   [
    "ApertureOverfill",
-   "HighStencilThickness"
-  ]
- ],
- "PCB5": [
-  [
-   "SolderBridging_PCB5",
-   "ExcessReflowSpreading"
-  ],
-  [
-   "ExcessReflowSpreading",
-   "HighPeakReflowTemperature"
-  ],
-  [
-   "SolderBridging_PCB5",
-   "ApertureOverfill"
-  ],
-  [
-   "ApertureOverfill",
    "HighAmbientRh"
   ],
   [
@@ -39,9 +39,9 @@
    "HighAmbientTemperature"
   ]
  ],
- "PCB7": [
+ "PCB6": [
   [
-   "SolderBridging_PCB7",
+   "SolderBridging_PCB6",
    "ExcessReflowSpreading"
   ],
   [
@@ -49,9 +49,9 @@
    "HighTimeAboveLiquidus"
   ]
  ],
- "PCB9": [
+ "PCB8": [
   [
-   "SolderBridging_PCB9",
+   "SolderBridging_PCB8",
    "ApertureOverfill"
   ],
   [
@@ -59,9 +59,9 @@
    "HighStencilThickness"
   ]
  ],
- "PCB10": [
+ "PCB9": [
   [
-   "OpenCircuit_PCB10",
+   "OpenCircuit_PCB9",
    "PoorPasteTransfer"
   ],
   [
@@ -69,9 +69,9 @@
    "LowStencilThickness"
   ]
  ],
- "PCB11": [
+ "PCB10": [
   [
-   "SolderBridging_PCB11",
+   "SolderBridging_PCB10",
    "ApertureOverfill"
   ],
   [
@@ -79,9 +79,9 @@
    "LowPasteViscosity"
   ]
  ],
- "PCB12": [
+ "PCB11": [
   [
-   "OpenCircuit_PCB12",
+   "OpenCircuit_PCB11",
    "PoorPasteTransfer"
   ],
   [
@@ -89,9 +89,9 @@
    "HighPasteViscosity"
   ]
  ],
- "PCB14": [
+ "PCB13": [
   [
-   "SolderBridging_PCB14",
+   "SolderBridging_PCB13",
    "ApertureOverfill"
   ],
   [
@@ -103,9 +103,9 @@
    "LowPasteViscosity"
   ]
  ],
- "PCB17": [
+ "PCB16": [
   [
-   "SolderBridging_PCB17",
+   "SolderBridging_PCB16",
    "ApertureOverfill"
   ],
   [
@@ -117,15 +117,15 @@
    "HighAmbientRh"
   ]
  ],
- "PCB19": [
+ "PCB18": [
   [
-   "SolderBridging_PCB19",
+   "SolderBridging_PCB18",
    "ApertureOverfill"
   ]
  ],
- "PCB22": [
+ "PCB21": [
   [
-   "SolderBridging_PCB22",
+   "SolderBridging_PCB21",
    "ExcessReflowSpreading"
   ],
   [
@@ -133,7 +133,7 @@
    "HighPeakReflowTemperature"
   ],
   [
-   "SolderBridging_PCB22",
+   "SolderBridging_PCB21",
    "ApertureOverfill"
   ],
   [
@@ -141,14 +141,24 @@
    "LowPasteViscosity"
   ]
  ],
- "PCB24": [
+ "PCB23": [
   [
-   "OpenCircuit_PCB24",
+   "OpenCircuit_PCB23",
    "PoorPasteTransfer"
   ],
   [
    "PoorPasteTransfer",
    "LowStencilThickness"
+  ]
+ ],
+ "PCB24": [
+  [
+   "SolderBridging_PCB24",
+   "ExcessReflowSpreading"
+  ],
+  [
+   "ExcessReflowSpreading",
+   "HighTimeAboveLiquidus"
   ]
  ],
  "PCB25": [
@@ -158,26 +168,16 @@
   ],
   [
    "ExcessReflowSpreading",
-   "HighTimeAboveLiquidus"
+   "HighPeakReflowTemperature"
+  ],
+  [
+   "SolderBridging_PCB25",
+   "ApertureOverfill"
   ]
  ],
  "PCB26": [
   [
    "SolderBridging_PCB26",
-   "ExcessReflowSpreading"
-  ],
-  [
-   "ExcessReflowSpreading",
-   "HighPeakReflowTemperature"
-  ],
-  [
-   "SolderBridging_PCB26",
-   "ApertureOverfill"
-  ]
- ],
- "PCB27": [
-  [
-   "SolderBridging_PCB27",
    "ApertureOverfill"
   ],
   [
@@ -185,16 +185,16 @@
    "LowPasteViscosity"
   ]
  ],
- "PCB28": [],
- "PCB30": [
+ "PCB27": [],
+ "PCB29": [
   [
-   "SolderBridging_PCB30",
+   "SolderBridging_PCB29",
    "ApertureOverfill"
   ]
  ],
- "PCB31": [
+ "PCB30": [
   [
-   "SolderBridging_PCB31",
+   "SolderBridging_PCB30",
    "ExcessReflowSpreading"
   ],
   [
@@ -202,11 +202,25 @@
    "HighPeakReflowTemperature"
   ]
  ],
- "PCB32": [
+ "PCB31": [
   [
-   "OpenCircuit_PCB32",
+   "OpenCircuit_PCB31",
    "NonCoalescence"
   ],
+  [
+   "NonCoalescence",
+   "LowPeakReflowTemperature"
+  ],
+  [
+   "OpenCircuit_PCB31",
+   "PoorPasteTransfer"
+  ],
+  [
+   "PoorPasteTransfer",
+   "LowStencilThickness"
+  ]
+ ],
+ "PCB32": [
   [
    "OpenCircuit_PCB32",
    "PoorPasteTransfer"
@@ -218,17 +232,7 @@
  ],
  "PCB33": [
   [
-   "OpenCircuit_PCB33",
-   "PoorPasteTransfer"
-  ],
-  [
-   "PoorPasteTransfer",
-   "LowStencilThickness"
-  ]
- ],
- "PCB34": [
-  [
-   "SolderBridging_PCB34",
+   "SolderBridging_PCB33",
    "ApertureOverfill"
   ],
   [
@@ -236,15 +240,15 @@
    "LowPasteViscosity"
   ]
  ],
- "PCB35": [
+ "PCB34": [
   [
-   "OpenCircuit_PCB35",
+   "OpenCircuit_PCB34",
    "PoorPasteTransfer"
   ]
  ],
- "PCB36": [
+ "PCB35": [
   [
-   "SolderBridging_PCB36",
+   "SolderBridging_PCB35",
    "ExcessReflowSpreading"
   ],
   [
@@ -252,21 +256,25 @@
    "HighTimeAboveLiquidus"
   ]
  ],
- "PCB40": [
+ "PCB39": [
   [
-   "OpenCircuit_PCB40",
+   "OpenCircuit_PCB39",
    "NonCoalescence"
   ],
   [
-   "OpenCircuit_PCB40",
+   "NonCoalescence",
+   "LowTimeAboveLiquidus"
+  ],
+  [
+   "OpenCircuit_PCB39",
    "PoorPasteTransfer"
   ]
  ],
+ "PCB44": [],
  "PCB45": [],
- "PCB46": [],
- "PCB47": [
+ "PCB46": [
   [
-   "SolderBridging_PCB47",
+   "SolderBridging_PCB46",
    "ApertureOverfill"
   ],
   [
@@ -274,9 +282,9 @@
    "LowPasteViscosity"
   ]
  ],
- "PCB49": [
+ "PCB48": [
   [
-   "OpenCircuit_PCB49",
+   "OpenCircuit_PCB48",
    "PoorPasteTransfer"
   ],
   [
