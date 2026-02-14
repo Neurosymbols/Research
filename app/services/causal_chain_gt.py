@@ -1,12 +1,10 @@
 import pandas as pd
 import json
 
+from app.models import *
+from app.config.data_paths import resources
 
 from app.services.utils import create_classname_syntax
-from app.config.onto_config import products_in_ontology
-
-output_path = "./app/data/output/epoch3-7"
-input_path = "./app/data/input/epoch3-7"
 
 # --- Spec + failure cause mapping ---
 cause_mapping = {
@@ -147,32 +145,11 @@ def create_gt_causal_chains(
                 chain.append([effect, cause])
         return chain
 
-def generate_ground_truth(products_in_ontology:int, reuse=False):
-    def is_empty(x):
-        return pd.isna(x) or str(x).strip() == "" or str(x).strip() == "No Defect"
-
-    def is_not_empty(x):
-        return not is_empty(x)
-
-    df_ppf = None
-    if reuse:
-        df_ppf = pd.read_csv(
-            f"{input_path}/synthetic_data_factory_5.csv", 
-            index_col=0
-        )
-    
-    df_ppf.columns = df_ppf.columns.str.strip()
-    mask = (
-        df_ppf["Defect"].apply(is_not_empty) |
-        (
-            df_ppf["Defect"].apply(is_empty) &
-            (
-                df_ppf["mech causes"].apply(is_not_empty) |
-                df_ppf["root causes"].apply(is_not_empty)
-            )
-        )
-    )
-    df_ppf = df_ppf[mask].head(products_in_ontology)
+def generate_causal_chain_gt(
+    ctx: PipelineContext
+):
+    df_ppf = ctx.runtime.factory_data
+    chain_file = resources.test_chains if ctx.runtime.mode == "test" else resources.ft_chains
     print(len(df_ppf))
 
     # --- Apply to DataFrame ---
@@ -214,8 +191,7 @@ def generate_ground_truth(products_in_ontology:int, reuse=False):
         mechanism_failure_list.append(", ".join(list(set(row_mech_causes))))
         defect_list.append(", ".join(list(set(defects))))
 
-    with open(f"{input_path}/test_chains_3.json", "w") as f:
+    with open(chain_file, "w") as f:
         json.dump(pcb_chains, f, indent=1)
-
-generate_ground_truth(products_in_ontology=products_in_ontology, reuse=True)
-
+    
+    return pcb_chains

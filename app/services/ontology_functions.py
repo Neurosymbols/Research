@@ -4,7 +4,17 @@ import yaml
 
 from functools import reduce
 from owlready2 import *
-from app.services.utils import add_classes, add_individuals, create_classname_syntax, perform_sparql_query, perform_sparql_update, is_subclass_of
+from app.config.data_paths import resources, ontologies
+
+
+from app.services.utils import (
+    add_classes, 
+    add_individuals, 
+    create_classname_syntax, 
+    perform_sparql_query, 
+    perform_sparql_update,
+    is_subclass_of
+)
 
 # Set the IRIs
 BASE_ONTO_IRI = "https://neurosymbols.ai/ontology/causal-terminology.owl"
@@ -12,10 +22,6 @@ PRODUCT_ONTO_IRI = "https://neurosymbols.ai/data/causal-assertions.owl"
 IOF_IRI = "https://spec.industrialontologies.org/ontology/core/Core/"
 BFO_IRI = "http://purl.obolibrary.org/obo/"
 SKOS_IRI = "http://www.w3.org/2004/02/skos/core#"
-
-base_path = "./app/data"
-path = f"{base_path}/ontologies/epoch3-7"
-input_path = f"{base_path}/input/epoch3-7"
 
 # Initialize Variables to store ontology objects in memory
 base_onto = None
@@ -109,11 +115,11 @@ def initiate_ontology(
         product1_onto = get_ontology(PRODUCT_ONTO_IRI)
         # When ontologies do not exist in ontologies folder, create them for the first time
         if import_ontologies:
-            iof = get_ontology(f"{path}/iof-core.rdf").load(only_local=True)
-            bfo = get_ontology(f"{path}/bfo.owl").load(only_local=True)
-            ro = get_ontology(f"{path}/ro-causal-properties.owl").load(only_local=True)
-            prov = get_ontology(f"{path}/bfo-prov.owl").load(only_local=True)
-            skos = get_ontology(f"{path}/skos.rdf").load(only_local=True)
+            iof = get_ontology(ontologies.iof.as_posix()).load(only_local=True)
+            bfo = get_ontology(ontologies.bfo.as_posix()).load(only_local=True)
+            ro = get_ontology(ontologies.ro.as_posix()).load(only_local=True)
+            prov = get_ontology(ontologies.bfo_prov.as_posix()).load(only_local=True)
+            skos = get_ontology(ontologies.skos.as_posix()).load(only_local=True)
         prefix_onto_map = {
             "IOF": iof,
             "BFO": bfo,
@@ -495,7 +501,7 @@ def add_ishikawa_causal_graph():
                 effect_ind.supportedBy.append(ind)
 
 
-    with open(f"{input_path}/causal_chain.json") as f:
+    with open(resources.ishikawa) as f:
         cc = json.load(f)
         prop_obj = prefix_onto_map["RO"].search_one(iri=f"*RO_0002559")
         for defect in cc:
@@ -610,34 +616,13 @@ def add_defect_individuals(
                 product_individual.hasDefect.append(defect_individual)
 
 def add_products_to_ontology(
-    batch_size:int,
-    synthetic_data_factory_file: str,
+    products_df: pd.DataFrame,
     ontology_path:str
 ):
-    def is_empty(x):
-        return pd.isna(x) or str(x).strip() == "" or str(x).strip() == "No Defect"
-
-    def is_not_empty(x):
-        return not is_empty(x)
-
-    df = pd.read_csv(synthetic_data_factory_file)
-    df.columns = df.columns.str.strip()
-
-    mask = (
-        df["Defect"].apply(is_not_empty) |
-        (
-            df["Defect"].apply(is_empty) &
-            (
-                df["mech causes"].apply(is_not_empty) |
-                df["root causes"].apply(is_not_empty)
-            )
-        )
-    )
-    df = df[mask].head(batch_size)
     if product1_onto is not None:
         product_count = 0
         with product1_onto: # A-box instantiation
-            for _, row in df.iterrows():
+            for _, row in products_df.iterrows():
                 row_dict = row.to_dict()
                 product_individual = None
                 product_label = None
@@ -678,6 +663,7 @@ def add_products_to_ontology(
         # "others without defects": int(other_without_defect.sum())
     }
 
+#IGNORE THE FOLLOWING FUNCTION FOR NOW
 def build_product_triples(row):
     def get_spec_details(spec_class):
         query = f'''
@@ -760,7 +746,3 @@ def add_products_to_graphdb(csv_file):
     """
     perform_sparql_update(query = sparql)
     print(f"{len(df)} product individuals inserted.")
-
-# add_products_to_graphdb(
-#     csv_file=f"./app/data/input/epoch3-7/data_1.csv"
-# )

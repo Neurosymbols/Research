@@ -139,6 +139,21 @@
   <core:example rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Oven_Profile_TCs_2025‑11‑05.json isAssessmentInputFor COA‑PCB1‑paste_volume_rule (profile used to validate TAL window before rule evaluation).</core:example>
 </owl:ObjectProperty>
 
+<owl:ObjectProperty rdf:about="#supportedBy">
+  <rdfs:domain rdf:resource="#Effect"/>
+  <rdfs:range rdf:resource="#FailureCause"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#supports">
+  <rdfs:domain rdf:resource="#FailureCause"/>
+  <rdfs:range rdf:resource="#Effect"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#performedOn">
+  <rdfs:domain rdf:resource="#ConformanceAssessment"/>
+  <rdfs:range rdf:resource="#PCB"/>
+</owl:ObjectProperty>
+
 <owl:DatatypeProperty rdf:about="#hasUpperValue">
   <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
   <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
@@ -184,20 +199,36 @@
   <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
 </owl:DatatypeProperty>
 
-<owl:DatatypeProperty rdf:about="#isPresent">
-  <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
-</owl:DatatypeProperty>
-
 <owl:DatatypeProperty rdf:about="#createdAt">
   <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
 </owl:DatatypeProperty>
 
-<owl:DatatypeProperty rdf:about="#hasRiskLevel">
+<owl:DatatypeProperty rdf:about="#lastUpdated">
+  <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="#modelType">
   <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
 </owl:DatatypeProperty>
 
-<owl:DatatypeProperty rdf:about="#lastUpdated">
-  <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
+<owl:DatatypeProperty rdf:about="#modelVersion">
+  <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="#totalFeatures">
+  <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="#defectClasses">
+  <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="#mechanismClasses">
+  <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="#rawFeatures">
+  <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
 </owl:DatatypeProperty>
 
 <owl:AnnotationProperty rdf:about="#triggeredByRuleText"/>
@@ -266,16 +297,6 @@
   <core:example rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Head-in-pillow (effect) resulting from warpage mismatch and insufficient time above liquidus.</core:example>
 </owl:Class>
 
-<owl:Class rdf:about="#SolderPaste">
-  <rdfs:subClassOf rdf:resource="https://spec.industrialontologies.org/ontology/core/Core/MaterialProduct"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Solder Paste</rdfs:label>
-</owl:Class>
-
-<owl:Class rdf:about="#Environment">
-  <rdfs:subClassOf rdf:resource="https://spec.industrialontologies.org/ontology/core/Core/MaterialProduct"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Environment</rdfs:label>
-</owl:Class>
-
 <owl:Class rdf:about="#PCB">
   <rdfs:subClassOf rdf:resource="https://spec.industrialontologies.org/ontology/core/Core/MaterialProduct"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PCB</rdfs:label>
@@ -283,10 +304,20 @@
   <core:example rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Four-layer FR-4 PCB, 1.6 mm thick, ENIG finish, green solder mask.</core:example>
 </owl:Class>
 
+<owl:Class rdf:about="#Environment">
+  <rdfs:subClassOf rdf:resource="https://spec.industrialontologies.org/ontology/core/Core/MaterialProduct"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Environment</rdfs:label>
+</owl:Class>
+
 <owl:Class rdf:about="#Stencil">
   <rdfs:subClassOf rdf:resource="https://spec.industrialontologies.org/ontology/core/Core/MaterialProduct"/>
   <rdfs:subClassOf rdf:resource="https://spec.industrialontologies.org/ontology/core/Core/PieceOfEquipment"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Stencil</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#SolderPaste">
+  <rdfs:subClassOf rdf:resource="https://spec.industrialontologies.org/ontology/core/Core/MaterialProduct"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Solder Paste</rdfs:label>
 </owl:Class>
 
 <owl:Class rdf:about="#ParameterQuality">
@@ -369,6 +400,11 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ParameterObservation</rdfs:label>
   <core:definition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">An information record capturing the measured value(s), method, unit, and context for a specific parameter.</core:definition>
   <core:example rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SPI report entry: paste volume = 350 nL, threshold = ±15%, board SN 12345.</core:example>
+</owl:Class>
+
+<owl:Class rdf:about="#PredictiveModel">
+  <rdfs:subClassOf rdf:resource="https://spec.industrialontologies.org/ontology/core/Core/InformationContentEntity"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PredictiveModel</rdfs:label>
 </owl:Class>
 
 <owl:Class rdf:about="#ParameterSpecification">

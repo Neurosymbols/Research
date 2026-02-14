@@ -1,0 +1,291 @@
+{
+ "PCB4": [
+  [
+   "SolderBridging_PCB4",
+   "ExcessReflowSpreading"
+  ],
+  [
+   "ExcessReflowSpreading",
+   "HighPeakReflowTemperature"
+  ],
+  [
+   "SolderBridging_PCB4",
+   "ApertureOverfill"
+  ],
+  [
+   "ApertureOverfill",
+   "HighStencilThickness"
+  ]
+ ],
+ "PCB5": [
+  [
+   "SolderBridging_PCB5",
+   "ExcessReflowSpreading"
+  ],
+  [
+   "ExcessReflowSpreading",
+   "HighPeakReflowTemperature"
+  ],
+  [
+   "SolderBridging_PCB5",
+   "ApertureOverfill"
+  ],
+  [
+   "ApertureOverfill",
+   "HighAmbientRh"
+  ],
+  [
+   "ApertureOverfill",
+   "HighAmbientTemperature"
+  ]
+ ],
+ "PCB7": [
+  [
+   "SolderBridging_PCB7",
+   "ExcessReflowSpreading"
+  ],
+  [
+   "ExcessReflowSpreading",
+   "HighTimeAboveLiquidus"
+  ]
+ ],
+ "PCB9": [
+  [
+   "SolderBridging_PCB9",
+   "ApertureOverfill"
+  ],
+  [
+   "ApertureOverfill",
+   "HighStencilThickness"
+  ]
+ ],
+ "PCB10": [
+  [
+   "OpenCircuit_PCB10",
+   "PoorPasteTransfer"
+  ],
+  [
+   "PoorPasteTransfer",
+   "LowStencilThickness"
+  ]
+ ],
+ "PCB11": [
+  [
+   "SolderBridging_PCB11",
+   "ApertureOverfill"
+  ],
+  [
+   "ApertureOverfill",
+   "LowPasteViscosity"
+  ]
+ ],
+ "PCB12": [
+  [
+   "OpenCircuit_PCB12",
+   "PoorPasteTransfer"
+  ],
+  [
+   "PoorPasteTransfer",
+   "HighPasteViscosity"
+  ]
+ ],
+ "PCB14": [
+  [
+   "SolderBridging_PCB14",
+   "ApertureOverfill"
+  ],
+  [
+   "ApertureOverfill",
+   "HighStencilThickness"
+  ],
+  [
+   "ApertureOverfill",
+   "LowPasteViscosity"
+  ]
+ ],
+ "PCB17": [
+  [
+   "SolderBridging_PCB17",
+   "ApertureOverfill"
+  ],
+  [
+   "ApertureOverfill",
+   "HighStencilThickness"
+  ],
+  [
+   "ApertureOverfill",
+   "HighAmbientRh"
+  ]
+ ],
+ "PCB19": [
+  [
+   "SolderBridging_PCB19",
+   "ApertureOverfill"
+  ]
+ ],
+ "PCB22": [
+  [
+   "SolderBridging_PCB22",
+   "ExcessReflowSpreading"
+  ],
+  [
+   "ExcessReflowSpreading",
+   "HighPeakReflowTemperature"
+  ],
+  [
+   "SolderBridging_PCB22",
+   "ApertureOverfill"
+  ],
+  [
+   "ApertureOverfill",
+   "LowPasteViscosity"
+  ]
+ ],
+ "PCB24": [
+  [
+   "OpenCircuit_PCB24",
+   "PoorPasteTransfer"
+  ],
+  [
+   "PoorPasteTransfer",
+   "LowStencilThickness"
+  ]
+ ],
+ "PCB25": [
+  [
+   "SolderBridging_PCB25",
+   "ExcessReflowSpreading"
+  ],
+  [
+   "ExcessReflowSpreading",
+   "HighTimeAboveLiquidus"
+  ]
+ ],
+ "PCB26": [
+  [
+   "SolderBridging_PCB26",
+   "ExcessReflowSpreading"
+  ],
+  [
+   "ExcessReflowSpreading",
+   "HighPeakReflowTemperature"
+  ],
+  [
+   "SolderBridging_PCB26",
+   "ApertureOverfill"
+  ]
+ ],
+ "PCB27": [
+  [
+   "SolderBridging_PCB27",
+   "ApertureOverfill"
+  ],
+  [
+   "ApertureOverfill",
+   "LowPasteViscosity"
+  ]
+ ],
+ "PCB28": [],
+ "PCB30": [
+  [
+   "SolderBridging_PCB30",
+   "ApertureOverfill"
+  ]
+ ],
+ "PCB31": [
+  [
+   "SolderBridging_PCB31",
+   "ExcessReflowSpreading"
+  ],
+  [
+   "ExcessReflowSpreading",
+   "HighPeakReflowTemperature"
+  ]
+ ],
+ "PCB32": [
+  [
+   "OpenCircuit_PCB32",
+   "NonCoalescence"
+  ],
+  [
+   "OpenCircuit_PCB32",
+   "PoorPasteTransfer"
+  ],
+  [
+   "PoorPasteTransfer",
+   "LowStencilThickness"
+  ]
+ ],
+ "PCB33": [
+  [
+   "OpenCircuit_PCB33",
+   "PoorPasteTransfer"
+  ],
+  [
+   "PoorPasteTransfer",
+   "LowStencilThickness"
+  ]
+ ],
+ "PCB34": [
+  [
+   "SolderBridging_PCB34",
+   "ApertureOverfill"
+  ],
+  [
+   "ApertureOverfill",
+   "LowPasteViscosity"
+  ]
+ ],
+ "PCB35": [
+  [
+   "OpenCircuit_PCB35",
+   "PoorPasteTransfer"
+  ]
+ ],
+ "PCB36": [
+  [
+   "SolderBridging_PCB36",
+   "ExcessReflowSpreading"
+  ],
+  [
+   "ExcessReflowSpreading",
+   "HighTimeAboveLiquidus"
+  ]
+ ],
+ "PCB40": [
+  [
+   "OpenCircuit_PCB40",
+   "NonCoalescence"
+  ],
+  [
+   "OpenCircuit_PCB40",
+   "PoorPasteTransfer"
+  ]
+ ],
+ "PCB45": [],
+ "PCB46": [],
+ "PCB47": [
+  [
+   "SolderBridging_PCB47",
+   "ApertureOverfill"
+  ],
+  [
+   "ApertureOverfill",
+   "LowPasteViscosity"
+  ]
+ ],
+ "PCB49": [
+  [
+   "OpenCircuit_PCB49",
+   "PoorPasteTransfer"
+  ],
+  [
+   "PoorPasteTransfer",
+   "LowAmbientRh"
+  ],
+  [
+   "PoorPasteTransfer",
+   "HighPasteViscosity"
+  ]
+ ]
+}
