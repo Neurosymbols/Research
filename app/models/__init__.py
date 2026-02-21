@@ -17,6 +17,7 @@ class PipelineRunTime:
     mode: str
     create_ontology: bool
     data_rows: int
+    risk_threshold: float
     factory_data: Optional[Any] = None
     chain_gt: Optional[Any] = None
 

@@ -7,9 +7,10 @@ import pandas as pd
 from decimal import Decimal, ROUND_HALF_UP
 from pymongo import MongoClient
 from owlready2 import *
+from rdflib import Graph
 
 from app.models import *
-from app.config.onto import data_rows, mode
+from app.config.onto import data_rows, mode, risk_score_threshold
 from app.config.data_paths import folders, resources, ontologies
 
 from app.services.utils import *
@@ -332,13 +333,18 @@ def step_clear_db(ctx:PipelineContext):
     clear_graphdb_default_graph()
 
 def step_export(ctx:PipelineContext):
+    g = Graph()
+    g.parse(ontologies.terms)
+    g.serialize(ontologies.terms_rdf, format="turtle")
+    g.parse(ontologies.assertions)
+    g.serialize(ontologies.assertions_rdf, format="turtle")
     export_ontology_to_graphdb([
-        ontologies.bfo,
-        ontologies.bfo_prov,
-        ontologies.iof,
-        ontologies.ro,
-        ontologies.terms,
-        ontologies.assertions
+        ontologies.assertions_rdf,
+        ontologies.terms_rdf,
+        # ontologies.ro,
+        # ontologies.iof,
+        # ontologies.bfo,
+        # ontologies.bfo_prov
     ])
 
 def step_generate_causal_hypothesis(ctx:PipelineContext):
@@ -383,6 +389,7 @@ if __name__ == "__main__":
     runtime = PipelineRunTime(
         mode=mode, 
         create_ontology=create_ontology,
+        risk_threshold=risk_score_threshold,
         data_rows=data_rows
     )
     ctx = PipelineContext(data=onto_data, runtime=runtime)

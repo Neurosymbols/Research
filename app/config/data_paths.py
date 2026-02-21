@@ -35,6 +35,8 @@ class Ontologies:
     skos: Path
     terms : Path
     assertions : Path
+    terms_rdf: Path
+    assertions_rdf: Path
 
 folders = Folders()
 
@@ -61,5 +63,7 @@ ontologies = Ontologies(
     ro = folders.onto / "ro-causal-properties.owl",
     skos = folders.onto / "skos.rdf",
     terms = folders.onto / "causal-terminology.owl",
-    assertions = folders.onto / "causal-assertions.owl"
+    assertions = folders.onto / "causal-assertions.owl",
+    terms_rdf = folders.onto / "causal-terminology.ttl",
+    assertions_rdf = folders.onto / "causal-assertions.ttl",
 )

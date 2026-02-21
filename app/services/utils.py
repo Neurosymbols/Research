@@ -74,7 +74,7 @@ def export_ontology_to_graphdb(
 ):
     # Upload to repository
     headers = {
-        "Content-Type": "application/rdf+xml"
+        "Content-Type": "text/turtle"
     }
     for op in ontology_paths:
         with open(op, "rb") as f:

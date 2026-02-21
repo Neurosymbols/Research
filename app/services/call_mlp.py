@@ -1,6 +1,8 @@
 
 import requests
 
+from app.models import *
+
 MLP_API_URL = "http://localhost:8000/predict"
 TIMEOUT = 5  # seconds
 
@@ -31,7 +33,7 @@ def call_mlp_api(pcb_features: dict) -> dict:
     except requests.exceptions.RequestException as e:
         raise RuntimeError(f"MLP API request failed: {e}")
 
-def extract_for_kg(mlp_response: dict):
+def extract_for_kg(mlp_response: dict, ctx:PipelineContext):
     """
     Extracts ONLY the fields required for GraphDB insertion
     from a raw MLP response.
@@ -91,8 +93,7 @@ def extract_for_kg(mlp_response: dict):
     for param_name, param_data in parameters.items():
         pn = param_map.get(param_name, param_name)
         risk_score =  param_data.get("risk_score", 0.0)
-        risk_score_threshold = 0.60
-        if risk_score >= risk_score_threshold:
+        if risk_score >= ctx.runtime.risk_threshold:
             violations.append({
                 "parameter": pn,
                 "direction": param_data.get("direction"),

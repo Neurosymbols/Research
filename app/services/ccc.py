@@ -223,7 +223,7 @@ def perform_conformance_assessment_mlp(ctx: PipelineContext):
         mlp_payload = build_mlp_payload(dict(row))
         mlp_result_api = call_mlp_api(mlp_payload)
         ml_model_iri = upsert_ml_model(mlp_result_api["model_metadata"])
-        kg_ready_resp = extract_for_kg(mlp_result_api)
+        kg_ready_resp = extract_for_kg(mlp_result_api, ctx)
 
         # 1. Update defect (existing individual)
         update_defect(pcb_id, kg_ready_resp["defect"])
